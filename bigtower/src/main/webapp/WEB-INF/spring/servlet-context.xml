@@ -29,7 +29,11 @@
 	<mvc:resources mapping="templates/government/img/**" location="/WEB-INF/templates/government/img/" />
 	<mvc:resources mapping="templates/government/js/**" location="/WEB-INF/templates/government/js/" />
 	<mvc:resources mapping="templates/government/plugins/**" location="/WEB-INF/templates/government/plugins/" />
-
+	<!-- 병원사이트에서 부속 매핑을 위한 경로 설정 -->
+	<mvc:resources mapping="templates/hospital/css/**" location="/WEB-INF/templates/hospital/css/" />
+	<mvc:resources mapping="templates/hospital/font/**" location="/WEB-INF/templates/hospital/font/" />
+	<mvc:resources mapping="templates/hospital/img/**" location="/WEB-INF/templates/hospital/img/" />
+	<mvc:resources mapping="templates/hospital/js/**" location="/WEB-INF/templates/hospital/js/" />
 	<!-- 인터셉터 사용준비 -->
 	<!-- <mvc:interceptors>
 		<mvc:interceptor>
@@ -64,7 +68,6 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
 
 	
 	<context:component-scan base-package="com.team4.project" />
