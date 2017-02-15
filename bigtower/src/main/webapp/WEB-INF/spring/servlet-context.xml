@@ -15,7 +15,20 @@
 	<mvc:annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- 부속 css, js, img 기타 등등 매핑 -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<!-- 정부사이트에서 부속 매핑을 위한 경로 설정 -->
+	<mvc:resources mapping="templates/government/assets/**" location="/WEB-INF/templates/government/assets/" />
+	<mvc:resources mapping="templates/government/bodybg/**" location="/WEB-INF/templates/government/bodybg/" />
+	<mvc:resources mapping="templates/government/color/**" location="/WEB-INF/templates/government/contactform/" />
+	<mvc:resources mapping="templates/government/contactform/**" location="/WEB-INF/templates/government/contactform/" />
+	<mvc:resources mapping="templates/government/css/**" location="/WEB-INF/templates/government/css/" />
+	<mvc:resources mapping="templates/government/doctors/**" location="/WEB-INF/templates/government/doctors/" />
+	<mvc:resources mapping="templates/government/font-awesome/**" location="/WEB-INF/templates/government/font-awesome/" />	
+	<mvc:resources mapping="templates/government/fonts/**" location="/WEB-INF/templates/government/fonts/" />
+	<mvc:resources mapping="templates/government/img/**" location="/WEB-INF/templates/government/img/" />
+	<mvc:resources mapping="templates/government/js/**" location="/WEB-INF/templates/government/js/" />
+	<mvc:resources mapping="templates/government/plugins/**" location="/WEB-INF/templates/government/plugins/" />
 
 	<!-- 인터셉터 사용준비 -->
 	<!-- <mvc:interceptors>
