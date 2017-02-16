@@ -29,7 +29,10 @@ public class HomeController {
 		return "government/government-index";
 	}
 	/*정부 회원가입*/
-	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(){
+		return "government/index-form";
+	}
 	
 	/*병원관리 페이지*/
 	@RequestMapping(value = "/ho", method = RequestMethod.GET)
