@@ -31,12 +31,16 @@ public class HomeController {
 	public String ho(Model model) {
 	
 		
-		return "hospital-index";
+		return "hospital/hospital-index";
 	}
 	@RequestMapping(value = "/icons", method = RequestMethod.GET)
 	public String icons(Model model) {
 				
-		return "icons";
+		return "hospital/icons";
 	}
-	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model) {
+				
+		return "hospital/login";
+	}
 }

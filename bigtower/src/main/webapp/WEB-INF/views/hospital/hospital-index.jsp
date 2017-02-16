@@ -13,6 +13,7 @@
         rel="stylesheet">
 <link href="templates/hospital/css/font-awesome.css" rel="stylesheet">
 <link href="templates/hospital/css/style.css" rel="stylesheet">
+<!-- 대쉬보드에서 사용되는 css -->
 <link href="templates/hospital/css/pages/dashboard.css" rel="stylesheet">
 <!-- Le jsp5 shim, for IE6-8 support of jsp5 elements -->
 <!--[if lt IE 9]>	
