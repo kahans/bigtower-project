@@ -16,7 +16,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
     color: #666;
-    background-color: #ddd;
+    background-color: #00ff40;
 	font-size: 16px;
     line-height: 1.6em;
 }
@@ -696,19 +696,20 @@ hr.bold {
 /* ===========================
 --- General sections
 ============================ */
-
+/*17.02.16 배경및 크기 수정*/
 .home-section {
     padding-top: 150px;
 	display:block;
     position:relative;
     z-index:120;
-	background-color: #fff;
+	/* background-color: #00ff00; */
+	background: url(/templates/government/img/bodybg/1280-1024-green.jpg);
 }
 
 
 .home-section.nopadding {
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 300px;
 	display:block;
     position:relative;
     z-index:120;

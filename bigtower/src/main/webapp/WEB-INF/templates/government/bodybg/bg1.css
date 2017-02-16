@@ -1,1 +1,5 @@
-body { background: url(..templates/government/img/bodybg/bg1.png) repeat left top; }
+body {
+/* 	background: url(..templates/government/img/bodybg/bg1.png) repeat left
+		top; */
+	background-color: #008080;
+}
