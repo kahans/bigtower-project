@@ -75,20 +75,25 @@
 			
 				<div class="row">
 					<div class="col-lg-6">
+					<!-- 이부분에 for문 돌려서 질병리스트 만들고 페이징, 검색 폼 만들어야함 -->
 					<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
-					<h2 class="h-ultra">Medicio medical group</h2>
+					<h2 class="h-ultra">질병명 목록</h2>
 					</div>
 					<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
-					<h4 class="h-light">Provide best quality healthcare for you</h4>
+						<form>
+							
+							<input type="text" name="DiseaseName"><button>검색</button>
+						</form>
+					
 					</div>
 						<div class="well well-trans">
 							<div class="wow fadeInRight" data-wow-delay="0.1s">
 							
-							<!-- 이부분에 for문 돌려서 질병리스트 만들고 페이징, 검색 폼 만들어야함 -->
+							
 							<ul class="lead-list">
-								<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Affordable monthly premium packages</strong><br />Lorem ipsum dolor sit amet, in verterem persecuti vix, sit te meis</span></li>
-								<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Choose your favourite doctor</strong><br />Lorem ipsum dolor sit amet, in verterem persecuti vix, sit te meis</span></li>
-								<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Only use friendly environment</strong><br />Lorem ipsum dolor sit amet, in verterem persecuti vix, sit te meis</span></li>
+								<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>질병목록이 검색을통해</strong><br />이곳으로</span></li>
+								<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>for문을 통해</strong><br />들어오고</span></li>
+								<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>페이징기술을</strong><br />쓸것이다.</span></li>
 							</ul>
 							<p class="text-right wow bounceIn" data-wow-delay="0.4s">
 							<a href="#" class="btn btn-skin btn-lg">Learn more <i class="fa fa-angle-right"></i></a>
@@ -99,15 +104,27 @@
 
 					</div>
 					<div class="col-lg-6">
-						<div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
-						<img src="img/dummy/img-1.png" class="img-responsive" alt="" />
+						<!-- <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s"> -->
 							<form>
+<<<<<<< HEAD
+							<table>
+								<tr>
+								<label>질병코드</label>
+								<input type="text" name="goDiseaseCode"/>
+								<label>질병명(한국)</label>
+								<input type="text" name="goDiseaseKor"/>
+								<label>질병명(영어)</label>
+								<input type="text" name="goDiseaseEng"/>
+								<button>입력</button>
+							</table>
+=======
 							<label>질병코드</label>
 								<input type="text" name="diseaseName"/>
 							인풋테그 3개있어야함. 질병코드, 질병명(한국),질병명(영어) 길다.
 							<label>
 								<input type="text" name="">
 							</label>
+>>>>>>> branch 'master' of https://github.com/loverman85/bigtower-project.git
 							</form>
 						</div>
 					</div>					
