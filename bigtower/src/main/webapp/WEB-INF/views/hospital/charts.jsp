@@ -4,15 +4,15 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Charts - Bootstrap Admin Template</title>
+    <title>진료 차트</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="templates/hospital/css/bootstrap.min.css" rel="stylesheet">
-    <link href="templates/hospital/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/templates/hospital/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/templates/hospital/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
         rel="stylesheet">
-    <link href="templates/hospital/css/font-awesome.css" rel="stylesheet">
-    <link href="templates/hospital/css/style.css" rel="stylesheet">
+    <link href="/templates/hospital/css/font-awesome.css" rel="stylesheet">
+    <link href="/templates/hospital/css/style.css" rel="stylesheet">
     
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -25,10 +25,13 @@
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                </a><a class="brand" href="index.html">Bootstrap Admin Template </a>
+                </a><a class="brand" href="index.html">진료차트 </a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                    	<a href="">로그아웃</a>
+                    
+                    	
+                       <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                             class="icon-cog"></i> Account <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:;">Settings</a></li>
@@ -41,7 +44,7 @@
                                 <li><a href="javascript:;">Profile</a></li>
                                 <li><a href="javascript:;">Logout</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                     <form class="navbar-search pull-right">
                     <input type="text" class="search-query" placeholder="Search">
@@ -58,13 +61,13 @@
         <div class="subnavbar-inner">
             <div class="container">
                 <ul class="mainnav">
-                    <li><a href="index.html"><i class="icon-dashboard"></i><span>Dashboard</span> </a>
+                    <li><a href="index.html"><i class="icon-dashboard"></i><span>병원소개</span> </a>
                     </li>
-                    <li><a href="reports.html"><i class="icon-list-alt"></i><span>Reports</span> </a>
+                    <li><a href="reports.html"><i class="icon-list-alt"></i><span>aaa</span> </a>
                     </li>
                     <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span>
                     </a></li>
-                    <li class="active"><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a>
+                    <li class="active"><a href="/hospital/charts"><i class="icon-bar-chart"></i><span>Charts</span> </a>
                     </li>
                     <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a>
                     </li>
@@ -94,14 +97,23 @@
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
-                                <h3>
-                                    Bar Chart</h3>
+                                <h3>진료작성</h3>
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
-                                <canvas id="bar-chart" class="chart-holder" width="538" height="250">
-                                </canvas>
-                                <!-- /bar-chart -->
+                               	목록나오고 진료작성나와야함
+                               	<table>
+                               		<tr>
+                               			<td>진료결과 조회해옴</td>
+                               		</tr>
+                               		
+                               	</table>
+                               	
+                               	
+                               <!-- 막대기 차트부분 나옴 -->
+                               <!--  <canvas id="bar-chart" class="chart-holder" width="538" height="250">
+                                </canvas> -->
+                                	<!-- /bar-chart -->
                             </div>
                             <!-- /widget-content -->
                         </div>
@@ -253,11 +265,11 @@
     <!-- Le javascript
 ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="templates/hospital/js/jquery-1.7.2.min.js"></script>
-    <script src="templates/hospital/js/excanvas.min.js"></script>
-    <script src="templates/hospital/js/chart.min.js" type="text/javascript"></script>
-    <script src="templates/hospital/js/bootstrap.js"></script>
-    <script src="templates/hospital/js/base.js"></script>
+    <script src="/templates/hospital/js/jquery-1.7.2.min.js"></script>
+    <script src="/templates/hospital/js/excanvas.min.js"></script>
+    <script src="/templates/hospital/js/chart.min.js" type="text/javascript"></script>
+    <script src="/templates/hospital/js/bootstrap.js"></script>
+    <script src="/templates/hospital/js/base.js"></script>
     <script>
         var doughnutData = [
 				{
