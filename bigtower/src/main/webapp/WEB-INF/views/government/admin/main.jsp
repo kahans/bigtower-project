@@ -106,7 +106,7 @@
 								<input type="text" name="diseaseName"/>
 							인풋테그 3개있어야함. 질병코드, 질병명(한국),질병명(영어) 길다.
 							<label>
-								<input type="text" name=""
+								<input type="text" name="">
 							</label>
 							</form>
 						</div>

@@ -56,7 +56,14 @@
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="#intro">Home</a></li>
 				<li><a href="#service">개요</a></li>
-				<li><a href="#doctor">의료조회</a></li>
+				<li>
+				<div class="dropdown">
+					<a><button class="dropbtn">의료조회</button></a>
+					<div class="dropdown-content">
+						<a href="#doctor">진료조회</a>
+					</div>
+				</div>
+				<!-- <a href="#doctor">의료조회</a> --></li>
 				<li><a href="#facilities">병원 목록</a></li>
 				<li class="login"><!-- 로그인 하는 페이지로 이동 -->
 				  <a href="login" name="login" >로그인 </a>
