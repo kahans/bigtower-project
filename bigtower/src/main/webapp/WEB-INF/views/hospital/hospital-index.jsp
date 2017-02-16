@@ -7,14 +7,14 @@
 <title>Dashboard - Bootstrap Admin Template</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link href="templates/hospital/css/bootstrap.min.css" rel="stylesheet">
-<link href="templates/hospital/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/templates/hospital/css/bootstrap.min.css" rel="stylesheet">
+<link href="/templates/hospital/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
         rel="stylesheet">
-<link href="templates/hospital/css/font-awesome.css" rel="stylesheet">
-<link href="templates/hospital/css/style.css" rel="stylesheet">
+<link href="/templates/hospital/css/font-awesome.css" rel="stylesheet">
+<link href="/templates/hospital/css/style.css" rel="stylesheet">
 <!-- 대쉬보드에서 사용되는 css -->
-<link href="templates/hospital/css/pages/dashboard.css" rel="stylesheet">
+<link href="/templates/hospital/css/pages/dashboard.css" rel="stylesheet">
 <!-- Le jsp5 shim, for IE6-8 support of jsp5 elements -->
 <!--[if lt IE 9]>	
       <script src="http://jsp5shim.googlecode.com/svn/trunk/jsp5.js"></script>
@@ -397,13 +397,13 @@
 <!-- Le javascript
 ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="templates/hospital/js/jquery-1.7.2.min.js"></script> 
-<script src="templates/hospital/js/excanvas.min.js"></script> 
-<script src="templates/hospital/js/chart.min.js" type="text/javascript"></script> 
-<script src="templates/hospital/js/bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="templates/hospital/js/full-calendar/fullcalendar.min.js"></script>
+<script src="/templates/hospital/js/jquery-1.7.2.min.js"></script> 
+<script src="/templates/hospital/js/excanvas.min.js"></script> 
+<script src="/templates/hospital/js/chart.min.js" type="text/javascript"></script> 
+<script src="/templates/hospital/js/bootstrap.js"></script>
+<script language="javascript" type="text/javascript" src="/templates/hospital/js/full-calendar/fullcalendar.min.js"></script>
  
-<script src="templates/hospital/js/base.js"></script> 
+<script src="/templates/hospital/js/base.js"></script> 
 <script>     
 
         var lineChartData = {
