@@ -18,6 +18,28 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+	//추가버튼 클릭시 이벤트
+	$(document).on('click','#diseaseNameAdd',function(){
+		var addSelect = $('#hiddenPrescription').html();
+		$(this).parents('#prescription').append(addSelect);
+		
+	});
+	
+	$(document).on('click','#diseaseNameRemove',function(){
+		$(this).parent('.selectAdd').remove();
+			
+	});
+	
+	
+	
+	</script>
+    
+    
+    
+    
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
@@ -102,7 +124,7 @@
                             <!-- /widget-header -->
                             <div class="widget-content">
                                	<label>이전 진료결과</label>
-                               <div style="overflow:scroll; max-width:auto; width:90%; height:150px; padding:20px; background-color:gold;">
+                               <div style="overflow:scroll; max-width:auto; width:90%; height:150px; padding:20px; background-color:whight;">
                                	
                                	</div>
                               	<label>진료결과 작성</label>
@@ -121,12 +143,48 @@
                                 <i class="icon-bar-chart"></i>
                                 <h3>처방전</h3>
                             </div>
-                            <!-- /widget-header -->
-                            <div class="widget-content">
-                                <canvas id="area-chart" class="chart-holder" width="538" height="250">
-                                </canvas>
-                                <!-- /line-chart -->
-                            </div>
+                            	
+                            	
+                          <!--   <!-- /widget-header -->
+                           <div class="widget-content">
+                           <label>이전 처방목록</label>
+                               <div style="overflow:scroll; max-width:auto; width:90%; height:150px; padding:20px; background-color:whight;">
+                               </div>
+                              	<label>처방전 작성</label>
+                              	
+                              	<div id="prescription">
+                              		<div>
+	                              		<select>
+	                              			<option>질병명</option>
+	                              			<option>열감기</option>
+	                              			<option>기침감기</option>
+	                              			<option>몸살감기</option>                             			
+	                              		</select>
+	                              		<i id="diseaseNameAdd" class="icon-large icon-plus-sign"></i>
+                              		</div>
+                              	</div>
+                              	
+                              	
+                              	<div id="hiddenPrescription" style="display: none;">
+                              		<div class="selectAdd">	
+	                              		<select>
+	                              			<option>질병명</option>
+	                              			<option>열감기</option>
+	                              			<option>기침감기</option>
+	                              			<option>몸살감기</option>                             			
+	                              		</select>
+	                              		<i id="diseaseNameAdd" class="icon-large icon-plus-sign"></i>
+	                              		<i id="diseaseNameRemove" class="icon-large icon-minus-sign"></i>
+                              		</div>
+                              	</div>
+                              	
+                              	<div>
+                              		<label>약품 검색</label>
+                              		<input type="text" name=""><button>검색</button><br/>
+                              	</div>
+                              	
+								<button>처방하기</button>
+                            
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
