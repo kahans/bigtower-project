@@ -20,14 +20,19 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	/*첫 메인화면*/
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String firstIndex(){
+		return "index";
+	}
 	/*정부 메인페이지*/ 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
 		return "government/government-index";
 	}
 	/*정부 회원가입*/
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/form", method = RequestMethod.GET)
 	public String index(){
 		return "government/index-form";
 	}
@@ -39,16 +44,17 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/gologin", method = RequestMethod.POST)
 	public String PostLogin(LoginDto dto) {
-		dto = new LoginDto();
-
+		LoginDto dto01 = new LoginDto();
+		
 		// 관리자 아이디가 트루
-		if (dto.getId().equals("admin")) {
+		if (dto01.getId().equals("admin")) {
 			// 관리자의 비번이 트루
-			dto.setLevel("관리자");
-			if (dto.getPw().equals("1111")) {
+			dto01.setLevel("관리자");
+			if (dto01.getPw().equals("1111")) {
 				//
-				if (dto.getLevel().equals("관리자")) {
-					return "government/government-login";
+				if (dto01.getLevel().equals("관리자")) {
+					System.out.println(dto01.toString());
+					return "government/admin/main";
 				}
 			} else {
 				return "government/government-login";
@@ -56,9 +62,12 @@ public class HomeController {
 			}
 		} else if (dto.getId().equals("guest")) {
 			// 손님비번은 나중에
+			return "government/citizen/cmain";
+		}else{
+			return "government/government-login";
 
 		}
-		return "government/government-login";
+		return "index";
 	}
 	
 	/*병원관리 페이지*/

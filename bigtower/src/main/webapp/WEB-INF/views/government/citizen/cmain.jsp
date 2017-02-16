@@ -55,18 +55,23 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="#intro">Home</a></li>
-				<li><a href="#service">개요</a></li>
 				<li>
-				<div class="dropdown">
-					<a><button class="dropbtn">의료조회</button></a>
-					<div class="dropdown-content">
-						<a href="#doctor">진료조회</a>
+				<!-- 드랍하는 메뉴 -->
+					<div class="dropdown">
+						<a><button class="dropbtn">전체조회</button></a>
+						<div class="dropdown-content">
+						<a href="/citizen/treat">진료내역</a>
+						<a href="#service">예방접종</a>
+						<a href="#service">검사기록</a>
+						<a href="#service">건강검진</a>
+						<a href="#service">수술기록</a>
+						<a href="#service">입/퇴원</a>
+						</div>
 					</div>
-				</div>
-				<!-- <a href="#doctor">의료조회</a> --></li>
-				<li><a href="#facilities">병원 목록</a></li>
-				<li class="login"><!-- 로그인 하는 페이지로 이동 -->
-				  <a href="login" name="login" >로그인 </a>
+					<!-- <a href="#doctor">의료조회</a> -->
+				</li>
+				<li class="logout"><!-- 로그아웃 하는 페이지로 이동 -->
+				  <a href="logout" name="logout" >로그아웃 </a>
 				</li>
 			  </ul>
             </div>

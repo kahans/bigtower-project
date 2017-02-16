@@ -11,20 +11,20 @@
     <title>Medicio landing page template for Health niche</title>
 	
     <!-- css -->
-    <link href="templates/government/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/templates/government/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css">
-	<link href="templates/government/css/nivo-lightbox.css" rel="stylesheet" />
-	<link href="templates/government/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
-	<link href="templates/government/css/owl.carousel.css" rel="stylesheet" media="screen" />
-    <link href="templates/government/css/owl.theme.css" rel="stylesheet" media="screen" />
-	<link href="templates/government/css/animate.css" rel="stylesheet" />
-    <link href="templates/government/css/style.css" rel="stylesheet">
+	<link href="/templates/government/css/nivo-lightbox.css" rel="stylesheet" />
+	<link href="/templates/government/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+	<link href="/templates/government/css/owl.carousel.css" rel="stylesheet" media="screen" />
+    <link href="/templates/government/css/owl.theme.css" rel="stylesheet" media="screen" />
+	<link href="/templates/government/css/animate.css" rel="stylesheet" />
+    <link href="/templates/government/css/style.css" rel="stylesheet">
 
 	<!-- boxed bg -->
-	<link id="bodybg" href="templates/government/bodybg/bg1.css" rel="stylesheet" type="text/css" />
+	<link id="bodybg" href="/templates/government/bodybg/bg1.css" rel="stylesheet" type="text/css" />
 	<!-- template skin -->
-	<link id="t-colors" href="templates/government/color/default.css" rel="stylesheet">
+	<link id="t-colors" href="/templates/government/color/default.css" rel="stylesheet">
     
     <!-- =======================================================
         Theme Name: Medicio
@@ -46,7 +46,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="/">
-                    <img src="templates/government/img/logo_gnb_p.png" alt="" width="150" height="40" />
+                    <img src="/templates/government/img/logo_gnb_p.png" alt="" width="150" height="40" />
                 </a>
             </div>
 
@@ -112,19 +112,19 @@
 									   <!--  <div id="sendmessage">Your message has been sent. Thank you!</div> -->
                                         <div id="errormessage"></div>
                                    
-    					                <form action="" method="post" role="form" class="contactForm lead">
+    					                <form action="/gologin" method="post" role="form" class="contactForm lead">
     										<div class="row">
     											<div class="col-xs-6 col-sm-6 col-md-6">
     												<div class="form-group">
     													<label>아이디</label>
-    													<input type="text" name="first_name" id="first_name" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars">
+    													<input type="text" name="id" id="id" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars">
                                                         <div class="validation"></div>
     												</div>
     											</div>
     											<div class="col-xs-6 col-sm-6 col-md-6">
     												<div class="form-group">
     													<label>비밀번호</label>
-    													<input type="text" name="last_name" id="last_name" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars">
+    													<input type="text" name="pw" id="pw" class="form-control input-md" data-rule="minlen:3" data-msg="Please enter at least 3 chars">
                                                         <div class="validation"></div>
     												</div>
     											</div>

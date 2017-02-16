@@ -12,4 +12,12 @@ public class TestController_government_citizen {
 		
 		return "government/citizen/cmain";
 	}
+	/*진료내역 경로*/
+	@RequestMapping(value = "/citizen/treat", method = RequestMethod.GET)
+	public String treat() {
+		
+		return "government/citizen/searchTreat";
+	}
+	/**/
+	
 }
