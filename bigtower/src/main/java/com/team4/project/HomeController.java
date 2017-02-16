@@ -20,7 +20,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	/*정부 메인페이지*/
+	/*정부 메인페이지*/ 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
@@ -37,7 +37,29 @@ public class HomeController {
 				
 		return "government/government-login";
 	}
-	
+	@RequestMapping(value = "/gologin", method = RequestMethod.POST)
+	public String PostLogin(LoginDto dto) {
+		dto = new LoginDto();
+
+		// 관리자 아이디가 트루
+		if (dto.getId().equals("admin")) {
+			// 관리자의 비번이 트루
+			dto.setLevel("관리자");
+			if (dto.getPw().equals("1111")) {
+				//
+				if (dto.getLevel().equals("관리자")) {
+					return "government/government-login";
+				}
+			} else {
+				return "government/government-login";
+				// 비번이 틀린경우 다시 로그인 창으로 이동
+			}
+		} else if (dto.getId().equals("guest")) {
+			// 손님비번은 나중에
+
+		}
+		return "government/government-login";
+	}
 	
 	/*병원관리 페이지*/
 	@RequestMapping(value = "/ho", method = RequestMethod.GET)

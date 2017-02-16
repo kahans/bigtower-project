@@ -55,10 +55,19 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
-				<li class="active"><a href="#dbManagement">DB관리</a></li>
-				<li><a href="#hospital">병원관리</a></li>
-				<li><a href="#doctor">의사관리</a></li>
-				<li><a href="">로그아웃</a></li>
+				<li class="active"><a href="#intro">Home</a></li>
+				<li><a href="#service">Service</a></li>
+				<li><a href="#doctor">Doctors</a></li>
+				<li><a href="#facilities">Facilities</a></li>
+				<li><a href="#pricing">Pricing</a></li>
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="index.html">Home CTA</a></li>
+					<li><a href="index-form.html">Home Form</a></li>
+					<li><a href="index-video.html">Home video</a></li>
+				  </ul>
+				</li>
 			  </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -67,12 +76,9 @@
     </nav>
 	
 	<!-- Section: intro -->
-    <section id="dbManagement" class="intro">
-			
+    <section id="intro" class="intro">
 		<div class="intro-content">
-			
 			<div class="container">
-			
 				<div class="row">
 					<div class="col-lg-6">
 					<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
@@ -82,18 +88,17 @@
 					<h4 class="h-light">Provide best quality healthcare for you</h4>
 					</div>
 						<div class="well well-trans">
-							<div class="wow fadeInRight" data-wow-delay="0.1s">
-							
-							<!-- 이부분에 for문 돌려서 질병리스트 만들고 페이징, 검색 폼 만들어야함 -->
-							<ul class="lead-list">
-								<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Affordable monthly premium packages</strong><br />Lorem ipsum dolor sit amet, in verterem persecuti vix, sit te meis</span></li>
-								<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Choose your favourite doctor</strong><br />Lorem ipsum dolor sit amet, in verterem persecuti vix, sit te meis</span></li>
-								<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Only use friendly environment</strong><br />Lorem ipsum dolor sit amet, in verterem persecuti vix, sit te meis</span></li>
-							</ul>
-							<p class="text-right wow bounceIn" data-wow-delay="0.4s">
-							<a href="#" class="btn btn-skin btn-lg">Learn more <i class="fa fa-angle-right"></i></a>
-							</p>
-							</div>
+						<div class="wow fadeInRight" data-wow-delay="0.1s">
+
+						<ul class="lead-list">
+							<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Affordable monthly premium packages</strong><br />Lorem ipsum dolor sit amet, in verterem persecuti vix, sit te meis</span></li>
+							<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Choose your favourite doctor</strong><br />Lorem ipsum dolor sit amet, in verterem persecuti vix, sit te meis</span></li>
+							<li><span class="fa fa-check fa-2x icon-success"></span> <span class="list"><strong>Only use friendly environment</strong><br />Lorem ipsum dolor sit amet, in verterem persecuti vix, sit te meis</span></li>
+						</ul>
+						<p class="text-right wow bounceIn" data-wow-delay="0.4s">
+						<a href="#" class="btn btn-skin btn-lg">Learn more <i class="fa fa-angle-right"></i></a>
+						</p>
+						</div>
 						</div>
 
 
@@ -101,23 +106,11 @@
 					<div class="col-lg-6">
 						<div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
 						<img src="img/dummy/img-1.png" class="img-responsive" alt="" />
-							<form>
-							<label>질병코드</label>
-								<input type="text" name="diseaseName"/>
-							인풋테그 3개있어야함. 질병코드, 질병명(한국),질병명(영어) 길다.
-							<label>
-								<input type="text" name="">
-							</label>
-							</form>
 						</div>
 					</div>					
-				</div>	
-					
+				</div>		
 			</div>
-		
-		</div>
-		
-				
+		</div>		
     </section>
 	
 	<!-- /Section: intro -->
@@ -211,7 +204,7 @@
 	
 
 	<!-- Section: services -->
-    <section id="hospital" class="home-section nopadding paddingtop-60">
+    <section id="service" class="home-section nopadding paddingtop-60">
 
 		<div class="container">
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TestController_government_admin {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TestController_government_admin.class);
-	@RequestMapping(value="/main" , method=RequestMethod.GET)
+	@RequestMapping(value="/goAdmin/main" , method=RequestMethod.GET)
 	public String mainPage(){
 		logger.debug("관리자 권한으로 로그인 성공함. 관리자용 메인페이지로 보내줌");
 		return "/government/admin/main";
