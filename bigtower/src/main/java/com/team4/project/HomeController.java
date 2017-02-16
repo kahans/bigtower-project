@@ -22,22 +22,29 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	/*정부 메인페이지*/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
-		return "government-index";
+		return "government/government-index";
 	}
+	/*정부 회원가입*/
+	
+	
+	/*병원관리 페이지*/
 	@RequestMapping(value = "/ho", method = RequestMethod.GET)
 	public String ho(Model model) {
 	
 		
 		return "hospital/hospital-index";
 	}
+	/*아이콘 페이지*/
 	@RequestMapping(value = "/icons", method = RequestMethod.GET)
 	public String icons(Model model) {
 				
 		return "hospital/icons";
 	}
+	/**/
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 				
