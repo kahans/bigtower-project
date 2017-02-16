@@ -1,7 +1,5 @@
 package com.team4.project;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -33,6 +31,10 @@ public class HomeController {
 	public String index(){
 		return "government/index-form";
 	}
+	
+	
+	
+	
 	
 	/*병원관리 페이지*/
 	@RequestMapping(value = "/ho", method = RequestMethod.GET)
