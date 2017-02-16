@@ -59,7 +59,7 @@
 				<li><a href="#doctor">의료조회</a></li>
 				<li><a href="#facilities">병원 목록</a></li>
 				<li class="login"><!-- 로그인 하는 페이지로 이동 -->
-				  <a href="#" name="login" >로그인 </a>
+				  <a href="login" name="login" >로그인 </a>
 				</li>
 			  </ul>
             </div>

@@ -31,9 +31,12 @@ public class HomeController {
 	public String index(){
 		return "government/index-form";
 	}
-	
-	
-	
+	/*정부로그인*/
+	@RequestMapping(value = "/gologin", method = RequestMethod.GET)
+	public String gologin(Model model) {
+				
+		return "government/government-login";
+	}
 	
 	
 	/*병원관리 페이지*/
@@ -49,9 +52,9 @@ public class HomeController {
 				
 		return "hospital/icons";
 	}
-	/**/
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model) {
+	/*병원 로그인*/
+	@RequestMapping(value = "/hologin", method = RequestMethod.GET)
+	public String hologin(Model model) {
 				
 		return "hospital/login";
 	}
