@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link href="templates/hospital/css/bootstrap.min.css" rel="stylesheet">
-    <link href="templates/hospital/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/templates/hospital/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/templates/hospital/css/bootstrap-responsive.min.css" rel="stylesheet">
     
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-    <link href="templates/hospital/css/font-awesome.css" rel="stylesheet">
+    <link href="/templates/hospital/css/font-awesome.css" rel="stylesheet">
     
-    <link href="templates/hospital/css/style.css" rel="stylesheet">
+    <link href="/templates/hospital/css/style.css" rel="stylesheet">
     <!-- reports.jsp 에서 사용되는 reports.css -->
-    <link href="templates/hospital/css/pages/reports.css" rel="stylesheet">
+    <link href="/templates/hospital/css/pages/reports.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -346,11 +346,11 @@
 </div> <!-- /footer -->
     
 
-<script src="templates/hospital/js/jquery-1.7.2.min.js"></script>
-<script src="templates/hospital/js/excanvas.min.js"></script>
-<script src="templates/hospital/js/chart.min.js" type="text/javascript"></script>
-<script src="templates/hospital/js/bootstrap.js"></script>
-<script src="templates/hospital/js/base.js"></script>
+<script src="/templates/hospital/js/jquery-1.7.2.min.js"></script>
+<script src="/templates/hospital/js/excanvas.min.js"></script>
+<script src="/templates/hospital/js/chart.min.js" type="text/javascript"></script>
+<script src="/templates/hospital/js/bootstrap.js"></script>
+<script src="/templates/hospital/js/base.js"></script>
 <script>
 
     var pieData = [

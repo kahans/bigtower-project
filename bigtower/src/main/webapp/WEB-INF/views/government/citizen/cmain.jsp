@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Medicio landing page template for Health niche</title>
+    <title>진료기록조회 사이트</title>
 	
     <!-- css -->
     <link href="/templates/government/css/bootstrap.min.css" rel="stylesheet" type="text/css">
