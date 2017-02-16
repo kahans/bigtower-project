@@ -16,12 +16,17 @@ body {
 p { 
 	font: 13px/1.7em 'Open Sans'; 	
 }
-    
+/*진료결과 등록부분의 textarea 사이즈를 div크기의 가로 max값으로 고정하고 화면크기에 따라서 변함*/
+/* textarea{
+	max-width: 30%; 
+	width:30%;
+}   */
 input,
 button,
 select,
 textarea {
   font-family: 'Open Sans';
+	
 }
 
 .dropdown .dropdown-menu {
@@ -1266,6 +1271,7 @@ color: #333;
 	.subnavbar .container {		
 		width: auto;
 	}
+	
 }
 
 

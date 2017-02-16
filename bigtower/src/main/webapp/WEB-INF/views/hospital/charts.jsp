@@ -80,7 +80,7 @@
                             <li><a href="login.html">Login</a></li>
                             <li><a href="signup.html">Signup</a></li>
                             <li><a href="error.html">404</a></li>
-                        </ul>
+                        </ul>	
                     </li>
                 </ul>
             </div>
@@ -101,15 +101,13 @@
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
-                               	목록나오고 진료작성나와야함
-                               	<table>
-                               		<tr>
-                               			<td>진료결과 조회해옴</td>
-                               		</tr>
-                               		
-                               	</table>
+                               	<label>이전 진료결과</label>
+                               <div style="overflow:scroll; max-width:auto; width:90%; height:150px; padding:20px; background-color:gold;">
                                	
-                               	
+                               	</div>
+                              	<label>진료결과 작성</label>
+                              	<textarea rows="9" cols="20" style="max-width: 96%; width:96%;"></textarea>
+								<button>결과 등록</button>	
                                <!-- 막대기 차트부분 나옴 -->
                                <!--  <canvas id="bar-chart" class="chart-holder" width="538" height="250">
                                 </canvas> -->
@@ -121,8 +119,7 @@
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
-                                <h3>
-                                    Line Chart</h3>
+                                <h3>처방전</h3>
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
