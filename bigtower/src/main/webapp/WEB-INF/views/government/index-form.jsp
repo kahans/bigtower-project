@@ -11,15 +11,15 @@
     <title>Medicio landing page template for Health niche</title>
 	
     <!-- css -->
-    <link href="templates/government/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css">
-	<link href="templates/government/css/nivo-lightbox.css" rel="stylesheet" />
-	<link href="templates/government/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
-	<link href="templates/government/css/owl.carousel.css" rel="stylesheet" media="screen" />
-    <link href="templates/government/css/owl.theme.css" rel="stylesheet" media="screen" />
-	<link href="templates/government/css/animate.css" rel="stylesheet" />
-    <link href="templates/government/css/style.css" rel="stylesheet">
+    <link href="/templates/government/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/templates/government/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="/templates/government/plugins/cubeportfolio/css/cubeportfolio.min.css">
+	<link href="/templates/government/css/nivo-lightbox.css" rel="stylesheet" />
+	<link href="/templates/government/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+	<link href="/templates/government/css/owl.carousel.css" rel="stylesheet" media="screen" />
+    <link href="/templates/government/css/owl.theme.css" rel="stylesheet" media="screen" />
+	<link href="/templates/government/css/animate.css" rel="stylesheet" />
+    <link href="/templates/government/css/style.css" rel="stylesheet">
 
 	<!-- boxed bg -->
 	<link id="bodybg" href="bodybg/bg1.css" rel="stylesheet" type="text/css" />
@@ -835,18 +835,18 @@
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
 
 	<!-- Core JavaScript Files -->
-    <script src="templates/government/js/jquery.min.js"></script>	 
-    <script src="templates/government/js/bootstrap.min.js"></script>
-    <script src="templates/government/js/jquery.easing.min.js"></script>
-	<script src="templates/government/js/wow.min.js"></script>
-	<script src="templates/government/js/jquery.scrollTo.js"></script>
-	<script src="templates/government/js/jquery.appear.js"></script>
-	<script src="templates/government/js/stellar.js"></script>
-	<script src="templates/government/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
-	<script src="templates/government/js/owl.carousel.min.js"></script>
-	<script src="templates/government/js/nivo-lightbox.min.js"></script>
-    <script src="templates/government/js/custom.js"></script>
-    <script src="templates/government/contactform/contactform.js"></script>
+    <script src="/templates/government/js/jquery.min.js"></script>	 
+    <script src="/templates/government/js/bootstrap.min.js"></script>
+    <script src="/templates/government/js/jquery.easing.min.js"></script>
+	<script src="/templates/government/js/wow.min.js"></script>
+	<script src="/templates/government/js/jquery.scrollTo.js"></script>
+	<script src="/templates/government/js/jquery.appear.js"></script>
+	<script src="/templates/government/js/stellar.js"></script>
+	<script src="/templates/government/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+	<script src="/templates/government/js/owl.carousel.min.js"></script>
+	<script src="/templates/government/js/nivo-lightbox.min.js"></script>
+    <script src="/templates/government/js/custom.js"></script>
+    <script src="/templates/government/contactform/contactform.js"></script>
     
 </body>
 

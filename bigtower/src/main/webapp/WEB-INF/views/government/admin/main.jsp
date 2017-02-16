@@ -1,29 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
+
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Medicio landing page template for Health niche</title>
+    <title>야야야야야양야야야</title>
 	
     <!-- css -->
-    <link href="templates/government/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="templates/government/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="templates/government/plugins/cubeportfolio/css/cubeportfolio.min.css">
-	<link href="templates/government/css/nivo-lightbox.css" rel="stylesheet" />
-	<link href="templates/government/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
-	<link href="templates/government/css/owl.carousel.css" rel="stylesheet" media="screen" />
-    <link href="templates/government/css/owl.theme.css" rel="stylesheet" media="screen" />
-	<link href="templates/government/css/animate.css" rel="stylesheet" />
-    <link href="templates/government/css/style.css" rel="stylesheet">
+    <link href="/templates/government/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/templates/government/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css">
+	<link href="/templates/government/css/nivo-lightbox.css" rel="stylesheet" />
+	<link href="/templates/government/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+	<link href="/templates/government/css/owl.carousel.css" rel="stylesheet" media="screen" />
+    <link href="/templates/government/css/owl.theme.css" rel="stylesheet" media="screen" />
+	<link href="/templates/government/css/animate.css" rel="stylesheet" />
+    <link href="/templates/government/css/style.css" rel="stylesheet">
 
 	<!-- boxed bg -->
-	<link id="bodybg" href="templates/government/bodybg/bg1.css" rel="stylesheet" type="text/css" />
+	<link id="bodybg" href="bodybg/bg1.css" rel="stylesheet" type="text/css" />
 	<!-- template skin -->
-	<link id="t-colors" href="templates/government/color/default.css" rel="stylesheet">
+	<link id="t-colors" href="color/default.css" rel="stylesheet">
     
     <!-- =======================================================
         Theme Name: Medicio
@@ -32,33 +34,51 @@
         Author URL: https://bootstrapmade.com
     ======================================================= -->
 </head>
+
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
 
 <div id="wrapper">
-	<!-- 상단 메뉴 -->
+	
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="top-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-6">
+					<p class="bold text-left">Monday - Saturday, 8am to 10pm </p>
+					</div>
+					<div class="col-sm-6 col-md-6">
+					<p class="bold text-right">Call us now +62 008 65 001</p>
+					</div>
+				</div>
+			</div>
+		</div>
         <div class="container navigation">
 		
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/">
-                    <img src="templates/government/img/logo_gnb_p.png" alt="" width="150" height="40" />
+                <a class="navbar-brand" href="index.html">
+                    <img src="img/logo.png" alt="" width="150" height="40" />
                 </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <!--  -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 				<li class="active"><a href="#intro">Home</a></li>
-				<li><a href="#service">개요</a></li>
-				<li><a href="#doctor">의료조회</a></li>
-				<li><a href="#facilities">병원 목록</a></li>
-				<li class="login"><!-- 로그인 하는 페이지로 이동 -->
-				  <a href="login" name="login" >로그인 </a>
+				<li><a href="#service">Service</a></li>
+				<li><a href="#doctor">Doctors</a></li>
+				<li><a href="#facilities">Facilities</a></li>
+				<li><a href="#pricing">Pricing</a></li>
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="index.html">Home CTA</a></li>
+					<li><a href="index-form.html">Home Form</a></li>
+					<li><a href="index-video.html">Home video</a></li>
+				  </ul>
 				</li>
 			  </ul>
             </div>
@@ -66,8 +86,8 @@
         </div>
         <!-- /.container -->
     </nav>
-	<!-- 상단 메뉴 끝 -->
-	<!-- Section: intro 인트로 스크롤-->
+	
+	<!-- Section: intro -->
     <section id="intro" class="intro">
 		<div class="intro-content">
 			<div class="container">
@@ -97,7 +117,7 @@
 					</div>
 					<div class="col-lg-6">
 						<div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
-						<img src="templates/government/img/dummy/img-1.png" class="img-responsive" alt="" />
+						<img src="img/dummy/img-1.png" class="img-responsive" alt="" />
 						</div>
 					</div>					
 				</div>		
@@ -105,9 +125,9 @@
 		</div>		
     </section>
 	
-	<!-- /Section: intro 인트로 스크롤 -->
+	<!-- /Section: intro -->
 
-	<!-- Section: boxes  -->
+	<!-- Section: boxes -->
     <section id="boxes" class="home-section paddingtop-80">
 	
 		<div class="container">
@@ -195,15 +215,15 @@
 	</section>	
 	
 
-	<!-- Section: services 서비스 메뉴 이동 section-->
-    <section id="service" class="home-section nopadding paddingtop-50">
+	<!-- Section: services -->
+    <section id="service" class="home-section nopadding paddingtop-60">
 
 		<div class="container">
 
         <div class="row">
 			<div class="col-sm-6 col-md-6">
 				<div class="wow fadeInUp" data-wow-delay="0.2s">
-				<img src="templates/government/img/dummy/img-1.jpg" class="img-responsive" alt="" />
+				<img src="img/dummy/img-1.jpg" class="img-responsive" alt="" />
 				</div>
             </div>
 			<div class="col-sm-3 col-md-3">
@@ -320,9 +340,9 @@
             <div id="grid-container" class="cbp-l-grid-team">
                 <ul>
                     <li class="cbp-item psychiatrist">
-                        <a href="templates/government/doctors/member1.html" class="cbp-caption cbp-singlePage">
+                        <a href="doctors/member1.html" class="cbp-caption cbp-singlePage">
                             <div class="cbp-caption-defaultWrap">
-                                <img src="templates/government/img/team/1.jpg" alt="" width="100%">
+                                <img src="img/team/1.jpg" alt="" width="100%">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -332,13 +352,13 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="templates/government/doctors/member1.html" class="cbp-singlePage cbp-l-grid-team-name">Alice Grue</a>
+                        <a href="doctors/member1.html" class="cbp-singlePage cbp-l-grid-team-name">Alice Grue</a>
                         <div class="cbp-l-grid-team-position">Psychiatrist</div>
                     </li>
                     <li class="cbp-item cardiologist">
-                        <a href="templates/government/doctors/member2.html" class="cbp-caption cbp-singlePage">
+                        <a href="doctors/member2.html" class="cbp-caption cbp-singlePage">
                             <div class="cbp-caption-defaultWrap">
-                                <img src="templates/government/img/team/2.jpg" alt="" width="100%">
+                                <img src="img/team/2.jpg" alt="" width="100%">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -348,13 +368,13 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="templates/government/doctors/member2.html" class="cbp-singlePage cbp-l-grid-team-name">Joseph Murphy</a>
+                        <a href="doctors/member2.html" class="cbp-singlePage cbp-l-grid-team-name">Joseph Murphy</a>
                         <div class="cbp-l-grid-team-position">Cardiologist</div>
                     </li>
                     <li class="cbp-item cardiologist">
-                        <a href="templates/government/doctors/member3.html" class="cbp-caption cbp-singlePage">
+                        <a href="doctors/member3.html" class="cbp-caption cbp-singlePage">
                             <div class="cbp-caption-defaultWrap">
-                                <img src="templates/government/img/team/3.jpg" alt="" width="100%">
+                                <img src="img/team/3.jpg" alt="" width="100%">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -364,13 +384,13 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="templates/government/doctors/member3.html" class="cbp-singlePage cbp-l-grid-team-name">Alison Davis</a>
+                        <a href="doctors/member3.html" class="cbp-singlePage cbp-l-grid-team-name">Alison Davis</a>
                         <div class="cbp-l-grid-team-position">Cardiologist</div>
                     </li>
                     <li class="cbp-item neurologist">
-                        <a href="templates/government/doctors/member4.html" class="cbp-caption cbp-singlePage">
+                        <a href="doctors/member4.html" class="cbp-caption cbp-singlePage">
                             <div class="cbp-caption-defaultWrap">
-                                <img src="templates/government/img/team/4.jpg" alt="" width="100%">
+                                <img src="img/team/4.jpg" alt="" width="100%">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -380,7 +400,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="templates/government/doctors/member4.html" class="cbp-singlePage cbp-l-grid-team-name">Adam Taylor</a>
+                        <a href="doctors/member4.html" class="cbp-singlePage cbp-l-grid-team-name">Adam Taylor</a>
                         <div class="cbp-l-grid-team-position">Neurologist</div>
                     </li>
 
@@ -416,12 +436,12 @@
                 <div class="col-sm-12 col-md-12 col-lg-12" >
 					<div class="wow bounceInUp" data-wow-delay="0.2s">
                     <div id="owl-works" class="owl-carousel">
-                        <div class="item"><a href="templates/government/img/photo/1.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="templates/government/img/img/works/1@2x.jpg"><img src="templates/government/img/img/photo/1.jpg" class="img-responsive" alt="img"></a></div>
-                        <div class="item"><a href="templates/government/img/photo/2.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="templates/government/img/img/works/2@2x.jpg"><img src="templates/government/img/img/photo/2.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="templates/government/img/photo/3.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="templates/government/img/img/works/3@2x.jpg"><img src="templates/government/img/img/photo/3.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="templates/government/img/photo/4.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="templates/government/img/img/works/4@2x.jpg"><img src="templates/government/img/img/photo/4.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="templates/government/img/photo/5.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="templates/government/img/img/works/5@2x.jpg"><img src="templates/government/img/img/photo/5.jpg" class="img-responsive " alt="img"></a></div>
-                        <div class="item"><a href="templates/government/img/photo/6.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="templates/government/img/img/works/6@2x.jpg"><img src="templates/government/img/img/photo/6.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/1.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"><img src="img/photo/1.jpg" class="img-responsive" alt="img"></a></div>
+                        <div class="item"><a href="img/photo/2.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/2@2x.jpg"><img src="img/photo/2.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/3.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/3@2x.jpg"><img src="img/photo/3.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/4.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/4@2x.jpg"><img src="img/photo/4.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/5.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/5@2x.jpg"><img src="img/photo/5.jpg" class="img-responsive " alt="img"></a></div>
+                        <div class="item"><a href="img/photo/6.jpg" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/6@2x.jpg"><img src="img/photo/6.jpg" class="img-responsive " alt="img"></a></div>
                     </div>
 					</div>
                 </div>
@@ -449,7 +469,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 					        </div>
 							<div class="person-text rel text-light">					
-								<img src="templates/government/img/testimonials/1.jpg" alt="" class="person img-circle" />
+								<img src="img/testimonials/1.jpg" alt="" class="person img-circle" />
 								<a title="" href="#">Anna</a>
 								<span>Chicago, Illinois</span>
 							</div>
@@ -462,7 +482,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 				            </div>
 							<div class="person-text rel text-light">
-				                <img src="templates/government/img/testimonials/2.jpg" alt="" class="person img-circle" />
+				                <img src="img/testimonials/2.jpg" alt="" class="person img-circle" />
 								<a title="" href="#">Matthew G</a>
 								<span>San Antonio, Texas</span>
 							</div>
@@ -475,7 +495,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 							</div>
 							<div class="person-text rel text-light">
-								<img src="templates/government/img/testimonials/3.jpg" alt="" class="person img-circle" />
+								<img src="img/testimonials/3.jpg" alt="" class="person img-circle" />
 								<a title="" href="#">Scarlet Smith</a>
 								<span>Dallas, Texas</span>
 							</div>
@@ -490,7 +510,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 					        </div>
 							<div class="person-text rel text-light">
-								<img src="templates/government/img/testimonials/4.jpg" alt="" class="person img-circle" />
+								<img src="img/testimonials/4.jpg" alt="" class="person img-circle" />
 								<a title="" href="#">Lucas Thompson</a>
 								<span>Austin, Texas</span>
 							</div>
@@ -503,7 +523,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 				            </div>
 							<div class="person-text rel text-light">
-								<img src="templates/government/img/testimonials/5.jpg" alt="" class="person img-circle" />
+								<img src="img/testimonials/5.jpg" alt="" class="person img-circle" />
 						        <a title="" href="#">Ella Mentree</a>
 								<span>Fort Worth, Texas</span>
 							</div>
@@ -516,7 +536,7 @@
 							    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
 							</div>
 							<div class="person-text rel text-light">
-								<img src="templates/government/img/testimonials/6.jpg" alt="" class="person img-circle" />
+								<img src="img/testimonials/6.jpg" alt="" class="person img-circle" />
 								<a title="" href="#">Suzanne Adam</a>
 								<span>Detroit, Michigan</span>
 							</div>
@@ -643,22 +663,22 @@
 				<div class="row">
 					<div class="col-sm-6 col-md-3">
 						<div class="partner">
-						<a href="#"><img src="templates/government/img/dummy/partner-1.jpg" alt="" /></a>
+						<a href="#"><img src="img/dummy/partner-1.jpg" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-3">
 						<div class="partner">
-						<a href="#"><img src="templates/government/img/dummy/partner-2.jpg" alt="" /></a>
+						<a href="#"><img src="img/dummy/partner-2.jpg" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-3">
 						<div class="partner">
-						<a href="#"><img src="templates/government/img/dummy/partner-3.jpg" alt="" /></a>
+						<a href="#"><img src="img/dummy/partner-3.jpg" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-6 col-md-3">
 						<div class="partner">
-						<a href="#"><img src="templates/government/img/dummy/partner-4.jpg" alt="" /></a>
+						<a href="#"><img src="img/dummy/partner-4.jpg" alt="" /></a>
 						</div>
 					</div>
 				</div>
@@ -778,18 +798,19 @@
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
 
 	<!-- Core JavaScript Files -->
-    <script src="templates/government/js/jquery.min.js"></script>	 
-    <script src="templates/government/js/bootstrap.min.js"></script>
-    <script src="templates/government/js/jquery.easing.min.js"></script>
-	<script src="templates/government/js/wow.min.js"></script>
-	<script src="templates/government/js/jquery.scrollTo.js"></script>
-	<script src="templates/government/js/jquery.appear.js"></script>
-	<script src="templates/government/js/stellar.js"></script>
-	<script src="templates/government/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
-	<script src="templates/government/js/owl.carousel.min.js"></script>
-	<script src="templates/government/js/nivo-lightbox.min.js"></script>
-    <script src="templates/government/js/custom.js"></script>
+    <script src="/templates/government/js/jquery.min.js"></script>	 
+    <script src="/templates/government/js/bootstrap.min.js"></script>
+    <script src="/templates/government/js/jquery.easing.min.js"></script>
+	<script src="/templates/government/js/wow.min.js"></script>
+	<script src="/templates/government/js/jquery.scrollTo.js"></script>
+	<script src="/templates/government/js/jquery.appear.js"></script>
+	<script src="/templates/government/js/stellar.js"></script>
+	<script src="/templates/government/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+	<script src="/templates/government/js/owl.carousel.min.js"></script>
+	<script src="/templates/government/js/nivo-lightbox.min.js"></script>
+    <script src="/templates/government/js/custom.js"></script>
     
 </body>
 
 </html>
+
