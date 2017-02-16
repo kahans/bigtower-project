@@ -106,6 +106,7 @@
 					<div class="col-lg-6">
 						<!-- <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s"> -->
 							<form>
+<<<<<<< HEAD
 							<table>
 								<tr>
 								<label>질병코드</label>
@@ -116,6 +117,14 @@
 								<input type="text" name="goDiseaseEng"/>
 								<button>입력</button>
 							</table>
+=======
+							<label>질병코드</label>
+								<input type="text" name="diseaseName"/>
+							인풋테그 3개있어야함. 질병코드, 질병명(한국),질병명(영어) 길다.
+							<label>
+								<input type="text" name="">
+							</label>
+>>>>>>> branch 'master' of https://github.com/loverman85/bigtower-project.git
 							</form>
 						</div>
 					</div>					
