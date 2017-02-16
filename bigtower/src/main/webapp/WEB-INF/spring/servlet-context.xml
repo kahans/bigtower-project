@@ -82,7 +82,7 @@
 	<!-- dataSource 설정 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/loverman85?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="url" value="jdbc:mysql://loverman85.cafe24.com:3306/loverman85?useUnicode=true&amp;characterEncoding=utf-8" />
 		<property name="username" value="loverman85" />
 		<property name="password" value="java5963" />
 	</bean>
@@ -96,6 +96,7 @@
 				<!-- 사용할 Mapper.xml마다 등록해줘야함 -->
 				
 				<!-- 정부 -->
+				<value>classpath:com/team4/project/government/dto/GovernmentMapper.xml</value>
 				<!-- 진단 & 처방 -->
 				<value>classpath:com/team4/project/government/diagnosisPrescription/domain/GoDiagnosisPrescriptionMapper.xml</value>
 				<!-- 입원 & 수술 -->
@@ -110,6 +111,7 @@
 				<value>classpath:com/team4/project/government/vaccinationCheckup/domain/GoVaccinationCheckupMapper.xml</value>
 				
 				<!-- 병원 -->
+				<value>classpath:com/team4/project/hospital/dto/HospitalMapper.xml</value>
 				<!-- 진단 & 처방 -->
 				<value>classpath:com/team4/project/hospital/diagnosisPrescription/domain/HoDiagnosisPrescriptionMapper.xml</value>
 				<!-- 입원 & 수술 -->				

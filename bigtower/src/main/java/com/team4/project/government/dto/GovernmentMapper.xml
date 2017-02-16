@@ -2,6 +2,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="XXX.XXX.XXX">
- 
+<mapper namespace="government">
+ 	<select id="selectMedicineList" resultType="com.team4.project.government.dto.GoMedicine">
+ 		select
+ 			GO_MEDICINE_CODE as goMedicineCode,
+			GO_MEDICINE_NAME as goMedicineName
+		from go_medicine
+ 	</select>
 </mapper>
