@@ -109,8 +109,11 @@
 
 							<table>
 								<tr>
-								<label>질병코드</label>
-								<input type="text" name="goDiseaseCode"/>
+									<td><label>질병코드</label></td>
+									<td><input type="text" name="goDiseaseCode"/></td>
+								</tr>
+								
+								
 								<label>질병명(한국)</label>
 								<input type="text" name="goDiseaseKor"/>
 								<label>질병명(영어)</label>

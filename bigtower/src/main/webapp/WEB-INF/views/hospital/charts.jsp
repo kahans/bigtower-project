@@ -183,11 +183,27 @@
 	                              	
 	                              	<div>
 	                              		<label>약품 검색</label>
-	                              		<input type="text" name=""><button class="btn btn-default" >검색</button><br/>
+	                              		<input type="text" name="" value="A"><button class="btn btn-default">검색</button><br/>
 	                              	</div>
+	                              	<div>
+	                              		<table class="table table-hover">
+	                              			<tr>
+	                              				<td>A01</td>
+	                              				<td>몸살에 좋은 감기약</td>
+	                              				<td><input type="checkbox"/></td>
+	                              			</tr>
+	                              			<tr>
+	                              				<td>AA007</td>
+	                              				<td>빈혈방지용 철분제</td>
+	                              				<td><input type="checkbox"/></td>
+	                              			</tr>
+	                              		
+	                              		</table>
 	                              	
+	                              	</div>
 									<button class="btn btn-default" type="submit" style="float: right;">처방하기</button>
                             	</form>
+	                        </div>
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
@@ -223,10 +239,31 @@
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
-                            	 이 부분에 건강검진결과 이미지파일이 들어와야 한다.<br/>
+                            	 이 부분에 건강검진결과 날짜순으로 들어와야 한다.<br/>
+                            	 <table class="table table-hover">
+                            	 	<tr>
+                            	 		<th>날짜</th>
+                            	 		<th>이미지파일이름</th>
+                            	 	</tr>
+                            	 	<tr>
+                            	 		<td>2017-02-17</td>
+                            	 		<td><a href="">이미지파일</a></td>
+                            	 	</tr>
+                            	 	<tr>
+                            	 		<td>2016-12-30</td>
+                            	 		<td><a href="">이미지파일</a></td>
+                            	 	</tr>
+                            	 	<tr>
+                            	 		<td>2016-04-09</td>
+                            	 		<td><a href="">이미지파일</a></td>
+                            	 	</tr>
+                            	 </table>
                             	 <!-- 이미지파일은 가장 최근의 2개만 가지고 와서 보여준다. -->
-                            	<img alt="" src=""> <!-- 가장최근  -->
-                            	<img alt="" src=""><!-- 두번째 것 -->
+                            	
+                            	<!-- 이미지 이런식으로 나오도록 -->
+                            	<!-- <img alt="" src="/templates/mainCss/img/AA_001.jpg"> 가장최근 
+                            	<img alt="" src=""> --><!-- 두번째 것 -->
+                            	<!-- 여기까지 -->
                             	
                                 <!-- 원형 도표// 나중에 사용할 일 있으면 꺼내 쓸것
                                  <canvas id="donut-chart" class="chart-holder" width="538" height="250">
@@ -243,18 +280,48 @@
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
-                                <h3>
-                                    A Chart</h3>
+                                <h3>검사결과</h3>
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
-                                <canvas id="line-chart" class="chart-holder" width="538" height="250">
-                                </canvas>
+                               	검사결과 나오는 곳 버튼 누르면 팝업창이 뜬다
+                               	바로 위의 건강검진결과 보여주는 것 처럼 혈액 누르면
+                               	혈액 팝업창이 뜨고 테이블이 보이고 거기서 이미지파일 이름을 누르면
+                               	사진이 뜨는 식
+                               	<br/>
+                               	<button class="btn btn-default">혈액</button>
+                               	
+                               	<button class="btn btn-default">영상</button>                               	
                                 <!-- /-chart -->
                             </div>
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
+                          <!--  -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <i class="icon-bar-chart"></i>
+                                <h3>예방접종</h3>
+                            </div>
+                            <!-- /widget-header -->
+                            <div class="widget-content">
+                               	예방접종 
+                               	<br/>
+                               <table class="table table-hover">
+                               		예방접종 코드에서 
+                               		<tr>
+                               			<th></th>
+                               			<th></th>
+                               			
+                               			
+                               		</tr>
+                               </table>                              	
+                                <!-- /-chart -->
+                            </div>
+                            <!-- /widget-content -->
+                        </div>
+                        <!-- /widget -->
+                        
                     </div>
                     <!-- /span6 -->
                 </div>
