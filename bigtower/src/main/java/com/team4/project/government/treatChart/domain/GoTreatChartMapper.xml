@@ -10,8 +10,7 @@
  			GO_TREAT_CODE,
  			GO_CITIZEN_ID,
  			GO_DOCTOR_ID,
- 			GO_TREAT_CONTENTS,
- 			GO_DISEASE_CODE
+ 			GO_TREAT_CONTENTS
  		FROM go_treat
  	</select>
  	
