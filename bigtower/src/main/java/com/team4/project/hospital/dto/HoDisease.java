@@ -1,6 +1,7 @@
 package com.team4.project.hospital.dto;
 
 public class HoDisease {
+
 	private String hoCheckUpCode;
 	private String hoTreatmentCode;
 	private String hoCheckUpResultPath;
@@ -52,6 +53,8 @@ public class HoDisease {
 		this.hoGoSendstate = hoGoSendstate;
 	}
 	
+=======
+>>>>>>> branch 'master' of https://github.com/loverman85/bigtower-project
 	
 }
 

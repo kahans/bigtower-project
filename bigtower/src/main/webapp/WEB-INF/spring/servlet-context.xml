@@ -18,18 +18,28 @@
 	<!-- 부속 css, js, img 기타 등등 매핑 -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<!-- 정부사이트에서 부속 매핑을 위한 경로 설정 -->
-	<mvc:resources mapping="templates/government/assets/**" location="/WEB-INF/templates/government/assets/" />
-	<mvc:resources mapping="templates/government/bodybg/**" location="/WEB-INF/templates/government/bodybg/" />
-	<mvc:resources mapping="templates/government/color/**" location="/WEB-INF/templates/government/contactform/" />
-	<mvc:resources mapping="templates/government/contactform/**" location="/WEB-INF/templates/government/contactform/" />
-	<mvc:resources mapping="templates/government/css/**" location="/WEB-INF/templates/government/css/" />
-	<mvc:resources mapping="templates/government/doctors/**" location="/WEB-INF/templates/government/doctors/" />
-	<mvc:resources mapping="templates/government/font-awesome/**" location="/WEB-INF/templates/government/font-awesome/" />	
-	<mvc:resources mapping="templates/government/fonts/**" location="/WEB-INF/templates/government/fonts/" />
-	<mvc:resources mapping="templates/government/img/**" location="/WEB-INF/templates/government/img/" />
-	<mvc:resources mapping="templates/government/js/**" location="/WEB-INF/templates/government/js/" />
-	<mvc:resources mapping="templates/government/plugins/**" location="/WEB-INF/templates/government/plugins/" />
-
+	<mvc:resources mapping="/templates/government/assets/**" location="/WEB-INF/templates/government/assets/" />
+	<mvc:resources mapping="/templates/government/bodybg/**" location="/WEB-INF/templates/government/bodybg/" />
+	<mvc:resources mapping="/templates/government/color/**" location="/WEB-INF/templates/government/contactform/" />
+	<mvc:resources mapping="/templates/government/contactform/**" location="/WEB-INF/templates/government/contactform/" />
+	<mvc:resources mapping="/templates/government/css/**" location="/WEB-INF/templates/government/css/" />
+	<mvc:resources mapping="/templates/government/doctors/**" location="/WEB-INF/templates/government/doctors/" />
+	<mvc:resources mapping="/templates/government/font-awesome/**" location="/WEB-INF/templates/government/font-awesome/" />	
+	<mvc:resources mapping="/templates/government/fonts/**" location="/WEB-INF/templates/government/fonts/" />
+	<mvc:resources mapping="/templates/government/img/**" location="/WEB-INF/templates/government/img/" />
+	<mvc:resources mapping="/templates/government/js/**" location="/WEB-INF/templates/government/js/" />
+	<mvc:resources mapping="/templates/government/plugins/**" location="/WEB-INF/templates/government/plugins/" />
+	<!-- 병원사이트에서 부속 매핑을 위한 경로 설정 -->
+	<mvc:resources mapping="/templates/hospital/css/**" location="/WEB-INF/templates/hospital/css/" />
+	<mvc:resources mapping="/templates/hospital/font/**" location="/WEB-INF/templates/hospital/font/" />
+	<mvc:resources mapping="/templates/hospital/img/**" location="/WEB-INF/templates/hospital/img/" />
+	<mvc:resources mapping="/templates/hospital/js/**" location="/WEB-INF/templates/hospital/js/" />
+	<!-- 병원과 정부를 선택해서 들어가는 메인화면 css기타 부속을 매핑하기 위한 경로 설정 17.02.16 추가-->
+	<mvc:resources mapping="/templates/mainCss/css/**" location="/WEB-INF/templates/mainCss/css/" />
+	<mvc:resources mapping="/templates/mainCss/font-awesome/**" location="/WEB-INF/templates/mainCss/font-awesome/" />
+	<mvc:resources mapping="/templates/mainCss/fonts/**" location="/WEB-INF/templates/mainCss/fonts/" />
+	<mvc:resources mapping="/templates/mainCss/img/**" location="/WEB-INF/templates/mainCss/img/" />
+	<mvc:resources mapping="/templates/mainCss/js/**" location="/WEB-INF/templates/mainCss/js/" />
 	<!-- 인터셉터 사용준비 -->
 	<!-- <mvc:interceptors>
 		<mvc:interceptor>
@@ -64,7 +74,6 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
 
 	
 	<context:component-scan base-package="com.team4.project" />
@@ -73,7 +82,7 @@
 	<!-- dataSource 설정 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/loverman85?useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="url" value="jdbc:mysql://loverman85.cafe24.com:3306/loverman85?useUnicode=true&amp;characterEncoding=utf-8" />
 		<property name="username" value="loverman85" />
 		<property name="password" value="java5963" />
 	</bean>
@@ -85,12 +94,37 @@
 		<property name="mapperLocations">
 			<list>
 				<!-- 사용할 Mapper.xml마다 등록해줘야함 -->
-				<!--
-				<value>classpath:kr/co/englishlibrary/etc/services/Mapper.xml</value>
-				<value>classpath:kr/co/englishlibrary/book/service/BookMapper.xml</value>
-				<value>classpath:kr/co/englishlibrary/library/service/LibraryMapper.xml</value>
-				<value>classpath:kr/co/englishlibrary/rental/service/RentalMapper.xml</value>
-				-->
+				
+				<!-- 정부 -->
+				<value>classpath:com/team4/project/government/dto/GovernmentMapper.xml</value>
+				<!-- 진단 & 처방 -->
+				<value>classpath:com/team4/project/government/diagnosisPrescription/domain/GoDiagnosisPrescriptionMapper.xml</value>
+				<!-- 입원 & 수술 -->
+				<value>classpath:com/team4/project/government/hopitalizationSurgery/domain/GoHospitalizationSurgeryMapper.xml</value>
+				<!-- 예약 -->
+				<value>classpath:com/team4/project/government/reservation/domain/GoReservationMapper.xml</value>
+				<!-- 검사 -->
+				<value>classpath:com/team4/project/government/test/domain/GoTestMapper.xml</value>
+				<!-- 진료 & 차트 -->
+				<value>classpath:com/team4/project/government/treatChart/domain/GoTreatChartMapper.xml</value>
+				<!-- 예방접종 & 건강검진 -->
+				<value>classpath:com/team4/project/government/vaccinationCheckup/domain/GoVaccinationCheckupMapper.xml</value>
+				
+				<!-- 병원 -->
+				<value>classpath:com/team4/project/hospital/dto/HospitalMapper.xml</value>
+				<!-- 진단 & 처방 -->
+				<value>classpath:com/team4/project/hospital/diagnosisPrescription/domain/HoDiagnosisPrescriptionMapper.xml</value>
+				<!-- 입원 & 수술 -->				
+				<value>classpath:com/team4/project/hospital/hospitalizationOperation/domain/HoHospitalizationOperationMapper.xml</value>
+				<!-- 접수 & 예약 -->
+				<value>classpath:com/team4/project/hospital/receiveReservation/domain/HoReceiveReservationMapper.xml</value>
+				<!-- 검사 -->
+				<value>classpath:com/team4/project/hospital/test/domain/HoTestMapper.xml</value>
+				<!-- 진료 & 차트 -->
+				<value>classpath:com/team4/project/hospital/treatChart/domain/HoTreatChartMapper.xml</value>
+				<!-- 예방접종 & 건강검진 -->
+				<value>classpath:com/team4/project/hospital/vaccineCheckup/domain/HoVaccineCheckupMapper.xml</value>
+
 			</list>
 		</property>
 	</bean>
