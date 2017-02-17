@@ -10,7 +10,7 @@
 <body>
 	TREAT SUBJECT
 	<div>
-	<table>
+	<table border="1">
 		<c:forEach items="${list}" var="ts">
 			<div>
 				${ts.goTreatSubjectCode}/
