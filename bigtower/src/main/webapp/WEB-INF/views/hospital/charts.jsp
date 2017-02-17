@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -116,6 +116,7 @@
             <div class="container">
                 <div class="row">
                     <div class="span6">
+                        <!-- 진료작성 -->
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
@@ -124,12 +125,13 @@
                             <!-- /widget-header -->
                             <div class="widget-content">
                                	<label>이전 진료결과</label>
-                               <div style="overflow:scroll; max-width:auto; width:90%; height:150px; padding:20px; background-color:whight;">
-                               	
-                               	</div>
+                               <div style="overflow:scroll; max-width:auto; width:90%; height:150px; padding:20px; background-color:whight;"></div>
                               	<label>진료결과 작성</label>
-                              	<textarea rows="9" cols="20" style="max-width: 96%; width:96%;"></textarea>
-								<button>결과 등록</button>	
+                              	
+                              	<form action="" method="">
+                              		<textarea name="" rows="9" cols="20" style="max-width: 96%; width:96%;"></textarea>
+									<button class="btn btn-default" type="submit" style="float: right;">결과 등록</button>	
+								</form>
                                <!-- 막대기 차트부분 나옴 -->
                                <!--  <canvas id="bar-chart" class="chart-holder" width="538" height="250">
                                 </canvas> -->
@@ -138,89 +140,106 @@
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
+                        
+                        <!-- 처방전 -->
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
                                 <h3>처방전</h3>
                             </div>
-                            	
-                            	
                           <!--   <!-- /widget-header -->
                            <div class="widget-content">
                            <label>이전 처방목록</label>
-                               <div style="overflow:scroll; max-width:auto; width:90%; height:150px; padding:20px; background-color:whight;">
-                               </div>
+                               <div style="overflow:scroll; max-width:auto; width:90%; height:150px; padding:20px; background-color:whight;"></div>
                               	<label>처방전 작성</label>
-                              	
-                              	<div id="prescription">
-                              		<div>
-	                              		<select>
-	                              			<option>질병명</option>
-	                              			<option>열감기</option>
-	                              			<option>기침감기</option>
-	                              			<option>몸살감기</option>                             			
-	                              		</select>
-	                              		<i id="diseaseNameAdd" class="icon-large icon-plus-sign"></i>
-                              		</div>
-                              	</div>
-                              	
-                              	
-                              	<div id="hiddenPrescription" style="display: none;">
-                              		<div class="selectAdd">	
-	                              		<select>
-	                              			<option>질병명</option>
-	                              			<option>열감기</option>
-	                              			<option>기침감기</option>
-	                              			<option>몸살감기</option>                             			
-	                              		</select>
-	                              		<i id="diseaseNameAdd" class="icon-large icon-plus-sign"></i>
-	                              		<i id="diseaseNameRemove" class="icon-large icon-minus-sign"></i>
-                              		</div>
-                              	</div>
-                              	
-                              	<div>
-                              		<label>약품 검색</label>
-                              		<input type="text" name=""><button>검색</button><br/>
-                              	</div>
-                              	
-								<button>처방하기</button>
-                            
+                              	<form action="" method="post">
+	                              	<div id="prescription">
+	                              		<div>
+		                              		<select name="diseaseSelect">
+		                              		<!-- for문 돌려서 list 받아올 것 -->
+		                              			<option value="">질병명</option>
+		                              			<option>열감기</option>
+		                              			<option>기침감기</option>
+		                              			<option>몸살감기</option>                             			
+		                              		</select>
+		                              		<i id="diseaseNameAdd" class="icon-large icon-plus-sign"></i>
+	                              		</div>
+	                              	</div>
+	                              	
+	                              	
+	                              	<div id="hiddenPrescription" style="display: none;">
+	                              		<div class="selectAdd">	
+		                              		<select name="diseaseSelect">
+		                              			<!-- +버튼 눌렀을 때 추가되는 selectBox 마찬가지로 for문으로 list값 가져와야함 -->
+		                              			<option value="">질병명</option>
+		                              			<option>열감기</option>
+		                              			<option>기침감기</option>
+		                              			<option>몸살감기</option>                             			
+		                              		</select>
+		                              		<i id="diseaseNameAdd" class="icon-large icon-plus-sign"></i>
+		                              		<i id="diseaseNameRemove" class="icon-large icon-minus-sign"></i>
+	                              		</div>
+	                              	</div>
+	                              	
+	                              	<div>
+	                              		<label>약품 검색</label>
+	                              		<input type="text" name=""><button class="btn btn-default" >검색</button><br/>
+	                              	</div>
+	                              	
+									<button class="btn btn-default" type="submit" style="float: right;">처방하기</button>
+                            	</form>
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
+                     </div>   
+                     <!-- /span6  -->
+                     
+                        <div class="span6">  
+                       <!-- 검사요청 -->
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
-                                <h3>
-                                    Pie Chart</h3>
+                                <h3>검사 요청</h3>
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
-                                <canvas id="pie-chart" class="chart-holder" width="538" height="250">
-                                </canvas>
-                                <!-- /pie-chart -->
+                              	<form>
+	                              	<span>건강검진<input type="checkbox" class="testRequest" value=""/></span>
+	                              	<span>혈액검사<input type="checkbox" class="testRequest" value=""/></span>
+	                              	<span>영상검사<input type="checkbox" class="testRequest" value=""/></span>
+	                              	<button class="btn btn-default" type="submit" style="float: right;">요청</button>
+                              	</form>
+                              	
                             </div>
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
-                    </div>
-                    <!-- /span6 -->
-                    <div class="span6">
+                   
+                    <!-- 건강검진결과 -->
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
-                                <h3>
-                                    Donut Chart</h3>
+                                <h3>건강검진결과</h3>
                             </div>
                             <!-- /widget-header -->
                             <div class="widget-content">
-                                <canvas id="donut-chart" class="chart-holder" width="538" height="250">
-                                </canvas>
+                            	 이 부분에 건강검진결과 이미지파일이 들어와야 한다.<br/>
+                            	 <!-- 이미지파일은 가장 최근의 2개만 가지고 와서 보여준다. -->
+                            	<img alt="" src=""> <!-- 가장최근  -->
+                            	<img alt="" src=""><!-- 두번째 것 -->
+                            	
+                                <!-- 원형 도표// 나중에 사용할 일 있으면 꺼내 쓸것
+                                 <canvas id="donut-chart" class="chart-holder" width="538" height="250">
+                                </canvas> -->
+                                
                                 <!-- /bar-chart -->
                             </div>
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
+                        
+                        
+                        <!--  -->
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
