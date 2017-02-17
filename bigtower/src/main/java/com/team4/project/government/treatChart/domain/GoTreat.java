@@ -1,5 +1,11 @@
 package com.team4.project.government.treatChart.domain;
 
+
+
+import java.sql.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class GoTreat {
 
 private String goTreatCode;
@@ -10,9 +16,11 @@ private String goTreatSubjectCode;
 private String goChartCode;
 private int goChartSeq;
 private String goTreatContents;
-private String goTreatRegistrationDate;
+/*ë‚ ì§œ í¬ë©§ì„ í•˜ì—¬ ì›í•˜ëŠ” í˜•ì‹ìœ¼ë¡œ í‘œê¸°*/
+@DateTimeFormat(pattern ="YY-MM-DD")
+private Date goTreatRegistrationDate;
 private String goTreatGoRegistrationDate;
-//Á¶ÀÎ¹® µ¥ÀÌÅÍ
+//ï¿½ï¿½ï¿½Î¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 private String goHospitalName;
 private String goHospitalAddress;
 private String goCitizenName;
@@ -121,10 +129,10 @@ public String getGoTreatContents() {
 public void setGoTreatContents(String goTreatContents) {
 	this.goTreatContents = goTreatContents;
 }
-public String getGoTreatRegistrationDate() {
+public Date getGoTreatRegistrationDate() {
 	return goTreatRegistrationDate;
 }
-public void setGoTreatRegistrationDate(String goTreatRegistrationDate) {
+public void setGoTreatRegistrationDate(Date goTreatRegistrationDate) {
 	this.goTreatRegistrationDate = goTreatRegistrationDate;
 }
 public String getGoTreatGoRegistrationDate() {

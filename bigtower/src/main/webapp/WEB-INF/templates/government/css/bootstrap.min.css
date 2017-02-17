@@ -2331,9 +2331,9 @@ caption {
 th {
 	text-align: left
 }
-
+/* 진료내역 목록 테이블 셀 간격 수정 */
 .table {
-	width: 100%;
+	width: 660px;
 	max-width: 100%;
 	margin-bottom: 20px
 }

@@ -16,7 +16,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
     color: #666;
-    background-color: #ddd;
+    background-color: #00ff40;
 	font-size: 16px;
     line-height: 1.6em;
 }
@@ -94,7 +94,7 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 30px;
+    margin: 0 0 10px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
 	color: #444;
@@ -462,7 +462,6 @@ Navigation
     background-color: #ffffff;
 }
 
-
 /* form */
 
 .validation {
@@ -674,7 +673,7 @@ hr.bold {
 .paddingtop-20{padding-top:20px !important;}
 .paddingtop-30{padding-top:30px !important;}
 .paddingtop-40{padding-top:40px !important;}
-.paddingtop-50{padding-top:50px !important;}
+.paddingtop-50{padding-top:140px !important;}
 .paddingtop-60{padding-top:60px !important;}
 .paddingtop-70{padding-top:70px !important;}
 .paddingtop-80{padding-top:80px !important;}
@@ -697,19 +696,23 @@ hr.bold {
 /* ===========================
 --- General sections
 ============================ */
-
+/*17.02.16 배경및 크기 수정*/
 .home-section {
     padding-top: 150px;
 	display:block;
     position:relative;
     z-index:120;
-	background-color: #fff;
+	background-color: #f0f0f0;
+	background: url(/templates/government/img/bodybg/testimage.png);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	
 }
 
-
+/*17.02.16 중앙 여백 수정*/
 .home-section.nopadding {
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 300px;
 	display:block;
     position:relative;
     z-index:120;
@@ -1680,11 +1683,11 @@ a.scrollup i:hover {
 
 
 /* --- button --- */
-.btn {
+.btn {/* style02.css 버튼 배경색 변경 글자 수정 17.02.17 */
 	position: relative;
 	display: inline-block;
 	outline: none;
-	color: #fff;
+	color: #000000;
 	text-decoration: none;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -1730,13 +1733,13 @@ a.btn:focus{
   border-color: #666;
 }
 
-
+/* 17.02.17 마우스 오버시 버튼 배경색 수정 */
 .btn-default:hover,
 .btn-default:focus {
-    border: 1px solid #28c3ab;
+    border: 1px solid #c0c0c0;
     outline: 0;
     color: #000;
-    background-color: #28c3ab;
+    background-color: #c0c0c0;
 }
 
 .btn-huge {
@@ -1753,7 +1756,39 @@ a.btn:focus{
 	text-align: center;
 }
 /* ============== options panel for live preview ======================= */		
-			
+/* 테이블 스타일  특정 속성값*/
+.table-line{
+	border-bottom: 1px solid gray;
+}
+.hospital-name{
+	width: 280px;
+	padding-right : 150px; /*  */
+	padding-left: 1px;/* 왼쪽에 여백을 주어 글들이 정렬 된거 처럼 보이게 함 */
+}
+.doctor-name{
+	width: 280px;
+	padding : 10px;
+}
+.icon-size01{
+	background-image: url(/templates/government/img/bodybg/bg10.png);
+	color: gray;
+	
+}
+.material-icons{
+	font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
 #t_options {
 	position:fixed;
 	top: 60px;
@@ -2129,4 +2164,18 @@ a.btn:focus{
 	.intro-content {
 		padding:250px 0 0;
 	}
+}
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+/* 입력 Focused Inputs 창 */
+input[type=text]:focus {
+    border: 3px solid #555;
 }
