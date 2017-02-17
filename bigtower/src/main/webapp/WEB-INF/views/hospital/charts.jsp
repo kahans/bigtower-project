@@ -130,7 +130,9 @@
                               	
                               	<form action="" method="">
                               		<textarea name="" rows="9" cols="20" style="max-width: 96%; width:96%;"></textarea>
-									<button class="btn btn-default" type="submit" style="float: right;">결과 등록</button>	
+                              		<div align="center">
+										<button class="btn btn-default" type="submit">결과 등록</button>	
+									</div>
 								</form>
                                <!-- 막대기 차트부분 나옴 -->
                                <!--  <canvas id="bar-chart" class="chart-holder" width="538" height="250">
@@ -201,7 +203,9 @@
 	                              		</table>
 	                              	
 	                              	</div>
-									<button class="btn btn-default" type="submit" style="float: right;">처방하기</button>
+	                              	<div align="center">
+									<button class="btn btn-default" type="submit">처방하기</button>
+									</div>
                             	</form>
 	                        </div>
                             <!-- /widget-content -->
@@ -210,7 +214,7 @@
                      </div>   
                      <!-- /span6  -->
                      
-                        <div class="span6">  
+                        <div class="span3">  
                        <!-- 검사요청 -->
                         <div class="widget">
                             <div class="widget-header">
@@ -220,10 +224,13 @@
                             <!-- /widget-header -->
                             <div class="widget-content">
                               	<form>
-	                              	<span>건강검진<input type="checkbox" class="testRequest" value=""/></span>
-	                              	<span>혈액검사<input type="checkbox" class="testRequest" value=""/></span>
-	                              	<span>영상검사<input type="checkbox" class="testRequest" value=""/></span>
-	                              	<button class="btn btn-default" type="submit" style="float: right;">요청</button>
+                              	<div align="center">
+                              		
+                              			<span>건강검진<input type="checkbox" class="testRequest" value=""/></span>
+                              			<span>혈액검사<input type="checkbox" class="testRequest" value=""/></span>
+                              			<span>영상검사<input type="checkbox" class="testRequest" value=""/></span>
+	                              		<button class="btn btn-default" type="submit">요청</button>
+	                              	</div>
                               	</form>
                               	
                             </div>
@@ -297,7 +304,9 @@
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
-                          <!--  -->
+                         
+                         
+                          <!-- 예방접종 -->
                         <div class="widget">
                             <div class="widget-header">
                                 <i class="icon-bar-chart"></i>
@@ -307,23 +316,141 @@
                             <div class="widget-content">
                                	예방접종 
                                	<br/>
-                               <table class="table table-hover">
-                               		예방접종 코드에서 
-                               		<tr>
-                               			<th></th>
-                               			<th></th>
-                               			
-                               			
-                               		</tr>
-                               </table>                              	
+                               	<div>
+	                              <form action="">
+	                              		
+		                           		<ul class="unstyled">
+		                               		<li><select>
+	                               					<option>예방접종명</option>
+	                               					<option>독감</option>
+	                               					<option>간염</option>
+	                               				</select>
+	                               			</li>
+	                               			<li>
+	                               				<select size="auto">
+	                               					<option>접종차수</option>
+	                               					<option>1회차</option>
+	                               					<option>2회차</option>
+	                               				</select>
+	                               			</li>                            
+		                               	</ul>
+		                               	<button class="btn btn-default" type="submit" style="float: left;">등록</button> 
+	                               </form>
+                             	</div>
+                              	<div>         
+	                               <table class="table table-hover">
+	                               		<tr>
+	                               			<th>날짜</th>
+	                               			<th>예방접종명</th>
+	                               			<th>현재접종차수</th>
+	                               		</tr>
+	                               		<tr>
+	                               			<td>2017-01-22</td>
+	                               			<td>독감</td>
+	                               			<td>1회</td>
+	                               		</tr>
+	                               		<tr>
+	                               			<td>2016-10-03</td>
+	                               			<td>B형간혐</td>
+	                               			<td>2회</td>
+	                               		</tr>
+	                               </table> 
+                               </div>                	
+                                <!-- /-chart -->
+                            </div>
+                            <!-- /widget-content -->
+                        </div>
+                        <!-- /widget -->
+                      </div>
+                      <!-- span3 -->
+                        <div class="span3">
+                        <!-- 대기자목록 -->
+                           <div class="widget">
+                            <div class="widget-header">
+                                <i class="icon-bar-chart"></i>
+                                <h3>대기자목록</h3>
+                            </div>
+                            <!-- /widget-header -->
+                            <div class="widget-content">
+                               	오늘접수대기자만 가져옴
+                               	<br/>
+                               
+                              	<div>         
+	                               <table class="table table-hover">
+	                               		<tr>
+	                               			<th>환자이름</th>
+	                               		</tr>
+	                               		<tr>
+	                               			<td>최유민(환자이름)</td>
+	                               		</tr>
+	                               		<tr>
+	                               			<td>이명철</td>
+	                               		</tr>
+	                               		<tr>
+	                               			<td>홍인용</td>
+	                               		</tr>
+	                               		<tr>
+	                               			<td>정상일</td>
+	                               		</tr>
+	                               		
+	                               </table> 
+                               </div>                	
                                 <!-- /-chart -->
                             </div>
                             <!-- /widget-content -->
                         </div>
                         <!-- /widget -->
                         
+                        <!-- 입/퇴원  -->
+                          <div class="widget">
+                            <div class="widget-header">
+                                <i class="icon-bar-chart"></i>
+                                <h3>입/퇴원</h3>
+                            </div>
+                            <!-- /widget-header -->
+                            <div class="widget-content">
+                               	입/퇴원 요청
+                               	<br/>
+                               
+                              	<div align="center">         
+									<button class="btn btn-default">입원요청</button>
+									<button class="btn btn-default">퇴원요청</button>
+                               </div>                	
+                                <!-- /-chart -->
+                            </div>
+                            <!-- /widget-content -->
+                        </div>
+                        <!-- /widget -->
+                        
+                        <!-- 수술  -->
+                          <div class="widget">
+                            <div class="widget-header">
+                                <i class="icon-bar-chart"></i>
+                                <h3>수술</h3>
+                            </div>
+                            <!-- /widget-header -->
+                            <div class="widget-content">
+                            <label>수술기록지</label>
+                               <div style="overflow:scroll; max-width:auto; width:90%; height:150px; padding:20px; background-color:whight;"></div>
+                              	<label>수술기록지 작성</label>
+                              	
+                              	<form action="" method="">
+                              		<textarea name="" rows="9" cols="20" style="max-width: 96%; width:96%;"></textarea>
+                              		<div align="center">
+										<button class="btn btn-default" type="submit">결과 등록</button>	
+									</div>
+								</form>
+                               	
+                                <!-- /-chart -->
+                            </div>
+                            <!-- /widget-content -->
+                        </div>
+                        <!-- /widget -->
+                        
+                        
+                        
                     </div>
-                    <!-- /span6 -->
+                    <!-- /span3 -->
                 </div>
                 <!-- /row -->
             </div>
