@@ -91,6 +91,7 @@
 		<!-- mybatis 세션생성시 사용할 dataSource주입 -->
 		<property name="dataSource" ref="dataSource" />
 		<!-- mybatis 세션생성후 쿼리를 실행시킬때 사용할 쿼리위치(메퍼)설정 -->
+		<property name="configLocation" value="classpath:com/team4/project/util/MyBatisConfig.xml" />
 		<property name="mapperLocations">
 			<list>
 				<!-- 사용할 Mapper.xml마다 등록해줘야함 -->
