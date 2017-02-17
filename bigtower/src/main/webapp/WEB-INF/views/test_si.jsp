@@ -16,7 +16,7 @@
 			<td>진료내용</td>
 			<td>질병코드</td>
 		</tr>
-		<c:forEach items="${treatList}" var="treatList">
+		<c:forEach items="${goTreatList}" var="treatList">
 			<tr>
 				<td>${treatList.goTreatCode}</td>
 				<td>${treatList.goCitizenId}</td>

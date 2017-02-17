@@ -14,10 +14,10 @@ public class TestDao_si {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	private final String TEST_NS = "TreatChart.";
+	private final String TEST_NS = "GoTreatChart.";
 	
-	public List<GoTreat> treatList(){
-		return sqlSession.selectList(TEST_NS+"treatList");
+	public List<GoTreat> goTreatList(){
+		return sqlSession.selectList(TEST_NS+"goTreatList");
 	}
 	
 }

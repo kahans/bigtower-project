@@ -13,7 +13,7 @@ public class TestService_si {
 	@Autowired
 	private TestDao_si testDao;
 	
-	public List<GoTreat> treatList(){
-		return testDao.treatList();
+	public List<GoTreat> goTreatList(){
+		return testDao.goTreatList();
 	}
 }

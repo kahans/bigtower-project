@@ -14,8 +14,8 @@ public class TestController_si {
 	
 	@RequestMapping(value="/treat/treatList", method=RequestMethod.GET)
 	public String treatList(Model model){
-		System.out.println(testService.treatList());
-		model.addAttribute("treatList", testService.treatList());
+		System.out.println(testService.goTreatList());
+		model.addAttribute("goTreatList", testService.goTreatList());
 		return "/test_si";
 	}
 }

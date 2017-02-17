@@ -8,30 +8,89 @@ private String goCitizenId;
 private String goDoctorId;
 private String goTreatSubjectCode;
 private String goChartCode;
-private String goDiseaseCode;
 private int goChartSeq;
 private String goTreatContents;
 private String goTreatRegistrationDate;
 private String goTreatGoRegistrationDate;
+//조인문 데이터
+private String goHospitalName;
+private String goHospitalAddress;
+private String goCitizenName;
+private String goDoctorName;
+private String goTreatSubjectName;
+private String goDiseaseKor;
+
+public String getGoHospitalAddress() {
+	return goHospitalAddress;
+}
+
+public void setGoHospitalAddress(String goHospitalAddress) {
+	this.goHospitalAddress = goHospitalAddress;
+}
+public String getGoHospitalName() {
+	return goHospitalName;
+}
+
+public void setGoHospitalName(String goHospitalName) {
+	this.goHospitalName = goHospitalName;
+}
+
+public String getGoCitizenName() {
+	return goCitizenName;
+}
+
+public void setGoCitizenName(String goCitizenName) {
+	this.goCitizenName = goCitizenName;
+}
+
+public String getGoDoctorName() {
+	return goDoctorName;
+}
+
+public void setGoDoctorName(String goDoctorName) {
+	this.goDoctorName = goDoctorName;
+}
+
+public String getGoTreatSubjectName() {
+	return goTreatSubjectName;
+}
+
+public void setGoTreatSubjectName(String goTreatSubjectName) {
+	this.goTreatSubjectName = goTreatSubjectName;
+}
+
+public String getGoDiseaseKor() {
+	return goDiseaseKor;
+}
+
+public void setGoDiseaseKor(String goDiseaseKor) {
+	this.goDiseaseKor = goDiseaseKor;
+}
 
 public String getGoTreatCode() {
 	return goTreatCode;
 }
+
 public void setGoTreatCode(String goTreatCode) {
 	this.goTreatCode = goTreatCode;
 }
+
 public String getGoHospitalId() {
 	return goHospitalId;
 }
+
 public void setGoHospitalId(String goHospitalId) {
 	this.goHospitalId = goHospitalId;
 }
+
 public String getGoCitizenId() {
 	return goCitizenId;
 }
+
 public void setGoCitizenId(String goCitizenId) {
 	this.goCitizenId = goCitizenId;
 }
+
 public String getGoDoctorId() {
 	return goDoctorId;
 }
@@ -49,12 +108,6 @@ public String getGoChartCode() {
 }
 public void setGoChartCode(String goChartCode) {
 	this.goChartCode = goChartCode;
-}
-public String getGoDiseaseCode() {
-	return goDiseaseCode;
-}
-public void setGoDiseaseCode(String goDiseaseCode) {
-	this.goDiseaseCode = goDiseaseCode;
 }
 public int getGoChartSeq() {
 	return goChartSeq;
@@ -85,9 +138,11 @@ public void setGoTreatGoRegistrationDate(String goTreatGoRegistrationDate) {
 public String toString() {
 	return "GoTreat [goTreatCode=" + goTreatCode + ", goHospitalId=" + goHospitalId + ", goCitizenId=" + goCitizenId
 			+ ", goDoctorId=" + goDoctorId + ", goTreatSubjectCode=" + goTreatSubjectCode + ", goChartCode="
-			+ goChartCode + ", goDiseaseCode=" + goDiseaseCode + ", goChartSeq=" + goChartSeq + ", goTreatContents="
-			+ goTreatContents + ", goTreatRegistrationDate=" + goTreatRegistrationDate + ", goTreatGoRegistrationDate="
-			+ goTreatGoRegistrationDate + "]";
+			+ goChartCode + ", goChartSeq=" + goChartSeq + ", goTreatContents=" + goTreatContents
+			+ ", goTreatRegistrationDate=" + goTreatRegistrationDate + ", goTreatGoRegistrationDate="
+			+ goTreatGoRegistrationDate + ", goHospitalName=" + goHospitalName + ", goCitizenName=" + goCitizenName
+			+ ", goDoctorName=" + goDoctorName + ", goTreatSubjectName=" + goTreatSubjectName + ", goDiseaseKor="
+			+ goDiseaseKor + "]";
 }
 
 
