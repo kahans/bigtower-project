@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>진료 내역 조회</title>
+<title>예방접종 조회 사이트</title>
 
 <!-- css -->
 <link href="/templates/government/css/bootstrap.min.css"
@@ -114,7 +114,7 @@
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-							<h4 class="modal-title" id="myModalLabel">${Treat.goTreatRegistrationDate} 진료 일자</h4>
+							<h4 class="modal-title" id="myModalLabel">${Treat.goTreatRegistrationDate} 예방접종일자</h4>
 						</div>
 						<div class="modal-body">
 							<table class="table-line">
@@ -131,7 +131,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<table class="table-line">
+							<table>
 								<thead>
 									<tr>
 										<th class="hospital-name">환자성명</th>
@@ -146,9 +146,6 @@
 								</tbody>
 							</table>
 							<br>
-							<h6>차트코드</h6>
-							<p>${Treat.goChartCode}</p>
-							
 							<h5>진료내역</h5>
 							<p>${Treat.goTreatContents}</p>
 							
@@ -172,7 +169,7 @@
 									<span class="fa fa-stethoscope fa-3x"></span>
 								</div>
 								<div class="service-desc">
-									<h5 class="h-light">진료내역 조회</h5>
+									<h5 class="h-light">예방접종 조회</h5>
 									<form action="" method="post">
 										<input type="date" name="dateBefore"> ~ <input type="date" name="dateAfter">
 										<a href="">
@@ -195,7 +192,7 @@
 									<span class="fa fa-list-alt fa-3x"></span>
 								</div>
 								<div class="service-desc">
-									<h5 class="h-light">진료내역 목록</h5>
+									<h5 class="h-light">예방접종내역 목록</h5>
 									<table class="table table-striped">
 										<thead>
 											<tr>

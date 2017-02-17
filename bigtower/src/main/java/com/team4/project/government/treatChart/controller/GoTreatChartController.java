@@ -12,9 +12,5 @@ public class GoTreatChartController {
 	@Autowired
 	private GoTreatChartService goTCS;
 	
-	@RequestMapping(value="/government/treatView", method=RequestMethod.GET)
-	public String goSelectTreat(Model model){
-		model.addAttribute("Treat",goTCS.goSelectTreat());
-		return "/government_si/goSelectTreat";
-	}
+	
 }
