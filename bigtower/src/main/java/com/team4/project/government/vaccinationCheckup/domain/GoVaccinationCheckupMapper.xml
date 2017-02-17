@@ -2,6 +2,20 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="XXX.XXX.XXX">
- 
+<mapper namespace="GoVaccinationCheckup">
+ 	
+ 	<!-- 예방접종 결과목록 가져오기 -->
+ 	<select id="vaccinationList" resultType="com.team4.project.government.vaccinationCheckup.domain.GoVaccinationResult">
+ 		SELECT
+ 			GO_VACCINATION_RESULT_CODE,
+ 			GO_TREAT_CODE,
+ 			GO_VACCINATION_NAME,
+ 			GO_VACCINATION_DEGREE,
+ 			GO_VACCINATION_RESULT_DEGREE,
+ 			GO_VACCINATION_RESULT_REGISTRATION_DATE
+ 		FROM go_vaccination_result
+ 		JOIN go_vaccination
+ 			ON go_vaccination_result.GO_VACCINATION_CODE = go_vaccination.GO_VACCINATION_CODE
+ 	</select>
+ 	
 </mapper>
