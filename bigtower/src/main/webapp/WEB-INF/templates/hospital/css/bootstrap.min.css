@@ -102,8 +102,8 @@ body {
 	color: #333333;
 	background-color: #ffffff;
 }
-a {/*17.02.16 글자 색상 변경*/
-	color: #ffffff;
+a {/*17.02.17 글자 색상 변경*/
+	color: #00c2ff;
 	text-decoration: none;
 }
 a:hover {
