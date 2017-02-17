@@ -53,8 +53,6 @@ public class HoDisease {
 		this.hoGoSendstate = hoGoSendstate;
 	}
 	
-=======
->>>>>>> branch 'master' of https://github.com/loverman85/bigtower-project
-	
+
 }
 

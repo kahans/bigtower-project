@@ -9,4 +9,12 @@
 			GO_MEDICINE_NAME as goMedicineName
 		from go_medicine
  	</select>
+ 	
+ 	<select id="selectTreatSubject" resultType="com.team4.project.government.dto.GoTreatSubject">
+ 		SELECT 
+ 			GO_TREAT_SUBJECT_CODE as goTreatSubjectCode,
+ 			GO_TREAT_SUBJECT_NAME as goTreatSubjectName 
+ 		FROM go_treat_subject
+ 	</select>
 </mapper>
+
