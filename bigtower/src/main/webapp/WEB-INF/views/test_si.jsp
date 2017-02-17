@@ -14,15 +14,13 @@
 			<td>시민ID</td>
 			<td>의사ID</td>
 			<td>진료내용</td>
-			<td>질병코드</td>
 		</tr>
 		<c:forEach items="${goTreatList}" var="treatList">
 			<tr>
 				<td>${treatList.goTreatCode}</td>
 				<td>${treatList.goCitizenId}</td>
 				<td>${treatList.goDoctorId}</td>
-				<td>${treatList.goTreatContents}</td>
-				<td>${treatList.goDiseaseCode}</td>			
+				<td>${treatList.goTreatContents}</td>		
 			</tr>
 		</c:forEach>
 	</table>

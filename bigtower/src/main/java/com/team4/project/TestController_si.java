@@ -12,7 +12,7 @@ public class TestController_si {
 	@Autowired
 	private TestService_si testService;
 	
-	@RequestMapping(value="/treat/treatList", method=RequestMethod.GET)
+	@RequestMapping(value="/government/treatList", method=RequestMethod.GET)
 	public String treatList(Model model){
 		System.out.println(testService.goTreatList());
 		model.addAttribute("goTreatList", testService.goTreatList());
