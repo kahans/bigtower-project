@@ -45,8 +45,8 @@ $(document).ready(function(){
 				$("#goCitizenId").val(data.goCitizenId);
 				$("#hoHospitalCode").val(data.hoHospitalCode);
 				$("#hoZipCode").val(data.hoZipCode);
-				$("#hoPatientName").val(data.hoPatientName);
 				$("#hoPatientDetailAddress").val(data.hoPatientDetailAddress);
+				$("#hoPatientAddress").val(data.hoPatientAddress);
 			
 			}
 		});

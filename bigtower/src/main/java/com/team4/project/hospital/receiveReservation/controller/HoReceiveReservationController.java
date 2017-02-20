@@ -30,9 +30,10 @@ public class HoReceiveReservationController {
 	
 	@RequestMapping(value="/getpatient", method=RequestMethod.POST)
 	public @ResponseBody HoPatient selectPatient1(@RequestParam("hoPatientCode")String hoPatientCode){
-		logger.debug("selectPatient1 GET요청");
-		
+		logger.debug("selectPatient1 POST요청");
+		logger.debug("병원환자코드 확인 {} 여기", hoPatientCode);
 		HoPatient hopatient = hoRRS.selectPatient(hoPatientCode);
+		logger.debug("hopatient"+hopatient);
 		return hopatient;
 	}
 }

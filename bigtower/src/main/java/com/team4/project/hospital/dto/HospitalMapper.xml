@@ -7,10 +7,11 @@
  	<select id="selectPatient" resultType="com.team4.project.hospital.dto.HoPatient"
  								 parameterType="String">
  		SELECT 
- 			HO_HOSPITAL_CODE as hoHosptalCode,
+ 			HO_HOSPITAL_CODE as hoHospitalCode,
  			GO_CITIZEN_ID as goCitizenId,
  			HO_PATIENT_GENDER as hoPatientGender,
  			HO_PATIENT_NAME as hoPatientName,
+ 			HO_PATIENT_PHONE as hoPatientPhone,
  			HO_ZIP_CODE as hoZipCode,
  			HO_PATIENT_ADDRESS as hoPatientAddress,
  			HO_PATIENT_DETAIL_ADDRESS as hoPatientDetailAddress 

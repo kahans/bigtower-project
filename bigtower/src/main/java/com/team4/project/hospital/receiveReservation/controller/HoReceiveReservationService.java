@@ -10,9 +10,10 @@ public class HoReceiveReservationService {
 
 	@Autowired
 	private HoReceiveReservationDao hoRRD;
-	//환자조회
 	
+	//환자조회
 	public HoPatient selectPatient(String hoPatientCode){
+		System.out.println("HoReceiveReservationService :"+hoPatientCode);
 		return hoRRD.selectPatient(hoPatientCode);
 		
 	}
