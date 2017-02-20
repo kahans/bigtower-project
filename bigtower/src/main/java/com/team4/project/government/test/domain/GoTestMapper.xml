@@ -3,30 +3,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="goTest">
+
+	<!-- 혈액검사결과 조회  -->
 	<select id="selectBlood" resultType="com.team4.project.government.test.domain.GoBloodTest"
 	 parameterType="com.team4.project.government.test.domain.GoBloodTest">
-	 	select 
-	 		GO_TREAT_CODE as goTreatCode,
-	 		GO_BLOOD_TEST_BLOOD_SUGAR as goBloodTestSugar,
-	 		GO_BLOOD_TEST_PLATELET as goBloodTestPlatelet,
-	 		GO_BLOOD_TEST_FILE_PATH as goBloodTestFilePath,
-	 		GO_BLOOD_TEST_FILE_NAME as goBloodTestFileName,
-	 		GO_BLOOD_TEST_DATE as goBloodTestDate,
-	 		GO_BLOOD_TEST_GO_REGISTRATION_DATE as goBloodTestGoRegistrationDate 
-	 	from go_test_blood_result 
-	 	where 
-			GO_BLOOD_TEST_DATE between #{goFirstDate} and #{goSecondDate}
-	
-	
+	  	select 
+	 		go_test_blood_result.GO_TREAT_CODE as goTreatCode,
+	 		go_test_blood_result.GO_BLOOD_TEST_BLOOD_SUGAR as goBloodTestBloodSugar,
+	 		go_test_blood_result.GO_BLOOD_TEST_PLATELET as goBloodTestPlatelet,
+	 		go_test_blood_result.GO_BLOOD_TEST_FILE_PATH as goBloodTestFilePath,
+	 		go_test_blood_result.GO_BLOOD_TEST_FILE_NAME as goBloodTestFileName,
+	 		go_test_blood_result.GO_BLOOD_TEST_DATE as goBloodTestDate,
+	 		go_test_blood_result.GO_BLOOD_TEST_GO_REGISTRATION_DATE as goBloodTestGoRegistrationDate 
+	 	from go_test_blood_result join go_treat on go_test_blood_result.GO_TREAT_CODE = go_treat.GO_TREAT_CODE 
+	 	where  
+			(go_test_blood_result.GO_BLOOD_TEST_DATE between #{goFirstDate} and #{goSecondDate}) AND go_test_blood_result.GO_TREAT_CODE=#{goTreatCode}
 	</select>
-	<select id ="selectBloodSugar" resultType="com.team4.project.government.test.domain.GoBloodTest"
-	parameterType="com.team4.project.government.test.domain.GoBloodTest">
-		select 
-			GO_BLOOD_TEST_BLOOD_SUGAR as goBloodTestSugar 
-		from go_blood_test join go_treat on 
-		WHERE 
-			
-	
-	</select>
+
 	
 </mapper>

@@ -9,11 +9,11 @@
 </head>
 <body>
 		
-	<form action="<c:url value="/goBloodTest"/>" method="post">
+	<form action="/goBloodTest" method="post">
+		<input type="hidden" name="goTreatCode" value="treat_01"/>
 		<input type="date" name="goFirstDate">-<input type="date" name="goSecondDate">
 		기간입력
 		<input type="submit" value="검색"/>
-	
 	</form>
 </body>
 </html>

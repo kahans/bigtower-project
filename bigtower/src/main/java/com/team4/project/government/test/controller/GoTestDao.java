@@ -18,8 +18,5 @@ public class GoTestDao {
 		
 		return sqlSession.selectList("goTest.selectBlood", goBloodTest);
 	}
-	public List<GoBloodTest> selectBloodSugar(GoBloodTest goBloodTest){
-		return sqlSession.selectList("goTest.selectBloodSugar", goBloodTest);
-		
-	}
+
 }

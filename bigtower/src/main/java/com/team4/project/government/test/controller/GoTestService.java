@@ -12,15 +12,9 @@ public class GoTestService {
 
 	@Autowired
 	private GoTestDao goTD;
-	//기간으로 GoBloodTest를 조회함
+	//진료코드와 기간으로 GoBloodTest를 조회함
 	public List<GoBloodTest> selectBlood(GoBloodTest goBloodTest){
-		
-		
 		return goTD.selectBlood(goBloodTest);
 	}
-	//혈당으로 GoBloodTest를 조회
-	public List<GoBloodTest> selectBloodSugar(GoBloodTest goBloodTest){
-		return goTD.selectBloodSugar(goBloodTest);
-		
-	}
+
 }
