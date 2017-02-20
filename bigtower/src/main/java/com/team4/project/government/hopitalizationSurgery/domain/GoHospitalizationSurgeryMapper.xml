@@ -2,6 +2,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="XXX.XXX.XXX">
- 
+<mapper namespace="GoHospitalizationSurgery">
+ 	<select id="SurgeryList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSurgery">
+	SELECT
+		go_surgery_result.GO_SURGERY_RESULT_CODE,
+		go_hospital.GO_HOSPITAL_NAME,
+		go_surgery.GO_SURGERY_NAME,
+		go_surgery_result.GO_SURGERY_RESULT_GO_REGISTRATION_DATE
+	from go_surgery_result
+	join go_surgery
+		ON go_surgery_result.GO_SURGERY_CODE = go_surgery.GO_SURGERY_CODE
+	join go_treat
+		ON go_surgery_result.GO_TREAT_CODE = go_treat.GO_TREAT_CODE
+	join go_hospital
+		ON go_treat.GO_HOSPITAL_ID = go_hospital.GO_HOSPITAL_ID
+	ORDER BY GO_SURGERY_RESULT_GO_REGISTRATION_DATE DESC
+ 	
+ 	</select>
 </mapper>

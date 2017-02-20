@@ -20,21 +20,21 @@ public class TestController_government_citizen {
 		return "government/citizen/cmain";
 	}
 	/*진료내역 경로*/
-	@RequestMapping(value = "/citizen/searchtreat", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/citizen/searchtreat", method = RequestMethod.GET)
 	public String treat(Model model) {
 		model.addAttribute("Treat",goTCS.goSelectTreat());
 		return "government/citizen/searchTreat";
-	}
+	}*/
 	/* 진료내역 글보기 모달에 보낼 데이터 */
-	@RequestMapping(value="/government/treatView", method=RequestMethod.GET)
+	/*@RequestMapping(value="/government/treatView", method=RequestMethod.GET)
 	public String goSelectTreat(Model model){
 		model.addAttribute("Treat",goTCS.goSelectTreat());
-		return "/government/searchTreat";
-	}
+		return "/government_si/goSelectTreat";
+	}*/
 	
-	@RequestMapping(value = "/citizen/searchVaccine", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/citizen/searchVaccine", method = RequestMethod.GET)
 	public String searchVaccine(Model model) {
 		model.addAttribute("Treat",goTCS.goSelectTreat());
 		return "government/citizen/searchVaccine";
-	}
+	}*/
 }

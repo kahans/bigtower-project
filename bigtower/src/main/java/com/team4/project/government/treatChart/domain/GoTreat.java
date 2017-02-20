@@ -3,8 +3,11 @@ package com.team4.project.government.treatChart.domain;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
 
 public class GoTreat {
 
@@ -20,7 +23,20 @@ private String goTreatContents;
 @DateTimeFormat(pattern ="YY-MM-DD")
 private Date goTreatRegistrationDate;
 private String goTreatGoRegistrationDate;
-//���ι� ������
+private List<GoDiagnosis> diagnosisList;
+
+
+
+
+public List<GoDiagnosis> getDiagnosisList() {
+	return diagnosisList;
+}
+
+public void setDiagnosisList(List<GoDiagnosis> diagnosisList) {
+	this.diagnosisList = diagnosisList;
+}
+
+//조인문 데이터
 private String goHospitalName;
 private String goHospitalAddress;
 private String goCitizenName;

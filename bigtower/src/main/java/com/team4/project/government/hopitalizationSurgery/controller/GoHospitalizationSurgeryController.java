@@ -2,10 +2,20 @@ package com.team4.project.government.hopitalizationSurgery.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class GoHospitalizationSurgeryController {
 
 	@Autowired
 	private GoHospitalizationSurgeryService goHSS;
+	
+	@RequestMapping(value="/government/surgeryList", method=RequestMethod.GET)
+	public String surgeryList(Model model){
+		
+		model.addAttribute("goSurgery", goHSS.goSurgeryList());
+		return "";
+	}
 }

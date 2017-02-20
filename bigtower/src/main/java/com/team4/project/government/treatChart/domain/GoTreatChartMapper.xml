@@ -4,14 +4,37 @@
  <!-- 정부쪽 진료와 차트 -->
 <mapper namespace="GoTreatChart">
  	
+ 	<!-- 동일한 진료코드의 질병코드 리스트 가져오기 -->
+ 	<select id="goDiagnosisList" resultType="com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis" parameterType="String">
+ 		SELECT
+ 			go_diagnosis.GO_DIAGNOSIS_CODE,
+ 			go_disease.GO_DISEASE_KOR
+ 		FROM go_diagnosis
+ 		JOIN go_disease
+ 			ON go_diagnosis.GO_DISEASE_CODE = go_disease.GO_DISEASE_CODE
+ 		WHERE GO_TREAT_CODE = #{goTreatCode}
+ 	</select>
+ 	
  	<!-- 진료목록 뿌리기 -->
- 	<select id="goTreatList" resultType="com.team4.project.government.treatChart.domain.GoTreat">
+ 	<select id="goTreatList" resultType="com.team4.project.government.treatChart.domain.GoTreat" parameterType="String">
  		SELECT 
- 			GO_TREAT_CODE,
- 			GO_CITIZEN_ID,
- 			GO_DOCTOR_ID,
- 			GO_TREAT_CONTENTS
+ 			go_treat.GO_TREAT_CODE as goTreatCode,
+ 			go_citizen.GO_CITIZEN_NAME,
+ 			go_doctor.GO_DOCTOR_NAME,
+ 			go_hospital.GO_HOSPITAL_NAME,
+ 			go_treat_subject.GO_TREAT_SUBJECT_NAME,
+ 			go_treat.GO_TREAT_REGISTRATION_DATE
  		FROM go_treat
+ 		JOIN go_hospital
+ 			ON go_treat.GO_HOSPITAL_ID = go_hospital.GO_HOSPITAL_ID
+ 		JOIN go_citizen
+ 			ON go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO
+ 		JOIN go_doctor
+ 			ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
+ 		JOIN go_treat_subject
+ 			ON go_treat.GO_TREAT_SUBJECT_CODE = go_treat_subject.GO_TREAT_SUBJECT_CODE
+ 		ORDER BY GO_TREAT_CODE DESC
+ 		
  	</select>
  	
  	<!-- 한 사람의 진료내용 가져오기 -->
@@ -43,7 +66,7 @@
  		JOIN go_disease
  			ON go_diagnosis.GO_DISEASE_CODE =go_disease.GO_DISEASE_CODE
  		WHERE 
- 			go_treat.GO_TREAT_CODE = "treat_3"
+ 			go_treat.GO_TREAT_CODE = #{goTreatCode}
  			<!-- 나중에 TREAT_CODE 받아서 그 튜플 데이터 보여주도록 해야함 --> 
  	</select>
 </mapper>
