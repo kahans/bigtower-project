@@ -11,46 +11,10 @@ public class GoBloodTest {
 	private String goBloodTestGoRegistrationDate;
 	private String goFirstDate;
 	private String goSecondDate;
-	private int goFirstSugar;
-	private int goSecondSugar;
-	
-	
-	
-	
+
 	public GoBloodTest() {
 		super();
 	}
-	
-	
-
-
-	public int getGoFirstSugar() {
-		return goFirstSugar;
-	}
-
-
-
-
-	public void setGoFirstSugar(int goFirstSugar) {
-		this.goFirstSugar = goFirstSugar;
-	}
-
-
-
-
-	public int getGoSecondSugar() {
-		return goSecondSugar;
-	}
-
-
-
-
-	public void setGoSecondSugar(int goSecondSugar) {
-		this.goSecondSugar = goSecondSugar;
-	}
-
-
-
 
 	public String getGoFirstDate() {
 		return goFirstDate;

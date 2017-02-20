@@ -47,7 +47,7 @@ public class GoTestController {
 				logger.debug("확인 : "+x.toString());
 			}
 				
-		return "";
+		return "/governmentYJ/bloodTestResultSearch";
 	}
 	
 	//한명의 환자의 혈당수치리스트를 조회함.
