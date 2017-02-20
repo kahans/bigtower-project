@@ -7,6 +7,9 @@
 <title>혈액검사 혈당수치 요청 폼</title>
 </head>
 <body>
+	<form action="/">
 	
+	
+	</form>
 </body>
 </html>

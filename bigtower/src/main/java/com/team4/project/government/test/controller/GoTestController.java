@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,7 +30,7 @@ public class GoTestController {
 	//혈액검사 날짜 입력하여 검색 GET요청으로 폼으로 이동하여 POST요청에서 날짜값을 받아야 하지만
 	//테스트를 위해 GET방식에서 값을 직접 세팅해주었음. 차후 수정요망
 	@RequestMapping(value="/goBloodTest", method=RequestMethod.POST)
-	public String selectBloodTest(GoBloodTest goBloodTest){
+	public String selectBloodTest(Model model, GoBloodTest goBloodTest){
 			System.out.println("혈액검사 요청페이지에서 날짜 넘겨받음");
 			//goBloodTest에 입력받은 날짜를 직접세팅해줌 
 		/*	goBloodTest.setGoFirstDate("2016-02-20");
@@ -46,6 +47,9 @@ public class GoTestController {
 			for(GoBloodTest x : goTest){
 				logger.debug("확인 : "+x.toString());
 			}
+			
+			model.addAttribute("Gotest", goTest);
+			
 				
 		return "/governmentYJ/bloodTestResultSearch";
 	}
