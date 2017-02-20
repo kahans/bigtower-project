@@ -13,10 +13,19 @@
 	 		GO_BLOOD_TEST_FILE_NAME as goBloodTestFileName,
 	 		GO_BLOOD_TEST_DATE as goBloodTestDate,
 	 		GO_BLOOD_TEST_GO_REGISTRATION_DATE as goBloodTestGoRegistrationDate 
-	 	from go_blood_test 
+	 	from go_test_blood_result 
 	 	where 
 			GO_BLOOD_TEST_DATE between #{goFirstDate} and #{goSecondDate}
 	
+	
+	</select>
+	<select id ="selectBloodSugar" resultType="com.team4.project.government.test.domain.GoBloodTest"
+	parameterType="com.team4.project.government.test.domain.GoBloodTest">
+		select 
+			GO_BLOOD_TEST_BLOOD_SUGAR as goBloodTestSugar 
+		from go_blood_test join go_treat on 
+		WHERE 
+			
 	
 	</select>
 	
