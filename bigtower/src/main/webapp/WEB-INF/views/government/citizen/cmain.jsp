@@ -60,12 +60,12 @@
 					<div class="dropdown">
 						<a><button class="dropbtn">전체조회</button></a>
 						<div class="dropdown-content">
-						<a href="/citizen/treat">진료내역</a>
-						<a href="#service">예방접종</a>
-						<a href="#service">검사기록</a>
-						<a href="#service">건강검진</a>
-						<a href="#service">수술기록</a>
-						<a href="#service">입/퇴원</a>
+							<a href="/citizen/searchtreat">진료내역</a>
+							<a href="/citizen/searchVaccine">예방접종</a>
+							<a href="#service">검사기록</a>
+							<a href="#service">건강검진</a>
+							<a href="#service">수술기록</a>
+							<a href="#service">입/퇴원</a>
 						</div>
 					</div>
 					<!-- <a href="#doctor">의료조회</a> -->

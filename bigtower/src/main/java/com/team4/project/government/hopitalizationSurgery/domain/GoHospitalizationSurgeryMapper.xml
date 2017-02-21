@@ -8,6 +8,7 @@
 		go_surgery_result.GO_SURGERY_RESULT_CODE,
 		go_hospital.GO_HOSPITAL_NAME,
 		go_surgery.GO_SURGERY_NAME,
+		go_doctor.GO_DOCTOR_NAME,
 		go_surgery_result.GO_SURGERY_RESULT_GO_REGISTRATION_DATE
 	from go_surgery_result
 	join go_surgery
@@ -16,6 +17,8 @@
 		ON go_surgery_result.GO_TREAT_CODE = go_treat.GO_TREAT_CODE
 	join go_hospital
 		ON go_treat.GO_HOSPITAL_ID = go_hospital.GO_HOSPITAL_ID
+	join go_doctor
+		ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
 	ORDER BY GO_SURGERY_RESULT_GO_REGISTRATION_DATE DESC
  	
  	</select>

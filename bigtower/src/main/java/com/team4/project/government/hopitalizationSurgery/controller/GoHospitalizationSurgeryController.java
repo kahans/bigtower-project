@@ -16,6 +16,6 @@ public class GoHospitalizationSurgeryController {
 	public String surgeryList(Model model){
 		
 		model.addAttribute("goSurgery", goHSS.goSurgeryList());
-		return "";
+		return "/government/citizen/hospitalizationSurgery/surgeryList";
 	}
 }
