@@ -6,11 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="container">
 
-			<table border="1">
+			<table>
 					<tr>
 						<th>
 							진료코드
@@ -22,37 +26,48 @@
 							혈소판
 						</th>
 						<th>
-							파일경로
+							혈액검사결과Img
 						</th>
-						<th>
-							파일명
-						</th>
-						<th>
-							검사일
-						</th>
+						
 					</tr>
 			<c:forEach var="b" items="${goTest}">
+				<c:forEach var="bloodTest" items="${b.goBloodTest}">
 				<tr>
 					<td>
-						<input type="text" name="b.goTreatCode" value="${b.goTreatCode}" readonly="readonly"/>
+						<input type="text" name="TreatCode" value="${bloodTest.goTreatCode}" readonly="readonly"/>
 					</td>
 					<td>
-						<input type="text" name="b.goBloodTestBloodSugar" value="${b.goBloodTestBloodSugar}" readonly="readonly"/>
+						<input type="text" name="bloodSugar" value="${bloodTest.goBloodTestBloodSugar}" readonly="readonly"/>
 					</td>
 					<td>
-						<input type="text" name="b.goBloodTestPlatelet" value="${b.goBloodTestPlatelet}" readonly="readonly"/>
+						<input type="text" name="Platelet" value="${bloodTest.goBloodTestPlatelet}" readonly="readonly"/>
 					</td>
 					<td>
-						<input type="text" name="b.goBloodTestFilePath" value="${b.goBloodTestFilePath}" readonly="readonly"/>
-					</td>
-					<td>
-						<input type="text" name="b.goBloodTestFileName" value="${b.goBloodTestFileName}" readonly="readonly"/>
-					</td>
-					<td>
-						<input type="text" name="b.goBloodTestDate" value="${b.goBloodTestDate}" readonly="readonly"/>
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">혈액검사결과</button>
+						  <!-- Modal -->
+						  <div class="modal fade" id="myModal" role="dialog">
+						    <div class="modal-dialog modal-lg">
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">혈액검사 결과파일</h4>
+						        </div>
+						        <div class="modal-body">
+						         	<img alt="혈액검사결과파일" src="<c:url 
+						         	value="${bloodTest.goBloodTestFilePath}${bloodTest.goBloodTestFileName}">혈액검사결과</c:url>">
+						        </div>
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
 					</td>
 				</tr>
+				</c:forEach>
 			</c:forEach>
 			</table>
+	</div>	
+			
 </body>
 </html>
