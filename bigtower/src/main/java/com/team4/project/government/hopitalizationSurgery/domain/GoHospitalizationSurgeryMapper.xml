@@ -3,12 +3,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="GoHospitalizationSurgery">
- 	<select id="SurgeryList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSurgery">
+<!-- 목록 출력 -->
+ 	<select id="SurgeryList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSurgery" parameterType="String">
 	SELECT
 		go_surgery_result.GO_SURGERY_RESULT_CODE,
 		go_hospital.GO_HOSPITAL_NAME,
 		go_surgery.GO_SURGERY_NAME,
 		go_doctor.GO_DOCTOR_NAME,
+		go_citizen.GO_CITIZEN_NAME,
 		go_surgery_result.GO_SURGERY_RESULT_GO_REGISTRATION_DATE
 	from go_surgery_result
 	join go_surgery
@@ -19,6 +21,9 @@
 		ON go_treat.GO_HOSPITAL_ID = go_hospital.GO_HOSPITAL_ID
 	join go_doctor
 		ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
+	join go_citizen
+		on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO
+	WHERE ${test}<!-- test문장을 다른이름으로 변경하면 된다. 임시  if문 대신 case문으로 한번 알아보자--> = ${goHospitalName} <!-- or GO_CITIZEN_NAME='김의진' -->
 	ORDER BY GO_SURGERY_RESULT_GO_REGISTRATION_DATE DESC
  	
  	</select>

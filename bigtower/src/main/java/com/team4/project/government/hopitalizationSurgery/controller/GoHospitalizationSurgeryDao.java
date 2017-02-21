@@ -17,7 +17,13 @@ public class GoHospitalizationSurgeryDao {
 	private SqlSessionTemplate sqlSession;
 	
 	public List<GoSurgery> goSurgeryList() {
-		// TODO Auto-generated method stub
+		String test="";
+		if(test =="goHospitalName"){
+			test="GO_HOSPITAL_NAME";
+		}else{
+			test="GO_SURGERY_RESULT_GO_REGISTRATION_DATE";
+		}
+		
 		return sqlSession.selectList("GoHospitalizationSurgery.SurgeryList");
 	}
 

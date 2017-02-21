@@ -1,7 +1,5 @@
 package com.team4.project.government.hopitalizationSurgery.domain;
 
-import java.util.Date;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class GoSurgery {
