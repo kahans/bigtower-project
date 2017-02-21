@@ -17,5 +17,22 @@
  		JOIN go_vaccination
  			ON go_vaccination_result.GO_VACCINATION_CODE = go_vaccination.GO_VACCINATION_CODE
  	</select>
+ 	<select id="checkUpList" resultType="com.team4.project.government.vaccinationCheckup.domain.GoCheckup">
+ 		SELECT 
+ 			GO_CHECKUP_RESULT_CODE as goCheckUpResultCode,
+ 			GO_TREAT_CODE as goTreatCode,
+ 			GO_CHECKUP_RESULT_FILE_PATH as goCheckUpResultFilePath,
+ 			GO_CHECKUP_RESULT_FILE_NAME as goCheckUpResultFileName,
+ 			GO_CHECKUP_RESULT_REGISTRATION_DATE as goCheckUpResultRegistrationDate,
+ 			GO_CHECKUP_RESULT_GO_REGISTRATION_DATE as goCheckUpResultGoRegistrationDate 
+ 		 FROM 
+ 		 	go_treat 
+ 		 	JOIN go_test_checkup_result on go_treat.GO_TREAT_CODE=go_test_checkup_result.GO_TREAT_CODE 
+			JOIN go_citizen on go_treat.GO_CITIZEN_NO=go_citizen.GO_CITIZEN_NO
+			WHERE go_citizen.GO_CITIZEN_ID=#{goCitizenId}
+			 		 	
+ 			
  	
+ 	
+ 	</select>
 </mapper>
