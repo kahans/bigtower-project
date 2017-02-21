@@ -19,7 +19,7 @@ public class HoReceiveReservationController {
 	
 	//접수폼 보여주기
 	@RequestMapping(value="/hospital/receive", method=RequestMethod.GET)
-	public String addReceive(){
+	public String addOneReceive(){
 		logger.debug("addPatient GET");
 	
 		return "/hospital_YJ/receive";
@@ -27,7 +27,7 @@ public class HoReceiveReservationController {
 	
 	//접수실행
 	@RequestMapping(value="/hospital/receive", method=RequestMethod.POST)
-	public String addReceive(HoPatient hoPatient){
+	public String addOneReceive(HoPatient hoPatient){
 		logger.debug("addReceive POST");
 		logger.debug("hoReceive:"+hoPatient);
 		
@@ -36,9 +36,9 @@ public class HoReceiveReservationController {
 	
 	//ajax 한명의 환자정보 조회
 	@RequestMapping(value="hospital/searchPatient", method=RequestMethod.POST)
-	public @ResponseBody HoPatient selectPatient1(@RequestParam("goCitizenId")String goCitizenId){
-		logger.debug("selectPatient1 POST");
-		HoPatient hopatient = hoRRService.searchPatient(goCitizenId);
+	public @ResponseBody HoPatient searchOnePatient(@RequestParam("goCitizenId")String goCitizenId){
+		logger.debug("searchOnePatient POST");
+		HoPatient hopatient = hoRRService.searchOnePatient(goCitizenId);
 		logger.debug("hopatient:"+hopatient);
 		
 		return hopatient;
