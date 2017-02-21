@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="hospital">
-<!--환자조회 -->
+	<!--환자조회 -->
  	<select id="selectPatient" resultType="com.team4.project.hospital.dto.HoPatient"
  								 parameterType="String">
  		SELECT 
@@ -20,4 +20,15 @@
  			GO_CITIZEN_ID = #{goCitizenId}
  	
  	</select>
+ 	
+ 	<!-- 직원 로그인체크 -->
+	<select id="loginCheck" parameterType="Map" resultType="com.team4.project.hospital.dto.HoStaff">
+		SELECT
+			ho_hospital_code,
+			staff_level_code,
+			ho_staff_name
+		FROM ho_staff
+		WHERE ho_staff_id = #{hoStaffId} AND ho_staff_pw=#{hoStaffPw}
+		
+	</select>
 </mapper>
