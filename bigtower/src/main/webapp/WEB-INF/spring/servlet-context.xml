@@ -109,7 +109,7 @@
 				<!-- 검사 -->
 				<value>classpath:com/team4/project/government/test/domain/GoTestMapper.xml</value>
 				<!-- 진료 & 차트 -->
-				<value>classpath:com/team4/project/government/treatChart/domain/GoTreatChartMapper.xml</value>
+				<value>classpath:com/team4/project/government/treatChart/domain/GoTreatMapper.xml</value>
 				<!-- 예방접종 & 건강검진 -->
 				<value>classpath:com/team4/project/government/vaccinationCheckup/domain/GoVaccinationCheckupMapper.xml</value>
 				

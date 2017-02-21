@@ -6,13 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.team4.project.government.treatChart.controller.GoTreatChartService;
+import com.team4.project.government.treat.controller.GoTreatService;
 
 @Controller
 public class TestController_government_citizen {
 	
 	@Autowired
-	private GoTreatChartService goTCS;
+	private GoTreatService goTCS;
 	
 	@RequestMapping(value = "/citizen/main", method = RequestMethod.GET)
 	public String home() {

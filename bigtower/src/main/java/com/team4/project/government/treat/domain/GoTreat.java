@@ -1,4 +1,4 @@
-package com.team4.project.government.treatChart.domain;
+package com.team4.project.government.treat.domain;
 
 
 

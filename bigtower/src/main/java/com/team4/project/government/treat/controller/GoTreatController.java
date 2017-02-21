@@ -1,4 +1,4 @@
-package com.team4.project.government.treatChart.controller;
+package com.team4.project.government.treat.controller;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.team4.project.government.treatChart.domain.GoTreat;
+import com.team4.project.government.treat.domain.GoTreat;
 
 @Controller
-public class GoTreatChartController {
-	private static final Logger logger = LoggerFactory.getLogger(GoTreatChartController.class);
+public class GoTreatController {
+	private static final Logger logger = LoggerFactory.getLogger(GoTreatController.class);
 	
 	@Autowired
-	private GoTreatChartService goTCS;
+	private GoTreatService goTCS;
 
 	//진료 상세보기
 	@RequestMapping(value="/government/treatView", method=RequestMethod.GET)

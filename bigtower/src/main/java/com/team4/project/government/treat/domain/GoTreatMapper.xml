@@ -2,7 +2,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <!-- 정부쪽 진료와 차트 -->
-<mapper namespace="GoTreatChart">
+<mapper namespace="GoTreat">
  	
  	<!-- 동일한 진료코드의 질병코드 리스트 가져오기 -->
  	<select id="goDiagnosisList" resultType="com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis" parameterType="String">
@@ -16,7 +16,7 @@
  	</select>
  	
  	<!-- 진료목록 뿌리기 -->
- 	<select id="goTreatList" resultType="com.team4.project.government.treatChart.domain.GoTreat" parameterType="String">
+ 	<select id="goTreatList" resultType="com.team4.project.government.treat.domain.GoTreat" parameterType="String">
  		SELECT 
  			go_treat.GO_TREAT_CODE as goTreatCode,
  			go_citizen.GO_CITIZEN_NAME,
@@ -38,7 +38,7 @@
  	</select>
  	
  	<!-- 한 사람의 진료내용 가져오기 -->
- 	<select id="goSelectTreat" resultType="com.team4.project.government.treatChart.domain.GoTreat">
+ 	<select id="goSelectTreat" resultType="com.team4.project.government.treat.domain.GoTreat">
  		SELECT 
  			go_diagnosis.GO_TREAT_CODE,
  			go_hospital.GO_HOSPITAL_NAME,

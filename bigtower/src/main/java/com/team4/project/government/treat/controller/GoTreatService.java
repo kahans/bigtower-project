@@ -1,4 +1,4 @@
-package com.team4.project.government.treatChart.controller;
+package com.team4.project.government.treat.controller;
 
 import java.util.List;
 
@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
-import com.team4.project.government.treatChart.domain.GoTreat;
+import com.team4.project.government.treat.domain.GoTreat;
 
 @Service
-public class GoTreatChartService {
+public class GoTreatService {
 
 	@Autowired
-	private GoTreatChartDao goTCD;
+	private GoTreatDao goTCD;
 	
 	//진료 상세보기
 	public GoTreat goSelectTreat(String goTreatCode){
