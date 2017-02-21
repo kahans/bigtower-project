@@ -1,5 +1,9 @@
 package com.team4.project.government.treat.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,22 +32,22 @@ public class GoTreatController {
 		return "/government_si/goSelectTreat";
 	}
 	
-	//진료목록 
-	@RequestMapping(value="/government/treatList", method=RequestMethod.GET)
-	public String treatList(Model model){
-		System.out.println("treatList : "+goTCS.goTreatList());
-		//리스트를 출력한다. ( 진료목록, 질병목록은 서비스.java에서 실행이 된다....)
-		model.addAttribute("goTreatList", goTCS.goTreatList());
-		return "/government_si/goTreatList";
-	}
-	
-	//진료목록 검색
+	//진료목록  검색
 	@RequestMapping(value="/government/treatSearch", method=RequestMethod.GET)
-	public @ResponseBody GoTreat treatSearch(@RequestParam(
+	public @ResponseBody List<GoTreat> treatList(@RequestParam(
 			value="selectConditions") String selectConditions,
 			@RequestParam(value="searchContents")String searchContents){
 		
-		return null;
+		List<GoTreat> goTreatList = goTCS.goTreatList(selectConditions,searchContents);
+		System.out.println("treatList : "+goTCS.goTreatList(selectConditions,searchContents));
+		//리스트를 출력한다. ( 진료목록, 질병목록은 서비스.java에서 실행이 된다....)
+		return goTreatList;
+	}
+	
+	//진료목록
+	@RequestMapping(value="/government/treatList", method=RequestMethod.GET)
+	public String treatSearch(){			
+		return "/government_si/goTreatList";
 	}
 	
 	

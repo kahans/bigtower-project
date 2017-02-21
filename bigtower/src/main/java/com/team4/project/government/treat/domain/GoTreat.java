@@ -11,21 +11,27 @@ import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
 
 public class GoTreat {
 
-private String goTreatCode;
-private String goHospitalId;
-private String goCitizenId;
-private String goDoctorId;
-private String goTreatSubjectCode;
-private String goChartCode;
-private int goChartSeq;
-private String goTreatContents;
+protected String goTreatCode;
+protected String goHospitalId;
+protected String goCitizenId;
+protected String goDoctorId;
+protected String goTreatSubjectCode;
+protected String goChartCode;
+protected int goChartSeq;
+protected String goTreatContents;
 /*날짜 포멧을 하여 원하는 형식으로 표기*/
 @DateTimeFormat(pattern ="YY-MM-DD")
-private Date goTreatRegistrationDate;
-private String goTreatGoRegistrationDate;
-private List<GoDiagnosis> diagnosisList;
-
-
+protected Date goTreatRegistrationDate;
+protected String goTreatGoRegistrationDate;
+protected List<GoDiagnosis> diagnosisList;
+ 
+//조인문 데이터
+protected String goHospitalName;
+protected String goHospitalAddress;
+protected String goCitizenName;
+protected String goDoctorName;
+protected String goTreatSubjectName;
+protected String goDiseaseKor;
 
 
 public List<GoDiagnosis> getDiagnosisList() {
@@ -36,13 +42,7 @@ public void setDiagnosisList(List<GoDiagnosis> diagnosisList) {
 	this.diagnosisList = diagnosisList;
 }
 
-//조인문 데이터
-private String goHospitalName;
-private String goHospitalAddress;
-private String goCitizenName;
-private String goDoctorName;
-private String goTreatSubjectName;
-private String goDiseaseKor;
+
 
 public String getGoHospitalAddress() {
 	return goHospitalAddress;

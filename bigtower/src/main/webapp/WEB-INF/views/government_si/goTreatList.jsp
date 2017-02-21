@@ -24,7 +24,7 @@
 	</select>
 	<input class="date" type= "date" name="firstDay" id="firstDay">
 	<input class="date" type= "date" name="secondDay" id="secondDay">
-	<input class="contents" type="text" name="searchContents">
+	<input id="searchContents" type="text" name="searchContents">
 	<input type="button" id="btn" value="검색">
 	
 	<br><br>
@@ -43,53 +43,77 @@
 		<c:forEach items="${goTreatList}" var="treatList">
 			<tr>
 				<td><a href="<c:url value='/government/treatView?goTreatCode=${treatList.goTreatCode}' />">${treatList.goTreatCode}</a></td>
-				<td>${treatList.goCitizenName}</td>
-				<td>${treatList.goHospitalName}</td>
-				<td>${treatList.goDoctorName}</td>
-				<td>${treatList.goTreatSubjectName}</td>		
+				<td><div id="citizenName"></div></td>
+				<td id="hospitalName">${treatList.goHospitalName}</td>
+				<td id="doctorName">${treatList.goDoctorName}</td>
+				<td id="treatSubjectName">${treatList.goTreatSubjectName}</td>		
 				<!-- 진료코드가 같은것 끼리 출력하게 된다. -->
-				<td>
+				<td id="diseaseName">
 					<c:forEach items="${treatList.diagnosisList}" var="diagnosisList">
 						${diagnosisList.goDiseaseKor}<br>
 					</c:forEach>
 				</td>
-				<td>${treatList.goTreatRegistrationDate}</td>	
+				<td id="registrationDate">${treatList.goTreatRegistrationDate}</td>	
 			</tr>
 		</c:forEach>
 	</table>
 	
 	<script>
 		$(document).ready(function(){
+			//기간을 선택시 date 선택창이 보이도록
 			$('#selectConditions').change(function(){
 				var state = $('#selectConditions option:selected').val();
 				if(state == 'selectDate'){
 					$('.date').show();
-					$('.contents').hide();
+					$('#searchContents').hide();
 				}else{
 					$('.date').hide();
-					$('.contents').show();
+					$('#searchContents').show();
 				}
 			});
+			//버튼 클릭시 검색조건 보내기
 			$("#btn").bind("click",function(){
-				if($('#selectConditions'.val()==""){
+				alert('올 버튼 클릭했냐?')		
+				if($('#selectConditions').val()==""){
 					alert('검색할 조건을 선택하시오.');
 					return;
 				}
-				if($('.contents'.val()==""){
+				if($('#searchContents').val()==""){
 					alert('검색할 내용을 입력하시오.');
 					return;
 				}
 				$.ajax({
 					url : "/government/treatSearch",
 					type : "GET",
-					data : {'selectConditions' : $('#selectConditions').val()},
-					{'contents' : $('.contents').val()},
-					
+					data : {'selectConditions' : $('#selectConditions').val(),
+							'searchContents' : $('#searchContents').val()},
+					success : function(data){
+						console.log('성공');
+						$.each(data, function(key, item) {
 							
-				})
-			})
-		});
+						/* 	$("#memberTbody").append("<tr>");
+							$("#memberTbody").append("<td>" + item.memberNo + "</td>");
+							$("#memberTbody").append("<td>" + item.memberName + "</td>");
+							$("#memberTbody").append("<td>" + item.memberLevel + "</td>");
+							$("#memberTbody").append("<td>" + item.memberAddress + "</td>");
+							$("#memberTbody").append("<td>" + item.memberPhone + "</td>");
+							$("#memberTbody").append("<td><button class='memberClass' data-dismiss='modal' value='"+item.memberNo+"'>선택</button>");
+							$("#memberTbody").append("</tr>");
+							 */
+							 console.log('ddd');
+							$('#citizenName').val(item.goCitizenName);
+							$('#hospitalName').val(item.goHospitalName);
+							$('#doctorName').val(item.goDoctorName);
+							$('#treatSubjectName').val(item.goTreatSubjectName);
+							$('#diseaseName').val(item.goDiseaseKor);
+							$('#registrationDate').val(item.goTreatRegistrationDate);
+						
+						})
 
+					}
+				});
+			}); //click functin 종료
+		});
 	</script>
 </body>
 </html>

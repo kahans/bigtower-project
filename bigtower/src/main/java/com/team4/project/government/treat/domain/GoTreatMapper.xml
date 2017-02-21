@@ -16,8 +16,8 @@
  	</select>
  	
  	<!-- 진료목록 뿌리기 -->
- 	<select id="goTreatList" resultType="com.team4.project.government.treat.domain.GoTreat" parameterType="String">
- 		SELECT 
+ 	<select id="goTreatList" resultType="com.team4.project.government.treat.domain.GoTreat" parameterType="Map">
+		SELECT 
  			go_treat.GO_TREAT_CODE as goTreatCode,
  			go_citizen.GO_CITIZEN_NAME,
  			go_doctor.GO_DOCTOR_NAME,
@@ -33,7 +33,9 @@
  			ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
  		JOIN go_treat_subject
  			ON go_treat.GO_TREAT_SUBJECT_CODE = go_treat_subject.GO_TREAT_SUBJECT_CODE
- 		ORDER BY GO_TREAT_CODE DESC
+ 		WHERE GO_DOCTOR_NAME = '허준'
+		ORDER BY GO_TREAT_CODE DESC
+ 		
  		
  	</select>
  	
