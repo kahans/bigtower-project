@@ -1,6 +1,7 @@
 package com.team4.project.government.hopitalizationSurgery.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +17,10 @@ public class GoHospitalizationSurgeryDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public List<GoSurgery> goSurgeryList() {
-		String test="";
-		if(test =="goHospitalName"){
-			test="GO_HOSPITAL_NAME";
-		}else{
-			test="GO_SURGERY_RESULT_GO_REGISTRATION_DATE";
-		}
+	public List<GoSurgery> goSurgeryList(Map<String, Object> returnMap) {
 		
-		return sqlSession.selectList("GoHospitalizationSurgery.SurgeryList");
+		
+		return sqlSession.selectList("GoHospitalizationSurgery.SurgeryList", returnMap);
 	}
 
 	public List<GoHospitalization> goHospitalizationList() {

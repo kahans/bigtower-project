@@ -23,7 +23,7 @@
 		ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
 	join go_citizen
 		on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO
-	WHERE ${test}<!-- test문장을 다른이름으로 변경하면 된다. 임시  if문 대신 case문으로 한번 알아보자--> = ${goHospitalName} <!-- or GO_CITIZEN_NAME='김의진' -->
+	WHERE ${selectBox}<!-- test문장을 다른이름으로 변경하면 된다. 임시  if문 대신 case문으로 한번 알아보자--> = ${searchContents} <!-- or GO_CITIZEN_NAME='김의진' -->
 	ORDER BY GO_SURGERY_RESULT_GO_REGISTRATION_DATE DESC
  	
  	</select>

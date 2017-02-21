@@ -1,6 +1,6 @@
 package com.team4.project.government.hopitalizationSurgery.controller;
 
-import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,19 +17,22 @@ public class GoHospitalizationSurgeryController {
 
 	@Autowired
 	private GoHospitalizationSurgeryService goHSS;
-	//수술 뷰를 가져오기
-	@RequestMapping(value="/government/surgeryList", method=RequestMethod.GET)
-	public String surgeryList(Model model, @RequestParam HashMap<String, String> map){
-		String seachFirstDay = map.get("firstDay");
+	//수술 뷰검색
+	@RequestMapping(value="/government/surgerySearch", method=RequestMethod.GET)
+	public List<GoSurgery> surgeryList(Model model,
+										@RequestParam(value="selectBox") String selectBox
+										,@RequestParam(value="searchContents")String searchContents){
+		System.out.println("search : "+selectBox+", "+searchContents);
+		List<GoSurgery> goSurgery = goHSS.goSurgeryList(selectBox,searchContents);
 		
-		model.addAttribute("goSurgery", goHSS.goSurgeryList());
-		return "/government/citizen/hospitalizationSurgery/surgeryList";
+		//model.addAttribute("goSurgery", goHSS.goSurgeryList());
+		return goSurgery;
 	}
 	//수술목록 불러오기
-	@RequestMapping(value="/government/surgeryList", method=RequestMethod.POST)
-	public String surgeryList(Model model, GoSurgery goSurgery){
+	@RequestMapping(value="/government/surgeryList", method=RequestMethod.GET)
+	public String surgeryList(){
 		
-		model.addAttribute("goSurgery", goHSS.goSurgeryList());
+		//model.addAttribute("goSurgery", goHSS.goSurgeryList());
 		return "/government/citizen/hospitalizationSurgery/surgeryList";
 	}
 	

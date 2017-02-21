@@ -27,26 +27,35 @@
 			$(".btn").bind("click",function() {
 				//select문 value 값을 state로 선언하여 대입한다.
 				var state = $('#selectBox option:selected').val();
-				//alert($('#selectBox option:selected').val());
-				if(state == 'goSurgeryResultGoRegistrationDate') {
+				var content = $('#searchContents').val();
+				if(state == '') {
+					//goSurgeryResultGoRegistrationDate
 					//기간을 선택시 두개의 기간을 대입한다.
-					var allData = { 'goSurgeryResultGoRegistrationDate' : state, 'firstDay': $('#firstDay').val() , 'secondDay': $('#secondDay').val()};
-					
-				}else{
-					//병원을 선택시 데이터 대입한다.
-					var allData = { 'goHospitalName':state, 'searchContents': $('#searchContents').val()};
+					//var allData = { 'goSurgeryResultGoRegistrationDate' : state, 'firstDay': $('#firstDay').val() , 'secondDay': $('#secondDay').val()};
+					alert('조건을 선택하세요.');
+					return;
 				}
+				if(content == '') {
+					//goHospitalName
+					//기간을 선택시 두개의 기간을 대입한다.					
+					//var allData = { 'goSurgeryResultGoRegistrationDate' : state, 'firstDay': $('#firstDay').val() , 'secondDay': $('#secondDay').val()};
+					alert('내욜을 입력하시오');
+					return;
+				}
+				
 				$.ajax({
-					url:'/government/surgeryList',
+					url:'/government/surgerySearch',
 					type:'GET',
-					data: allData,
+					data: {'selectBox': state ,
+							'searchContents':content }
 					success:function(data){
-						alert('검색완료!');
+						console.log('검색성공');				
+						$.each(data, function(key, item){
+							
+						});
 						
-						/* console.log(allData.goHospiatlName); */
-						//병원 검색
+						/* //병원 검색
 						if(allData.goHospitalName == "goHospitalName"){
-							alert(allData.goHospitalName);
 							$('#goHospitalName').val(allData.goHospitalName);
 							$('#searchContents').val(allData.searchContents);
 						}else{
@@ -54,7 +63,7 @@
 							$('#goSurgeryResultGoRegistrationDate').val(allData.goSurgeryResultGoRegistrationDate);
 							$('#firstDay').val(allData.firstDay);
 							$('#secondDay').val(allData.secondDay);
-						}
+						} */
 					},
 					error : function(error){
 						alert('몰라 하세요.');
@@ -90,7 +99,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="goSurgery" items="${goSurgery}">
+			<%-- <c:forEach var="goSurgery" items="${goSurgery}">
 				<tr>
 					<td>${goSurgery.goHospitalName}</td>
 					<td>${goSurgery.goDoctorName}</td>
@@ -98,7 +107,7 @@
 					<td>${goSurgery.goSurgeryName}</td>
 					<td>${goSurgery.goSurgeryResultGoRegistrationDate}</td>	
 				</tr>
-			</c:forEach>
+			</c:forEach> --%>
 		</tbody>
 	</table>
 </body>
