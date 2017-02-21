@@ -108,8 +108,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-	
-	
+		
 		<!-- mysql, mybatis, connectionpool 의존성추가 -->
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>

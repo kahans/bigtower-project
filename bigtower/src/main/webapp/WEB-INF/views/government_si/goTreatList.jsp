@@ -6,19 +6,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 	<form action="<c:url value='/government/treatSearch'/>" method="post">
-		<select>
+		<select id="selectConditions">
 			<option value="selectAll">선택사항 없음</option>
-			<option value="selectDate">기간</option>
+			<option value="0">기간</option>
 			<option value="selectSubject">진료과목</option>
 			<option value="selectHospital">병원</option>
 			<option value="selectDisease">질병명</option>
 			<option value="selectDoctor">의사명</option>
 		</select>
-		<input type= "date" name="firstDay" id="firstDay">
-		<input type= "date" name="secondDay" id="secondDay">
+		<div class="date">
+			<input type= "date" name="firstDay" id="firstDay">
+			<input type= "date" name="secondDay" id="secondDay">
+		</div>
 		<input type="text" name="searchContents">
 		<input type="submit" value="검색">
 	</form>
@@ -51,6 +54,19 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<script>
+		$(document).ready(function(){
+			$('selectConditions').change(function(){
+				var state = $('#selectConditions option:selected').val();
+				if(state == '기간'){
+					$('.date').show();
+				}else{
+					$('.date').hide();
+				}
+			})
+		});
 
+	</script>
 </body>
 </html>
