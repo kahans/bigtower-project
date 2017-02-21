@@ -1,6 +1,7 @@
 package com.team4.project.government.test.domain;
 
 public class GoBloodTest {
+	private int goCitizenNo;
 	private String goBloodTestCode;
 	private String goTreatCode; 
 	private int goBloodTestBloodSugar;
@@ -11,9 +12,18 @@ public class GoBloodTest {
 	private String goBloodTestGoRegistrationDate;
 	private String goFirstDate;
 	private String goSecondDate;
+	
 
 	public GoBloodTest() {
 		super();
+	}
+
+	public int getGoCitizenNo() {
+		return goCitizenNo;
+	}
+
+	public void setGoCitizenNo(int goCitizenNo) {
+		this.goCitizenNo = goCitizenNo;
 	}
 
 	public String getGoFirstDate() {

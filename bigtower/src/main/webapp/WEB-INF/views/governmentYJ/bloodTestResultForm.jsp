@@ -10,6 +10,8 @@
 <body>
 		
 	<form action="/goBloodTest" method="post">
+		<!-- hidden에 로그인한 회원의 citizen_no를 조회해와서 값을 부여해줌 -->
+		<input type="hidden" name="goCitizenNo" value="2"/>
 		<input type="hidden" name="goTreatCode" value="treat_01"/>
 		<input type="date" name="goFirstDate">-<input type="date" name="goSecondDate">
 		기간입력

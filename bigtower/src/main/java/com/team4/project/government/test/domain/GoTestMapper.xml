@@ -3,11 +3,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="goTest">
-
+	<!-- citizenNo로 treatCode 조회 -->
+	<select id="selectTreatCode" resultType="com.team4.project.government.test.domain.GoTreatByBloodTest"
+	 parameterType="com.team4.project.government.test.domain.GoTreatByBloodTest">
+		select  
+			go_treat_code as goTreatCode  
+		from go_treat join go_citizen on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO  
+		where go_treat.GO_CITIZEN_NO=#{goCitizenNo};
+	</select>
+	
+	
 	<!-- 혈액검사결과 조회  -->
 	<select id="selectBlood" resultType="com.team4.project.government.test.domain.GoBloodTest"
 	 parameterType="com.team4.project.government.test.domain.GoBloodTest">
-select 
+		select 
 	 		go_test_blood_result.GO_TREAT_CODE as goTreatCode,
 	 		go_test_blood_result.GO_BLOOD_TEST_BLOOD_SUGAR as goBloodTestBloodSugar,
 	 		go_test_blood_result.GO_BLOOD_TEST_PLATELET as goBloodTestPlatelet,
