@@ -2,23 +2,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="ho">
+<mapper namespace="hospital">
 <!--환자조회 -->
  	<select id="selectPatient" resultType="com.team4.project.hospital.dto.HoPatient"
  								 parameterType="String">
  		SELECT 
- 			HO_HOSPITAL_CODE as hoHospitalCode,
- 			GO_CITIZEN_ID as goCitizenId,
- 			HO_PATIENT_GENDER as hoPatientGender,
- 			HO_PATIENT_NAME as hoPatientName,
- 			HO_PATIENT_PHONE as hoPatientPhone,
- 			HO_ZIP_CODE as hoZipCode,
- 			HO_PATIENT_ADDRESS as hoPatientAddress,
- 			HO_PATIENT_DETAIL_ADDRESS as hoPatientDetailAddress 
+ 			HO_HOSPITAL_CODE,
+ 			GO_CITIZEN_ID,
+ 			HO_PATIENT_NAME,
+ 			HO_PATIENT_PHONE,
+ 			HO_ZIP_CODE,
+ 			HO_PATIENT_ADDRESS,
+ 			HO_PATIENT_DETAIL_ADDRESS 
  		FROM
  		 ho_patient 
  		WHERE 
- 			HO_PATIENT_CODE = #{hoPatientCode}
+ 			GO_CITIZEN_ID = #{goCitizenId}
  	
  	</select>
 </mapper>

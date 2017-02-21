@@ -9,12 +9,12 @@ import com.team4.project.hospital.dto.HoPatient;
 public class HoReceiveReservationService {
 
 	@Autowired
-	private HoReceiveReservationDao hoRRD;
+	private HoReceiveReservationDao hoRRDao;
 	
-	//환자조회
-	public HoPatient selectPatient(String hoPatientCode){
-		System.out.println("HoReceiveReservationService :"+hoPatientCode);
-		return hoRRD.selectPatient(hoPatientCode);
+	//
+	public HoPatient searchPatient(String goCitizenId){
+		System.out.println("HoReceiveReservationService :"+goCitizenId);
+		return hoRRDao.selectPatient(goCitizenId);
 		
 	}
 	

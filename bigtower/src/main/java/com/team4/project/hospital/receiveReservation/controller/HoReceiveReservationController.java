@@ -1,7 +1,5 @@
 package com.team4.project.hospital.receiveReservation.controller;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,33 +15,34 @@ import com.team4.project.hospital.dto.HoPatient;
 public class HoReceiveReservationController {
 	private static final Logger logger = LoggerFactory.getLogger(HoReceiveReservationController.class);
 	@Autowired
-	private HoReceiveReservationService hoRRS;
-
-	//È¯ÀÚÁ¶È¸ Æû 
-	@RequestMapping(value="/hospital_YJ/tempSearchPatient", method=RequestMethod.GET)
-	public String selectPatient(){
-		logger.debug("È¯ÀÚÁ¶È¸ GET¿äÃ»");
+	private HoReceiveReservationService hoRRService;
 	
-		return "/hospital_YJ/tempSearchPatient";
+	//ì ‘ìˆ˜í¼ ë³´ì—¬ì£¼ê¸°
+	@RequestMapping(value="/hospital/receive", method=RequestMethod.GET)
+	public String addReceive(){
+		logger.debug("addPatient GET");
+	
+		return "/hospital_YJ/receive";
 	}
 	
+	//ì ‘ìˆ˜ì‹¤í–‰
+	@RequestMapping(value="/hospital/receive", method=RequestMethod.POST)
+	public String addReceive(HoPatient hoPatient){
+		logger.debug("addReceive POST");
+		logger.debug("hoReceive:"+hoPatient);
+		
+		return "/hospital_YJ/receive";
+	}
 	
-	@RequestMapping(value="/getpatient", method=RequestMethod.POST)
-	public @ResponseBody HoPatient selectPatient1(@RequestParam("hoPatientCode")String hoPatientCode){
-		logger.debug("selectPatient1 POST¿äÃ»");
-		logger.debug("º´¿øÈ¯ÀÚÄÚµå È®ÀÎ {} ¿©±â", hoPatientCode);
-		HoPatient hopatient = hoRRS.selectPatient(hoPatientCode);
-		logger.debug("hopatient"+hopatient);
+	//ajax í•œëª…ì˜ í™˜ìì •ë³´ ì¡°íšŒ
+	@RequestMapping(value="hospital/searchPatient", method=RequestMethod.POST)
+	public @ResponseBody HoPatient selectPatient1(@RequestParam("goCitizenId")String goCitizenId){
+		logger.debug("selectPatient1 POST");
+		HoPatient hopatient = hoRRService.searchPatient(goCitizenId);
+		logger.debug("hopatient:"+hopatient);
+		
 		return hopatient;
 	}
 }
-	//È¯ÀÚÁ¶È¸ POST¿äÃ»
-/*	@RequestMapping(value="/hospital_YJ/tempSearchPatient", method=RequestMethod.POST)
-	public String selectPatient(String patient){
-		logger.debug("È¯ÀÚÁ¶È¸¹öÆ°Å¬¸¯ POST¿äÃ»"+toString());
-		
-		return "redirect:/hospital_YJ/tempSearchPatient";
-	}*/
-	
 
 

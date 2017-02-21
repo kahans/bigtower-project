@@ -4,7 +4,6 @@ public class HoPatient {
 	private String hoPatientCode;
 	private String hoHospitalCode;
 	private String goCitizenId;
-	private String hoPatientGender;
 	private String hoPatientPhone;
 	private String hoPatientName;
 	private String hoZipCode;
@@ -28,12 +27,6 @@ public class HoPatient {
 	}
 	public void setGoCitizenId(String goCitizenId) {
 		this.goCitizenId = goCitizenId;
-	}
-	public String getHoPatientGender() {
-		return hoPatientGender;
-	}
-	public void setHoPatientGender(String hoPatientGender) {
-		this.hoPatientGender = hoPatientGender;
 	}
 	public String getHoPatientPhone() {
 		return hoPatientPhone;
@@ -65,5 +58,13 @@ public class HoPatient {
 	public void setHoPatientDetailAddress(String hoPatientDetailAddress) {
 		this.hoPatientDetailAddress = hoPatientDetailAddress;
 	}
+	@Override
+	public String toString() {
+		return "HoPatient [hoPatientCode=" + hoPatientCode + ", hoHospitalCode=" + hoHospitalCode + ", goCitizenId="
+				+ goCitizenId + ", hoPatientPhone=" + hoPatientPhone + ", hoPatientName=" + hoPatientName
+				+ ", hoZipCode=" + hoZipCode + ", hoPatientAddress=" + hoPatientAddress + ", hoPatientDetailAddress="
+				+ hoPatientDetailAddress + "]";
+	}
+	
 
 }

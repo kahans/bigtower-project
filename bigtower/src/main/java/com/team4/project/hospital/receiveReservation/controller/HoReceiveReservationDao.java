@@ -12,10 +12,10 @@ public class HoReceiveReservationDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	//환자조회
-	public HoPatient selectPatient(String hoPatientCode){
+	//
+	public HoPatient selectPatient(String goCitizenId){
 		
-		return sqlSession.selectOne("ho.selectPatient", hoPatientCode);
+		return sqlSession.selectOne("hospital.selectPatient", goCitizenId);
 		
 	}
 
