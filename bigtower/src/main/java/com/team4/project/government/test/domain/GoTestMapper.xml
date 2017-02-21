@@ -30,5 +30,14 @@
 			(go_test_blood_result.GO_BLOOD_TEST_DATE between #{goFirstDate} and #{goSecondDate}) AND go_test_blood_result.GO_TREAT_CODE=#{goTreatCode}
 	</select>
 
-	
+	<!-- 이미지 결과 조회 -->
+	<select id="selectImg" resultType="" parameterType="">
+		select 
+			go_test_image_result.GO_IMAGE_TEST_FILE_PATH as goImageTestFilePath,
+			go_test_image_result.GO_IMAGE_TEST_FILE_NAME as goImageTestFileName 
+		from go_test_image_result 
+		join go_treat on go_test_image_result.GO_TREAT_CODE = go_treat.GO_TREAT_CODE 
+		join go_citizen on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO 
+		where go_citizen.GO_CITIZEN_id=#{goCitizenId}
+	</select>
 </mapper>
