@@ -9,8 +9,8 @@ public class GoSurgery {
 	private String goTreatCode;
 	private String goSurgeryCode;
 	//날짜
-	@DateTimeFormat(pattern="yy-MM-dd HH:mm:ss a")
-	private Date goSurgeryResultGoRegistrationDate;
+	@DateTimeFormat(pattern="yyyy/MM/dd hh:mm:ss")
+	private String goSurgeryResultGoRegistrationDate;
 	//DB에서 조인문을 통해서 받는 값들
 	private String goHospitalName;
 	private String goSurgeryName;
@@ -52,10 +52,10 @@ public class GoSurgery {
 	public void setGoSurgeryCode(String goSurgeryCode) {
 		this.goSurgeryCode = goSurgeryCode;
 	}
-	public Date getGoSurgeryResultGoRegistrationDate() {
+	public String getGoSurgeryResultGoRegistrationDate() {
 		return goSurgeryResultGoRegistrationDate;
 	}
-	public void setGoSurgeryResultGoRegistrationDate(Date goSurgeryResultGoRegistrationDate) {
+	public void setGoSurgeryResultGoRegistrationDate(String goSurgeryResultGoRegistrationDate) {
 		this.goSurgeryResultGoRegistrationDate = goSurgeryResultGoRegistrationDate;
 	}
 	@Override

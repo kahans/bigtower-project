@@ -15,20 +15,18 @@ public class GoTreatChartDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	private final String TREATCHART_NS = "GoTreatChart.";
-	
 	//진료 상세보기
 	public GoTreat goSelectTreat(String goTreatCode){
-		return sqlSession.selectOne(TREATCHART_NS+"goSelectTreat", goTreatCode);
+		return sqlSession.selectOne("GoTreatChart.goSelectTreat", goTreatCode);
 	}
 	
 	//진료목록
 	public List<GoTreat> goTreatList(){
-		return sqlSession.selectList(TREATCHART_NS+"goTreatList");
+		return sqlSession.selectList("GoTreatChart.goTreatList");
 	}
 	
 	//동일한 진료코드의 질병코드 리스트 가져오기
 	public List<GoDiagnosis> goDiagnosisList(String goTreatCode){
-		return sqlSession.selectList(TREATCHART_NS+"goDiagnosisList", goTreatCode);
+		return sqlSession.selectList("GoTreatChart.goDiagnosisList", goTreatCode);
 	}
 }

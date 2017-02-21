@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>입/퇴원 수술 내역 조회사이트</title>
+<title>수술 내역 조회사이트</title>
 </head>
 <body>
 	<table border="1">
