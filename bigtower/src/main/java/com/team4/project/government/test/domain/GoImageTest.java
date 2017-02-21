@@ -1,5 +1,7 @@
 package com.team4.project.government.test.domain;
 
-public class GoImageTest {
+import com.team4.project.government.treat.domain.GoTreat;
 
+public class GoImageTest extends GoTreat{
+	
 }

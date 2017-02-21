@@ -1,9 +1,10 @@
 package com.team4.project.government.test.domain;
 
-public class GoBloodTest {
-	private int goCitizenNo;
+import com.team4.project.government.treat.domain.GoTreat;
+
+public class GoBloodTest extends GoTreat {
+	
 	private String goBloodTestCode;
-	private String goTreatCode; 
 	private int goBloodTestBloodSugar;
 	private int goBloodTestPlatelet;
 	private String goBloodTestFilePath;
@@ -16,14 +17,6 @@ public class GoBloodTest {
 
 	public GoBloodTest() {
 		super();
-	}
-
-	public int getGoCitizenNo() {
-		return goCitizenNo;
-	}
-
-	public void setGoCitizenNo(int goCitizenNo) {
-		this.goCitizenNo = goCitizenNo;
 	}
 
 	public String getGoFirstDate() {

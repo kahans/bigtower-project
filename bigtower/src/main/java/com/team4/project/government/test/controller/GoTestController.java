@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.team4.project.government.test.domain.GoBloodTest;
+import com.team4.project.government.test.domain.GoImageTest;
 import com.team4.project.government.test.domain.GoTreatByBloodTest;
 
 @Controller
@@ -58,7 +58,9 @@ public class GoTestController {
 	//영상검사 요청페이지에서 날짜 citizenNo 넘겨받음 citizenNo는 추후에 로그인정보에서 citizenNO 혹은 주민번호를 받아 올 예정
 	//주민번호를 받게되면 DTo와 mapper 수정해야함.
 	@RequestMapping(value="/goImgTest" , method=RequestMethod.POST)
-	public String selectImgTest(Model model){
+	public String selectImgTest(Model model, GoImageTest imgTest){
+			logger.debug("citizenId 확인 : "+imgTest.getGoCitizenId());
+		
 		return "";
 		
 	}
