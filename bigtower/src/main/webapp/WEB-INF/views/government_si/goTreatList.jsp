@@ -30,32 +30,21 @@
 	<br><br>
 	
 	<table border="1">
-		<tr>
-			<td>진료코드</td>
-			<td>이름</td>
-			<td>병원명</td>
-			<td>의사명</td>
-			<td>진료과목</td>
-			<td>질병명</td>
-			<td>진료등록일</td>
-		</tr>
-		<!-- 진료테이블에 있는 데이터를 목록으로 출력한다. -->
-		<c:forEach items="${goTreatList}" var="treatList">
+		<thead>
 			<tr>
-				<td><a href="<c:url value='/government/treatView?goTreatCode=${treatList.goTreatCode}' />">${treatList.goTreatCode}</a></td>
-				<td><div id="citizenName"></div></td>
-				<td id="hospitalName">${treatList.goHospitalName}</td>
-				<td id="doctorName">${treatList.goDoctorName}</td>
-				<td id="treatSubjectName">${treatList.goTreatSubjectName}</td>		
-				<!-- 진료코드가 같은것 끼리 출력하게 된다. -->
-				<td id="diseaseName">
-					<c:forEach items="${treatList.diagnosisList}" var="diagnosisList">
-						${diagnosisList.goDiseaseKor}<br>
-					</c:forEach>
-				</td>
-				<td id="registrationDate">${treatList.goTreatRegistrationDate}</td>	
+				<td>진료코드</td>
+				<td>이름</td>
+				<td>병원명</td>
+				<td>의사명</td>
+				<td>진료과목</td>
+				<td>질병명</td>
+				<td>진료등록일</td>
 			</tr>
-		</c:forEach>
+		</thead>
+		<!-- 진료테이블에 있는 데이터를 목록으로 출력한다. -->
+		<tbody>
+		</tbody>
+
 	</table>
 	
 	<script>
@@ -100,14 +89,44 @@
 							$("#memberTbody").append("<td><button class='memberClass' data-dismiss='modal' value='"+item.memberNo+"'>선택</button>");
 							$("#memberTbody").append("</tr>");
 							 */
-							 console.log('ddd');
-							$('#citizenName').val(item.goCitizenName);
+							console.log('goCitizenName:'+item.goCitizenName);
+							
+							 /* 
+ 			<tr>
+				<td><a href="<c:url value='/government/treatView?goTreatCode=${treatList.goTreatCode}' />">${treatList.goTreatCode}</a></td>
+				<td><div id="citizenName"></div></td>
+				<td id="hospitalName">${treatList.goHospitalName}</td>
+				<td id="doctorName">${treatList.goDoctorName}</td>
+				<td id="treatSubjectName">${treatList.goTreatSubjectName}</td>		
+				<!-- 진료코드가 같은것 끼리 출력하게 된다. -->
+				<td id="diseaseName">
+					<c:forEach items="${treatList.diagnosisList}" var="diagnosisList">
+						${diagnosisList.goDiseaseKor}<br>
+					</c:forEach>
+				</td>
+				<td id="registrationDate">${treatList.goTreatRegistrationDate}</td>	
+			</tr>
+							 */
+							$('tbody').append('<tr>');
+							$('tbody').append('<td><a href="<c:url value="/government/treatView?goTreatCode='+item.goTreatCode+'" />">'+item.goTreatCode+'</a></td>');
+							$('tbody').append('<td>'+item.goCitizenName+'</td>');
+							$('tbody').append('<td>'+item.goHospitalName+'</td>');
+							$('tbody').append('<td>'+item.goDoctorName+'</td>');
+							$('tbody').append('<td>'+item.goTreatSubjectName+'</td>');
+							$('tbody').append('<td id="18"></td>');
+							$.each(item.diagnosisList, function(key, value) {
+								$('#18').append(value.goDiseaseKor+',');
+							});
+							$('tbody').append('<td>'+item.goTreatRegistrationDate+'</td>');
+							$('tbody').append('</tr>');
+
+							/* $('#citizenName').val(item.goCitizenName);
 							$('#hospitalName').val(item.goHospitalName);
 							$('#doctorName').val(item.goDoctorName);
 							$('#treatSubjectName').val(item.goTreatSubjectName);
 							$('#diseaseName').val(item.goDiseaseKor);
 							$('#registrationDate').val(item.goTreatRegistrationDate);
-						
+						 */
 						})
 
 					}

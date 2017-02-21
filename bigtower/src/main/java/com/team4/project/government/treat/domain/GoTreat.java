@@ -164,10 +164,11 @@ public String toString() {
 			+ ", goDoctorId=" + goDoctorId + ", goTreatSubjectCode=" + goTreatSubjectCode + ", goChartCode="
 			+ goChartCode + ", goChartSeq=" + goChartSeq + ", goTreatContents=" + goTreatContents
 			+ ", goTreatRegistrationDate=" + goTreatRegistrationDate + ", goTreatGoRegistrationDate="
-			+ goTreatGoRegistrationDate + ", goHospitalName=" + goHospitalName + ", goCitizenName=" + goCitizenName
-			+ ", goDoctorName=" + goDoctorName + ", goTreatSubjectName=" + goTreatSubjectName + ", goDiseaseKor="
-			+ goDiseaseKor + "]";
+			+ goTreatGoRegistrationDate + ", diagnosisList=" + diagnosisList + ", goHospitalName=" + goHospitalName
+			+ ", goHospitalAddress=" + goHospitalAddress + ", goCitizenName=" + goCitizenName + ", goDoctorName="
+			+ goDoctorName + ", goTreatSubjectName=" + goTreatSubjectName + ", goDiseaseKor=" + goDiseaseKor + "]";
 }
+
 
 
 }
