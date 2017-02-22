@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team4.project.government.vaccinationCheckup.domain.GoCheckup;
+import com.team4.project.government.vaccinationCheckup.domain.GoCheckupTreatSub;
 import com.team4.project.government.vaccinationCheckup.domain.GoVaccinationResult;
 
 @Repository
@@ -21,7 +22,7 @@ public class GoVaccinationCheckupDao {
 		return sqlSession.selectList(VACCINATIONCHECKUP_NS+"vaccinationList");
 	}
 	//건강검진 결과 목록 가져오기
-	public List<GoCheckup> checkUpList(GoCheckup gocheckup){
+	public List<GoCheckupTreatSub> checkUpList(GoCheckupTreatSub gocheckup){
 		return sqlSession.selectList(VACCINATIONCHECKUP_NS+"checkUpList", gocheckup);
 	}
 }

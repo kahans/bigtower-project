@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.team4.project.government.vaccinationCheckup.domain.GoCheckup;
+import com.team4.project.government.vaccinationCheckup.domain.GoCheckupTreatSub;
 
 @Controller
 public class GoVaccinationCheckupController {
@@ -34,13 +35,13 @@ public class GoVaccinationCheckupController {
 	}
 	//건강검진 결과 목록 가져오기
 	@RequestMapping(value="/governmentYJ/checkUp", method=RequestMethod.POST)
-	public String checkUpList(GoCheckup gocheckup, Model model){
+	public String checkUpList(GoCheckupTreatSub gocheckup, Model model){
 		
 		
-		List<GoCheckup> checkUp = goVCS.checkUpList(gocheckup);
+		List<GoCheckupTreatSub> checkUp = goVCS.checkUpList(gocheckup);
 		
 		
-		for(GoCheckup x:checkUp){
+		for(GoCheckupTreatSub x:checkUp){
 			logger.debug(" : "+x.toString());
 		}
 		

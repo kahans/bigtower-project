@@ -1,27 +1,19 @@
 package com.team4.project.government.vaccinationCheckup.domain;
 
+import com.team4.project.government.treat.domain.GoTreat;
 
-
-public class GoCheckup {
+public class GoCheckupTreatSub extends GoTreat{
 	protected String goCheckUpResultCode;
 	protected String goCheckUpResultFilePath;
 	protected String goCheckUpResultFileName;
 	protected String goCheckUpResultRegistrationDate;
 	protected String goCheckUpResultGoRegistrationDate;
-	
-
-	
-	
-
-	
-	
 	public String getGoCheckUpResultCode() {
 		return goCheckUpResultCode;
 	}
 	public void setGoCheckUpResultCode(String goCheckUpResultCode) {
 		this.goCheckUpResultCode = goCheckUpResultCode;
 	}
-	
 	public String getGoCheckUpResultFilePath() {
 		return goCheckUpResultFilePath;
 	}
@@ -47,6 +39,9 @@ public class GoCheckup {
 		this.goCheckUpResultGoRegistrationDate = goCheckUpResultGoRegistrationDate;
 	}
 	
+
 	
+	
+
 	
 }

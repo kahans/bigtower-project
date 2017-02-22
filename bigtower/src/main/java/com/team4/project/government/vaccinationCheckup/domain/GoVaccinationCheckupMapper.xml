@@ -20,7 +20,7 @@
  	
  	
  	<!-- 건강검진 결과목록 가져오기 -->
- 	<select id="checkUpList" resultType="com.team4.project.government.vaccinationCheckup.domain.GoCheckup">
+ 	<select id="checkUpList" resultType="com.team4.project.government.vaccinationCheckup.domain.GovaccinationCheckupTreatSub">
  		SELECT 
  			go_test_checkup_result.GO_CHECKUP_RESULT_CODE as goCheckUpResultCode,
  			go_test_checkup_result.GO_TREAT_CODE as goTreatCode,

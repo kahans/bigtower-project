@@ -1,6 +1,8 @@
 package com.team4.project.government.vaccinationCheckup.domain;
 
-public class GoVaccinationResult {
+import com.team4.project.government.treat.domain.GoTreat;
+
+public class GovaccinationCheckupTreatSub extends GoTreat {
 
 protected String goVaccinationResultCode;
 protected String goTreatCode;
@@ -13,7 +15,7 @@ protected String goVaccinationName;
 protected String goVaccinationDegree; //최종차수가 몇차까지인지
 
 
-public String getGoVaccinationResultDegree() {
+public String etGoVaccinationResultDegree() {
 	return goVaccinationResultDegree;
 }
 public void setGoVaccinationResultDegree(String goVaccinationResultDegree) {
