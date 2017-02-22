@@ -1,13 +1,11 @@
 package com.team4.project.government.test.domain;
 
-import com.team4.project.government.treat.domain.GoTreat;
-
-public class GoImageTest extends GoTreat{
-	private String goImageTestCode;
-	private String goImageTestFilePath;
-	private String goImageTestFileName;
-	private String goImageTestDate;
-	private String goImageTestGoRegistrationDate;
+public class GoImageTest {
+	protected String goImageTestCode;
+	protected String goImageTestFilePath;
+	protected String goImageTestFileName;
+	protected String goImageTestDate;
+	protected String goImageTestGoRegistrationDate;
 
 	public GoImageTest() {
 		super();

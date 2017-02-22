@@ -35,7 +35,7 @@
 						
 					</tr>
 			
-				<c:forEach var="bloodTest" items="${goTestBlood.goBloodTest}">
+				<c:forEach var="bloodTest" items="${goTestBlood.goBloodTestTreatSub}">
 				<tr>
 					<td>
 						<input type="text" name="fileName" value="${bloodTest.goBloodTestFileName}"/>

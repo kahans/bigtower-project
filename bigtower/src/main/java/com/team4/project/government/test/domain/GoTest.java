@@ -4,7 +4,8 @@ import java.util.List;
 
 public class GoTest {
 	private String goCitizenId;
-	private List<GoBloodTest> goBloodTest;
+	private List<GoBloodTestTreatSub> goBloodTestTreatSub;
+	private List<GoImageTest> goImageTest;
 	private String goFirstDate;
 	private String goSecondDate;
 
@@ -34,19 +35,32 @@ public class GoTest {
 		this.goCitizenId = goCitizenId;
 	}
 
-	public List<GoBloodTest> getGoBloodTest() {
-		return goBloodTest;
+
+	public List<GoBloodTestTreatSub> getGoBloodTestTreatSub() {
+		return goBloodTestTreatSub;
 	}
 
-	public void setGoBloodTest(List<GoBloodTest> goBloodTest) {
-		this.goBloodTest = goBloodTest;
+	public void setGoBloodTestTreatSub(List<GoBloodTestTreatSub> goBloodTestTreatSub) {
+		this.goBloodTestTreatSub = goBloodTestTreatSub;
+	}
+
+	public List<GoImageTest> getGoImageTest() {
+		return goImageTest;
+	}
+
+	public void setGoImageTest(List<GoImageTest> goImageTest) {
+		this.goImageTest = goImageTest;
 	}
 
 	@Override
 	public String toString() {
-		return "GoTest [goCitizenId=" + goCitizenId + ", goBloodTest=" + goBloodTest + ", goFirstDate=" + goFirstDate
-				+ ", goSecondDate=" + goSecondDate + "]";
+		return "GoTest [goCitizenId=" + goCitizenId + ", goBloodTestTreatSub=" + goBloodTestTreatSub + ", goImageTest="
+				+ goImageTest + ", goFirstDate=" + goFirstDate + ", goSecondDate=" + goSecondDate + "]";
 	}
+
+
+
+
 	
 	
 }

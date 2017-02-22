@@ -1,10 +1,8 @@
 package com.team4.project.government.test.domain;
 
-import java.sql.Date;
+import com.team4.project.government.treat.domain.GoTreat;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-public class GoBloodTest {
+public class GoBloodTestTreatSub extends GoTreat {
 	
 	// 혈액검사
 	protected String goBloodTestCode;
@@ -59,12 +57,12 @@ public class GoBloodTest {
 	}
 	@Override
 	public String toString() {
-		return "GoBloodTest [goBloodTestCode=" + goBloodTestCode + ", goBloodTestBloodSugar=" + goBloodTestBloodSugar
-				+ ", goBloodTestPlatelet=" + goBloodTestPlatelet + ", goBloodTestFilePath=" + goBloodTestFilePath
-				+ ", goBloodTestFileName=" + goBloodTestFileName + ", goBloodTestDate=" + goBloodTestDate
-				+ ", goBloodTestGoRegistrationDate=" + goBloodTestGoRegistrationDate + "]";
+		return "GoBloodTestTreatSub [goBloodTestCode=" + goBloodTestCode + ", goBloodTestBloodSugar="
+				+ goBloodTestBloodSugar + ", goBloodTestPlatelet=" + goBloodTestPlatelet + ", goBloodTestFilePath="
+				+ goBloodTestFilePath + ", goBloodTestFileName=" + goBloodTestFileName + ", goBloodTestDate="
+				+ goBloodTestDate + ", goBloodTestGoRegistrationDate=" + goBloodTestGoRegistrationDate + "]";
 	}
-	
+
 
 	
 	
