@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
-import com.team4.project.government.treat.domain.GoTreat;
+import com.team4.project.government.treat.domain.GoSearchTreatSub;
 
 @Repository
 public class GoTreatDao {
@@ -17,12 +17,12 @@ public class GoTreatDao {
 	private SqlSessionTemplate sqlSession;
 	
 	//진료 상세보기
-	public GoTreat goSelectTreat(String goTreatCode){
+	public GoSearchTreatSub goSelectTreat(String goTreatCode){
 		return sqlSession.selectOne("GoTreat.goSelectTreat", goTreatCode);
 	}
 	
 	//진료목록
-	public List<GoTreat> goTreatList(Map<String, Object> returnMap){
+	public List<GoSearchTreatSub> goTreatList(Map<String, Object> returnMap){
 		return sqlSession.selectList("GoTreat.goTreatList", returnMap);
 	}
 	
