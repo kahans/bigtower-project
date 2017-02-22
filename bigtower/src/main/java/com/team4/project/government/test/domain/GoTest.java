@@ -3,11 +3,11 @@ package com.team4.project.government.test.domain;
 import java.util.List;
 
 public class GoTest {
-	private String goCitizenId;
-	private List<GoBloodTestTreatSub> goBloodTestTreatSub;
-	private List<GoImageTest> goImageTest;
-	private String goFirstDate;
-	private String goSecondDate;
+	protected String goCitizenId;
+	protected List<GoBloodTestTreatSub> goBloodTestTreatSub;
+	protected List<GoImageTestTreatSub> goImageTestTreatSub;
+	protected String goFirstDate;
+	protected String goSecondDate;
 
 	
 	public String getGoFirstDate() {
@@ -44,19 +44,24 @@ public class GoTest {
 		this.goBloodTestTreatSub = goBloodTestTreatSub;
 	}
 
-	public List<GoImageTest> getGoImageTest() {
-		return goImageTest;
+	public List<GoImageTestTreatSub> getGoImageTestTreatSub() {
+		return goImageTestTreatSub;
 	}
 
-	public void setGoImageTest(List<GoImageTest> goImageTest) {
-		this.goImageTest = goImageTest;
+	public void setGoImageTestTreatSub(List<GoImageTestTreatSub> goImageTestTreatSub) {
+		this.goImageTestTreatSub = goImageTestTreatSub;
 	}
 
 	@Override
 	public String toString() {
-		return "GoTest [goCitizenId=" + goCitizenId + ", goBloodTestTreatSub=" + goBloodTestTreatSub + ", goImageTest="
-				+ goImageTest + ", goFirstDate=" + goFirstDate + ", goSecondDate=" + goSecondDate + "]";
+		return "GoTest [goCitizenId=" + goCitizenId + ", goBloodTestTreatSub=" + goBloodTestTreatSub
+				+ ", goImageTestTreatSub=" + goImageTestTreatSub + ", goFirstDate=" + goFirstDate + ", goSecondDate="
+				+ goSecondDate + "]";
 	}
+
+
+
+
 
 
 

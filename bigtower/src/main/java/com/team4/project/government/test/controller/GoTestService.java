@@ -31,13 +31,13 @@ public class GoTestService {
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String currentdate = transFormat.format(date);
 		System.out.println("currentDate 확인 : "+currentdate);
-		if(goTest.getGoFirstDate()==""&goTest.getGoSecondDate()==""){
+		if(goTest.getGoFirstDate().equals("")&goTest.getGoSecondDate().equals("")){
 			goTest.setGoFirstDate("1900-01-01");
 			goTest.setGoSecondDate(currentdate);
 			logger.debug("firstDate 확인 : "+goTest.getGoFirstDate());
 			logger.debug("secondDate 들어갔는지 확인 : "+goTest.getGoSecondDate());
 			logger.debug("둘다 공백일때");
-		}else if(goTest.getGoFirstDate()==""){
+		}else if(goTest.getGoFirstDate().equals("")){
 			goTest.setGoFirstDate("1900-01-01");
 			logger.debug("firstDate 확인 : "+goTest.getGoFirstDate());
 			logger.debug("앞이 공백일때");

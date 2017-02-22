@@ -53,7 +53,10 @@ public class GoTestController {
 	public String selectImgTest(Model model, GoTest goTest){
 			logger.debug("citizenId 확인 : "+goTest.getGoCitizenId());
 			logger.debug("입력받은 날짜 확인 : "+goTest.getGoFirstDate()+" , "+goTest.getGoSecondDate());
-		
+			
+			GoTest goImageTest = goTS.selectImageTest(goTest);
+			//모델에 이미지결과 받아온 list를 담음
+			model.addAttribute("goTestBlood",goImageTest);
 		return "";
 		
 	}
