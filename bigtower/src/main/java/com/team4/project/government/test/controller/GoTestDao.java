@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team4.project.government.test.domain.GoBloodTest;
-import com.team4.project.government.test.domain.GoTreatByBloodTest;
+import com.team4.project.government.test.domain.GoTest;
 
 @Repository
 public class GoTestDao {
@@ -19,15 +19,10 @@ public class GoTestDao {
 	
 
 	//날짜로 goBloodTest 결과를 조회한다
-	public List<GoBloodTest> selectBlood(GoBloodTest goBloodTest){
+	public List<GoBloodTest> selectBlood(GoTest goTest){
 		
-		return sqlSession.selectList("goTest.selectBlood", goBloodTest);
+		return sqlSession.selectList("goTest.selectBlood", goTest);
 	}
-	//citizenNo 로 treatCode 가져옴
-	public List<GoTreatByBloodTest> selectTreatCode(GoTreatByBloodTest goTreatByBloodTest){
-		logger.debug("citizenNo 넘어왔는지 확인 : "+goTreatByBloodTest.getGoCitizenNo());
-		return sqlSession.selectList("goTest.selectTreatCode", goTreatByBloodTest);
-		
-	}
+
 	
 }
