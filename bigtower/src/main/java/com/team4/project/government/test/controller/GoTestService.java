@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team4.project.government.test.domain.GoBloodTestTreatSub;
+import com.team4.project.government.test.domain.GoImageTestTreatSub;
 import com.team4.project.government.test.domain.GoTest;
 
 @Service
@@ -20,6 +21,7 @@ public class GoTestService {
 	@Autowired
 	private GoTestDao goTD;
 	
+
 	
 	//혈액검사결과 요청
 	public GoTest selectBloodTest(GoTest goTest){
@@ -86,10 +88,14 @@ public class GoTestService {
 			logger.debug("secondDate 들어갔는지 확인 : "+goTest.getGoSecondDate());
 			logger.debug("뒤가 공백일때");
 		}
-		
-		
-		
-		return null;
+		List<GoImageTestTreatSub> imageTest = goTD.selectImage(goTest);
+			for(int x=0; x<imageTest.size(); x++)
+				logger.debug("imageTest 확인 : " + imageTest.get(x).toString());
+			for(int i=0; i<imageTest.size(); i++){
+				goTestResult.setGoImageTestTreatSub(imageTest);
+			}
+			logger.debug("서비스에서 확인 : "+goTestResult.getGoImageTestTreatSub().toString());
+		return goTestResult;
 	}
 	
 	

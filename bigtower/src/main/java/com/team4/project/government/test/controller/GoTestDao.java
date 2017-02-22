@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team4.project.government.test.domain.GoBloodTestTreatSub;
+import com.team4.project.government.test.domain.GoImageTestTreatSub;
 import com.team4.project.government.test.domain.GoTest;
 
 @Repository
@@ -23,6 +24,11 @@ public class GoTestDao {
 		
 		return sqlSession.selectList("goTest.selectBlood", goTest);
 	}
-
+	//날짜로 goImageTest 결과를 조회한다
+	public  List<GoImageTestTreatSub> selectImage(GoTest goTest){
+		
+		return sqlSession.selectList("goTest.selectImage", goTest);
+		
+	}
 	
 }

@@ -56,8 +56,8 @@ public class GoTestController {
 			
 			GoTest goImageTest = goTS.selectImageTest(goTest);
 			//모델에 이미지결과 받아온 list를 담음
-			model.addAttribute("goTestBlood",goImageTest);
-		return "";
+			model.addAttribute("goImageTest",goImageTest);
+		return "/governmentYJ/imgTestResult";
 		
 	}
 	
