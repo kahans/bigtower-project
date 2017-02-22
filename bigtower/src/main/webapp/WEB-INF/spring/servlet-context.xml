@@ -43,22 +43,30 @@
 	<mvc:resources mapping="/templates/mainCss/img/**" location="/WEB-INF/templates/mainCss/img/" />
 	<mvc:resources mapping="/templates/mainCss/js/**" location="/WEB-INF/templates/mainCss/js/" /> -->
 	<!-- 인터셉터 사용준비 -->
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
-			여러개 컨트롤러 추가 가능
+			<!-- 여러개 컨트롤러 추가 가능
 			<mvc:mapping path="/admin_write"/> <mvc:mapping path="/admin_update"/> 
-				<mvc:mapping path="/admin_delete"/> . . .
-			<mvc:mapping path="/main" />
-			<mvc:mapping path="/bookAdd" />
-			<mvc:mapping path="/bookDisposal" />
-			<mvc:mapping path="/bookRent" />
-			<mvc:mapping path="/bookReturn" />
-			<mvc:mapping path="/memberAdd" />
+				<mvc:mapping path="/admin_delete"/> . . . -->
+			<mvc:mapping path="/government/" />
+			<mvc:mapping path="/government" />
 			
-			로그인체크 인터셉터 클래스
-			<bean class="com.team4.project.interceptor.Interceptor" />
+			
+			<!-- 로그인체크 인터셉터 클래스 -->
+			<bean class="com.team4.project.government.interceptor.Interceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+		<mvc:interceptor>
+			<!-- 여러개 컨트롤러 추가 가능
+			<mvc:mapping path="/admin_write"/> <mvc:mapping path="/admin_update"/> 
+				<mvc:mapping path="/admin_delete"/> . . . -->
+			<mvc:mapping path="/hospital/" />
+			<mvc:mapping path="/government/" />
+			
+			
+			<!-- 로그인체크 인터셉터 클래스 -->
+			<bean class="com.team4.project.hospital.interceptor.Interceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 
 	<!-- 트랜잭션 처리 -->
