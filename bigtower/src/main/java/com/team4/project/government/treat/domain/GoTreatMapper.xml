@@ -18,7 +18,7 @@
  	<!-- 진료목록 뿌리기 -->
  	<select id="goTreatList" resultType="com.team4.project.government.treat.domain.GoTreat" parameterType="Map">
 		SELECT 
- 			go_treat.GO_TREAT_CODE as goTreatCode,
+ 			go_treat.GO_TREAT_CODE,
  			go_citizen.GO_CITIZEN_NAME,
  			go_doctor.GO_DOCTOR_NAME,
  			go_hospital.GO_HOSPITAL_NAME,
@@ -33,10 +33,23 @@
  			ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
  		JOIN go_treat_subject
  			ON go_treat.GO_TREAT_SUBJECT_CODE = go_treat_subject.GO_TREAT_SUBJECT_CODE
- 		WHERE GO_DOCTOR_NAME = '허준'
-		ORDER BY GO_TREAT_CODE DESC
- 		
- 		
+ 		<where>
+ 		<choose>
+	 		<when test='selectConditions!= null and selectConditions.equals("selectSubject")'>
+	 			GO_TREAT_SUBJECT_NAME = #{searchContents}
+	 		</when>
+	 		<when test='selectConditions!= null and selectConditions.equals("selectHospital")'>
+	 			GO_HOSPITAL_NAME = #{searchContents}
+	 		</when>
+	 		<when test='selectConditions!= null and selectConditions.equals("selectDisease")'>
+	 			GO_DISEASE_KOR = #{searchContents}
+	 		</when>
+	 		<when test='selectConditions!= null and selectConditions.equals("selectDoctor")'>
+	 			GO_DOCTOR_NAME = #{searchContents}
+	 		</when>
+	 	</choose>
+	 	</where>	
+ 		ORDER BY GO_TREAT_CODE DESC
  	</select>
  	
  	<!-- 한 사람의 진료내용 가져오기 -->
