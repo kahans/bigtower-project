@@ -52,6 +52,7 @@ public class GoTestController {
 	@RequestMapping(value="/goImgTest" , method=RequestMethod.POST)
 	public String selectImgTest(Model model, GoTest goTest){
 			logger.debug("citizenId 확인 : "+goTest.getGoCitizenId());
+			logger.debug("입력받은 날짜 확인 : "+goTest.getGoFirstDate()+" , "+goTest.getGoSecondDate());
 		
 		return "";
 		
