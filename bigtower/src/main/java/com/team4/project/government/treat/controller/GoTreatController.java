@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.team4.project.government.treat.domain.GoTreat;
+import com.team4.project.government.treat.domain.GoSearchTreatSub;
 
 @Controller
 public class GoTreatController {
@@ -34,12 +34,22 @@ public class GoTreatController {
 	
 	//진료목록  검색
 	@RequestMapping(value="/government/treatSearch", method=RequestMethod.GET)
-	public @ResponseBody List<GoTreat> treatList(@RequestParam(
-			value="selectConditions") String selectConditions,
-			@RequestParam(value="searchContents")String searchContents){
-		
-		List<GoTreat> goTreatList = goTCS.goTreatList(selectConditions,searchContents);
-		System.out.println("treatList : "+goTCS.goTreatList(selectConditions,searchContents));
+	public @ResponseBody List<GoSearchTreatSub> treatList(
+			@RequestParam(value="selectConditions") String selectConditions,
+			@RequestParam(value="searchContents", required=false)String searchContents,
+			@RequestParam(value="firstDay", required=false)String firstDay,
+			@RequestParam(value="secondDay", required=false)String secondDay) {
+		System.out.println("selectConditions 값 : "+ selectConditions);
+		System.out.println("searchContents 값 : "+ searchContents);
+		System.out.println("firstDay 값 : "+ firstDay);
+		System.out.println("secondDay 값 : "+ secondDay);
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("selectConditions", selectConditions);
+		returnMap.put("searchContents", searchContents);
+		returnMap.put("firstDay", firstDay);
+		returnMap.put("secondDay", secondDay);
+		List<GoSearchTreatSub> goTreatList = goTCS.goTreatList(returnMap);
+		System.out.println("treatList : "+goTCS.goTreatList(returnMap));
 		//리스트를 출력한다. ( 진료목록, 질병목록은 서비스.java에서 실행이 된다....)
 		return goTreatList;
 	}

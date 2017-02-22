@@ -60,38 +60,32 @@
 					$('#searchContents').show();
 				}
 			});
-			//버튼 클릭시 검색조건 보내기
-			$("#btn").bind("click",function(){
-				alert('올 버튼 클릭했냐?')		
+			//버튼 클릭시 검색조건과 내용에 부합하는 목록 출력하기
+			$("#btn").bind("click",function(){		
 				if($('#selectConditions').val()==""){
 					alert('검색할 조건을 선택하시오.');
 					return;
 				}
-				if($('#searchContents').val()==""){
+				/* if($('#searchContents').val()==""){
 					alert('검색할 내용을 입력하시오.');
 					return;
-				}
+				} */
 				$.ajax({
 					url : "/government/treatSearch",
 					type : "GET",
 					data : {'selectConditions' : $('#selectConditions').val(),
-							'searchContents' : $('#searchContents').val()},
+							'searchContents' : $('#searchContents').val(),
+							'firstDay' : $('#firstDay').val(),
+							'secondDay' : $('#secondDay').val()},
+					//함수가 성공하면
 					success : function(data){
 						console.log('성공');
 						$('tbody').empty();
-						$.each(data, function(key, item) {
-							
-						/* 	$("#memberTbody").append("<tr>");
-							$("#memberTbody").append("<td>" + item.memberNo + "</td>");
-							$("#memberTbody").append("<td>" + item.memberName + "</td>");
-							$("#memberTbody").append("<td>" + item.memberLevel + "</td>");
-							$("#memberTbody").append("<td>" + item.memberAddress + "</td>");
-							$("#memberTbody").append("<td>" + item.memberPhone + "</td>");
-							$("#memberTbody").append("<td><button class='memberClass' data-dismiss='modal' value='"+item.memberNo+"'>선택</button>");
-							$("#memberTbody").append("</tr>");
-							 */
+						//반복문을 통해 검색조건에 맞는 목록을 출력한다
+						$.each(data, function(key, item) {  
 							console.log('goCitizenName:'+item.goCitizenName);
 						 	var diseaseKor = '';
+						 	//질병목록 가져오는 반복문
 						 	$.each(item.diagnosisList, function(key, value) {
 								console.log('test');
 								console.log('value'+value);
@@ -109,35 +103,7 @@
 											+'<td>'+item.goTreatRegistrationDate+'</td>'
 										+'</tr>';
 										console.log(table);
-							$('tbody').append(table);
-							
-							/* $('tbody').append('<tr>');
-							$('tbody').append('<td><a href="<c:url value="/government/treatView?goTreatCode='+item.goTreatCode+'" />">'+item.goTreatCode+'</a></td>');
-							$('tbody').append('<td>'+item.goCitizenName+'</td>');
-							$('tbody').append('<td>'+item.goHospitalName+'</td>');
-							$('tbody').append('<td>'+item.goDoctorName+'</td>');
-							$('tbody').append('<td>'+item.goTreatSubjectName+'</td>');
-							$('tbody').append(); */
-							//console.log('diagnosisList:'+item.diagnosisList);
-							/* for(var i=0; i<item.diagnosisList.length;i++){
-								$('tbody').append(item.diagnosisList.goDiseaseKor+',');
-							} */
-							
-							/* $.each(item.diagnosisList, function(key, value) {
-								$('tbody').append(value.goDiseaseKor+',');
-								console.log('each문 내');
-							}); */
-							/* console.log('each문 바깥');
-							$('tbody').append('<td>'+item.goTreatRegistrationDate+'</td>');
-							$('tbody').append('</tr>'); */
-
-							/* $('#citizenName').val(item.goCitizenName);
-							$('#hospitalName').val(item.goHospitalName);
-							$('#doctorName').val(item.goDoctorName);
-							$('#treatSubjectName').val(item.goTreatSubjectName);
-							$('#diseaseName').val(item.goDiseaseKor);
-							$('#registrationDate').val(item.goTreatRegistrationDate);
-						 */
+							$('tbody').append(table);								
 						})
 
 					}

@@ -23,73 +23,7 @@ protected String goTreatContents;
 @DateTimeFormat(pattern ="YY-MM-DD")
 protected Date goTreatRegistrationDate;
 protected String goTreatGoRegistrationDate;
-protected List<GoDiagnosis> diagnosisList;
- 
-//조인문 데이터
-protected String goHospitalName;
-protected String goHospitalAddress;
-protected String goCitizenName;
-protected String goDoctorName;
-protected String goTreatSubjectName;
-protected String goDiseaseKor;
 
-
-public List<GoDiagnosis> getDiagnosisList() {
-	return diagnosisList;
-}
-
-public void setDiagnosisList(List<GoDiagnosis> diagnosisList) {
-	this.diagnosisList = diagnosisList;
-}
-
-
-
-public String getGoHospitalAddress() {
-	return goHospitalAddress;
-}
-
-public void setGoHospitalAddress(String goHospitalAddress) {
-	this.goHospitalAddress = goHospitalAddress;
-}
-public String getGoHospitalName() {
-	return goHospitalName;
-}
-
-public void setGoHospitalName(String goHospitalName) {
-	this.goHospitalName = goHospitalName;
-}
-
-public String getGoCitizenName() {
-	return goCitizenName;
-}
-
-public void setGoCitizenName(String goCitizenName) {
-	this.goCitizenName = goCitizenName;
-}
-
-public String getGoDoctorName() {
-	return goDoctorName;
-}
-
-public void setGoDoctorName(String goDoctorName) {
-	this.goDoctorName = goDoctorName;
-}
-
-public String getGoTreatSubjectName() {
-	return goTreatSubjectName;
-}
-
-public void setGoTreatSubjectName(String goTreatSubjectName) {
-	this.goTreatSubjectName = goTreatSubjectName;
-}
-
-public String getGoDiseaseKor() {
-	return goDiseaseKor;
-}
-
-public void setGoDiseaseKor(String goDiseaseKor) {
-	this.goDiseaseKor = goDiseaseKor;
-}
 
 public String getGoTreatCode() {
 	return goTreatCode;
@@ -164,10 +98,10 @@ public String toString() {
 			+ ", goDoctorId=" + goDoctorId + ", goTreatSubjectCode=" + goTreatSubjectCode + ", goChartCode="
 			+ goChartCode + ", goChartSeq=" + goChartSeq + ", goTreatContents=" + goTreatContents
 			+ ", goTreatRegistrationDate=" + goTreatRegistrationDate + ", goTreatGoRegistrationDate="
-			+ goTreatGoRegistrationDate + ", diagnosisList=" + diagnosisList + ", goHospitalName=" + goHospitalName
-			+ ", goHospitalAddress=" + goHospitalAddress + ", goCitizenName=" + goCitizenName + ", goDoctorName="
-			+ goDoctorName + ", goTreatSubjectName=" + goTreatSubjectName + ", goDiseaseKor=" + goDiseaseKor + "]";
+			+ goTreatGoRegistrationDate + "]";
 }
+
+
 
 
 
