@@ -30,8 +30,8 @@
 						</th>
 						
 					</tr>
-			<c:forEach var="b" items="${goTest}">
-				<c:forEach var="bloodTest" items="${b.goBloodTest}">
+			
+				<c:forEach var="bloodTest" items="${goTestBlood.goBloodTest}">
 				<tr>
 					<td>
 						<input type="text" name="TreatCode" value="${bloodTest.goTreatCode}" readonly="readonly"/>
@@ -65,7 +65,6 @@
 					</td>
 				</tr>
 				</c:forEach>
-			</c:forEach>
 			</table>
 	</div>	
 			

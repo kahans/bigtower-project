@@ -11,28 +11,10 @@ public class GoBloodTest extends GoTreat {
 	private String goBloodTestFileName;
 	private String goBloodTestDate;
 	private String goBloodTestGoRegistrationDate;
-	private String goFirstDate;
-	private String goSecondDate;
 	
 
 	public GoBloodTest() {
 		super();
-	}
-
-	public String getGoFirstDate() {
-		return goFirstDate;
-	}
-
-	public void setGoFirstDate(String goFirstDate) {
-		this.goFirstDate = goFirstDate;
-	}
-
-	public String getGoSecondDate() {
-		return goSecondDate;
-	}
-
-	public void setGoSecondDate(String goSecondDate) {
-		this.goSecondDate = goSecondDate;
 	}
 
 	public String getGoBloodTestCode() {
@@ -83,6 +65,15 @@ public class GoBloodTest extends GoTreat {
 	public void setGoBloodTestGoRegistrationDate(String goBloodTestGoRegistrationDate) {
 		this.goBloodTestGoRegistrationDate = goBloodTestGoRegistrationDate;
 	}
+
+	@Override
+	public String toString() {
+		return "GoBloodTest [goBloodTestCode=" + goBloodTestCode + ", goBloodTestBloodSugar=" + goBloodTestBloodSugar
+				+ ", goBloodTestPlatelet=" + goBloodTestPlatelet + ", goBloodTestFilePath=" + goBloodTestFilePath
+				+ ", goBloodTestFileName=" + goBloodTestFileName + ", goBloodTestDate=" + goBloodTestDate
+				+ ", goBloodTestGoRegistrationDate=" + goBloodTestGoRegistrationDate + "]";
+	}
+
 
 	
 	
