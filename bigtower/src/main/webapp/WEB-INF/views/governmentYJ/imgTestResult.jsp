@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="bloodTestResultForm.jsp" %>
+<%@ include file="imgTest.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +35,7 @@
 						
 					</tr>
 			
-				<c:forEach var="imageTest" items="${imageTest.GoImageTestTreatSub}">
+				<c:forEach var="imageTest" items="${goImageTest.goImageTestTreatSub}">
 				<tr>
 					<td>
 						<input type="text" name="imageCode" value="${imageTest.goImageTestCode}"/>
@@ -44,7 +44,7 @@
 						<input type="text" name="TreatCode" value="${imageTest.goTreatCode}" readonly="readonly"/>
 					</td>
 					<td>
-						<input type="text" name="fileName" value="${imageTest.goBloodTestFileName}"/>
+						<input type="text" name="fileName" value="${imageTest.goImageTestFileName}"/>
 					</td>
 					
 					<td>
@@ -54,9 +54,9 @@
 						<input type="text" name="goImageTestGoRegistrationDate" value="${imageTest.goImageTestGoRegistrationDate}" readonly="readonly"/>
 					</td>
 					<td>
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${bloodTest.goBloodTestCode}">혈액검사결과</button>
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${imageTest.goImageTestCode}">혈액검사결과</button>
 						  <!-- Modal -->
-						  <div class="modal fade" id="${imageTest.goimageTestCode}" role="dialog">
+						  <div class="modal fade" id="${imageTest.goImageTestCode}" role="dialog">
 						    <div class="modal-dialog modal-lg">
 						      <div class="modal-content">
 						        <div class="modal-header">
@@ -65,7 +65,7 @@
 						        </div>
 						        <div class="modal-body">
 						         	<img alt="혈액검사결과파일" src="<c:url 
-						         	value="${imageTest.goimageTestFilePath}${imageTest.goimageTestName}">혈액검사결과</c:url>">
+						         	value="${imageTest.goImageTestFilePath}${imageTest.goImageTestFileName}">혈액검사결과</c:url>">
 						         	
 						        </div>
 						        <div class="modal-footer">
