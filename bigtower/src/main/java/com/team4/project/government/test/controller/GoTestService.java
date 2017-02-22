@@ -3,6 +3,7 @@ package com.team4.project.government.test.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.team4.project.government.test.domain.GoBloodTestTreatSub;
 import com.team4.project.government.test.domain.GoImageTestTreatSub;
 import com.team4.project.government.test.domain.GoTest;
+import com.team4.project.util.Util;
 
 @Service
 public class GoTestService {
@@ -24,47 +26,41 @@ public class GoTestService {
 
 	
 	//혈액검사결과 요청
-	public GoTest selectBloodTest(GoTest goTest){
+		public GoTest selectBloodTest(GoTest goTest){
+			GoTest goTestResult = new GoTest();
+			logger.debug("서비스로 요청 들어옴");
 		
-		logger.debug("서비스로 요청 들어옴");
-	
-		//goTest 에서 날짜 분리해서 값이 입력되지 않았을때 if문을 사용하여 초기값을 만들어 넣어줌
-		Date date = new Date();
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String currentdate = transFormat.format(date);
-		System.out.println("currentDate 확인 : "+currentdate);
-		if(goTest.getGoFirstDate().equals("")&goTest.getGoSecondDate().equals("")){
-			goTest.setGoFirstDate("1900-01-01");
-			goTest.setGoSecondDate(currentdate);
-			logger.debug("firstDate 확인 : "+goTest.getGoFirstDate());
-			logger.debug("secondDate 들어갔는지 확인 : "+goTest.getGoSecondDate());
-			logger.debug("둘다 공백일때");
-		}else if(goTest.getGoFirstDate().equals("")){
-			goTest.setGoFirstDate("1900-01-01");
-			logger.debug("firstDate 확인 : "+goTest.getGoFirstDate());
-			logger.debug("앞이 공백일때");
-		}else{
-			goTest.setGoSecondDate(currentdate);
-			logger.debug("secondDate 들어갔는지 확인 : "+goTest.getGoSecondDate());
-			logger.debug("뒤가 공백일때");
+			//goTest에서 날짜 분리해서 Util클래스에 생성해놓은 날짜생성 메소드에 입력
+			String firstDate = goTest.getGoFirstDate();
+			String secondDate = goTest.getGoSecondDate();
+			logger.debug("firstDate 확인 : "+firstDate+"\n"+"secondDate 확인 :"+secondDate);
+			 
+			Map<String,Object> map = Util.createDate(firstDate, secondDate);
+			firstDate = (String) map.get("firstDate");
+			secondDate = (String) map.get("secondDate");
+			logger.debug("firstDate 확인 : "+firstDate+"\n"+"secondDate 확인 :"+secondDate);
+			
+			goTest.setGoFirstDate(firstDate);
+			goTest.setGoSecondDate(secondDate);
+			
+			logger.debug("goTest에 날짜 세팅됬는지 확인 : "+goTest.getGoFirstDate()+"\n"+"두번째 : "+goTest.getGoSecondDate());
+			
+			//bloodTest리스트로 받아옴
+			List<GoBloodTestTreatSub> bloodTest = goTD.selectBlood(goTest);
+			//bloodTest 제대로 받아왔는지 for문으로 확인
+			for(int x=0; x<bloodTest.size(); x++){
+				logger.debug("bloodTest 확인 : "+bloodTest.get(x).toString());
+			}
+			
+			//확인된 bloodTest를 goTest객체에 담음
+			for(int i=0; i<bloodTest.size(); i++){
+				goTestResult.setGoBloodTestTreatSub(bloodTest);
+			}
+			//객체에 
+			logger.debug("서비스에서 확인 : "+goTestResult.getGoBloodTestTreatSub().toString());
+			return 	goTestResult;
 		}
 		
-		//bloodTest리스트로 받아옴
-		List<GoBloodTestTreatSub> bloodTest = goTD.selectBlood(goTest);
-		//bloodTest 제대로 받아왔는지 for문으로 확인
-		for(int x=0; x<bloodTest.size(); x++){
-			logger.debug("bloodTest 확인 : "+bloodTest.get(x).toString());
-		}
-		
-		//확인된 bloodTest를 goTest객체에 담음
-		for(int i=0; i<bloodTest.size(); i++){
-			goTestResult.setGoBloodTestTreatSub(bloodTest);
-		}
-		//객체에 
-		logger.debug("서비스에서 확인 : "+goTestResult.getGoBloodTestTreatSub().toString());
-		return 	goTestResult;
-	}
-	
 	//이미지 검색결과 요청
 	public GoTest selectImageTest(GoTest goTest){
 		

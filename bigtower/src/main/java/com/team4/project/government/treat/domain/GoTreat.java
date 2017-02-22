@@ -3,11 +3,8 @@ package com.team4.project.government.treat.domain;
 
 
 import java.sql.Date;
-import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
 
 public class GoTreat {
 
