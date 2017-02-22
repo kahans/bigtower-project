@@ -63,27 +63,22 @@ public class GoTestService {
 		
 	//이미지 검색결과 요청
 	public GoTest selectImageTest(GoTest goTest){
+		GoTest goTestResult = new GoTest();
+		//goTest에서 날짜 분리해서 Util클래스에 생성해놓은 날짜생성 메소드에 입력
+		String firstDate = goTest.getGoFirstDate();
+		String secondDate = goTest.getGoSecondDate();
+		logger.debug("firstDate 확인 : "+firstDate+"\n"+"secondDate 확인 :"+secondDate);
+		 
+		Map<String,Object> map = Util.createDate(firstDate, secondDate);
+		firstDate = (String) map.get("firstDate");
+		secondDate = (String) map.get("secondDate");
+		logger.debug("firstDate 확인 : "+firstDate+"\n"+"secondDate 확인 :"+secondDate);
 		
-		//날짜 만들어줌
-		Date date = new Date();
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String currentdate = transFormat.format(date);
-		System.out.println("currentDate 확인 : "+currentdate);
-		if(goTest.getGoFirstDate()==""&goTest.getGoSecondDate()==""){
-			goTest.setGoFirstDate("1900-01-01");
-			goTest.setGoSecondDate(currentdate);
-			logger.debug("firstDate 확인 : "+goTest.getGoFirstDate());
-			logger.debug("secondDate 들어갔는지 확인 : "+goTest.getGoSecondDate());
-			logger.debug("둘다 공백일때");
-		}else if(goTest.getGoFirstDate()==""){
-			goTest.setGoFirstDate("1900-01-01");
-			logger.debug("firstDate 확인 : "+goTest.getGoFirstDate());
-			logger.debug("앞이 공백일때");
-		}else{
-			goTest.setGoSecondDate(currentdate);
-			logger.debug("secondDate 들어갔는지 확인 : "+goTest.getGoSecondDate());
-			logger.debug("뒤가 공백일때");
-		}
+		goTest.setGoFirstDate(firstDate);
+		goTest.setGoSecondDate(secondDate);
+		
+		logger.debug("goTest에 날짜 세팅됬는지 확인 : "+goTest.getGoFirstDate()+"\n"+"두번째 : "+goTest.getGoSecondDate());
+		
 		List<GoImageTestTreatSub> imageTest = goTD.selectImage(goTest);
 			for(int x=0; x<imageTest.size(); x++)
 				logger.debug("imageTest 확인 : " + imageTest.get(x).toString());
