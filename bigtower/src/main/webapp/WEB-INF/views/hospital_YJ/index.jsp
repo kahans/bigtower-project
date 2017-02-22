@@ -10,15 +10,17 @@
 <body>
 	<h1>index.jsp</h1>
 	<h2>초기화면</h2>
+	<c:if test="${HOSPITALCODE==null}">
+		<a href="<c:url value="/hospital/login"/>">로그인</a>
+	</c:if>
 	
-	<a href="<c:url value="/hospital/login"/>">로그인</a>
-	${hospitalCode}
-	<c:if test="${hospitalCode!=null}">
-		세션:<br>
-			병원코드 : [${hospitalCode}]
-			직급 : [${staffLevelCode}]
-			이름 : [${hoStaffName}]
-			
+	<c:if test="${HOSPITALCODE!=null}">
+		[${HOSPITALNAME} ${STAFFLEVELNAME} ${HOSTAFFNAME}님] 로그인중
+		<a href="<c:url value="/hospital/logout"/>">로그아웃</a> <br>
+		<a href="<c:url value="/hospital/logout"/>">접수</a><br>
+		<a href="<c:url value="/hospital/logout"/>">진료</a><br>
+		<a href="<c:url value="/hospital/logout"/>">검사</a><br>
+		
 	</c:if>
 	
 </body>
