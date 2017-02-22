@@ -22,12 +22,17 @@
  	</select>
  	
  	<!-- 직원 로그인체크 -->
-	<select id="loginCheck" parameterType="Map" resultType="com.team4.project.hospital.dto.HoStaff">
+	<select id="loginCheck" parameterType="Map" resultType="com.team4.project.hospital.dto.HoLoginCheckStaffSub">
 		SELECT
-			ho_hospital_code,
-			staff_level_code,
-			ho_staff_name
+			ho_staff.ho_hospital_code,
+			ho_staff.staff_level_code,
+			ho_staff.ho_staff_name,
+			ho_staff.HO_HOSPITAL_CODE,
+			ho_hospital.HO_HOSPITAL_NAME,
+			ho_staff_level.STAFF_LEVEL_NAME
 		FROM ho_staff
+		join ho_hospital on ho_staff.HO_HOSPITAL_CODE = ho_hospital.HO_HOSPITAL_CODE
+		join ho_staff_level on ho_staff.STAFF_LEVEL_CODE = ho_staff_level.STAFF_LEVEL_CODE
 		WHERE ho_staff_id = #{hoStaffId} AND ho_staff_pw=#{hoStaffPw}
 		
 	</select>

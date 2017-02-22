@@ -6,14 +6,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.team4.project.hospital.dto.HoStaff;
+import com.team4.project.hospital.dto.HoLoginCheckStaffSub;
 
 @Service
 public class HospitalService {
 	@Autowired
 	private HospitalDao hoDao;
 	
-	public HoStaff loginCheck(String hoStaffId, String hoStaffPw){
+	public HoLoginCheckStaffSub loginCheck(String hoStaffId, String hoStaffPw){
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("hoStaffId", hoStaffId);
 		map.put("hoStaffPw", hoStaffPw);
