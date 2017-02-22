@@ -7,14 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>수술 내역 조회사이트</title>
 <script src="//code.jquery.com/jquery.min.js"></script>
-<style type="text/css">
+<!-- <style type="text/css">
 .date {
 	display: none;
 }
-</style>
+</style> -->
 </head>
 <body>
-	<select id="selectBox" name="selectBox">
+	<!-- <select id="selectBox" name="selectBox">
 		<option value="1" selected="selected">선택사항 없음</option>
 		<option value="goSurgeryResultGoRegistrationDate">기간</option>
 		<option value="goHospitalName">병원</option>
@@ -26,8 +26,26 @@
 
 	<input class="contents" type="text" name="searchContents"
 		id="searchContents">
-	<!-- 버튼으로 작동하게  -->
-	<input type="button" class="btn" value="검색">
+	버튼으로 작동하게 
+	<input type="button" class="btn" value="검색"> -->
+	<table>
+		<tr>
+			<td>기간</td>
+			<td>
+			
+				<input class="date" type="date" name="PreviousDate" id="PreviousDate"> ~ 
+				<input class="date" type="date" name="todayDate" id="todayDate">
+			</td>
+		</tr>
+		<tr>
+			<td>병원명</td>
+			<td><input class="contents" type="text" name="searchContents"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="button" class="btn" value="검색"></td>
+		</tr>
+		
+	</table>
 	<br>
 
 	<table border="1">
@@ -45,13 +63,15 @@
 		</tbody>
 	</table>
 	<script>
-		$(document).ready(function(){
+		var Today = new Date();					
+		document.getElementById('todayDate').valueAsDate=Today;
+		//select문에서 선택을 조건에 따라 input 태그가 숨고 보이고 하게 한다.
+		/* $(document).ready(function(){
 			jQuery('#selectBox').change(function() {
 				var state = jQuery('#selectBox option:selected').val();
 				if(state == 'goSurgeryResultGoRegistrationDate') {
 					//오늘날짜 가져오기
-					var Today = new Date();					
-					document.getElementById('toDay').valueAsDate=Today;
+					
 					//오늘 날짜에서 3개월빼기
 					
 					jQuery('.date').show();
@@ -60,34 +80,17 @@
 					jQuery('.date').hide();
 					jQuery('.contents').show();
 				}
-			});	
+			}); */	
 			$(".btn").bind("click",function() {
 				//select문 value 값을 state로 선언하여 대입한다.
 				//내용이 없을시 경고창 뜨우기
-				if($('#selectBox').val() == '1') {
-					//기간을 선택시 두개의 기간을 대입한다.
-					alert('조건을 선택하세요.');
-					return;
-				}else if($('#selectBox').val()=='goHospitalName'){
-					if($('#searchContents').val() == '') {
-						//goHospitalName
-						//입력한 데이터를 대입한다.					
-						alert('내용을 입력하시오');
-						return;
-					} 
-				}else if($('#selectBox').val()=='goSurgeryResultGoRegistrationDate'){
-					if($('#firstDay').val()==''){
-						alert('입력하세요.');
-						return;
-					}
-				}
 				$.ajax({
 					url:'/government/surgerySearch',
 					type:'GET',
 					data: {'selectBox': $('#selectBox').val() ,
 							'searchContents': $('#searchContents').val(),
-							'toDay' : $('#toDay').val(),
-							'firstDay' : $('#firstDay').val()},
+							'todayDate' : $('#todayDate').val(),
+							'PreviousDate' : $('#PreviousDate').val()},
 					success:function(data){
 						console.log('검색성공');				
 						$.each(data, function(key, item){
@@ -102,7 +105,7 @@
 					}
 				});
 			});
-		});		
+		//});		
 	</script> 
 </body>
 </html>

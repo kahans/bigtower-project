@@ -18,7 +18,7 @@ public class GoHospitalizationSurgeryDao {
 	private SqlSessionTemplate sqlSession;
 	
 	public List<GoSurgery> goSurgeryList(Map<String, Object> returnMap) {
-		System.out.println(returnMap);
+		
 		
 		return sqlSession.selectList("GoHospitalizationSurgery.goSurgeryList", returnMap);
 	}
@@ -30,7 +30,6 @@ public class GoHospitalizationSurgeryDao {
 	//입,퇴원코드를 통해서 검색하여 질병 통합
 	public List<GoDiagnosis> goDiagnosis(String goTreatCode) {
 		// TODO Auto-generated method stub
-		System.out.println("dao : "+goTreatCode);
 		return sqlSession.selectList("GoHospitalizationSurgery.goDiagnosis", goTreatCode);
 	}
 }

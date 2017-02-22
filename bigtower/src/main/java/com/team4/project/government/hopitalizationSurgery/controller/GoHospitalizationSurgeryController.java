@@ -24,16 +24,16 @@ public class GoHospitalizationSurgeryController {
 	@RequestMapping(value="/government/surgerySearch", method=RequestMethod.GET)
 	public @ResponseBody List<GoSurgery> surgeryList(@RequestParam(value="selectBox") String selectBox,
 										@RequestParam(value="searchContents", required=false)String searchContents,
-										@RequestParam(value="toDay", required=false)String toDay,
-										@RequestParam(value="firstDay", required=false)String firstDay){
+										@RequestParam(value="todayDate", required=false)String todayDate,
+										@RequestParam(value="PreviousDate", required=false)String PreviousDate){
 		System.out.println("search : "+selectBox+", "+searchContents);
 		
 		
 		Map<String ,Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("selectBox", selectBox);
 		returnMap.put("searchContents", searchContents);
-		returnMap.put("toDay", toDay);
-		returnMap.put("firstDay", firstDay);
+		returnMap.put("todayDate", todayDate);
+		returnMap.put("PreviousDate", PreviousDate);
 		System.out.println("service : "+returnMap.put("selectBox", selectBox));
 		System.out.println("service : "+returnMap.put("searchContents", searchContents));
 		

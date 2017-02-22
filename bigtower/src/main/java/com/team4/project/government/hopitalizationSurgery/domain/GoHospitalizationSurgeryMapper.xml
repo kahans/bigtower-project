@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="GoHospitalizationSurgery">
-<!-- 목록 출력 -->
+<!-- 수술 목록 출력 -->
  	<select id="goSurgeryList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSurgery" parameterType="Map">
 	SELECT
 		go_surgery_result.GO_SURGERY_RESULT_CODE,
@@ -20,7 +20,7 @@
 	join go_hospital
 		ON go_treat.GO_HOSPITAL_ID = go_hospital.GO_HOSPITAL_ID
 	join go_doctor
-		ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
+		ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID	
 	join go_citizen
 		on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO
 	<where> 
@@ -29,11 +29,8 @@
 				GO_HOSPITAL_NAME=#{searchContents}
 			</when>
 			<when test="selectBox.equals('goSurgeryResultGoRegistrationDate')">
-				GO_SURGERY_RESULT_GO_REGISTRATION_DATE between #{firstDay} and #{toDay}
+				GO_SURGERY_RESULT_GO_REGISTRATION_DATE between #{PreviousDate} and #{todayDate}
 			</when>
-			<otherwise>
-				null
-			</otherwise>
 		</choose>
 	</where>
 	ORDER BY GO_SURGERY_RESULT_GO_REGISTRATION_DATE DESC
@@ -52,6 +49,16 @@
 			ON go_treat.GO_TREAT_CODE=go_hospitalization.GO_TREAT_CODE
 		join go_hospital
 			ON go_hospital.GO_HOSPITAL_ID = go_treat.GO_HOSPITAL_ID
+		<where> 
+			<choose>
+				<when test="selectBox.equals('goHospitalName')">
+					GO_HOSPITAL_NAME=#{searchContents}
+				</when>
+				<when test="selectBox.equals('goHospitalizationExitDate')">
+					GO_HOSPITALIZATION_EXIT_DATE between #{firstDay} and #{toDay}
+				</when>
+			</choose>
+		</where>
 		ORDER BY GO_HOSPITALIZATION_ENTER_DATE DESC
  	
  	</select>

@@ -6,6 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>입/퇴원 조회 사이트</title>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<style type="text/css">
+.date {
+	display: none;
+}
+</style>
 </head>
 <body>
 	<select id="selectBox" name="selectBox">
@@ -46,13 +52,14 @@
 		</tbody>
 	</table>
 	<script>
-		$(document).ready(function(){
+		var Today = new Date();					
+		document.getElementById('toDay').valueAsDate=Today;
+		/* $(document).ready(function(){
 			jQuery('#selectBox').change(function() {
 				var state = jQuery('#selectBox option:selected').val();
 				if(state == 'goHospitalizationExitDate') {
 					//오늘날짜 가져오기
-					var Today = new Date();					
-					document.getElementById('toDay').valueAsDate=Today;
+					
 					//오늘 날짜에서 3개월빼기
 					
 					jQuery('.date').show();
@@ -61,7 +68,7 @@
 					jQuery('.date').hide();
 					jQuery('.contents').show();
 				}
-			});	
+			});	 */
 			$(".btn").bind("click",function() {
 				//select문 value 값을 state로 선언하여 대입한다.
 				//내용이 없을시 경고창 뜨우기
@@ -90,23 +97,26 @@
 							'toDay' : $('#toDay').val(),
 							'firstDay' : $('#firstDay').val()},
 					success:function(data){
-						console.log('검색성공');				
+						console.log('검색성공');
+						$('tbody').empty();
 						$.each(data, function(key, item){
-							$('tbody').append('<tr>');
-							$('tbody').append('<td>'+item.goHospitalName+'</td>');
-							$('tbody').append('<td>'+item.goHospitalizationCode+'</td>');
-							$('tbody').append('<td id=di></td>');
+							var diseaseKor = '';
 							$.each(item.diagnosisList, function(key,value){
-								$('#di').append(value.goDiseaseKor+',');
-							})
-							$('tbody').append('<td>'+item.goHospitalizationEnterDate+'</td>');
-							$('tbody').append('<td>'+item.goHospitalizationExitDate+'</td>');
-							$('tbody').append('</tr>');
+								diseaseKor += value.goDiseaseKor+',';
+							});
+							var table = '<tr>'
+											+'<td>'+item.goHospitalName+'</td>'
+											+'<td>'+item.goHospitalizationCode+'</td>'
+											+'<td>'+diseaseKor+'</td>'
+											+'<td>'+item.goHospitalizationEnterDate+'</td>'
+											+'<td>'+item.goHospitalizationExitDate+'</td>'
+										+'</tr>';
+							$('tbody').append(table);
 						})
 					}
 				});
 			});
-		});		
+		//});		
 	</script> 
 </body>
 </html>
