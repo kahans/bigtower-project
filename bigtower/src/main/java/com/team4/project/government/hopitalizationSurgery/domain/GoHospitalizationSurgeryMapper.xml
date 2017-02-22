@@ -23,15 +23,13 @@
 		ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID	
 	join go_citizen
 		on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO
-	<where> 
-		<choose>
-			<when test="selectBox.equals('goHospitalName')">
-				GO_HOSPITAL_NAME=#{searchContents}
-			</when>
-			<when test="selectBox.equals('goSurgeryResultGoRegistrationDate')">
-				GO_SURGERY_RESULT_GO_REGISTRATION_DATE between #{PreviousDate} and #{todayDate}
-			</when>
-		</choose>
+	<where>
+		<if test="firstDate != '' and secondDate != '' ">
+			GO_SURGERY_RESULT_GO_REGISTRATION_DATE between #{firstDate} and #{secondDate}
+		</if>
+		<if test="searchContents!=''">
+			AND GO_HOSPITAL_NAME=#{searchContents}
+		</if>		
 	</where>
 	ORDER BY GO_SURGERY_RESULT_GO_REGISTRATION_DATE DESC
  	

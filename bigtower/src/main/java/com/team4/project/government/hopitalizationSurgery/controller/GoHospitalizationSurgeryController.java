@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team4.project.government.hopitalizationSurgery.domain.GoHospitalization;
 import com.team4.project.government.hopitalizationSurgery.domain.GoSurgery;
+import com.team4.project.util.Util;
 
 @Controller
 public class GoHospitalizationSurgeryController {
@@ -22,20 +23,30 @@ public class GoHospitalizationSurgeryController {
 	private GoHospitalizationSurgeryService goHSS;
 	//수술 뷰검색
 	@RequestMapping(value="/government/surgerySearch", method=RequestMethod.GET)
-	public @ResponseBody List<GoSurgery> surgeryList(@RequestParam(value="selectBox") String selectBox,
+	public @ResponseBody List<GoSurgery> surgeryList(
 										@RequestParam(value="searchContents", required=false)String searchContents,
-										@RequestParam(value="todayDate", required=false)String todayDate,
-										@RequestParam(value="PreviousDate", required=false)String PreviousDate){
-		System.out.println("search : "+selectBox+", "+searchContents);
+										@RequestParam(value="secondDate", required=false)String secondDate,
+										@RequestParam(value="firstDate", required=false)String firstDate
+										){
+		System.out.println(searchContents);
+		//util에서 뷰에서받은 날짜 데이터를 uitl클래스로 호출을 한다.
+		System.out.println("Today: "+secondDate);
+		System.out.println("yastday : "+firstDate);
 		
+		Map<String, Object> test = Util.createDate(firstDate, secondDate);
 		
+		String secontDate02 = (String)test.get("secondDate");
+		String firstDate02 = (String)test.get("firstDate");
 		Map<String ,Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("selectBox", selectBox);
 		returnMap.put("searchContents", searchContents);
-		returnMap.put("todayDate", todayDate);
-		returnMap.put("PreviousDate", PreviousDate);
-		System.out.println("service : "+returnMap.put("selectBox", selectBox));
+		
+		returnMap.put("firstDate", firstDate02);
+		returnMap.put("secondDate", secontDate02);
+		
 		System.out.println("service : "+returnMap.put("searchContents", searchContents));
+		System.out.println("test1 : "+(String)returnMap.get("firstDate"));
+		System.out.println("test : "+secontDate02);
+		
 		
 		List<GoSurgery> goSurgeryList = goHSS.goSurgeryList(returnMap);
 		return goSurgeryList;

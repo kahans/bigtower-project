@@ -1,6 +1,6 @@
 package com.team4.project.government.hopitalizationSurgery.domain;
 
-public class GoSearchSurgerySub {
+public class GoSearchSurgerySub{
 	//DB에서 조인문을 통해서 받는 값들
 	protected String goHospitalName;
 	protected String goSurgeryName;

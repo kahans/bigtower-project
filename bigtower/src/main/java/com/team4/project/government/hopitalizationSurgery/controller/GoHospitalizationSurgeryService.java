@@ -21,7 +21,7 @@ public class GoHospitalizationSurgeryService {
 		
 		
 		List<GoSurgery> goSurgeryList =goHSD.goSurgeryList(returnMap);
-		System.out.println(goSurgeryList.toString());
+		System.out.println("데이터가 왔는지 확인 : "+goSurgeryList.toString());
 		return goSurgeryList;
 	}
 	

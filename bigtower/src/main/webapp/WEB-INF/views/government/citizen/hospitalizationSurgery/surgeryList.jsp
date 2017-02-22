@@ -29,17 +29,17 @@
 	버튼으로 작동하게 
 	<input type="button" class="btn" value="검색"> -->
 	<table>
+		
 		<tr>
 			<td>기간</td>
-			<td>
-			
-				<input class="date" type="date" name="PreviousDate" id="PreviousDate"> ~ 
-				<input class="date" type="date" name="todayDate" id="todayDate">
+			<td>		
+				<input class="date" type="date" name="firstDate" id="firstDate"> ~ 
+				<input class="date" type="date" name="secondDate" id="secondDate">
 			</td>
 		</tr>
 		<tr>
 			<td>병원명</td>
-			<td><input class="contents" type="text" name="searchContents"></td>
+			<td><input class="contents" type="text" name="searchContents" id="searchContents"></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center"><input type="button" class="btn" value="검색"></td>
@@ -58,54 +58,39 @@
 				<th>수술일자</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="tbody">
 		<!-- ajax를 사용하여 append를 추가한다. -->
 		</tbody>
 	</table>
 	<script>
 		var Today = new Date();					
-		document.getElementById('todayDate').valueAsDate=Today;
-		//select문에서 선택을 조건에 따라 input 태그가 숨고 보이고 하게 한다.
-		/* $(document).ready(function(){
-			jQuery('#selectBox').change(function() {
-				var state = jQuery('#selectBox option:selected').val();
-				if(state == 'goSurgeryResultGoRegistrationDate') {
-					//오늘날짜 가져오기
-					
-					//오늘 날짜에서 3개월빼기
-					
-					jQuery('.date').show();
-					jQuery('.contents').hide();
-				} else {
-					jQuery('.date').hide();
-					jQuery('.contents').show();
-				}
-			}); */	
+		document.getElementById('secondDate').valueAsDate=Today;
+		
 			$(".btn").bind("click",function() {
 				//select문 value 값을 state로 선언하여 대입한다.
 				//내용이 없을시 경고창 뜨우기
 				$.ajax({
 					url:'/government/surgerySearch',
 					type:'GET',
-					data: {'selectBox': $('#selectBox').val() ,
-							'searchContents': $('#searchContents').val(),
-							'todayDate' : $('#todayDate').val(),
-							'PreviousDate' : $('#PreviousDate').val()},
+					data: {	'searchContents': $('#searchContents').val(),
+							'secondDate' : $('#secondDate').val(),
+							'firstDate' : $('#firstDate').val()},
 					success:function(data){
-						console.log('검색성공');				
+						console.log('검색성공');
+						
 						$.each(data, function(key, item){
-							$('tbody').append('<tr>');
-							$('tbody').append('<td>'+item.goHospitalName+'</td>');
-							$('tbody').append('<td>'+item.goDoctorName+'</td>');
-							$('tbody').append('<td>'+item.goSurgeryResultCode+'</td>');
-							$('tbody').append('<td>'+item.goSurgeryName+'</td>');
-							$('tbody').append('<td>'+item.goSurgeryResultGoRegistrationDate+'</td>');
-							$('tbody').append('</tr>');
+							$('.tbody').append('<tr>');
+							$('.tbody').append('<td>'+item.goHospitalName+'</td>');
+							$('.tbody').append('<td>'+item.goDoctorName+'</td>');
+							$('.tbody').append('<td>'+item.goSurgeryResultCode+'</td>');
+							$('.tbody').append('<td>'+item.goSurgeryName+'</td>');
+							$('.tbody').append('<td>'+item.goSurgeryResultGoRegistrationDate+'</td>');
+							$('.tbody').append('</tr>');
 						})
 					}
 				});
 			});
-		//});		
+			
 	</script> 
 </body>
 </html>
