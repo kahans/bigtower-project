@@ -4,7 +4,7 @@
  
 <mapper namespace="GoHospitalizationSurgery">
 <!-- 목록 출력 -->
- 	<select id="SurgeryList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSurgery" parameterType="String">
+ 	<select id="goSurgeryList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSurgery" parameterType="Map">
 	SELECT
 		go_surgery_result.GO_SURGERY_RESULT_CODE,
 		go_hospital.GO_HOSPITAL_NAME,
@@ -23,7 +23,19 @@
 		ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
 	join go_citizen
 		on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO
-	WHERE ${selectBox}<!-- test문장을 다른이름으로 변경하면 된다. 임시  if문 대신 case문으로 한번 알아보자--> = ${searchContents} <!-- or GO_CITIZEN_NAME='김의진' -->
+	<where> 
+		<choose>
+			<when test="selectBox.equals('goHospitalName')">
+				GO_HOSPITAL_NAME=#{searchContents}
+			</when>
+			<when test="selectBox.equals('goSurgeryResultGoRegistrationDate')">
+				GO_SURGERY_RESULT_GO_REGISTRATION_DATE between #{firstDay} and #{toDay}
+			</when>
+			<otherwise>
+				null
+			</otherwise>
+		</choose>
+	</where>
 	ORDER BY GO_SURGERY_RESULT_GO_REGISTRATION_DATE DESC
  	
  	</select>

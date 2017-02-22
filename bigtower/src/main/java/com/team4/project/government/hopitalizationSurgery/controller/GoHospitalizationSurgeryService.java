@@ -1,6 +1,5 @@
 package com.team4.project.government.hopitalizationSurgery.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,22 +17,17 @@ public class GoHospitalizationSurgeryService {
 	private GoHospitalizationSurgeryDao goHSD;
 	
 	//수술내역 검색
-	public List<GoSurgery> goSurgeryList(String selectBox, String searchContents){
+	public List<GoSurgery> goSurgeryList(Map<String, Object> returnMap){
 		
-		if(selectBox.equals("goSurgeryResultGoRegistrationDate")){
-			selectBox = "GO_SURGERY_RESULT_GO_REGISTRATION_DATE";
-		}else if(selectBox.equals("goHospitalName")){
-			selectBox = "GO_HOSPITAL_NAME";
-		}
-		Map<String ,Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("selectBox", selectBox);
-		returnMap.put("searchContents", searchContents);
-		return goHSD.goSurgeryList(returnMap);
+		
+		List<GoSurgery> goSurgeryList =goHSD.goSurgeryList(returnMap);
+		System.out.println(goSurgeryList.toString());
+		return goSurgeryList;
 	}
 	
 	//입,퇴원 목록
-	public List<GoHospitalization> goHospitalizationList(){
-		List<GoHospitalization> goHospitalization = goHSD.goHospitalizationList();
+	public List<GoHospitalization> goHospitalizationList(Map<String, Object> returnMap){
+		List<GoHospitalization> goHospitalization = goHSD.goHospitalizationList(returnMap);
 		for(int i=0; i<goHospitalization.size();i++){
 			String goTreatCode = goHospitalization.get(i).getGoTreatCode();
 			List<GoDiagnosis> diagnosisList =goHSD.goDiagnosis(goTreatCode);
