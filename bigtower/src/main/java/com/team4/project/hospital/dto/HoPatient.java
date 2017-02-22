@@ -1,14 +1,14 @@
 package com.team4.project.hospital.dto;
 
 public class HoPatient {
-	private String hoPatientCode;
-	private String hoHospitalCode;
-	private String goCitizenId;
-	private String hoPatientPhone;
-	private String hoPatientName;
-	private String hoZipCode;
-	private String hoPatientAddress;
-	private String hoPatientDetailAddress;
+	protected String hoPatientCode;
+	protected String hoHospitalCode;
+	protected String goCitizenId;
+	protected String hoPatientPhone;
+	protected String hoPatientName;
+	protected String hoZipCode;
+	protected String hoPatientAddress;
+	protected String hoPatientDetailAddress;
 	
 	public String getHoPatientCode() {
 		return hoPatientCode;

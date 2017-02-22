@@ -2,13 +2,13 @@ package com.team4.project.hospital.dto;
 
 public class HoDisease {
 
-	private String hoCheckUpCode;
-	private String hoTreatmentCode;
-	private String hoCheckUpResultPath;
-	private String hoCheckUpResultName;
-	private String hoCheckUpDate;
-	private String hoCheckUpRegistrationDate;
-	private int hoGoSendstate;
+	protected String hoCheckUpCode;
+	protected String hoTreatmentCode;
+	protected String hoCheckUpResultPath;
+	protected String hoCheckUpResultName;
+	protected String hoCheckUpDate;
+	protected String hoCheckUpRegistrationDate;
+	protected int hoGoSendstate;
 	
 	public String getHoCheckUpCode() {
 		return hoCheckUpCode;
