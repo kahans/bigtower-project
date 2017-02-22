@@ -20,7 +20,7 @@ public class GoVaccinationCheckupDao {
 	public List<GoVaccinationResult> vaccinationList(){
 		return sqlSession.selectList(VACCINATIONCHECKUP_NS+"vaccinationList");
 	}
-	//
+	//건강검진 결과 목록 가져오기
 	public List<GoCheckup> checkUpList(GoCheckup gocheckup){
 		return sqlSession.selectList(VACCINATIONCHECKUP_NS+"checkUpList", gocheckup);
 	}

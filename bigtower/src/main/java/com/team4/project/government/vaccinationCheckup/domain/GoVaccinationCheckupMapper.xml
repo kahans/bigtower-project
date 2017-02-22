@@ -17,18 +17,31 @@
  		JOIN go_vaccination
  			ON go_vaccination_result.GO_VACCINATION_CODE = go_vaccination.GO_VACCINATION_CODE
  	</select>
+ 	
+ 	
+ 	<!-- 건강검진 결과목록 가져오기 -->
  	<select id="checkUpList" resultType="com.team4.project.government.vaccinationCheckup.domain.GoCheckup">
  		SELECT 
- 			GO_CHECKUP_RESULT_CODE as goCheckUpResultCode,
- 			GO_TREAT_CODE as goTreatCode,
- 			GO_CHECKUP_RESULT_FILE_PATH as goCheckUpResultFilePath,
- 			GO_CHECKUP_RESULT_FILE_NAME as goCheckUpResultFileName,
- 			GO_CHECKUP_RESULT_REGISTRATION_DATE as goCheckUpResultRegistrationDate,
- 			GO_CHECKUP_RESULT_GO_REGISTRATION_DATE as goCheckUpResultGoRegistrationDate 
+ 			go_test_checkup_result.GO_CHECKUP_RESULT_CODE as goCheckUpResultCode,
+ 			go_test_checkup_result.GO_TREAT_CODE as goTreatCode,
+ 			go_test_checkup_result.GO_CHECKUP_RESULT_FILE_PATH as goCheckUpResultFilePath,
+ 			go_test_checkup_result.GO_CHECKUP_RESULT_FILE_NAME as goCheckUpResultFileName,
+ 			go_test_checkup_result.GO_CHECKUP_RESULT_REGISTRATION_DATE as goCheckUpResultRegistrationDate,
+ 			go_test_checkup_result.GO_CHECKUP_RESULT_GO_REGISTRATION_DATE as goCheckUpResultGoRegistrationDate,
+ 			go_treat.GO_HOSPITAL_ID as goHospitalId,
+ 			go_treat.GO_CITIZEN_NO as goCitizenNo,
+ 			go_treat.GO_DOCTOR_ID as goDoctorId,
+ 			go_treat.GO_TREAT_SUBJECT_CODE as goTreatSubjectCode,
+ 			go_treat.GO_CHART_CODE as goChartCode,
+ 			go_treat.GO_CHART_SEQ as goChartSeq,
+ 			go_treat.GO_TREAT_CONTENTS as goTreatContents,
+ 			go_treat.GO_TREAT_REGISTRATION_DATE as goTreatRegistrationDate,
+ 			go_treat.GO_TREAT_GO_REGISTRATION_DATE as goTreatGoRegisTrationDate
  		 FROM 
- 		 	go_treat 
- 		 	JOIN go_test_checkup_result on go_treat.GO_TREAT_CODE=go_test_checkup_result.GO_TREAT_CODE 
+ 		 	go_test_checkup_result 
+			JOIN go_treat on go_treat.GO_TREAT_CODE=go_test_checkup_result.GO_TREAT_CODE 
 			JOIN go_citizen on go_treat.GO_CITIZEN_NO=go_citizen.GO_CITIZEN_NO
+
 			WHERE go_citizen.GO_CITIZEN_ID=#{goCitizenId}
 			 		 	
  			

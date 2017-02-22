@@ -10,7 +10,7 @@
 <body>
 
 	<form action="<c:url value="/governmentYJ/checkUp"/>" method="post">
-		<input type="text" name="goCitizenId"/>
+		주민번호 : <input type="text" name="goCitizenId"/>
 		검색
 		<input type="submit" value="검색">
 		
