@@ -90,35 +90,45 @@
 							$("#memberTbody").append("</tr>");
 							 */
 							console.log('goCitizenName:'+item.goCitizenName);
+						 	var diseaseKor = '';
+						 	$.each(item.diagnosisList, function(key, value) {
+								console.log('test');
+								console.log('value'+value);
+								console.log('value.goDiseaseKor'+value.goDiseaseKor);
+								diseaseKor += value.goDiseaseKor+',';
+							});
+							var table = '<tr>'
+											+'<td><a href="<c:url value="/government/treatView?goTreatCode='+item.goTreatCode+'" />">'+item.goTreatCode+'</a></td>'
+											+'<td>'+item.goCitizenName+'</td>'
+											+'<td>'+item.goHospitalName+'</td>'
+											+'<td>'+item.goDoctorName+'</td>'
+											+'<td>'+item.goTreatSubjectName+'</td>'
+											+'<td>'
+											+diseaseKor+'</td>'
+											+'<td>'+item.goTreatRegistrationDate+'</td>'
+										+'</tr>';
+										console.log(table);
+							$('tbody').append(table);
 							
-							 /* 
- 			<tr>
-				<td><a href="<c:url value='/government/treatView?goTreatCode=${treatList.goTreatCode}' />">${treatList.goTreatCode}</a></td>
-				<td><div id="citizenName"></div></td>
-				<td id="hospitalName">${treatList.goHospitalName}</td>
-				<td id="doctorName">${treatList.goDoctorName}</td>
-				<td id="treatSubjectName">${treatList.goTreatSubjectName}</td>		
-				<!-- 진료코드가 같은것 끼리 출력하게 된다. -->
-				<td id="diseaseName">
-					<c:forEach items="${treatList.diagnosisList}" var="diagnosisList">
-						${diagnosisList.goDiseaseKor}<br>
-					</c:forEach>
-				</td>
-				<td id="registrationDate">${treatList.goTreatRegistrationDate}</td>	
-			</tr>
-							 */
-							$('tbody').append('<tr>');
+							/* $('tbody').append('<tr>');
 							$('tbody').append('<td><a href="<c:url value="/government/treatView?goTreatCode='+item.goTreatCode+'" />">'+item.goTreatCode+'</a></td>');
 							$('tbody').append('<td>'+item.goCitizenName+'</td>');
 							$('tbody').append('<td>'+item.goHospitalName+'</td>');
 							$('tbody').append('<td>'+item.goDoctorName+'</td>');
 							$('tbody').append('<td>'+item.goTreatSubjectName+'</td>');
-							$('tbody').append('<td id="18"></td>');
-							$.each(item.diagnosisList, function(key, value) {
-								$('#18').append(value.goDiseaseKor+',');
-							});
+							$('tbody').append(); */
+							//console.log('diagnosisList:'+item.diagnosisList);
+							/* for(var i=0; i<item.diagnosisList.length;i++){
+								$('tbody').append(item.diagnosisList.goDiseaseKor+',');
+							} */
+							
+							/* $.each(item.diagnosisList, function(key, value) {
+								$('tbody').append(value.goDiseaseKor+',');
+								console.log('each문 내');
+							}); */
+							/* console.log('each문 바깥');
 							$('tbody').append('<td>'+item.goTreatRegistrationDate+'</td>');
-							$('tbody').append('</tr>');
+							$('tbody').append('</tr>'); */
 
 							/* $('#citizenName').val(item.goCitizenName);
 							$('#hospitalName').val(item.goHospitalName);
