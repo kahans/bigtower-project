@@ -32,6 +32,7 @@ public class GoVaccinationCheckupController {
 		
 	
 	}
+	//건강검진 결과 목록 가져오기
 	@RequestMapping(value="/governmentYJ/checkUp", method=RequestMethod.POST)
 	public String checkUpList(GoCheckup gocheckup, Model model){
 		
@@ -44,7 +45,7 @@ public class GoVaccinationCheckupController {
 		}
 		
 		model.addAttribute("checkUp", checkUp);
-		
+		logger.debug("model에 담겨있는 값 : "+model);
 		
 		
 		return "/governmentYJ/checkUpResult";
