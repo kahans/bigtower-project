@@ -22,13 +22,9 @@ public class GoTestService {
 	
 	public GoTest selectBloodTest(GoTest goTest){
 		
-		
 		logger.debug("서비스로 요청 들어옴");
-		/*List<GoTreatByBloodTest> bt = goTD.selectTreatCode(goTreatByBloodTest);*/
-		
-		
-		
-		//goTreatByBloodTest 에서 날짜 분리해서 값이 입력되지 않았을때 if문을 사용하여 초기값을 만들어 넣어줌
+	
+		//goTest 에서 날짜 분리해서 값이 입력되지 않았을때 if문을 사용하여 초기값을 만들어 넣어줌
 		Date date = new Date();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String currentdate = transFormat.format(date);
@@ -49,18 +45,18 @@ public class GoTestService {
 			logger.debug("뒤가 공백일때");
 		}
 		
+		//bloodTest리스트로 받아옴
 		List<GoBloodTest> bloodTest = goTD.selectBlood(goTest);
+		//bloodTest 제대로 받아왔는지 for문으로 확인
 		for(int x=0; x<bloodTest.size(); x++){
 			logger.debug("bloodTest 확인 : "+bloodTest.get(x).toString());
 		}
 		
-		
-		// bt(bloodTest)의 크기만큼 for문을 돌려 GoBloodTest객체를 list에 담아서 GoTreatByBloodTest객체의 필드변수
-		//List<goBloodTest> 에 담는다.
+		//확인된 bloodTest를 goTest객체에 담음
 		for(int i=0; i<bloodTest.size(); i++){
-			/*goTestResult.setGoBloodTest(bloodTest.get(i));*/
 			goTestResult.setGoBloodTest(bloodTest);
 		}
+		//객체에 
 		logger.debug("서비스에서 확인 : "+goTestResult.getGoBloodTest().toString());
 		return 	goTestResult;
 		

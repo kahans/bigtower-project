@@ -17,6 +17,9 @@
 			<table>
 					<tr>
 						<th>
+							혈액검사 파일명
+						</th>
+						<th>
 							진료코드
 						</th>
 						<th>
@@ -29,10 +32,14 @@
 							혈액검사결과Img
 						</th>
 						
+						
 					</tr>
 			
 				<c:forEach var="bloodTest" items="${goTestBlood.goBloodTest}">
 				<tr>
+					<td>
+						<input type="text" name="fileName" value="${bloodTest.goBloodTestFileName}"/>
+					</td>
 					<td>
 						<input type="text" name="TreatCode" value="${bloodTest.goTreatCode}" readonly="readonly"/>
 					</td>
@@ -43,9 +50,9 @@
 						<input type="text" name="Platelet" value="${bloodTest.goBloodTestPlatelet}" readonly="readonly"/>
 					</td>
 					<td>
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">혈액검사결과</button>
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${bloodTest.goBloodTestCode}">혈액검사결과</button>
 						  <!-- Modal -->
-						  <div class="modal fade" id="myModal" role="dialog">
+						  <div class="modal fade" id="${bloodTest.goBloodTestCode}" role="dialog">
 						    <div class="modal-dialog modal-lg">
 						      <div class="modal-content">
 						        <div class="modal-header">
@@ -55,6 +62,7 @@
 						        <div class="modal-body">
 						         	<img alt="혈액검사결과파일" src="<c:url 
 						         	value="${bloodTest.goBloodTestFilePath}${bloodTest.goBloodTestFileName}">혈액검사결과</c:url>">
+						         	
 						        </div>
 						        <div class="modal-footer">
 						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -67,6 +75,6 @@
 				</c:forEach>
 			</table>
 	</div>	
-			
+			 
 </body>
 </html>
