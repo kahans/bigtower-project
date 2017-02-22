@@ -58,11 +58,17 @@ public void setDiagnosisList(List<GoDiagnosis> diagnosisList) {
 	this.diagnosisList = diagnosisList;
 }
 
+
 @Override
 public String toString() {
 	return "GoSearchTreatSub [goHospitalName=" + goHospitalName + ", goHospitalAddress=" + goHospitalAddress
 			+ ", goCitizenName=" + goCitizenName + ", goDoctorName=" + goDoctorName + ", goTreatSubjectName="
-			+ goTreatSubjectName + ", goDiseaseKor=" + goDiseaseKor + ", diagnosisList=" + diagnosisList + "]";
+			+ goTreatSubjectName + ", goDiseaseKor=" + goDiseaseKor + ", diagnosisList=" + diagnosisList
+			+ ", goTreatCode=" + goTreatCode + ", goHospitalId=" + goHospitalId + ", goCitizenId=" + goCitizenId
+			+ ", goDoctorId=" + goDoctorId + ", goTreatSubjectCode=" + goTreatSubjectCode + ", goChartCode="
+			+ goChartCode + ", goChartSeq=" + goChartSeq + ", goTreatContents=" + goTreatContents
+			+ ", goTreatRegistrationDate=" + goTreatRegistrationDate + ", goTreatGoRegistrationDate="
+			+ goTreatGoRegistrationDate + "]";
 }
 
 

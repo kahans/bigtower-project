@@ -7,24 +7,44 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<style>
-	.date {display:none;}
-</style>
 </head>
 <body>
 	
 	<!-- 기간을 선택하면 날짜를 선택할 수 있는 date type창이 활성화되고, 나머지 창에는 text창이 활성화된다. --> 
-	<select id="selectConditions" name="selectConditions">
+	<!-- <select id="selectConditions" name="selectConditions">
 		<option value="selectNone" selected="selected">선택사항 없음</option>
 		<option value="selectDate">기간</option>
 		<option value="selectSubject">진료과목</option>
 		<option value="selectHospital">병원</option>
 		<option value="selectDisease">질병명</option>
 		<option value="selectDoctor">의사명</option>
-	</select>
-	<input class="date" type= "date" name="firstDay" id="firstDay">
-	<input class="date" type= "date" name="secondDay" id="secondDay">
-	<input id="searchContents" type="text" name="searchContents">
+	</select> -->
+	<table>
+		<thead>
+			<tr>
+				<td>기간 :</td> 
+				<td><input class="date" type= "date" name="firstDay" id="firstDay">~</td>			
+				<td><input class="date" type= "date" name="secondDay" id="secondDay"></td>
+			</tr>
+			<tr>
+				<td>진료과목 :</td> 
+				<td colspan="2"><input id="subjectSearch" type="text" name="subjectSearch"></td>
+			</tr>
+			<tr>
+				<td>병원 :</td> 
+				<td colspan="2"><input id="hospitalSearch" type="text" name="hospitalSearch"></td>
+			</tr>
+			<tr>
+				<td>질병명:</td> 
+				<td colspan="2"><input id="diseaseSearch" type="text" name="diseaseSearch"></td>
+			</tr>
+			<tr>
+				<td>의사명:</td> 
+				<td colspan="2"><input id="doctorSearch" type="text" name="doctorSearch"></td>
+			</tr>
+		</thead>
+	</table>
+	<br>
 	<input type="button" id="btn" value="검색">
 	
 	<br><br>
@@ -44,39 +64,20 @@
 		<!-- 진료테이블에 있는 데이터를 목록으로 출력한다. -->
 		<tbody>
 		</tbody>
-
 	</table>
-	
 	<script>
-		$(document).ready(function(){
-			//기간을 선택시 date 선택창이 보이도록
-			$('#selectConditions').change(function(){
-				var state = $('#selectConditions option:selected').val();
-				if(state == 'selectDate'){
-					$('.date').show();
-					$('#searchContents').hide();
-				}else{
-					$('.date').hide();
-					$('#searchContents').show();
-				}
-			});
+		$(document).ready(function(){			
 			//버튼 클릭시 검색조건과 내용에 부합하는 목록 출력하기
 			$("#btn").bind("click",function(){		
-				if($('#selectConditions').val()==""){
-					alert('검색할 조건을 선택하시오.');
-					return;
-				}
-				/* if($('#searchContents').val()==""){
-					alert('검색할 내용을 입력하시오.');
-					return;
-				} */
 				$.ajax({
 					url : "/government/treatSearch",
 					type : "GET",
-					data : {'selectConditions' : $('#selectConditions').val(),
-							'searchContents' : $('#searchContents').val(),
-							'firstDay' : $('#firstDay').val(),
-							'secondDay' : $('#secondDay').val()},
+					data : {'firstDay' : $('#firstDay').val(),
+							'secondDay' : $('#secondDay').val(),
+							'subjectSearch' : $('#subjectSearch').val(),
+							'hospitalSearch' : $('#hospitalSearch').val(),
+							'diseaseSearch' : $('#diseaseSearch').val(),
+							'doctorSearch' : $('#doctorSearch').val()},
 					//함수가 성공하면
 					success : function(data){
 						console.log('성공');

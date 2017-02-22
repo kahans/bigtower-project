@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.team4.project.util.Util;
 
 import com.team4.project.government.treat.domain.GoSearchTreatSub;
 
@@ -35,22 +36,30 @@ public class GoTreatController {
 	//진료목록  검색
 	@RequestMapping(value="/government/treatSearch", method=RequestMethod.GET)
 	public @ResponseBody List<GoSearchTreatSub> treatList(
-			@RequestParam(value="selectConditions") String selectConditions,
-			@RequestParam(value="searchContents", required=false)String searchContents,
 			@RequestParam(value="firstDay", required=false)String firstDay,
-			@RequestParam(value="secondDay", required=false)String secondDay) {
-		System.out.println("selectConditions 값 : "+ selectConditions);
-		System.out.println("searchContents 값 : "+ searchContents);
+			@RequestParam(value="secondDay", required=false)String secondDay,
+			@RequestParam(value="subjectSearch", required=false) String subjectSearch,
+			@RequestParam(value="hospitalSearch", required=false)String hospitalSearch,
+			@RequestParam(value="diseaseSearch", required=false) String diseaseSearch,
+			@RequestParam(value="doctorSearch", required=false)String doctorSearch) {
 		System.out.println("firstDay 값 : "+ firstDay);
 		System.out.println("secondDay 값 : "+ secondDay);
+		System.out.println("subjectSearch 값 : "+ subjectSearch);
+		System.out.println("hospitalSearch 값 : "+ hospitalSearch);
+		System.out.println("diseaseSearch 값 : "+ diseaseSearch);
+		System.out.println("doctorSearch 값 : "+ doctorSearch);
+		
+		//검색내용을 Map에 담아 보냄
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("selectConditions", selectConditions);
-		returnMap.put("searchContents", searchContents);
 		returnMap.put("firstDay", firstDay);
 		returnMap.put("secondDay", secondDay);
+		returnMap.put("subjectSearch", subjectSearch);
+		returnMap.put("hospitalSearch", hospitalSearch);
+		returnMap.put("diseaseSearch", diseaseSearch);
+		returnMap.put("doctorSearch", doctorSearch);
+		
 		List<GoSearchTreatSub> goTreatList = goTCS.goTreatList(returnMap);
 		System.out.println("treatList : "+goTCS.goTreatList(returnMap));
-		//리스트를 출력한다. ( 진료목록, 질병목록은 서비스.java에서 실행이 된다....)
 		return goTreatList;
 	}
 	
