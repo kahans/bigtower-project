@@ -78,6 +78,7 @@
 							'searchContents' : $('#searchContents').val()},
 					success : function(data){
 						console.log('¼º°ø');
+						$('tbody').empty();
 						$.each(data, function(key, item) {
 							
 						/* 	$("#memberTbody").append("<tr>");
