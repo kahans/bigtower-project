@@ -1,16 +1,17 @@
 package com.team4.project.hospital.dto;
 
 public class HoStaff {
-	private String hoStaffId;
-	private String hoHospitalCode;
-	private int staffLevelCode;
-	private String hoStaffPw;
-	private String hoStaffSerialNo;
-	private String hoStaffName;
-	private String hoStaffPhone;
-	private String hoZipCode;
-	private String hoStaffAddress;
-	private String hoStaffDetailAddress;
+	protected String hoStaffId;
+	protected String hoHospitalCode;
+	protected int staffLevelCode;
+	protected String hoStaffPw;
+	protected String hoStaffSerialNo;
+	protected String hoStaffName;
+	protected String hoStaffPhone;
+	protected String hoZipCode;
+	protected String hoStaffAddress;
+	protected String hoStaffDetailAddress;
+	
 	public String getHoStaffId() {
 		return hoStaffId;
 	}

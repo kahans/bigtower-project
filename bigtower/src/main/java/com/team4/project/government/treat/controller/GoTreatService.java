@@ -26,16 +26,7 @@ public class GoTreatService {
 		System.out.println("selectConditions 값 : "+ selectConditions);
 		System.out.println("searchContents 값 : "+ searchContents);
 		
-		if(selectConditions.equals("selectSubject")){
-			selectConditions = "GO_TREAT_SUBJECT_NAME";
-		} else if(selectConditions.equals("selectHospital")){
-			selectConditions = "GO_HOSPTIAL_NAME";
-		} else if(selectConditions.equals("selectDisease")){
-			selectConditions = "GO_DISEASE_KOR";
-		} else if(selectConditions.equals("selectDoctor")){
-			selectConditions = "GO_DOCTOR_NAME";
-		}
-		System.out.println("조건문 후 selectConditions 값 : "+ selectConditions);
+		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("selectConditions", selectConditions);
 		returnMap.put("searchContents", searchContents);
