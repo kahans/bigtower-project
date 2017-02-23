@@ -12,11 +12,12 @@
 </head>
 <body>
 	<div class="container">
+		<h1>진료본 횟수</h1>
 		<table>
 			<thead>
 			<c:forEach items ="${treatSubjectList}" var="treatSubjectList" >
 				<tr>
-					<td>${treatSubjectList.goTreatSubjectName}</td>
+					<td>${treatSubjectList.goTreatSubjectName} :&nbsp;&nbsp;</td>
 					<td>${treatSubjectList.goTreatSubjectCount}회</td>
 				</tr>
 			</c:forEach>
@@ -24,7 +25,7 @@
 		</table>
 		
 		<h1>진료 목록 검색</h1>
-		<legend>
+		<h4>검색 조건을 입력하지 않을 시 모든 목록을 출력합니다</h4>
 		<table>
 			<thead>
 				<tr>
@@ -52,11 +53,11 @@
 		</table>
 		<br>
 		<input type="button" id="btn" value="검색">
-		</legend>
+		
 		
 		
 		<br><br>
-		
+		<h1>진료 목록</h1>
 		<table border="1">
 			<thead>
 				<tr>
