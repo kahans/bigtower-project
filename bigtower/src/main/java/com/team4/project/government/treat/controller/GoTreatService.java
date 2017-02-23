@@ -23,14 +23,36 @@ public class GoTreatService {
 	
 	//진료목록
 	public List<GoSearchTreatSub> goTreatList(Map<String, Object> returnMap){
-		//질병목록에 있는 질병이름을 검색하기 위해 앞뒤로 %를 넣어주고 그 단어가 들어가는 목록들을 출력하도록 하기 위함
+
+		//검색 내용에 들어가는 단어를 포함한 모든 목록을 출력할 수 있도록 앞뒤로 %를 추가해줌
 		String diseaseSearch = (String) returnMap.get("diseaseSearch");
-		diseaseSearch = "%"+diseaseSearch+"%";
+		String subjectSearch = (String) returnMap.get("subjectSearch");
+		String hospitalSearch = (String) returnMap.get("hospitalSearch");
+		String doctorSearch = (String) returnMap.get("doctorSearch");
+		if(!diseaseSearch.equals("")){
+			diseaseSearch = "%"+diseaseSearch+"%";
+		}
+		if(!subjectSearch.equals("")){
+			subjectSearch = "%"+subjectSearch+"%";
+		}
+		if(!hospitalSearch.equals("")){
+			hospitalSearch = "%"+hospitalSearch+"%";
+		}
+		if(!doctorSearch.equals("")){
+			doctorSearch = "%"+doctorSearch+"%";
+		}
 		returnMap.put("diseaseSearch", diseaseSearch);
+		returnMap.put("subjectSearch", subjectSearch);
+		returnMap.put("hospitalSearch", hospitalSearch);
+		returnMap.put("doctorSearch", doctorSearch);
+		System.out.println("diseaseSearch is "+diseaseSearch);
+		System.out.println("subjectSearch is "+subjectSearch);
+		System.out.println("hospitalSearch is "+hospitalSearch);
+		System.out.println("doctorSearch is "+doctorSearch);
 		
 		//날짜가 null일 때 자동 날짜 셋팅
 		String firstDay = (String) returnMap.get("firstDay");
-		String secondDay = (String) returnMap.get("secondDay");
+		String secondDay = (String) returnMap.get("secondDay");		
 		Map<String, Object> map = Util.createDate(firstDay, secondDay);
 		firstDay = (String)map.get("firstDate");
 		secondDay = (String)map.get("secondDate");
@@ -43,7 +65,7 @@ public class GoTreatService {
 		List<GoSearchTreatSub> goTreatList = goTCD.goTreatList(returnMap);
 		System.out.println("goTreatList:"+goTreatList);
 		
-		//진료코드를 이용하여 질병 목록들을 가져오기 위해  for문을 사용한다.
+		//진료코드를 이용하여 질병 목록들을 가져오기 위해  for문을 사용함
 		for(int i=0;i<goTreatList.size();i++){
 			String goTreatCode = goTreatList.get(i).getGoTreatCode();
 			List<GoDiagnosis> diagnosisList = goTCD.goDiagnosisList(goTreatCode);

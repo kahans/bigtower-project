@@ -49,6 +49,9 @@ public class GoTreatController {
 		System.out.println("diseaseSearch 값 : "+ diseaseSearch);
 		System.out.println("doctorSearch 값 : "+ doctorSearch);
 		
+		//세션ID 받아서 이곳에 넣기
+		String goCitizenId = "900101-1000002";
+		
 		//검색내용을 Map에 담아 보냄
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("firstDay", firstDay);
@@ -57,6 +60,7 @@ public class GoTreatController {
 		returnMap.put("hospitalSearch", hospitalSearch);
 		returnMap.put("diseaseSearch", diseaseSearch);
 		returnMap.put("doctorSearch", doctorSearch);
+		returnMap.put("goCitizenId", goCitizenId); //로그인시 받아올 국민 주민번호
 		
 		List<GoSearchTreatSub> goTreatList = goTCS.goTreatList(returnMap);
 		System.out.println("treatList : "+goTCS.goTreatList(returnMap));
