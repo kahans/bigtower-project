@@ -5,7 +5,7 @@
 <mapper namespace="GoTreat">
  	
  	<!-- 동일한 진료코드의 질병명 리스트 가져오기 -->
- 	<select id="goDiagnosisList" resultType="com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis" parameterType="String">
+ 	<select id="diagnosisList" resultType="com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis" parameterType="String">
  		SELECT
  			go_diagnosis.GO_DIAGNOSIS_CODE,
  			go_disease.GO_DISEASE_KOR
@@ -16,7 +16,7 @@
  	</select>
  	
  	<!-- 진료목록 뿌리기 -->
- 	<select id="goTreatList" resultType="com.team4.project.government.treat.domain.GoSearchTreatSub" parameterType="Map">
+ 	<select id="treatList" resultType="com.team4.project.government.treat.domain.GoSearchTreatSub" parameterType="Map">
 		SELECT 
  			go_treat.GO_TREAT_CODE,
  			go_citizen.GO_CITIZEN_NAME,
@@ -65,7 +65,7 @@
  	</select>
  	
  	<!-- 한 사람의 진료내용 가져오기 -->
- 	<select id="goSelectTreat" resultType="com.team4.project.government.treat.domain.GoSearchTreatSub">
+ 	<select id="selectTreat" resultType="com.team4.project.government.treat.domain.GoSearchTreatSub">
  		SELECT 
  			go_diagnosis.GO_TREAT_CODE,
  			go_hospital.GO_HOSPITAL_NAME,
@@ -94,5 +94,17 @@
  			ON go_diagnosis.GO_DISEASE_CODE =go_disease.GO_DISEASE_CODE
  		WHERE 
  			go_treat.GO_TREAT_CODE = #{goTreatCode} 
+ 	</select>
+ 	
+ 	<!-- 로그인된 국민의 진료본 과목 목록 출력하기 -->
+ 	<select id="selectOneTreatSubject" resultType="com.team4.project.government.treat.domain.GoSearchTreatSub" parameterType="int">
+ 		SELECT 
+ 			go_treat_subject.GO_TREAT_SUBJECT_NAME
+ 		FROM go_treat
+ 		JOIN go_treat_subject
+ 			ON go_treat.GO_TREAT_SUBJECT_CODE = go_treat_subject.GO_TREAT_SUBJECT_CODE
+ 		WHERE	 		
+	 		GO_CITIZEN_NO = #{goCitizenNo}
+	 	ORDER BY GO_TREAT_CODE DESC
  	</select>
 </mapper>

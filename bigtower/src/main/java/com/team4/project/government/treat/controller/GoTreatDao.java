@@ -18,17 +18,22 @@ public class GoTreatDao {
 	
 	//진료 상세보기
 	public GoSearchTreatSub goSelectTreat(String goTreatCode){
-		return sqlSession.selectOne("GoTreat.goSelectTreat", goTreatCode);
+		return sqlSession.selectOne("GoTreat.selectTreat", goTreatCode);
 	}
 	
 	//진료목록
 	public List<GoSearchTreatSub> goTreatList(Map<String, Object> returnMap){
 		System.out.println("TreatDao -->"+returnMap);
-		return sqlSession.selectList("GoTreat.goTreatList", returnMap);
+		return sqlSession.selectList("GoTreat.treatList", returnMap);
 	}
 	
 	//동일한 진료코드의 질병코드 리스트 가져오기
 	public List<GoDiagnosis> goDiagnosisList(String goTreatCode){
-		return sqlSession.selectList("GoTreat.goDiagnosisList", goTreatCode);
+		return sqlSession.selectList("GoTreat.diagnosisList", goTreatCode);
+	}
+	
+	//로그인된 국민의 진료본 과목 목록 출력하기
+	public List<GoSearchTreatSub> goSelectOneTreatSubject(int goCitizenNo){
+		return sqlSession.selectList("GoTreat.selectOneTreatSubject", goCitizenNo);
 	}
 }
