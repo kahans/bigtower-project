@@ -83,7 +83,7 @@
  		JOIN go_hospital
  			ON go_treat.GO_HOSPITAL_ID = go_hospital.GO_HOSPITAL_ID
  		JOIN go_citizen
- 			ON go_treat.GO_CITIZEN_ID = go_citizen.GO_CITIZEN_ID
+ 			ON go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO
  		JOIN go_doctor
  			ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
  		JOIN go_treat_subject
