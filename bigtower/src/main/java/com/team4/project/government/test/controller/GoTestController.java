@@ -21,7 +21,7 @@ public class GoTestController {
 	
 	@RequestMapping(value="/government/goTest" , method=RequestMethod.GET)
 	public String testRequest(){
-
+		System.out.println("ddddddddd");
 		return "/government/citizen/testVaccinationCheckup/test";
 	}
 	
