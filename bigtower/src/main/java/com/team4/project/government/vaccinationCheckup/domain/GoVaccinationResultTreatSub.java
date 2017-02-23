@@ -2,7 +2,7 @@ package com.team4.project.government.vaccinationCheckup.domain;
 
 import com.team4.project.government.treat.domain.GoTreat;
 
-public class GovaccinationCheckupTreatSub extends GoTreat {
+public class GoVaccinationResultTreatSub extends GoTreat {
 
 protected String goVaccinationResultCode;
 protected String goTreatCode;
