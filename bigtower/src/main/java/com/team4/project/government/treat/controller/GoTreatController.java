@@ -63,7 +63,8 @@ public class GoTreatController {
 		returnMap.put("goCitizenId", goCitizenId); //로그인시 받아올 국민 주민번호
 		
 		List<GoSearchTreatSub> goTreatList = goTCS.goTreatList(returnMap);
-		System.out.println("treatList : "+goTCS.goTreatList(returnMap));
+		
+		System.out.println("treatList : "+ goTreatList);
 		return goTreatList;
 	}
 	

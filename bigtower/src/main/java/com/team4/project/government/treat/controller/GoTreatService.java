@@ -20,10 +20,9 @@ public class GoTreatService {
 	public GoSearchTreatSub goSelectTreat(String goTreatCode){
 		return goTCD.goSelectTreat(goTreatCode);
 	}
-	
+		
 	//진료목록
 	public List<GoSearchTreatSub> goTreatList(Map<String, Object> returnMap){
-
 		//검색 내용에 들어가는 단어를 포함한 모든 목록을 출력할 수 있도록 앞뒤로 %를 추가해줌
 		String diseaseSearch = (String) returnMap.get("diseaseSearch");
 		String subjectSearch = (String) returnMap.get("subjectSearch");
@@ -68,9 +67,11 @@ public class GoTreatService {
 		//진료코드를 이용하여 질병 목록들을 가져오기 위해  for문을 사용함
 		for(int i=0;i<goTreatList.size();i++){
 			String goTreatCode = goTreatList.get(i).getGoTreatCode();
+			System.out.println("goTreatCode is "+goTreatCode);
 			List<GoDiagnosis> diagnosisList = goTCD.goDiagnosisList(goTreatCode);
 			goTreatList.get(i).setDiagnosisList(diagnosisList);
-		}		
+		}
+		//goTreatList.size()
 		return goTreatList;
 	}
 	
