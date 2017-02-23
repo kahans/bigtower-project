@@ -10,7 +10,7 @@
 <body>
 
 	<form action="<c:url value="/governmentYJ/checkUp"/>" method="post">
-		<input type="hidden" name="goCitizenId" value="900101-1000001"/>
+		
 		<input type="date" name="firstDate"/>-<input type="date" name="secondDate"/>
 		기간입력
 		<input type="submit" value="검색">
