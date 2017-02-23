@@ -51,6 +51,9 @@ public class GoTestService {
 			for(int x=0; x<bloodTest.size(); x++){
 				logger.debug("bloodTest 확인 : "+bloodTest.get(x).toString());
 			}
+			//bloodTest의 size를 goTest객체에 담음
+			goTestResult.setSelectBloodTestCount(bloodTest.size());
+			
 			
 			//확인된 bloodTest를 goTest객체에 담음
 			for(int i=0; i<bloodTest.size(); i++){

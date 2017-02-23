@@ -29,7 +29,8 @@
 		join go_treat on go_test_blood_result.GO_TREAT_CODE = go_treat.GO_TREAT_CODE 
 		join go_citizen on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO 
 	 	where  
-			(go_test_blood_result.GO_BLOOD_TEST_DATE between #{goFirstDate} and #{goSecondDate}) AND go_citizen.GO_CITIZEN_ID = #{goCitizenId}
+			(go_test_blood_result.GO_BLOOD_TEST_DATE between #{goFirstDate} and #{goSecondDate}) AND go_citizen.GO_CITIZEN_ID = #{goCitizenId} 
+			order by go_test_blood_result.GO_BLOOD_TEST_DATE desc
 	
 	</select>
 
