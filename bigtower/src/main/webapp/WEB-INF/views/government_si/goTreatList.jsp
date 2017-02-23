@@ -1,111 +1,125 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Treat List</title>
 </head>
 <body>
-	
-	<table>
-		<thead>
-			<tr>
-				<td>±â°£ :</td> 
-				<td><input class="date" type= "date" name="firstDay" id="firstDay">~</td>			
-				<td><input class="date" type= "date" name="secondDay" id="secondDay"></td>
-			</tr>
-			<tr>
-				<td>Áø·á°ú¸ñ :</td> 
-				<td colspan="2"><input id="subjectSearch" type="text" name="subjectSearch"></td>
-			</tr>
-			<tr>
-				<td>º´¿ø :</td> 
-				<td colspan="2"><input id="hospitalSearch" type="text" name="hospitalSearch"></td>
-			</tr>
-			<tr>
-				<td>Áúº´¸í:</td> 
-				<td colspan="2"><input id="diseaseSearch" type="text" name="diseaseSearch"></td>
-			</tr>
-			<tr>
-				<td>ÀÇ»ç¸í:</td> 
-				<td colspan="2"><input id="doctorSearch" type="text" name="doctorSearch"></td>
-			</tr>
-		</thead>
-	</table>
-	<br>
-	<input type="button" id="btn" value="°Ë»ö">
-	
-	<br><br>
-	
-	<table border="1">
-		<thead>
-			<tr>
-				<td>Áø·áÄÚµå</td>
-				<td>ÀÌ¸§</td>
-				<td>º´¿ø¸í</td>
-				<td>ÀÇ»ç¸í</td>
-				<td>Áø·á°ú¸ñ</td>
-				<td>Áúº´¸í</td>
-				<td>Áø·áµî·ÏÀÏ</td>
-			</tr>
-		</thead>
-		<!-- Áø·áÅ×ÀÌºí¿¡ ÀÖ´Â µ¥ÀÌÅÍ¸¦ ¸ñ·ÏÀ¸·Î Ãâ·ÂÇÑ´Ù. -->
-		<tbody>
-		</tbody>
-	</table>
-	<script>
-		$(document).ready(function(){			
-			//¹öÆ° Å¬¸¯½Ã °Ë»öÁ¶°Ç°ú ³»¿ë¿¡ ºÎÇÕÇÏ´Â ¸ñ·Ï Ãâ·ÂÇÏ±â
-			$("#btn").bind("click",function(){		
-				
-				$.ajax({
-					url : "/government/treatSearch",
-					type : "GET",
-					data : {'firstDay' : $('#firstDay').val(),
-							'secondDay' : $('#secondDay').val(),
-							'subjectSearch' : $('#subjectSearch').val(),
-							'hospitalSearch' : $('#hospitalSearch').val(),
-							'diseaseSearch' : $('#diseaseSearch').val(),
-							'doctorSearch' : $('#doctorSearch').val()},
-					//ÇÔ¼ö°¡ ¼º°øÇÏ¸é
-					success : function(data){
-						console.log('¼º°ø');
-						$('tbody').empty();
-						var count = data.length;
-						console.log('count:'+count);
-						alert(count + '°ÇÀÌ °Ë»öµÇ¾ú½À´Ï´Ù.');
-						//¹İº¹¹®À» ÅëÇØ °Ë»öÁ¶°Ç¿¡ ¸Â´Â ¸ñ·ÏÀ» Ãâ·ÂÇÑ´Ù
-						$.each(data, function(key, item) {  
-							console.log('goCitizenName:'+item.goCitizenName);
-						 	var diseaseKor = '';
-						 	//Áúº´¸ñ·Ï °¡Á®¿À´Â ¹İº¹¹®
-						 	$.each(item.diagnosisList, function(key, value) {
-								console.log('test');
-								console.log('value'+value);
-								console.log('value.goDiseaseKor'+value.goDiseaseKor);
-								diseaseKor += value.goDiseaseKor+',';
-							});
-							var table = '<tr>'
-											+'<td><a href="<c:url value="/government/treatView?goTreatCode='+item.goTreatCode+'" />">'+item.goTreatCode+'</a></td>'
-											+'<td>'+item.goCitizenName+'</td>'
-											+'<td>'+item.goHospitalName+'</td>'
-											+'<td>'+item.goDoctorName+'</td>'
-											+'<td>'+item.goTreatSubjectName+'</td>'
-											+'<td>'
-											+diseaseKor+'</td>'
-											+'<td>'+item.goTreatRegistrationDate+'</td>'
-										+'</tr>';
-										console.log(table);
-							$('tbody').append(table);								
-						})
-
-					}
-				});
-			}); //click functin Á¾·á
-		});
-	</script>
+	<div class="container">
+		<table>
+			<c:forEach items ="${treatSubjectList}" var="treatSubjectList" >
+				<tr>
+					<td>${treatSubjectList.goTreatSubjectName}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		
+		<h1>ì§„ë£Œ ëª©ë¡ ê²€ìƒ‰</h1>
+		<legend>
+		<table>
+			<thead>
+				<tr>
+					<td>ê¸°ê°„ :</td> 
+					<td><input class="date" type= "date" name="firstDay" id="firstDay"> ~&nbsp;&nbsp;</td>			
+					<td><input class="date" type= "date" name="secondDay" id="secondDay"></td>
+				</tr>
+				<tr>
+					<td>ì§„ë£Œê³¼ëª© :</td> 
+					<td colspan="2"><input id="subjectSearch" type="text" name="subjectSearch"></td>
+				</tr>
+				<tr>
+					<td>ë³‘ì› :</td> 
+					<td colspan="2"><input id="hospitalSearch" type="text" name="hospitalSearch"></td>
+				</tr>
+				<tr>
+					<td>ì§ˆë³‘ëª…:</td> 
+					<td colspan="2"><input id="diseaseSearch" type="text" name="diseaseSearch"></td>
+				</tr>
+				<tr>
+					<td>ì˜ì‚¬ëª…:</td> 
+					<td colspan="2"><input id="doctorSearch" type="text" name="doctorSearch"></td>
+				</tr>
+			</thead>
+		</table>
+		<br>
+		<input type="button" id="btn" value="ê²€ìƒ‰">
+		</legend>
+		
+		
+		<br><br>
+		
+		<table border="1">
+			<thead>
+				<tr>
+					<td>ì§„ë£Œì½”ë“œ</td>
+					<td>ì´ë¦„</td>
+					<td>ë³‘ì›ëª…</td>
+					<td>ì˜ì‚¬ëª…</td>
+					<td>ì§„ë£Œê³¼ëª©</td>
+					<td>ì§ˆë³‘ëª…</td>
+					<td>ì§„ë£Œë“±ë¡ì¼</td>					
+				</tr>
+			</thead>
+			<!-- ì§„ë£Œí…Œì´ë¸”ì— ìˆëŠ” ë°ì´í„°ë¥¼ ëª©ë¡ìœ¼ë¡œ ì¶œë ¥í•œë‹¤. -->
+			<tbody>
+			</tbody>
+		</table>
+		<script>
+			$(document).ready(function(){			
+				//ë²„íŠ¼ í´ë¦­ì‹œ ê²€ìƒ‰ì¡°ê±´ê³¼ ë‚´ìš©ì— ë¶€í•©í•˜ëŠ” ëª©ë¡ ì¶œë ¥í•˜ê¸°
+				$("#btn").bind("click",function(){		
+					
+					$.ajax({
+						url : "/government/treatSearch",
+						type : "GET",
+						data : {'firstDay' : $('#firstDay').val(),
+								'secondDay' : $('#secondDay').val(),
+								'subjectSearch' : $('#subjectSearch').val(),
+								'hospitalSearch' : $('#hospitalSearch').val(),
+								'diseaseSearch' : $('#diseaseSearch').val(),
+								'doctorSearch' : $('#doctorSearch').val()},
+						//í•¨ìˆ˜ê°€ ì„±ê³µí•˜ë©´
+						success : function(data){
+							console.log('ì„±ê³µ');
+							$('tbody').empty();
+							var count = data.length;
+							console.log('count:'+count);
+							alert(count + 'ê±´ì´ ê²€ìƒ‰ë˜ì—ˆìŠµë‹ˆë‹¤.');
+							//ë°˜ë³µë¬¸ì„ í†µí•´ ê²€ìƒ‰ì¡°ê±´ì— ë§ëŠ” ëª©ë¡ì„ ì¶œë ¥í•œë‹¤
+							$.each(data, function(key, item) {  
+								console.log('goCitizenName:'+item.goCitizenName);
+							 	var diseaseKor = '';
+							 	//ì§ˆë³‘ëª©ë¡ ê°€ì ¸ì˜¤ëŠ” ë°˜ë³µë¬¸
+							 	$.each(item.diagnosisList, function(key, value) {
+									console.log('test');
+									console.log('value'+value);
+									console.log('value.goDiseaseKor'+value.goDiseaseKor);
+									diseaseKor += value.goDiseaseKor+',';
+								});
+								var table = 
+									'<tr>'
+										+'<td><a href="<c:url value="/government/treatView?goTreatCode='+item.goTreatCode+'" />">'+item.goTreatCode+'</a></td>'
+										+'<td>'+item.goCitizenName+'</td>'
+										+'<td>'+item.goHospitalName+'</td>'
+										+'<td>'+item.goDoctorName+'</td>'
+										+'<td>'+item.goTreatSubjectName+'</td>'
+										+'<td>'
+										+diseaseKor+'</td>'
+										+'<td>'+item.goTreatRegistrationDate+'</td>'			
+									+'</tr>';
+								$('tbody').append(table);								
+							})	
+						}
+					});
+				}); //click functin ì¢…ë£Œ
+			});
+		</script>
+	</div>
 </body>
 </html>

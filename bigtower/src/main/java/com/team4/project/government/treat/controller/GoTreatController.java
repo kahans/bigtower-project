@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.team4.project.util.Util;
 
 import com.team4.project.government.treat.domain.GoSearchTreatSub;
 
@@ -35,7 +36,7 @@ public class GoTreatController {
 	
 	//진료목록  검색
 	@RequestMapping(value="/government/treatSearch", method=RequestMethod.GET)
-	public @ResponseBody List<GoSearchTreatSub> treatList(
+	public @ResponseBody List<GoSearchTreatSub> treatList(HttpSession session,
 			@RequestParam(value="firstDay", required=false)String firstDay,
 			@RequestParam(value="secondDay", required=false)String secondDay,
 			@RequestParam(value="subjectSearch", required=false) String subjectSearch,
@@ -49,8 +50,8 @@ public class GoTreatController {
 		System.out.println("diseaseSearch 값 : "+ diseaseSearch);
 		System.out.println("doctorSearch 값 : "+ doctorSearch);
 		
-		//세션ID 받아서 이곳에 넣기
-		String goCitizenId = "900101-1000002";
+		//세션ID 받아서 이곳에 넣기		
+		String goCitizenId = (String) session.getAttribute("GOCITIZENID");
 		
 		//검색내용을 Map에 담아 보냄
 		Map<String, Object> returnMap = new HashMap<String, Object>();
@@ -68,9 +69,12 @@ public class GoTreatController {
 		return goTreatList;
 	}
 	
-	//진료목록
+	//로그인된 국민의 진료본 과목 목록 출력하기
 	@RequestMapping(value="/government/treatList", method=RequestMethod.GET)
-	public String treatSearch(){			
+	public String treatSearch(HttpSession session, Model model){
+		int goCitizenNo = (Integer) session.getAttribute("GOCITIZENNO");
+		List<GoSearchTreatSub> treatSubjectList = goTCS.goSelectOneTreatSubject(goCitizenNo);
+		model.addAttribute("treatSubjectList",treatSubjectList);
 		return "/government_si/goTreatList";
 	}
 	

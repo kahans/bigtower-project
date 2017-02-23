@@ -1,61 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Treat View</title>
 </head>
 <body>
-	
-	<table border="1">
-		<tr>
-			<td>Áø·áÄÚµå</td>
-			<td>${Treat.goTreatCode}</td>			
-		</tr>
-		<tr>
-			<td>º´¿ø¸í</td>
-			<td>${Treat.goHospitalName}</td>
-		</tr>
-		<tr>
-			<td>º´¿øÁÖ¼Ò</td>
-			<td>${Treat.goHospitalAddress}</td>
-		</tr>
-		<tr>
-			<td>±¹¹ÎÀÌ¸§</td>
-			<td>${Treat.goCitizenName}</td>
-		</tr>
-		<tr>
-			<td>ÀÇ»ç¸í</td>
-			<td>${Treat.goDoctorName}</td>
-		</tr>
-		<tr>
-			<td>Áø·á°ú¸ñ</td>
-			<td>${Treat.goTreatSubjectName}</td>
-		</tr>
-		<tr>
-			<td>Â÷Æ®ÄÚµå</td>
-			<td>${Treat.goChartCode}</td>
-		</tr>
-		<tr>
-			<td>Áúº´¸í</td>
-			<td>${Treat.goDiseaseKor}</td>
-		</tr>
-		<tr>
-			<td>Â÷Æ®¼ø¹ø</td>
-			<td>${Treat.goChartSeq}</td>
-		</tr>
-		<tr>
-			<td>Áø·á³»¿ë</td>
-			<td>${Treat.goTreatContents}</td>
-		</tr>
-		<tr>
-			<td>Áø·áµî·ÏÀÏ</td>
-			<td>${Treat.goTreatRegistrationDate}</td>
-		</tr>
-	</table>
-	<a href="<c:url value='/government/treatList?goTreatCode'/>"><button>¸ñ·Ï</button></a>
-
+	<div class="container">
+		<table border="1">
+			<tr>
+				<td>ì§„ë£Œì½”ë“œ</td>
+				<td>${Treat.goTreatCode}</td>			
+			</tr>
+			<tr>
+				<td>ë³‘ì›ëª…</td>
+				<td>${Treat.goHospitalName}</td>
+			</tr>
+			<tr>
+				<td>ë³‘ì›ì£¼ì†Œ</td>
+				<td>${Treat.goHospitalAddress}</td>
+			</tr>
+			<tr>
+				<td>êµ­ë¯¼ì´ë¦„</td>
+				<td>${Treat.goCitizenName}</td>
+			</tr>
+			<tr>
+				<td>ì˜ì‚¬ëª…</td>
+				<td>${Treat.goDoctorName}</td>
+			</tr>
+			<tr>
+				<td>ì§„ë£Œê³¼ëª©</td>
+				<td>${Treat.goTreatSubjectName}</td>
+			</tr>
+			<tr>
+				<td>ì°¨íŠ¸ì½”ë“œ</td>
+				<td>${Treat.goChartCode}</td>
+			</tr>
+			<tr>
+				<td>ì§ˆë³‘ëª…</td>
+				<td>${Treat.goDiseaseKor}</td>
+			</tr>
+			<tr>
+				<td>ì°¨íŠ¸ìˆœë²ˆ</td>
+				<td>${Treat.goChartSeq}</td>
+			</tr>
+			<tr>
+				<td>ì§„ë£Œë‚´ìš©</td>
+				<td>${Treat.goTreatContents}</td>
+			</tr>
+			<tr>
+				<td>ì§„ë£Œë“±ë¡ì¼</td>
+				<td>${Treat.goTreatRegistrationDate}</td>
+			</tr>
+		</table>
+		<a href="<c:url value='/government/treatList'/>"><button>ëª©ë¡</button></a>
+	</div>
 </body>
 </html>

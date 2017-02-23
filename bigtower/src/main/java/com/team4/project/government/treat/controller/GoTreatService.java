@@ -79,4 +79,9 @@ public class GoTreatService {
 	public List<GoDiagnosis> goDiagnosisList(String goTreatCode){	
 		return goTCD.goDiagnosisList(goTreatCode);
 	}
+	
+	//로그인된 국민의 진료본 과목 목록 출력하기
+	public List<GoSearchTreatSub> goSelectOneTreatSubject(int goCitizenNo){
+		return goTCD.goSelectOneTreatSubject(goCitizenNo);
+	}
 }
