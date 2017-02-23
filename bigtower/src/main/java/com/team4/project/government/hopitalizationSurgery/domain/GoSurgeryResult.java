@@ -2,7 +2,7 @@ package com.team4.project.government.hopitalizationSurgery.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class GoSurgery{
+public class GoSurgeryResult{
 	protected String goSurgeryResultCode;
 	protected String goTreatCode;
 	protected String goSurgeryCode;
@@ -37,10 +37,9 @@ public class GoSurgery{
 	}
 	@Override
 	public String toString() {
-		return "GoSurgery [goS urgeryResultCode=" + goSurgeryResultCode + ", goTreatCode=" + goTreatCode
+		return "GoSurgery [goSurgeryResultCode=" + goSurgeryResultCode + ", goTreatCode=" + goTreatCode
 				+ ", goSurgeryCode=" + goSurgeryCode + ", goSurgeryResultGoRegistrationDate="
 				+ goSurgeryResultGoRegistrationDate + "]";
 	}
-	
 	
 }

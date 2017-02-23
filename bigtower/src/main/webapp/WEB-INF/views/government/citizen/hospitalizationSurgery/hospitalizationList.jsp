@@ -7,98 +7,77 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>입/퇴원 조회 사이트</title>
 <script src="//code.jquery.com/jquery.min.js"></script>
-<style type="text/css">
-.date {
-	display: none;
-}
-</style>
 </head>
 <body>
-	<select id="selectBox" name="selectBox">
-		<option value="1" selected="selected">선택사항 없음</option>
-		<option value="goHospitalizationExitDate">기간</option>
-		<option value="goHospitalName">병원</option>
-
-	</select>
-	<input class="date" type="date" name="firstDay" id="firstDay">
-	<input class="date" type="date" name="toDay" id="toDay">
-
-	<input class="contents" type="text" name="searchContents"
-		id="searchContents">
-	<!-- 버튼으로 작동하게  -->
-	<input type="button" class="btn" value="검색">
+	
+	<c:choose>
+		<c:when test="${goHospitalId==null && goCitizenNo ==null}">
+			<a href="<c:url value="/government/login"/>">로그인</a>
+		</c:when>
+		<c:when test="${goCitizenNo !=null}">
+			${goCitizenName} 님 로그인중 <a href="<c:url value="/government/logout"/>">로그아웃</a><br>
+			
+			<a href="<c:url value="/government/goTest"/>">검사</a>
+			<a href="<c:url value="/government/treatList"/>">진료</a>
+			<a href="<c:url value='/government/surgeryList'/>">수술내역</a>
+			<a href="<c:url value='/government/hospitalizationList'/>">입/퇴원내역</a>
+			
+		</c:when>
+		<c:when test="${goHospitalId !=null}">
+			병원 로그인성공<br>
+			${goHospitalName} 님 로그인중 <a href="<c:url value="/government/logout"/>">로그아웃</a>
+		</c:when>
+	</c:choose>
+	<table>		
+		<tr>
+			<td>기간</td>
+			<td>		
+				<input class="date" type="date" name="firstDate" id="firstDate"> ~ 
+				<input class="date" type="date" name="secondDate" id="secondDate">
+			</td>
+		</tr>
+		<tr>
+			<td>병원명</td>
+			<td><input class="contents" type="text" name="searchContents" id="searchContents"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="button" class="btn" value="검색"></td>
+		</tr>
+		
+	</table>
 	<br>
 	
 	<table border="1">
 		<thead>
 			<tr>
 				<th>병원명</th>
+				<th>환자명</th>
 				<th>입/퇴원 코드</th>
 				<th>질병명</th>
 				<th>입원일</th>
 				<th>퇴원일</th>
 			</tr>
 		</thead>
-		<tbody>
-			<%-- <c:forEach var="goHospitalization" items="${goHospitalization}">
-				<tr>
-					<td>${goHospitalization.goHospitalName}</td>
-					<td>${goHospitalization.goHospitalizationCode}</td>
-					<td><c:forEach var="diagnosisList" items="${goHospitalization.diagnosisList}">${diagnosisList.goDiseaseKor}<br></c:forEach></td>
-					<td>${goHospitalization.goHospitalizationEnterDate}</td>
-					<td>${goHospitalization.goHospitalizationExitDate}</td>	
-				</tr>
-			</c:forEach> --%>
+		<tbody class="tbody01">
+			<!-- ajax를 사용하여 append를 추가한다. -->
 		</tbody>
 	</table>
 	<script>
 		var Today = new Date();					
-		document.getElementById('toDay').valueAsDate=Today;
-		/* $(document).ready(function(){
-			jQuery('#selectBox').change(function() {
-				var state = jQuery('#selectBox option:selected').val();
-				if(state == 'goHospitalizationExitDate') {
-					//오늘날짜 가져오기
-					
-					//오늘 날짜에서 3개월빼기
-					
-					jQuery('.date').show();
-					jQuery('.contents').hide();
-				} else {
-					jQuery('.date').hide();
-					jQuery('.contents').show();
-				}
-			});	 */
+		document.getElementById('secondDate').valueAsDate=Today;
+		
 			$(".btn").bind("click",function() {
-				//select문 value 값을 state로 선언하여 대입한다.
-				//내용이 없을시 경고창 뜨우기
-				if($('#selectBox').val() == '1') {
-					//기간을 선택시 두개의 기간을 대입한다.
-					alert('조건을 선택하세요.');
-					return;
-				}else if($('#selectBox').val()=='goHospitalName'){
-					if($('#searchContents').val() == '') {
-						//goHospitalName
-						//입력한 데이터를 대입한다.					
-						alert('내용을 입력하시오');
-						return;
-					} 
-				}else if($('#selectBox').val()=='goHospitalizationExitDate'){
-					if($('#firstDay').val()==''){
-						alert('입력하세요.');
-						return;
-					}
-				}
 				$.ajax({
 					url:'/government/hospitalizationSearch',
 					type:'GET',
-					data: {'selectBox': $('#selectBox').val() ,
-							'searchContents': $('#searchContents').val(),
-							'toDay' : $('#toDay').val(),
-							'firstDay' : $('#firstDay').val()},
+					data: { 'searchContents': $('#searchContents').val(),
+							'secondDate' : $('#secondDate').val(),
+							'firstDate' : $('#firstDate').val()
+					},
 					success:function(data){
 						console.log('검색성공');
-						$('tbody').empty();
+						$('.tbody01').empty();
+						//다시 검색을 했을지 기존에 있는 데이터를 비워놓고 다시 검색한 데이터를 tbody에 출력한다.
 						$.each(data, function(key, item){
 							var diseaseKor = '';
 							$.each(item.diagnosisList, function(key,value){
@@ -106,17 +85,17 @@
 							});
 							var table = '<tr>'
 											+'<td>'+item.goHospitalName+'</td>'
+											+'<td>'+item.goCitizenName+'</td>'
 											+'<td>'+item.goHospitalizationCode+'</td>'
 											+'<td>'+diseaseKor+'</td>'
 											+'<td>'+item.goHospitalizationEnterDate+'</td>'
 											+'<td>'+item.goHospitalizationExitDate+'</td>'
 										+'</tr>';
-							$('tbody').append(table);
+							$('.tbody01').append(table);
 						})
 					}
 				});
-			});
-		//});		
+			});	
 	</script> 
 </body>
 </html>

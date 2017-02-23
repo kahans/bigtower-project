@@ -4,7 +4,7 @@
  
 <mapper namespace="GoHospitalizationSurgery">
 <!-- 수술 목록 출력 -->
- 	<select id="goSurgeryList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSurgery" parameterType="Map">
+ 	<select id="goSurgeryList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSearchSurgerySub" parameterType="Map">
 	SELECT
 		go_surgery_result.GO_SURGERY_RESULT_CODE,
 		go_hospital.GO_HOSPITAL_NAME,
@@ -27,40 +27,62 @@
 		<if test="firstDate != '' and secondDate != '' ">
 			GO_SURGERY_RESULT_GO_REGISTRATION_DATE between #{firstDate} and #{secondDate}
 		</if>
+		<if test="!citizen.equals('')">
+			AND GO_CITIZEN_ID = #{citizen}
+		</if>
 		<if test="searchContents!=''">
-			AND GO_HOSPITAL_NAME=#{searchContents}
+			AND GO_HOSPITAL_NAME LIKE #{searchContents}
 		</if>		
 	</where>
 	ORDER BY GO_SURGERY_RESULT_GO_REGISTRATION_DATE DESC
  	
  	</select>
  	<!-- 입퇴원 목록 -->
- 	<select id="goHospitalizationList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoHospitalization">
+ 	<select id="goHospitalizationList" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSearchHospitalizationSub" parameterType="Map">
 		select
 			go_hospitalization.GO_HOSPITALIZATION_CODE,
 			go_hospital.GO_HOSPITAL_NAME,
 			go_hospitalization.GO_HOSPITALIZATION_ENTER_DATE,
 			go_hospitalization.GO_HOSPITALIZATION_EXIT_DATE,
-			go_hospitalization.GO_TREAT_CODE
+			go_hospitalization.GO_TREAT_CODE,
+			go_citizen.GO_CITIZEN_NAME
 		from go_hospitalization
 		join go_treat
 			ON go_treat.GO_TREAT_CODE=go_hospitalization.GO_TREAT_CODE
 		join go_hospital
 			ON go_hospital.GO_HOSPITAL_ID = go_treat.GO_HOSPITAL_ID
-		<where> 
-			<choose>
-				<when test="selectBox.equals('goHospitalName')">
-					GO_HOSPITAL_NAME=#{searchContents}
-				</when>
-				<when test="selectBox.equals('goHospitalizationExitDate')">
-					GO_HOSPITALIZATION_EXIT_DATE between #{firstDay} and #{toDay}
-				</when>
-			</choose>
-		</where>
+		join go_citizen
+			ON go_citizen.GO_CITIZEN_NO = go_treat.GO_CITIZEN_NO
+		<where>
+			<if test="firstDate != '' and secondDate != '' ">
+				GO_HOSPITALIZATION_EXIT_DATE between #{firstDate} and #{secondDate}
+			</if>
+			<if test="!citizen.equals('')">
+				AND GO_CITIZEN_ID = #{citizen}
+			</if>
+			<if test="searchContents!=''">
+				AND GO_HOSPITAL_NAME LIKE #{searchContents}
+			</if>		
+		</where>		
 		ORDER BY GO_HOSPITALIZATION_ENTER_DATE DESC
+		LIMIT 0, 5
  	
  	</select>
  	<!-- 진료로 통해서 질병 통합 -->
+ 	<!-- 페이징 처리 해당되는 시민 ID를 총 갯수 -->
+ 	<select id="countPage">
+		SELECT
+			COUNT(GO_CITIZEN_ID)
+		FROM go_hospitalization
+		JOIN go_treat
+			ON go_treat.GO_TREAT_CODE=go_hospitalization.GO_TREAT_CODE
+		join go_citizen
+			ON go_citizen.GO_CITIZEN_NO = go_treat.GO_CITIZEN_NO
+		WHERE GO_CITIZEN_ID='900101-1000001' 		
+ 	</select>
+ 	<select id="">
+ 	
+ 	</select>
  	<select id="goDiagnosis" resultType="com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis" parameterType="String">
  		SELECT
  			go_diagnosis.GO_DIAGNOSIS_CODE,

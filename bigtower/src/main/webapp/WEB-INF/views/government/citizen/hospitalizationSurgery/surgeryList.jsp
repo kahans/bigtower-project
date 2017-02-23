@@ -7,29 +7,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>수술 내역 조회사이트</title>
 <script src="//code.jquery.com/jquery.min.js"></script>
-<!-- <style type="text/css">
-.date {
-	display: none;
-}
-</style> -->
 </head>
 <body>
-	<!-- <select id="selectBox" name="selectBox">
-		<option value="1" selected="selected">선택사항 없음</option>
-		<option value="goSurgeryResultGoRegistrationDate">기간</option>
-		<option value="goHospitalName">병원</option>
-
-	</select>
-
-	<input class="date" type="date" name="firstDay" id="firstDay">
-	<input class="date" type="date" name="toDay" id="toDay">
-
-	<input class="contents" type="text" name="searchContents"
-		id="searchContents">
-	버튼으로 작동하게 
-	<input type="button" class="btn" value="검색"> -->
+	<c:choose>
+		<c:when test="${goHospitalId==null && goCitizenNo ==null}">
+			<a href="<c:url value="/government/login"/>">로그인</a>
+		</c:when>
+		<c:when test="${goCitizenNo !=null}">
+			${goCitizenName} 님 로그인중 <a href="<c:url value="/government/logout"/>">로그아웃</a><br>
+			
+			<a href="<c:url value="/government/goTest"/>">검사</a>
+			<a href="<c:url value="/government/treatList"/>">진료</a>
+			<a href="<c:url value='/government/surgeryList'/>">수술내역</a>
+			<a href="<c:url value='/government/hospitalizationList'/>">입/퇴원내역</a>
+			
+		</c:when>
+		<c:when test="${goHospitalId !=null}">
+			병원 로그인성공<br>
+			${goHospitalName} 님 로그인중 <a href="<c:url value="/government/logout"/>">로그아웃</a>
+		</c:when>
+	</c:choose>
 	<table>
-		
 		<tr>
 			<td>기간</td>
 			<td>		
@@ -43,8 +41,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center"><input type="button" class="btn" value="검색"></td>
-		</tr>
-		
+		</tr>		
 	</table>
 	<br>
 
@@ -53,6 +50,7 @@
 			<tr>
 				<th>병원명</th>
 				<th>의사명</th>
+				<th>환자명</th>
 				<th>수술코드</th>
 				<th>수술명</th>
 				<th>수술일자</th>
@@ -67,8 +65,6 @@
 		document.getElementById('secondDate').valueAsDate=Today;
 		
 			$(".btn").bind("click",function() {
-				//select문 value 값을 state로 선언하여 대입한다.
-				//내용이 없을시 경고창 뜨우기
 				$.ajax({
 					url:'/government/surgerySearch',
 					type:'GET',
@@ -77,16 +73,20 @@
 							'firstDate' : $('#firstDate').val()},
 					success:function(data){
 						console.log('검색성공');
-						
+						$('.tbody').empty();
+						//다시 검색을 했을지 기존에 있는 데이터를 비워놓고 다시 검색한 데이터를 tbody에 출력한다.
 						$.each(data, function(key, item){
 							$('.tbody').append('<tr>');
 							$('.tbody').append('<td>'+item.goHospitalName+'</td>');
 							$('.tbody').append('<td>'+item.goDoctorName+'</td>');
+							$('.tbody').append('<td>'+item.goCitizenName+'</td>');
 							$('.tbody').append('<td>'+item.goSurgeryResultCode+'</td>');
 							$('.tbody').append('<td>'+item.goSurgeryName+'</td>');
 							$('.tbody').append('<td>'+item.goSurgeryResultGoRegistrationDate+'</td>');
 							$('.tbody').append('</tr>');
+							
 						})
+						
 					}
 				});
 			});

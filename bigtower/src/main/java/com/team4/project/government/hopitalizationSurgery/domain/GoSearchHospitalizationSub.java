@@ -4,12 +4,19 @@ import java.util.List;
 
 import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
 
-public class GoSearchHospitalization {
+public class GoSearchHospitalizationSub extends GoHospitalization{
 	//DB에서 조인문을 통해서 받는 값들
 	protected String goHospitalName;
+	protected String goCitizenName;
+	
 	protected List<GoDiagnosis> diagnosisList;
 	
-	
+	public String getGoCitizenName() {
+		return goCitizenName;
+	}
+	public void setGoCitizenName(String goCitizenName) {
+		this.goCitizenName = goCitizenName;
+	}
 	public String getGoHospitalName() {
 		return goHospitalName;
 	}
@@ -24,7 +31,8 @@ public class GoSearchHospitalization {
 	}
 	@Override
 	public String toString() {
-		return "GoSearchHospitalization [goHospitalName=" + goHospitalName + ", diagnosisList=" + diagnosisList + "]";
+		return "GoSearchHospitalizationSub [goHospitalName=" + goHospitalName + ", goCitizenName=" + goCitizenName
+				+ ", diagnosisList=" + diagnosisList + "]";
 	}
 	
 	

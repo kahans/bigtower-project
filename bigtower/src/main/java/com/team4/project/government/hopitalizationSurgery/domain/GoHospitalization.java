@@ -1,7 +1,7 @@
 package com.team4.project.government.hopitalizationSurgery.domain;
 
 
-public class GoHospitalization extends GoSearchHospitalization{
+public class GoHospitalization{
 	protected String goHospitalizationCode;
 	protected String goTreatCode;
 	protected String goHospitalizationEnterDate;
