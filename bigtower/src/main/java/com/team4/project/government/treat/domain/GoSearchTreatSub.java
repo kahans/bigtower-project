@@ -13,9 +13,16 @@ private String goCitizenName;
 private String goDoctorName;
 private String goTreatSubjectName;
 private String goDiseaseKor;
-private List<GoDiagnosis> diagnosisList;
+private List<GoDiagnosis> diagnosisList; //질병리스트
+private int goTreatSubjectCount; //진료과목 카운트
 
 
+public int getGoTreatSubjectCount() {
+	return goTreatSubjectCount;
+}
+public void setGoTreatSubjectCount(int goTreatSubjectCount) {
+	this.goTreatSubjectCount = goTreatSubjectCount;
+}
 public String getGoCitizenId() {
 	return goCitizenId;
 }

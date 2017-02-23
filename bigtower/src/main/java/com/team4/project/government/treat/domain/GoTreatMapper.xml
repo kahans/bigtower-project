@@ -99,12 +99,14 @@
  	<!-- 로그인된 국민의 진료본 과목 목록 출력하기 -->
  	<select id="selectOneTreatSubject" resultType="com.team4.project.government.treat.domain.GoSearchTreatSub" parameterType="int">
  		SELECT 
- 			go_treat_subject.GO_TREAT_SUBJECT_NAME
+ 		go_treat_subject.GO_TREAT_SUBJECT_NAME,
+ 		count(*) as goTreatSubjectCount
  		FROM go_treat
  		JOIN go_treat_subject
  			ON go_treat.GO_TREAT_SUBJECT_CODE = go_treat_subject.GO_TREAT_SUBJECT_CODE
  		WHERE	 		
 	 		GO_CITIZEN_NO = #{goCitizenNo}
+	 	GROUP BY go_treat_subject.GO_TREAT_SUBJECT_NAME
 	 	ORDER BY GO_TREAT_CODE DESC
  	</select>
 </mapper>

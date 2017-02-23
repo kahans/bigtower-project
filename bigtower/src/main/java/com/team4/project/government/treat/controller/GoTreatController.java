@@ -31,7 +31,7 @@ public class GoTreatController {
 			@RequestParam(value="goTreatCode")String goTreatCode){
 		System.out.println("진료상세보기 진료코드 : "+goTreatCode);
 		model.addAttribute("Treat",goTCS.goSelectTreat(goTreatCode));
-		return "/government_si/goSelectTreat";
+		return "/government/citizen/treat/goSelectTreat";
 	}
 	
 	//진료목록  검색
@@ -75,7 +75,7 @@ public class GoTreatController {
 		int goCitizenNo = (Integer) session.getAttribute("GOCITIZENNO");
 		List<GoSearchTreatSub> treatSubjectList = goTCS.goSelectOneTreatSubject(goCitizenNo);
 		model.addAttribute("treatSubjectList",treatSubjectList);
-		return "/government_si/goTreatList";
+		return "/government/citizen/treat/goTreatList";
 	}
 	
 	
