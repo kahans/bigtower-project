@@ -8,6 +8,7 @@ public class GoTest {
 	protected List<GoImageTestTreatSub> goImageTestTreatSub;
 	protected List<SelectInfo> selectInfo;
 	protected int selectBloodTestCount;
+	
 	protected String goFirstDate;
 	protected String goSecondDate;
 	
