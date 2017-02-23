@@ -9,8 +9,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -28,15 +26,16 @@
 							혈소판
 						</th>
 						<th>
-							혈액검사결과Img
+							병원명
 						</th>
 						<th>
-							<테스트용>
+							혈액검사결과Img
 						</th>
 						
 					</tr>
 			
 				<c:forEach var="bloodTest" items="${goTestBlood.goBloodTestTreatSub}">
+					
 				<tr>
 					<td>
 						<input type="text" name="fileName" value="${bloodTest.goBloodTestDate}"/>
@@ -50,6 +49,9 @@
 						<div class="Platelet">
 							<input type="text" name="Platelet" value="${bloodTest.goBloodTestPlatelet}" readonly="readonly"/>
 						</div>
+					</td>
+					<td>
+						
 					</td>
 					<td>
 						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${bloodTest.goBloodTestCode}">혈액검사결과</button>
@@ -73,9 +75,7 @@
 						    </div>
 						  </div>
 					</td>
-					<td>
-						<button type="button" id="a" onclick="function()">버튼</button>
-					</td>
+					
 					
 				</tr>
 				<script type="text/javascript">
@@ -83,7 +83,7 @@
 						//id가 bloodTestSugar인 text박스의 value값을 받아온다.
 						
 						$('.bloodSugar').each
-						var bloodSugar = $('.bloodSugar').;
+						var bloodSugar = $('.bloodSugar');
 						var Platelet = $("input[name='Platelet']").attr("value");
 						alert(bloodSugar);
 						

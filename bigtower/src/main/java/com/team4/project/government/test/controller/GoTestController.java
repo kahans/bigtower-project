@@ -1,5 +1,7 @@
 package com.team4.project.government.test.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +37,18 @@ public class GoTestController {
 	//혈액검사 요청페이지에서 날짜 citizenNo 넘겨받음 citizenNo는 추후에 로그인정보에서 citizenNO 혹은 주민번호를 받아 올 예정
 	//주민번호를 받게되면 DTo와 mapper 수정해야함.
 	@RequestMapping(value="/goBloodTest", method=RequestMethod.POST)
-	public String selectBloodTest(Model model, GoTest goTest){
-			logger.debug("혈액검사 요청페이지에서 날짜,citizenNo 넘겨받음");
+	public String selectBloodTest(Model model, GoTest goTest, HttpSession session){
+		
+		//세션 임의로 만들어서 넣어줌
+		String citizenID = "900101-1000002";
+		session.setAttribute("citizenId", citizenID);
+		System.out.println("세션확인 : "+session.getAttribute("citizenId"));
+		String goCitizenId = (String) session.getAttribute("citizenId");
+		goTest.setGoCitizenId(goCitizenId);
+		//여기까지
+		
+		
+			logger.debug("혈액검사 요청페이지에서 날짜 넘겨받음");
 
 			logger.debug("주민번호 확인 : "+goTest.getGoCitizenId());
 			GoTest goBloodTest = goTS.selectBloodTest(goTest);
@@ -57,7 +69,17 @@ public class GoTestController {
 	//영상검사 요청페이지에서 날짜 citizenNo 넘겨받음 citizenNo는 추후에 로그인정보에서 citizenNO 혹은 주민번호를 받아 올 예정
 	//주민번호를 받게되면 DTo와 mapper 수정해야함.
 	@RequestMapping(value="/goImgTest" , method=RequestMethod.POST)
-	public String selectImgTest(Model model, GoTest goTest){
+	public String selectImgTest(Model model, GoTest goTest, HttpSession session){
+		
+		//세션 임의로 만들어서 넣어줌
+		String citizenID = "900101-1000002";
+		session.setAttribute("citizenId", citizenID);
+		System.out.println("세션확인 : "+session.getAttribute("citizenId"));
+		String goCitizenId = (String) session.getAttribute("citizenId");
+		goTest.setGoCitizenId(goCitizenId);
+		//여기까지
+		
+		
 			logger.debug("citizenId 확인 : "+goTest.getGoCitizenId());
 			logger.debug("입력받은 날짜 확인 : "+goTest.getGoFirstDate()+" , "+goTest.getGoSecondDate());
 			

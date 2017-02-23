@@ -6,11 +6,20 @@ public class GoTest {
 	protected String goCitizenId;
 	protected List<GoBloodTestTreatSub> goBloodTestTreatSub;
 	protected List<GoImageTestTreatSub> goImageTestTreatSub;
+	protected List<SelectInfo> selectInfo;
 	protected int selectBloodTestCount;
 	protected String goFirstDate;
 	protected String goSecondDate;
-
 	
+
+	public List<SelectInfo> getSelectInfo() {
+		return selectInfo;
+	}
+
+	public void setSelectInfo(List<SelectInfo> selectInfo) {
+		this.selectInfo = selectInfo;
+	}
+
 	public int getSelectBloodTestCount() {
 		return selectBloodTestCount;
 	}
