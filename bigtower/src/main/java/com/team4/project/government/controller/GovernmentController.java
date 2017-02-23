@@ -24,16 +24,6 @@ public class GovernmentController {
 	@RequestMapping(value="/government/", method=RequestMethod.GET)
 	public String index(HttpSession session, Model model){
 		logger.debug("index 메서드 호출");
-			if(session.getAttribute("FLAG")=="citizen"){
-				logger.debug("세션에 FLAG값 citizen임");
-				model.addAttribute("goCitizenNo", session.getAttribute("GOCITIZENNO"));
-				model.addAttribute("goCitizenId", session.getAttribute("GOCITIZENID"));
-				model.addAttribute("goCitizenName", session.getAttribute("GOCITIZENNAME"));
-			} else if(session.getAttribute("FLAG")=="hospital"){
-				logger.debug("세션에 FLAG값 hospital임");
-				model.addAttribute("goHospitalId", session.getAttribute("GOHOSPITALID"));
-				model.addAttribute("goHospitalName", session.getAttribute("GOHOSPITALNAME"));
-			}
 		return "/government/index";
 	}
 	

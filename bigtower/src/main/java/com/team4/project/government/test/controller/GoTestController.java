@@ -66,7 +66,7 @@ public class GoTestController {
 	@RequestMapping(value="/government/goImageTest" , method=RequestMethod.GET)
 	public String selectImgTest(){
 		logger.debug("img요청페이지");
-		return "/governmentYJ/imgTest";
+		return "/government/citizen/testVaccinationCheckup/imgTest";
 		
 	}
 	
@@ -90,7 +90,7 @@ public class GoTestController {
 			GoTest goImageTest = goTS.selectImageTest(goTest);
 			//모델에 이미지결과 받아온 list를 담음
 			model.addAttribute("goImageTest",goImageTest);
-		return "/governmentYJ/imgTestResult";
+		return "/government/citizen/testVaccinationCheckup/imgTestResult";
 		}
 	}
 	
