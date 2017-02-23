@@ -16,7 +16,11 @@
 	</c:when>
 	<c:when test="${goCitizenNo !=null}">
 		국민 로그인성공<br>
-		${goCitizenName} 님 로그인중 <a href="<c:url value="/government/logout"/>">로그아웃</a>
+		${goCitizenName} 님 로그인중 <a href="<c:url value="/government/logout"/>">로그아웃</a><br>
+		
+		<a href="<c:url value="/government/goTest"/>">검사</a>
+		<a href="<c:url value="/government/treatList"/>">진료</a>
+		
 	</c:when>
 	<c:when test="${goHospitalId !=null}">
 		병원 로그인성공<br>
