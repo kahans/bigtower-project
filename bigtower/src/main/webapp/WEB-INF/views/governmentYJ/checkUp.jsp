@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<form action="<c:url value="/governmentYJ/checkUp"/>" method="post">
+	<form action="<c:url value="/government/checkUp"/>" method="post">
 		<input type="hidden" name="goCitizenId" value="${goCitizenId}"/>
 		<input type="date" name="firstDate"/>-<input type="date" name="secondDate"/>
 		기간입력
