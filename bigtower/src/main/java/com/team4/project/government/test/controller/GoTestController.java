@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.team4.project.government.test.domain.GoImageTest;
 import com.team4.project.government.test.domain.GoTest;
 
 @Controller
@@ -17,6 +16,14 @@ public class GoTestController {
 
 	@Autowired
 	private GoTestService goTS;
+	
+	@RequestMapping(value="/goTest" , method=RequestMethod.GET)
+	public String testRequest(){
+		
+		return "/governmentYJ/test";
+	}
+	
+	
 	
 	//혈액검사요청페이지
 	@RequestMapping(value="/goBloodTest", method=RequestMethod.GET)

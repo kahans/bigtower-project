@@ -42,10 +42,14 @@
 						<input type="text" name="fileName" value="${bloodTest.goBloodTestDate}"/>
 					</td>
 					<td>
-						<input type="text" name="bloodSugar" id="${bloodTest.goBloodTestBloodSugar}" value="${bloodTest.goBloodTestBloodSugar}" readonly="readonly"/>
+						<div class="bloodSugar">
+							<input type="text" name="bloodSugar" value="${bloodTest.goBloodTestBloodSugar}" readonly="readonly"/>
+						</div>					
 					</td>
 					<td>
-						<input type="text" name="Platelet" value="${bloodTest.goBloodTestPlatelet}" readonly="readonly"/>
+						<div class="Platelet">
+							<input type="text" name="Platelet" value="${bloodTest.goBloodTestPlatelet}" readonly="readonly"/>
+						</div>
 					</td>
 					<td>
 						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${bloodTest.goBloodTestCode}">혈액검사결과</button>
@@ -77,7 +81,10 @@
 				<script type="text/javascript">
 					$(document).on('click','#a',function(){
 						//id가 bloodTestSugar인 text박스의 value값을 받아온다.
-						var bloodSugar = $("#"+${bloodTest.goBloodTestBloodSugar}+"").val();
+						
+						$('.bloodSugar').each
+						var bloodSugar = $('.bloodSugar').;
+						var Platelet = $("input[name='Platelet']").attr("value");
 						alert(bloodSugar);
 						
 						//bloodSugar에 담긴 값에 따라 css 다르게 적용할 예정
