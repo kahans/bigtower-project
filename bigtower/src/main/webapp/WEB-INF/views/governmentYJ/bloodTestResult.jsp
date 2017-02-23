@@ -13,14 +13,11 @@
 </head>
 <body>
 	<div class="container">
-
+		검사 수 : ${goTestBlood.selectBloodTestCount}
 			<table>
 					<tr>
 						<th>
-							혈액검사 파일명
-						</th>
-						<th>
-							진료코드
+							혈액검사일
 						</th>
 						<th>
 							혈당수치
@@ -38,10 +35,7 @@
 				<c:forEach var="bloodTest" items="${goTestBlood.goBloodTestTreatSub}">
 				<tr>
 					<td>
-						<input type="text" name="fileName" value="${bloodTest.goBloodTestFileName}"/>
-					</td>
-					<td>
-						<input type="text" name="TreatCode" value="${bloodTest.goTreatCode}" readonly="readonly"/>
+						<input type="text" name="fileName" value="${bloodTest.goBloodTestDate}"/>
 					</td>
 					<td>
 						<input type="text" name="bloodSugar" value="${bloodTest.goBloodTestBloodSugar}" readonly="readonly"/>
