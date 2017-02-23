@@ -9,7 +9,7 @@
 </head>
 <body>
 	
-	<form action="<c:url value='/government/goBloodTest'></c:url>" method="post">
+	<form action="<c:url value='/government/goBloodTest'/>" method="post">
 		<!-- hidden에 로그인한 회원의 citizen_no를 조회해와서 값을 부여해줌 -->
 		
 		기간입력 

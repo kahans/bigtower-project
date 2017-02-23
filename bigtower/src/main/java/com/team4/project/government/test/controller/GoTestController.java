@@ -21,8 +21,8 @@ public class GoTestController {
 	
 	@RequestMapping(value="/government/goTest" , method=RequestMethod.GET)
 	public String testRequest(){
-		
-		return "/government/citizen/TestVaccinationCheckup/test";
+
+		return "/government/citizen/testVaccinationCheckup/test";
 	}
 	
 	
@@ -31,7 +31,7 @@ public class GoTestController {
 	@RequestMapping(value="/government/goBloodTest", method=RequestMethod.GET)
 	public String selectBloodTest(){
 		System.out.println("혈액검사 요청페이지로 이동");
-		return "/governmentYJ/bloodTestResultForm";
+		return "/government/citizen/testVaccinationCheckup/bloodTestResultForm";
 	}
 	
 	//혈액검사 요청페이지에서 날짜 citizenNo 넘겨받음 citizenNo는 추후에 로그인정보에서 citizenNO 혹은 주민번호를 받아 올 예정
@@ -58,7 +58,7 @@ public class GoTestController {
 			//모델에 list타입 객체를 담음
 			model.addAttribute("goTestBlood",goBloodTest);
 			//view 페이지로 포워딩
-		return "/governmentYJ/bloodTestResult";
+		return "/government/citizen/testVaccinationCheckup/bloodTestResult";
 		}
 	}
 	
