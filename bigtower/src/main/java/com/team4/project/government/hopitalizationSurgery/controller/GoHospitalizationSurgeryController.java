@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team4.project.government.hopitalizationSurgery.domain.GoHospitalization;
-import com.team4.project.government.hopitalizationSurgery.domain.GoSurgery;
+import com.team4.project.government.hopitalizationSurgery.domain.GoSearchSurgerySub;
 import com.team4.project.util.Util;
 
 @Controller
@@ -23,7 +23,7 @@ public class GoHospitalizationSurgeryController {
 	private GoHospitalizationSurgeryService goHSS;
 	//수술 뷰검색
 	@RequestMapping(value="/government/surgerySearch", method=RequestMethod.GET)
-	public @ResponseBody List<GoSurgery> surgeryList(
+	public @ResponseBody List<GoSearchSurgerySub> surgeryList(
 										@RequestParam(value="searchContents", required=false)String searchContents,
 										@RequestParam(value="secondDate", required=false)String secondDate,
 										@RequestParam(value="firstDate", required=false)String firstDate
@@ -48,7 +48,7 @@ public class GoHospitalizationSurgeryController {
 		System.out.println("test : "+secontDate02);
 		
 		
-		List<GoSurgery> goSurgeryList = goHSS.goSurgeryList(returnMap);
+		List<GoSearchSurgerySub> goSurgeryList = goHSS.goSurgeryList(returnMap);
 		return goSurgeryList;
 	}
 	//수술목록 불러오기

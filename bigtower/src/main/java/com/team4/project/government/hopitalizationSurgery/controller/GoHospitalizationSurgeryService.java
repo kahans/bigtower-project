@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
 import com.team4.project.government.hopitalizationSurgery.domain.GoHospitalization;
-import com.team4.project.government.hopitalizationSurgery.domain.GoSurgery;
+import com.team4.project.government.hopitalizationSurgery.domain.GoSearchSurgerySub;
 
 @Service
 public class GoHospitalizationSurgeryService {
@@ -17,10 +17,10 @@ public class GoHospitalizationSurgeryService {
 	private GoHospitalizationSurgeryDao goHSD;
 	
 	//수술내역 검색
-	public List<GoSurgery> goSurgeryList(Map<String, Object> returnMap){
+	public List<GoSearchSurgerySub> goSurgeryList(Map<String, Object> returnMap){
 		
 		
-		List<GoSurgery> goSurgeryList =goHSD.goSurgeryList(returnMap);
+		List<GoSearchSurgerySub> goSurgeryList =goHSD.goSurgeryList(returnMap);
 		System.out.println("데이터가 왔는지 확인 : "+goSurgeryList.toString());
 		return goSurgeryList;
 	}

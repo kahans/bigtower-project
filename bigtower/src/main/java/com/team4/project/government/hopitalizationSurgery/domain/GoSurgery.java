@@ -2,7 +2,7 @@ package com.team4.project.government.hopitalizationSurgery.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class GoSurgery extends GoSearchSurgerySub{
+public class GoSurgery{
 	protected String goSurgeryResultCode;
 	protected String goTreatCode;
 	protected String goSurgeryCode;

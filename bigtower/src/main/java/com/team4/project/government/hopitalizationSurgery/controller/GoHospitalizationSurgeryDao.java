@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
 import com.team4.project.government.hopitalizationSurgery.domain.GoHospitalization;
-import com.team4.project.government.hopitalizationSurgery.domain.GoSurgery;
+import com.team4.project.government.hopitalizationSurgery.domain.GoSearchSurgerySub;
 
 @Repository
 public class GoHospitalizationSurgeryDao {
@@ -17,7 +17,7 @@ public class GoHospitalizationSurgeryDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public List<GoSurgery> goSurgeryList(Map<String, Object> returnMap) {
+	public List<GoSearchSurgerySub> goSurgeryList(Map<String, Object> returnMap) {
 		
 		
 		return sqlSession.selectList("GoHospitalizationSurgery.goSurgeryList", returnMap);
