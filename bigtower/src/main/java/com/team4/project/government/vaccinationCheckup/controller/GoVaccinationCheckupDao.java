@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team4.project.government.vaccinationCheckup.domain.GoCheckupTreatSub;
 import com.team4.project.government.vaccinationCheckup.domain.GoVaccinationCheckup;
-import com.team4.project.government.vaccinationCheckup.domain.GoVaccinationResult;
+import com.team4.project.government.vaccinationCheckup.domain.GoVaccinationResultTreatSub;
 
 @Repository
 public class GoVaccinationCheckupDao {
@@ -18,8 +18,8 @@ public class GoVaccinationCheckupDao {
 	
 	private final String VACCINATIONCHECKUP_NS = "GoVaccinationCheckup.";
 	//예방접종 목록 가져오기
-	public List<GoVaccinationResult> vaccinationList(){
-		return sqlSession.selectList(VACCINATIONCHECKUP_NS+"vaccinationList");
+	public List<GoVaccinationResultTreatSub> vaccinationList(GoVaccinationCheckup govaccination){
+		return sqlSession.selectList(VACCINATIONCHECKUP_NS+"vaccinationList", govaccination);
 	}
 	//건강검진 결과 목록 가져오기
 	public List<GoCheckupTreatSub> checkUpList(GoVaccinationCheckup gocheckup){
