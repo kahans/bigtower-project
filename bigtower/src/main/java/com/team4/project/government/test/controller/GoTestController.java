@@ -22,7 +22,7 @@ public class GoTestController {
 	@RequestMapping(value="/government/goTest" , method=RequestMethod.GET)
 	public String testRequest(){
 		
-		return "/governmentYJ/test";
+		return "/government/citizen/TestVaccinationCheckup/test";
 	}
 	
 	
