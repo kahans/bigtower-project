@@ -8,6 +8,9 @@ public class GoCheckupTreatSub extends GoTreat{
 	protected String goCheckUpResultFileName;
 	protected String goCheckUpResultRegistrationDate;
 	protected String goCheckUpResultGoRegistrationDate;
+
+	
+	
 	public String getGoCheckUpResultCode() {
 		return goCheckUpResultCode;
 	}

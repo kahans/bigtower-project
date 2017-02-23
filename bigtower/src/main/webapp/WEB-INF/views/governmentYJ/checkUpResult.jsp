@@ -36,21 +36,21 @@
 					</tr>
 					
 					
-			<c:forEach var="c" items="${checkUp}">
+			<c:forEach var="checkUp" items="${checkUp.goCheckupTreatSub}">
 				<tr>
 					<td>
-						<input type="text" name="c.goCheckUpResultCode" value="${c.goCheckUpResultCode}" readonly="readonly"/>
+						<input type="text" name="c.goCheckUpResultCode" value="${checkUp.goCheckUpResultCode}" readonly="readonly"/>
 					</td>
 					<td>
-						<input type="text" name="c.goTreatCode" value="${c.goTreatCode}" readonly="readonly"/>
+						<input type="text" name="c.goTreatCode" value="${checkUp.goTreatCode}" readonly="readonly"/>
 					</td>
 					<td>
-						<input type="text" value="${c.goCheckUpResultFilePath}${c.goCheckUpResultFileName}" readonly="readonly"/>
+						<input type="text" value="${checkUp.goCheckUpResultFilePath}${checkUp.goCheckUpResultFileName}" readonly="readonly"/>
 					</td>
 					<td>
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${c.goCheckUpResultCode}">혈액검사결과</button>
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${checkUp.goCheckUpResultCode}">혈액검사결과</button>
 						  <!-- Modal -->
-						  <div class="modal fade" id="${c.goCheckUpResultCode}" role="dialog">
+						  <div class="modal fade" id="${checkUp.goCheckUpResultCode}" role="dialog">
 						    <div class="modal-dialog modal-lg">
 						      <div class="modal-content">
 						        <div class="modal-header">
@@ -59,7 +59,7 @@
 						        </div>
 						        <div class="modal-body">
 						         	<img alt="혈액검사결과파일" src="<c:url 
-						         	value="${c.goCheckUpResultFilePath}${c.goCheckUpResultFileName}">혈액검사결과</c:url>">
+						         	value="${checkUp.goCheckUpResultFilePath}${checkUp.goCheckUpResultFileName}">혈액검사결과</c:url>">
 						        </div>
 						        <div class="modal-footer">
 						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -69,10 +69,10 @@
 						  </div>
 					</td>
 					<td>
-						<input type="text" name="c.goCheckUpResultRegistrationDate" value="${c.goCheckUpResultRegistrationDate}" readonly="readonly"/>
+						<input type="text" name="c.goCheckUpResultRegistrationDate" value="${checkUp.goCheckUpResultRegistrationDate}" readonly="readonly"/>
 					</td>
 					<td>
-						<input type="text" name="c.goCheckUpResultGoRegistrationDate" value="${c.goCheckUpResultGoRegistrationDate}" readonly="readonly"/>
+						<input type="text" name="c.goCheckUpResultGoRegistrationDate" value="${checkUp.goCheckUpResultGoRegistrationDate}" readonly="readonly"/>
 					</td>
 				</tr>
 			</c:forEach>
