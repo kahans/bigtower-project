@@ -11,7 +11,7 @@
 		
 	<form action="/goBloodTest" method="post">
 		<!-- hidden에 로그인한 회원의 citizen_no를 조회해와서 값을 부여해줌 -->
-		
+		<input type="hidden" name="goCitizenId" value="${goCitizenId}"/>
 		기간입력 
 		<input type="date" name="goFirstDate">-<input type="date" name="goSecondDate">
 		병원명 입력(병원명에는 한글만 들어오게 할 예정)

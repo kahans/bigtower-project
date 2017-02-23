@@ -37,16 +37,16 @@ public class GoTestController {
 	//혈액검사 요청페이지에서 날짜 citizenNo 넘겨받음 citizenNo는 추후에 로그인정보에서 citizenNO 혹은 주민번호를 받아 올 예정
 	//주민번호를 받게되면 DTo와 mapper 수정해야함.
 	@RequestMapping(value="/goBloodTest", method=RequestMethod.POST)
-	public String selectBloodTest(Model model, GoTest goTest, HttpSession session){
+	public String selectBloodTest(Model model, GoTest goTest){
 		
-		//세션 임의로 만들어서 넣어줌
+	/*	//세션 임의로 만들어서 넣어줌 테스트할때 매개변수로 httpSession session 받아야함
 		String citizenID = "900101-1000002";
 		session.setAttribute("citizenId", citizenID);
 		System.out.println("세션확인 : "+session.getAttribute("citizenId"));
 		String goCitizenId = (String) session.getAttribute("citizenId");
 		goTest.setGoCitizenId(goCitizenId);
 		//여기까지
-		
+*/		
 		
 			logger.debug("혈액검사 요청페이지에서 날짜 넘겨받음");
 
@@ -69,16 +69,16 @@ public class GoTestController {
 	//영상검사 요청페이지에서 날짜 citizenNo 넘겨받음 citizenNo는 추후에 로그인정보에서 citizenNO 혹은 주민번호를 받아 올 예정
 	//주민번호를 받게되면 DTo와 mapper 수정해야함.
 	@RequestMapping(value="/goImgTest" , method=RequestMethod.POST)
-	public String selectImgTest(Model model, GoTest goTest, HttpSession session){
+	public String selectImgTest(Model model, GoTest goTest){
 		
-		//세션 임의로 만들어서 넣어줌
+	/*	//세션 임의로 만들어서 넣어줌
 		String citizenID = "900101-1000002";
 		session.setAttribute("citizenId", citizenID);
 		System.out.println("세션확인 : "+session.getAttribute("citizenId"));
 		String goCitizenId = (String) session.getAttribute("citizenId");
 		goTest.setGoCitizenId(goCitizenId);
 		//여기까지
-		
+*/		
 		
 			logger.debug("citizenId 확인 : "+goTest.getGoCitizenId());
 			logger.debug("입력받은 날짜 확인 : "+goTest.getGoFirstDate()+" , "+goTest.getGoSecondDate());
