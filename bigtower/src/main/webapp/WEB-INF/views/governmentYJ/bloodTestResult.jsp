@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -28,7 +30,9 @@
 						<th>
 							혈액검사결과Img
 						</th>
-						
+						<th>
+							<테스트용>
+						</th>
 						
 					</tr>
 			
@@ -38,7 +42,7 @@
 						<input type="text" name="fileName" value="${bloodTest.goBloodTestDate}"/>
 					</td>
 					<td>
-						<input type="text" name="bloodSugar" value="${bloodTest.goBloodTestBloodSugar}" readonly="readonly"/>
+						<input type="text" name="bloodSugar" id="${bloodTest.goBloodTestBloodSugar}" value="${bloodTest.goBloodTestBloodSugar}" readonly="readonly"/>
 					</td>
 					<td>
 						<input type="text" name="Platelet" value="${bloodTest.goBloodTestPlatelet}" readonly="readonly"/>
@@ -65,10 +69,35 @@
 						    </div>
 						  </div>
 					</td>
+					<td>
+						<button type="button" id="a" onclick="function()">버튼</button>
+					</td>
+					
 				</tr>
+				<script type="text/javascript">
+					$(document).on('click','#a',function(){
+						//id가 bloodTestSugar인 text박스의 value값을 받아온다.
+						var bloodSugar = $("#"+${bloodTest.goBloodTestBloodSugar}+"").val();
+						alert(bloodSugar);
+						
+						//bloodSugar에 담긴 값에 따라 css 다르게 적용할 예정
+						if(bloodSugar>100){
+							alert('빨간색 css입힘');
+						}
+						if(bloodSugar<=100){
+							alert('파란색 css 입힘');
+						}
+						
+					});
+				
+				</script>
+			
+			
+				
 				</c:forEach>
 			</table>
 	</div>	
-			 
+
+ 
 </body>
 </html>
