@@ -13,11 +13,14 @@
 <body>
 	<div class="container">
 		<table>
+			<thead>
 			<c:forEach items ="${treatSubjectList}" var="treatSubjectList" >
 				<tr>
 					<td>${treatSubjectList.goTreatSubjectName}</td>
+					<td>${treatSubjectList.goTreatSubjectCount}회</td>
 				</tr>
 			</c:forEach>
+			</thead>
 		</table>
 		
 		<h1>진료 목록 검색</h1>
