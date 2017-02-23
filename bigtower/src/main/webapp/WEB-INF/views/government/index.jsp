@@ -20,6 +20,8 @@
 		
 		<a href="<c:url value="/government/goTest"/>">검사</a>
 		<a href="<c:url value="/government/treatList"/>">진료</a>
+		<a href="<c:url value="/government/surgeryList"/>">수술</a>
+		<a href="<c:url value="/government/hospitalizationList"/>">입원</a>
 		
 	</c:when>
 	<c:when test="${goHospitalId !=null}">
