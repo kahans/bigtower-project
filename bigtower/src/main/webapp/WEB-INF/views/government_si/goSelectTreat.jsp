@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
 	<table border="1">
 		<tr>
 			<td>진료코드</td>
@@ -54,6 +55,7 @@
 			<td>${Treat.goTreatRegistrationDate}</td>
 		</tr>
 	</table>
+	<a href="<c:url value='/government/treatList?goTreatCode'/>"><button>목록</button></a>
 
 </body>
 </html>

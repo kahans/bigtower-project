@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.team4.project.government.test.domain.GoBloodTestTreatSub;
 import com.team4.project.government.test.domain.GoImageTestTreatSub;
 import com.team4.project.government.test.domain.GoTest;
+import com.team4.project.government.test.domain.SelectInfo;
 
 @Repository
 public class GoTestDao {
@@ -19,6 +20,10 @@ public class GoTestDao {
 	private SqlSessionTemplate sqlSession;
 	
 
+	public List<SelectInfo> selectInformation(GoTest goTest){
+		return sqlSession.selectList("goTest.selectInfomation", goTest);
+	}
+	
 	//날짜로 goBloodTest 결과를 조회한다
 	public List<GoBloodTestTreatSub> selectBlood(GoTest goTest){
 		

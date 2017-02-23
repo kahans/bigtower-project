@@ -8,6 +8,7 @@ public class GoSearchTreatSub extends GoTreat{
 
 private String goHospitalName;
 private String goHospitalAddress;
+private String goCitizenId;
 private String goCitizenName;
 private String goDoctorName;
 private String goTreatSubjectName;
@@ -15,6 +16,12 @@ private String goDiseaseKor;
 private List<GoDiagnosis> diagnosisList;
 
 
+public String getGoCitizenId() {
+	return goCitizenId;
+}
+public void setGoCitizenId(String goCitizenId) {
+	this.goCitizenId = goCitizenId;
+}
 public String getGoHospitalName() {
 	return goHospitalName;
 }
@@ -62,13 +69,9 @@ public void setDiagnosisList(List<GoDiagnosis> diagnosisList) {
 @Override
 public String toString() {
 	return "GoSearchTreatSub [goHospitalName=" + goHospitalName + ", goHospitalAddress=" + goHospitalAddress
-			+ ", goCitizenName=" + goCitizenName + ", goDoctorName=" + goDoctorName + ", goTreatSubjectName="
-			+ goTreatSubjectName + ", goDiseaseKor=" + goDiseaseKor + ", diagnosisList=" + diagnosisList
-			+ ", goTreatCode=" + goTreatCode + ", goHospitalId=" + goHospitalId + ", goCitizenId=" + goCitizenId
-			+ ", goDoctorId=" + goDoctorId + ", goTreatSubjectCode=" + goTreatSubjectCode + ", goChartCode="
-			+ goChartCode + ", goChartSeq=" + goChartSeq + ", goTreatContents=" + goTreatContents
-			+ ", goTreatRegistrationDate=" + goTreatRegistrationDate + ", goTreatGoRegistrationDate="
-			+ goTreatGoRegistrationDate + "]";
+			+ ", goCitizenId=" + goCitizenId + ", goCitizenName=" + goCitizenName + ", goDoctorName=" + goDoctorName
+			+ ", goTreatSubjectName=" + goTreatSubjectName + ", goDiseaseKor=" + goDiseaseKor + ", diagnosisList="
+			+ diagnosisList + "]";
 }
 
 

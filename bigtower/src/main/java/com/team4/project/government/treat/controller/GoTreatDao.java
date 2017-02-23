@@ -23,6 +23,7 @@ public class GoTreatDao {
 	
 	//진료목록
 	public List<GoSearchTreatSub> goTreatList(Map<String, Object> returnMap){
+		System.out.println("TreatDao -->"+returnMap);
 		return sqlSession.selectList("GoTreat.goTreatList", returnMap);
 	}
 	

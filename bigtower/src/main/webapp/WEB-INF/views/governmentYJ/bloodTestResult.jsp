@@ -13,14 +13,11 @@
 </head>
 <body>
 	<div class="container">
-
+		검사 수 : ${goTestBlood.selectBloodTestCount}
 			<table>
 					<tr>
 						<th>
-							혈액검사 파일명
-						</th>
-						<th>
-							진료코드
+							혈액검사일
 						</th>
 						<th>
 							혈당수치
@@ -29,25 +26,32 @@
 							혈소판
 						</th>
 						<th>
+							병원명
+						</th>
+						<th>
 							혈액검사결과Img
 						</th>
-						
 						
 					</tr>
 			
 				<c:forEach var="bloodTest" items="${goTestBlood.goBloodTestTreatSub}">
+					
 				<tr>
 					<td>
-						<input type="text" name="fileName" value="${bloodTest.goBloodTestFileName}"/>
+						<input type="text" name="fileName" value="${bloodTest.goBloodTestDate}"/>
 					</td>
 					<td>
-						<input type="text" name="TreatCode" value="${bloodTest.goTreatCode}" readonly="readonly"/>
+						<div class="bloodSugar">
+							<input type="text" name="bloodSugar" value="${bloodTest.goBloodTestBloodSugar}" readonly="readonly"/>
+						</div>					
 					</td>
 					<td>
-						<input type="text" name="bloodSugar" value="${bloodTest.goBloodTestBloodSugar}" readonly="readonly"/>
+						<div class="Platelet">
+							<input type="text" name="Platelet" value="${bloodTest.goBloodTestPlatelet}" readonly="readonly"/>
+						</div>
 					</td>
 					<td>
-						<input type="text" name="Platelet" value="${bloodTest.goBloodTestPlatelet}" readonly="readonly"/>
+						
 					</td>
 					<td>
 						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${bloodTest.goBloodTestCode}">혈액검사결과</button>
@@ -71,10 +75,36 @@
 						    </div>
 						  </div>
 					</td>
+					
+					
 				</tr>
+				<script type="text/javascript">
+					$(document).on('click','#a',function(){
+						//id가 bloodTestSugar인 text박스의 value값을 받아온다.
+						
+						$('.bloodSugar').each
+						var bloodSugar = $('.bloodSugar');
+						var Platelet = $("input[name='Platelet']").attr("value");
+						alert(bloodSugar);
+						
+						//bloodSugar에 담긴 값에 따라 css 다르게 적용할 예정
+						if(bloodSugar>100){
+							alert('빨간색 css입힘');
+						}
+						if(bloodSugar<=100){
+							alert('파란색 css 입힘');
+						}
+						
+					});
+				
+				</script>
+			
+			
+				
 				</c:forEach>
 			</table>
 	</div>	
-			 
+
+ 
 </body>
 </html>

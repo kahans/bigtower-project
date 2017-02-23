@@ -10,15 +10,6 @@
 </head>
 <body>
 	
-	<!-- 기간을 선택하면 날짜를 선택할 수 있는 date type창이 활성화되고, 나머지 창에는 text창이 활성화된다. --> 
-	<!-- <select id="selectConditions" name="selectConditions">
-		<option value="selectNone" selected="selected">선택사항 없음</option>
-		<option value="selectDate">기간</option>
-		<option value="selectSubject">진료과목</option>
-		<option value="selectHospital">병원</option>
-		<option value="selectDisease">질병명</option>
-		<option value="selectDoctor">의사명</option>
-	</select> -->
 	<table>
 		<thead>
 			<tr>
@@ -69,6 +60,7 @@
 		$(document).ready(function(){			
 			//버튼 클릭시 검색조건과 내용에 부합하는 목록 출력하기
 			$("#btn").bind("click",function(){		
+				
 				$.ajax({
 					url : "/government/treatSearch",
 					type : "GET",
@@ -82,6 +74,9 @@
 					success : function(data){
 						console.log('성공');
 						$('tbody').empty();
+						var count = data.length;
+						console.log('count:'+count);
+						alert(count + '건이 검색되었습니다.');
 						//반복문을 통해 검색조건에 맞는 목록을 출력한다
 						$.each(data, function(key, item) {  
 							console.log('goCitizenName:'+item.goCitizenName);

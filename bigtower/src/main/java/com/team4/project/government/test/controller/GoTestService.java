@@ -1,7 +1,5 @@
 package com.team4.project.government.test.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.team4.project.government.test.domain.GoBloodTestTreatSub;
 import com.team4.project.government.test.domain.GoImageTestTreatSub;
 import com.team4.project.government.test.domain.GoTest;
+import com.team4.project.government.test.domain.SelectInfo;
 import com.team4.project.util.Util;
 
 @Service
@@ -51,13 +50,27 @@ public class GoTestService {
 			for(int x=0; x<bloodTest.size(); x++){
 				logger.debug("bloodTest 확인 : "+bloodTest.get(x).toString());
 			}
+			//bloodTest의 size를 goTest객체에 담음
+			goTestResult.setSelectBloodTestCount(bloodTest.size());
+			
 			
 			//확인된 bloodTest를 goTest객체에 담음
 			for(int i=0; i<bloodTest.size(); i++){
 				goTestResult.setGoBloodTestTreatSub(bloodTest);
 			}
+			List<SelectInfo> selectInfo = goTD.selectInformation(goTest);
+			//selectInfo 에서 정보(현재 의사이름,병원이름, 진료내용 이 들어있음)를 꺼내 goTestResult객체에 담음
+			for(int j = 0 ; j <selectInfo.size(); j++){
+				goTestResult.setSelectInfo(selectInfo);
+			}
+			
+			
+			
 			//객체에 
-			logger.debug("서비스에서 확인 : "+goTestResult.getGoBloodTestTreatSub().toString());
+			logger.debug("서비스에서 bloodTest확인 : "+goTestResult.getGoBloodTestTreatSub().toString());
+			logger.debug("서비스에서 selectInfo 확인 : "+goTestResult.getSelectInfo().toString());
+			
+			
 			return 	goTestResult;
 		}
 		

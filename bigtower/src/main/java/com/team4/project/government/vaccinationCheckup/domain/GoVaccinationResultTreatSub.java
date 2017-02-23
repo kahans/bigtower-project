@@ -2,12 +2,12 @@ package com.team4.project.government.vaccinationCheckup.domain;
 
 import com.team4.project.government.treat.domain.GoTreat;
 
-public class GovaccinationCheckupTreatSub extends GoTreat {
+public class GoVaccinationResultTreatSub extends GoTreat {
 
 protected String goVaccinationResultCode;
 protected String goTreatCode;
 protected String goVaccinationCode;
-protected String goVaccinationResultDegree; //예방접종 몇차까지 접종 받았는지의 결과
+protected int goVaccinationResultDegree; //예방접종 몇차까지 접종 받았는지의 결과
 protected String goVaccinationResultRegistrationDate; //병원결과등록일
 protected String goVaccinationResultGoRegistrationDate; //정부DB등록일
 //조인문
@@ -15,10 +15,11 @@ protected String goVaccinationName;
 protected String goVaccinationDegree; //최종차수가 몇차까지인지
 
 
-public String etGoVaccinationResultDegree() {
+
+public int getGoVaccinationResultDegree() {
 	return goVaccinationResultDegree;
 }
-public void setGoVaccinationResultDegree(String goVaccinationResultDegree) {
+public void setGoVaccinationResultDegree(int goVaccinationResultDegree) {
 	this.goVaccinationResultDegree = goVaccinationResultDegree;
 }
 public String getGoVaccinationName() {

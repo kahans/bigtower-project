@@ -5,13 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>건강검진 요청페이지</title>
 </head>
 <body>
 
 	<form action="<c:url value="/governmentYJ/checkUp"/>" method="post">
-		주민번호 : <input type="text" name="goCitizenId"/>
-		검색
+		<input type="hidden" name="goCitizenId" value="${goCitizenId}"/>
+		<input type="date" name="firstDate"/>-<input type="date" name="secondDate"/>
+		기간입력
 		<input type="submit" value="검색">
 		
 	</form>
