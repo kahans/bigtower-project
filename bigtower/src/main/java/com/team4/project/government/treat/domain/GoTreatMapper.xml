@@ -105,6 +105,7 @@
  		FROM go_treat t1
  		JOIN go_treat_subject s1
  			ON t1.GO_TREAT_SUBJECT_CODE = s1.GO_TREAT_SUBJECT_CODE
+		<!-- 최근 1달간 진료본 과목 카운트 -->
 		JOIN (SELECT
 					s2.GO_TREAT_SUBJECT_CODE as code,
 			 		count(*) as oneMonthCount
