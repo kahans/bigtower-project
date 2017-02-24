@@ -55,12 +55,8 @@ public class GoHospitalizationSurgeryController {
 	
 	//수술목록 불러오기
 	@RequestMapping(value="/government/surgeryList", method=RequestMethod.GET)
-	public String surgeryList(HttpSession session, Model model){
-		
-		model.addAttribute("goHospitalId", session.getAttribute("GOCITIZENID"));
-		model.addAttribute("goCitizenNo", session.getAttribute("GOCITIZENNO"));
-		model.addAttribute("goCitizenName", session.getAttribute("GOCITIZENNAME"));
-		//model.addAttribute("goSurgery", goHSS.goSurgeryList());
+	public String surgeryList(){
+
 		return "/government/citizen/hospitalizationSurgery/surgeryList";
 	}
 	
@@ -90,11 +86,7 @@ public class GoHospitalizationSurgeryController {
 	}
 	//입,퇴원 목록
 	@RequestMapping(value="/government/hospitalizationList", method=RequestMethod.GET)
-	public String hospitalizationList(HttpSession session, Model model, GoHospitalization goHospitalization){
-		
-		model.addAttribute("goHospitalId", session.getAttribute("GOCITIZENID"));
-		model.addAttribute("goCitizenNo", session.getAttribute("GOCITIZENNO"));
-		model.addAttribute("goCitizenName", session.getAttribute("GOCITIZENNAME"));
+	public String hospitalizationList(GoHospitalization goHospitalization){
 		
 		return "/government/citizen/hospitalizationSurgery/hospitalizationList";
 	}
