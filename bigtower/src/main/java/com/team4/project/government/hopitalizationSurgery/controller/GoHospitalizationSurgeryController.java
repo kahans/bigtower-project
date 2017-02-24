@@ -24,7 +24,7 @@ public class GoHospitalizationSurgeryController {
 	@Autowired
 	private GoHospitalizationSurgeryService goHSS;
 	//수술 뷰검색
-	@RequestMapping(value="/government/surgerySearch", method=RequestMethod.GET)
+	@RequestMapping(value="/government/surgerySearch", method=RequestMethod.POST)
 	public @ResponseBody List<GoSearchSurgerySub> surgeryList(HttpSession session, Model model,
 										@RequestParam(value="searchContents", required=false)String searchContents,
 										@RequestParam(value="secondDate", required=false)String secondDate,
@@ -63,7 +63,7 @@ public class GoHospitalizationSurgeryController {
 	
 	
 	//입,퇴원 검색
-	@RequestMapping(value="/government/hospitalizationSearch", method=RequestMethod.GET)
+	@RequestMapping(value="/government/hospitalizationSearch", method=RequestMethod.POST)
 	public @ResponseBody List<GoSearchHospitalizationSub> hospitalizationList(HttpSession session, Model model,
 							@RequestParam(value="searchContents", required=false)String searchContents,
 							@RequestParam(value="secondDate", required=false)String secondDate,
