@@ -80,10 +80,11 @@
 			ON go_citizen.GO_CITIZEN_NO = go_treat.GO_CITIZEN_NO
 		WHERE GO_CITIZEN_ID='900101-1000001' 		
  	</select>
- 	<!--  -->
- 	<select id="">
+ 	<!-- 입원했던 이유 질병을 통계 -->
+ 	<select id="hospitalizationStatistics" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSearchHospitalizationSub" parameterType="int">
  		SELECT
-			go_disease.GO_DISEASE_KOR, go_citizen.GO_CITIZEN_NAME, COUNT(*)
+			go_disease.GO_DISEASE_KOR,
+			COUNT(*) AS goDiCount
 		FROM go_hospitalization
 		LEFT JOIN go_treat
 			ON go_treat.GO_TREAT_CODE=go_hospitalization.GO_TREAT_CODE
@@ -93,9 +94,25 @@
 			ON go_diagnosis.GO_TREAT_CODE = go_treat.GO_TREAT_CODE
 		LEFT JOIN go_disease
 			ON go_disease.GO_DISEASE_CODE = go_diagnosis.GO_DISEASE_CODE
-		where  GO_CITIZEN_ID='900101-1000001' 	
+		where go_citizen.GO_CITIZEN_NO=#{citizen}
 		GROUP BY go_disease.GO_DISEASE_KOR		 		
  	</select>
+ 	<!-- 수술명 통계 -->
+ 	<select id="goSurgeryStatistics" resultType="com.team4.project.government.hopitalizationSurgery.domain.GoSearchSurgerySub" parameterType="int">
+ 		SELECT
+			go_surgery.GO_SURGERY_NAME,
+			COUNT(*) AS goStatistics
+		FROM go_surgery_result
+		JOIN go_treat
+			ON go_treat.GO_TREAT_CODE=go_surgery_result.GO_TREAT_CODE
+		join go_citizen
+			ON go_citizen.GO_CITIZEN_NO = go_treat.GO_CITIZEN_NO
+		JOIN go_surgery
+			ON go_surgery.GO_SURGERY_CODE = go_surgery_result.GO_SURGERY_CODE
+		where go_citizen.GO_CITIZEN_NO=#{citizen}
+		GROUP BY go_surgery.GO_SURGERY_NAME
+ 	</select>
+ 	
  	<select id="goDiagnosis" resultType="com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis" parameterType="String">
  		SELECT
  			go_diagnosis.GO_DIAGNOSIS_CODE,

@@ -32,8 +32,7 @@ public class GoHospitalizationSurgeryController {
 										){
 		System.out.println(searchContents);
 		System.out.println("Today: "+secondDate);
-		System.out.println("yastday : "+firstDate);
-		
+		System.out.println("yastday : "+firstDate);		
 		
 		String citizen = (String) session.getAttribute("GOCITIZENID");//로그인세션	
 		
@@ -55,8 +54,14 @@ public class GoHospitalizationSurgeryController {
 	
 	//수술목록 불러오기
 	@RequestMapping(value="/government/surgeryList", method=RequestMethod.GET)
-	public String surgeryList(){
-
+	public String surgeryList(HttpSession session, Model model){
+		
+		int citizen = (Integer) session.getAttribute("GOCITIZENNO");//로그인 세션에서 시민no를 가져온다.
+		System.out.println(citizen);
+		List<GoSearchSurgerySub> surgeryStatistics = goHSS.goSurgeryStatistics(citizen);//대입
+		model.addAttribute("surgeryStatistics", surgeryStatistics);
+		
+		
 		return "/government/citizen/hospitalizationSurgery/surgeryList";
 	}
 	
@@ -86,7 +91,12 @@ public class GoHospitalizationSurgeryController {
 	}
 	//입,퇴원 목록
 	@RequestMapping(value="/government/hospitalizationList", method=RequestMethod.GET)
-	public String hospitalizationList(GoHospitalization goHospitalization){
+	public String hospitalizationList(HttpSession session, Model model, GoHospitalization goHospitalization){
+		
+		int citizen = (Integer) session.getAttribute("GOCITIZENNO");//로그인 세션에서 시민no를 가져온다.
+		System.out.println(citizen);
+		List<GoSearchHospitalizationSub> hospitalization = goHSS.hospitalizationStatistics(citizen);//대입
+		model.addAttribute("hospitalization", hospitalization);
 		
 		return "/government/citizen/hospitalizationSurgery/hospitalizationList";
 	}

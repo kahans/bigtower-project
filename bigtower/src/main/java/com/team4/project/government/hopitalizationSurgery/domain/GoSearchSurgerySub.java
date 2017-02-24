@@ -6,7 +6,21 @@ public class GoSearchSurgerySub extends GoSurgeryResult{
 	protected String goSurgeryName;
 	protected String goDoctorName;
 	protected String goCitizenName;
+	protected String goCitizenNo;
+	protected int goStatistics;//수술명 횟수
 	
+	public int getGoStatistics() {
+		return goStatistics;
+	}
+	public String getGoCitizenNo() {
+		return goCitizenNo;
+	}
+	public void setGoCitizenNo(String goCitizenNo) {
+		this.goCitizenNo = goCitizenNo;
+	}
+	public void setGoStatistics(int goStatistics) {
+		this.goStatistics = goStatistics;
+	}
 	public String getGoDoctorName() {
 		return goDoctorName;
 	}
@@ -34,9 +48,10 @@ public class GoSearchSurgerySub extends GoSurgeryResult{
 	@Override
 	public String toString() {
 		return "GoSearchSurgerySub [goHospitalName=" + goHospitalName + ", goSurgeryName=" + goSurgeryName
-				+ ", goDoctorName=" + goDoctorName + ", goCitizenName=" + goCitizenName + ", goSurgeryResultCode="
-				+ goSurgeryResultCode + ", goTreatCode=" + goTreatCode + ", goSurgeryCode=" + goSurgeryCode
-				+ ", goSurgeryResultGoRegistrationDate=" + goSurgeryResultGoRegistrationDate + "]";
+				+ ", goDoctorName=" + goDoctorName + ", goCitizenName=" + goCitizenName + ", goCitizenNo=" + goCitizenNo
+				+ ", goStatistics=" + goStatistics + ", goSurgeryResultCode=" + goSurgeryResultCode + ", goTreatCode="
+				+ goTreatCode + ", goSurgeryCode=" + goSurgeryCode + ", goSurgeryResultGoRegistrationDate="
+				+ goSurgeryResultGoRegistrationDate + "]";
 	}
 	
 	

@@ -14,6 +14,19 @@
 	<br>
 	<table>
 		<tr>
+			<td>수술명</td>
+			<td>횟수</td>
+		</tr>
+		<c:forEach items="${surgeryStatistics}" var="surgeryStatistics">
+			<tr>
+				<td>${surgeryStatistics.goSurgeryName} :&nbsp;&nbsp;</td>
+				<td>${surgeryStatistics.goStatistics}회</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<br>
+	<table>
+		<tr>
 			<td>기간</td>
 			<td>		
 				<input class="date" type="date" name="firstDate" id="firstDate"> ~ 
@@ -49,32 +62,37 @@
 		var Today = new Date();					
 		document.getElementById('secondDate').valueAsDate=Today;
 		
-			$(".btn").bind("click",function() {
-				$.ajax({
-					url:'/government/surgerySearch',
-					type:'POST',
-					data: {	'searchContents': $('#searchContents').val(),
-							'secondDate' : $('#secondDate').val(),
-							'firstDate' : $('#firstDate').val()},
-					success:function(data){
-						console.log('검색성공');
-						$('.tbody').empty();
-						//다시 검색을 했을지 기존에 있는 데이터를 비워놓고 다시 검색한 데이터를 tbody에 출력한다.
-						$.each(data, function(key, item){
-							$('.tbody').append('<tr>');
-							$('.tbody').append('<td>'+item.goHospitalName+'</td>');
-							$('.tbody').append('<td>'+item.goDoctorName+'</td>');
-							$('.tbody').append('<td>'+item.goCitizenName+'</td>');
-							$('.tbody').append('<td>'+item.goSurgeryResultCode+'</td>');
-							$('.tbody').append('<td>'+item.goSurgeryName+'</td>');
-							$('.tbody').append('<td>'+item.goSurgeryResultGoRegistrationDate+'</td>');
-							$('.tbody').append('</tr>');
+		//호스팅 주소를 추가적으로 가져오기 위해 메서드 작성
+		function getContextPath() {
+				var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+				return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex +1) );
+			};
+		$(".btn").bind("click",function() {
+			$.ajax({
+				url:  getContextPath()+'/government/surgerySearch',
+				type:'POST',
+				data: { 'searchContents': $('#searchContents').val(),
+						'secondDate' : $('#secondDate').val(),
+						'firstDate' : $('#firstDate').val()
+				},
+				success:function(data){
+					console.log('검색성공');
+					$('.tbody').empty();
+					//다시 검색을 했을지 기존에 있는 데이터를 비워놓고 다시 검색한 데이터를 tbody에 출력한다.
+					$.each(data, function(key, item){
+						$('.tbody').append('<tr>');
+						$('.tbody').append('<td>'+item.goHospitalName+'</td>');
+						$('.tbody').append('<td>'+item.goDoctorName+'</td>');
+						$('.tbody').append('<td>'+item.goCitizenName+'</td>');
+						$('.tbody').append('<td>'+item.goSurgeryResultCode+'</td>');
+						$('.tbody').append('<td>'+item.goSurgeryName+'</td>');
+						$('.tbody').append('<td>'+item.goSurgeryResultGoRegistrationDate+'</td>');
+						$('.tbody').append('</tr>');
 							
-						})
-						
-					}
-				});
+					})				
+				}
 			});
+		});
 			
 	</script> 
 </body>

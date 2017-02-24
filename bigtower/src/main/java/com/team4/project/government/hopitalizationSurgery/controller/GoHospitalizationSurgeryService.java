@@ -75,4 +75,15 @@ public class GoHospitalizationSurgeryService {
 
 		return goHospitalization;
 	}
+
+	public List<GoSearchSurgerySub> goSurgeryStatistics(int citizen) {
+		System.out.println(citizen);
+		// TODO Auto-generated method stub
+		return goHSD.goSurgeryStatistics(citizen);
+	}
+
+	public List<GoSearchHospitalizationSub> hospitalizationStatistics(int citizen) {
+		// TODO Auto-generated method stub
+		return goHSD.hospitalizationStatistics(citizen);
+	}
 }

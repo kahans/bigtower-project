@@ -8,7 +8,21 @@ public class GoSearchHospitalizationSub extends GoHospitalization{
 	//DB에서 조인문을 통해서 받는 값들
 	protected String goHospitalName;
 	protected String goCitizenName;
+	protected int goDiCount;
+	protected String goDiseaseKor;
 	
+	public int getGoDiCount() {
+		return goDiCount;
+	}
+	public void setGoDiCount(int goDiCount) {
+		this.goDiCount = goDiCount;
+	}
+	public String getGoDiseaseKor() {
+		return goDiseaseKor;
+	}
+	public void setGoDiseaseKor(String goDiseaseKor) {
+		this.goDiseaseKor = goDiseaseKor;
+	}
 	protected List<GoDiagnosis> diagnosisList;
 	
 	public String getGoCitizenName() {
@@ -32,7 +46,10 @@ public class GoSearchHospitalizationSub extends GoHospitalization{
 	@Override
 	public String toString() {
 		return "GoSearchHospitalizationSub [goHospitalName=" + goHospitalName + ", goCitizenName=" + goCitizenName
-				+ ", diagnosisList=" + diagnosisList + "]";
+				+ ", goDiCount=" + goDiCount + ", goDiseaseKor=" + goDiseaseKor + ", diagnosisList=" + diagnosisList
+				+ ", goHospitalizationCode=" + goHospitalizationCode + ", goTreatCode=" + goTreatCode
+				+ ", goHospitalizationEnterDate=" + goHospitalizationEnterDate + ", goHospitalizationExitDate="
+				+ goHospitalizationExitDate + "]";
 	}
 	
 	
