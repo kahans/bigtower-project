@@ -53,7 +53,7 @@
 			$(".btn").bind("click",function() {
 				$.ajax({
 					url:'/government/hospitalizationSearch',
-					type:'GET',
+					type:'POST',
 					data: { 'searchContents': $('#searchContents').val(),
 							'secondDate' : $('#secondDate').val(),
 							'firstDate' : $('#firstDate').val()
@@ -65,7 +65,7 @@
 						$.each(data, function(key, item){
 							var diseaseKor = '';
 							$.each(item.diagnosisList, function(key,value){
-								diseaseKor += value.goDiseaseKor+',';
+								diseaseKor += value.goDiseaseKor+', ';
 							});
 							var table = '<tr>'
 											+'<td>'+item.goHospitalName+'</td>'

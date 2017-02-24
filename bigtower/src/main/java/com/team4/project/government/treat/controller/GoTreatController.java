@@ -35,7 +35,7 @@ public class GoTreatController {
 	}
 	
 	//진료목록  검색
-	@RequestMapping(value="/government/treatSearch", method=RequestMethod.GET)
+	@RequestMapping(value="/government/treatSearch", method=RequestMethod.POST)
 	public @ResponseBody List<GoSearchTreatSub> treatList(HttpSession session,
 			@RequestParam(value="firstDay", required=false)String firstDay,
 			@RequestParam(value="secondDay", required=false)String secondDay,
