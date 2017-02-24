@@ -33,4 +33,12 @@ public class GoHospitalizationSurgeryDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("GoHospitalizationSurgery.goDiagnosis", goTreatCode);
 	}
+	public List<GoSearchSurgerySub> goSurgeryStatistics(int citizen) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("GoHospitalizationSurgery.goSurgeryStatistics", citizen);
+	}
+	public List<GoSearchHospitalizationSub> hospitalizationStatistics(int citizen) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("GoHospitalizationSurgery.hospitalizationStatistics", citizen);
+	}
 }
