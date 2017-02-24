@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/WEB-INF/views/government/index.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,24 +10,8 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 </head>
 <body>
-	<c:choose>
-		<c:when test="${goHospitalId==null && goCitizenNo ==null}">
-			<a href="<c:url value="/government/login"/>">로그인</a>
-		</c:when>
-		<c:when test="${goCitizenNo !=null}">
-			${goCitizenName} 님 로그인중 <a href="<c:url value="/government/logout"/>">로그아웃</a><br>
-			
-			<a href="<c:url value="/government/goTest"/>">검사</a>
-			<a href="<c:url value="/government/treatList"/>">진료</a>
-			<a href="<c:url value='/government/surgeryList'/>">수술내역</a>
-			<a href="<c:url value='/government/hospitalizationList'/>">입/퇴원내역</a>
-			
-		</c:when>
-		<c:when test="${goHospitalId !=null}">
-			병원 로그인성공<br>
-			${goHospitalName} 님 로그인중 <a href="<c:url value="/government/logout"/>">로그아웃</a>
-		</c:when>
-	</c:choose>
+	<br>
+	<br>
 	<table>
 		<tr>
 			<td>기간</td>
