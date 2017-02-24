@@ -19,11 +19,7 @@ public class GoVaccinationCheckupController {
 	@Autowired
 	private GoVaccinationCheckupService goVCS;
 	
-	/*@RequestMapping(value="/government/goTest" , method=RequestMethod.GET)
-	public String testRequest(){
-		
-		return "/government/citizen/testVaccinationCheckup/test";
-	}*/
+	
 	
 	
 	//예방접종 결과 요청 페이지
@@ -35,20 +31,20 @@ public class GoVaccinationCheckupController {
 	//예방접종 결과 목록 페이지
 	@RequestMapping(value="/government/vaccination", method=RequestMethod.POST)
 	public String vaccinationList(Model model, GoVaccinationCheckup govaccination, HttpSession session){
-		//세션 임의로 만들어서 넣어줌
+		
 		
 			if(session.getAttribute("GOCITIZENID").equals(null)){
 				System.out.println("세션확인 : "+session.getAttribute("citizenId"));
 				return "/governmnet/login";
 			}else{
 				
-				String goCitizenId = (String) session.getAttribute("citizenId");
+				String goCitizenId = (String) session.getAttribute("GOCITIZENID");
 				govaccination.setGoCitizenId(goCitizenId);
 				//여기까지
 				logger.debug("백신확인 : "+govaccination.toString());
 				GoVaccinationCheckup vaccination = goVCS.vaccinationList(govaccination);
 				model.addAttribute("vaccination", vaccination);
-		
+				logger.debug("vaccination 확인 :" + vaccination.toString());
 		
 				return "/government/citizen/testVaccinationCheckup/vaccinationResult";
 			}
