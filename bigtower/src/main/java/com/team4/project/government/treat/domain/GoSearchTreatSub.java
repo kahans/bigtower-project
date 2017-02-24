@@ -14,9 +14,15 @@ private String goDoctorName;
 private String goTreatSubjectName;
 private String goDiseaseKor;
 private List<GoDiagnosis> diagnosisList; //질병리스트
-private int goTreatSubjectCount; //진료과목 카운트
+private int goTreatSubjectCount; //각 진료과목 진료카운트
+private int oneMonthCount; //최근 한달 진료 카운트
 
-
+public int getOneMonthCount() {
+	return oneMonthCount;
+}
+public void setOneMonthCount(int oneMonthCount) {
+	this.oneMonthCount = oneMonthCount;
+}
 public int getGoTreatSubjectCount() {
 	return goTreatSubjectCount;
 }

@@ -15,16 +15,18 @@
 <body>
 	<div class="container">
 		<h1>진료본 횟수</h1>
-		<table>
+		<table border="1">
 			<thead>
 				<tr>
 					<td>진료과목</td>
-					<td>진료횟수</td>
+					<td align="right">진료횟수</td>
+					<td align="right">최근 1달 진료횟수</td>
 				</tr>
 				<c:forEach items ="${treatSubjectList}" var="treatSubjectList" >
 					<tr>
 						<td>${treatSubjectList.goTreatSubjectName} :&nbsp;&nbsp;</td>
-						<td>${treatSubjectList.goTreatSubjectCount}회</td>
+						<td  align="right">${treatSubjectList.goTreatSubjectCount}회</td>
+						<td  align="right">${treatSubjectList.oneMonthCount}회</td>
 					</tr>
 				</c:forEach>
 			</thead>
