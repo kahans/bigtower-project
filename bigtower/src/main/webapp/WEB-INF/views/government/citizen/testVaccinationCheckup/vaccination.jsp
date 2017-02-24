@@ -18,7 +18,7 @@
 		<input type="date" name="firstDate">-<input type="date" name="secondDate">
 		
 		<br/>병원명 입력
-			<input type="text" name="gohspitalName"/>
+			<input type="text" name="goHospitalName"/>
 		
 		<br/>의사명 입력
 			<input type="text" name="goDoctorName"/>

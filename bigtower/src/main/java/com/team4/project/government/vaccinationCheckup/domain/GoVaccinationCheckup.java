@@ -8,8 +8,32 @@ public class GoVaccinationCheckup {
 	protected List<GoVaccinationResultTreatSub> goVaccinationResultTreatSub;
 	protected String firstDate;
 	protected String secondDate;
+	protected String goDoctorName;
+	protected String goHospitalName;
+
 	
-	
+
+
+	public String getGoDoctorName() {
+		return goDoctorName;
+	}
+
+
+	public void setGoDoctorName(String goDoctorName) {
+		this.goDoctorName = goDoctorName;
+	}
+
+
+	public String getGoHospitalName() {
+		return goHospitalName;
+	}
+
+
+	public void setGoHospitalName(String goHospitalName) {
+		this.goHospitalName = goHospitalName;
+	}
+
+
 	public String getGoCitizenId() {
 		return goCitizenId;
 	}
@@ -63,9 +87,13 @@ public class GoVaccinationCheckup {
 	@Override
 	public String toString() {
 		return "GoVaccinationCheckup [goCitizenId=" + goCitizenId + ", goCheckupTreatSub=" + goCheckupTreatSub
-				+ ", firstDate=" + firstDate
-				+ ", secondDate=" + secondDate + "]";
+				+ ", goVaccinationResultTreatSub=" + goVaccinationResultTreatSub + ", firstDate=" + firstDate
+				+ ", secondDate=" + secondDate + ", goDoctorName=" + goDoctorName + ", goHospitalName=" + goHospitalName
+				+ "]";
 	}
+
+
+
 	
 	
 }

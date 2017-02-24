@@ -31,7 +31,7 @@
 		join go_hospital on go_doctor.GO_HOSPITAL_ID=go_hospital.GO_HOSPITAL_ID
 	 	<where>  
 			(go_vaccination_result.GO_VACCINATION_RESULT_REGISTRATION_DATE between #{firstDate} and #{secondDate}) AND go_citizen.GO_CITIZEN_ID = #{goCitizenId}
-			<if test='!goDoctorname.equals("")'>
+			<if test='!goDoctorName.equals("")'>
 				and go_doctor.GO_TOCTOR_NAME like #{goDoctorName}
 			</if>
 			<if test='!goHospitalName.equals("")'>
