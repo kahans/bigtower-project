@@ -20,10 +20,7 @@ public class GoTestDao {
 	private SqlSessionTemplate sqlSession;
 	
 
-	public List<SelectInfo> selectInformation(GoTest goTest){
-		return sqlSession.selectList("goTest.selectInfomation", goTest);
-	}
-	
+
 	//날짜로 goBloodTest 결과를 조회한다
 	public List<GoBloodTestTreatSub> selectBlood(GoTest goTest){
 		

@@ -1,5 +1,7 @@
 package com.team4.project.government.test.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.team4.project.government.test.domain.GoTest;
+import com.team4.project.government.test.domain.SelectInfo;
 
 @Controller
 public class GoTestController {
@@ -56,8 +59,10 @@ public class GoTestController {
 
 			logger.debug("주민번호 확인 : "+goTest.getGoCitizenId());
 			GoTest goBloodTest = goTS.selectBloodTest(goTest);
+			
 			//모델에 list타입 객체를 담음
 			model.addAttribute("goTestBlood",goBloodTest);
+			
 			//view 페이지로 포워딩
 		return "/government/citizen/testVaccinationCheckup/bloodTestResult";
 		}

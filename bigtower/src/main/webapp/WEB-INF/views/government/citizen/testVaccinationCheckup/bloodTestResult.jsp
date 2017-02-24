@@ -27,7 +27,13 @@
 							혈소판
 						</th>
 						<th>
+							의사명
+						</th>
+						<th>
 							병원명
+						</th>
+						<th>
+							혈액검사시 진료받았던내용
 						</th>
 						<th>
 							혈액검사결과Img
@@ -52,7 +58,13 @@
 						</div>
 					</td>
 					<td>
-						
+						<input type="text" name="DoctorName" value="${bloodTest.goDoctorName}"/>
+					</td>
+					<td>
+						<input type="text" name="HospitalName" value="${bloodTest.goHospitalName}"/>
+					</td>
+					<td>
+						<input type="text" name="treatContents" value="${bloodTest.goTreatContents}"/>
 					</td>
 					<td>
 						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${bloodTest.goBloodTestCode}">혈액검사결과</button>
@@ -99,9 +111,6 @@
 					});
 				
 				</script>
-			
-			
-				
 				</c:forEach>
 			</table>
 	</div>	
