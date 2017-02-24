@@ -19,9 +19,10 @@ public class GoTestController {
 	@Autowired
 	private GoTestService goTS;
 	
+	//검사페이지로 요청
 	@RequestMapping(value="/government/goTest" , method=RequestMethod.GET)
 	public String testRequest(){
-		System.out.println("ddddddddd");
+		logger.debug("검사요청들어옴 혈액검사,영상검사,건강검진,예방접종으로 이동할 수 있게 경로 잡아준 페이지로 이동");
 		return "/government/citizen/testVaccinationCheckup/test";
 	}
 	
@@ -31,7 +32,7 @@ public class GoTestController {
 	@RequestMapping(value="/government/goBloodTest", method=RequestMethod.GET)
 	public String selectBloodTest(){
 		System.out.println("혈액검사 요청페이지로 이동");
-		return "/government/citizen/testVaccinationCheckup/bloodTestResultForm";
+		return "/government/citizen/testVaccinationCheckup/bloodTest";
 	}
 	
 	//혈액검사 요청페이지에서 날짜 citizenNo 넘겨받음 citizenNo는 추후에 로그인정보에서 citizenNO 혹은 주민번호를 받아 올 예정
