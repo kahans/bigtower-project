@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container">
-		검사 수 : ${goTestBlood.selectBloodTestCount}
+		혈액검사 받은 횟수 : ${goTestBlood.selectBloodTestCount}
 			<table>
 					<tr>
 						<th>
