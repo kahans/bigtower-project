@@ -31,6 +31,12 @@
 							결과등록일자
 						</th>
 						<th>
+							의사명
+						</th>
+						<th>
+							병원명
+						</th>
+						<th>
 							정부DB등록일자
 						</th>
 					</tr>
@@ -48,18 +54,30 @@
 						<input type="text" value="${checkUp.goCheckUpResultFilePath}${checkUp.goCheckUpResultFileName}" readonly="readonly"/>
 					</td>
 					<td>
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${checkUp.goCheckUpResultCode}">혈액검사결과</button>
+						<input type="text" name="c.goCheckUpResultRegistrationDate" value="${checkUp.goCheckUpResultRegistrationDate}" readonly="readonly"/>
+					</td>
+					<td>
+						<input type="text" name="c.goCheckUpResultGoRegistrationDate" value="${checkUp.goCheckUpResultGoRegistrationDate}" readonly="readonly"/>
+					</td>
+					<td>
+						<input type="text" name="goDoctorName" value="${checkUp.goDoctorName}" readonly="readonly"/>
+					</td>
+					<td>
+						<input type="text" name="goHospitalName" value="${checkUp.goHospitalName}" readonly="readonly"/>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#${checkUp.goCheckUpResultCode}">건강검진결과</button>
 						  <!-- Modal -->
 						  <div class="modal fade" id="${checkUp.goCheckUpResultCode}" role="dialog">
 						    <div class="modal-dialog modal-lg">
 						      <div class="modal-content">
 						        <div class="modal-header">
 						          <button type="button" class="close" data-dismiss="modal">&times;</button>
-						          <h4 class="modal-title">혈액검사 결과파일</h4>
+						          <h4 class="modal-title">건강검진 결과파일</h4>
 						        </div>
 						        <div class="modal-body">
-						         	<img alt="혈액검사결과파일" src="<c:url 
-						         	value="${checkUp.goCheckUpResultFilePath}${checkUp.goCheckUpResultFileName}">혈액검사결과</c:url>">
+						         	<img alt="건강검진결과파일" src="<c:url 
+						         	value="${checkUp.goCheckUpResultFilePath}${checkUp.goCheckUpResultFileName}">건강검진</c:url>">
 						        </div>
 						        <div class="modal-footer">
 						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -67,12 +85,6 @@
 						      </div>
 						    </div>
 						  </div>
-					</td>
-					<td>
-						<input type="text" name="c.goCheckUpResultRegistrationDate" value="${checkUp.goCheckUpResultRegistrationDate}" readonly="readonly"/>
-					</td>
-					<td>
-						<input type="text" name="c.goCheckUpResultGoRegistrationDate" value="${checkUp.goCheckUpResultGoRegistrationDate}" readonly="readonly"/>
 					</td>
 				</tr>
 			</c:forEach>

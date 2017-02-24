@@ -7,7 +7,7 @@
  	<!-- 예방접종 결과목록 가져오기 -->
   	<select id="vaccinationList" resultType="com.team4.project.government.vaccinationCheckup.domain.GoVaccinationResultTreatSub"
   		parameterType="com.team4.project.government.vaccinationCheckup.domain.GoVaccinationCheckup">
- 		select 
+ 	select 
 			go_vaccination_result.GO_VACCINATION_RESULT_CODE as goVaccinationResultCode,
 			go_vaccination_result.GO_TREAT_CODE as goTreatCode,
 			go_vaccination_result.GO_VACCINATION_CODE as goVaccinationCode,
@@ -21,10 +21,14 @@
 	 		go_treat.GO_CHART_SEQ as goChartSeq,
 	 		go_treat.GO_TREAT_CONTENTS as goTreatContents,
 	 		go_treat.GO_TREAT_REGISTRATION_DATE as goTreatRegistrationDate,
-	 		go_treat.GO_TREAT_GO_REGISTRATION_DATE as goTreatGoRegistrationDate 
-	 	from go_vaccination_result
+	 		go_treat.GO_TREAT_GO_REGISTRATION_DATE as goTreatGoRegistrationDate,
+			go_doctor.GO_DOCTOR_NAME as goDoctorName,  
+			go_hospital.GO_HOSPITAL_NAME as goHospitalName 
+	 	from go_vaccination_result 
 		join go_treat on go_vaccination_result.GO_TREAT_CODE = go_treat.GO_TREAT_CODE 
 		join go_citizen on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO 
+		join go_doctor on go_doctor.GO_DOCTOR_ID= go_treat.GO_DOCTOR_ID
+		join go_hospital on go_doctor.GO_HOSPITAL_ID=go_hospital.GO_HOSPITAL_ID
 	 	where  
 			(go_vaccination_result.GO_VACCINATION_RESULT_REGISTRATION_DATE between #{firstDate} and #{secondDate}) AND go_citizen.GO_CITIZEN_ID = #{goCitizenId}
 	
@@ -49,10 +53,14 @@
 		 		go_treat.GO_CHART_SEQ as goChartSeq,
 		 		go_treat.GO_TREAT_CONTENTS as goTreatContents,
 		 		go_treat.GO_TREAT_REGISTRATION_DATE as goTreatRegistrationDate,
-		 		go_treat.GO_TREAT_GO_REGISTRATION_DATE as goTreatGoRegistrationDate 
+		 		go_treat.GO_TREAT_GO_REGISTRATION_DATE as goTreatGoRegistrationDate,
+		 		go_hospital.GO_HOSPITAL_NAME as goHospitalName,
+		 		go_doctor.GO_DOCTOR_NAME as goDoctorName 
 		 	from go_test_checkup_result
 			join go_treat on go_test_checkup_result.GO_TREAT_CODE = go_treat.GO_TREAT_CODE 
 			join go_citizen on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO 
+			join go_doctor on go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID
+			join go_hospital on go_doctor.GO_HOSPITAL_ID = go_hospital.GO_HOSPITAL_ID
 		 	where  
 			(go_test_checkup_result.GO_CHECKUP_RESULT_REGISTRATION_DATE between #{firstDate} and #{secondDate}) AND go_citizen.GO_CITIZEN_ID = #{goCitizenId}
 	

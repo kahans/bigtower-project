@@ -31,6 +31,12 @@
 						<th>
 							예방접종등록일
 						</th>
+						<th>
+							의사명
+						</th>
+						<th>
+							병원명
+						</th>
 						
 						
 					</tr>
@@ -52,6 +58,12 @@
 					</td>
 					<td>
 						<input type="text" name="goVaccinationResultRegistrationDate" value="${vaccination.goVaccinationResultRegistrationDate}" readonly="readonly"/>
+					</td>
+					<td>
+						<input type="text" name="goDoctorName" value="${vaccination.goDoctorName}" readonly="readonly"/>
+					</td>
+					<td>
+						<input type="text" name="goHospitalName" value="${vaccination.goHospitalName}" readonly="readonly"/>
 					</td>
 					
 				</tr>

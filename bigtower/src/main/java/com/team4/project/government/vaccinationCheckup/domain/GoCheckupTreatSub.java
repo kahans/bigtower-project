@@ -8,9 +8,22 @@ public class GoCheckupTreatSub extends GoTreat{
 	protected String goCheckUpResultFileName;
 	protected String goCheckUpResultRegistrationDate;
 	protected String goCheckUpResultGoRegistrationDate;
-
+	protected String goHospitalName;
+	protected String goDoctorName;
 	
 	
+	public String getGoHospitalName() {
+		return goHospitalName;
+	}
+	public void setGoHospitalName(String goHospitalName) {
+		this.goHospitalName = goHospitalName;
+	}
+	public String getGoDoctorName() {
+		return goDoctorName;
+	}
+	public void setGoDoctorName(String goDoctorName) {
+		this.goDoctorName = goDoctorName;
+	}
 	public String getGoCheckUpResultCode() {
 		return goCheckUpResultCode;
 	}

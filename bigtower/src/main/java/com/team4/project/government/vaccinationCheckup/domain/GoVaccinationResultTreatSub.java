@@ -13,9 +13,23 @@ protected String goVaccinationResultGoRegistrationDate; //정부DB등록일
 //조인문
 protected String goVaccinationName;
 protected String goVaccinationDegree; //최종차수가 몇차까지인지
+protected String goDoctorName;
+protected String goHospitalName;
 
 
 
+public String getGoDoctorName() {
+	return goDoctorName;
+}
+public void setGoDoctorName(String goDoctorName) {
+	this.goDoctorName = goDoctorName;
+}
+public String getGoHospitalName() {
+	return goHospitalName;
+}
+public void setGoHospitalName(String goHospitalName) {
+	this.goHospitalName = goHospitalName;
+}
 public int getGoVaccinationResultDegree() {
 	return goVaccinationResultDegree;
 }
