@@ -19,7 +19,8 @@
 		<br/>병원명 입력(병원명에는 한글만 들어오게 할 예정)
 		<input type="text" name="goHospitalName"/>
 		<br/>의사명 입력<input type="text" name="goDoctorName"/>
-		
+		<br/>혈당 정상<button type="button">정상</button> 혈당 비정상<button type="button">비정상</button>
+		<br/>혈소판 수치 정상<button>혈소판 수치 정상</button> 혈소판 수치 비정상<button>혈소판 수치 비정상</button>
 		<br/><input type="submit" value="검색"/>
 	</form>
 </body>
