@@ -4,6 +4,17 @@
  
 <mapper namespace="government">
 	
+	<!-- httpUrlConnection Test query -->
+	<insert id="hucTest" parameterType="Map">
+		INSERT INTO test(
+			id,
+			name
+		) value (
+			#{id},
+			#{name}
+		)
+	</insert>
+	
 	<!-- 국민로그인 체크 -->
 	<select id="citizenLoginCheck" 	parameterType="com.team4.project.government.dto.GoCitizen" 
 									resultType="com.team4.project.government.dto.GoCitizen">

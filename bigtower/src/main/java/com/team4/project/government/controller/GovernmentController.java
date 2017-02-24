@@ -20,6 +20,15 @@ public class GovernmentController {
 	@Autowired
 	private GovernmentService goService;
 	
+	//httpUrlConnection Test
+	@RequestMapping(value="/government/getData", method=RequestMethod.POST)
+	public String getData(String id, String name, Model model){
+		goService.addData(id, name);
+		model.addAttribute("id", id);
+		model.addAttribute("name", name);
+		return "home";
+	}
+	
 	//초기화면 보여주기
 	@RequestMapping(value="/government/", method=RequestMethod.GET)
 	public String index(HttpSession session, Model model){
