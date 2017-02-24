@@ -81,12 +81,24 @@
 			</tbody>
 		</table>
 		<script>
+			function getContextPath() {
+				var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+				console.log('location.host:'+location.host);// localhost
+				console.log('location.href.indexOf( location.host ):'+location.href.indexOf( location.host ));
+				// 7(bigtower)
+				console.log('location.host.length:'+location.host.length);// 9
+				console.log('hostIndex:'+hostIndex);// 16
+				console.log('location.href:'+location.href);
+				return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex +1) );
+			};
+
 			$(document).ready(function(){			
 				//버튼 클릭시 검색조건과 내용에 부합하는 목록 출력하기
 				$("#btn").bind("click",function(){		
-					
+					console.log('버튼클릭!!');
+					console.log('getContextPath():'+getContextPath());
 					$.ajax({
-						url : "/government/treatSearch",
+						url : getContextPath()+"/government/treatSearch",
 						type : "POST",
 						data : {'firstDay' : $('#firstDay').val(),
 								'secondDay' : $('#secondDay').val(),
@@ -96,6 +108,7 @@
 								'doctorSearch' : $('#doctorSearch').val()},
 						//함수가 성공하면
 						success : function(data){
+							
 							console.log('성공');
 							$('tbody').empty();
 							var count = data.length;
@@ -125,7 +138,12 @@
 									+'</tr>';
 								$('tbody').append(table);								
 							})	
+						},
+						error:function(request,status,error){
+							alert("code:"+request.status+"\n\n"+"message:"+request.responseText+"\n\n"+"error:"+error);
 						}
+						
+
 					});
 				}); //click functin 종료
 			});
