@@ -1,7 +1,5 @@
 package com.team4.project.government.test.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.team4.project.government.test.domain.GoTest;
-import com.team4.project.government.test.domain.SelectInfo;
 
 @Controller
 public class GoTestController {

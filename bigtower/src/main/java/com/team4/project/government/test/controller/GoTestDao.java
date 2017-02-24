@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.team4.project.government.test.domain.GoBloodTestTreatSub;
 import com.team4.project.government.test.domain.GoImageTestTreatSub;
 import com.team4.project.government.test.domain.GoTest;
-import com.team4.project.government.test.domain.SelectInfo;
 
 @Repository
 public class GoTestDao {
