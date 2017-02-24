@@ -17,12 +17,16 @@
 		<h1>진료본 횟수</h1>
 		<table>
 			<thead>
-			<c:forEach items ="${treatSubjectList}" var="treatSubjectList" >
 				<tr>
-					<td>${treatSubjectList.goTreatSubjectName} :&nbsp;&nbsp;</td>
-					<td>${treatSubjectList.goTreatSubjectCount}회</td>
+					<td>진료과목</td>
+					<td>진료횟수</td>
 				</tr>
-			</c:forEach>
+				<c:forEach items ="${treatSubjectList}" var="treatSubjectList" >
+					<tr>
+						<td>${treatSubjectList.goTreatSubjectName} :&nbsp;&nbsp;</td>
+						<td>${treatSubjectList.goTreatSubjectCount}회</td>
+					</tr>
+				</c:forEach>
 			</thead>
 		</table>
 		
@@ -83,7 +87,7 @@
 					
 					$.ajax({
 						url : "/government/treatSearch",
-						type : "GET",
+						type : "POST",
 						data : {'firstDay' : $('#firstDay').val(),
 								'secondDay' : $('#secondDay').val(),
 								'subjectSearch' : $('#subjectSearch').val(),

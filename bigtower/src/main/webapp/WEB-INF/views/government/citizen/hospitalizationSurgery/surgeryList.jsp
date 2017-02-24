@@ -52,7 +52,7 @@
 			$(".btn").bind("click",function() {
 				$.ajax({
 					url:'/government/surgerySearch',
-					type:'GET',
+					type:'POST',
 					data: {	'searchContents': $('#searchContents').val(),
 							'secondDate' : $('#secondDate').val(),
 							'firstDate' : $('#firstDate').val()},
