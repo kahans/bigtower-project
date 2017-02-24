@@ -29,9 +29,16 @@
 		join go_citizen on go_treat.GO_CITIZEN_NO = go_citizen.GO_CITIZEN_NO 
 		join go_doctor on go_doctor.GO_DOCTOR_ID= go_treat.GO_DOCTOR_ID
 		join go_hospital on go_doctor.GO_HOSPITAL_ID=go_hospital.GO_HOSPITAL_ID
-	 	where  
+	 	<where>  
 			(go_vaccination_result.GO_VACCINATION_RESULT_REGISTRATION_DATE between #{firstDate} and #{secondDate}) AND go_citizen.GO_CITIZEN_ID = #{goCitizenId}
-	
+			<if test='!goDoctorname.equals("")'>
+				and go_doctor.GO_TOCTOR_NAME like #{goDoctorName}
+			</if>
+			<if test='!goHospitalName.equals("")'>
+				and go_hospital.GO_HOSPITAL_NAME like #{goHospitalName}
+			</if>
+		</where>
+			order by go_vaccination_result.GO_VACCINATION_RESULT_REGISTRATION_DATE desc
  	</select> 
  	
  	
