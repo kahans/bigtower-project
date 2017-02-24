@@ -29,6 +29,29 @@ public class GoTestService {
 			GoTest goTestResult = new GoTest();
 			logger.debug("서비스로 요청 들어옴");
 		
+			
+				//goTest에서 hospitalName, doctorName 분리해서 sql에 넣을때 해당 단어를 포함하는
+				//단어를 검색하도록 바꿔 세팅해줌
+				StringBuffer changeDoctorName = new StringBuffer();
+				String getDoctorName = goTest.getGoDoctorName();
+				logger.debug("입력받은 의사명 : "+getDoctorName);
+				changeDoctorName.append("%");
+				changeDoctorName.append(getDoctorName);
+				changeDoctorName.append("%");
+				goTest.setGoDoctorName(changeDoctorName.toString());
+				logger.debug("의사이름 제대로 세팅됬는지 확인 : "+goTest.getGoDoctorName());
+			
+			
+				StringBuffer changeHospitalName = new StringBuffer();
+				String getHospitalName = goTest.getGoHospitalName();
+				logger.debug("입력받은 병원명 :"+getHospitalName);
+				changeHospitalName.append("%");
+				changeHospitalName.append(getHospitalName);
+				changeHospitalName.append("%");
+				goTest.setGoHospitalName(changeHospitalName.toString());
+				logger.debug("병원명 제대로 세팅됬는지 확인 : "+goTest.getGoHospitalName());
+		
+			
 			//goTest에서 날짜 분리해서 Util클래스에 생성해놓은 날짜생성 메소드에 입력
 			String firstDate = goTest.getGoFirstDate();
 			String secondDate = goTest.getGoSecondDate();
@@ -45,33 +68,30 @@ public class GoTestService {
 			logger.debug("goTest에 날짜 세팅됬는지 확인 : "+goTest.getGoFirstDate()+"\n"+"두번째 : "+goTest.getGoSecondDate());
 			
 			//bloodTest리스트로 받아옴
-			List<GoBloodTestTreatSub> bloodTest = goTD.selectBlood(goTest);
-			//bloodTest 제대로 받아왔는지 for문으로 확인
-			for(int x=0; x<bloodTest.size(); x++){
-				logger.debug("bloodTest 확인 : "+bloodTest.get(x).toString());
+			try{
+				List<GoBloodTestTreatSub> bloodTest = goTD.selectBlood(goTest);
+				
+				//bloodTest 제대로 받아왔는지 for문으로 확인
+				for(int x=0; x<bloodTest.size(); x++){
+					logger.debug("bloodTest 확인 : "+bloodTest.get(x).toString());
+				}
+				//bloodTest의 size를 goTest객체에 담음
+				goTestResult.setSelectBloodTestCount(bloodTest.size());
+				
+				//확인된 bloodTest를 goTest객체에 담음
+				for(int i=0; i<bloodTest.size(); i++){
+					goTestResult.setGoBloodTestTreatSub(bloodTest);
+				}
+			
+				//객체에 
+				logger.debug("서비스에서 bloodTest확인 : "+goTestResult.getGoBloodTestTreatSub().toString());
+			}catch(Exception e){
+				logger.debug("예외발생");
+				e.printStackTrace();
+			}finally{
+				return 	goTestResult;
 			}
-			//bloodTest의 size를 goTest객체에 담음
-			goTestResult.setSelectBloodTestCount(bloodTest.size());
 			
-			
-			//확인된 bloodTest를 goTest객체에 담음
-			for(int i=0; i<bloodTest.size(); i++){
-				goTestResult.setGoBloodTestTreatSub(bloodTest);
-			}
-			List<SelectInfo> selectInfo = goTD.selectInformation(goTest);
-			//selectInfo 에서 정보(현재 의사이름,병원이름, 진료내용 이 들어있음)를 꺼내 goTestResult객체에 담음
-			for(int j = 0 ; j <selectInfo.size(); j++){
-				goTestResult.setSelectInfo(selectInfo);
-			}
-			
-			
-			
-			//객체에 
-			logger.debug("서비스에서 bloodTest확인 : "+goTestResult.getGoBloodTestTreatSub().toString());
-			logger.debug("서비스에서 selectInfo 확인 : "+goTestResult.getSelectInfo().toString());
-			
-			
-			return 	goTestResult;
 		}
 		
 	//이미지 검색결과 요청

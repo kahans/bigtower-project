@@ -13,6 +13,33 @@ public class GoBloodTestTreatSub extends GoTreat {
 	protected String goBloodTestDate;
 	protected String goBloodTestGoRegistrationDate;
 	
+	//병원명, 의사명 진료내용
+	protected String goHospitalName;
+	protected String goDoctorName;
+	protected String goTreatContents;
+	
+	
+	
+	
+	
+	public String getGoHospitalName() {
+		return goHospitalName;
+	}
+	public void setGoHospitalName(String goHospitalName) {
+		this.goHospitalName = goHospitalName;
+	}
+	public String getGoDoctorName() {
+		return goDoctorName;
+	}
+	public void setGoDoctorName(String goDoctorName) {
+		this.goDoctorName = goDoctorName;
+	}
+	public String getGoTreatContents() {
+		return goTreatContents;
+	}
+	public void setGoTreatContents(String goTreatContents) {
+		this.goTreatContents = goTreatContents;
+	}
 	public String getGoBloodTestCode() {
 		return goBloodTestCode;
 	}
@@ -60,9 +87,11 @@ public class GoBloodTestTreatSub extends GoTreat {
 		return "GoBloodTestTreatSub [goBloodTestCode=" + goBloodTestCode + ", goBloodTestBloodSugar="
 				+ goBloodTestBloodSugar + ", goBloodTestPlatelet=" + goBloodTestPlatelet + ", goBloodTestFilePath="
 				+ goBloodTestFilePath + ", goBloodTestFileName=" + goBloodTestFileName + ", goBloodTestDate="
-				+ goBloodTestDate + ", goBloodTestGoRegistrationDate=" + goBloodTestGoRegistrationDate + "]";
+				+ goBloodTestDate + ", goBloodTestGoRegistrationDate=" + goBloodTestGoRegistrationDate
+				+ ", goHospitalName=" + goHospitalName + ", goDoctorName=" + goDoctorName + ", goTreatContents="
+				+ goTreatContents + "]";
 	}
-
+	
 
 	
 	

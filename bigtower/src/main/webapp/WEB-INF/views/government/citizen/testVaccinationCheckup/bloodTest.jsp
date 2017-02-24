@@ -16,11 +16,11 @@
 		
 		기간입력 
 		<input type="date" name="goFirstDate">-<input type="date" name="goSecondDate">
-		병원명 입력(병원명에는 한글만 들어오게 할 예정)
+		<br/>병원명 입력(병원명에는 한글만 들어오게 할 예정)
 		<input type="text" name="goHospitalName"/>
+		<br/>의사명 입력<input type="text" name="goDoctorName"/>
 		
-		
-		<input type="submit" value="검색"/>
+		<br/><input type="submit" value="검색"/>
 	</form>
 </body>
 </html>

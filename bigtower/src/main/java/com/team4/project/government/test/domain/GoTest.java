@@ -6,19 +6,29 @@ public class GoTest {
 	protected String goCitizenId;
 	protected List<GoBloodTestTreatSub> goBloodTestTreatSub;
 	protected List<GoImageTestTreatSub> goImageTestTreatSub;
-	protected List<SelectInfo> selectInfo;
 	protected int selectBloodTestCount;
-	
+	protected String goHospitalName;
+	protected String goDoctorName;
 	protected String goFirstDate;
 	protected String goSecondDate;
 	
 
-	public List<SelectInfo> getSelectInfo() {
-		return selectInfo;
+	
+	
+	public String getGoHospitalName() {
+		return goHospitalName;
 	}
 
-	public void setSelectInfo(List<SelectInfo> selectInfo) {
-		this.selectInfo = selectInfo;
+	public void setGoHospitalName(String goHospitalName) {
+		this.goHospitalName = goHospitalName;
+	}
+
+	public String getGoDoctorName() {
+		return goDoctorName;
+	}
+
+	public void setGoDoctorName(String goDoctorName) {
+		this.goDoctorName = goDoctorName;
 	}
 
 	public int getSelectBloodTestCount() {
