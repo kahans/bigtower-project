@@ -3,13 +3,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="hoReceiveReservation">
+	
 	<!-- 진료과목 이름 불러오기 -->
-	<select id="selectTreatSubject" resultType="List">
+	<select id="selectTreatSubject" resultType="com.team4.project.hospital.dto.HoTreatSubject">
 		SELECT
 			HO_TREAT_SUBJECT_CODE,
 			HO_TREAT_SUBJECT_NAME
 		FROM ho_treat_subject
 	</select>
+	
+	<!-- 접수등록 -->
+	<insert id="addReceive" parameterType="com.team4.project.hospital.receiveReservation.domain.HoReceive">
+		insert
+		
+	</insert>
 	
 	<!--환자조회 -->
 	<select id="selectPatient" resultType="com.team4.project.hospital.dto.HoPatient"

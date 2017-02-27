@@ -28,6 +28,7 @@ public class HoReceiveReservationController {
 	public String addOneReceive(Model model,
 			@RequestParam(value="hoCitizenId", required=false)String hoCitizenId){
 		List<HoTreatSubject> treatSubjectList = hoRRService.selectTreatSubject();
+		System.out.println("treatSubjectList :" + treatSubjectList);
 		model.addAttribute("hoCitizenId",hoCitizenId);
 		model.addAttribute("treatSubjectList",treatSubjectList);
 		logger.debug("addPatient GET");
