@@ -1,10 +1,13 @@
 package com.team4.project.hospital.receiveReservation.controller;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team4.project.hospital.dto.HoPatient;
+import com.team4.project.hospital.dto.HoTreatSubject;
 
 @Repository
 public class HoReceiveReservationDao {
@@ -26,5 +29,10 @@ public class HoReceiveReservationDao {
 	public HoPatient searchTest(HoPatient hp) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("hoReceiveReservation.selectPatientTest", hp);
+	}
+	
+	//진료과목 이름 불러오기
+	public List<HoTreatSubject> selectTreatSubject(){
+		return sqlSession.selectList("hoReceiveReservation.selectTreatSubject");
 	}
 }

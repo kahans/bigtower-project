@@ -1,5 +1,7 @@
 package com.team4.project.hospital.receiveReservation.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team4.project.hospital.dto.HoPatient;
+import com.team4.project.hospital.dto.HoTreatSubject;
 
 
 @Controller
@@ -24,7 +27,9 @@ public class HoReceiveReservationController {
 	@RequestMapping(value="/hospital/receive", method=RequestMethod.GET)
 	public String addOneReceive(Model model,
 			@RequestParam(value="hoCitizenId", required=false)String hoCitizenId){
+		List<HoTreatSubject> treatSubjectList = hoRRService.selectTreatSubject();
 		model.addAttribute("hoCitizenId",hoCitizenId);
+		model.addAttribute("treatSubjectList",treatSubjectList);
 		logger.debug("addPatient GET");
 		return "/hospital/views/receive";
 	}
@@ -39,7 +44,7 @@ public class HoReceiveReservationController {
 	}
 	
 	//ajax 한명의 환자정보 조회
-	@RequestMapping(value="hospital/searchPatient", method=RequestMethod.POST)
+	@RequestMapping(value="hospital/searchReceive", method=RequestMethod.POST)
 	public @ResponseBody HoPatient searchOnePatient(@RequestParam("hoCitizenId")String hoCitizenId){
 		logger.debug("searchOnePatient POST");
 		HoPatient hopatient = hoRRService.searchOnePatient(hoCitizenId);
@@ -48,15 +53,15 @@ public class HoReceiveReservationController {
 		return hopatient;
 	}
 	//초진, 재진 뷰 보기
-	@RequestMapping(value="/hospital/searchPatientTest", method=RequestMethod.GET)
+	@RequestMapping(value="/hospital/searchPatient", method=RequestMethod.GET)
 	public String searchOnePatientTest(){
 		logger.debug("searchOnePatientTest GET 화면 불러오기");
 		
 		return "/hospital/views/searchPatient";
 	}
 	//초진, 재진 조회
-	@RequestMapping(value="/hospital/searchPatientTest", method=RequestMethod.POST)
-	public String searchOnePatientTest(HoPatient hp, Model model, RedirectAttributes redidredctAttributes,
+	@RequestMapping(value="/hospital/searchPatient", method=RequestMethod.POST)
+	public String searchOnePatientTest(HoPatient hp, Model model, RedirectAttributes redirectAttributes,
 										@RequestParam(value="idfirst", required=false) String idfirst,
 										@RequestParam(value="idsecond", required=false) String idsecond
 			){
@@ -74,7 +79,7 @@ public class HoReceiveReservationController {
 		System.out.println("mapper에서온 손님 : "+hp);
 		if(hp!=null){//널이 아니면 접수등록으로 이동한다.
 			String hoCitizenId = hp.getHoCitizenId();
-			redidredctAttributes.addAttribute("hoCitizenId",hoCitizenId);
+			redirectAttributes.addAttribute("hoCitizenId",hoCitizenId);
 			return "redirect:/hospital/receive";
 		}else{//초진을 경우 null로 되어 있는 경우 환자를 등록 뷰로 이동한다.
 			return "/hospital/views/addPatient";

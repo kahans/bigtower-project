@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>환자 조회</h2>
-	<form action="<c:url value='/hospital/searchPatientTest'/>" method="post">
+	<form action="<c:url value='/hospital/searchPatient'/>" method="post">
 		
 		주민번호<input type="text" id="idfirst" name="idfirst"> - <input type="password" id="idsecond" name="idsecond">
 		<br>
