@@ -19,6 +19,8 @@ public class GoTestController {
 	@Autowired
 	private GoTestService goTS;
 	
+	
+	
 	//검사페이지로 요청
 	@RequestMapping(value="/government/goTest" , method=RequestMethod.GET)
 	public String testRequest(){
