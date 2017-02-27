@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team4.project.hospital.dto.HoPatient;
 
@@ -23,10 +24,11 @@ public class HoReceiveReservationController {
 	
 	//접수폼 보여주기
 	@RequestMapping(value="/hospital/receive", method=RequestMethod.GET)
-	public String addOneReceive(){
+	public String addOneReceive(Model model,
+			@RequestParam(value="hoCitizenId")String hoCitizenId){
+		model.addAttribute("hoCitizenId",hoCitizenId);
 		logger.debug("addPatient GET");
-	
-		return "/hospital_YJ/receive";
+		return "/hospital/views/receive";
 	}
 	
 	//접수실행
@@ -35,7 +37,7 @@ public class HoReceiveReservationController {
 		logger.debug("addReceive POST");
 		logger.debug("hoReceive:"+hoPatient);
 		
-		return "/hospital_YJ/receive";
+		return "/hospital/views/receive";
 	}
 	
 	//ajax 한명의 환자정보 조회
@@ -56,7 +58,7 @@ public class HoReceiveReservationController {
 	}
 	//초진, 재진 조회
 	@RequestMapping(value="/hospital/searchPatientTest", method=RequestMethod.POST)
-	public String searchOnePatientTest(HoPatient hp, Model model,
+	public String searchOnePatientTest(HoPatient hp, Model model, RedirectAttributes redidredctAttributes,
 										@RequestParam(value="idfirst", required=false) String idfirst,
 										@RequestParam(value="idsecond", required=false) String idsecond
 			){
@@ -73,9 +75,10 @@ public class HoReceiveReservationController {
 		hp = hoRRService.searchPatientTest(hp);
 		System.out.println("mapper에서온 손님 : "+hp);
 		if(hp!=null){//널이 아니면 접수등록으로 이동한다.
-			
-			//JOptionPane.showMessageDialog(null, "접수등록");			
-			return "/hospital/views/receive";
+			String hoCitizenId = hp.getHoCitizenId();
+			JOptionPane.showMessageDialog(null, "접수등록");
+			redidredctAttributes.addAttribute("hoCitizenId",hoCitizenId);
+			return "redirect:/hospital/receive";
 		}else{//초진을 경우 null로 되어 있는 경우 환자를 등록 뷰로 이동한다.
 			//JOptionPane.showMessageDialog(null, "환자등록");
 			return "/hospital/views/addPatient";
