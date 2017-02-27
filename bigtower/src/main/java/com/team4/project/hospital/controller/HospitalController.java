@@ -1,6 +1,7 @@
 package com.team4.project.hospital.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.team4.project.hospital.dto.HoLoginCheckStaffSub;
+import com.team4.project.hospital.dto.HoPatient;
 
 @Controller
 public class HospitalController {
@@ -58,5 +60,33 @@ public class HospitalController {
 	public String logout(HttpSession session){
 		session.invalidate();
 		return "/hospital_YJ/index";
+	}
+	
+	//환자등록 페이지
+	@RequestMapping(value="/hospital/addPatient", method=RequestMethod.GET)
+	public String addPatient(){
+		return "/hospital/views/addPatient";
+	}
+	
+	//환자등록 처리
+	@RequestMapping(value="/hospital/addPatient", method=RequestMethod.POST)
+	public String addPatient(HoPatient hoPatient, HttpSession session){
+		//로그인된 직원의 병원코드를 가져와 환자등록시 이 병원코드가 들어가도록 셋팅
+		if(session!=null){
+			String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+			hoPatient.setHoHospitalCode(hoHospitalCode);
+			System.out.println("hoPatient : "+hoPatient);
+		}
+		int result = hoService.addPatient(hoPatient);
+		System.out.println("성공했냐? " + result);
+		//환자등록 완료 분기문
+		if(result==1){
+			JOptionPane.showMessageDialog(null, "등록이 완료되었습니다.");
+			return "redirect:/hospital/receive";
+		}else{
+			JOptionPane.showMessageDialog(null, "등록 오류");
+			return "/hospital/views/addPatient";
+		}
+		
 	}
 }

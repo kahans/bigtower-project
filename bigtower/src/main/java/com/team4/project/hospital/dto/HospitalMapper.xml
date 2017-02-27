@@ -3,6 +3,30 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="hospital"> 	
+ 	
+ 	<!-- 환자등록 -->
+ 	<insert id="addPatient" parameterType="com.team4.project.hospital.dto.HoPatient">
+ 		INSERT INTO ho_patient(
+			ho_patient.HO_PATIENT_CODE,
+			ho_patient.HO_HOSPITAL_CODE,
+			ho_patient.HO_PATIENT_NAME,
+			ho_patient.HO_CITIZEN_ID,
+			ho_patient.HO_PATIENT_PHONE,
+			ho_patient.HO_ZIP_CODE,
+			ho_patient.HO_PATIENT_ADDRESS,
+			ho_patient.HO_PATIENT_DETAIL_ADDRESS)
+		SELECT
+			CONCAT('patient_',max(cast(substring(ho_patient.HO_PATIENT_CODE,9,5) as UNSIGNED ))+1),
+			#{hoHospitalCode},
+	 		#{hoPatientName},
+	 		#{hoCitizenId},
+	 		#{hoPatientPhone},
+	 		#{hoZipCode},
+	 		#{hoPatientAddress},
+	 		#{hoPatientDetailAddress}
+		FROM ho_patient;
+ 	</insert>
+ 	
  	<!-- 직원 로그인체크 -->
 	<select id="loginCheck" parameterType="Map" resultType="com.team4.project.hospital.dto.HoLoginCheckStaffSub">
 		SELECT
@@ -15,7 +39,6 @@
 		FROM ho_staff
 		join ho_hospital on ho_staff.HO_HOSPITAL_CODE = ho_hospital.HO_HOSPITAL_CODE
 		join ho_staff_level on ho_staff.STAFF_LEVEL_CODE = ho_staff_level.STAFF_LEVEL_CODE
-		WHERE ho_staff_id = #{hoStaffId} AND ho_staff_pw=#{hoStaffPw}
-		
+		WHERE ho_staff_id = #{hoStaffId} AND ho_staff_pw=#{hoStaffPw}		
 	</select>
 </mapper>
