@@ -48,8 +48,15 @@
 			<!-- 여러개 컨트롤러 추가 가능
 			<mvc:mapping path="/admin_write"/> <mvc:mapping path="/admin_update"/> 
 				<mvc:mapping path="/admin_delete"/> . . . -->
-			<mvc:mapping path="/government11/" />
+			<mvc:mapping path="/government/*" />
 			
+			 <!-- 해당 path는 인터셉트 하지않는다 -->
+			 
+           <mvc:exclude-mapping path="/government/"/>
+           <mvc:exclude-mapping path="/government/login"/>
+           <mvc:exclude-mapping path="/government/loginCitizen"/>
+           <mvc:exclude-mapping path="/government/loginHospital"/>
+           <mvc:exclude-mapping path="/government/logout"/>
 			
 			<!-- 로그인체크 인터셉터 클래스 -->
 			<bean class="com.team4.project.government.interceptor.Interceptor" />
