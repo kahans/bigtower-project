@@ -1,7 +1,5 @@
 package com.team4.project.hospital.receiveReservation.controller;
 
-import javax.swing.JOptionPane;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +23,7 @@ public class HoReceiveReservationController {
 	//접수폼 보여주기
 	@RequestMapping(value="/hospital/receive", method=RequestMethod.GET)
 	public String addOneReceive(Model model,
-			@RequestParam(value="hoCitizenId")String hoCitizenId){
+			@RequestParam(value="hoCitizenId", required=false)String hoCitizenId){
 		model.addAttribute("hoCitizenId",hoCitizenId);
 		logger.debug("addPatient GET");
 		return "/hospital/views/receive";
@@ -76,11 +74,9 @@ public class HoReceiveReservationController {
 		System.out.println("mapper에서온 손님 : "+hp);
 		if(hp!=null){//널이 아니면 접수등록으로 이동한다.
 			String hoCitizenId = hp.getHoCitizenId();
-			JOptionPane.showMessageDialog(null, "접수등록");
 			redidredctAttributes.addAttribute("hoCitizenId",hoCitizenId);
 			return "redirect:/hospital/receive";
 		}else{//초진을 경우 null로 되어 있는 경우 환자를 등록 뷰로 이동한다.
-			//JOptionPane.showMessageDialog(null, "환자등록");
 			return "/hospital/views/addPatient";
 		}
 		

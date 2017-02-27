@@ -22,9 +22,7 @@ public class HoReceiveReservationService {
 	
 	//한명의 환자접수
 	public int addOneReceive(HoPatient hoPatient){
-		if(hoRRDao.selectOnePatient(hoPatient.getHoCitizenId()) ==null) {
-			
-		}		
+				
 		return 0;
 	}
 	//초진 , 재진 조회
