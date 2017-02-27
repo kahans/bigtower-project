@@ -2,25 +2,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="hospital">
-	<!--환자조회 -->
- 	<select id="selectPatient" resultType="com.team4.project.hospital.dto.HoPatient"
- 								 parameterType="String">
- 		SELECT 
- 			HO_HOSPITAL_CODE,
- 			HO_CITIZEN_ID,
- 			HO_PATIENT_NAME,
- 			HO_PATIENT_PHONE,
- 			HO_ZIP_CODE,
- 			HO_PATIENT_ADDRESS,
- 			HO_PATIENT_DETAIL_ADDRESS 
- 		FROM
- 		 ho_patient 
- 		WHERE 
- 			HO_CITIZEN_ID = #{hoCitizenId}
- 	
- 	</select>
- 	
+<mapper namespace="hospital"> 	
  	<!-- 직원 로그인체크 -->
 	<select id="loginCheck" parameterType="Map" resultType="com.team4.project.hospital.dto.HoLoginCheckStaffSub">
 		SELECT

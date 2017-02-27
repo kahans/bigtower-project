@@ -3,5 +3,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="hoReceiveReservation">
-
+	<!--환자조회 -->
+	<select id="selectPatient" resultType="com.team4.project.hospital.dto.HoPatient"
+ 								 parameterType="String">
+ 		SELECT 
+ 			HO_HOSPITAL_CODE,
+ 			HO_CITIZEN_ID,
+ 			HO_PATIENT_NAME,
+ 			HO_PATIENT_PHONE,
+ 			HO_ZIP_CODE,
+ 			HO_PATIENT_ADDRESS,
+ 			HO_PATIENT_DETAIL_ADDRESS 
+ 		FROM
+ 		 ho_patient 
+ 		WHERE 
+ 			HO_CITIZEN_ID = #{hoCitizenId}
+ 	</select>
+ 	<!-- test 환자 조회 -->
+ 	<select id="selectPatientTest" resultType="com.team4.project.hospital.dto.HoPatient"
+ 								 parameterType="String">
+ 		SELECT 
+ 			HO_HOSPITAL_CODE,
+ 			HO_CITIZEN_ID,
+ 			HO_PATIENT_NAME 			
+ 		FROM
+ 		 ho_patient 
+ 		WHERE 
+ 			HO_CITIZEN_ID = #{hoCitizenId}
+ 		AND HO_CITIZEN_NAME = #{hoPatientName}
+ 	</select>
+ 	
 </mapper>

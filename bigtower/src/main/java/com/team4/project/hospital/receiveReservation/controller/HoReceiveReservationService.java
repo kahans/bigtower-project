@@ -24,10 +24,12 @@ public class HoReceiveReservationService {
 	public int addOneReceive(HoPatient hoPatient){
 		if(hoRRDao.selectOnePatient(hoPatient.getHoCitizenId()) ==null) {
 			
-		}
-		
-		
+		}		
 		return 0;
+	}
+	//초진 , 재진 조회
+	public HoPatient searchPatientTest(){
+		return null;
 	}
 	
 }

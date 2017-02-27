@@ -14,7 +14,7 @@ public class HoReceiveReservationDao {
 	
 	//한명의 환자 조회
 	public HoPatient selectOnePatient(String hoCitizenId){
-		return sqlSession.selectOne("hospital.selectPatient", hoCitizenId);
+		return sqlSession.selectOne("hoReceiveReservation.selectPatient", hoCitizenId);
 	}
 
 	//한명의 환자 접수
