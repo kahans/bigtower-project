@@ -23,9 +23,9 @@
  	<select id="selectPatientTest" resultType="com.team4.project.hospital.dto.HoPatient"
  								 parameterType="String">
  		SELECT 
- 			HO_HOSPITAL_CODE,
- 			HO_CITIZEN_ID,
- 			HO_PATIENT_NAME 			
+ 			HO_HOSPITAL_CODE as hoHospitalCode,
+ 			HO_CITIZEN_ID as hoCitizenId,
+ 			HO_PATIENT_NAME as hoPatientName
  		FROM
  		 ho_patient 
  		WHERE 

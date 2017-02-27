@@ -1,5 +1,7 @@
 package com.team4.project.hospital.receiveReservation.controller;
 
+import javax.swing.JOptionPane;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team4.project.hospital.dto.HoPatient;
+
 
 @Controller
 public class HoReceiveReservationController {
@@ -49,7 +52,7 @@ public class HoReceiveReservationController {
 	public String searchOnePatientTest(){
 		logger.debug("searchOnePatientTest GET 화면 불러오기");
 		
-		return "/hospital/views/receive";
+		return "/hospital/views/searchPatient";
 	}
 	//초진, 재진 조회
 	@RequestMapping(value="/hospital/searchPatientTest", method=RequestMethod.POST)
@@ -67,11 +70,18 @@ public class HoReceiveReservationController {
 		//dto에 들어간 데이터를 확인
 		System.out.println(hp.toString());
 		
-		HoPatient test = hoRRService.searchPatientTest(hp);
+		hp = hoRRService.searchPatientTest(hp);
+		System.out.println("mapper에서온 손님 : "+hp);
+		if(hp!=null){//널이 아니면 접수등록으로 이동한다.
+			
+			//JOptionPane.showMessageDialog(null, "접수등록");			
+			return "/hospital/views/receive";
+		}else{//초진을 경우 null로 되어 있는 경우 환자를 등록 뷰로 이동한다.
+			//JOptionPane.showMessageDialog(null, "환자등록");
+			return "/hospital/views/addPatient";
+		}
 		
-		model.addAttribute("se", test);		
-		
-		return "/hospital/views/receive";
+		//return "/hospital/views/receive";
 	}
 }
 

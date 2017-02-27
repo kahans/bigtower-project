@@ -12,10 +12,9 @@
 	<form action="<c:url value='/hospital/searchPatientTest'/>" method="post">
 		
 		주민번호<input type="text" id="idfirst" name="idfirst"> - <input type="password" id="idsecond" name="idsecond">
+		<br>
 		이름 <input type="text" id="hoPatientName" name="hoPatientName">
 		<input type="submit" id="btn" name="btn">
 	</form>
-	
-	
 </body>
 </html>
