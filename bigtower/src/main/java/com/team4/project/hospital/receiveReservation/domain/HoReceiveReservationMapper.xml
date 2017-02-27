@@ -30,7 +30,7 @@
  		 ho_patient 
  		WHERE 
  			HO_CITIZEN_ID = #{hoCitizenId}
- 		AND HO_CITIZEN_NAME = #{hoPatientName}
+ 		AND HO_PATIENT_NAME = #{hoPatientName}
  	</select>
  	
 </mapper>

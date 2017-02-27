@@ -44,22 +44,34 @@ public class HoReceiveReservationController {
 		
 		return hopatient;
 	}
-	@RequestMapping(value="hospital/searchPatientTest", method=RequestMethod.GET)
+	//초진, 재진 뷰 보기
+	@RequestMapping(value="/hospital/searchPatientTest", method=RequestMethod.GET)
 	public String searchOnePatientTest(){
 		logger.debug("searchOnePatientTest GET 화면 불러오기");
 		
-		return "receive";
+		return "/hospital/views/receive";
 	}
-	@RequestMapping(value="hospital/searchPatientTest", method=RequestMethod.POST)
+	//초진, 재진 조회
+	@RequestMapping(value="/hospital/searchPatientTest", method=RequestMethod.POST)
 	public String searchOnePatientTest(HoPatient hp, Model model,
-										@RequestParam("idfirst") String idfirst,
-										@RequestParam("idsecond") String idsecond,
-										@RequestParam("name") String name
+										@RequestParam(value="idfirst", required=false) String idfirst,
+										@RequestParam(value="idsecond", required=false) String idsecond
 			){
 		logger.debug("searchOnePatientTest POST 데이터 보내기");
-		model.addAttribute("idfirst", idfirst);
+		//뷰에서 받은 주민번호를 controller에서 처리를 한다.
+		//앞,뒤로 받은 주민번호를 하나의 문자열로 합치고, DTO에 set으로 세팅한다.
+		String se = idfirst+"-"+idsecond;
+		System.out.println("주민번호 : "+se);
+		hp.setHoCitizenId(se);
 		
-		return "receive";
+		//dto에 들어간 데이터를 확인
+		System.out.println(hp.toString());
+		
+		HoPatient test = hoRRService.searchPatientTest(hp);
+		
+		model.addAttribute("se", test);		
+		
+		return "/hospital/views/receive";
 	}
 }
 

@@ -10,6 +10,7 @@ public class HoPatient {
 	protected String hoPatientAddress;
 	protected String hoPatientDetailAddress;
 	
+	
 	public String getHoPatientCode() {
 		return hoPatientCode;
 	}

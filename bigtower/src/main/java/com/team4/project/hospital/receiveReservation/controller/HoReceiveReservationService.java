@@ -28,8 +28,12 @@ public class HoReceiveReservationService {
 		return 0;
 	}
 	//초진 , 재진 조회
-	public HoPatient searchPatientTest(){
-		return null;
+	public HoPatient searchPatientTest(HoPatient hp){
+		
+		
+		
+		System.out.println("서비스 : "+hp.getHoCitizenId());
+		return hoRRDao.searchTest(hp);
 	}
 	
 }

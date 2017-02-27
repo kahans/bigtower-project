@@ -22,4 +22,9 @@ public class HoReceiveReservationDao {
 		
 		return 0;
 	}
+
+	public HoPatient searchTest(HoPatient hp) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("hoReceiveReservation.selectPatientTest", hp);
+	}
 }
