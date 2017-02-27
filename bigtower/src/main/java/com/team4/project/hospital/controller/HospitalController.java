@@ -22,13 +22,7 @@ public class HospitalController {
 	//인덱스 화면 보기
 	@RequestMapping(value="/hospital/", method=RequestMethod.GET)
 	public String index(Model model, HttpSession session){
-		if( session.getAttribute("HOSPITALCODE")!=null){
-			model.addAttribute("HOSPITALCODE", session.getAttribute("HOSPITALCODE"));
-			model.addAttribute("HOSPITALNAME", session.getAttribute("HOSPITALNAME"));
-			model.addAttribute("STAFFLEVELCODE", session.getAttribute("STAFFLEVELCODE"));
-			model.addAttribute("STAFFLEVELNAME", session.getAttribute("STAFFLEVELNAME"));
-			model.addAttribute("HOSTAFFNAME", session.getAttribute("HOSTAFFNAME"));
-		}
+		
 		return "/hospital_YJ/index";
 	}
 	

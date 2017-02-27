@@ -69,7 +69,7 @@ function sample6_execDaumPostcode() {
     		console.log('location.host:'+location.host);
     		console.log('location.href:'+location.href);
     	    $.ajax({
-    	        url : getContextPath()+"/searchPatient",
+    	        url : getContextPath()+"/hospital/searchPatient",
     	        type: "post",
     	        data : { "goCitizenId" : $("#goCitizenIdSearch").val() },
     	        success : function(data){
