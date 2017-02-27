@@ -15,14 +15,14 @@ public class HoReceiveReservationService {
 	private HoReceiveReservationDao hoRRDao;
 	
 	//한명의 환자조회
-	public HoPatient searchOnePatient(String goCitizenId){
-		logger.debug("goCitizenId:"+goCitizenId);
-		return hoRRDao.selectOnePatient(goCitizenId);
+	public HoPatient searchOnePatient(String hoCitizenId){
+		logger.debug("hoCitizenId:"+hoCitizenId);
+		return hoRRDao.selectOnePatient(hoCitizenId);
 	}
 	
 	//한명의 환자접수
 	public int addOneReceive(HoPatient hoPatient){
-		if(hoRRDao.selectOnePatient(hoPatient.getGoCitizenId()) ==null) {
+		if(hoRRDao.selectOnePatient(hoPatient.getHoCitizenId()) ==null) {
 			
 		}
 		

@@ -100,13 +100,14 @@ function sample6_execDaumPostcode() {
 </script>
 </head>
 <body>
+
 	<h1>receive.jsp</h1>
 	<h2>환자접수</h2>
 	<input id="goCitizenIdSearch" type="text" value="900101-100000" placeholder="주민번호">
 			<button id="btn">조회</button>
 	<form action="<c:url value="/hospital/receive"/>" method="post">
 		<div>
-			<input id="goCitizenId" type="text" name="goCitizenId" value="900101-100000" placeholder="주민번호">
+			<input id="hoCitizenId" type="text" name="hoCitizenId" value="900101-100000" placeholder="주민번호">
 			ex)900101-1000001 / 900101-1000002 ... 900101-1000005 / 900101-2000001 ... 900101-2000005
 			
 		</div>

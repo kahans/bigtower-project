@@ -36,9 +36,9 @@ public class HoReceiveReservationController {
 	
 	//ajax 한명의 환자정보 조회
 	@RequestMapping(value="hospital/searchPatient", method=RequestMethod.POST)
-	public @ResponseBody HoPatient searchOnePatient(@RequestParam("goCitizenId")String goCitizenId){
+	public @ResponseBody HoPatient searchOnePatient(@RequestParam("hoCitizenId")String hoCitizenId){
 		logger.debug("searchOnePatient POST");
-		HoPatient hopatient = hoRRService.searchOnePatient(goCitizenId);
+		HoPatient hopatient = hoRRService.searchOnePatient(hoCitizenId);
 		logger.debug("hopatient:"+hopatient);
 		
 		return hopatient;

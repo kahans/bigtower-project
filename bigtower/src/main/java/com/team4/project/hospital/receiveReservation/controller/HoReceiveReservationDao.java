@@ -13,8 +13,8 @@ public class HoReceiveReservationDao {
 	private SqlSessionTemplate sqlSession;
 	
 	//한명의 환자 조회
-	public HoPatient selectOnePatient(String goCitizenId){
-		return sqlSession.selectOne("hospital.selectPatient", goCitizenId);
+	public HoPatient selectOnePatient(String hoCitizenId){
+		return sqlSession.selectOne("hospital.selectPatient", hoCitizenId);
 	}
 
 	//한명의 환자 접수

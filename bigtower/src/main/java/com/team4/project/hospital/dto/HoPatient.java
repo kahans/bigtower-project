@@ -3,7 +3,7 @@ package com.team4.project.hospital.dto;
 public class HoPatient {
 	protected String hoPatientCode;
 	protected String hoHospitalCode;
-	protected String goCitizenId;
+	protected String hoCitizenId;
 	protected String hoPatientPhone;
 	protected String hoPatientName;
 	protected String hoZipCode;
@@ -22,11 +22,12 @@ public class HoPatient {
 	public void setHoHospitalCode(String hoHospitalCode) {
 		this.hoHospitalCode = hoHospitalCode;
 	}
-	public String getGoCitizenId() {
-		return goCitizenId;
+	
+	public String getHoCitizenId() {
+		return hoCitizenId;
 	}
-	public void setGoCitizenId(String goCitizenId) {
-		this.goCitizenId = goCitizenId;
+	public void setHoCitizenId(String hoCitizenId) {
+		this.hoCitizenId = hoCitizenId;
 	}
 	public String getHoPatientPhone() {
 		return hoPatientPhone;
@@ -58,10 +59,11 @@ public class HoPatient {
 	public void setHoPatientDetailAddress(String hoPatientDetailAddress) {
 		this.hoPatientDetailAddress = hoPatientDetailAddress;
 	}
+	
 	@Override
 	public String toString() {
-		return "HoPatient [hoPatientCode=" + hoPatientCode + ", hoHospitalCode=" + hoHospitalCode + ", goCitizenId="
-				+ goCitizenId + ", hoPatientPhone=" + hoPatientPhone + ", hoPatientName=" + hoPatientName
+		return "HoPatient [hoPatientCode=" + hoPatientCode + ", hoHospitalCode=" + hoHospitalCode + ", hoCitizenId="
+				+ hoCitizenId + ", hoPatientPhone=" + hoPatientPhone + ", hoPatientName=" + hoPatientName
 				+ ", hoZipCode=" + hoZipCode + ", hoPatientAddress=" + hoPatientAddress + ", hoPatientDetailAddress="
 				+ hoPatientDetailAddress + "]";
 	}
