@@ -142,7 +142,14 @@ public class HoReceiveReservationController {
 		
 		System.out.println("Diagnosis 이름이 온다 : "+hp);
 		hoRRService.receiveStateAcceptance(hoReceiveCode); 
-		return "redirect:/hospital/receiveList";
+		return "redirect:/hospital/diagnosisList";
+	}
+	//수납대기 목록
+	@RequestMapping(value="/hospital/acceptanceList", method=RequestMethod.GET)
+	public String acceptanceList(){
+		
+		
+		return "";
 	}
 }
 

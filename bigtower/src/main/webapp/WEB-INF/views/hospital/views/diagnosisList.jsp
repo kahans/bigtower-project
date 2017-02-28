@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>진료 목록</h1>
 	<table border="1">
 		<thead>
 			<tr>
@@ -26,7 +27,7 @@
 					<td>${DiagnosisList.hoTreatSubjectName }</td>
 					<td>${DiagnosisList.hoReceivePurpose }</td>
 					<td>${DiagnosisList.hoReceiveRegistrationDate }</td>
-					<td><a href="<c:url value='/hospital/receiveStateDiagnosis?hoReceiveCode=${DiagnosisList.hoReceiveCode}'/>">${DiagnosisList.hoReceiveStateName }</a></td>
+					<td><a href="<c:url value='/hospital/receiveStateAcceptance?hoReceiveCode=${DiagnosisList.hoReceiveCode}'/>">${DiagnosisList.hoReceiveStateName }</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>

@@ -8,11 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>대기자 목록</h1>
 	<table border="1">
 		<thead>
 			<tr>
 			<th>환자명</th>
 			<th>진료과</th>
+			<th>방문목적</th>
 			<th>접수일</th>
 			<th>접수상태</th>
 			</tr>
@@ -23,6 +25,7 @@
 				
 					<td>${ReceiveList.hoPatientName }</td>
 					<td>${ReceiveList.hoTreatSubjectName }</td>
+					<td>${ReceiveList.hoReceivePurpose }</td>
 					<td>${ReceiveList.hoReceiveRegistrationDate }</td>
 					<td><a href="<c:url value='/hospital/receiveStateDiagnosis?hoReceiveCode=${ReceiveList.hoReceiveCode}'/>">${ReceiveList.hoReceiveStateName }</a></td>
 			</tr>

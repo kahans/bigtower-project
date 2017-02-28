@@ -65,12 +65,13 @@
  			HO_CITIZEN_ID = #{hoCitizenId}
  		AND HO_PATIENT_NAME = #{hoPatientName}
  	</select>
-	<!--  -->
+	<!-- 접수 목록 -->
 	<select id="ReceiveList" resultType="com.team4.project.hospital.receiveReservation.domain.HoReceiveSub" parameterType="String">
 		SELECT
 			ho_receive.HO_RECEIVE_CODE,
 			ho_receive.HO_HOSPITAL_CODE,
 			ho_receive.HO_PATIENT_CODE,
+			HO_RECEIVE_PURPOSE,
 			ho_patient.HO_PATIENT_NAME,
 			ho_treat_subject.HO_TREAT_SUBJECT_NAME,
 			ho_receive.HO_RECEIVE_REGISTRATION_DATE,

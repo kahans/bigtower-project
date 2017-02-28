@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTreatSubject;
-import com.team4.project.hospital.receiveReservation.domain.HoReceive;
 import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 
 @Repository
