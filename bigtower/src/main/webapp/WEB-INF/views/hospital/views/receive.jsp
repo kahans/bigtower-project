@@ -34,6 +34,7 @@
     				//@ResponseBody 를 이용해서 이미 json객체로 넘어오기때문에 parse를 할필요가 없다.
     	            //var data = JSON.parse(responseData); $("#goCitizenId").val(data.goCitizenId);
     	            $("#hoCitizenId").val();
+    	            $("#hoPatientCode").val();
     	            $("#hoHospitalCode").val();
     	            $("#hoPatientName").val();
     	            $("#hoPatientPhone").val();
@@ -45,6 +46,7 @@
     	                return false;
     	            }
     	            $("#hoCitizenId").val(data.hoCitizenId);
+    	            $("#hoPatientCode").val(data.hoPatientCode);
     	            $("#hoHospitalCode").val(data.hoHospitalCode);
     	            $("#hoPatientName").val(data.hoPatientName);
     	            $("#hoPatientPhone").val(data.hoPatientPhone);
@@ -64,7 +66,8 @@
 	<input id="hoCitizenIdSearch" type="text" value="${hoCitizenId}" placeholder="주민번호">
 			<button id="btn">조회</button>
 	<form action="<c:url value="/hospital/receive"/>" method="post">	
-		<input id="hoCitizenId" type="hidden" name="hoCitizenId" placeholder="주민번호">	
+		<input id="hoCitizenId" type="hidden" name="hoCitizenId">	
+		<input id="hoPatientCode" type="hidden" name="hoPatientCode">
 		<div>
 			병원코드 : 
 			<input id="hoHospitalCode" type="text" name="hoHospitalCode" placeholder="병원코드">ex)hospital_1 / hospital_2 ~ hospital_5
@@ -82,8 +85,6 @@
 				</c:forEach>
 			</select>
 		</div>
-		
-		
 		<div>
 			환자명 : 
 			<input id="hoPatientName" type="text" name="hoPatientName" placeholder="이름">

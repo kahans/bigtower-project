@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTreatSubject;
+import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 
 @Repository
 public class HoReceiveReservationDao {
@@ -34,5 +35,10 @@ public class HoReceiveReservationDao {
 	//진료과목 이름 불러오기
 	public List<HoTreatSubject> selectTreatSubject(){
 		return sqlSession.selectList("hoReceiveReservation.selectTreatSubject");
+	}
+	
+	//접수등록
+	public int addReceive(HoReceiveSub hoReceiveSub){
+		return sqlSession.insert("hoReceiveReservation.addReceive",hoReceiveSub);
 	}
 }

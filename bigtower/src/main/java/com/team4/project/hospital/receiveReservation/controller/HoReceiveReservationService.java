@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTreatSubject;
+import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 
 @Service
 public class HoReceiveReservationService {
@@ -38,5 +39,10 @@ public class HoReceiveReservationService {
 	//진료과목 이름 불러오기
 	public List<HoTreatSubject> selectTreatSubject(){
 		return hoRRDao.selectTreatSubject();
+	}
+	
+	//접수등록
+	public int addReceive(HoReceiveSub hoReceiveSub){
+		return hoRRDao.addReceive(hoReceiveSub);
 	}
 }

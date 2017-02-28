@@ -13,21 +13,33 @@
 	</select>
 	
 	<!-- 접수등록 -->
-	<insert id="addReceive" parameterType="com.team4.project.hospital.receiveReservation.domain.HoReceive">
+	<insert id="addReceive" parameterType="com.team4.project.hospital.receiveReservation.domain.HoReceiveSub">
 		INSERT into ho_receive(
 			HO_RECEIVE_CODE,
 			HO_HOSPITAL_CODE,
 			HO_RECEIVE_PURPOSE,
 			HO_TREAT_SUBJECT_CODE,
-			)
-			
-		
+			HO_RECEIVE_STATE_CODE,
+			HO_RECEIVE_REGISTRATION_DATE,
+			HO_STAFF_ID,
+			HO_PATIENT_CODE)
+		SELECT
+			CONCAT('receive_',max(cast(substring(ho_receive.HO_RECEIVE_CODE,9,5) as UNSIGNED ))+1),
+			#{hoHospitalCode},
+			#{hoReceivePurpose},
+			#{hoTreatSubjectCode},
+			1,
+			now(),
+			#{hoStaffId},
+			#{hoPatientCode}
+		FROM ho_receive
 	</insert>
 	
 	<!--환자조회 -->
 	<select id="selectPatient" resultType="com.team4.project.hospital.dto.HoPatient"
  								 parameterType="String">
  		SELECT 
+ 			HO_PATIENT_CODE,
  			HO_HOSPITAL_CODE,
  			HO_CITIZEN_ID,
  			HO_PATIENT_NAME,

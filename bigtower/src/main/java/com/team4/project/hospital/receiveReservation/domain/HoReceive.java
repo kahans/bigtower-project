@@ -12,7 +12,6 @@ private String hoReceivePurpose;
 private String hoReceiveRegistrationDate;
 private String hoReceiveCompleteDate;
 
-
 public String getHoReceiveCode() {
 	return hoReceiveCode;
 }

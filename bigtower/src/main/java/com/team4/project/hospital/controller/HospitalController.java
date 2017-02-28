@@ -46,11 +46,13 @@ public class HospitalController {
 			session.setAttribute("HOSPITALNAME", staff.getHoHospitalName());
 			session.setAttribute("STAFFLEVELCODE", staff.getStaffLevelCode());
 			session.setAttribute("STAFFLEVELNAME", staff.getStaffLevelName());
+			session.setAttribute("HOSTAFFID", hoStaffId);
 			session.setAttribute("HOSTAFFNAME", staff.getHoStaffName());
 			logger.debug("session HOSPITALCODE:"+session.getAttribute("HOSPITALCODE"));
 			logger.debug("session HOSPITALNAME:"+session.getAttribute("HOSPITALNAME"));
 			logger.debug("session STAFFLEVELCODE:"+session.getAttribute("STAFFLEVELCODE"));
 			logger.debug("session STAFFLEVELNAME:"+session.getAttribute("STAFFLEVELNAME"));
+			logger.debug("session HOSTAFFID:"+session.getAttribute("HOSTAFFID"));
 			logger.debug("session HOSTAFFNAME:"+session.getAttribute("HOSTAFFNAME"));
 		}
 		return "redirect:/hospital/";

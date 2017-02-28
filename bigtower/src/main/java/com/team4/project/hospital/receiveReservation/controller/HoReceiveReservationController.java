@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTreatSubject;
+import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 
 
 @Controller
@@ -39,13 +40,18 @@ public class HoReceiveReservationController {
 	
 	//접수실행
 	@RequestMapping(value="/hospital/receive", method=RequestMethod.POST)
-	public String addOneReceive(HoPatient hoPatient, HttpSession session){
+	public String addOneReceive(HoReceiveSub hoReceiveSub, HttpSession session){
 		logger.debug("addReceive POST");
-		logger.debug("hoReceive:"+hoPatient);
-		String hoHospitalCode = (String) session.getAttribute("hoHospitalCode");
-		hoPatient.setHoHospitalCode(hoHospitalCode);
+		logger.debug("HoReceiveSub:"+ hoReceiveSub);
 		
-		return "/hospital/views/receive";
+		//세션에서 병원코드, 직원ID, 직원권한을 가져옴
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		String hoStaffId = (String) session.getAttribute("HOSTAFFID");
+		hoReceiveSub.setHoHospitalCode(hoHospitalCode);
+		hoReceiveSub.setHoStaffId(hoStaffId);
+		System.out.println("hoReceiveSub : "+ hoReceiveSub);
+		hoRRService.addReceive(hoReceiveSub);
+		return "redirect:/hospital/receiveList";
 	}
 	
 	//ajax 한명의 환자정보 조회
