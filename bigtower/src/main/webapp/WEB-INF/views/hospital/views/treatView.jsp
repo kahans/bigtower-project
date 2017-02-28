@@ -9,28 +9,27 @@
 </head>
 <body>
 	<form action="<c:url value='/hospital/treatView'/>" method="post">
-		<table>
-			<tr>
-				<td>의사명</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>차트번호</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>환자명</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>진료과목</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>진료내용</td>
-				<td></td>
-			</tr>
-		</table>
+		<div>
+			의사명 :
+			<input type="text" value="">
+		</div>
+		<div>
+			차트번호 :
+			<input type="text" value="">
+		</div>
+		<div>
+			환자명 :
+			<input type="text" value="">
+		</div>
+		<div>
+			진료과목 :
+			<input type="text" value="">
+		</div>
+			진료내용 
+		<div>	
+			<textarea rows="10" cols="50">
+			</textarea>
+		</div>
 		<input type="submit" value="완료">
 	</form>
 	
@@ -45,7 +44,7 @@
 	<form action="<c:url value='/hospital/hospitalizationRequest'/>" method="post">
 		<input type="submit" value="입퇴원요청"> 
 	</form>
-	<a href="<c:url value='/hospital/surgery'/>"><button>수술</button></a>
+	<a href="<c:url value='/hospital/surgery'/>"><button>수술</button></a><br>
 	<a href="<c:url value='/hospital/prescription'/>"><button>처방</button></a>
 	
 </body>
