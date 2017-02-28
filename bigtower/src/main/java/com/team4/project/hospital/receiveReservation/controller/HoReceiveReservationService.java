@@ -46,9 +46,14 @@ public class HoReceiveReservationService {
 	public int addReceive(HoReceiveSub hoReceiveSub){
 		return hoRRDao.addReceive(hoReceiveSub);
 	}
-
+	//접수 목록
 	public List<HoReceive> receiveList(String hospitalCode) {
 		// TODO Auto-generated method stub
 		return hoRRDao.receiveList(hospitalCode);
+	}
+	//접수상태 진료로 전환
+	public int receiveDiagnosis(String hoPatientCode) {
+		// TODO Auto-generated method stub
+		return hoRRDao.receiveDiagnosis(hoPatientCode);
 	}
 }

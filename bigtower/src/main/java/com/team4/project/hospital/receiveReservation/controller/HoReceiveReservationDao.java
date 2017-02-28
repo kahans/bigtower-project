@@ -42,9 +42,14 @@ public class HoReceiveReservationDao {
 	public int addReceive(HoReceiveSub hoReceiveSub){
 		return sqlSession.insert("hoReceiveReservation.addReceive",hoReceiveSub);
 	}
-
+	//접수 목록
 	public List<HoReceive> receiveList(String hospitalCode) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("hoReceiveReservation.ReceiveList", hospitalCode);
+	}
+	//접수 상태 업데이트
+	public int receiveDiagnosis(String hoPatientCode) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("hoReceiveReservation.receiveDiagnosis", hoPatientCode);
 	}
 }

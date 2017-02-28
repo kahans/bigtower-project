@@ -67,21 +67,24 @@
  	</select>
 	<!--  -->
 	<select id="ReceiveList" resultType="com.team4.project.hospital.receiveReservation.domain.HoReceiveSub" parameterType="String">
-	SELECT
-		ho_receive.HO_HOSPITAL_CODE,
-		ho_receive.HO_PATIENT_CODE,
-		ho_patient.HO_PATIENT_NAME,
-		ho_treat_subject.HO_TREAT_SUBJECT_NAME,
-		ho_receive.HO_RECEIVE_REGISTRATION_DATE,
-		ho_receive_state.HO_RECEIVE_STATE_NAME
-	FROM ho_receive
-	JOIN ho_patient
-		ON	ho_receive.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
-	JOIN ho_treat_subject
-		ON ho_receive.HO_TREAT_SUBJECT_CODE = ho_treat_subject.HO_TREAT_SUBJECT_CODE
-	JOIN ho_receive_state
-		ON ho_receive.HO_RECEIVE_STATE_CODE = ho_receive_state.HO_RECEIVE_STATE_CODE
-	WHERE ho_receive.HO_HOSPITAL_CODE=#{hoHospitalCode}
-	AND ho_receive_state.HO_RECEIVE_STATE_NAME='접수완료'
+		SELECT
+			ho_receive.HO_HOSPITAL_CODE,
+			ho_receive.HO_PATIENT_CODE,
+			ho_patient.HO_PATIENT_NAME,
+			ho_treat_subject.HO_TREAT_SUBJECT_NAME,
+			ho_receive.HO_RECEIVE_REGISTRATION_DATE,
+			ho_receive_state.HO_RECEIVE_STATE_NAME
+		FROM ho_receive
+		JOIN ho_patient
+			ON	ho_receive.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
+		JOIN ho_treat_subject
+			ON ho_receive.HO_TREAT_SUBJECT_CODE = ho_treat_subject.HO_TREAT_SUBJECT_CODE
+		JOIN ho_receive_state
+			ON ho_receive.HO_RECEIVE_STATE_CODE = ho_receive_state.HO_RECEIVE_STATE_CODE
+		WHERE ho_receive.HO_HOSPITAL_CODE=#{hoHospitalCode}
+		AND ho_receive_state.HO_RECEIVE_STATE_NAME='접수완료'
 	</select>
+	<update id="receiveDiagnosis">
+		
+	</update>
 </mapper>
