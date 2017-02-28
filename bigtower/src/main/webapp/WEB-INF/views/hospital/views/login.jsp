@@ -10,7 +10,7 @@
 	<h1>login.jsp</h1>
 	<h2>병원 로그인화면</h2>
 	<form action="" method="post">
-		<input type="text" name="hoStaffId" placeholder="아이디">
+		<input type="text" name="hoStaffId" placeholder="아이디" value="id001">
 		<input type="password" name="hoStaffPw" placeholder="비밀번호">
 		<input type="submit" value="로그인">
 	</form>

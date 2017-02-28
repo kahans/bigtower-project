@@ -82,15 +82,17 @@ public class HospitalController {
 			hoPatient.setHoHospitalCode(hoHospitalCode);
 			System.out.println("hoPatient : "+hoPatient);
 		}
+		String hoCitizenId = hoPatient.getHoCitizenId();
+		System.out.println("hoCitizenId : " +hoCitizenId);
 		int result = hoService.addPatient(hoPatient);
-		System.out.println("성공했냐? " + result);
+		System.out.println("환자등록 성공 여부 : " + result);
 		//환자등록 완료 분기문
 		if(result==1){
-			System.out.println();
-			redidredctAttributes.addAttribute("hoCitizenId", hoPatient.getHoCitizenId());
+			System.out.println("환자등록이 완료되었습니다.");
+			redidredctAttributes.addAttribute("hoCitizenId", hoCitizenId);
 			return "redirect:/hospital/addChart";
 		}else{
-			JOptionPane.showMessageDialog(null, "등록 오류");
+			System.out.println("환자등록오류");
 			return "/hospital/views/addPatient";
 		}
 		
