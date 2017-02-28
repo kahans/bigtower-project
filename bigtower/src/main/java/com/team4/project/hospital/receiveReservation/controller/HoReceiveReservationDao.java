@@ -62,5 +62,10 @@ public class HoReceiveReservationDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("hoReceiveReservation.diagonesLList", hospitalCode);
 	}
+
+	public List<HoReceiveSub> acceptanceList(String hospitalCode) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("hoReceiveReservation.acceptanceList", hospitalCode);
+	}
 	
 }

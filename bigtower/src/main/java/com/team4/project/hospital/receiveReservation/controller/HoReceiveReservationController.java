@@ -101,7 +101,7 @@ public class HoReceiveReservationController {
 	}
 	//접수 목록
 	@RequestMapping(value = "/hospital/receiveList", method = RequestMethod.GET)
-	public String receiveList(HttpSession session, Model model, HoReceive hoReceive) {
+	public String receiveList(HttpSession session, Model model, HoReceiveSub hoReceive) {
 		// 로그인 세션을 뭘로 가져와야 할까.
 		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
 
@@ -124,7 +124,7 @@ public class HoReceiveReservationController {
 	}
 	//진료 목록 출력
 	@RequestMapping(value="/hospital/treatList", method=RequestMethod.GET)
-	public String treatmentList(HoReceive hp, HttpSession session, Model model){
+	public String treatmentList(HoReceiveSub hp, HttpSession session, Model model){
 		
 		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		List<HoReceiveSub> treatList  = hoRRService.diagnosisList(hospitalCode);
@@ -135,7 +135,7 @@ public class HoReceiveReservationController {
 	
 	//진료상태에서 수납대기 상태로 전환
 	@RequestMapping(value="/hospital/receiveStateAcceptance", method=RequestMethod.GET)
-	public String receiveStateAcceptance(HoReceive hp,
+	public String receiveStateAcceptance(HoReceiveSub hp,
 									@RequestParam(value="hoReceiveCode") String hoReceiveCode
 			){
 		System.out.println("컨트롤러 : "+hoReceiveCode);
@@ -146,10 +146,14 @@ public class HoReceiveReservationController {
 	}
 	//수납대기 목록
 	@RequestMapping(value="/hospital/acceptanceList", method=RequestMethod.GET)
-	public String acceptanceList(){
+	public String acceptanceList(HoReceiveSub hp, HttpSession session, Model model){
+		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		
+		List<HoReceiveSub> acceptanceList = hoRRService.acceptanceList(hospitalCode);
 		
-		return "";
+		model.addAttribute("acceptanceList", acceptanceList);
+		
+		return "/hospital/views/acceptanceList";
 	}
 }
 

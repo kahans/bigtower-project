@@ -66,4 +66,9 @@ public class HoReceiveReservationService {
 		// TODO Auto-generated method stub
 		return hoRRDao.diagonesLList(hospitalCode);
 	}
+
+	public List<HoReceiveSub> acceptanceList(String hospitalCode) {
+		// TODO Auto-generated method stub
+		return hoRRDao.acceptanceList(hospitalCode);
+	}
 }

@@ -20,19 +20,19 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach var="treatList" items="${treatList}">
+		<c:forEach var="treat" items="${treatList}">
 			<tr>
 				
-					<td><a href="/hospital/treatView">${treatList.hoPatientName }</a></td>
-					<td>${treatList.hoTreatSubjectName }</td>
-					<td>${treatList.hoReceivePurpose }</td>
-					<td>${treatList.hoReceiveRegistrationDate }</td>
-					<td>${treatList.hoReceiveStateName }</td>
+					<td><a href="/hospital/treatView?hoPatientCode=${treat.hoPatientCode }">${treat.hoPatientName }</a></td>
+					<td>${treat.hoTreatSubjectName }</td>
+					<td>${treat.hoReceivePurpose }</td>
+					<td>${treat.hoReceiveRegistrationDate }</td>
+					<td>${treat.hoReceiveStateName }</td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<a href="<c:url value="/hospital/receiveList"/>">접수 현황</a>
-	<a href="<c:url value="/hospital/sumReceive"/>">수납 현황</a>
+	<a href="<c:url value="/hospital/acceptanceList"/>">수납 현황</a>
 </body>
 </html>
