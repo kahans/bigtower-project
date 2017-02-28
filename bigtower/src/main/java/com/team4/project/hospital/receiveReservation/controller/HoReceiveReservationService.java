@@ -63,8 +63,8 @@ public class HoReceiveReservationService {
 		
 	}
 
-	public List<HoReceiveSub> diagnosisList(HoReceive hp) {
+	public List<HoReceiveSub> diagnosisList(String hospitalCode) {
 		// TODO Auto-generated method stub
-		return hoRRDao.diagonesLList(hp);
+		return hoRRDao.diagonesLList(hospitalCode);
 	}
 }

@@ -59,9 +59,9 @@ public class HoReceiveReservationDao {
 	}
 	//수납대기에서 수납완료로 변경
 
-	public List<HoReceiveSub> diagonesLList(HoReceive hp) {
+	public List<HoReceiveSub> diagonesLList(String hospitalCode) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("hoReceiveReservation.diagonesLList", hp);
+		return sqlSession.selectList("hoReceiveReservation.diagonesLList", hospitalCode);
 	}
 	
 }

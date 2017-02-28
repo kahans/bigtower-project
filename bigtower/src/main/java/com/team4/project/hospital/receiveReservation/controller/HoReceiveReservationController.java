@@ -127,7 +127,7 @@ public class HoReceiveReservationController {
 	public String DiagnosisList(HoReceive hp, HttpSession session, Model model){
 		
 		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		List<HoReceiveSub> diagnosisList  = hoRRService.diagnosisList(hp);
+		List<HoReceiveSub> diagnosisList  = hoRRService.diagnosisList(hospitalCode);
 		
 		model.addAttribute("diagnosisList", diagnosisList);
 		return "/hospital/views/diagnosisList";
