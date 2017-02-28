@@ -68,6 +68,7 @@
 	<!--  -->
 	<select id="ReceiveList" resultType="com.team4.project.hospital.receiveReservation.domain.HoReceiveSub" parameterType="String">
 		SELECT
+			ho_receive.HO_RECEIVE_CODE,
 			ho_receive.HO_HOSPITAL_CODE,
 			ho_receive.HO_PATIENT_CODE,
 			ho_patient.HO_PATIENT_NAME,
@@ -84,7 +85,55 @@
 		WHERE ho_receive.HO_HOSPITAL_CODE=#{hoHospitalCode}
 		AND ho_receive_state.HO_RECEIVE_STATE_NAME='접수완료'
 	</select>
-	<update id="receiveDiagnosis">
-		
+	<!-- 진료 목록 -->
+	<select id="diagonesLList" resultType="com.team4.project.hospital.receiveReservation.domain.HoReceiveSub" parameterType="String">
+		SELECT
+			ho_receive.HO_RECEIVE_CODE,
+			ho_receive.HO_HOSPITAL_CODE,
+			ho_receive.HO_PATIENT_CODE,
+			ho_patient.HO_PATIENT_NAME,
+			ho_treat_subject.HO_TREAT_SUBJECT_NAME,
+			HO_RECEIVE_PURPOSE,
+			ho_receive.HO_RECEIVE_REGISTRATION_DATE,
+			ho_receive_state.HO_RECEIVE_STATE_NAME
+		FROM ho_receive
+		JOIN ho_patient
+			ON	ho_receive.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
+		JOIN ho_treat_subject
+			ON ho_receive.HO_TREAT_SUBJECT_CODE = ho_treat_subject.HO_TREAT_SUBJECT_CODE
+		JOIN ho_receive_state
+			ON ho_receive.HO_RECEIVE_STATE_CODE = ho_receive_state.HO_RECEIVE_STATE_CODE
+		WHERE ho_receive.HO_HOSPITAL_CODE=#{hoHospitalCode}
+		AND ho_receive_state.HO_RECEIVE_STATE_NAME='진료'
+	
+	</select>
+	
+	
+	<!-- 접수완료에서 진료 상태로 변경 -->
+	<update id="receiveStateDiagnosis">
+		update
+			ho_receive
+		set
+			ho_receive.HO_RECEIVE_STATE_CODE='2'
+		WHERE
+			ho_receive.HO_RECEIVE_CODE=#{hoReceiveCode}
+	</update>
+	<!-- 진료상태에서 수납대기 상태로 변경 -->
+	<update id="receiveStateAcceptance">
+		update
+			ho_receive
+		set
+			ho_receive.HO_RECEIVE_STATE_CODE='3'
+		WHERE
+			ho_receive.HO_RECEIVE_CODE=#{hoReceiveCode}
+	</update>
+	<!-- 수납대기에서 수납완료 상태로 변경 -->
+	<update id="receiveStateStorageCompleted">
+		update
+			ho_receive
+		set
+			ho_receive.HO_RECEIVE_STATE_CODE='4'
+		WHERE
+			ho_receive.HO_RECEIVE_CODE=#{hoReceiveCode}
 	</update>
 </mapper>

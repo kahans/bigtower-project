@@ -17,7 +17,8 @@
 	<c:if test="${HOSPITALCODE!=null}">
 		[${HOSPITALNAME} ${STAFFLEVELNAME} ${HOSTAFFNAME}님] 로그인중
 		<a href="<c:url value="/hospital/logout"/>">로그아웃</a> <br>
-		<a href="<c:url value="/hospital/receive"/>">접수</a> 
+		<a href="<c:url value="/hospital/receive"/>">접수</a>
+		<a href="<c:url value="/hospital/receiveList"/>">접수목록</a>
 		<a href="<c:url value="/hospital/logout"/>">진료</a> 
 		<a href="<c:url value="/hospital/logout"/>">검사</a>
 		

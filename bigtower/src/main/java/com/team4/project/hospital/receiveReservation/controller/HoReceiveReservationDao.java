@@ -43,13 +43,25 @@ public class HoReceiveReservationDao {
 		return sqlSession.insert("hoReceiveReservation.addReceive",hoReceiveSub);
 	}
 	//접수 목록
-	public List<HoReceive> receiveList(String hospitalCode) {
+	public List<HoReceiveSub> receiveList(String hospitalCode) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("hoReceiveReservation.ReceiveList", hospitalCode);
 	}
-	//접수 상태 업데이트
-	public int receiveDiagnosis(String hoPatientCode) {
+	//접수 상태에서 진료로 업데이트
+	public int receiveStateDiagnosis(String hoReceiveCode) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("hoReceiveReservation.receiveDiagnosis", hoPatientCode);
+		return sqlSession.update("hoReceiveReservation.receiveStateDiagnosis", hoReceiveCode);
 	}
+	//진료상태에서 수납대기로 변경
+	public int receiveStateAcceptance(String hoReceiveCode) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("hoReceiveReservation.receiveStateAccenptance", hoReceiveCode);
+	}
+	//수납대기에서 수납완료로 변경
+
+	public List<HoReceiveSub> diagonesLList(HoReceive hp) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("hoReceiveReservation.diagonesLList", hp);
+	}
+	
 }

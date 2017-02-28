@@ -105,21 +105,43 @@ public class HoReceiveReservationController {
 		// 로그인 세션을 뭘로 가져와야 할까.
 		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
 
-		List<HoReceive> receiveList = hoRRService.receiveList(hospitalCode);
+		List<HoReceiveSub> receiveList = hoRRService.receiveList(hospitalCode);
 
 		model.addAttribute("receiveList", receiveList);
 		return "/hospital/views/receiveList";
 
 	}
 	//접수 상태 진료업데이트 receiveDiagnosis
-	@RequestMapping(value="/hospital/receiveDiagnosis", method=RequestMethod.GET)
-	public String receiveDiagnosis(HoReceive hp,
-									@RequestParam(value="hoPatientCode") String hoPatientCode
+	@RequestMapping(value="/hospital/receiveStateDiagnosis", method=RequestMethod.GET)
+	public String receiveStateDiagnosis(HoReceive hp,
+									@RequestParam(value="hoReceiveCode") String hoReceiveCode
 			){
-		System.out.println(hoPatientCode);
+		System.out.println("컨트롤러 : "+hoReceiveCode);
 		
-		System.out.println("receiveDiagnosis 이름이 온다 : "+hp);
-		hoRRService.receiveDiagnosis(hoPatientCode); 
+		System.out.println("receive 이름이 온다 : "+hp);
+		hoRRService.receiveStateDiagnosis(hoReceiveCode); 
+		return "redirect:/hospital/receiveList";
+	}
+	//진료 목록 출력
+	@RequestMapping(value="/hospital/diagnosisList", method=RequestMethod.GET)
+	public String DiagnosisList(HoReceive hp, HttpSession session, Model model){
+		
+		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		List<HoReceiveSub> diagnosisList  = hoRRService.diagnosisList(hp);
+		
+		model.addAttribute("diagnosisList", diagnosisList);
+		return "/hospital/views/diagnosisList";
+	}
+	
+	//진료상태에서 수납대기 상태로 전환
+	@RequestMapping(value="/hospital/receiveStateAcceptance", method=RequestMethod.GET)
+	public String receiveStateAcceptance(HoReceive hp,
+									@RequestParam(value="hoReceiveCode") String hoReceiveCode
+			){
+		System.out.println("컨트롤러 : "+hoReceiveCode);
+		
+		System.out.println("Diagnosis 이름이 온다 : "+hp);
+		hoRRService.receiveStateAcceptance(hoReceiveCode); 
 		return "redirect:/hospital/receiveList";
 	}
 }

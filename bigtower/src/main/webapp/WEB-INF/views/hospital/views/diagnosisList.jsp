@@ -13,25 +13,26 @@
 			<tr>
 			<th>환자명</th>
 			<th>진료과</th>
+			<th>방문목적</th>
 			<th>접수일</th>
 			<th>접수상태</th>
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach var="ReceiveList" items="${receiveList}">
+		<c:forEach var="DiagnosisList" items="${diagnosisList}">
 			<tr>
 				
-					<td>${ReceiveList.hoPatientName }</td>
-					<td>${ReceiveList.hoTreatSubjectName }</td>
-					<td>${ReceiveList.hoReceiveRegistrationDate }</td>
-					<td><a href="<c:url value='/hospital/receiveStateDiagnosis?hoReceiveCode=${ReceiveList.hoReceiveCode}'/>">${ReceiveList.hoReceiveStateName }</a></td>
+					<td>${DiagnosisList.hoPatientName }</td>
+					<td>${DiagnosisList.hoTreatSubjectName }</td>
+					<td>${DiagnosisList.hoReceivePurpose }</td>
+					<td>${DiagnosisList.hoReceiveRegistrationDate }</td>
+					<td><a href="<c:url value='/hospital/receiveStateDiagnosis?hoReceiveCode=${DiagnosisList.hoReceiveCode}'/>">${DiagnosisList.hoReceiveStateName }</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="<c:url value="/hospital/diagnosisList"/>">진료 현황</a>
+	<a href="<c:url value="/hospital/receiveList"/>">접수 현황</a>
 	<a href="<c:url value="/hospital/sumReceive"/>">수납 현황</a>
 	<a href="<c:url value="/hospital/sumReceive"/>">접수 현황</a>
-
 </body>
 </html>
