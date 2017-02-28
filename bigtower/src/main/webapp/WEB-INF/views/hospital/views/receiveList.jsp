@@ -24,7 +24,7 @@
 					<td>${ReceiveList.hoPatientName }</td>
 					<td>${ReceiveList.hoTreatSubjectName }</td>
 					<td>${ReceiveList.hoReceiveRegistrationDate }</td>
-					<td>${ReceiveList.hoReceiveStateName }</td>
+					<td><a href="<c:url value='/hospital/receiveJ'/>">${ReceiveList.hoReceiveStateName }</a></td>
 				
 			</tr>
 			</c:forEach>
