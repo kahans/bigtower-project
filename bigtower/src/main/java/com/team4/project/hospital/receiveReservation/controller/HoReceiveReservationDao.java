@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTreatSubject;
+import com.team4.project.hospital.receiveReservation.domain.HoReceive;
 import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 
 @Repository
@@ -40,5 +41,10 @@ public class HoReceiveReservationDao {
 	//접수등록
 	public int addReceive(HoReceiveSub hoReceiveSub){
 		return sqlSession.insert("hoReceiveReservation.addReceive",hoReceiveSub);
+	}
+
+	public List<HoReceive> receiveList(String hospitalCode) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("hoReceiveReservation.ReceiveList", hospitalCode);
 	}
 }

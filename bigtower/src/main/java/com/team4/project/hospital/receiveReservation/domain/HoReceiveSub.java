@@ -8,7 +8,6 @@ private String hoReceiveStateName;
 private String hoPatientPhone;
 
 
-
 public String getHoPatientPhone() {
 	return hoPatientPhone;
 }

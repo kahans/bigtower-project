@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTreatSubject;
+import com.team4.project.hospital.receiveReservation.domain.HoReceive;
 import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 
 
@@ -97,6 +98,18 @@ public class HoReceiveReservationController {
 		}
 		
 		//return "/hospital/views/receive";
+	}
+	//접수 목록
+	@RequestMapping(value = "/hospital/receiveList", method = RequestMethod.GET)
+	public String receiveList(HttpSession session, Model model, HoReceive hoReceive) {
+		// 로그인 세션을 뭘로 가져와야 할까.
+		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
+
+		List<HoReceive> receiveList = hoRRService.receiveList(hospitalCode);
+
+		model.addAttribute("receiveList", receiveList);
+		return "/hospital/views/receiveList";
+
 	}
 }
 

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table border="1">
 		<thead>
 			<tr>
 			<th>환자명</th>
@@ -18,14 +18,16 @@
 			</tr>
 		</thead>
 		<tbody>
+		<c:forEach var="ReceiveList" items="${receiveList}">
 			<tr>
-				<c:forEach var="ReceiveList" items="${receiveList}">
+				
 					<td>${ReceiveList.hoPatientName }</td>
 					<td>${ReceiveList.hoTreatSubjectName }</td>
 					<td>${ReceiveList.hoReceiveRegistrationDate }</td>
 					<td>${ReceiveList.hoReceiveStateName }</td>
-				</c:forEach>
+				
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 
