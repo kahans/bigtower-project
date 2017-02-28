@@ -23,7 +23,7 @@
 		<c:forEach var="treat" items="${treatList}">
 			<tr>
 				
-					<td><a href="/hospital/treatView?hoPatientCode=${treat.hoPatientCode }">${treat.hoPatientName }</a></td>
+					<td><a href="<c:url value='/hospital/treatView?hoPatientCode=${treat.hoPatientCode}'/>">${treat.hoPatientName }</a></td>
 					<td>${treat.hoTreatSubjectName }</td>
 					<td>${treat.hoReceivePurpose }</td>
 					<td>${treat.hoReceiveRegistrationDate }</td>
@@ -32,7 +32,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="<c:url value="/hospital/receiveList"/>">접수 현황</a>
-	<a href="<c:url value="/hospital/acceptanceList"/>">수납 현황</a>
+	<a href="<c:url value='/hospital/receiveList'/>">접수 현황</a>
+	<a href="<c:url value='/hospital/acceptanceList'/>">수납 현황</a>
 </body>
 </html>

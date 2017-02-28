@@ -35,4 +35,10 @@ public class HoTreatChartController {
 		return "redirect:/hospital/receive";
 	}
 	
+	//진료 페이지
+	@RequestMapping(value="/hospital/treatView", method=RequestMethod.GET)
+	public String treatView(@RequestParam(value="hoPatientCode")String hoPatientCode){
+		return "/hospital/views/treatView";
+	}
+	
 }
