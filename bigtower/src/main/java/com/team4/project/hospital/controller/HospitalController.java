@@ -86,9 +86,9 @@ public class HospitalController {
 		System.out.println("성공했냐? " + result);
 		//환자등록 완료 분기문
 		if(result==1){
-			JOptionPane.showMessageDialog(null, "등록이 완료되었습니다.");
+			System.out.println();
 			redidredctAttributes.addAttribute("hoCitizenId", hoPatient.getHoCitizenId());
-			return "redirect:/hospital/receive";
+			return "redirect:/hospital/addChart";
 		}else{
 			JOptionPane.showMessageDialog(null, "등록 오류");
 			return "/hospital/views/addPatient";
