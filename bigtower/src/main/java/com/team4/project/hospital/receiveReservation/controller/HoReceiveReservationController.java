@@ -2,6 +2,8 @@ package com.team4.project.hospital.receiveReservation.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +39,11 @@ public class HoReceiveReservationController {
 	
 	//접수실행
 	@RequestMapping(value="/hospital/receive", method=RequestMethod.POST)
-	public String addOneReceive(HoPatient hoPatient){
+	public String addOneReceive(HoPatient hoPatient, HttpSession session){
 		logger.debug("addReceive POST");
 		logger.debug("hoReceive:"+hoPatient);
+		String hoHospitalCode = (String) session.getAttribute("hoHospitalCode");
+		hoPatient.setHoHospitalCode(hoHospitalCode);
 		
 		return "/hospital/views/receive";
 	}

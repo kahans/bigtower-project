@@ -14,7 +14,13 @@
 	
 	<!-- 접수등록 -->
 	<insert id="addReceive" parameterType="com.team4.project.hospital.receiveReservation.domain.HoReceive">
-		insert
+		INSERT into ho_receive(
+			HO_RECEIVE_CODE,
+			HO_HOSPITAL_CODE,
+			HO_RECEIVE_PURPOSE,
+			HO_TREAT_SUBJECT_CODE,
+			)
+			
 		
 	</insert>
 	
