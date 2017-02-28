@@ -10,10 +10,15 @@
 <body>
 <h2>환자 조회</h2>
 	<form action="<c:url value='/hospital/searchPatient'/>" method="post">
-		
-		주민번호<input type="text" id="idfirst" name="idfirst"> - <input type="password" id="idsecond" name="idsecond">
+		<h4>환자 정보가 없을 시 환자등록 화면으로 이동</h3>
+		<div>
+			주민번호 : <input type="text" id="idfirst" name="idfirst" value="900101"> - 
+			<input type="text" id="idsecond" name="idsecond" value="1000001">
+		</div>
 		<br>
-		이름 <input type="text" id="hoPatientName" name="hoPatientName">
+		<div>
+			이름 : <input type="text" id="hoPatientName" name="hoPatientName" value="도우너">
+		</div>
 		<input type="submit" id="btn" name="btn">
 	</form>
 </body>
