@@ -123,14 +123,14 @@ public class HoReceiveReservationController {
 		return "redirect:/hospital/receiveList";
 	}
 	//진료 목록 출력
-	@RequestMapping(value="/hospital/diagnosisList", method=RequestMethod.GET)
-	public String DiagnosisList(HoReceive hp, HttpSession session, Model model){
+	@RequestMapping(value="/hospital/treatList", method=RequestMethod.GET)
+	public String treatmentList(HoReceive hp, HttpSession session, Model model){
 		
 		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		List<HoReceiveSub> diagnosisList  = hoRRService.diagnosisList(hospitalCode);
+		List<HoReceiveSub> treatList  = hoRRService.diagnosisList(hospitalCode);
 		
-		model.addAttribute("diagnosisList", diagnosisList);
-		return "/hospital/views/diagnosisList";
+		model.addAttribute("treatList", treatList);
+		return "/hospital/views/treatmentList";
 	}
 	
 	//진료상태에서 수납대기 상태로 전환
