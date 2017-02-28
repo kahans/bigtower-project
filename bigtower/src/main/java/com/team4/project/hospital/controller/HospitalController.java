@@ -26,13 +26,13 @@ public class HospitalController {
 	@RequestMapping(value="/hospital/", method=RequestMethod.GET)
 	public String index(Model model, HttpSession session){
 		
-		return "/hospital_YJ/index";
+		return "/hospital/views/index";
 	}
 	
 	//로그인페이지 보기
 	@RequestMapping(value="/hospital/login", method=RequestMethod.GET)
 	public String login(){
-		return "/hospital_YJ/login";
+		return "/hospital/views/login";
 	}
 	
 	//로그인 처리
