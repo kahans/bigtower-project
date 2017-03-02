@@ -14,20 +14,18 @@
 			<tr>
 			<th>환자명</th>
 			<th>진료과</th>
-			<th>방문목적</th>
+			<th>의사명</th>
 			<th>접수일</th>
-			<th>접수상태</th>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach var="treat" items="${treatList}">
 			<tr>
 				
-					<td><a href="<c:url value='/hospital/treatView?hoPatientCode=${treat.hoPatientCode}'/>">${treat.hoPatientName }</a></td>
+					<td><a href="<c:url value='/hospital/treatView?hoTreatmentCode=${treat.hoTreatmentCode}'/>">${treat.hoPatientName }</a></td>
 					<td>${treat.hoTreatSubjectName }</td>
-					<td>${treat.hoReceivePurpose }</td>
-					<td>${treat.hoReceiveRegistrationDate }</td>
-					<td>${treat.hoReceiveStateName }</td>
+					<td>${treat.hoDoctorName }</td>			
+					<td>${treat.hoTreatmentWriteDate }</td>
 			</tr>
 			</c:forEach>
 		</tbody>

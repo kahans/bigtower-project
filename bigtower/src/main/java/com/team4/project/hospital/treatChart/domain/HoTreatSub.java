@@ -5,9 +5,16 @@ public class HoTreatSub extends HoTreat{
 private String hoDoctorName;
 private String hoPatientName;
 private String hoTreatSubjectName;
+private String hoHospitalName;
 
 
 
+public String getHoHospitalName() {
+	return hoHospitalName;
+}
+public void setHoHospitalName(String hoHospitalName) {
+	this.hoHospitalName = hoHospitalName;
+}
 public String getHoDoctorName() {
 	return hoDoctorName;
 }
@@ -30,7 +37,13 @@ public void setHoTreatSubjectName(String hoTreatSubjectName) {
 @Override
 public String toString() {
 	return "HoTreatSub [hoDoctorName=" + hoDoctorName + ", hoPatientName=" + hoPatientName + ", hoTreatSubjectName="
-			+ hoTreatSubjectName + "]";
+			+ hoTreatSubjectName + ", hoHospitalName=" + hoHospitalName + ", getHoTreatmentCode()="
+			+ getHoTreatmentCode() + ", getHoDoctorId()=" + getHoDoctorId() + ", getHoHospitalizationStateCode()="
+			+ getHoHospitalizationStateCode() + ", getHoChartCode()=" + getHoChartCode() + ", getHoPatientCode()="
+			+ getHoPatientCode() + ", getHoHospitalCode()=" + getHoHospitalCode() + ", getHoTreatSubjectCode()="
+			+ getHoTreatSubjectCode() + ", getHoTreatmentContents()=" + getHoTreatmentContents()
+			+ ", getHoTreatmentWriteDate()=" + getHoTreatmentWriteDate() + ", getHoGoSendstate()=" + getHoGoSendstate()
+			+ "]";
 }
 
 }

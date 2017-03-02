@@ -12,6 +12,8 @@ private String hoTreatSubjectCode;
 private String hoTreatmentContents;
 private String hoTreatmentWriteDate;
 private String hoGoSendstate;
+
+
 public String getHoTreatmentCode() {
 	return hoTreatmentCode;
 }

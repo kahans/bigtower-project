@@ -1,5 +1,7 @@
 package com.team4.project.hospital.treatChart.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 import com.team4.project.hospital.treatChart.domain.HoChart;
+import com.team4.project.hospital.treatChart.domain.HoTreatSub;
 
 @Controller
 public class HoTreatChartController {
@@ -42,6 +46,16 @@ public class HoTreatChartController {
 			@RequestParam(value="hoTreatmentCode")String hoTreatmentCode){
 		model.addAttribute("hoTreat",hoTCS.treatView(hoTreatmentCode));
 		return "/hospital/views/treatView";
+	}
+	//진료목록
+	@RequestMapping(value="/hospital/treatList", method=RequestMethod.GET)
+	public String treatmentList(HoTreatSub hp, HttpSession session, Model model){
+		
+		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		List<HoTreatSub> treatList  = hoTCS.treatList(hospitalCode);
+		System.out.println(treatList.toString());
+		model.addAttribute("treatList", treatList);
+		return "/hospital/views/treatmentList";
 	}
 	
 }
