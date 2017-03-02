@@ -30,13 +30,24 @@
 			<textarea rows="10" cols="50" name="hoTreatmentContents">
 			</textarea>
 		</div>
+		<div>
+		질병명 :
+		<select> 
+			<option>:::선택하시오:::</option>
+			<c:forEach items="${testList}" var="testList">
+				<option value="${testList.hoTestCode}">${testList.hoTestName}</option>
+			</c:forEach>
+		</select>
+		</div>
 		<input type="submit" value="완료">
 	</form>
 	
 	<form action="<c:url value='/hospital/testRequest'/>" method="post">
 		<select>
-			<option>:::선택하시오:::</option>
-			<option></option>
+			<option>:::검사를 선택하시오:::</option>
+			<c:forEach items="${testList}" var="testList">
+				<option value="${testList.hoTestCode}">${testList.hoTestName}</option>
+			</c:forEach>
 		</select>
 		<input type="submit" value="검사요청"> 
 	</form>

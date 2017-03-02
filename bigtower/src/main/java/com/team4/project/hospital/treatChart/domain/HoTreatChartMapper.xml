@@ -3,6 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="hoTreatChart">
+ 	
  	<!-- 환자등록시 자동 차트 생성(뷰페이지없음) -->
  	<insert id="addChart" parameterType="com.team4.project.hospital.treatChart.domain.HoChart">
  		INSERT into ho_chart(
@@ -25,7 +26,9 @@
  			0
  		FROM ho_chart
  	</insert>
- 	<select id="treatmentList" resultType="com.team4.project.hospital.treatChart.domain.HoTreatSub">
+ 	
+ 	<!-- 진료 목록 보기 -->
+ 	<select id="treatmentList" resultType="com.team4.project.hospital.treatChart.domain.HoTreatSub" parameterType="String">
 		SELECT
 			ho_treatment.HO_TREATMENT_CODE,
 			ho_patient.HO_PATIENT_CODE,
@@ -47,7 +50,33 @@
 		JOIN ho_doctor
 			ON ho_doctor.HO_DOCTOR_ID = ho_treatment.HO_DOCTOR_ID
 		WHERE ho_hospital.HO_HOSPITAL_CODE=#{hospitalCode}
-		 	
- 	
  	</select>
+ 	
+ 	<!-- 목록에서 한 개의 진료 상세보기 -->
+ 	<select id="treatView" resultType="com.team4.project.hospital.treatChart.domain.HoTreatSub" parameterType="String">
+ 		SELECT 
+ 			ho_doctor.HO_DOCTOR_NAME,
+ 			HO_CHART_CODE,
+ 			ho_patient.HO_PATIENT_NAME,
+ 			ho_treat_subject.HO_TREAT_SUBJECT_NAME
+ 		FROM ho_treatment
+ 		JOIN ho_doctor
+ 			ON ho_treatment.HO_DOCTOR_ID = ho_doctor.HO_DOCTOR_ID
+ 		JOIN ho_patient
+ 			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
+ 		JOIN ho_treat_subject
+ 			ON ho_treatment.HO_TREAT_SUBJECT_CODE = ho_treat_subject.HO_TREAT_SUBJECT_CODE
+ 		WHERE
+ 			HO_TREATMENT_CODE = #{hoTreatmentCode}
+ 	</select>
+ 	
+ 	<!-- 검사이름 가져오기 -->
+ 	<select id="selectTest" resultType="com.team4.project.hospital.dto.HoTest">
+ 		SELECT
+			HO_TEST_CODE,
+			HO_TEST_NAME
+		FROM ho_test
+ 	</select>
+ 	
+ 	
 </mapper>

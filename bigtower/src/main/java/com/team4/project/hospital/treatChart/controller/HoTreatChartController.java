@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 import com.team4.project.hospital.treatChart.domain.HoChart;
 import com.team4.project.hospital.treatChart.domain.HoTreatSub;
@@ -44,9 +45,14 @@ public class HoTreatChartController {
 	@RequestMapping(value="/hospital/treatView", method=RequestMethod.GET)
 	public String treatView(Model model,
 			@RequestParam(value="hoTreatmentCode")String hoTreatmentCode){
+		//검사 이름 가져오기
+		List<HoTest> testList = hoTCS.selectTest();
+		
 		model.addAttribute("hoTreat",hoTCS.treatView(hoTreatmentCode));
+		model.addAttribute("testList", testList);
 		return "/hospital/views/treatView";
 	}
+	
 	//진료목록
 	@RequestMapping(value="/hospital/treatList", method=RequestMethod.GET)
 	public String treatmentList(HoTreatSub hp, HttpSession session, Model model){

@@ -2,56 +2,34 @@ package com.team4.project.hospital.dto;
 
 public class HoDisease {
 
-	protected String hoCheckUpCode;
-	protected String hoTreatmentCode;
-	protected String hoCheckUpResultPath;
-	protected String hoCheckUpResultName;
-	protected String hoCheckUpDate;
-	protected String hoCheckUpRegistrationDate;
-	protected int hoGoSendstate;
-	
-	public String getHoCheckUpCode() {
-		return hoCheckUpCode;
-	}
-	public void setHoCheckUpCode(String hoCheckUpCode) {
-		this.hoCheckUpCode = hoCheckUpCode;
-	}
-	public String getHoTreatmentCode() {
-		return hoTreatmentCode;
-	}
-	public void setHoTreatmentCode(String hoTreatmentCode) {
-		this.hoTreatmentCode = hoTreatmentCode;
-	}
-	public String getHoCheckUpResultPath() {
-		return hoCheckUpResultPath;
-	}
-	public void setHoCheckUpResultPath(String hoCheckUpResultPath) {
-		this.hoCheckUpResultPath = hoCheckUpResultPath;
-	}
-	public String getHoCheckUpResultName() {
-		return hoCheckUpResultName;
-	}
-	public void setHoCheckUpResultName(String hoCheckUpResultName) {
-		this.hoCheckUpResultName = hoCheckUpResultName;
-	}
-	public String getHoCheckUpDate() {
-		return hoCheckUpDate;
-	}
-	public void setHoCheckUpDate(String hoCheckUpDate) {
-		this.hoCheckUpDate = hoCheckUpDate;
-	}
-	public String getHoCheckUpRegistrationDate() {
-		return hoCheckUpRegistrationDate;
-	}
-	public void setHoCheckUpRegistrationDate(String hoCheckUpRegistrationDate) {
-		this.hoCheckUpRegistrationDate = hoCheckUpRegistrationDate;
-	}
-	public int getHoGoSendstate() {
-		return hoGoSendstate;
-	}
-	public void setHoGoSendstate(int hoGoSendstate) {
-		this.hoGoSendstate = hoGoSendstate;
-	}
+private String hoDiseaseCode;
+private String hoDiseaseKor;
+private String hoDiseaseEng;
+
+public String getHoDiseaseCode() {
+	return hoDiseaseCode;
+}
+public void setHoDiseaseCode(String hoDiseaseCode) {
+	this.hoDiseaseCode = hoDiseaseCode;
+}
+public String getHoDiseaseKor() {
+	return hoDiseaseKor;
+}
+public void setHoDiseaseKor(String hoDiseaseKor) {
+	this.hoDiseaseKor = hoDiseaseKor;
+}
+public String getHoDiseaseEng() {
+	return hoDiseaseEng;
+}
+public void setHoDiseaseEng(String hoDiseaseEng) {
+	this.hoDiseaseEng = hoDiseaseEng;
+}
+
+@Override
+public String toString() {
+	return "HoDisease [hoDiseaseCode=" + hoDiseaseCode + ", hoDiseaseKor=" + hoDiseaseKor + ", hoDiseaseEng="
+			+ hoDiseaseEng + "]";
+}
 	
 
 }
