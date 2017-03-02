@@ -69,6 +69,8 @@ public class HoTreatChartController {
 		System.out.println("diseaseList : "+diseaseList);
 		int result = hoTCS.updateTreat(hoTreat);
 		System.out.println("updateTreat 결과는 ? "+result);
+		
+		redirectAttributes.addAttribute("hoTreatmentCode",hoTreat.getHoTreatmentCode());
 		redirectAttributes.addAttribute("diseaseList",diseaseList);
 		return "redirect:/hospital/addDiagnosis";
 	}

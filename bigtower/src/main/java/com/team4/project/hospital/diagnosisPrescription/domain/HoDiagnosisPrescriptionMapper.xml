@@ -2,6 +2,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="XXX.XXX.XXX">
- 
+<mapper namespace="hoDiagnosisPrescription">
+ 	<!-- 진료 한번에 등록할 진단리스트 -->
+ 	<insert id="addDiagnosis" parameterType="Map">
+ 		INSERT INTO ho_diagnosis(
+ 			HO_DIAGNOSIS_CODE,
+ 			HO_TREATMENT_CODE,
+ 			HO_DISEASE_CODE,
+ 			HO_DIAGNOSIS_WRITE_DATE,
+ 			HO_GO_SENDSTATE)
+ 		SELECT
+ 			CONCAT('diagnosis_',
+ 					max(cast(substring(HO_DIAGNOSIS_CODE,11,5) as UNSIGNED ))+1),
+ 			#{hoTreatmentCode},
+ 			#{hoDiseaseCode},
+ 			now(),
+ 			0
+ 		FROM ho_diagnosis
+ 	</insert>
 </mapper>
