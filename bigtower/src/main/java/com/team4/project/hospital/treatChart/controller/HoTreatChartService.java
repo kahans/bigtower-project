@@ -53,4 +53,9 @@ public class HoTreatChartService {
 	public int addTreat(HoTreat hoTreat){
 		return hoTCD.addTreat(hoTreat);
 	}
+	
+	//진료 상세보기에서 진료업데이트
+	public int updateTreat(HoTreat hoTreat){
+		return hoTCD.updateTreat(hoTreat);
+	}
 }

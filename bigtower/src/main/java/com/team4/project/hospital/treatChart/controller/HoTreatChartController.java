@@ -62,13 +62,13 @@ public class HoTreatChartController {
 	
 	//진료 내용 업데이트
 	@RequestMapping(value="/hospital/treatView", method=RequestMethod.POST)
-	public String treatView(String hoTreatmentCode,
+	public String treatView(HoTreat hoTreat,
 							RedirectAttributes redirectAttributes,
 							@RequestParam(value="diseaseSelect") List<String> diseaseList){
-		System.out.println("hoTreatmentCode : "+hoTreatmentCode);
+		System.out.println("hoTreat : "+hoTreat);
 		System.out.println("diseaseList : "+diseaseList);
-		
-		
+		int result = hoTCS.updateTreat(hoTreat);
+		System.out.println("updateTreat 결과는 ? "+result);
 		redirectAttributes.addAttribute("diseaseList",diseaseList);
 		return "redirect:/hospital/addDiagnosis";
 	}

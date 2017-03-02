@@ -53,4 +53,9 @@ public class HoTreatChartDao {
 	public int addTreat(HoTreat hoTreat){
 		return sqlSession.insert("hoTreatChart.addTreat",hoTreat);
 	}
+	
+	//진료 상세보기에서 진료업데이트
+	public int updateTreat(HoTreat hoTreat){
+		return sqlSession.update("hoTreatChart.updateTreat",hoTreat);
+	}
 }
