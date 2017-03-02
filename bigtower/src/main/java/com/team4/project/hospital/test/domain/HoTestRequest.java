@@ -1,16 +1,18 @@
 package com.team4.project.hospital.test.domain;
 
 public class HoTestRequest {
-	private String hoTestReqestCode;
+	private String hoTestRequestCode;
 	private String hoTreatmentCode;
 	private String hoTreatCode;
 	private String hoTestStartDate;
 	private String hoTestEndDate;
-	public String getHoTestReqestCode() {
-		return hoTestReqestCode;
+	
+	
+	public String getHoTestRequestCode() {
+		return hoTestRequestCode;
 	}
-	public void setHoTestReqestCode(String hoTestReqestCode) {
-		this.hoTestReqestCode = hoTestReqestCode;
+	public void setHoTestRequestCode(String hoTestRequestCode) {
+		this.hoTestRequestCode = hoTestRequestCode;
 	}
 	public String getHoTreatmentCode() {
 		return hoTreatmentCode;
@@ -38,10 +40,11 @@ public class HoTestRequest {
 	}
 	@Override
 	public String toString() {
-		return "HoTestRequest [hoTestReqestCode=" + hoTestReqestCode + ", hoTreatmentCode=" + hoTreatmentCode
+		return "HoTestRequest [hoTestRequestCode=" + hoTestRequestCode + ", hoTreatmentCode=" + hoTreatmentCode
 				+ ", hoTreatCode=" + hoTreatCode + ", hoTestStartDate=" + hoTestStartDate + ", hoTestEndDate="
 				+ hoTestEndDate + "]";
 	}
+
 	
 	
 }

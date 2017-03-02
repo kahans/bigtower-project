@@ -9,23 +9,23 @@
 </head>
 <body>
 	<h1>영상촬영 대기자 목록</h1>
-	<table>
+	<table border="">
 		<thead>
 			<tr>
 				<td>환자명</td>
 				<td>검사요청코드</td>
 				<td>진료코드</td>
-				<td>검사진행상태 </td>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="mediaList" items="${mediaTest }">
-			<tr>
-				<td>${mediaList.hopatintName }</td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			<c:forEach var="mediaList" items="${mediaList}">
+				<tr>
+					<td>
+						<a href="<c:url value='/hospital/test/mediaTestAdd?hoTestRequestCode=${mediaList.hoTestRequestCode }'/>">
+						${mediaList.hoPatientName}</a></td>
+					<td>${mediaList.hoTestRequestCode }</td>
+					<td>${mediaList.hoTreatmentCode }</td>
+				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
