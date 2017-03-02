@@ -78,5 +78,47 @@
 		FROM ho_test
  	</select>
  	
+ 	<!-- 질병이름 가져오기 -->
+ 	<select id="selectDisease" resultType="com.team4.project.hospital.dto.HoDisease">
+ 		SELECT
+			HO_DISEASE_CODE,
+			HO_DISEASE_KOR
+		FROM ho_disease
+ 	</select>
  	
+ 	<!-- 접수완료 클릭시 진료 데이터 생성 -->
+ 	<insert id="addTreat" parameterType="com.team4.project.hospital.treatChart.domain.HoTreat">
+ 		INSERT INTO ho_treatment(
+ 			HO_TREATMENT_CODE,
+ 			HO_DOCTOR_ID,
+ 			HO_CHART_CODE,
+ 			HO_PATIENT_CODE,
+ 			HO_HOSPITAL_CODE,
+ 			HO_TREAT_SUBJECT_CODE,
+ 			HO_TREATMENT_WRITE_DATE,
+ 			HO_GO_SENDSTATE,
+ 			HO_HOSPITALIZATION_STATE_CODE)
+ 		SELECT
+ 			CONCAT('treatment_',
+ 					max(cast(substring(HO_TREATMENT_CODE,11,5) as UNSIGNED ))+1),
+ 			'doctor_1',
+ 			#{hoChartCode},
+ 			#{hoPatientCode},
+ 			#{hoHospitalCode},
+ 			#{hoTreatSubjectCode},
+ 			now(),
+ 			0,
+ 			5
+ 		FROM ho_treatment
+ 	</insert>
+ 	
+ 	<!-- 환자코드에 맞는 차트코드 가져오기 -->
+ 	<select id="selectChartCode" resultType="String" parameterType="Map">
+ 		SELECT
+			HO_CHART_CODE
+		FROM ho_chart
+		WHERE
+			HO_PATIENT_CODE = #{hoPatientCode} AND
+			HO_HOSPITAL_CODE = #{hoHospitalCode}
+ 	</select>
 </mapper>

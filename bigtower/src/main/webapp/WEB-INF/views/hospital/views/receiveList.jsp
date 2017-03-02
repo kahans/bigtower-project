@@ -21,13 +21,16 @@
 		</thead>
 		<tbody>
 		<c:forEach var="ReceiveList" items="${receiveList}">
-			<tr>
-				
-					<td>${ReceiveList.hoPatientName }</td>
-					<td>${ReceiveList.hoTreatSubjectName }</td>
-					<td>${ReceiveList.hoReceivePurpose }</td>
-					<td>${ReceiveList.hoReceiveRegistrationDate }</td>
-					<td><a href="<c:url value='/hospital/receiveStateDiagnosis?hoReceiveCode=${ReceiveList.hoReceiveCode}'/>">${ReceiveList.hoReceiveStateName }</a></td>
+			<tr>				
+				<td>${ReceiveList.hoPatientName }</td>
+				<td>${ReceiveList.hoTreatSubjectName }</td>
+				<td>${ReceiveList.hoReceivePurpose }</td>
+				<td>${ReceiveList.hoReceiveRegistrationDate }</td>
+				<td><a href="<c:url value='/hospital/addTreat?
+											hoPatientCode=${ReceiveList.hoPatientCode} &
+											hoTreatSubjectCode=${ReceiveList.hoTreatSubjectCode}'/>">
+					${ReceiveList.hoReceiveStateName }</a>
+				</td>
 			</tr>
 			</c:forEach>
 		</tbody>

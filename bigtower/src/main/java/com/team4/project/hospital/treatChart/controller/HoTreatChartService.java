@@ -1,13 +1,16 @@
 package com.team4.project.hospital.treatChart.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.team4.project.hospital.dto.HoDisease;
 import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 import com.team4.project.hospital.treatChart.domain.HoChart;
+import com.team4.project.hospital.treatChart.domain.HoTreat;
 import com.team4.project.hospital.treatChart.domain.HoTreatSub;
 
 @Service
@@ -34,5 +37,20 @@ public class HoTreatChartService {
 	//검사 이름 가져오기
 	public List<HoTest> selectTest() {
 		return hoTCD.selectTest();
+	}
+	
+	//질병 이름 가져오기
+	public List<HoDisease> selectDisease() {
+		return hoTCD.selectDisease();
+	}
+	
+	//환자코드에 맞는 차트코드 가져오기
+	public String selectChartCode(Map<String, Object> map){
+		return hoTCD.selectChartCode(map);
+	}
+	
+	//접수완료 클릭시 진료 데이터 생성
+	public int addTreat(HoTreat hoTreat){
+		return hoTCD.addTreat(hoTreat);
 	}
 }
