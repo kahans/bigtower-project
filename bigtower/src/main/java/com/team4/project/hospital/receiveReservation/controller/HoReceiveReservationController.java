@@ -122,9 +122,7 @@ public class HoReceiveReservationController {
 		hoRRService.receiveStateDiagnosis(hoReceiveCode); 
 		return "redirect:/hospital/receiveList";
 	}
-	//진료 목록 출력
 
-	
 	//진료상태에서 수납대기 상태로 전환
 	@RequestMapping(value="/hospital/receiveStateAcceptance", method=RequestMethod.GET)
 	public String receiveStateAcceptance(HoReceiveSub hp,
