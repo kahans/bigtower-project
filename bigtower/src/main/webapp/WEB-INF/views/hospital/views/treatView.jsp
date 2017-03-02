@@ -11,23 +11,23 @@
 	<form action="<c:url value='/hospital/treatView'/>" method="post">
 		<div>
 			의사명 :
-			<input type="text" value="">
+			<input type="text" value="${hoTreat.hoDoctorName}">
 		</div>
 		<div>
 			차트번호 :
-			<input type="text" value="">
+			<input type="text" value="${hoTreat.hoChartCode}">
 		</div>
 		<div>
 			환자명 :
-			<input type="text" value="">
+			<input type="text" value="${hoTreat.hoPatientName}">
 		</div>
 		<div>
 			진료과목 :
-			<input type="text" value="">
+			<input type="text" value="${hoTreat.hoTreatSubjectName}">
 		</div>
 			진료내용 
 		<div>	
-			<textarea rows="10" cols="50">
+			<textarea rows="10" cols="50" name="hoTreatmentContents">
 			</textarea>
 		</div>
 		<input type="submit" value="완료">

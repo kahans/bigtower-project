@@ -25,4 +25,22 @@
  			0
  		FROM ho_chart
  	</insert>
+ 	
+ 	<!-- 진료 목록에서 하나의 진료 상세보기 -->
+ 	<select id="treatView" resultType="com.team4.project.hospital.treatChart.domain.HoTreatSub" parameterType="String">
+ 		SELECT 
+ 			ho_doctor.HO_DOCTOR_NAME,
+ 			HO_CHART_CODE,
+ 			ho_patient.HO_PATIENT_NAME,
+ 			ho_treat_subject.HO_TREAT_SUBJECT_NAME
+ 		FROM ho_treat
+ 		JOIN ho_doctor
+ 			ON ho_treatment.HO_DOCTOR_ID = ho_doctor.HO_DOCTOR_ID
+ 		JOIN ho_patient
+ 			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
+ 		JOIN ho_treat_subject
+ 			ON ho_treatment.HO_TREAT_SUBJECT_CODE = ho_treat_subject.HO_TREAT_SUBJECT_CODE
+ 		WHERE
+ 			HO_TREATMENT_CODE = #{hoTreatmentCode}
+ 	</select>
 </mapper>
