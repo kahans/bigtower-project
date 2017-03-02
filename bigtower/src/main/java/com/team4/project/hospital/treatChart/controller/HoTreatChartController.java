@@ -52,11 +52,29 @@ public class HoTreatChartController {
 		List<HoTest> testList = hoTCS.selectTest();
 		List<HoDisease> diseaseList = hoTCS.selectDisease();
 		
-		model.addAttribute("hoTreat",hoTCS.treatView(hoTreatmentCode));
+		HoTreat hoTreat = hoTCS.treatView(hoTreatmentCode);
+		System.out.println("hoTreat의 진료코드 : " + hoTreat.getHoTreatmentCode());
+		model.addAttribute("hoTreat",hoTreat);
 		model.addAttribute("testList", testList);
 		model.addAttribute("diseaseList", diseaseList);
 		return "/hospital/views/treatView";
 	}
+	
+	//진료 내용 업데이트
+	@RequestMapping(value="/hospital/treatView", method=RequestMethod.POST)
+	public String treatView(String hoTreatmentCode,
+							RedirectAttributes redirectAttributes,
+							@RequestParam(value="diseaseSelect") List<String> diseaseList){
+		System.out.println("hoTreatmentCode : "+hoTreatmentCode);
+		System.out.println("diseaseList : "+diseaseList);
+		
+		
+		redirectAttributes.addAttribute("diseaseList",diseaseList);
+		return "redirect:/hospital/addDiagnosis";
+	}
+	
+	
+	
 	
 	//진료목록
 	@RequestMapping(value="/hospital/treatList", method=RequestMethod.GET)

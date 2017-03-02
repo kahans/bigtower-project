@@ -30,7 +30,7 @@
  	<!-- 진료 목록 보기 -->
  	<select id="treatmentList" resultType="com.team4.project.hospital.treatChart.domain.HoTreatSub" parameterType="String">
 		SELECT
-			ho_treatment.HO_TREATMENT_CODE,
+			HO_TREATMENT_CODE,
 			ho_patient.HO_PATIENT_CODE,
 			ho_patient.HO_PATIENT_NAME,
 			ho_hospital.HO_HOSPITAL_CODE,
@@ -54,7 +54,8 @@
  	
  	<!-- 목록에서 한 개의 진료 상세보기 -->
  	<select id="treatView" resultType="com.team4.project.hospital.treatChart.domain.HoTreatSub" parameterType="String">
- 		SELECT 
+ 		SELECT
+ 			HO_TREATMENT_CODE, 
  			ho_doctor.HO_DOCTOR_NAME,
  			HO_CHART_CODE,
  			ho_patient.HO_PATIENT_NAME,
@@ -121,4 +122,12 @@
 			HO_PATIENT_CODE = #{hoPatientCode} AND
 			HO_HOSPITAL_CODE = #{hoHospitalCode}
  	</select>
+ 	
+ 	<!-- 진료 상세보기에서 진료내용 업데이트 -->
+ 	<update id="updateTreat" parameterType="String">
+ 		UPDATE
+ 			HO_TREATMENT_CONTENTS
+ 		SET
+ 			
+ 	</update>
 </mapper>

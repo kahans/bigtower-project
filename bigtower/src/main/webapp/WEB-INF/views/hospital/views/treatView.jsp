@@ -10,6 +10,7 @@
 </head>
 <body>
 	<form action="<c:url value='/hospital/treatView'/>" method="post">
+		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
 		<div>
 			의사명 :
 			<input type="text" value="${hoTreat.hoDoctorName}">
