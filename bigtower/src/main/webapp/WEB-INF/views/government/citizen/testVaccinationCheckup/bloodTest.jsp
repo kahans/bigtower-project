@@ -12,7 +12,7 @@
 	
 	<form action="<c:url value='/government/goBloodTest'/>" method="post">
 		<!-- hidden에 로그인한 회원의 citizen_no를 조회해와서 값을 부여해줌 -->
-		
+		주민번호<input type="text" class="citizenId"/>-<input type="password" class="citizenId"/><br/>
 		기간입력 
 		<input type="date" name="goFirstDate">-<input type="date" name="goSecondDate">
 		<br/>병원명 입력(병원명에는 한글만 들어오게 할 예정)
