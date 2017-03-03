@@ -2,14 +2,16 @@ package com.team4.project.hospital.test.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.team4.project.hospital.test.domain.HoBloodTestSub;
 import com.team4.project.hospital.test.domain.HoMediaTestSub;
 import com.team4.project.hospital.test.domain.HoTestRequestSub;
 
@@ -32,6 +34,14 @@ public class HoTestController {
 		model.addAttribute("bloodList", bloodList);
 		return "/hospital/views/tests/bloodTestList";
 	}
+	@RequestMapping(value="/hospital/test/bloodTestAdd", method=RequestMethod.GET)
+	public String bloodTestAdd(Model model,
+				@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
+			){
+		HoBloodTestSub bloodView= hoTS.bloodTestView(hoTestRequestCode);
+		model.addAttribute("bloodView",bloodView);
+		return "/hospital/views/tests/bloodTestAdd";
+	}
 	
 	
 	//영상검사 목록
@@ -50,7 +60,7 @@ public class HoTestController {
 	}
 	//영상검사 등록 뷰 GET
 	@RequestMapping(value="/hospital/test/mediaTestAdd", method=RequestMethod.GET)
-	public String mediaTestView(Model model, MultipartHttpServletRequest request,
+	public String mediaTestView(Model model, 
 								@RequestParam(value="hoTestRequestCode",required=false )String hoTestRequestCode
 			){
 		System.out.println("해당 영상검사 글 뷰 GET");
@@ -62,11 +72,14 @@ public class HoTestController {
 	}
 	//영상검사 등록 POST
 	@RequestMapping(value="/hospital/test/mediaTestAdd", method=RequestMethod.POST)
-	public String mediaTestView(HoMediaTestSub mediaView){ 
+	public String mediaTestView(HoMediaTestSub mediaView, HttpServletRequest request){ 
 		System.out.println("해당 영상검사 결과 등록 POST");
 		System.out.println("등록POST : "+mediaView.toString());
 		
-		hoTS.mediaTestAdd(mediaView, null);
+		String path=request.getServletContext().getRealPath("resources/file/image");//상대주소
+		mediaView.setHoMediaTestImagePath(path);
+		System.out.println("컨트롤러에서 확인 : "+path.toString());
+		hoTS.mediaTestAdd(mediaView);
 		
 		
 		return "redirect:/hospital/test/mediaTestList";

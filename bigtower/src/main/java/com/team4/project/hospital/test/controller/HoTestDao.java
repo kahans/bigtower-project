@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.team4.project.hospital.test.domain.HoBloodTestSub;
 import com.team4.project.hospital.test.domain.HoMediaTestSub;
 import com.team4.project.hospital.test.domain.HoTestRequestSub;
 
@@ -32,5 +33,9 @@ public class HoTestDao {
 	public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
 		System.out.println(hoTestRequest);
 		return sqlSession.selectList("hoTest.HoTestList", hoTestRequest);
+	}
+	public HoBloodTestSub bloodTestView(String hoTestRequestCode) {
+		
+		return sqlSession.selectOne("hoTest.bloodView", hoTestRequestCode);
 	}
 }

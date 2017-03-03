@@ -56,4 +56,20 @@
 			now()
 		FROM ho_media_test
  	</insert>
+ 	<select id="bloodView" resultType="com.team4.project.hospital.test.domain.HoBloodTestSub" parameterType="String">
+ 		select
+			HO_TEST_REQUEST_CODE,
+			ho_treatment.HO_TREATMENT_CODE,
+			ho_patient.HO_PATIENT_NAME,
+			ho_test.HO_TEST_CODE,
+			ho_test.HO_TEST_NAME
+		from ho_test_request
+		join ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		JOIN ho_patient
+			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
+		JOIN ho_test
+			ON ho_test.HO_TEST_CODE = ho_test_request.HO_TEST_CODE
+		WHERE ho_test_request.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
+ 	</select>
 </mapper>
