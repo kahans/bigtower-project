@@ -55,4 +55,37 @@
  		JOIN ho_patient
  			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
  	</select>
+ 	
+ 	<!-- 수술 상세보기 -->
+ 	<select id="operationView" parameterType="String" 
+ 							   resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub">
+ 		SELECT
+ 			ho_operation.HO_OPERATION_CODE,
+ 			ho_operation.HO_TREATMENT_CODE,
+ 			ho_patient.HO_PATIENT_NAME,
+ 			ho_operation_type.HO_OPERATION_TYPE_NAME,
+ 			ho_operation.HO_OPERATION_START_DATE,
+ 			ho_operation.HO_OPERATION_END_DATE,
+ 			ho_operation.HO_OPERATION_DIARY
+ 		FROM ho_operation
+ 		JOIN ho_operation_type
+ 			ON ho_operation.HO_OPERATION_TYPE_CODE = ho_operation_type.HO_OPERATION_TYPE_CODE
+ 		JOIN ho_treatment
+ 			ON ho_operation.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
+ 		JOIN ho_patient
+ 			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
+ 		WHERE
+ 			HO_OPERATION_CODE = #{hoOperationCode}
+ 	</select>
+ 	
+ 	<!-- 수술일지 수정 -->
+ 	<update id="updateOperation" parameterType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub">
+ 		UPDATE
+ 			ho_operation
+ 		SET
+ 			HO_OPERATION_END_DATE = #{hoOperationEndDate},
+ 			HO_OPERATION_DIARY = #{hoOperationDiary}
+ 		WHERE
+ 			HO_OPERATION_CODE = #{hoOperationCode}
+ 	</update>
 </mapper>

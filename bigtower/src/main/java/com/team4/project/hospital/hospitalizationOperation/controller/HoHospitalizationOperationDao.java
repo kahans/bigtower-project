@@ -30,4 +30,14 @@ public class HoHospitalizationOperationDao {
 	public List<HoOperationSub> operationList(){
 		return sqlSession.selectList("hoHospitalizationOperation.operationList");
 	}
+	
+	//수술 상세보기
+	public HoOperationSub operationView(String hoOperationCode){
+		return sqlSession.selectOne("hoHospitalizationOperation.operationView", hoOperationCode);
+	}
+	
+	//수술일지 수정
+	public int updateOperation(HoOperationSub hoOperationSub){
+		return sqlSession.update("hoHospitalizationOperation.updateOperation",hoOperationSub);
+	}
 }

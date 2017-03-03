@@ -21,7 +21,11 @@
 		<tbody>
 			<c:forEach var="operationList" items="${operationList}">
 				<tr>				
-					<td>${operationList.hoTreatmentCode }</td>
+					<td>
+						<a href="<c:url value='/hospital/operationView?hoOperationCode=${operationList.hoOperationCode }'/>">
+							${operationList.hoTreatmentCode }
+						</a>
+					</td>
 					<td>${operationList.hoPatientName }</td>
 					<td>${operationList.hoOperationTypeName }</td>
 					<td>${operationList.hoOperationStartDate }</td>

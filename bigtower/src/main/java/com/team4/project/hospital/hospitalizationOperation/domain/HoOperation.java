@@ -1,5 +1,9 @@
 package com.team4.project.hospital.hospitalizationOperation.domain;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class HoOperation {
 
 private String hoOperationCode;
@@ -8,6 +12,7 @@ private String hoOperationTypeCode;
 private String hoOperationDiary;
 private String hoOperationStartDate;
 private String hoOperationEndDate;
+
 private int hoGoSendstate;
 
 public String getHoOperationCode() {

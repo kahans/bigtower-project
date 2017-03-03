@@ -28,8 +28,16 @@ public void setHoOperationTypeName(String hoOperationTypeName) {
 
 @Override
 public String toString() {
-	return "HoOperationSub [hoPatientName=" + hoPatientName + ", hoOperationTypeName=" + hoOperationTypeName + "]";
+	return "HoOperationSub [hoPatientName=" + hoPatientName + ", hoOperationTypeName=" + hoOperationTypeName
+			+ ", getHoOperationCode()=" + getHoOperationCode() + ", getHoTreatmentCode()=" + getHoTreatmentCode()
+			+ ", getHoOperationTypeCode()=" + getHoOperationTypeCode() + ", getHoOperationDiary()="
+			+ getHoOperationDiary() + ", getHoOperationStartDate()=" + getHoOperationStartDate()
+			+ ", getHoOperationEndDate()=" + getHoOperationEndDate() + ", getHoGoSendstate()=" + getHoGoSendstate()
+			+ "]";
 }
+
+
+
 
 
 }
