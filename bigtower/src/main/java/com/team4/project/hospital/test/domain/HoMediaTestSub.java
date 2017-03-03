@@ -3,15 +3,24 @@ package com.team4.project.hospital.test.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class HoMediaTestSub extends HoMediaTest {
-	private String hoPatientName;
-	private String hoTestStateName;
-	private String hoMediaFilePath;
-	private String hoMediaFileName;
-	private MultipartFile hoMediaFile;
-	private String hoTestName;
+	protected String hoPatientName;//환자명
+	protected String hoTestStateName;//검사상태
+	protected String hoTestName;//검사명
+	protected String hoTestCode;//검사종류 코드
+	protected String hoMediaFilePath;//파일경로
+	protected String hoMediaFileName;//파일이름
+	protected MultipartFile uploadFile ;//파일
 	
 
-	
+
+	public String getHoTestCode() {
+		return hoTestCode;
+	}
+
+
+	public void setHoTestCode(String hoTestCode) {
+		this.hoTestCode = hoTestCode;
+	}
 
 
 	public String getHoTestName() {
@@ -24,27 +33,27 @@ public class HoMediaTestSub extends HoMediaTest {
 	}
 
 
-	public MultipartFile getHoMediaFile() {
-		return hoMediaFile;
+
+	public MultipartFile getUploadFile() {
+		return uploadFile;
 	}
 
 
-	public void setHoMediaFile(MultipartFile hoMediaFile) {
-		this.hoMediaFile = hoMediaFile;
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 
 
 	@Override
 	public String toString() {
 		return "HoMediaTestSub [hoPatientName=" + hoPatientName + ", hoTestStateName=" + hoTestStateName
-				+ ", hoMediaFilePath=" + hoMediaFilePath + ", hoMediaFileName=" + hoMediaFileName + ", hoMediaFile="
-				+ hoMediaFile + ", hoTestName=" + hoTestName + ", getHoMediaTestCode()=" + getHoMediaTestCode()
-				+ ", getHoTestRequestCode()=" + getHoTestRequestCode() + ", getHoTreatmentCode()="
-				+ getHoTreatmentCode() + ", getHoTestStateCode()=" + getHoTestStateCode()
-				+ ", getHoMediaTestImagePath()=" + getHoMediaTestImagePath() + ", getHoMediaTestImageName()="
-				+ getHoMediaTestImageName() + ", getHoMediaTestDate()=" + getHoMediaTestDate()
-				+ ", getHoMediaTestRegistationDate()=" + getHoMediaTestRegistationDate() + ", getHoGoSendState()="
-				+ getHoGoSendState() + "]";
+				+ ", hoTestName=" + hoTestName + ", hoTestCode=" + hoTestCode + ", hoMediaFilePath=" + hoMediaFilePath
+				+ ", hoMediaFileName=" + hoMediaFileName + ", uploadFile=" + uploadFile + ", hoMediaTestCode="
+				+ hoMediaTestCode + ", hoTestRequestCode=" + hoTestRequestCode + ", hoTreatmentCode=" + hoTreatmentCode
+				+ ", hoTestStateCode=" + hoTestStateCode + ", hoMediaTestImagePath=" + hoMediaTestImagePath
+				+ ", hoMediaTestImageName=" + hoMediaTestImageName + ", hoMediaTestDate=" + hoMediaTestDate
+				+ ", hoMediaTestRegistationDate=" + hoMediaTestRegistationDate + ", hoGoSendState=" + hoGoSendState
+				+ "]";
 	}
 
 

@@ -24,9 +24,9 @@ public class HoTestDao {
 		// 
 		return sqlSession.selectOne("hoTest.mediaTestAddView", hoTestRequestCode);
 	}
-
-	public int hoMediaTestAdd(HoMediaTestSub hmts) {
+	//영상검사 등록 
+	public int hoMediaTestAdd(HoMediaTestSub mediaView) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("hoTest.mediaTestAdd", hmts);
+		return sqlSession.insert("hoTest.mediaTestAdd", mediaView);
 	}
 }

@@ -28,30 +28,37 @@ public class HoTestService {
 		return hoTD.mediaTestView(hoTestRequestCode);
 	}
 
-	public int mediaTestAdd(HoMediaTestSub hmts) {
-		System.out.println(hmts.getHoMediaFile());
+	public int mediaTestAdd(HoMediaTestSub mediaView) {
+		System.out.println("서비스try전 : "+mediaView.toString());
+		System.out.println();
 		String path="";
-		MultipartFile multipartFile = hmts.getHoMediaFile();
+		File file = null;
+		MultipartFile multipartFile = mediaView.getUploadFile();
 		try{
 			path="D:\\testImage\\";
 			UUID uuid = UUID.randomUUID();
 			String fileName = uuid.toString().replace("-", "");
-			File file = new File(fileName);
+			file = new File(fileName+path);
 			multipartFile.transferTo(file);
 			
-			hmts.setHoMediaFileName(fileName);
-			hmts.setHoMediaFilePath(path);
-			System.out.println("서비스 : "+hmts.toString());
-			hoTD.hoMediaTestAdd(hmts);
+			mediaView= new HoMediaTestSub();
+			mediaView.setHoMediaFileName(fileName);
+			mediaView.setHoMediaFilePath(path);
+			System.out.println("서비스try후 : "+mediaView.toString());
+			
+			hoTD.hoMediaTestAdd(mediaView);
+			
 		}catch(IllegalStateException e){
-			//file.delete();
+			System.out.println("IllegalStateException 예외발생");
+			file.delete();
 			e.printStackTrace();
 		}catch (IOException e) {
-			//file.delete();
+			System.out.println("IOException 예외발생");
+			file.delete();
 			e.printStackTrace();
 		}		
-		System.out.println(hmts.getHoMediaFileName());
-		System.out.println(hmts.getHoMediaFilePath());
+		System.out.println(mediaView.getHoMediaFileName());
+		System.out.println(mediaView.getHoMediaFilePath());
 		return 0;
 	}
 }

@@ -40,7 +40,9 @@
 			ho_test_request.HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
 			ho_test_state.HO_TEST_STATE_NAME,
-			ho_test.HO_TEST_NAME
+			ho_test_state.HO_TEST_STATE_CODE,
+			ho_test.HO_TEST_NAME,
+			ho_test.HO_TEST_CODE
 		from ho_media_test
 		join ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE = ho_media_test.HO_TREATMENT_CODE

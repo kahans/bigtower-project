@@ -1,15 +1,15 @@
 package com.team4.project.hospital.test.domain;
 
 public class HoMediaTest {
-	private String hoMediaTestCode;
-	private String hoTestRequestCode;
-	private String hoTreatmentCode;
-	private int hoTestStateCode;
-	private String hoMediaTestImagePath;
-	private String hoMediaTestImageName;
-	private String hoMediaTestDate;
-	private String hoMediaTestRegistationDate;
-	private int hoGoSendState;
+	protected String hoMediaTestCode;
+	protected String hoTestRequestCode;
+	protected String hoTreatmentCode;
+	protected int hoTestStateCode;
+	protected String hoMediaTestImagePath;
+	protected String hoMediaTestImageName;
+	protected String hoMediaTestDate;
+	protected String hoMediaTestRegistationDate;
+	protected int hoGoSendState;
 	
 	
 	public String getHoMediaTestCode() {

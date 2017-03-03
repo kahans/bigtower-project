@@ -28,21 +28,24 @@ public class HoTestController {
 		model.addAttribute("mediaList", mediaList);
 		return "/hospital/views/tests/mediaTestList";
 	}
-	//영상검사 등록 뷰
+	//영상검사 등록 뷰 GET
 	@RequestMapping(value="/hospital/test/mediaTestAdd", method=RequestMethod.GET)
 	public String mediaTestView(Model model,
 								@RequestParam(value="hoTestRequestCode",required=false )String hoTestRequestCode
 			){
-		System.out.println("해당 영상검사 글 뷰");
+		System.out.println("해당 영상검사 글 뷰 GET");
 		HoMediaTestSub mediaView = hoTS.mediaTestView(hoTestRequestCode);
 		System.out.println(mediaView.toString());
 		model.addAttribute("mediaView", mediaView);
 		return "/hospital/views/tests/mediaTestAdd";
 	}
+	//영상검사 등록 POST
 	@RequestMapping(value="/hospital/test/mediaTestAdd", method=RequestMethod.POST)
-	public String mediaTestView(HoMediaTestSub hmts){
-		System.out.println("해당 영상검사 결과 등록");
-		hoTS.mediaTestAdd(hmts);
+	public String mediaTestView(HoMediaTestSub mediaView){ 
+		System.out.println("해당 영상검사 결과 등록 POST");
+		System.out.println("등록POST : "+mediaView.toString());
+		
+		hoTS.mediaTestAdd(mediaView);
 		
 		
 		return "redirect:/hospital/test/mediaTestList";
