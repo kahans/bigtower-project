@@ -3,6 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="hoDiagnosisPrescription">
+ 	
  	<!-- 진료 한번에 등록할 진단리스트 -->
  	<insert id="addDiagnosis" parameterType="Map">
  		INSERT INTO ho_diagnosis(
@@ -19,5 +20,42 @@
  			now(),
  			0
  		FROM ho_diagnosis
+ 	</insert>
+ 	
+ 	<!-- 약품 리스트 가져오기 -->
+ 	<select id="selectMedicine" resultType="com.team4.project.hospital.dto.HoMedicine">
+ 		SELECT
+ 			HO_MEDICINE_CODE,
+ 			HO_MEDICINE_NAME
+ 		FROM
+ 			ho_medicine
+ 	</select>
+ 	
+ 	<!-- 처방전 등록 -->
+ 	<insert id="addPrescription" parameterType="com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription">
+ 		INSERT INTO ho_prescription(
+ 			HO_PRESCRIPTION_CODE,
+ 			HO_TREATMENT_CODE,
+ 			HO_MEDICINE_CODE,
+ 			HO_PRESCRIPTION_DAILYDOSE,
+ 			HO_PRESCRIPTION_DAILYCOUNT,
+ 			HO_PRESCRIPTION_TOTALDAY,
+ 			HO_PRESCRIPTION_USAGE,
+ 			HO_PRESCRIPTION_WRITE,
+ 			HO_PRESCRIPTION_STATE,
+ 			HO_GO_SENDSTATE)
+ 		SELECT
+ 			CONCAT('prescription_',
+ 					max(cast(substring(HO_PRESCRIPTION_CODE,14,5) as UNSIGNED ))+1),
+ 			#{hoTreatmentCode},
+ 			#{hoMedicineCode},
+ 			#{hoPrescriptionDailydose},
+ 			#{hoPrescriptionDailycount},
+ 			#{hoPrescriptionTotalday},
+ 			#{hoPrescriptionUsage},
+ 			now(),
+ 			0,
+ 			0
+ 		FROM ho_prescription
  	</insert>
 </mapper>

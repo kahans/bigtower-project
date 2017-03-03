@@ -76,11 +76,10 @@
 	</form>
 	
 	<form action="<c:url value='/hospital/hospitalizationRequest'/>" method="post">
-		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
 		<input type="submit" value="입퇴원요청"> 
 	</form>
 	<a href="<c:url value='/hospital/surgery'/>"><button>수술</button></a><br>
-	<a href="<c:url value='/hospital/prescription'/>"><button>처방</button></a>
+	<a href="<c:url value='/hospital/addPrescription?hoTreatmentCode=${hoTreat.hoTreatmentCode}'/>"><button>처방</button></a>
 	
 	<script>
 		//추가버튼 클릭시 이벤트
