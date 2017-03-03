@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team4.project.hospital.dto.HoDisease;
+import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.treatChart.domain.HoChart;
 import com.team4.project.hospital.treatChart.domain.HoTreat;
@@ -51,12 +52,14 @@ public class HoTreatChartController {
 		//검사 이름 가져오기, 질병이름 가져오기
 		List<HoTest> testList = hoTCS.selectTest();
 		List<HoDisease> diseaseList = hoTCS.selectDisease();
+		List<HoOperationType> operationList = hoTCS.selectOperation();
 		
 		HoTreat hoTreat = hoTCS.treatView(hoTreatmentCode);
 		System.out.println("hoTreat의 진료코드 : " + hoTreat.getHoTreatmentCode());
 		model.addAttribute("hoTreat",hoTreat);
 		model.addAttribute("testList", testList);
 		model.addAttribute("diseaseList", diseaseList);
+		model.addAttribute("operationList", operationList);
 		return "/hospital/views/treatView";
 	}
 	

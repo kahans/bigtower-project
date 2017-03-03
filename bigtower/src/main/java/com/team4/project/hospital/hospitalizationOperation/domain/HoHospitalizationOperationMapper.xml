@@ -20,4 +20,39 @@
  			now()
  		FROM ho_hospitalization_request
  	</insert>
+ 	
+ 	<!-- 수술 등록 -->
+ 	<insert id="addOperation" parameterType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperation">
+ 		INSERT INTO ho_operation(
+ 			HO_OPERATION_CODE,
+ 			HO_TREATMENT_CODE,
+ 			HO_OPERATION_TYPE_CODE, 			
+ 			HO_OPERATION_START_DATE,
+ 			HO_GO_SENDSTATE)
+ 		SELECT
+ 			CONCAT('operation_',
+ 					max(cast(substring(HO_OPERATION_CODE,11,5) as UNSIGNED ))+1),
+ 			#{hoTreatmentCode},
+ 			#{hoOperationTypeCode},
+ 			#{hoOperationStartDate},
+ 			0
+ 		FROM ho_operation
+ 	</insert>
+ 	
+ 	<!-- 수술 목록 -->
+ 	<select id="operationList" resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub">
+ 		SELECT
+ 			ho_operation.HO_OPERATION_CODE,
+ 			ho_operation.HO_TREATMENT_CODE,
+ 			ho_patient.HO_PATIENT_NAME,
+ 			ho_operation_type.HO_OPERATION_TYPE_NAME,
+ 			ho_operation.HO_OPERATION_START_DATE
+ 		FROM ho_operation
+ 		JOIN ho_operation_type
+ 			ON ho_operation.HO_OPERATION_TYPE_CODE = ho_operation_type.HO_OPERATION_TYPE_CODE
+ 		JOIN ho_treatment
+ 			ON ho_operation.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
+ 		JOIN ho_patient
+ 			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
+ 	</select>
 </mapper>

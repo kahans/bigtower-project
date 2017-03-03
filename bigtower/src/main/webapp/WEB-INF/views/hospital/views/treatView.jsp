@@ -9,6 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
+	<!-- 진료 정보 보여주기 -->
+	<h3>진료 정보</h3>
 	<form action="<c:url value='/hospital/treatView'/>" method="post">
 		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
 		<div>
@@ -27,6 +29,8 @@
 			진료과목 :
 			<input type="text" value="${hoTreat.hoTreatSubjectName}">
 		</div>
+		
+		<!-- 질병 추가 -->
 		<div>
 			질병명 :
 			<div id="prescription">
@@ -41,7 +45,7 @@
            		</div>
            	</div>
 	           	
-	           	
+	        <!-- 질병 추가시 추가되는 폼 -->   	
            	<div id="hiddenPrescription" style="display: none;">
            		<div class="selectAdd">	
             		<select name="diseaseSelect">
@@ -56,15 +60,18 @@
            		</div>
            	</div>
 		</div>
-			진료내용 
-		<div>	
+		
+			진료내용	
+		<div>			
 			<textarea rows="10" cols="50" name="hoTreatmentContents">
 			</textarea>
 		</div>
 		
 		<input type="submit" value="완료">
 	</form>
-		
+	
+	<!-- 검사 요청 -->
+	<h3>검사 요청</h3>	
 	<form action="<c:url value='/hospital/testRequest'/>" method="post">
 		<select>
 			<option>:::검사를 선택하시오:::</option>
@@ -75,10 +82,35 @@
 		<input type="submit" value="검사요청"> 
 	</form>
 	
+	<!-- 입/퇴원 요청 -->
+	<h3>입/퇴원 요청</h3>
 	<form action="<c:url value='/hospital/hospitalizationRequest'/>" method="post">
+		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
 		<input type="submit" value="입퇴원요청"> 
 	</form>
-	<a href="<c:url value='/hospital/surgery'/>"><button>수술</button></a><br>
+	
+	<!-- 수술 요청 -->
+	<h3>수술 요청</h3>
+	<form action="<c:url value='/hospital/addOperation'/>" method="post">
+		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
+		<div>
+			수술날짜 :
+			<input type="date" name="hoOperationStartDate">
+		</div>
+		<div>
+			수술명 : 
+			<select name="hoOperationTypeCode">
+				<option>:::수술을 선택하시오:::</option>
+				<c:forEach items="${operationList}" var="operationList">
+					<option value="${operationList.hoOperationTypeCode}">${operationList.hoOperationTypeName}</option>
+				</c:forEach>
+			</select>
+		</div>
+		<input type="submit" value="수술 등록">
+	</form>
+	
+	<!-- 처방 요청 -->
+	<h3>처방 요청</h3>
 	<a href="<c:url value='/hospital/addPrescription?hoTreatmentCode=${hoTreat.hoTreatmentCode}'/>"><button>처방</button></a>
 	
 	<script>

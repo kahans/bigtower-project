@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team4.project.hospital.dto.HoDisease;
+import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.treatChart.domain.HoChart;
 import com.team4.project.hospital.treatChart.domain.HoTreat;
@@ -32,6 +33,11 @@ public class HoTreatChartDao {
 	//진료목록
 	public List<HoTreatSub> treatLsit(String hospitalCode) {
 		return sqlSession.selectList("hoTreatChart.treatmentList", hospitalCode);
+	}
+	
+	//수술 이름 가져오기
+	public List<HoOperationType> selectOperation() {
+		return sqlSession.selectList("hoTreatChart.selectOperation");
 	}
 	
 	//검사 이름 가져오기

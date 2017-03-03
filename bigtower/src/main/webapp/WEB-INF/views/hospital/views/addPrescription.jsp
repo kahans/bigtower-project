@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>처방전 등록</h1>
 	<form action="<c:url value='/hospital/addPrescription'/>" method="post">
 		<input type="hidden" value="${hoTreatmentCode}" name="hoTreatmentCode">
 		<div>

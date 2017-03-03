@@ -87,6 +87,14 @@
 		FROM ho_disease
  	</select>
  	
+ 	<!-- 수술이름 가져오기 -->
+ 	<select id="selectOperation" resultType="com.team4.project.hospital.dto.HoOperationType">
+ 		SELECT
+			HO_OPERATION_TYPE_CODE,
+			HO_OPERATION_TYPE_NAME
+		FROM ho_operation_type
+ 	</select>
+ 	
  	<!-- 접수완료 클릭시 진료 데이터 생성 -->
  	<insert id="addTreat" parameterType="com.team4.project.hospital.treatChart.domain.HoTreat">
  		INSERT INTO ho_treatment(
