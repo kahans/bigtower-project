@@ -1,7 +1,7 @@
 package com.team4.project.hospital.test.domain;
 
 public class HoTestRequestSub extends HoTestRequest{
-	private String hoPatientName;
+	protected String hoPatientName;
 
 	public String getHoPatientName() {
 		return hoPatientName;
@@ -13,10 +13,12 @@ public class HoTestRequestSub extends HoTestRequest{
 
 	@Override
 	public String toString() {
-		return "HoTestRequestSub [hoPatientName=" + hoPatientName + ", getHoTestRequestCode()=" + getHoTestRequestCode()
-				+ ", getHoTreatmentCode()=" + getHoTreatmentCode() + ", getHoTreatCode()=" + getHoTreatCode()
-				+ ", getHoTestStartDate()=" + getHoTestStartDate() + ", getHoTestEndDate()=" + getHoTestEndDate() + "]";
+		return "HoTestRequestSub [hoPatientName=" + hoPatientName + ", hoTestRequestCode=" + hoTestRequestCode
+				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestCode=" + hoTestCode + ", hoTestStartDate="
+				+ hoTestStartDate + ", hoTestEndDate=" + hoTestEndDate + "]";
 	}
+
+
 	
 	
 }

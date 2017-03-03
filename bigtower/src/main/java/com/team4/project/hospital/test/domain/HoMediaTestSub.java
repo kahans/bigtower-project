@@ -7,8 +7,6 @@ public class HoMediaTestSub extends HoMediaTest {
 	protected String hoTestStateName;//검사상태
 	protected String hoTestName;//검사명
 	protected String hoTestCode;//검사종류 코드
-	protected String hoMediaFilePath;//파일경로
-	protected String hoMediaFileName;//파일이름
 	protected MultipartFile uploadFile ;//파일
 	
 
@@ -47,13 +45,12 @@ public class HoMediaTestSub extends HoMediaTest {
 	@Override
 	public String toString() {
 		return "HoMediaTestSub [hoPatientName=" + hoPatientName + ", hoTestStateName=" + hoTestStateName
-				+ ", hoTestName=" + hoTestName + ", hoTestCode=" + hoTestCode + ", hoMediaFilePath=" + hoMediaFilePath
-				+ ", hoMediaFileName=" + hoMediaFileName + ", uploadFile=" + uploadFile + ", hoMediaTestCode="
-				+ hoMediaTestCode + ", hoTestRequestCode=" + hoTestRequestCode + ", hoTreatmentCode=" + hoTreatmentCode
-				+ ", hoTestStateCode=" + hoTestStateCode + ", hoMediaTestImagePath=" + hoMediaTestImagePath
-				+ ", hoMediaTestImageName=" + hoMediaTestImageName + ", hoMediaTestDate=" + hoMediaTestDate
-				+ ", hoMediaTestRegistationDate=" + hoMediaTestRegistationDate + ", hoGoSendState=" + hoGoSendState
-				+ "]";
+				+ ", hoTestName=" + hoTestName + ", hoTestCode=" + hoTestCode + ", uploadFile=" + uploadFile
+				+ ", hoMediaTestCode=" + hoMediaTestCode + ", hoTestRequestCode=" + hoTestRequestCode
+				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestStateCode=" + hoTestStateCode
+				+ ", hoMediaTestImagePath=" + hoMediaTestImagePath + ", hoMediaTestImageName=" + hoMediaTestImageName
+				+ ", hoMediaTestDate=" + hoMediaTestDate + ", hoMediaTestRegistationDate=" + hoMediaTestRegistationDate
+				+ ", hoGoSendState=" + hoGoSendState + "]";
 	}
 
 
@@ -73,22 +70,7 @@ public class HoMediaTestSub extends HoMediaTest {
 		this.hoTestStateName = hoTestStateName;
 	}
 
-	public String getHoMediaFilePath() {
-		return hoMediaFilePath;
-	}
 
-	public void setHoMediaFilePath(String hoMediaFilePath) {
-		this.hoMediaFilePath = hoMediaFilePath;
-	}
-
-	public String getHoMediaFileName() {
-		return hoMediaFileName;
-	}
-
-	public void setHoMediaFileName(String hoMediaFileName) {
-		this.hoMediaFileName = hoMediaFileName;
-	}
-	
 	
 	
 }
