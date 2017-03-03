@@ -3,8 +3,78 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="hoTest">
- 	<select id="HoMediaTest" >
- 		
- 	
+<!-- 검사요청 목록 출력 -->
+ 	<select id="HoMediaTest" resultType="com.team4.project.hospital.test.domain.HoTestRequestSub">
+ 		<!-- select
+			ho_patient.HO_PATIENT_NAME,
+			ho_test_request.HO_TEST_REQUEST_CODE,
+			ho_treatment.HO_TREATMENT_CODE,
+			ho_test_state.HO_TEST_STATE_NAME,
+			ho_test.HO_TEST_NAME
+		from ho_media_test
+		join ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_media_test.HO_TREATMENT_CODE
+		join ho_patient
+			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
+		Join ho_test_state
+			ON ho_test_state.HO_TEST_STATE_CODE = ho_media_test.HO_TEST_STATE_CODE
+		Join ho_test_request
+			ON ho_test_request.HO_TEST_REQUEST_CODE = ho_media_test.HO_TEST_REQUEST_CODE
+ 		JOIN ho_test
+ 			ON ho_test.HO_TEST_CODE = ho_test_request.HO_TEST_CODE -->
+		select
+			ho_test_request.HO_TEST_REQUEST_CODE,	
+			ho_treatment.HO_TREATMENT_CODE,
+			ho_patient.HO_PATIENT_NAME
+		from ho_test_request
+		join ho_treatment
+		 	ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		join ho_patient
+			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
+ 		Where HO_TEST_CODE='2'
  	</select>
+ 	<!-- 영상검사 뷰  -->
+ 	<select id="mediaTestAddView" resultType="com.team4.project.hospital.test.domain.HoMediaTestSub" parameterType="String">
+ 		select
+			ho_patient.HO_PATIENT_NAME,
+			ho_test_request.HO_TEST_REQUEST_CODE,
+			ho_treatment.HO_TREATMENT_CODE,
+			ho_test_state.HO_TEST_STATE_NAME,
+			ho_test.HO_TEST_NAME
+		from ho_media_test
+		join ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_media_test.HO_TREATMENT_CODE
+		join ho_patient
+			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
+		Join ho_test_state
+			ON ho_test_state.HO_TEST_STATE_CODE = ho_media_test.HO_TEST_STATE_CODE
+		Join ho_test_request
+			ON ho_test_request.HO_TEST_REQUEST_CODE = ho_media_test.HO_TEST_REQUEST_CODE
+		JOIN ho_test
+			ON ho_test.HO_TEST_CODE = ho_test_request.HO_TEST_CODE
+ 		Where ho_media_test.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
+ 	</select>
+ 	<!-- 영상 결과 등록 -->
+ 	<insert id="mediaTestAdd" parameterType="com.team4.project.hospital.test.domain.HoMediaTestSub">
+ 		insert into ho_media_test(
+ 			HO_MEDIA_TEST_CODE,
+			HO_TEST_REQUEST_CODE,
+			HO_TREATMENT_CODE,
+			HO_TEST_STATE_CODE,
+			HO_MEDIA_TEST_IMAGE_PATH,
+			HO_MEDIA_TEST_IMAGE_NAME,
+			HO_MEDIA_TEST_DATE,
+			HO_MEDIA_TEST_REGISTRATION_DATE)
+		select
+			CONCAT('videoInspection_',
+			max(cast(substring(HO_MEDIA_TEST_CODE,16,5) as UNSIGNED ))+1),
+			#{hoTestRequestCode},
+			#{hoTreatmentCode},
+			#{hoTestStateCode},
+			#{hoMediaTestImagePath},
+			#{hoMediaTestImageName},
+			now(),
+			now()
+		FROM ho_media_test
+ 	</insert>
 </mapper>
