@@ -2,6 +2,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="XXX.XXX.XXX">
- 
+<mapper namespace="hoHospitalizationOperation">
+ 	
+ 	<!-- 입퇴원 요청 등록 -->
+ 	<insert id="addRequest" parameterType="com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization">
+ 		INSERT INTO ho_hospitalization_request(
+ 			HO_HOSPITALIZATION_REQUEST_CODE,
+ 			HO_TREATMENT_CODE,
+ 			HO_HOSPITALIZATION_CODE,
+ 			HO_HOSPITALIZATION_REQUEST_DATE)
+ 		SELECT
+ 			CONCAT('hospitalization_request_',
+ 					max(cast(substring(HO_HOSPITALIZATION_REQUEST_CODE,25,5) as UNSIGNED ))+1),
+ 			#{hoTreatmentCode},
+ 			CONCAT('hospitalization_',
+ 					max(cast(substring(HO_HOSPITALIZATION_CODE,17,5) as UNSIGNED ))+1),
+ 			now()
+ 		FROM ho_hospitalization_request
+ 	</insert>
 </mapper>
