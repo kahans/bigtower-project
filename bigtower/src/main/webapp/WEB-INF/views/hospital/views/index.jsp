@@ -16,11 +16,12 @@
 	
 	<c:if test="${HOSPITALCODE!=null}">
 		[${HOSPITALNAME} ${STAFFLEVELNAME} ${HOSTAFFNAME}님] 로그인중
-		<a href="<c:url value="/hospital/logout"/>">로그아웃</a> <br>
-		<a href="<c:url value="/hospital/searchPatient"/>">접수</a>
-		<a href="<c:url value="/hospital/receiveList"/>">접수목록</a>
-		<a href="<c:url value="/hospital/logout"/>">진료</a> 
-		<a href="<c:url value="/hospital/logout"/>">검사</a>
+		<a href="<c:url value='/hospital/logout'/>"><button>로그아웃</button></a> <br>
+		<a href="<c:url value='/hospital/searchPatient'/>"><button>접수</button></a>
+		<a href="<c:url value='/hospital/receiveList'/>"><button>접수 목록</button></a>
+		<a href="<c:url value='/hospital/treatList'/>"><button>진료 목록</button></a> 
+		<a href="<c:url value='/hospital/test'/>"><button>검사요청 목록</button></a>
+		<a href="<c:url value='/hospital/operationList'/>"><button>수술 목록</button></a>
 		
 	</c:if>
 	
