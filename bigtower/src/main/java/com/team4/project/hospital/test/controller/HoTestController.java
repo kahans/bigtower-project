@@ -34,6 +34,7 @@ public class HoTestController {
 		model.addAttribute("bloodList", bloodList);
 		return "/hospital/views/tests/bloodTestList";
 	}
+	//혈액검사등록 뷰 get
 	@RequestMapping(value="/hospital/test/bloodTestAdd", method=RequestMethod.GET)
 	public String bloodTestAdd(Model model,
 				@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
@@ -42,7 +43,17 @@ public class HoTestController {
 		model.addAttribute("bloodView",bloodView);
 		return "/hospital/views/tests/bloodTestAdd";
 	}
-	
+	//혈액검사등록 뷰 post
+	@RequestMapping(value="/hospital/test/bloodTestAdd", method=RequestMethod.POST)
+	public String bloodTestAdd(HoBloodTestSub bloodView, HttpServletRequest request){
+		
+		String path=request.getServletContext().getRealPath("d://");//상대주소
+		// 배포시사용할경로
+		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
+		bloodView.setHoBloodTestImagePath(path);
+		hoTS.bloodTestAdd(bloodView);
+		return "redirect:/hospital/test/bloodTestList";
+	}
 	
 	//영상검사 목록
 	@RequestMapping(value="/hospital/test/mediaTestList", method=RequestMethod.GET)

@@ -2,14 +2,30 @@ package com.team4.project.hospital.vaccineCheckup.domain;
 
 public class HoCheckup {
 
-	private String hoCheckUpCode;
-	private String hoTreatmentCode;
-	private String hoCheckUpResultPath;
-	private String hoCheckUpResultName;
-	private String hoCheckUpDate;
-	private String hoCheckUpRegistrationDate;
-	private int hoGoSendstate;
+	protected String hoCheckUpCode;
+	protected String hoTreatmentCode;
+	protected String hoCheckUpResultPath;
+	protected String hoCheckUpResultName;
+	protected String hoCheckUpDate;
+	protected String hoCheckUpRegistrationDate;
+	protected int hoTestStateCode;	
+	protected int hoGoSendstate;
+	protected String hoTestRequestCode;		//검사요청 코드
+
 	
+	
+	public String getHoTestRequestCode() {
+		return hoTestRequestCode;
+	}
+	public void setHoTestRequestCode(String hoTestRequestCode) {
+		this.hoTestRequestCode = hoTestRequestCode;
+	}
+	public int getHoTestStateCode() {
+		return hoTestStateCode;
+	}
+	public void setHoTestStateCode(int hoTestStateCode) {
+		this.hoTestStateCode = hoTestStateCode;
+	}
 	public String getHoCheckUpCode() {
 		return hoCheckUpCode;
 	}

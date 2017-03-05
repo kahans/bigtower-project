@@ -38,4 +38,8 @@ public class HoTestDao {
 		
 		return sqlSession.selectOne("hoTest.bloodView", hoTestRequestCode);
 	}
+	public int hoBloodTestAdd(HoBloodTestSub bloodView) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("hoTest.bloodAdd", bloodView);
+	}
 }

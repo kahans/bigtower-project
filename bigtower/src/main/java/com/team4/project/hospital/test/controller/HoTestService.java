@@ -79,9 +79,46 @@ public class HoTestService {
 		
 		return hoTD.bloodTestList(hoTestRequest);
 	}
+	//혈액 검사 글 보기
 	public HoBloodTestSub bloodTestView(String hoTestRequestCode) {
 		
 		return hoTD.bloodTestView(hoTestRequestCode);
 		
+	}
+	//혈액검사 등록
+	public int bloodTestAdd(HoBloodTestSub bloodView) {
+		// TODO Auto-generated method stub
+		String path=bloodView.getHoBloodTestImagePath();
+		File file = null;
+		String extention = "";
+		MultipartFile multipartFile = bloodView.getUploadFile();
+		try{
+			
+				UUID uuid = UUID.randomUUID();
+				String fileName = uuid.toString().replace("-", "");
+				int index = multipartFile.getOriginalFilename().lastIndexOf(".");
+				extention = multipartFile.getOriginalFilename().substring(index+1);
+				fileName=fileName+"."+extention;
+				file = new File(path+"/"+fileName);
+				
+				multipartFile.transferTo(file);
+				
+			
+				bloodView.setHoBloodTestImageName(fileName);
+				bloodView.setHoBloodTestImagePath(path);
+				System.out.println("서비스try후 : "+bloodView.toString());
+				
+				hoTD.hoBloodTestAdd(bloodView);
+				
+			}catch(IllegalStateException e){
+				System.out.println("IllegalStateException 예외발생");
+				file.delete();
+				e.printStackTrace();
+			}catch (IOException e) {
+				System.out.println("IOException 예외발생");
+				file.delete();
+				e.printStackTrace();
+			}		
+		return 0;
 	}
 }

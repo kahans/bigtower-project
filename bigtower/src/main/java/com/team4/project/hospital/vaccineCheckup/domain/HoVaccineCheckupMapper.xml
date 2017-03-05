@@ -2,6 +2,58 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="XXX.XXX.XXX">
- 
+<mapper namespace="VC">
+	<!-- 건강검치 목록 -->
+	<select id="checkupList" resultType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub" parameterType="String">
+		select
+			ho_test_request.HO_TEST_REQUEST_CODE,
+			ho_treatment.HO_TREATMENT_CODE,
+			ho_patient.HO_PATIENT_NAME
+		from ho_checkup
+		join ho_treatment
+			on ho_treatment.HO_TERATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		join ho_patient
+			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
+		WHERE ho_test_request.HO_TEST_CODE=#{hoTestCode)
+	</select>
+	<!-- 건강검진 뷰 -->
+	<select id="checkupView" resultType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub" parameterType="String">
+		select
+			HO_TEST_REQUEST_CODE,
+			ho_treatment.HO_TREATMENT_CODE,
+			ho_patient.HO_PATIENT_NAME,
+			ho_test.HO_TEST_CODE,
+			ho_test.HO_TEST_NAME
+		from ho_checkup
+		join ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		JOIN ho_patient
+			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
+		JOIN ho_test
+			ON ho_test.HO_TEST_CODE = ho_test_request.HO_TEST_CODE
+		WHERE ho_test_request.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
+	</select>
+	<!-- 건강검진 결과 등록 -->
+	<insert id="checkAdd" parameterType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub">
+		insert into ho_checkup(
+			HO_CHECKUP_CODE,
+			HO_TEST_REQUEST_CODE,
+			HO_TREATMENT_CODE,
+			HO_TEST_STATE_CODE,
+			HO_CHECKUP_RESULT_PATH,
+			HO_CHECKUP_RESULT_NAME,
+			HO_CHECKUP_DATE,
+			HO_CHECKUP_REGISTRATION_DATE)
+		select
+			CONCAT('checkup_',
+			max(cast(substring(HO_CHECKUP_CODE,9,5) as UNSIGNED ))+1),
+			#{hoTestRequestCode},
+			#{hoTreatmentCode},
+			#{hoTestStateCode},
+			#{hoCheckUpResultPath},
+			#{hoCheckUpResultName},
+			now(),
+			now()
+		FROM ho_checkup		
+	</insert>
 </mapper>

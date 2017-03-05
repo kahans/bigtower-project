@@ -9,7 +9,7 @@
 			ho_test_request.HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
 			ho_patient.HO_PATIENT_NAME
-			from ho_test_request
+		from ho_test_request
 		join ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
 		JOIN ho_patient
@@ -56,6 +56,7 @@
 			now()
 		FROM ho_media_test
  	</insert>
+ 	<!-- 혈액등록창에 보여줄 SQL -->
  	<select id="bloodView" resultType="com.team4.project.hospital.test.domain.HoBloodTestSub" parameterType="String">
  		select
 			HO_TEST_REQUEST_CODE,
@@ -72,4 +73,31 @@
 			ON ho_test.HO_TEST_CODE = ho_test_request.HO_TEST_CODE
 		WHERE ho_test_request.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
  	</select>
+ 	<!-- 혈액 등록 -->
+ 	<insert id="bloodAdd" parameterType="com.team4.project.hospital.test.domain.HoBloodTestSub">
+ 		insert into ho_blood_test(
+ 			HO_BLOOD_TEST_CODE,
+			HO_TEST_REQUEST_CODE,
+			HO_TREATMENT_CODE,
+			HO_TEST_STATE_CODE,
+			HO_BLOOD_TEST_PLATELET,
+			HO_BLOOD_TEST_SUGAR,
+			HO_BLOOD_TEST_IMAGE_PATH,
+			HO_BLOOD_TEST_IMAGE_NAME,
+			HO_BLOOD_TEST_DATE,
+			HO_BLOOD_TEST_REGISTRATION_DATE)
+		select
+			CONCAT('bloodInspection_',
+			max(cast(substring(HO_BLOOD_TEST_CODE,17,5) as UNSIGNED ))+1),
+			#{hoTestRequestCode},
+			#{hoTreatmentCode},
+			#{hoTestStateCode},
+			#{hoBloodTestPlatelet},
+			#{hoBloodTestSugar},
+			#{hoBloodTestImagePath},
+			#{hoBloodTestImageName},
+			now(),
+			now()
+		FROM ho_blood_test
+ 	</insert>
 </mapper>
