@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>login.jsp</h1>
-	<h2>병원 로그인화면2</h2>
+	<h2>병원 로그인화면</h2>
 	
 	<form action="<c:url value="/hospital/login"/>" method="post">
 		<div>

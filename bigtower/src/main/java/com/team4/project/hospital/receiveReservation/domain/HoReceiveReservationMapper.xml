@@ -24,7 +24,7 @@
 			HO_STAFF_ID,
 			HO_PATIENT_CODE)
 		SELECT
-			if(HO_RECEIVE_CODE is null,
+			if(not exists (select * from ho_receive) ,
  				'receive_1',
 				CONCAT('receive_',max(cast(substring(ho_receive.HO_RECEIVE_CODE,9,5) as UNSIGNED ))+1),
 			#{hoHospitalCode},

@@ -16,6 +16,7 @@
 			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
 		where ho_test_request.HO_TEST_CODE=#{hoTestCode}
  	</select>
+ 	
  	<!-- 영상 등록필요한  -->
  	<select id="addMediaTestView" resultType="com.team4.project.hospital.test.domain.HoMediaTestSub" parameterType="String">
  		select
@@ -33,6 +34,7 @@
 			ON ho_test.HO_TEST_CODE = ho_test_request.HO_TEST_CODE
 		WHERE ho_test_request.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
  	</select>
+ 	
  	<!-- 영상 결과 등록 -->
  	<insert id="addMediaTest" parameterType="com.team4.project.hospital.test.domain.HoMediaTestSub">
  		insert into ho_media_test(
@@ -45,9 +47,10 @@
 			HO_MEDIA_TEST_DATE,
 			HO_MEDIA_TEST_REGISTRATION_DATE)
 		select
-			if(HO_MEDIA_TEST_CODE is null, videoInspection_1, 
+			if(not exists (select * from ho_media_test) ,
+ 				'videoInspection_1',
 				CONCAT('videoInspection_',
-				max(cast(substring(HO_MEDIA_TEST_CODE,17,5) as UNSIGNED ))+1)),
+						max(cast(substring(HO_MEDIA_TEST_CODE,17,5) as UNSIGNED ))+1),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
 			#{hoTestStateCode},
@@ -57,6 +60,7 @@
 			now()
 		FROM ho_media_test
  	</insert>
+ 	
  	<!-- 혈액등록창에 보여줄 SQL -->
  	<select id="viewBlood" resultType="com.team4.project.hospital.test.domain.HoBloodTestSub" parameterType="String">
  		select
@@ -74,6 +78,7 @@
 			ON ho_test.HO_TEST_CODE = ho_test_request.HO_TEST_CODE
 		WHERE ho_test_request.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
  	</select>
+ 	
  	<!-- 혈액 등록 -->
  	<insert id="addBlood" parameterType="com.team4.project.hospital.test.domain.HoBloodTestSub">
  		insert into ho_blood_test(
@@ -88,9 +93,10 @@
 			HO_BLOOD_TEST_DATE,
 			HO_BLOOD_TEST_REGISTRATION_DATE)
 		select
-			if(HO_BLOOD_TEST_CODE is null, bloodInspection_1,
+			if(not exists (select * from ho_blood_test) ,
+ 				'bloodInspection_1',
 				CONCAT('bloodInspection_',
-				max(cast(substring(HO_BLOOD_TEST_CODE,17,5) as UNSIGNED ))+1)),
+						max(cast(substring(HO_BLOOD_TEST_CODE,17,5) as UNSIGNED ))+1),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
 			#{hoTestStateCode},
@@ -102,4 +108,5 @@
 			now()
 		FROM ho_blood_test
  	</insert>
+ 	
 </mapper>

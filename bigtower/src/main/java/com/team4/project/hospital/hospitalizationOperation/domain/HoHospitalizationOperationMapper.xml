@@ -12,7 +12,7 @@
  			HO_HOSPITALIZATION_CODE,
  			HO_HOSPITALIZATION_REQUEST_DATE)
  		SELECT
- 			if(HO_HOSPITALIZATION_REQUEST_CODE is null, hospitalization_request_,
+ 			if(not exists (select * from ho_hospitalization_request) ,'hospitalization_request_1',
  			CONCAT('hospitalization_request_',
  					max(cast(substring(HO_HOSPITALIZATION_REQUEST_CODE,25,5) as UNSIGNED ))+1)),
  			#{hoTreatmentCode},
@@ -31,8 +31,9 @@
  			HO_OPERATION_START_DATE,
  			HO_GO_SENDSTATE)
  		SELECT
+ 			if(not exists (select * from ho_operation) ,'operation_1',
  			CONCAT('operation_',
- 					max(cast(substring(HO_OPERATION_CODE,11,5) as UNSIGNED ))+1),
+ 					max(cast(substring(HO_OPERATION_CODE,11,5) as UNSIGNED ))+1)),
  			#{hoTreatmentCode},
  			#{hoOperationTypeCode},
  			#{hoOperationStartDate},
