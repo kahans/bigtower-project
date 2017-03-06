@@ -169,6 +169,8 @@
 				<value>classpath:com/team4/project/hospital/treatChart/domain/HoTreatChartMapper.xml</value>
 				<!-- 예방접종 & 건강검진 -->
 				<value>classpath:com/team4/project/hospital/vaccineCheckup/domain/HoVaccineCheckupMapper.xml</value>
+				<!-- 정부전송여부 확인하여 리스트 가져오는 매퍼 -->
+				<value>classpath:com/team4/project/hospital/transport/domain/TransportMapper.xml</value>
 
 			</list>
 		</property>

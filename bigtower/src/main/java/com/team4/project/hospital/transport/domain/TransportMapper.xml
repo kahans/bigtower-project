@@ -1,10 +1,28 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="xxx.xxx.xxx">
-  
-  
-  
-  
-  
-  </mapper>
+<mapper namespace="hoTransport">
+	<!-- 혈액검사결과 조회 -->
+	<select id="selectListHoBloodTest" resultType="com.team4.project.hospital.test.domain.HoBloodTest">
+		SELECT *
+		FROM ho_blood_test
+		WHERE ho_blood_test.HO_GO_SENDSTATE = 0
+	</select>
+
+	<!-- 차트 조회 -->
+	<select id="selectListHoChart" resultType="com.team4.project.hospital.treatChart.domain.HoChart">
+		SELECT *
+		FROM ho_chart
+		WHERE ho_chart.HO_GO_SENDSTATE = 0
+	</select>
+
+	<!-- 건강검진 조회 -->
+	<select id="selectListHoCheckup" resultType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckup">
+  		SELECT * 
+		FROM ho_checkup
+		WHERE ho_checkup.HO_GO_SENDSTATE = 0
+	</select>
+
+
+
+</mapper>

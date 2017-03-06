@@ -10,7 +10,7 @@ public class HoBloodTest {
 	protected String hoBloodTestImagePath;	//이미지 경로
 	protected String hoBloodTestImageName;	//이미지 이름
 	protected String hoBloodTestDate;		//검사일
-	protected String hoBloodTestRegistationDate;//결과등록일
+	protected String hoBloodTestRegistrationDate;//결과등록일
 	protected String hoGoSendState;			//정부 등록상태
 	
 	
@@ -69,10 +69,10 @@ public class HoBloodTest {
 		this.hoBloodTestDate = hoBloodTestDate;
 	}
 	public String getHoBloodTestRegistationDate() {
-		return hoBloodTestRegistationDate;
+		return hoBloodTestRegistrationDate;
 	}
 	public void setHoBloodTestRegistationDate(String hoBloodTestRegistationDate) {
-		this.hoBloodTestRegistationDate = hoBloodTestRegistationDate;
+		this.hoBloodTestRegistrationDate = hoBloodTestRegistationDate;
 	}
 	public String getHoGoSendState() {
 		return hoGoSendState;
@@ -86,7 +86,7 @@ public class HoBloodTest {
 				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestStateCode=" + hoTestStateCode
 				+ ", hoBloodTestPlatelet=" + hoBloodTestPlatelet + ", hoBloodTestSugar=" + hoBloodTestSugar
 				+ ", hoBloodTestImagePath=" + hoBloodTestImagePath + ", hoBloodTestImageName=" + hoBloodTestImageName
-				+ ", hoBloodTestDate=" + hoBloodTestDate + ", hoBloodTestRegistationDate=" + hoBloodTestRegistationDate
+				+ ", hoBloodTestDate=" + hoBloodTestDate + ", hoBloodTestRegistationDate=" + hoBloodTestRegistrationDate
 				+ ", hoGoSendState=" + hoGoSendState + "]";
 	}
 	

@@ -4,13 +4,13 @@ public class HoCheckup {
 
 	protected String hoCheckUpCode;
 	protected String hoTreatmentCode;
-	protected String hoCheckUpResultPath;
+	protected String hoTestRequestCode;		//검사요청 코드
 	protected String hoCheckUpResultName;
+	protected String hoCheckUpResultPath;
 	protected String hoCheckUpDate;
 	protected String hoCheckUpRegistrationDate;
-	protected int hoTestStateCode;	
 	protected int hoGoSendstate;
-	protected String hoTestRequestCode;		//검사요청 코드
+	protected int hoTestStateCode;	
 	protected String hoTestCode;
 
 	
@@ -75,4 +75,13 @@ public class HoCheckup {
 	public void setHoGoSendstate(int hoGoSendstate) {
 		this.hoGoSendstate = hoGoSendstate;
 	}
+	@Override
+	public String toString() {
+		return "HoCheckup [hoCheckUpCode=" + hoCheckUpCode + ", hoTreatmentCode=" + hoTreatmentCode
+				+ ", hoCheckUpResultPath=" + hoCheckUpResultPath + ", hoCheckUpResultName=" + hoCheckUpResultName
+				+ ", hoCheckUpDate=" + hoCheckUpDate + ", hoCheckUpRegistrationDate=" + hoCheckUpRegistrationDate
+				+ ", hoTestStateCode=" + hoTestStateCode + ", hoGoSendstate=" + hoGoSendstate + ", hoTestRequestCode="
+				+ hoTestRequestCode + ", hoTestCode=" + hoTestCode + "]";
+	}
+	
 }
