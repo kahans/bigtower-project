@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,13 +16,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.ServletContextAware;
 
 import com.google.gson.Gson;
 import com.team4.project.HomeController;
 import com.team4.project.government.dto.GoCitizen;
 import com.team4.project.government.dto.GoHospital;
 import com.team4.project.government.dto.GoMedicine;
-
+import com.team4.project.util.ContextParam;
 import com.team4.project.util.HttpUrlCon;
 
 @Controller
@@ -29,6 +31,14 @@ public class GovernmentController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
 	private GovernmentService goService;
+	
+	//Context param test
+	@RequestMapping(value="/government/test", method=RequestMethod.GET)
+	public String test1(){
+		String test = ContextParam.context.getInitParameter("test");
+		System.out.println("test:"+test);
+		return "home";
+	}
 	
 	//httpUrlConnection Test
 	@RequestMapping(value="/government/getData", method=RequestMethod.POST)
@@ -213,4 +223,6 @@ public class GovernmentController {
 		}
 		return "";
 	}
+
+
 }
