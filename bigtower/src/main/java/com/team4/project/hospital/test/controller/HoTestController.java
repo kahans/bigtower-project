@@ -47,7 +47,9 @@ public class HoTestController {
 	public String bloodTestAdd(Model model,
 				@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
 			){
+		//글 보기와 혈액검사 테이블에 insert 하기
 		HoBloodTestSub bloodView= hoTS.bloodTestView(hoTestRequestCode);
+		hoTS.addBlood(bloodView);
 		model.addAttribute("bloodView",bloodView);
 		return "/hospital/views/tests/addBloodTest";
 	}

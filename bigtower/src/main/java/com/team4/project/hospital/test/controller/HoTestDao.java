@@ -21,7 +21,11 @@ public class HoTestDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("hoTest.listHoTest", hmt);
 	}
-	
+
+	public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
+		System.out.println(hoTestRequest);
+		return sqlSession.selectList("hoTest.listHoTest", hoTestRequest);
+	}
 	//영상글 뷰
 	public HoMediaTestSub mediaTestView(String hoTestRequestCode) {
 		System.out.println("DAO "+hoTestRequestCode);
@@ -34,10 +38,6 @@ public class HoTestDao {
 		return sqlSession.insert("hoTest.addMediaTest", mediaView);
 	}
 	
-	public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
-		System.out.println(hoTestRequest);
-		return sqlSession.selectList("hoTest.listHoTest", hoTestRequest);
-	}
 	
 	public HoBloodTestSub bloodTestView(String hoTestRequestCode) {
 		
@@ -54,5 +54,10 @@ public class HoTestDao {
 		// TODO Auto-generated method stub
 		System.out.println("검사요청등록DAO");
 		return sqlSession.insert("hoTest.addTestRequest", map);
+	}
+
+	public int addBlood(HoBloodTestSub bloodView) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("hoTest.addBlood", bloodView);
 	}
 }

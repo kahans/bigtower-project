@@ -23,12 +23,25 @@ public class HoTestService {
 		// TODO Auto-generated method stub
 		return hoTD.mediaList(hmt);
 	}
+	//혈액 검사 목록
+		public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
+			
+			return hoTD.bloodTestList(hoTestRequest);
+		}
+	
 	//영상글 뷰
 	public HoMediaTestSub mediaTestView(String hoTestRequestCode) {
 		// TODO Auto-generated method stub
 		System.out.println("서비스 "+hoTestRequestCode);
 		return hoTD.mediaTestView(hoTestRequestCode);
+	}	
+	//혈액 검사 글 보기
+	public HoBloodTestSub bloodTestView(String hoTestRequestCode) {
+		
+		return hoTD.bloodTestView(hoTestRequestCode);
+		
 	}
+	
 	//파일 경로 하기 
 	public int mediaTestAdd(HoMediaTestSub mediaView) {
 		System.out.println("서비스try전 : "+mediaView.toString());
@@ -74,17 +87,8 @@ public class HoTestService {
 		System.out.println(mediaView.getHoMediaTestImagePath());
 		return 0;
 	}
-	//
-	public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
-		
-		return hoTD.bloodTestList(hoTestRequest);
-	}
-	//혈액 검사 글 보기
-	public HoBloodTestSub bloodTestView(String hoTestRequestCode) {
-		
-		return hoTD.bloodTestView(hoTestRequestCode);
-		
-	}
+	
+	
 	//혈액검사 등록
 	public int bloodTestAdd(HoBloodTestSub bloodView) {
 		// TODO Auto-generated method stub
@@ -122,6 +126,12 @@ public class HoTestService {
 				e.printStackTrace();
 			}		
 		return 0;
+	}
+	//필수 정보만 글에 혈액검사테이블에 등록
+	public int addBlood(HoBloodTestSub bloodView) {
+		// TODO Auto-generated method stub
+		
+		return hoTD.addBlood(bloodView);
 	}
 	
 	
