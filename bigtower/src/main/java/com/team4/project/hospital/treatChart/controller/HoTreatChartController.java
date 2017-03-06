@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.team4.project.hospital.dto.HoDisease;
 import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.dto.HoTest;
+import com.team4.project.hospital.dto.HoVaccineType;
 import com.team4.project.hospital.treatChart.domain.HoChart;
 import com.team4.project.hospital.treatChart.domain.HoTreat;
 import com.team4.project.hospital.treatChart.domain.HoTreatSub;
@@ -53,6 +54,7 @@ public class HoTreatChartController {
 		List<HoTest> testList = hoTCS.selectTest();
 		List<HoDisease> diseaseList = hoTCS.selectDisease();
 		List<HoOperationType> operationList = hoTCS.selectOperation();
+		List<HoVaccineType> vaccineList = hoTCS.selectVaccine();
 		
 		HoTreat hoTreat = hoTCS.treatView(hoTreatmentCode);
 		System.out.println("hoTreat의 진료코드 : " + hoTreat.getHoTreatmentCode());
@@ -60,6 +62,7 @@ public class HoTreatChartController {
 		model.addAttribute("testList", testList);
 		model.addAttribute("diseaseList", diseaseList);
 		model.addAttribute("operationList", operationList);
+		model.addAttribute("vaccineList", vaccineList);
 		return "/hospital/views/treatView";
 	}
 	

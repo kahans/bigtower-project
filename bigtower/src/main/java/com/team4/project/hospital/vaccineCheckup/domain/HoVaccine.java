@@ -7,6 +7,7 @@ public class HoVaccine {
 	protected String hoVaccineTypeCode;
 	protected String hoVaccineDate;
 	protected int hoGoSendState;
+	
 	public String getHoVaccineCode() {
 		return hoVaccineCode;
 	}

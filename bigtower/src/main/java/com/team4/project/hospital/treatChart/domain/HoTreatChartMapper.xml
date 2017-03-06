@@ -95,6 +95,15 @@
 		FROM ho_operation_type
  	</select>
  	
+ 	<!-- 백신타입 이름 가져오기 -->
+ 	<select id="selectVaccine" resultType="com.team4.project.hospital.dto.HoVaccineType">
+ 		SELECT
+ 			HO_VACCINE_TYPE_CODE,
+ 			HO_VACCINE_TYPE_NAME
+ 		FROM ho_vaccine_type
+ 	</select>
+ 	
+ 	
  	<!-- 접수완료 클릭시 진료 데이터 생성 -->
  	<insert id="addTreat" parameterType="com.team4.project.hospital.treatChart.domain.HoTreat">
  		INSERT INTO ho_treatment(

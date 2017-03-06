@@ -21,7 +21,7 @@
 		</div>
 		<div>
 			수술시작일 : 
-			<input type="date" value="${hoOperation.hoOperationStartDate}">			
+			<input type="text" value="${hoOperation.hoOperationStartDate}">			
 		</div>
 		<div>
 			수술종료일 :

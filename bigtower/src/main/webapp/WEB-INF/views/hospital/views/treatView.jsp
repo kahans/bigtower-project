@@ -106,12 +106,32 @@
 				</c:forEach>
 			</select>
 		</div>
-		<input type="submit" value="수술 등록">
+		<input type="submit" value="요청 등록">
 	</form>
 	
 	<!-- 처방 요청 -->
-	<h3>처방 요청</h3>
-	<a href="<c:url value='/hospital/addPrescription?hoTreatmentCode=${hoTreat.hoTreatmentCode}'/>"><button>처방</button></a>
+	<h3>처방전 작성</h3>
+	<a href="<c:url value='/hospital/addPrescription?hoTreatmentCode=${hoTreat.hoTreatmentCode}'/>"><button>처방전 작성</button></a>
+	
+	<!-- 예방접종 등록 -->
+	<h3>예방접종 등록</h3>
+	<form action="<c:url value='/hospital/addVaccine'/>" method="post">
+		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
+		<div>
+			예방접종 종류 : 
+			<select name="hoVaccineTypeCode">
+				<option>:::예방 접종 종류를 선택하시오:::</option>
+				<c:forEach items="${vaccineList}" var="vaccineList">
+						<option value="${vaccineList.hoVaccineTypeCode}">${vaccineList.hoVaccineTypeName}</option>
+				</c:forEach>
+			</select>
+		</div>
+		<div>
+			예방접종일 : 
+			<input type="date" name="hoVaccineDate">
+		</div>
+		<input type="submit" value="예방접종 등록">
+	</form>
 	
 	<script>
 		//추가버튼 클릭시 이벤트

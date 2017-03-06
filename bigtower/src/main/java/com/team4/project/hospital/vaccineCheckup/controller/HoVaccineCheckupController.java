@@ -13,13 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckup;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub;
+import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
 
 @Controller
 public class HoVaccineCheckupController {
 
 	@Autowired
 	private HoVaccineCheckupService hoVCS;
-	//거강검진 리스트
+	
+	//건강검진 리스트
 	@RequestMapping(value="/hospital/test/checkupList", method=RequestMethod.GET)
 	public String checkupList(HoCheckup hoCheckup, Model model){
 		hoCheckup.setHoTestCode("3");
@@ -29,6 +31,7 @@ public class HoVaccineCheckupController {
 		model.addAttribute("checkupList", checkupList);
 		return "/hospital/views/tests/checkupList";
 	}
+	
 	//건강검진 등록 뷰 get
 	@RequestMapping(value="/hospital/test/checkupAdd", method=RequestMethod.GET)
 	public String checkupAdd(Model model,
@@ -38,6 +41,7 @@ public class HoVaccineCheckupController {
 		model.addAttribute("checkView", checkView);
 		return "/hospital/views/tests/checkupAdd";
 	}
+	
 	//건강검진 등록 뷰 post
 	@RequestMapping(value="/hospital/test/checkupAdd", method=RequestMethod.POST)
 	public String checkAdd(HttpServletRequest request, HoCheckupSub checkAdd){
@@ -48,10 +52,12 @@ public class HoVaccineCheckupController {
 		hoVCS.checkAdd(checkAdd);
 		return "redirect:/hospital/test/checkupList";
 	}
-	//예방잡종 리스트
-	@RequestMapping(value="/hospital/vaccineList", method=RequestMethod.GET)
-	public String vaccineList(Model model){
-		
-		return "";
+	
+	//예방접종 등록
+	@RequestMapping(value="/hospital/addVaccine")
+	public String addVaccine(HoVaccine hoVaccine){
+		int result = hoVCS.addVaccine(hoVaccine);
+		System.out.println("예방접종 등록 결과는 ? "+result);
+		return "redirect:/hospital/treatList";
 	}
 }

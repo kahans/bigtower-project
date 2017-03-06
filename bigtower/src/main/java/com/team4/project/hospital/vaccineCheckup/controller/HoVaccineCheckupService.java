@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckup;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub;
+import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
 
 @Service
 public class HoVaccineCheckupService {
@@ -19,16 +20,16 @@ public class HoVaccineCheckupService {
 	private HoVaccineCheckupDao hoVCD;
 
 	//건강검진 목록
-	public List<HoCheckup> checkupList(HoCheckup hoCheckup) {
-		// TODO Auto-generated method stub
+	public List<HoCheckup> checkupList(HoCheckup hoCheckup) {		
 		return hoVCD.checkupList(hoCheckup);
 	}
 
-	public HoCheckupSub checkView(String hoTestRequestCode) {
-		// TODO Auto-generated method stub
+	//건강검진 상세보기
+	public HoCheckupSub checkView(String hoTestRequestCode) {		
 		return hoVCD.checkView(hoTestRequestCode);
 	}
 
+	//건강검진 등록
 	public int checkAdd(HoCheckupSub checkAdd) {
 		
 		String path=checkAdd.getHoCheckUpResultPath();
@@ -65,6 +66,11 @@ public class HoVaccineCheckupService {
 				e.printStackTrace();
 			}		
 		return 0;		
+	}
+	
+	//예방접종 등록
+	public int addVaccine(HoVaccine hoVaccine) {
+		return hoVCD.addVaccine(hoVaccine);		
 	}
 	
 }

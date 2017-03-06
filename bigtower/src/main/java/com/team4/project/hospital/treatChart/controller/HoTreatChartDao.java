@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.team4.project.hospital.dto.HoDisease;
 import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.dto.HoTest;
+import com.team4.project.hospital.dto.HoVaccineType;
 import com.team4.project.hospital.treatChart.domain.HoChart;
 import com.team4.project.hospital.treatChart.domain.HoTreat;
 import com.team4.project.hospital.treatChart.domain.HoTreatSub;
@@ -48,6 +49,11 @@ public class HoTreatChartDao {
 	//질병 이름 가져오기
 	public List<HoDisease> selectDisease() {
 		return sqlSession.selectList("hoTreatChart.selectDisease");
+	}
+	
+	//백신타입 이름 가져오기
+	public List<HoVaccineType> selectVaccine() {
+		return sqlSession.selectList("hoTreatChart.selectVaccine");
 	}
 	
 	//환자코드에 맞는 차트코드 가져오기
