@@ -18,28 +18,33 @@ public class HoTestDao {
 //검사요청 목록
 	public List<HoTestRequestSub> mediaList(HoTestRequestSub hmt) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("hoTest.HoTestList", hmt);
+		return sqlSession.selectList("hoTest.listHoTest", hmt);
 	}
+	
 	//영상글 뷰
 	public HoMediaTestSub mediaTestView(String hoTestRequestCode) {
 		System.out.println("DAO "+hoTestRequestCode);
-		return sqlSession.selectOne("hoTest.mediaTestAddView", hoTestRequestCode);
+		return sqlSession.selectOne("hoTest.addMediaTestView", hoTestRequestCode);
 	}
+	
 	//영상검사 등록 
 	public int hoMediaTestAdd(HoMediaTestSub mediaView) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("hoTest.mediaTestAdd", mediaView);
+		return sqlSession.insert("hoTest.addMediaTest", mediaView);
 	}
+	
 	public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
 		System.out.println(hoTestRequest);
-		return sqlSession.selectList("hoTest.HoTestList", hoTestRequest);
+		return sqlSession.selectList("hoTest.listHoTest", hoTestRequest);
 	}
+	
 	public HoBloodTestSub bloodTestView(String hoTestRequestCode) {
 		
-		return sqlSession.selectOne("hoTest.bloodView", hoTestRequestCode);
+		return sqlSession.selectOne("hoTest.viewBlood", hoTestRequestCode);
 	}
+	
 	public int hoBloodTestAdd(HoBloodTestSub bloodView) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("hoTest.bloodAdd", bloodView);
+		return sqlSession.insert("hoTest.addBlood", bloodView);
 	}
 }

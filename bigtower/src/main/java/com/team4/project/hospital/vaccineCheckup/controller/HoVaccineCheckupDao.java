@@ -28,7 +28,7 @@ public class HoVaccineCheckupDao {
 
 	//건강검진 등록
 	public int checkupAdd(HoCheckupSub checkAdd) {
-		return sqlSession.insert("VC.checkAdd", checkAdd);		
+		return sqlSession.insert("VC.addCheckup", checkAdd);		
 	}
 	
 	//예방접종 등록

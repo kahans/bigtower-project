@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>건강검진 결과등록</h1>
-	<form action="<c:url value='/hospital/test/checkupAdd'/>" method="post" enctype="multipart/form-data">
+	<form action="<c:url value='/hospital/test/addCheckup'/>" method="post" enctype="multipart/form-data">
 		<div>
 			검사명 : 
 			<input type="text" name="hoTestName" required="required" value="${checkView.hoTestName }">

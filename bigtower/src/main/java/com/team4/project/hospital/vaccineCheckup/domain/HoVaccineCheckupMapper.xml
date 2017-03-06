@@ -37,7 +37,7 @@
 	</select>
 	
 	<!-- 건강검진 결과 등록 -->
-	<insert id="checkAdd" parameterType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub">
+	<insert id="addCheckup" parameterType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub">
 		insert into ho_checkup(
 			HO_CHECKUP_CODE,
 			HO_TEST_REQUEST_CODE,

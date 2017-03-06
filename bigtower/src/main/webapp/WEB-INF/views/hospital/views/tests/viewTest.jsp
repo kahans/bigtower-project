@@ -9,8 +9,8 @@
 </head>
 <body>
 	<h1>검사 종류</h1>
-	<a href="<c:url value='/hospital/test/bloodTestList'/>">혈액 검사</a>
-	<a href="<c:url value='/hospital/test/mediaTestList'/>">영상 검사</a>
-	<a href="<c:url value='/hospital/test/checkupList'/>">건강 검사</a>
+	<a href="<c:url value='/hospital/test/ListBloodTest'/>">혈액 검사</a>
+	<a href="<c:url value='/hospital/test/listMediaTest'/>">영상 검사</a>
+	<a href="<c:url value='/hospital/test/listCheckup'/>">건강 검사</a>
 </body>
 </html>

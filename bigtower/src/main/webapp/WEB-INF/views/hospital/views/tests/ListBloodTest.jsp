@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>영상촬영 대기자 목록</h1>
+<h1>혈액 대기자 목록</h1>
 	<table border="">
 		<thead>
 			<tr>
@@ -18,13 +18,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="mediaList" items="${mediaList}">
+			<c:forEach var="bloodList" items="${bloodList}">
 				<tr>
 					<td>
-						<a href="<c:url value='/hospital/test/mediaTestAdd?hoTestRequestCode=${mediaList.hoTestRequestCode }'/>">
-						${mediaList.hoPatientName}</a></td>
-					<td>${mediaList.hoTestRequestCode }</td>
-					<td>${mediaList.hoTreatmentCode }</td>
+						<a href="<c:url value='/hospital/test/addBloodTest?hoTestRequestCode=${bloodList.hoTestRequestCode }'/>">
+						${bloodList.hoPatientName}</a></td>
+					<td>${bloodList.hoTestRequestCode }</td>
+					<td>${bloodList.hoTreatmentCode }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

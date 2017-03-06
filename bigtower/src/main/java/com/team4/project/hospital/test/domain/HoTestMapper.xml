@@ -4,7 +4,7 @@
  
 <mapper namespace="hoTest">
 <!-- 검사종류마다 목록  -->
- 	<select id="HoTestList" resultType="com.team4.project.hospital.test.domain.HoTestRequestSub" parameterType="String">
+ 	<select id="listHoTest" resultType="com.team4.project.hospital.test.domain.HoTestRequestSub" parameterType="String">
  		select
 			ho_test_request.HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
@@ -17,7 +17,7 @@
 		where ho_test_request.HO_TEST_CODE=#{hoTestCode}
  	</select>
  	<!-- 영상 등록필요한  -->
- 	<select id="mediaTestAddView" resultType="com.team4.project.hospital.test.domain.HoMediaTestSub" parameterType="String">
+ 	<select id="addMediaTestView" resultType="com.team4.project.hospital.test.domain.HoMediaTestSub" parameterType="String">
  		select
 			HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
@@ -34,7 +34,7 @@
 		WHERE ho_test_request.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
  	</select>
  	<!-- 영상 결과 등록 -->
- 	<insert id="mediaTestAdd" parameterType="com.team4.project.hospital.test.domain.HoMediaTestSub">
+ 	<insert id="addMediaTest" parameterType="com.team4.project.hospital.test.domain.HoMediaTestSub">
  		insert into ho_media_test(
  			HO_MEDIA_TEST_CODE,
 			HO_TEST_REQUEST_CODE,
@@ -57,7 +57,7 @@
 		FROM ho_media_test
  	</insert>
  	<!-- 혈액등록창에 보여줄 SQL -->
- 	<select id="bloodView" resultType="com.team4.project.hospital.test.domain.HoBloodTestSub" parameterType="String">
+ 	<select id="viewBlood" resultType="com.team4.project.hospital.test.domain.HoBloodTestSub" parameterType="String">
  		select
 			HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
@@ -74,7 +74,7 @@
 		WHERE ho_test_request.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
  	</select>
  	<!-- 혈액 등록 -->
- 	<insert id="bloodAdd" parameterType="com.team4.project.hospital.test.domain.HoBloodTestSub">
+ 	<insert id="addBlood" parameterType="com.team4.project.hospital.test.domain.HoBloodTestSub">
  		insert into ho_blood_test(
  			HO_BLOOD_TEST_CODE,
 			HO_TEST_REQUEST_CODE,
