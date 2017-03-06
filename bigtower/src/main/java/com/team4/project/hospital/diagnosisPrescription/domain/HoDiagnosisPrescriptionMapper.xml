@@ -43,7 +43,6 @@
  			HO_PRESCRIPTION_TOTALDAY,
  			HO_PRESCRIPTION_USAGE,
  			HO_PRESCRIPTION_WRITE,
- 			HO_PRESCRIPTION_STATE,
  			HO_GO_SENDSTATE)
  		SELECT
  			if(not exists (select * from ho_prescription) ,'prescription_1',
@@ -56,7 +55,6 @@
  			#{hoPrescriptionTotalday},
  			#{hoPrescriptionUsage},
  			now(),
- 			0,
  			0
  		FROM ho_prescription
  	</insert>

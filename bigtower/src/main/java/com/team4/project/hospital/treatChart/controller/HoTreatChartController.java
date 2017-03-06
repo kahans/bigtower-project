@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription;
 import com.team4.project.hospital.dto.HoDisease;
+import com.team4.project.hospital.dto.HoMedicine;
 import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.dto.HoVaccineType;
@@ -59,7 +60,10 @@ public class HoTreatChartController {
 		List<HoDisease> diseaseList = hoTCS.selectDisease();
 		List<HoOperationType> operationList = hoTCS.selectOperation();
 		List<HoVaccineType> vaccineList = hoTCS.selectVaccine();
-		
+		List<HoMedicine> medicineList = hoTCS.selectMedicine();
+		System.out.println("addPrescription 메서드의 hoTreatmentCode : "+hoTreatmentCode);
+		model.addAttribute("hoTreatmentCode", hoTreatmentCode);
+		model.addAttribute("medicineList",medicineList);
 		HoTreat hoTreat = hoTCS.treatView(hoTreatmentCode);
 		System.out.println("hoTreat의 진료코드 : " + hoTreat.getHoTreatmentCode());
 		model.addAttribute("hoTreat",hoTreat);
@@ -87,6 +91,7 @@ public class HoTreatChartController {
 		System.out.println("hoPrescription : "+hoPrescription);
 		System.out.println("hoVaccine : "+hoVaccine);
 		System.out.println("checkHospitalization : "+checkHospitalization);
+		System.out.println("medicineList"+medicineList);
 		System.out.println("diseaseList : "+diseaseList);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hoTreat", hoTreat);
@@ -95,8 +100,8 @@ public class HoTreatChartController {
 		map.put("hoOperation", hoOperation);
 		map.put("hoPrescription", hoPrescription);
 		map.put("hoVaccine", hoVaccine);
-		map.put("diseaseList", diseaseList);
 		map.put("medicineList", medicineList);
+		map.put("diseaseList", diseaseList);
 		int result = hoTCS.updateTreat(map);
 		System.out.println("updateTreat 결과는 ? "+result);
 		

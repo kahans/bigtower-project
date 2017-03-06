@@ -6,10 +6,12 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.team4.project.hospital.diagnosisPrescription.controller.HoDiagnosisPrescriptionDao;
 import com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription;
 import com.team4.project.hospital.dto.HoDisease;
+import com.team4.project.hospital.dto.HoMedicine;
 import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.dto.HoVaccineType;
@@ -22,6 +24,7 @@ import com.team4.project.hospital.treatChart.domain.HoTreatSub;
 import com.team4.project.hospital.vaccineCheckup.controller.HoVaccineCheckupDao;
 import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
 
+@Transactional
 @Service
 public class HoTreatChartService {
 
@@ -39,6 +42,9 @@ public class HoTreatChartService {
 	
 	@Autowired
 	private HoVaccineCheckupDao vaccineCheckupDao;
+
+	@Autowired
+	private HoDiagnosisPrescriptionDao hoDPD;
 		
 	//차트생성
 	public int addChart(HoChart hoChart){
@@ -58,6 +64,11 @@ public class HoTreatChartService {
 	//수술 이름 가져오기
 	public List<HoOperationType> selectOperation() {
 		return hoTCD.selectOperation();
+	}
+	
+	//약 목록 가져오기
+	public List<HoMedicine> selectMedicine(){
+		return hoDPD.selectMedicine();
 	}
 		
 	//검사 이름 가져오기
@@ -104,17 +115,33 @@ public class HoTreatChartService {
 			addTestReqeustMap.put("hoTreatmentCode", hoTreatmentCode);
 			addTestReqeustMap.put("hoTestCode", hoTestCode);
 			int result = testDao.addTestRequest(addTestReqeustMap);
-			System.out.println("검사요청 결과는 ? "+ result);
+			if(result == 1){
+				System.out.println("검사요청 등록성공");
+			}
 		}
-		//
+		// 입원요청이 있으면
 		if(!checkHospitalization.equals("0")){
-			//int result = hospitalizationOperationDao.addRequest(hoHospitalization);
-			//System.out.println("수술요청 결과는 ? "+ result);
-		}
+			int result = hospitalizationOperationDao.addRequest(hoTreatmentCode);
+			if(result == 1){
+				System.out.println("입원요청 등록성공");
+			}		}
+		// 수술요청이 있으면
 		if(!hoOperation.getHoOperationTypeCode().equals("0")){
-			System.out.println("수술요청있음");
 			int result = hospitalizationOperationDao.addOperation(hoOperation);
-			System.out.println("수술요청 결과는 ? "+ result);
+			if(result == 1){
+				System.out.println("수술요청 등록성공");
+			}
+		}
+		// 처방결과등록이 있으면
+		if(medicineList.size()>1){
+			int result = 0;
+			for(int i=0; i<medicineList.size()-1;i++){
+				hoPrescription.setHoMedicineCode(medicineList.get(i));
+				result += diagnosisPrescriptionDao.addPrescription(hoPrescription);
+			}
+			if(result > 0 ){
+				System.out.println("처방결과 "+ result +"회 등록성공");
+			}
 		}
 		return hoTCD.updateTreat(hoTreat);
 	}
