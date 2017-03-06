@@ -12,8 +12,9 @@
  			HO_HOSPITALIZATION_CODE,
  			HO_HOSPITALIZATION_REQUEST_DATE)
  		SELECT
+ 			if(HO_HOSPITALIZATION_REQUEST_CODE is null, hospitalization_request_,
  			CONCAT('hospitalization_request_',
- 					max(cast(substring(HO_HOSPITALIZATION_REQUEST_CODE,25,5) as UNSIGNED ))+1),
+ 					max(cast(substring(HO_HOSPITALIZATION_REQUEST_CODE,25,5) as UNSIGNED ))+1)),
  			#{hoTreatmentCode},
  			CONCAT('hospitalization_',
  					max(cast(substring(HO_HOSPITALIZATION_CODE,17,5) as UNSIGNED ))+1),

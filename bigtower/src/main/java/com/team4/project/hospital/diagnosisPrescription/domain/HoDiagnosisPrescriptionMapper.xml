@@ -13,8 +13,9 @@
  			HO_DIAGNOSIS_WRITE_DATE,
  			HO_GO_SENDSTATE)
  		SELECT
- 			CONCAT('diagnosis_',
- 					max(cast(substring(HO_DIAGNOSIS_CODE,11,5) as UNSIGNED ))+1),
+ 			if(HO_DIAGNOSIS_CODE is null, diagnosis_1,
+	 			CONCAT('diagnosis_',
+	 					max(cast(substring(HO_DIAGNOSIS_CODE,11,5) as UNSIGNED ))+1)),
  			#{hoTreatmentCode},
  			#{hoDiseaseCode},
  			now(),
@@ -45,8 +46,9 @@
  			HO_PRESCRIPTION_STATE,
  			HO_GO_SENDSTATE)
  		SELECT
+ 			if(HO_PRESCRIPTION_CODE is null, prescription_1,
  			CONCAT('prescription_',
- 					max(cast(substring(HO_PRESCRIPTION_CODE,14,5) as UNSIGNED ))+1),
+ 					max(cast(substring(HO_PRESCRIPTION_CODE,14,5) as UNSIGNED ))+1)),
  			#{hoTreatmentCode},
  			#{hoMedicineCode},
  			#{hoPrescriptionDailydose},
