@@ -133,7 +133,7 @@ public class HoTreatChartService {
 			}
 		}
 		// 처방결과등록이 있으면
-		if(medicineList.size()>1){
+		if(!medicineList.get(0).equals("0")){
 			int result = 0;
 			for(int i=0; i<medicineList.size()-1;i++){
 				hoPrescription.setHoMedicineCode(medicineList.get(i));
@@ -141,6 +141,13 @@ public class HoTreatChartService {
 			}
 			if(result > 0 ){
 				System.out.println("처방결과 "+ result +"회 등록성공");
+			}
+		}
+		// 예방접종 등록이 있으면
+		if(!hoVaccine.getHoVaccineTypeCode().equals("0")){
+			int result = vaccineCheckupDao.addVaccine(hoVaccine);
+			if(result == 1){
+				System.out.println("예방접종 등록성공");
 			}
 		}
 		return hoTCD.updateTreat(hoTreat);
