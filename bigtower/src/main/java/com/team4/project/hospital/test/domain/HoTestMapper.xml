@@ -4,7 +4,8 @@
  
 <mapper namespace="hoTest">
 <!-- 검사종류마다 목록  -->
- 	<select id="listHoTest" resultType="com.team4.project.hospital.test.domain.HoTestRequestSub" parameterType="String">
+ 	<select id="listHoTest" resultType="com.team4.project.hospital.test.domain.HoTestRequestSub"
+ 	 parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub">
  		select
 			ho_test_request.HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
@@ -15,6 +16,8 @@
 		JOIN ho_patient
 			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
 		where ho_test_request.HO_TEST_CODE=#{hoTestCode}
+		AND ho_treatment.HO_HOSPITAL_CODE=#{hoHospitalCode}
+
  	</select>
  	<!-- 영상 등록필요한  -->
  	<select id="addMediaTestView" resultType="com.team4.project.hospital.test.domain.HoMediaTestSub" parameterType="String">
