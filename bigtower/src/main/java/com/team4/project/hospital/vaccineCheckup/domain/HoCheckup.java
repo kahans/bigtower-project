@@ -78,10 +78,10 @@ public class HoCheckup {
 	@Override
 	public String toString() {
 		return "HoCheckup [hoCheckUpCode=" + hoCheckUpCode + ", hoTreatmentCode=" + hoTreatmentCode
-				+ ", hoCheckUpResultPath=" + hoCheckUpResultPath + ", hoCheckUpResultName=" + hoCheckUpResultName
-				+ ", hoCheckUpDate=" + hoCheckUpDate + ", hoCheckUpRegistrationDate=" + hoCheckUpRegistrationDate
-				+ ", hoTestStateCode=" + hoTestStateCode + ", hoGoSendstate=" + hoGoSendstate + ", hoTestRequestCode="
-				+ hoTestRequestCode + ", hoTestCode=" + hoTestCode + "]";
+				+ ", hoTestRequestCode=" + hoTestRequestCode + ", hoCheckUpResultName=" + hoCheckUpResultName
+				+ ", hoCheckUpResultPath=" + hoCheckUpResultPath + ", hoCheckUpDate=" + hoCheckUpDate
+				+ ", hoCheckUpRegistrationDate=" + hoCheckUpRegistrationDate + ", hoGoSendstate=" + hoGoSendstate
+				+ ", hoTestStateCode=" + hoTestStateCode + ", hoTestCode=" + hoTestCode + "]";
 	}
 	
 }

@@ -4,12 +4,12 @@ public class HoMediaTest {
 	protected String hoMediaTestCode;
 	protected String hoTestRequestCode;
 	protected String hoTreatmentCode;
-	protected int hoTestStateCode;
 	protected String hoMediaTestImagePath;
 	protected String hoMediaTestImageName;
 	protected String hoMediaTestDate;
 	protected String hoMediaTestRegistationDate;
 	protected int hoGoSendState;
+	protected int hoTestStateCode;	//추가??
 	
 	
 	public String getHoMediaTestCode() {
@@ -69,11 +69,12 @@ public class HoMediaTest {
 	@Override
 	public String toString() {
 		return "HoMediaTest [hoMediaTestCode=" + hoMediaTestCode + ", hoTestRequestCode=" + hoTestRequestCode
-				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestStateCode=" + hoTestStateCode
-				+ ", hoMediaTestImagePath=" + hoMediaTestImagePath + ", hoMediaTestImageName=" + hoMediaTestImageName
-				+ ", hoMediaTestDate=" + hoMediaTestDate + ", hoMediaTestRegistationDate=" + hoMediaTestRegistationDate
-				+ ", hoGoSendState=" + hoGoSendState + "]";
+				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoMediaTestImagePath=" + hoMediaTestImagePath
+				+ ", hoMediaTestImageName=" + hoMediaTestImageName + ", hoMediaTestDate=" + hoMediaTestDate
+				+ ", hoMediaTestRegistationDate=" + hoMediaTestRegistationDate + ", hoGoSendState=" + hoGoSendState
+				+ ", hoTestStateCode=" + hoTestStateCode + "]";
 	}
+
 	
 	
 }

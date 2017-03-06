@@ -23,6 +23,57 @@
 		WHERE ho_checkup.HO_GO_SENDSTATE = 0
 	</select>
 
-
-
+	<!-- 진단(질병) 조회 -->
+	<select id="selectListHoDiagnosis" resultType="com.team4.project.hospital.diagnosisPrescription.domain.HoDiagnosis">
+  		SELECT * 
+		FROM ho_diagnosis
+		WHERE ho_diagnosis.HO_GO_SENDSTATE = 0
+	</select>
+	
+	<!-- 입퇴원 조회 -->
+	<select id="selectListHoHospitalization" resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization">
+  		SELECT * 
+		FROM ho_hospitalization
+		WHERE ho_hospitalization.HO_GO_SENDSTATE = 0
+	</select>
+	
+	<!-- 영상검사 조회 -->
+	<select id="selectListHoMediaTest" resultType="com.team4.project.hospital.test.domain.HoMediaTest">
+  		SELECT * 
+		FROM ho_media_test
+		WHERE ho_media_test.HO_GO_SENDSTATE = 0
+	</select>
+	
+	<!-- 영상검사 조회 -->
+	<select id="selectListHoOperation" resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperation">
+  		SELECT * 
+		FROM ho_operation
+		WHERE
+				ho_operation.HO_GO_SENDSTATE = 0
+			AND
+				ho_operation.HO_OPERATION_DIARY is not null
+	</select>
+	
+	<!-- 처방결과 조회 -->
+	<select id="selectListHoPrescription" resultType="com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription">
+  		SELECT * 
+		FROM ho_prescription
+		WHERE ho_prescription.HO_GO_SENDSTATE = 0
+	</select>
+	
+	<!-- 진료 조회 -->
+	<select id="selectListHoTreat" resultType="com.team4.project.hospital.treatChart.domain.HoTreat">
+  		SELECT * 
+		FROM ho_treatment
+		WHERE ho_treatment.HO_GO_SENDSTATE = 0
+			AND ho_treatment.HO_TREATMENT_CONTENTS is not null
+	</select>
+	
+	<!-- 예방접종 조회 -->
+	<select id="selectListHoVaccine" resultType="com.team4.project.hospital.vaccineCheckup.domain.HoVaccine">
+  		SELECT * 
+		FROM ho_vaccine
+		WHERE ho_vaccine.HO_GO_SENDSTATE = 0
+	</select>
+	
 </mapper>

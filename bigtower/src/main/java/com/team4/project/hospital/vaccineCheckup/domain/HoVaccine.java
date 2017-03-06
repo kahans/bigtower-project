@@ -5,9 +5,9 @@ public class HoVaccine {
 	protected String hoVaccineCode;
 	protected String hoTreatmentCode;
 	protected String hoVaccineTypeCode;
+	protected String hoVaccineCount;
 	protected String hoVaccineDate;
 	protected int hoGoSendState;
-	
 	public String getHoVaccineCode() {
 		return hoVaccineCode;
 	}
@@ -26,6 +26,12 @@ public class HoVaccine {
 	public void setHoVaccineTypeCode(String hoVaccineTypeCode) {
 		this.hoVaccineTypeCode = hoVaccineTypeCode;
 	}
+	public String getHoVaccineCount() {
+		return hoVaccineCount;
+	}
+	public void setHoVaccineCount(String hoVaccineCount) {
+		this.hoVaccineCount = hoVaccineCount;
+	}
 	public String getHoVaccineDate() {
 		return hoVaccineDate;
 	}
@@ -41,9 +47,10 @@ public class HoVaccine {
 	@Override
 	public String toString() {
 		return "HoVaccine [hoVaccineCode=" + hoVaccineCode + ", hoTreatmentCode=" + hoTreatmentCode
-				+ ", hoVaccineTypeCode=" + hoVaccineTypeCode + ", hoVaccineDate=" + hoVaccineDate + ", hoGoSendState="
-				+ hoGoSendState + "]";
+				+ ", hoVaccineTypeCode=" + hoVaccineTypeCode + ", hoVaccineCount=" + hoVaccineCount + ", hoVaccineDate="
+				+ hoVaccineDate + ", hoGoSendState=" + hoGoSendState + "]";
 	}
+	
 	
 	
 }
