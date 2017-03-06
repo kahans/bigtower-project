@@ -37,6 +37,11 @@ public class TransportService {
 	HoVaccine
 	*/
 	public void getAll(){
+		
+		// http로 보낼때 db에 들어갈내용은 json String으로 변환
+		// Map<String, Object>타입으로 각 조회결과를 담는데 조회결과가 없는것은 null로 담는다.
+		// 파일은 파일이름 앞에 blood, checkup, image붙여서 보내서 받은다음에 잘라서 해당폴더에 넣는다
+		
 		// 혈액검사 결과 조회
 		List<HoBloodTest> hoBloodTest = transportDao.selectListHoBloodTest();
 		logger.debug("hoBloodTest:"+hoBloodTest);
