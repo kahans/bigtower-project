@@ -25,13 +25,13 @@ public class HoTestController {
 	public String TestsView(){
 		return "/hospital/views/tests/viewTest";
 	}
-	//검사요청 등록
+/*	//검사요청 등록
 	@RequestMapping(value="/hospital/test/testRequest", method=RequestMethod.POST)
 	public String testRequest(HoTestRequestSub hoTestRequestSub){
 		System.out.println(hoTestRequestSub.getHoTestCode());
 		hoTS.addTestRequest(hoTestRequestSub);
 		return "";
-	}
+	}*/
 	//혈액검사 목록
 	@RequestMapping(value="/hospital/test/ListBloodTest",method=RequestMethod.GET)
 	public String BloodTestList(HoTestRequestSub hoTestRequest, Model model){

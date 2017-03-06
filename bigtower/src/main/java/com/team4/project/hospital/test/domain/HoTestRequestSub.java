@@ -2,7 +2,7 @@ package com.team4.project.hospital.test.domain;
 
 public class HoTestRequestSub extends HoTestRequest{
 	protected String hoPatientName;
-	protected String HospitalCode;
+	protected String hospitalCode;
 	public String getHoPatientName() {
 		return hoPatientName;
 	}
@@ -12,12 +12,13 @@ public class HoTestRequestSub extends HoTestRequest{
 	}
 
 	
+
 	public String getHospitalCode() {
-		return HospitalCode;
+		return hospitalCode;
 	}
 
 	public void setHospitalCode(String hospitalCode) {
-		HospitalCode = hospitalCode;
+		this.hospitalCode = hospitalCode;
 	}
 
 	@Override

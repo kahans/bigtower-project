@@ -1,6 +1,7 @@
 package com.team4.project.hospital.test.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +50,9 @@ public class HoTestDao {
 	}
 
 	//검사요청 등록
-	public int addTestRequest(HoTestRequestSub hoTestRequestSub) {
+	public int addTestRequest(Map<String , String > map) {
 		// TODO Auto-generated method stub
 		System.out.println("검사요청등록DAO");
-		return sqlSession.insert("hoTest.addTestRequest", hoTestRequestSub);
+		return sqlSession.insert("hoTest.addTestRequest", map);
 	}
 }
