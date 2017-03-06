@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,7 +48,9 @@ public class HoTestService {
 			int index = multipartFile.getOriginalFilename().lastIndexOf(".");
 			extention = multipartFile.getOriginalFilename().substring(index+1);
 			fileName=fileName+"."+extention;
-			file = new File(path+"/"+fileName);
+			//배포시
+			//file = new File(path+"/"+fileName);
+			file = new File(path+"\\"+fileName);
 			
 			multipartFile.transferTo(file);
 			
@@ -99,7 +99,9 @@ public class HoTestService {
 				int index = multipartFile.getOriginalFilename().lastIndexOf(".");
 				extention = multipartFile.getOriginalFilename().substring(index+1);
 				fileName=fileName+"."+extention;
-				file = new File(path+"/"+fileName);
+				//배포시
+				//file = new File(path+"/"+fileName);
+				file = new File(path+"\\"+fileName);
 				
 				multipartFile.transferTo(file);
 				

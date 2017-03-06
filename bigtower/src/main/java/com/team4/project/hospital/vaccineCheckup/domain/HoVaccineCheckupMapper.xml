@@ -9,12 +9,12 @@
 			ho_test_request.HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
 			ho_patient.HO_PATIENT_NAME
-		from ho_checkup
+		from ho_test_request
 		join ho_treatment
-			on ho_treatment.HO_TERATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
-		join ho_patient
+			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		JOIN ho_patient
 			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
-		WHERE ho_test_request.HO_TEST_CODE=#{hoTestCode)
+		where ho_test_request.HO_TEST_CODE=#{hoTestCode}
 	</select>
 	<!-- 건강검진 뷰 -->
 	<select id="checkupView" resultType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub" parameterType="String">
@@ -24,7 +24,7 @@
 			ho_patient.HO_PATIENT_NAME,
 			ho_test.HO_TEST_CODE,
 			ho_test.HO_TEST_NAME
-		from ho_checkup
+		from ho_test_request
 		join ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
 		JOIN ho_patient

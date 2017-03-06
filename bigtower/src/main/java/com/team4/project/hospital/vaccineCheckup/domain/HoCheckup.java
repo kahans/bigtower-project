@@ -11,9 +11,16 @@ public class HoCheckup {
 	protected int hoTestStateCode;	
 	protected int hoGoSendstate;
 	protected String hoTestRequestCode;		//검사요청 코드
+	protected String hoTestCode;
 
 	
 	
+	public String getHoTestCode() {
+		return hoTestCode;
+	}
+	public void setHoTestCode(String hoTestCode) {
+		this.hoTestCode = hoTestCode;
+	}
 	public String getHoTestRequestCode() {
 		return hoTestRequestCode;
 	}

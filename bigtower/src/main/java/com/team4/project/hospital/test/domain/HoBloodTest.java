@@ -12,6 +12,8 @@ public class HoBloodTest {
 	protected String hoBloodTestDate;		//검사일
 	protected String hoBloodTestRegistationDate;//결과등록일
 	protected String hoGoSendState;			//정부 등록상태
+	
+	
 	public String getHoBloodTestCode() {
 		return hoBloodTestCode;
 	}

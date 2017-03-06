@@ -47,7 +47,8 @@ public class HoTestController {
 	@RequestMapping(value="/hospital/test/bloodTestAdd", method=RequestMethod.POST)
 	public String bloodTestAdd(HoBloodTestSub bloodView, HttpServletRequest request){
 		
-		String path=request.getServletContext().getRealPath("d://");//상대주소
+		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
+		String path="D:\\testImage";//절대 주소
 		// 배포시사용할경로
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		bloodView.setHoBloodTestImagePath(path);
@@ -86,8 +87,8 @@ public class HoTestController {
 	public String mediaTestView(HoMediaTestSub mediaView, HttpServletRequest request){ 
 		System.out.println("해당 영상검사 결과 등록 POST");
 		System.out.println("등록POST : "+mediaView.toString());
-		
-		String path=request.getServletContext().getRealPath("d://");//상대주소
+		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
+		String path="D:\\testImage";//절대 주소
 		// 배포시사용할경로
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		System.out.println("path:"+path);

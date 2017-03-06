@@ -22,6 +22,7 @@ public class HoVaccineCheckupController {
 	//거강검진 리스트
 	@RequestMapping(value="/hospital/test/checkupList", method=RequestMethod.GET)
 	public String checkupList(HoCheckup hoCheckup, Model model){
+		hoCheckup.setHoTestCode("3");
 		
 		List<HoCheckup> checkupList = hoVCS.checkupList(hoCheckup);
 		
@@ -40,11 +41,17 @@ public class HoVaccineCheckupController {
 	//건강검진 등록 뷰 post
 	@RequestMapping(value="/hospital/test/checkupAdd", method=RequestMethod.POST)
 	public String checkAdd(HttpServletRequest request, HoCheckupSub checkAdd){
-		String path=request.getServletContext().getRealPath("d://");//상대주소
+		String path="D:\\testImage";//상대주소
 		// 배포시사용할경로
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		checkAdd.setHoCheckUpResultPath(path);
 		hoVCS.checkAdd(checkAdd);
+		return "redirect:/hospital/test/checkupList";
+	}
+	//예방잡종 리스트
+	@RequestMapping(value="/hospital/vaccineList", method=RequestMethod.GET)
+	public String vaccineList(Model model){
+		
 		return "";
 	}
 }

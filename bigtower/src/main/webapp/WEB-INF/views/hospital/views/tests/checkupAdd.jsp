@@ -9,20 +9,20 @@
 </head>
 <body>
 	<h1>건강검진 결과등록</h1>
-	<form action="<c:url value='/hospital/test/checkuptAdd'/>" method="post" enctype="multipart/form-data">
+	<form action="<c:url value='/hospital/test/checkupAdd'/>" method="post" enctype="multipart/form-data">
 		<div>
 			검사명 : 
-			<input type="text" name="hoTestName" required="required" value="${checkupSelect.hoTestName }">
-			<input type="hidden" name="hoTestCode" required="required" value="${checkupSelect.hoTestCode }">
-			<input type="hidden" name="hoTestRequestCode" required="required" value="${checkupSelect.hoTestRequestCode }">
+			<input type="text" name="hoTestName" required="required" value="${checkView.hoTestName }">
+			<input type="hidden" name="hoTestCode" required="required" value="${checkView.hoTestCode }">
+			<input type="hidden" name="hoTestRequestCode" required="required" value="${checkView.hoTestRequestCode }">
 		</div>
 		<div>
 			진료코드 : 
-			<input type="text"  name="hoTreatmentCode" required="required" value="${checkupSelect.hoTreatmentCode}">
+			<input type="text"  name="hoTreatmentCode" required="required" value="${checkView.hoTreatmentCode}">
 		</div>
 		<div>
 			환자명 : 
-			<input type="text" name="hoPatientName" required="required" value="${checkupSelect.hoPatientName}">
+			<input type="text" name="hoPatientName" required="required" value="${checkView.hoPatientName}">
 		</div>		
 		<div>
 			<input type="hidden" name="hoTestStateCode" value="3" required="required">

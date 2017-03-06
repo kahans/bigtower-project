@@ -21,7 +21,7 @@
 			<c:forEach var="checkupList" items="${checkupList}">
 				<tr>
 					<td>
-						<a href="<c:url value='/hospital/checkupAdd?hoTestRequestCode=${checkupList.hoTestRequestCode }'/>">
+						<a href="<c:url value='/hospital/test/checkupAdd?hoTestRequestCode=${checkupList.hoTestRequestCode }'/>">
 						${checkupList.hoPatientName}</a></td>
 					<td>${checkupList.hoTestRequestCode }</td>
 					<td>${checkupList.hoTreatmentCode }</td>
@@ -29,5 +29,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<br>
+	<a href="<c:url value='/hospital/test'/>"><button>전체목록</button></a>
 </body>
 </html>

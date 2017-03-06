@@ -29,5 +29,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<br>
+	<a href="<c:url value='/hospital/test'/>"><button>전체목록</button></a>
 </body>
 </html>
