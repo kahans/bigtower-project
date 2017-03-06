@@ -45,13 +45,13 @@
 	<mvc:resources mapping="/templates/mainCss/js/**" location="/WEB-INF/templates/mainCss/js/" /> -->
 	<!-- 인터셉터 사용준비 -->
 	<mvc:interceptors>
-		<mvc:interceptor>
-			<!-- 여러개 컨트롤러 추가 가능
+		<!-- <mvc:interceptor>
+			여러개 컨트롤러 추가 가능
 			<mvc:mapping path="/admin_write"/> <mvc:mapping path="/admin_update"/> 
-				<mvc:mapping path="/admin_delete"/> . . . -->
+				<mvc:mapping path="/admin_delete"/> . . .
 			<mvc:mapping path="/government/*" />
 			
-			 <!-- 해당 path는 인터셉트 하지않는다 -->
+			 해당 path는 인터셉트 하지않는다
 			 
            <mvc:exclude-mapping path="/government/"/>
            <mvc:exclude-mapping path="/government/login"/>
@@ -59,9 +59,9 @@
            <mvc:exclude-mapping path="/government/loginHospital"/>
            <mvc:exclude-mapping path="/government/logout"/>
 			
-			<!-- 로그인체크 인터셉터 클래스 -->
+			로그인체크 인터셉터 클래스
 			<bean class="com.team4.project.government.interceptor.Interceptor" />
-		</mvc:interceptor>
+		</mvc:interceptor> -->
 		<mvc:interceptor>
 			<!-- 여러개 컨트롤러 추가 가능
 			<mvc:mapping path="/admin_write"/> <mvc:mapping path="/admin_update"/> 
@@ -133,22 +133,22 @@
 		<property name="mapperLocations">
 			<list>
 				<!-- 사용할 Mapper.xml마다 등록해줘야함 -->
-				
-				<!-- 정부 -->
+				<!-- 
+				정부
 				<value>classpath:com/team4/project/government/dto/GovernmentMapper.xml</value>
-				<!-- 진단 & 처방 -->
+				진단 & 처방
 				<value>classpath:com/team4/project/government/diagnosisPrescription/domain/GoDiagnosisPrescriptionMapper.xml</value>
-				<!-- 입원 & 수술 -->
+				입원 & 수술
 				<value>classpath:com/team4/project/government/hopitalizationSurgery/domain/GoHospitalizationSurgeryMapper.xml</value>
-				<!-- 예약 -->
+				예약
 				<value>classpath:com/team4/project/government/reservation/domain/GoReservationMapper.xml</value>
-				<!-- 검사 -->
+				검사
 				<value>classpath:com/team4/project/government/test/domain/GoTestMapper.xml</value>
-				<!-- 진료 & 차트 -->
+				진료 & 차트
 				<value>classpath:com/team4/project/government/treat/domain/GoTreatMapper.xml</value>
-				<!-- 예방접종 & 건강검진 -->
+				예방접종 & 건강검진
 				<value>classpath:com/team4/project/government/vaccinationCheckup/domain/GoVaccinationCheckupMapper.xml</value>
-				
+				 -->
 				<!-- 병원 -->
 				<value>classpath:com/team4/project/hospital/dto/HospitalMapper.xml</value>
 				<!-- 진단 & 처방 -->

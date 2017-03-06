@@ -24,7 +24,9 @@
 			HO_STAFF_ID,
 			HO_PATIENT_CODE)
 		SELECT
-			CONCAT('receive_',max(cast(substring(ho_receive.HO_RECEIVE_CODE,9,5) as UNSIGNED ))+1),
+			if(HO_RECEIVE_CODE is null,
+ 				'receive_1',
+				CONCAT('receive_',max(cast(substring(ho_receive.HO_RECEIVE_CODE,9,5) as UNSIGNED ))+1),
 			#{hoHospitalCode},
 			#{hoReceivePurpose},
 			#{hoTreatSubjectCode},
