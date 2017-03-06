@@ -5,7 +5,7 @@
 <mapper namespace="hoHospitalizationOperation">
  	
  	<!-- 입퇴원 요청 등록 -->
- 	<insert id="addRequest" parameterType="com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization">
+ 	<insert id="addRequest" parameterType="String">
  		INSERT INTO ho_hospitalization_request(
  			HO_HOSPITALIZATION_REQUEST_CODE,
  			HO_TREATMENT_CODE,

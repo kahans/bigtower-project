@@ -14,13 +14,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription;
 import com.team4.project.hospital.dto.HoDisease;
 import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.dto.HoVaccineType;
+import com.team4.project.hospital.hospitalizationOperation.domain.HoOperation;
+import com.team4.project.hospital.test.domain.HoTestRequest;
 import com.team4.project.hospital.treatChart.domain.HoChart;
 import com.team4.project.hospital.treatChart.domain.HoTreat;
 import com.team4.project.hospital.treatChart.domain.HoTreatSub;
+import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
 
 @Controller
 public class HoTreatChartController {
@@ -69,11 +73,31 @@ public class HoTreatChartController {
 	//진료 내용 업데이트
 	@RequestMapping(value="/hospital/treatView", method=RequestMethod.POST)
 	public String treatView(HoTreat hoTreat,
+							String hoTestCode,
+							String checkHospitalization,
+							HoOperation hoOperation,
+							HoPrescription hoPrescription,
+							HoVaccine hoVaccine,
 							RedirectAttributes redirectAttributes,
-							@RequestParam(value="diseaseSelect") List<String> diseaseList){
+							@RequestParam(value="diseaseSelect") List<String> diseaseList,
+							@RequestParam(value="medicineSelect") List<String> medicineList){
+		System.out.println("hoTestCode : "+hoTestCode);
 		System.out.println("hoTreat : "+hoTreat);
+		System.out.println("hoOperation : "+hoOperation);
+		System.out.println("hoPrescription : "+hoPrescription);
+		System.out.println("hoVaccine : "+hoVaccine);
+		System.out.println("checkHospitalization : "+checkHospitalization);
 		System.out.println("diseaseList : "+diseaseList);
-		int result = hoTCS.updateTreat(hoTreat);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("hoTreat", hoTreat);
+		map.put("hoTestCode", hoTestCode);
+		map.put("checkHospitalization", checkHospitalization);
+		map.put("hoOperation", hoOperation);
+		map.put("hoPrescription", hoPrescription);
+		map.put("hoVaccine", hoVaccine);
+		map.put("diseaseList", diseaseList);
+		map.put("medicineList", medicineList);
+		int result = hoTCS.updateTreat(map);
 		System.out.println("updateTreat 결과는 ? "+result);
 		
 		redirectAttributes.addAttribute("hoTreatmentCode",hoTreat.getHoTreatmentCode());

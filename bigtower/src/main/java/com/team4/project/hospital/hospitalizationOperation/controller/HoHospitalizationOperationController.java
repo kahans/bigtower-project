@@ -17,7 +17,7 @@ public class HoHospitalizationOperationController {
 
 	@Autowired
 	private HoHospitalizationOperationService hoHOS;
-	
+/*	
 	//입퇴원요청
 	@RequestMapping(value="/hospital/hospitalizationRequest")
 	public String addHospitalizationRequest(HoHospitalization hoHospitalization){
@@ -25,7 +25,7 @@ public class HoHospitalizationOperationController {
 		int result = hoHOS.addRequest(hoHospitalization);
 		System.out.println("입퇴원 요청 등록 결과는 ? "+result);
 		return "redirect:/hospital/treatList";
-	}
+	}*/
 	
 	//수술 추가
 	@RequestMapping(value="/hospital/addOperation")

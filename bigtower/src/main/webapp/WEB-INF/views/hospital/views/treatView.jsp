@@ -47,7 +47,7 @@
 	           	
 	        <!-- 질병 추가시 추가되는 폼 -->   	
            	<div id="hiddenPrescription" style="display: none;">
-           		<div class="selectAdd">	
+           		<div class="addDisease">	
             		<select name="diseaseSelect">
             			<!-- +버튼 눌렀을 때 추가되는 selectBox 마찬가지로 for문으로 list값 가져와야함 -->
             			<option value="0">질병명</option>
@@ -72,8 +72,8 @@
 	
 		<!-- 검사 요청 -->
 		<h3>검사 요청</h3>	
-		<select>
-			<option>:::검사를 선택하시오:::</option>
+		<select name="hoTestCode">
+			<option value="0">:::검사를 선택하시오:::</option>
 			<c:forEach items="${testList}" var="testList">
 				<option value="${testList.hoTestCode}">${testList.hoTestName}</option>
 			</c:forEach>
@@ -82,12 +82,13 @@
 	
 		<!-- 입/퇴원 요청 -->
 		<h3>입/퇴원 요청</h3>
-		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
+		<div>
+			해당없음<input type="radio" name="checkHospitalization" value="0" checked="checked">
+			입원<input type="radio" name="checkHospitalization" value="1">
+		</div>
 		
-	
 		<!-- 수술 요청 -->
 		<h3>수술 요청</h3>
-		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
 		<div>
 			수술날짜 :
 			<input type="date" name="hoOperationStartDate">
@@ -95,7 +96,7 @@
 		<div>
 			수술명 : 
 			<select name="hoOperationTypeCode">
-				<option>:::수술을 선택하시오:::</option>
+				<option value="0">:::수술을 선택하시오:::</option>
 				<c:forEach items="${operationList}" var="operationList">
 					<option value="${operationList.hoOperationTypeCode}">${operationList.hoOperationTypeName}</option>
 				</c:forEach>
@@ -106,14 +107,58 @@
 		<!-- 처방 요청 -->
 		<h3>처방전 작성</h3>
 		<a href="<c:url value='/hospital/addPrescription?hoTreatmentCode=${hoTreat.hoTreatmentCode}'/>"><button>처방전 작성</button></a>
-	
+		<div>
+			일일투약량 :
+			<input type="text" name="hoPrescriptionDailydose">
+		</div>
+		<div>
+			일일투약횟수 :
+			<input type="text" name="hoPrescriptionDailycount">
+		</div>
+		<div>
+			총투약일수 :
+			<input type="text" name="hoPrescriptionTotalday">
+		</div>
+		<div>
+			용법 :
+			<input type="text" name="hoPrescriptionUsage">
+		</div>
+		<div>
+			약품명 :
+			<div id="medicine">
+           		<div>
+            		<select name="medicineSelect">
+            			<option value="0">약품명</option>
+		           		<c:forEach items="${medicineList}" var="medicineList">
+							<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineName}</option>
+						</c:forEach>                           			
+            		</select>
+            		<button type="button" id="medicineNameAdd">추가</button>
+           		</div>
+           	</div>
+	           	
+	           	
+           	<div id="hiddenMedicine" style="display: none;">
+           		<div class="addMedicine">	
+            		<select name="medicineSelect">
+            			<!-- +버튼 눌렀을 때 추가되는 selectBox 마찬가지로 for문으로 list값 가져와야함 -->
+            			<option value="0">약품명</option>
+            			<c:forEach items="${medicineList}" var="medicineList">
+							<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineName}</option>
+						</c:forEach>                          			
+            		</select>
+            		<button type="button" id="medicineNameAdd">추가</button>
+            		<button type="button" id="medicineNameRemove">삭제</button>        
+           		</div>
+           	</div>
+		</div>
+		
 		<!-- 예방접종 등록 -->
 		<h3>예방접종 등록</h3>
-		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
 		<div>
 			예방접종 종류 : 
 			<select name="hoVaccineTypeCode">
-				<option>:::예방 접종 종류를 선택하시오:::</option>
+				<option value="0">:::예방 접종 종류를 선택하시오:::</option>
 				<c:forEach items="${vaccineList}" var="vaccineList">
 						<option value="${vaccineList.hoVaccineTypeCode}">${vaccineList.hoVaccineTypeName}</option>
 				</c:forEach>
@@ -127,15 +172,26 @@
 	</form>
 	
 	<script>
-		//추가버튼 클릭시 이벤트
+		//질병 추가버튼 클릭시 이벤트
 		$(document).on('click','#diseaseNameAdd',function(){
 			var addSelect = $('#hiddenPrescription').html();
 			$(this).parents('#prescription').append(addSelect);	
 		});
 		
 		$(document).on('click','#diseaseNameRemove',function(){
-			$(this).parent('.selectAdd').remove();		
+			$(this).parent('.addDisease').remove();		
 		});
+		
+		//약품 추가버튼 클릭시 이벤트
+		$(document).on('click','#medicineNameAdd',function(){
+			var addSelect = $('#hiddenMedicine').html();
+			$(this).parents('#medicine').append(addSelect);	
+		});
+		
+		$(document).on('click','#medicineNameRemove',function(){
+			$(this).parent('.addMedicine').remove();		
+		});
+		
 	</script>
 </body>
 </html>

@@ -17,11 +17,6 @@ public class HoHospitalizationOperationService {
 	@Autowired
 	private HoHospitalizationOperationDao hoHOD;
 	
-	//입퇴원 요청 등록
-	public int addRequest(HoHospitalization hoHospitalization){
-		return hoHOD.addRequest(hoHospitalization);
-	}
-	
 	//수술 등록
 	public int addOperation(HoOperation hoOperation){
 		return hoHOD.addOperation(hoOperation);

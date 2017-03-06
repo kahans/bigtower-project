@@ -17,8 +17,8 @@ public class HoHospitalizationOperationDao {
 	private SqlSessionTemplate sqlSession;
 	
 	//입퇴원 요청 등록
-	public int addRequest(HoHospitalization hoHospitalization){
-		return sqlSession.insert("hoHospitalizationOperation.addRequest",hoHospitalization);
+	public int addRequest(String hoTreatmentCode){
+		return sqlSession.insert("hoHospitalizationOperation.addRequest",hoTreatmentCode);
 	}
 	
 	//수술 등록
