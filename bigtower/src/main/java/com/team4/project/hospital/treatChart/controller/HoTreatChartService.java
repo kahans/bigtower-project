@@ -111,7 +111,8 @@ public class HoTreatChartService {
 			//int result = hospitalizationOperationDao.addRequest(hoHospitalization);
 			//System.out.println("수술요청 결과는 ? "+ result);
 		}
-		if(!hoOperation.getHoOperationTypeCode().equals("")){
+		if(!hoOperation.getHoOperationTypeCode().equals("0")){
+			System.out.println("수술요청있음");
 			int result = hospitalizationOperationDao.addOperation(hoOperation);
 			System.out.println("수술요청 결과는 ? "+ result);
 		}
