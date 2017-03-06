@@ -7,12 +7,14 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.team4.project.hospital.test.domain.HoBloodTestSub;
 import com.team4.project.hospital.test.domain.HoMediaTestSub;
 import com.team4.project.hospital.test.domain.HoTestRequestSub;
 
+@Transactional
 @Service
 public class HoTestService {
 

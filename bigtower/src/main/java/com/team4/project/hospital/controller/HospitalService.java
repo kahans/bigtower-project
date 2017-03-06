@@ -8,10 +8,12 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.team4.project.hospital.dto.HoLoginCheckStaffSub;
 import com.team4.project.hospital.dto.HoPatient;
 
+@Transactional
 @Service
 public class HospitalService {
 	@Autowired
