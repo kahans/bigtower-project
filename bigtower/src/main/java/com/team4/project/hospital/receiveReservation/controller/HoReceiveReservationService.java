@@ -1,6 +1,8 @@
 package com.team4.project.hospital.receiveReservation.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +21,13 @@ public class HoReceiveReservationService {
 	private HoReceiveReservationDao hoRRDao;
 	
 	//한명의 환자조회
-	public HoPatient searchOnePatient(String hoCitizenId){
+	public HoPatient searchOnePatient(String hoCitizenId, String hospitalCode){
 		logger.debug("hoCitizenId:"+hoCitizenId);
-		return hoRRDao.selectOnePatient(hoCitizenId);
+		logger.debug("hospitalCode:"+hospitalCode);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("hoCitizenId", hoCitizenId);
+		map.put("hoHospitalCode", hospitalCode);
+		return hoRRDao.selectOnePatient(map);
 	}
 	
 	//한명의 환자접수

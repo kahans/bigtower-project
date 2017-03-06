@@ -26,7 +26,7 @@
 		SELECT
 			if(not exists (select * from ho_receive) ,
  				'receive_1',
-				CONCAT('receive_',max(cast(substring(ho_receive.HO_RECEIVE_CODE,9,5) as UNSIGNED ))+1),
+				CONCAT('receive_',max(cast(substring(ho_receive.HO_RECEIVE_CODE,9,5) as UNSIGNED ))+1)),
 			#{hoHospitalCode},
 			#{hoReceivePurpose},
 			#{hoTreatSubjectCode},
@@ -39,7 +39,7 @@
 	
 	<!--환자조회 -->
 	<select id="selectPatient" resultType="com.team4.project.hospital.dto.HoPatient"
- 								 parameterType="String">
+ 								 parameterType="Map">
  		SELECT 
  			HO_PATIENT_CODE,
  			HO_HOSPITAL_CODE,
@@ -53,20 +53,23 @@
  		 ho_patient 
  		WHERE 
  			HO_CITIZEN_ID = #{hoCitizenId}
+ 			AND HO_HOSPITAL_CODE = #{hoHospitalCode}
+ 			
  	</select>
  	
  	<!-- test 환자 조회 -->
  	<select id="selectPatientTest" resultType="com.team4.project.hospital.dto.HoPatient"
  								 parameterType="String">
  		SELECT 
- 			HO_HOSPITAL_CODE as hoHospitalCode,
- 			HO_CITIZEN_ID as hoCitizenId,
- 			HO_PATIENT_NAME as hoPatientName
+ 			HO_HOSPITAL_CODE,
+ 			HO_CITIZEN_ID,
+ 			HO_PATIENT_NAME
  		FROM
  		 ho_patient 
  		WHERE 
  			HO_CITIZEN_ID = #{hoCitizenId}
- 		AND HO_PATIENT_NAME = #{hoPatientName}
+	 		AND HO_PATIENT_NAME = #{hoPatientName}
+	 		AND HO_HOSPITAL_CODE = #{hoHospitalCode}
  	</select>
  	
 	<!-- 접수 목록 -->

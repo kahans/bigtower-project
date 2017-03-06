@@ -70,7 +70,7 @@
 		<input id="hoPatientCode" type="hidden" name="hoPatientCode">
 		<div>
 			병원코드 : 
-			<input id="hoHospitalCode" type="text" name="hoHospitalCode" placeholder="병원코드">ex)hospital_1 / hospital_2 ~ hospital_5
+			<input id="hoHospitalCode" type="text" name="hoHospitalCode" value="${HOSPITALCODE}" placeholder="병원코드">ex)hospital_1 / hospital_2 ~ hospital_5
 		</div>
 		<div>
 			접수목적 :

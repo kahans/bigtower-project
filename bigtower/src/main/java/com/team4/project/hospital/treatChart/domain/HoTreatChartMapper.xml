@@ -14,7 +14,7 @@
  			HO_GO_SENDSTATE)
  		SELECT
  			<!-- 병원코드 + 차트번호로 차트코드 생성 -->
- 			if(HO_CHART_CODE is null,
+ 			if(not exists (select * from ho_chart) ,
 				CONCAT(#{hoHospitalCode},'chart_1'), <!-- 차트코드가 없을때 -->
 				CONCAT(#{hoHospitalCode},  <!-- 차트코드가 있을때 -->
 						'chart_',

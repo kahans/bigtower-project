@@ -1,6 +1,7 @@
 package com.team4.project.hospital.receiveReservation.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class HoReceiveReservationDao {
 	private SqlSessionTemplate sqlSession;
 	
 	//한명의 환자 조회
-	public HoPatient selectOnePatient(String hoCitizenId){
-		return sqlSession.selectOne("hoReceiveReservation.selectPatient", hoCitizenId);
+	public HoPatient selectOnePatient(Map map){
+		return sqlSession.selectOne("hoReceiveReservation.selectPatient", map);
 	}
 
 	//한명의 환자 접수

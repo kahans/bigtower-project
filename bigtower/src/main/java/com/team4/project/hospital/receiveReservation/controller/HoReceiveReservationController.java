@@ -50,16 +50,18 @@ public class HoReceiveReservationController {
 		String hoStaffId = (String) session.getAttribute("HOSTAFFID");
 		hoReceiveSub.setHoHospitalCode(hoHospitalCode);
 		hoReceiveSub.setHoStaffId(hoStaffId);
-		System.out.println("hoReceiveSub : "+ hoReceiveSub);
+		System.out.println("hoReceiveSub : "+ hoReceiveSub.toString());
 		hoRRService.addReceive(hoReceiveSub);
 		return "redirect:/hospital/receiveList";
 	}
 	
 	//ajax 한명의 환자정보 조회
 	@RequestMapping(value="hospital/searchReceive", method=RequestMethod.POST)
-	public @ResponseBody HoPatient searchOnePatient(@RequestParam("hoCitizenId")String hoCitizenId){
+	public @ResponseBody HoPatient searchOnePatient(@RequestParam("hoCitizenId")String hoCitizenId,
+			HttpSession session){
 		logger.debug("searchOnePatient POST");
-		HoPatient hopatient = hoRRService.searchOnePatient(hoCitizenId);
+		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		HoPatient hopatient = hoRRService.searchOnePatient(hoCitizenId, hospitalCode);
 		logger.debug("hopatient:"+hopatient);
 		
 		return hopatient;
@@ -73,16 +75,20 @@ public class HoReceiveReservationController {
 	}
 	//초진, 재진 조회
 	@RequestMapping(value="/hospital/searchPatient", method=RequestMethod.POST)
-	public String searchOnePatientTest(HoPatient hp, Model model, RedirectAttributes redirectAttributes,
+	public String searchOnePatientTest(HoPatient hp, HttpSession session, Model model, RedirectAttributes redirectAttributes,
 										@RequestParam(value="idfirst", required=false) String idfirst,
 										@RequestParam(value="idsecond", required=false) String idsecond
 			){
 		logger.debug("searchOnePatientTest POST 데이터 보내기");
 		//뷰에서 받은 주민번호를 controller에서 처리를 한다.
 		//앞,뒤로 받은 주민번호를 하나의 문자열로 합치고, DTO에 set으로 세팅한다.
-		String se = idfirst+"-"+idsecond;
-		System.out.println("주민번호 : "+se);
-		hp.setHoCitizenId(se);
+		String citizenId = idfirst+"-"+idsecond;
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		
+		System.out.println("주민번호 : "+citizenId);
+		hp.setHoCitizenId(citizenId);
+		hp.setHoHospitalCode(hoHospitalCode);
+		
 		
 		//dto에 들어간 데이터를 확인
 		System.out.println(hp.toString());

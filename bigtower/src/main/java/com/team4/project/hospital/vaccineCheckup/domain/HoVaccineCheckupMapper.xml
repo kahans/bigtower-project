@@ -51,7 +51,7 @@
 			if(not exists (select * from ho_checkup) ,
  				'checkup_1',
 				CONCAT('checkup_',
-						max(cast(substring(HO_CHECKUP_CODE,9,5) as UNSIGNED ))+1),
+						max(cast(substring(HO_CHECKUP_CODE,9,5) as UNSIGNED ))+1)),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
 			#{hoTestStateCode},

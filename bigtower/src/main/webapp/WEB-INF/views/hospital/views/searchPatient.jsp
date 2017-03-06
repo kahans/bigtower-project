@@ -19,6 +19,7 @@
 		<div>
 			이름 : <input type="text" id="hoPatientName" name="hoPatientName" value="도우너">
 		</div>
+		
 		<input type="submit" id="btn" name="btn">
 	</form>
 </body>

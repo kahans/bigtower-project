@@ -13,7 +13,7 @@
  			HO_DIAGNOSIS_WRITE_DATE,
  			HO_GO_SENDSTATE)
  		SELECT
- 			if(HO_DIAGNOSIS_CODE is null, 'diagnosis_1',
+ 			if(not exists (select * from ho_diagnosis) , 'diagnosis_1',
 	 			CONCAT('diagnosis_',
 	 					max(cast(substring(HO_DIAGNOSIS_CODE,11,5) as UNSIGNED ))+1)),
  			#{hoTreatmentCode},

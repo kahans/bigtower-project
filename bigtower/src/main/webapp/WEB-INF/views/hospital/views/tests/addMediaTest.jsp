@@ -10,7 +10,7 @@
 <body>
 	<h1>영상검사 결과등록</h1>
 	<!-- enctype="multipart/form-data"  -->
-	<form action="<c:url value='/hospital/test/mediaTestAdd'/>" method="post" enctype="multipart/form-data">
+	<form action="<c:url value='/hospital/test/addMediaTest'/>" method="post" enctype="multipart/form-data">
 		<div>
 			검사명 : 
 			<input type="text" name="hoTestName" required="required" value="${mediaView.hoTestName }">
