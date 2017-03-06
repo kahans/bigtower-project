@@ -11,7 +11,11 @@
 	</context-param>
 	<context-param>
 		<param-name>test</param-name>
-		<param-value>테스트입니다.</param-value>
+		<param-value>테스트용</param-value>
+	</context-param>
+	<context-param>
+		<param-name>httpUrl</param-name>
+		<param-value>http://loverman85.cafe24.com</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->

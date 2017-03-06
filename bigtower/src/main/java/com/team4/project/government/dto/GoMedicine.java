@@ -3,6 +3,7 @@ package com.team4.project.government.dto;
 public class GoMedicine {
 	private String goMedicineCode;
 	private String goMedicineName;
+	
 	public String getGoMedicineCode() {
 		return goMedicineCode;
 	}

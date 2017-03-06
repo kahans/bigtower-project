@@ -9,6 +9,6 @@ public class MySchedule {
 	public void updateUrbanServiceArea() {
 		java.util.Calendar calendar = java.util.Calendar.getInstance();
 		java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		System.out.println("현재 시각: " + dateFormat.format(calendar.getTime()));
+		//System.out.println("현재 시각: " + dateFormat.format(calendar.getTime()));
 	}
 }

@@ -1,5 +1,6 @@
 package com.team4.project.government.controller;
 
+import java.rmi.server.SocketSecurityException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ import com.team4.project.government.dto.GoCitizen;
 import com.team4.project.government.dto.GoHospital;
 import com.team4.project.government.dto.GoMedicine;
 import com.team4.project.util.ContextParam;
+import com.team4.project.util.Http;
 import com.team4.project.util.HttpUrlCon;
 
 @Controller
@@ -31,6 +33,7 @@ public class GovernmentController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
 	private GovernmentService goService;
+	private Gson gson = new Gson();
 	
 	//Context param test
 	@RequestMapping(value="/government/test", method=RequestMethod.GET)
@@ -40,12 +43,21 @@ public class GovernmentController {
 		return "home";
 	}
 	
-	//httpUrlConnection Test
-	@RequestMapping(value="/government/getData", method=RequestMethod.POST)
-	public String getData(String id, String name, Model model){
-		goService.addData(id, name);
-		model.addAttribute("id", id);
-		model.addAttribute("name", name);
+	// httpPost로 medicineCode 받아오기 성공
+	@RequestMapping(value="/government/getData", method=RequestMethod.GET)
+	public String getData(){
+		String url = ContextParam.context.getInitParameter("httpUrl");
+		Http http = new Http(url+"/bigbang/government/getMedicineCode");
+		try {
+			String medicineCode = http.submit();
+			System.out.println("medicineCode:"+medicineCode);
+			GoMedicine[] array = gson.fromJson(medicineCode, GoMedicine[].class);
+			List<GoMedicine> list = Arrays.asList(array);
+			System.out.println("list:"+list);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "home";
 	}
 	
