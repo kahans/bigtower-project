@@ -42,11 +42,9 @@
 			HO_CHECKUP_CODE,
 			HO_TEST_REQUEST_CODE,
 			HO_TREATMENT_CODE,
-			HO_TEST_STATE_CODE,
-			HO_CHECKUP_RESULT_PATH,
-			HO_CHECKUP_RESULT_NAME,
-			HO_CHECKUP_DATE,
-			HO_CHECKUP_REGISTRATION_DATE)
+			HO_TEST_STATE_CODE,			
+			HO_CHECKUP_DATE
+		)
 		select
 			if(not exists (select * from ho_checkup) ,
  				'checkup_1',
@@ -55,13 +53,23 @@
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
 			#{hoTestStateCode},
-			#{hoCheckUpResultPath},
-			#{hoCheckUpResultName},
-			now(),
 			now()
 		FROM ho_checkup		
 	</insert>
-	
+	<update id="updateCheckup" parameterType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub">
+		update ho_checkup
+		INNER JOIN ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_checkup.HO_TREATMENT_CODE
+		INNER JOIN ho_hospital
+			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
+		set 
+			HO_TEST_STATE_CODE='3',
+			HO_CHECKUP_RESULT_PATH=#{hoBloodTestImagePath},
+			HO_CHECKUP_RESULT_NAME=#{hoBloodTestImageName},
+			HO_CHECKUP_REGISTRATION_DATE=now()			
+		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_CHECKUP_CODE=#{hoBloodTestCode}
+	</update>
 	<!-- 예방접종 등록 -->
 	<insert id="addVaccine" parameterType="com.team4.project.hospital.vaccineCheckup.domain.HoVaccine">
 		INSERT INTO ho_vaccine(

@@ -43,7 +43,7 @@ public class HoTestService {
 	}
 	
 	//파일 경로 하기 
-	public int mediaTestAdd(HoMediaTestSub mediaView) {
+	public int updateMediaTest(HoMediaTestSub mediaView) {
 		System.out.println("서비스try전 : "+mediaView.toString());
 		String path=mediaView.getHoMediaTestImagePath();
 		System.out.println("서비스경로 : "+path);
@@ -72,7 +72,7 @@ public class HoTestService {
 			mediaView.setHoMediaTestImagePath(path);
 			System.out.println("서비스try후 : "+mediaView.toString());
 			
-			hoTD.hoMediaTestAdd(mediaView);
+			hoTD.updateMediaTest(mediaView);
 			
 		}catch(IllegalStateException e){
 			System.out.println("IllegalStateException 예외발생");
@@ -90,7 +90,7 @@ public class HoTestService {
 	
 	
 	//혈액검사 등록
-	public int bloodTestAdd(HoBloodTestSub bloodView) {
+	public int updateBloodTest(HoBloodTestSub bloodView) {
 		// TODO Auto-generated method stub
 		String path=bloodView.getHoBloodTestImagePath();
 		File file = null;
@@ -114,7 +114,7 @@ public class HoTestService {
 				bloodView.setHoBloodTestImagePath(path);
 				System.out.println("서비스try후 : "+bloodView.toString());
 				
-				hoTD.hoBloodTestAdd(bloodView);
+				hoTD.updateBloodTest(bloodView);
 				
 			}catch(IllegalStateException e){
 				System.out.println("IllegalStateException 예외발생");
@@ -127,11 +127,15 @@ public class HoTestService {
 			}		
 		return 0;
 	}
-	//필수 정보만 글에 혈액검사테이블에 등록
+	//검사용청테이블에서 필수 정보만 글에 혈액검사테이블에 등록
 	public int addBlood(HoBloodTestSub bloodView) {
 		// TODO Auto-generated method stub
 		
 		return hoTD.addBlood(bloodView);
+	}
+	public int addMedia(HoMediaTestSub mediaView) {
+		// TODO Auto-generated method stub
+		return hoTD.addMedia(mediaView);
 	}
 	
 	

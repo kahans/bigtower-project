@@ -8,7 +8,19 @@ public class HoMediaTestSub extends HoMediaTest {
 	protected String hoTestName;//검사명
 	protected String hoTestCode;//검사종류 코드
 	protected MultipartFile uploadFile ;//파일
+	protected String hoHospitalCoed;
 	
+	
+
+
+	public String getHoHospitalCoed() {
+		return hoHospitalCoed;
+	}
+
+
+	public void setHoHospitalCoed(String hoHospitalCoed) {
+		this.hoHospitalCoed = hoHospitalCoed;
+	}
 
 
 	public String getHoTestCode() {
@@ -46,8 +58,8 @@ public class HoMediaTestSub extends HoMediaTest {
 	public String toString() {
 		return "HoMediaTestSub [hoPatientName=" + hoPatientName + ", hoTestStateName=" + hoTestStateName
 				+ ", hoTestName=" + hoTestName + ", hoTestCode=" + hoTestCode + ", uploadFile=" + uploadFile
-				+ ", hoMediaTestCode=" + hoMediaTestCode + ", hoTestRequestCode=" + hoTestRequestCode
-				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestStateCode=" + hoTestStateCode
+				+ ", hoHospitalCoed=" + hoHospitalCoed + ", hoMediaTestCode=" + hoMediaTestCode + ", hoTestRequestCode="
+				+ hoTestRequestCode + ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestStateCode=" + hoTestStateCode
 				+ ", hoMediaTestImagePath=" + hoMediaTestImagePath + ", hoMediaTestImageName=" + hoMediaTestImageName
 				+ ", hoMediaTestDate=" + hoMediaTestDate + ", hoMediaTestRegistationDate=" + hoMediaTestRegistationDate
 				+ ", hoGoSendState=" + hoGoSendState + "]";

@@ -26,13 +26,23 @@ public class HoVaccineCheckupDao {
 		return sqlSession.selectOne("VC.checkupView", hoTestRequestCode);
 	}
 
-	//건강검진 등록
-	public int checkupAdd(HoCheckupSub checkAdd) {
+	
+	/*public int checkupAdd(HoCheckupSub checkAdd) {
 		return sqlSession.insert("VC.addCheckup", checkAdd);		
-	}
+	}*/
 	
 	//예방접종 등록
 	public int addVaccine(HoVaccine hoVaccine) {
 		return sqlSession.insert("VC.addVaccine", hoVaccine);		
+	}
+	//건강검진 등록
+	public int addCheckup(HoCheckupSub checkView) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("VC.addCheckup", checkView);
+	}
+	//건감검진 데이터 업데이트
+	public int updateCheckup(HoCheckupSub updateCheckup) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("VC.updateCheckup", updateCheckup);
 	}
 }

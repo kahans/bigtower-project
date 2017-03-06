@@ -29,8 +29,8 @@ public class HoVaccineCheckupService {
 		return hoVCD.checkView(hoTestRequestCode);
 	}
 
-	//건강검진 등록
-	public int addCheck(HoCheckupSub addCheckup) {
+	//건강검진 업데이트
+	public int updateCheck(HoCheckupSub addCheckup) {
 		
 		String path=addCheckup.getHoCheckUpResultPath();
 		File file = null;
@@ -54,7 +54,7 @@ public class HoVaccineCheckupService {
 				addCheckup.setHoCheckUpResultPath(path);
 				System.out.println("서비스try후 : "+addCheckup.toString());
 				
-				hoVCD.checkupAdd(addCheckup);
+				hoVCD.updateCheckup(addCheckup);
 				
 			}catch(IllegalStateException e){
 				System.out.println("IllegalStateException 예외발생");
@@ -71,6 +71,11 @@ public class HoVaccineCheckupService {
 	//예방접종 등록
 	public int addVaccine(HoVaccine hoVaccine) {
 		return hoVCD.addVaccine(hoVaccine);		
+	}
+
+	public int addCheck(HoCheckupSub checkView) {
+		// TODO Auto-generated method stub
+		return hoVCD.addCheckup(checkView);
 	}
 	
 }

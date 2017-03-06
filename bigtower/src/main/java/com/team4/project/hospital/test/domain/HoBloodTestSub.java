@@ -8,7 +8,16 @@ public class HoBloodTestSub extends HoBloodTest{
 	protected String hoTestName;//검사명
 	protected String hoTestCode;//검사종류 코드
 	protected MultipartFile uploadFile ;//파일
+	protected String hoHospitalCode;
 	
+	
+	
+	public String getHoHospitalCode() {
+		return hoHospitalCode;
+	}
+	public void setHoHospitalCode(String hoHospitalCode) {
+		this.hoHospitalCode = hoHospitalCode;
+	}
 	public String getHoPatientName() {
 		return hoPatientName;
 	}
@@ -43,8 +52,8 @@ public class HoBloodTestSub extends HoBloodTest{
 	public String toString() {
 		return "HoBloodTestSub [hoPatientName=" + hoPatientName + ", hoTestStateName=" + hoTestStateName
 				+ ", hoTestName=" + hoTestName + ", hoTestCode=" + hoTestCode + ", uploadFile=" + uploadFile
-				+ ", hoBloodTestCode=" + hoBloodTestCode + ", hoTestRequestCode=" + hoTestRequestCode
-				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestStateCode=" + hoTestStateCode
+				+ ", hoHospitalCode=" + hoHospitalCode + ", hoBloodTestCode=" + hoBloodTestCode + ", hoTestRequestCode="
+				+ hoTestRequestCode + ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestStateCode=" + hoTestStateCode
 				+ ", hoBloodTestPlatelet=" + hoBloodTestPlatelet + ", hoBloodTestSugar=" + hoBloodTestSugar
 				+ ", hoBloodTestImagePath=" + hoBloodTestImagePath + ", hoBloodTestImageName=" + hoBloodTestImageName
 				+ ", hoBloodTestDate=" + hoBloodTestDate + ", hoBloodTestRegistationDate=" + hoBloodTestRegistationDate

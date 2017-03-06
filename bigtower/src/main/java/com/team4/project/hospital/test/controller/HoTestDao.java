@@ -16,12 +16,12 @@ public class HoTestDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-//검사요청 목록
+	//영상검사 목록
 	public List<HoTestRequestSub> mediaList(HoTestRequestSub hmt) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("hoTest.listHoTest", hmt);
 	}
-
+	//혈액검사 목록
 	public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
 		System.out.println(hoTestRequest);
 		return sqlSession.selectList("hoTest.listHoTest", hoTestRequest);
@@ -31,33 +31,38 @@ public class HoTestDao {
 		System.out.println("DAO "+hoTestRequestCode);
 		return sqlSession.selectOne("hoTest.addMediaTestView", hoTestRequestCode);
 	}
-	
-	//영상검사 등록 
-	public int hoMediaTestAdd(HoMediaTestSub mediaView) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("hoTest.addMediaTest", mediaView);
-	}
-	
-	
+	//혈액글 
 	public HoBloodTestSub bloodTestView(String hoTestRequestCode) {
 		
 		return sqlSession.selectOne("hoTest.viewBlood", hoTestRequestCode);
 	}
-	
-	public int hoBloodTestAdd(HoBloodTestSub bloodView) {
+	//영상 검사 엡데이트
+	public int updateMediaTest(HoMediaTestSub mediaView) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("hoTest.addBlood", bloodView);
+		return sqlSession.insert("hoTest.updateMedia", mediaView);
 	}
-
+	
+	//혈액 검사 업데이트
+	public int updateBloodTest(HoBloodTestSub bloodView) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("hoTest.updateBlood", bloodView);
+	}
+	
+	
 	//검사요청 등록
 	public int addTestRequest(Map<String , String > map) {
 		// TODO Auto-generated method stub
 		System.out.println("검사요청등록DAO");
 		return sqlSession.insert("hoTest.addTestRequest", map);
 	}
-
+	//혈액검사 등록
 	public int addBlood(HoBloodTestSub bloodView) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("hoTest.addBlood", bloodView);
+	}
+	//영상검사 등록 
+	public int addMedia(HoMediaTestSub mediaView) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("hoTest.addMedia", mediaView);
 	}
 }

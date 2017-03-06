@@ -3,6 +3,7 @@ package com.team4.project.hospital.vaccineCheckup.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,18 +38,21 @@ public class HoVaccineCheckupController {
 				@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
 			){
 		HoCheckupSub checkView = hoVCS.checkView(hoTestRequestCode);
+		hoVCS.addCheck(checkView);
 		model.addAttribute("checkView", checkView);
 		return "/hospital/views/tests/addCheckup";
 	}
 	
 	//건강검진 등록 뷰 post
 	@RequestMapping(value="/hospital/test/addCheckup", method=RequestMethod.POST)
-	public String checkAdd(HttpServletRequest request, HoCheckupSub addCheckup){
+	public String checkAdd(HttpServletRequest request, HoCheckupSub addCheckup,
+			HttpSession session
+	){
 		String path="D:\\testImage";//상대주소
 		// 배포시사용할경로
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		addCheckup.setHoCheckUpResultPath(path);
-		hoVCS.addCheck(addCheckup);
+		hoVCS.updateCheck(addCheckup);
 		return "redirect:/hospital/test/listCheckup";
 	}
 	

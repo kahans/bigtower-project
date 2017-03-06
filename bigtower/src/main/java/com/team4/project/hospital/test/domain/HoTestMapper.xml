@@ -19,7 +19,7 @@
 		AND ho_treatment.HO_HOSPITAL_CODE=#{hoHospitalCode}
 
  	</select>
- 	<!-- 영상 등록필요한  -->
+ 	<!-- 영상 결과 등록뷰에 보여줌  -->
  	<select id="addMediaTestView" resultType="com.team4.project.hospital.test.domain.HoMediaTestSub" parameterType="String">
  		select
 			HO_TEST_REQUEST_CODE,
@@ -36,17 +36,15 @@
 			ON ho_test.HO_TEST_CODE = ho_test_request.HO_TEST_CODE
 		WHERE ho_test_request.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
  	</select>
- 	<!-- 영상 결과 등록 -->
- 	<insert id="addMediaTest" parameterType="com.team4.project.hospital.test.domain.HoMediaTestSub">
+ 	<!-- 영상테이블 초기데이터 입력 -->
+ 	<insert id="addMedia" parameterType="com.team4.project.hospital.test.domain.HoMediaTestSub">
  		insert into ho_media_test(
  			HO_MEDIA_TEST_CODE,
 			HO_TEST_REQUEST_CODE,
 			HO_TREATMENT_CODE,
 			HO_TEST_STATE_CODE,
-			HO_MEDIA_TEST_IMAGE_PATH,
-			HO_MEDIA_TEST_IMAGE_NAME,
-			HO_MEDIA_TEST_DATE,
-			HO_MEDIA_TEST_REGISTRATION_DATE)
+			HO_MEDIA_TEST_DATE
+		)
 		select
 			if(HO_MEDIA_TEST_CODE is null, videoInspection_1, 
 				CONCAT('videoInspection_',
@@ -54,9 +52,6 @@
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
 			#{hoTestStateCode},
-			#{hoMediaTestImagePath},
-			#{hoMediaTestImageName},
-			now(),
 			now()
 		FROM ho_media_test
  	</insert>
@@ -77,47 +72,74 @@
 			ON ho_test.HO_TEST_CODE = ho_test_request.HO_TEST_CODE
 		WHERE ho_test_request.HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
  	</select>
- 	<!-- 혈액 등록 -->
+ 	<!-- 혈액 테이블 초기데이터 입력 -->
  	<insert id="addBlood" parameterType="com.team4.project.hospital.test.domain.HoBloodTestSub">
  		insert into ho_blood_test(
  			HO_BLOOD_TEST_CODE,
 			HO_TEST_REQUEST_CODE,
 			HO_TREATMENT_CODE,
 			HO_TEST_STATE_CODE,
-			HO_BLOOD_TEST_DATE,
-			HO_BLOOD_TEST_REGISTRATION_DATE)
+			HO_BLOOD_TEST_DATE		
+		)
 		select
-			if(HO_BLOOD_TEST_CODE is null, bloodInspection_1,
+			if(not exists (select * from ho_blood_test), bloodInspection_1,
 				CONCAT('bloodInspection_',
 				max(cast(substring(HO_BLOOD_TEST_CODE,17,5) as UNSIGNED ))+1)),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
 			#{hoTestStateCode},
-			#{hoBloodTestPlatelet},
-			#{hoBloodTestSugar},
-			#{hoBloodTestImagePath},
-			#{hoBloodTestImageName},
-			now(),
+			#{hoBloodTestPlate},
 			now()
 		FROM ho_blood_test
  	</insert>
- 	<!-- 검사 등록  -->
+ 	<!-- 검사요청 등록  -->
 	<insert id="addTestRequest" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub">
-	insert into ho_test_request(
-			HO_TEST_REQUEST_CODE,
-			HO_TREATMENT_CODE,
-			HO_TEST_CODE 
-			)
-	select
-		if(not exists (select * from ho_test_request), 'testrequest_1',
-			CONCAT('testrequest_',
-			max(cast(substring(HO_TEST_REQUEST_CODE,13,5) as UNSIGNED ))+1)),
-		#{hoTreatmentCode},
-		#{hoTestCode}
-	from ho_test_request	
-			
-
+		insert into ho_test_request(
+				HO_TEST_REQUEST_CODE,
+				HO_TREATMENT_CODE,
+				HO_TEST_CODE 
+				)
+		select
+			if(not exists (select * from ho_test_request), 'testrequest_1',
+				CONCAT('testrequest_',
+				max(cast(substring(HO_TEST_REQUEST_CODE,13,5) as UNSIGNED ))+1)),
+			#{hoTreatmentCode},
+			#{hoTestCode}
+		from ho_test_request
 		<!-- 매개변수중 진료코드,검사코드 를 사용 -->
 	</insert> 
 	
+	<!-- 혈액 테이블 해당 되는 열 수정 -->
+	<update id="updateBlood" parameterType="com.team4.project.hospital.test.domain.HoBloodTestSub">
+		update ho_blood_test
+		INNER JOIN ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_blood_test.HO_TREATMENT_CODE
+		INNER JOIN ho_hospital
+			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
+		set 
+			HO_TEST_STATE_CODE='3',
+			HO_BLOOD_TEST_PLATELET=#{hoBloodTestPlatelet},
+			HO_BLOOD_TEST_SUGAR=#{hoBloodTestSugar},
+			HO_BLOOD_TEST_IMAGE_PATH=#{hoBloodTestImagePath},
+			HO_BLOOD_TEST_IMAGE_NAME=#{hoBloodTestImageName},
+			HO_BLOOD_TEST_REGISTRATION_DATE=now()			
+		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_BLOOD_TEST_CODE=#{hoBloodTestCode}
+	</update>
+	
+	<!-- 영상검사 테이블 해당 되는 열 수정 -->
+	<update id="updateMedia" parameterType="com.team4.project.hospital.test.domain.HoBloodTestSub">
+		update ho_media_test
+		INNER JOIN ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_media_test.HO_TREATMENT_CODE
+		INNER JOIN ho_hospital
+			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
+		set 
+			HO_TEST_STATE_CODE='3',
+			HO_MEDIA_TEST_IMAGE_PATH=#{hoBloodTestImagePath},
+			HO_MEDIA_TEST_IMAGE_NAME=#{hoBloodTestImageName},
+			HO_MEDIA_TEST_REGISTRATION_DATE=now()			
+		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_MEDIA_TEST_CODE=#{hoBloodTestCode}
+	</update>
 </mapper>
