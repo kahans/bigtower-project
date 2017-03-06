@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>혈액검사 결과등록</h1>
-	<form action="<c:url value='/hospital/test/bloodTestAdd'/>" method="post" enctype="multipart/form-data">
+	<form action="<c:url value='/hospital/test/addBloodTest'/>" method="post" enctype="multipart/form-data">
 		<div>
 			검사명 : 
 			<input type="text" name="hoTestName" required="required" value="${bloodView.hoTestName }">

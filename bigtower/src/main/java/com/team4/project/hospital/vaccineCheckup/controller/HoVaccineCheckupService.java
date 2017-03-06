@@ -30,12 +30,12 @@ public class HoVaccineCheckupService {
 	}
 
 	//건강검진 등록
-	public int checkAdd(HoCheckupSub checkAdd) {
+	public int addCheck(HoCheckupSub addCheckup) {
 		
-		String path=checkAdd.getHoCheckUpResultPath();
+		String path=addCheckup.getHoCheckUpResultPath();
 		File file = null;
 		String extention = "";
-		MultipartFile multipartFile = checkAdd.getUploadFile();
+		MultipartFile multipartFile = addCheckup.getUploadFile();
 		try{
 			
 				UUID uuid = UUID.randomUUID();
@@ -50,11 +50,11 @@ public class HoVaccineCheckupService {
 				multipartFile.transferTo(file);
 				
 			
-				checkAdd.setHoCheckUpResultName(fileName);
-				checkAdd.setHoCheckUpResultPath(path);
-				System.out.println("서비스try후 : "+checkAdd.toString());
+				addCheckup.setHoCheckUpResultName(fileName);
+				addCheckup.setHoCheckUpResultPath(path);
+				System.out.println("서비스try후 : "+addCheckup.toString());
 				
-				hoVCD.checkupAdd(checkAdd);
+				hoVCD.checkupAdd(addCheckup);
 				
 			}catch(IllegalStateException e){
 				System.out.println("IllegalStateException 예외발생");

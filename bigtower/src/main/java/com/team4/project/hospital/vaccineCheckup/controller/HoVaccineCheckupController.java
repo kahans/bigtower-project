@@ -22,35 +22,34 @@ public class HoVaccineCheckupController {
 	private HoVaccineCheckupService hoVCS;
 	
 	//건강검진 리스트
-	@RequestMapping(value="/hospital/test/checkupList", method=RequestMethod.GET)
+	@RequestMapping(value="/hospital/test/listCheckup", method=RequestMethod.GET)
 	public String checkupList(HoCheckup hoCheckup, Model model){
 		hoCheckup.setHoTestCode("3");
-		
 		List<HoCheckup> checkupList = hoVCS.checkupList(hoCheckup);
 		
 		model.addAttribute("checkupList", checkupList);
-		return "/hospital/views/tests/checkupList";
+		return "/hospital/views/tests/listCheckup";
 	}
 	
 	//건강검진 등록 뷰 get
-	@RequestMapping(value="/hospital/test/checkupAdd", method=RequestMethod.GET)
+	@RequestMapping(value="/hospital/test/addCheckup", method=RequestMethod.GET)
 	public String checkupAdd(Model model,
 				@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
 			){
 		HoCheckupSub checkView = hoVCS.checkView(hoTestRequestCode);
 		model.addAttribute("checkView", checkView);
-		return "/hospital/views/tests/checkupAdd";
+		return "/hospital/views/tests/addCheckup";
 	}
 	
 	//건강검진 등록 뷰 post
-	@RequestMapping(value="/hospital/test/checkupAdd", method=RequestMethod.POST)
-	public String checkAdd(HttpServletRequest request, HoCheckupSub checkAdd){
+	@RequestMapping(value="/hospital/test/addCheckup", method=RequestMethod.POST)
+	public String checkAdd(HttpServletRequest request, HoCheckupSub addCheckup){
 		String path="D:\\testImage";//상대주소
 		// 배포시사용할경로
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
-		checkAdd.setHoCheckUpResultPath(path);
-		hoVCS.checkAdd(checkAdd);
-		return "redirect:/hospital/test/checkupList";
+		addCheckup.setHoCheckUpResultPath(path);
+		hoVCS.addCheck(addCheckup);
+		return "redirect:/hospital/test/listCheckup";
 	}
 	
 	//예방접종 등록

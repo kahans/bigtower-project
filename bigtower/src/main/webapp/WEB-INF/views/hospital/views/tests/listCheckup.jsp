@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>혈액 대기자 목록</h1>
+<h1>건강검진 대기자 목록</h1>
 	<table border="">
 		<thead>
 			<tr>
@@ -18,13 +18,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="bloodList" items="${bloodList}">
+			<c:forEach var="checkupList" items="${checkupList}">
 				<tr>
 					<td>
-						<a href="<c:url value='/hospital/test/bloodTestAdd?hoTestRequestCode=${bloodList.hoTestRequestCode }'/>">
-						${bloodList.hoPatientName}</a></td>
-					<td>${bloodList.hoTestRequestCode }</td>
-					<td>${bloodList.hoTreatmentCode }</td>
+						<a href="<c:url value='/hospital/test/addCheckup?hoTestRequestCode=${checkupList.hoTestRequestCode }'/>">
+						${checkupList.hoPatientName}</a></td>
+					<td>${checkupList.hoTestRequestCode }</td>
+					<td>${checkupList.hoTreatmentCode }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -23,28 +23,31 @@ public class HoTestController {
 	//검사종류(혈액, 영상, 건강검진)선택 뷰
 	@RequestMapping(value="/hospital/test", method=RequestMethod.GET)
 	public String TestsView(){
-		return "/hospital/views/tests/testsView";
+		return "/hospital/views/tests/viewTest";
 	}
+	
 	//혈액검사 목록
-	@RequestMapping(value="/hospital/test/bloodTestList",method=RequestMethod.GET)
+	@RequestMapping(value="/hospital/test/ListBloodTest",method=RequestMethod.GET)
 	public String BloodTestList(HoTestRequestSub hoTestRequest, Model model){
 		hoTestRequest.setHoTestCode("1");
 		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
 		
 		model.addAttribute("bloodList", bloodList);
-		return "/hospital/views/tests/bloodTestList";
+		return "/hospital/views/tests/ListBloodTest";
 	}
+	
 	//혈액검사등록 뷰 get
-	@RequestMapping(value="/hospital/test/bloodTestAdd", method=RequestMethod.GET)
+	@RequestMapping(value="/hospital/test/addBloodTest", method=RequestMethod.GET)
 	public String bloodTestAdd(Model model,
 				@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
 			){
 		HoBloodTestSub bloodView= hoTS.bloodTestView(hoTestRequestCode);
 		model.addAttribute("bloodView",bloodView);
-		return "/hospital/views/tests/bloodTestAdd";
+		return "/hospital/views/tests/addBloodTest";
 	}
+	
 	//혈액검사등록 뷰 post
-	@RequestMapping(value="/hospital/test/bloodTestAdd", method=RequestMethod.POST)
+	@RequestMapping(value="/hospital/test/addBloodTest", method=RequestMethod.POST)
 	public String bloodTestAdd(HoBloodTestSub bloodView, HttpServletRequest request){
 		
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
@@ -53,11 +56,11 @@ public class HoTestController {
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		bloodView.setHoBloodTestImagePath(path);
 		hoTS.bloodTestAdd(bloodView);
-		return "redirect:/hospital/test/bloodTestList";
+		return "redirect:/hospital/test/ListBloodTest";
 	}
 	
 	//영상검사 목록
-	@RequestMapping(value="/hospital/test/mediaTestList", method=RequestMethod.GET)
+	@RequestMapping(value="/hospital/test/listMediaTest", method=RequestMethod.GET)
 	public String mediaTestList(HoTestRequestSub hoTestRequest, Model model
 			){
 		System.out.println("영상검사 대기자 리스트 확인");
@@ -68,10 +71,11 @@ public class HoTestController {
 		//뷰에서 작동할<c:forEach> item에 세팅한다.
 		System.out.println(mediaList.toString());
 		model.addAttribute("mediaList", mediaList);
-		return "/hospital/views/tests/mediaTestList";
+		return "/hospital/views/tests/listMediaTest";
 	}
+	
 	//영상검사 등록 뷰 GET
-	@RequestMapping(value="/hospital/test/mediaTestAdd", method=RequestMethod.GET)
+	@RequestMapping(value="/hospital/test/addMediaTest", method=RequestMethod.GET)
 	public String mediaTestView(Model model, 
 								@RequestParam(value="hoTestRequestCode",required=false )String hoTestRequestCode
 			){
@@ -80,10 +84,11 @@ public class HoTestController {
 		HoMediaTestSub mediaView = hoTS.mediaTestView(hoTestRequestCode);
 		System.out.println(mediaView.toString());
 		model.addAttribute("mediaView", mediaView);
-		return "/hospital/views/tests/mediaTestAdd";
+		return "/hospital/views/tests/addMediaTest";
 	}
+	
 	//영상검사 등록 POST
-	@RequestMapping(value="/hospital/test/mediaTestAdd", method=RequestMethod.POST)
+	@RequestMapping(value="/hospital/test/addMediaTest", method=RequestMethod.POST)
 	public String mediaTestView(HoMediaTestSub mediaView, HttpServletRequest request){ 
 		System.out.println("해당 영상검사 결과 등록 POST");
 		System.out.println("등록POST : "+mediaView.toString());
@@ -96,6 +101,6 @@ public class HoTestController {
 		hoTS.mediaTestAdd(mediaView);
 		
 		
-		return "redirect:/hospital/test/mediaTestList";
+		return "redirect:/hospital/test/listMediaTest";
 	}
 }
