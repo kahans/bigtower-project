@@ -10,8 +10,8 @@ public class HoCheckup {
 	protected String hoCheckUpDate;
 	protected String hoCheckUpRegistrationDate;
 	protected int hoGoSendstate;
-	protected int hoTestStateCode;	
-	protected String hoTestCode;
+	protected int hoTestStateCode;	//이거 뭐냐 왜만듬?
+	protected String hoTestCode;	//이것도 뭐냐?
 
 	
 	
