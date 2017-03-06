@@ -45,8 +45,9 @@
 			HO_MEDIA_TEST_DATE,
 			HO_MEDIA_TEST_REGISTRATION_DATE)
 		select
-			CONCAT('videoInspection_',
-			max(cast(substring(HO_MEDIA_TEST_CODE,17,5) as UNSIGNED ))+1),
+			if(HO_MEDIA_TEST_CODE is null, videoInspection_1, 
+				CONCAT('videoInspection_',
+				max(cast(substring(HO_MEDIA_TEST_CODE,17,5) as UNSIGNED ))+1)),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
 			#{hoTestStateCode},
@@ -87,8 +88,9 @@
 			HO_BLOOD_TEST_DATE,
 			HO_BLOOD_TEST_REGISTRATION_DATE)
 		select
-			CONCAT('bloodInspection_',
-			max(cast(substring(HO_BLOOD_TEST_CODE,17,5) as UNSIGNED ))+1),
+			if(HO_BLOOD_TEST_CODE is null, bloodInspection_1,
+				CONCAT('bloodInspection_',
+				max(cast(substring(HO_BLOOD_TEST_CODE,17,5) as UNSIGNED ))+1)),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
 			#{hoTestStateCode},

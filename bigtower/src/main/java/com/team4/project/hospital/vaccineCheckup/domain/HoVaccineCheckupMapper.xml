@@ -48,8 +48,9 @@
 			HO_CHECKUP_DATE,
 			HO_CHECKUP_REGISTRATION_DATE)
 		select
-			CONCAT('checkup_',
-			max(cast(substring(HO_CHECKUP_CODE,9,5) as UNSIGNED ))+1),
+			if(HO_CHECKUP_CODE is null, checkup_1,
+				CONCAT('checkup_',
+				max(cast(substring(HO_CHECKUP_CODE,9,5) as UNSIGNED ))+1)),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
 			#{hoTestStateCode},
@@ -69,8 +70,9 @@
 			HO_VACCINE_DATE,
 			HO_GO_SENDSTATE)
 		SELECT
-			CONCAT('vaccine_',
-			max(cast(substring(HO_VACCINE_CODE,9,5) as UNSIGNED ))+1),
+			if(HO_VACCINE_CODE is null, vaccine_1,
+				CONCAT('vaccine_',
+				max(cast(substring(HO_VACCINE_CODE,9,5) as UNSIGNED ))+1)),
 			#{hoTreatmentCode},
 			#{hoVaccineTypeCode},
 			#{hoVaccineDate},
