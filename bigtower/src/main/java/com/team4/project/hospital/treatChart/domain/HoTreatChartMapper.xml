@@ -14,9 +14,11 @@
  			HO_GO_SENDSTATE)
  		SELECT
  			<!-- 병원코드 + 차트번호로 차트코드 생성 -->
- 			CONCAT(#{hoHospitalCode},
- 					'chart_',
- 					max(cast(substring(ho_chart.HO_CHART_CODE,17,5) as UNSIGNED ))+1),	
+ 			if(HO_CHART_CODE is null,
+				CONCAT(#{hoHospitalCode},'chart_1'), <!-- 차트코드가 없을때 -->
+				CONCAT(#{hoHospitalCode},  <!-- 차트코드가 있을때 -->
+						'chart_',
+						max(cast(substring(ho_chart.HO_CHART_CODE,17,5) as UNSIGNED ))+1)),	
  			<!-- 방금 등록된 환자의 코드번호를 가져오기 위해 서브쿼리를 사용함 -->
  			(SELECT
 			 	CONCAT('patient_',max(cast(substring(ho_patient.HO_PATIENT_CODE,9,5) as UNSIGNED )))
@@ -117,8 +119,10 @@
  			HO_GO_SENDSTATE,
  			HO_HOSPITALIZATION_STATE_CODE)
  		SELECT
- 			CONCAT('treatment_',
- 					max(cast(substring(HO_TREATMENT_CODE,11,5) as UNSIGNED ))+1),
+ 			if(HO_TREATMENT_CODE is null,
+ 							'treatment_1',
+ 							CONCAT('treatment_',
+ 							max(cast(substring(HO_TREATMENT_CODE,11,5) as UNSIGNED ))+1)),
  			'doctor_1',
  			#{hoChartCode},
  			#{hoPatientCode},

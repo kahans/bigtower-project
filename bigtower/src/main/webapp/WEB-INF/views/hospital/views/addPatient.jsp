@@ -12,6 +12,7 @@
 </head>
 <body>
 	<h1>환자 등록</h1>
+	<h3>환자 등록시 자동으로 차트가 생성됩니다</h3>
 	<form action="<c:url value='/hospital/addPatient'/>" method="post">
 		<table>
 			<tr>

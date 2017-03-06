@@ -32,7 +32,7 @@
 		
 		<!-- 질병 추가 -->
 		<div>
-			질병명 :
+			질병 선택
 			<div id="prescription">
            		<div>
             		<select name="diseaseSelect">
