@@ -123,4 +123,12 @@ public class HoTestService {
 			}		
 		return 0;
 	}
+	
+	//검사요청등록
+	public int addTestRequest(HoTestRequestSub hoTestRequestSub) {
+		System.out.println("검사요청등록서비스");
+		return hoTD.addTestRequest(hoTestRequestSub);
+	}
+	
+	
 }

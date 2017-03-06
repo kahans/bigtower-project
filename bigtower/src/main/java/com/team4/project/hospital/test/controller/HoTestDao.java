@@ -47,4 +47,11 @@ public class HoTestDao {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("hoTest.addBlood", bloodView);
 	}
+
+	//검사요청 등록
+	public int addTestRequest(HoTestRequestSub hoTestRequestSub) {
+		// TODO Auto-generated method stub
+		System.out.println("검사요청등록DAO");
+		return sqlSession.insert("hoTest.addTestRequest", hoTestRequestSub);
+	}
 }
