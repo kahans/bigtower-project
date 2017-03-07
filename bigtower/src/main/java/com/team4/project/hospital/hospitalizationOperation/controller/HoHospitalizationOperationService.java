@@ -25,8 +25,8 @@ public class HoHospitalizationOperationService {
 	}
 	
 	//수술 목록
-	public List<HoOperationSub> operationList(){
-		return hoHOD.operationList();
+	public List<HoOperationSub> operationList(String hoHospitalCode){
+		return hoHOD.operationList(hoHospitalCode);
 	}
 	
 	//수술 상세보기

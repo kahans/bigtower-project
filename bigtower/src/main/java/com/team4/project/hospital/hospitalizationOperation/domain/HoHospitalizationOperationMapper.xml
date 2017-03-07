@@ -39,9 +39,11 @@
  	</insert>
  	
  	<!-- 수술 목록 -->
- 	<select id="operationList" resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub">
+ 	<select id="operationList" resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub"
+ 							   parameterType="String">
  		SELECT
  			ho_operation.HO_OPERATION_CODE,
+ 			ho_treatment.HO_HOSPITAL_CODE,
  			ho_operation.HO_TREATMENT_CODE,
  			ho_patient.HO_PATIENT_NAME,
  			ho_operation_type.HO_OPERATION_TYPE_NAME,
@@ -53,6 +55,7 @@
  			ON ho_operation.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
  		JOIN ho_patient
  			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
+ 		WHERE ho_treatment.HO_HOSPITAL_CODE=#{hoHospitalCode}
  	</select>
  	
  	<!-- 수술 상세보기 -->

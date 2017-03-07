@@ -2,13 +2,14 @@ package com.team4.project.hospital.hospitalizationOperation.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperation;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub;
 
@@ -38,8 +39,9 @@ public class HoHospitalizationOperationController {
 	
 	//수술 목록
 	@RequestMapping(value="/hospital/operationList")
-	public String operationList(Model model){
-		List<HoOperationSub> operationList = hoHOS.operationList();
+	public String operationList(Model model, HttpSession session){
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		List<HoOperationSub> operationList = hoHOS.operationList(hoHospitalCode);
 		System.out.println("수술 목록 : "+operationList);
 		model.addAttribute("operationList",operationList);
 		return "/hospital/views/operationList";
