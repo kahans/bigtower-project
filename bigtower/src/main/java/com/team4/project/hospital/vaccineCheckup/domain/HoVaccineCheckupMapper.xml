@@ -9,13 +9,19 @@
 		select
 			ho_test_request.HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
-			ho_patient.HO_PATIENT_NAME
+			ho_patient.HO_PATIENT_NAME,
+			ho_test_state.HO_TEST_STATE_NAME 	
 		from ho_test_request
 		join ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
 		JOIN ho_patient
 			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
+		JOIN ho_test_state
+			ON ho_test_state.HO_TEST_STATE_CODE = ho_test_request.HO_TEST_STATE_CODE
 		where ho_test_request.HO_TEST_CODE=#{hoTestCode}
+		AND ho_treatment.HO_HOSPITAL_CODE=#{hoHospitalCode}		
+		AND ho_test_request.HO_TEST_STATE_CODE='1' 
+			or ho_test_request.HO_TEST_STATE_CODE='2'
 	</select>
 	
 	<!-- 건강검진 뷰 -->

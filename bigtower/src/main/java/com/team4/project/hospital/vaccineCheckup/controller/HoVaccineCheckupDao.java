@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.team4.project.hospital.test.domain.HoTestRequestSub;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckup;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub;
 import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
@@ -17,8 +18,8 @@ public class HoVaccineCheckupDao {
 	private SqlSessionTemplate sqlSession;
 
 	//건강검진 목록
-	public List<HoCheckup> checkupList(HoCheckup hoCheckup) {		
-		return sqlSession.selectList("VC.checkupList", hoCheckup);
+	public List<HoTestRequestSub> checkupList(HoTestRequestSub hoTestRequestSub) {		
+		return sqlSession.selectList("VC.checkupList", hoTestRequestSub);
 	}
 
 	//건강검진 상세보기

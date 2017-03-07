@@ -15,6 +15,7 @@
 				<td>환자명</td>
 				<td>검사요청코드</td>
 				<td>진료코드</td>
+				<td>상태</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,6 +26,7 @@
 						${checkupList.hoPatientName}</a></td>
 					<td>${checkupList.hoTestRequestCode }</td>
 					<td>${checkupList.hoTreatmentCode }</td>
+					<td>${checkupList.hoTestStateName }</td>
 				</tr>
 			</c:forEach>
 		</tbody>

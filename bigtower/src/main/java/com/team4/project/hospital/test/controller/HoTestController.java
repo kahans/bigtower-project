@@ -33,7 +33,34 @@ public class HoTestController {
 		hoTS.addTestRequest(hoTestRequestSub);
 		return "";
 	}*/
-	//혈액검사 목록
+	//혈액검사 상태 업데이트
+	@RequestMapping(value="/hospital/test/updateBloodState", method=RequestMethod.GET)
+	public String updateBloodState(HoTestRequestSub hoTestRequest,HttpSession session,
+			@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
+			){
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		hoTestRequest.setHoHospitalCode(hoHospitalCode);
+		hoTestRequest.setHoTestRequestCode(hoTestRequestCode);
+		
+		hoTS.updateBloodState(hoTestRequest);
+		return "/hospital/views/tests/ListBloodTest";
+	}
+	
+	//혈액검사 결과대기목록들
+	@RequestMapping(value="/hospital/test/listBloodWait", method=RequestMethod.GET)
+	public String listBloodWait(Model model,HoTestRequestSub hoTestRequest,
+			HttpSession session
+	){
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		hoTestRequest.setHoTestCode("1");
+		hoTestRequest.setHoHospitalCode(hoHospitalCode);		
+		hoTestRequest.setHoTestStateCode("2");
+		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
+		
+		model.addAttribute("bloodList", bloodList);
+		return "/hospital/views/tests/listBloodWait";
+	}
+	//혈액검사 대기목록
 	@RequestMapping(value="/hospital/test/ListBloodTest",method=RequestMethod.GET)
 	public String BloodTestList(HoTestRequestSub hoTestRequest, Model model,
 			HttpSession session
@@ -41,6 +68,7 @@ public class HoTestController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoTestCode("1");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);
+		hoTestRequest.setHoTestStateCode("1"); 
 		System.out.println(hoTestRequest.toString());
 		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
 		
@@ -50,14 +78,17 @@ public class HoTestController {
 	
 	//혈액검사등록 뷰 get
 	@RequestMapping(value="/hospital/test/addBloodTest", method=RequestMethod.GET)
-	public String bloodTestAdd(Model model,
+	public String bloodTestAdd(Model model, HttpSession session,
 				@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
 			){
-		//글 보기와 혈액검사 테이블에 insert 하기
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		
 		HoBloodTestSub bloodView= hoTS.bloodTestView(hoTestRequestCode);
+		//결과대기상태에서 결과등록 완료로 상태가 변경
+		bloodView.setHoHospitalCode(hoHospitalCode);
+		hoTS.updateBloodTestRequest(bloodView);
+		//혈액검사 테이블에 insert 하기
 		hoTS.addBlood(bloodView);
-		
 		model.addAttribute("bloodView",bloodView);
 		return "/hospital/views/tests/addBloodTest";
 	}

@@ -9,16 +9,45 @@
  		select
 			ho_test_request.HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
-			ho_patient.HO_PATIENT_NAME
+			ho_patient.HO_PATIENT_NAME,
+			ho_test_state.HO_TEST_STATE_NAME 	
 		from ho_test_request
 		join ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
 		JOIN ho_patient
 			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
+		JOIN ho_test_state
+			ON ho_test_state.HO_TEST_STATE_CODE = ho_test_request.HO_TEST_STATE_CODE
 		where ho_test_request.HO_TEST_CODE=#{hoTestCode}
-		AND ho_treatment.HO_HOSPITAL_CODE=#{hoHospitalCode}
+		AND ho_treatment.HO_HOSPITAL_CODE=#{hoHospitalCode}		
+		AND ho_test_request.HO_TEST_STATE_CODE=#{hoTestStateCode}
 
  	</select>
+ 	<!-- 검사대기상테에서 결과대기상태로 상태 코드를 업데이트 하는 쿼리문 -->
+ 	<update id="updateBloodState" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub">
+ 		update ho_test_request
+		INNER JOIN ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		INNER JOIN ho_hospital
+			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
+		set
+			HO_TEST_START_DATE=now() ,
+			HO_TEST_STATE_CODE=2
+		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
+ 	</update>
+ 	<!-- 결과대기상태에서 결과등록 완료로 상태가 변경 -->
+ 	<update id="updateBloodTestRequest" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub" >
+ 		update ho_test_request
+ 		INNER JOIN ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		INNER JOIN ho_hospital
+			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
+		set
+			HO_TEST_STATE_CODE=3
+		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
+ 	</update>
  	<!-- 영상 결과 등록뷰에 보여줌  -->
  	<select id="addMediaTestView" resultType="com.team4.project.hospital.test.domain.HoMediaTestSub" parameterType="String">
  		select
