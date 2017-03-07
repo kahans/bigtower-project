@@ -134,17 +134,17 @@ public class HoTreatChartController {
 		System.out.println("hoReceiveCode : "+hoReceiveCode);
 		System.out.println("hoPatientCode : "+hoPatientCode);
 		System.out.println("hoTreatSubjectCode : "+hoTreatSubjectCode);
-		System.out.println("hoTreat : "+hoTreat.toString());
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		String hoDoctorId = (String) session.getAttribute("HOSTAFFID");
 		System.out.println("hoHospitalCode : "+hoHospitalCode);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("hoHospitalCode",hoHospitalCode);
 		map.put("hoPatientCode",hoPatientCode);
 		String hoChartCode = hoTCS.selectChartCode(map);
-		System.out.println("hoChartCode : "+hoChartCode);
-		
+		System.out.println("hoChartCode : "+hoChartCode);		
 		
 		System.out.println("hoTreat 셋팅하기전 : "+hoTreat);
+		hoTreat.setHoDoctorId(hoDoctorId);
 		hoTreat.setHoPatientCode(hoPatientCode);
 		hoTreat.setHoChartCode(hoChartCode);
 		hoTreat.setHoHospitalCode(hoHospitalCode);
