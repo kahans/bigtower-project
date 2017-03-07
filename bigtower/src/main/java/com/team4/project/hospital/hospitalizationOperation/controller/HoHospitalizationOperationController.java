@@ -1,6 +1,8 @@
 package com.team4.project.hospital.hospitalizationOperation.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,16 +21,7 @@ public class HoHospitalizationOperationController {
 
 	@Autowired
 	private HoHospitalizationOperationService hoHOS;
-/*	
-	//입퇴원요청
-	@RequestMapping(value="/hospital/hospitalizationRequest")
-	public String addHospitalizationRequest(HoHospitalization hoHospitalization){
-		System.out.println("hoHospitalization : "+hoHospitalization);
-		int result = hoHOS.addRequest(hoHospitalization);
-		System.out.println("입퇴원 요청 등록 결과는 ? "+result);
-		return "redirect:/hospital/treatList";
-	}*/
-	
+
 	//수술 추가
 	@RequestMapping(value="/hospital/addOperation")
 	public String addOperation(HoOperation hoOperation){
@@ -55,6 +48,20 @@ public class HoHospitalizationOperationController {
 		List<HoHospitalizationRequest> hospitalizationRequestList = hoHOS.hospitalizationRequestList(hoHospitalCode);
 		model.addAttribute("hospitalizationRequestList",hospitalizationRequestList);
 		return "/hospital/views/hospitalizationRequestList";
+	}
+	
+	//입원 등록
+	@RequestMapping(value="/hospital/addHospitalization")
+	public String addHospitalization(String hoTreatmentCode,
+									 String hoHospitalizationRequestCode){
+		System.out.println("hoTreatmentCode : "+hoTreatmentCode);
+		System.out.println("hoHospitalizationRequestCode : "+hoHospitalizationRequestCode);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("hoTreatmentCode", hoTreatmentCode);
+		map.put("hoHospitalizationRequestCode", hoHospitalizationRequestCode);
+		int result = hoHOS.addHospitalization(map);
+		System.out.println("입원등록 결과는? " + result );
+		return "redirect:/hospital/hospitalizationList";
 	}
 	
 	//수술 데이터 상세보기

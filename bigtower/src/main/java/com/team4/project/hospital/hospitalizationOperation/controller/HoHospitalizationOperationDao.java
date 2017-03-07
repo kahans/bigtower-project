@@ -1,6 +1,7 @@
 package com.team4.project.hospital.hospitalizationOperation.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class HoHospitalizationOperationDao {
 	//입퇴원 요청 목록
 	public List<HoHospitalizationRequest> hospitalizationRequestList(String hoHospitalCode){
 		return sqlSession.selectList("hoHospitalizationOperation.hospitalizationRequestList",hoHospitalCode);
+	}
+	
+	//입원 등록
+	public int addHospitalization(Map<String, Object> map){
+		return sqlSession.insert("hoHospitalizationOperation.addHospitalization",map);
 	}
 	
 	//수술 등록

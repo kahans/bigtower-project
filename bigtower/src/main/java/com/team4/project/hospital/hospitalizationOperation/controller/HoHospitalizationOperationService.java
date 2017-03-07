@@ -3,6 +3,7 @@ package com.team4.project.hospital.hospitalizationOperation.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,11 @@ public class HoHospitalizationOperationService {
 	//입퇴원 요청 목록
 	public List<HoHospitalizationRequest> hospitalizationRequestList(String hoHospitalCode){
 		return hoHOD.hospitalizationRequestList(hoHospitalCode);
+	}
+	
+	//입원 등록
+	public int addHospitalization(Map<String, Object> map){
+		return hoHOD.addHospitalization(map);
 	}
 	
 	//수술 상세보기

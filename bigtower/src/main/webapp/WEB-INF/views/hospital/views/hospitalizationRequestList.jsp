@@ -26,7 +26,12 @@
 					<td>${hospitalizationRequestList.hoTreatmentCode}</td>
 					<td>${hospitalizationRequestList.hoHospitalizationRequestDate}</td>
 					<td>${hospitalizationRequestList.hoPatientName}</td>
-					<td><a href="<c:url value='/hospital/addHospitalization'/>"><button>입원확인</button></a></td>
+					<td>
+						<a href="<c:url value='/hospital/addHospitalization?hoTreatmentCode=${hospitalizationRequestList.hoTreatmentCode}&
+																			hoHospitalizationRequestCode = ${hospitalizationRequestList.hoHospitalizationRequestCode}'/>">
+						<button>입원확인</button>
+						</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
