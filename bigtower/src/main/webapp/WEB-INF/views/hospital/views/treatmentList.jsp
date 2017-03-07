@@ -30,9 +30,9 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="<c:url value='/hospital/receiveList'/>">접수 현황</a>
-	<a href="<c:url value='/hospital/acceptanceList'/>">수납 현황</a>
-	<a href="<c:url value='/hospital/operationList'/>">수술 목록</a>
-	<a href="<c:url value='/hospital/test'/>">검사</a>
+	<a href="<c:url value='/hospital/receiveList'/>"><button>접수현황</button></a>&nbsp;&nbsp;&nbsp;
+	<a href="<c:url value='/hospital/acceptanceList'/>"><button>수납현황</button></a>&nbsp;&nbsp;&nbsp;
+	<a href="<c:url value='/hospital/operationList'/>"><button>수술목록</button></a>&nbsp;&nbsp;&nbsp;
+	<a href="<c:url value='/hospital/test'/>"><button>검사</button></a>
 </body>
 </html>

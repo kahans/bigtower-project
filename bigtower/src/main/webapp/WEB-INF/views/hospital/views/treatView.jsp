@@ -110,7 +110,6 @@
 	
 		<!-- 처방 요청 -->
 		<h3>처방전 작성</h3>
-		<a href="<c:url value='/hospital/addPrescription?hoTreatmentCode=${hoTreat.hoTreatmentCode}'/>"><button>처방전 작성</button></a>
 		<div>
 			일일투약량 :
 			<input type="text" name="hoPrescriptionDailydose">
