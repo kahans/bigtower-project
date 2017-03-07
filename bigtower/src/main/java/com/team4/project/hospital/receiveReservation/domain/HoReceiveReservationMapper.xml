@@ -118,7 +118,7 @@
 	</select>
 	
 	<!-- 접수완료에서 진료 상태로 변경 -->
-	<update id="receiveStateDiagnosis">
+	<update id="receiveStateDiagnosis" parameterType="String">
 		update
 			ho_receive
 		set

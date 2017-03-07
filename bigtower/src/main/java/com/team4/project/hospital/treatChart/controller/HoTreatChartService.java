@@ -17,6 +17,7 @@ import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.dto.HoVaccineType;
 import com.team4.project.hospital.hospitalizationOperation.controller.HoHospitalizationOperationDao;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperation;
+import com.team4.project.hospital.receiveReservation.controller.HoReceiveReservationDao;
 import com.team4.project.hospital.test.controller.HoTestDao;
 import com.team4.project.hospital.treatChart.domain.HoChart;
 import com.team4.project.hospital.treatChart.domain.HoTreat;
@@ -45,6 +46,9 @@ public class HoTreatChartService {
 
 	@Autowired
 	private HoDiagnosisPrescriptionDao hoDPD;
+	
+	@Autowired
+	private HoReceiveReservationDao hoRRDao;
 		
 	//차트생성
 	public int addChart(HoChart hoChart){
@@ -87,12 +91,14 @@ public class HoTreatChartService {
 	}
 	
 	//환자코드에 맞는 차트코드 가져오기
-	public String selectChartCode(Map<String, Object> map){
+	public String selectChartCode(Map<String, String> map){
 		return hoTCD.selectChartCode(map);
 	}
 	
 	//접수완료 클릭시 진료 데이터 생성
-	public int addTreat(HoTreat hoTreat){
+	public int addTreat(HoTreat hoTreat, String hoReceiveCode){
+		int result = hoRRDao.receiveStateDiagnosis(hoReceiveCode);
+		System.out.println("접수완료에서 진료로 상태업데이트 결과?" + result);
 		return hoTCD.addTreat(hoTreat);
 	}
 	

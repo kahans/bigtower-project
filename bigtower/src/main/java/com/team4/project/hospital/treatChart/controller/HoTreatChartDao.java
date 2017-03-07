@@ -3,6 +3,7 @@ package com.team4.project.hospital.treatChart.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -57,8 +58,11 @@ public class HoTreatChartDao {
 	}
 	
 	//환자코드에 맞는 차트코드 가져오기
-	public String selectChartCode(Map<String, Object> map){
-		return sqlSession.selectOne("hoTreatChart.selectChartCode", map);
+	public String selectChartCode(Map<String, String> map){
+		System.out.println("맵 확인 :"+map.get("hoPatientCode") + " , "+map.get("hoHospitalCode"));
+		String a = sqlSession.selectOne("hoTreatChart.selectChartCode", map);
+		System.out.println("/////////////////////a 확인 : "+a);
+		return a;
 	}
 	
 	//접수완료 클릭시 진료 데이터 생성

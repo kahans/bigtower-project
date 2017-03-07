@@ -27,7 +27,8 @@
 				<td>${ReceiveList.hoReceivePurpose }</td>
 				<td>${ReceiveList.hoReceiveRegistrationDate }</td>
 				<td><a href="<c:url value='/hospital/addTreat?
-											hoPatientCode=${ReceiveList.hoPatientCode} &
+											hoPatientCode=${ReceiveList.hoPatientCode}&
+											hoReceiveCode=${ReceiveList.hoReceiveCode}&
 											hoTreatSubjectCode=${ReceiveList.hoTreatSubjectCode}'/>">
 					${ReceiveList.hoReceiveStateName }</a>
 				</td>

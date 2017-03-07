@@ -71,14 +71,18 @@
 	
 	
 		<!-- 검사 요청 -->
-		<h3>검사 요청</h3>	
+		<h3>검사 요청</h3>
+		<input type="checkbox" name="hoTestCode" value="1">혈액검사	
+		<input type="checkbox" name="hoTestCode" value="2">영상검사
+		<input type="checkbox" name="hoTestCode" value="3">건강검진
+		<%-- 
 		<select name="hoTestCode">
 			<option value="0">:::검사를 선택하시오:::</option>
 			<c:forEach items="${testList}" var="testList">
 				<option value="${testList.hoTestCode}">${testList.hoTestName}</option>
 			</c:forEach>
 		</select>
-		
+		 --%>
 	
 		<!-- 입/퇴원 요청 -->
 		<h3>입/퇴원 요청</h3>

@@ -76,16 +76,16 @@ public class HoTreatChartController {
 	
 	//진료 내용 업데이트
 	@RequestMapping(value="/hospital/treatView", method=RequestMethod.POST)
-	public String treatView(HoTreat hoTreat,
-							String hoTestCode,
+	public String treatView(HoTreat hoTreat,							
 							String checkHospitalization,
 							HoOperation hoOperation,
 							HoPrescription hoPrescription,
 							HoVaccine hoVaccine,
 							RedirectAttributes redirectAttributes,
 							@RequestParam(value="diseaseSelect") List<String> diseaseList,
+							@RequestParam(value="hoTestCode") List<String> testList,
 							@RequestParam(value="medicineSelect") List<String> medicineList){
-		System.out.println("hoTestCode : "+hoTestCode);
+		System.out.println("testList : "+testList);
 		System.out.println("hoTreat : "+hoTreat);
 		System.out.println("hoOperation : "+hoOperation);
 		System.out.println("hoPrescription : "+hoPrescription);
@@ -95,7 +95,7 @@ public class HoTreatChartController {
 		System.out.println("diseaseList : "+diseaseList);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hoTreat", hoTreat);
-		map.put("hoTestCode", hoTestCode);
+		map.put("testList", testList);
 		map.put("checkHospitalization", checkHospitalization);
 		map.put("hoOperation", hoOperation);
 		map.put("hoPrescription", hoPrescription);
@@ -128,13 +128,16 @@ public class HoTreatChartController {
 	@RequestMapping(value="/hospital/addTreat")
 	public String addTreat(String hoPatientCode,
 						   String hoTreatSubjectCode,
+						   String hoReceiveCode,
 						   HoTreat hoTreat,
 						   HttpSession session){
-		
+		System.out.println("hoReceiveCode : "+hoReceiveCode);
 		System.out.println("hoPatientCode : "+hoPatientCode);
 		System.out.println("hoTreatSubjectCode : "+hoTreatSubjectCode);
+		System.out.println("hoTreat : "+hoTreat.toString());
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println("hoHospitalCode : "+hoHospitalCode);
+		Map<String, String> map = new HashMap<String, String>();
 		map.put("hoHospitalCode",hoHospitalCode);
 		map.put("hoPatientCode",hoPatientCode);
 		String hoChartCode = hoTCS.selectChartCode(map);
@@ -147,7 +150,7 @@ public class HoTreatChartController {
 		hoTreat.setHoHospitalCode(hoHospitalCode);
 		hoTreat.setHoTreatSubjectCode(hoTreatSubjectCode);
 		System.out.println("hoTreat 셋팅후 : "+hoTreat);
-		int result = hoTCS.addTreat(hoTreat);
+		int result = hoTCS.addTreat(hoTreat, hoReceiveCode);
 		System.out.println("addTreat 결과는 ?"+ result);
 		return "redirect:/hospital/treatList";
 	}

@@ -29,9 +29,7 @@
 		</div>
 			수술일지
 		<div>		
-			<textarea cols="100" rows="10" name="hoOperationDiary" >
-				${hoOperation.hoOperationDiary}
-			</textarea>
+			<textarea cols="100" rows="10" name="hoOperationDiary" >${hoOperation.hoOperationDiary}</textarea>
 		</div>
 		<input type="submit" value="수정 완료">	
 	</form>	

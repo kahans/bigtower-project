@@ -32,5 +32,7 @@
 	</table>
 	<a href="<c:url value='/hospital/receiveList'/>">접수 현황</a>
 	<a href="<c:url value='/hospital/acceptanceList'/>">수납 현황</a>
+	<a href="<c:url value='/hospital/operationList'/>">수술 목록</a>
+	<a href="<c:url value='/hospital/test'/>">검사</a>
 </body>
 </html>

@@ -23,13 +23,12 @@ public class HoReceiveReservationDao {
 	}
 
 	//한명의 환자 접수
-	public int insertOneReceive(HoPatient hoPatient){
-		
+	public int insertOneReceive(HoPatient hoPatient){	
 		return 0;
 	}
+	
 	//초진, 재진 조회
-	public HoPatient searchTest(HoPatient hp) {
-		// TODO Auto-generated method stub
+	public HoPatient searchTest(HoPatient hp) {	
 		return sqlSession.selectOne("hoReceiveReservation.selectPatientTest", hp);
 	}
 	
@@ -42,30 +41,28 @@ public class HoReceiveReservationDao {
 	public int addReceive(HoReceiveSub hoReceiveSub){
 		return sqlSession.insert("hoReceiveReservation.addReceive",hoReceiveSub);
 	}
+	
 	//접수 목록
-	public List<HoReceiveSub> receiveList(String hospitalCode) {
-		// TODO Auto-generated method stub
+	public List<HoReceiveSub> receiveList(String hospitalCode) {		
 		return sqlSession.selectList("hoReceiveReservation.ReceiveList", hospitalCode);
 	}
+	
 	//접수 상태에서 진료로 업데이트
 	public int receiveStateDiagnosis(String hoReceiveCode) {
-		// TODO Auto-generated method stub
 		return sqlSession.update("hoReceiveReservation.receiveStateDiagnosis", hoReceiveCode);
 	}
+	
 	//진료상태에서 수납대기로 변경
-	public int receiveStateAcceptance(String hoReceiveCode) {
-		// TODO Auto-generated method stub
+	public int receiveStateAcceptance(String hoReceiveCode) {	
 		return sqlSession.update("hoReceiveReservation.receiveStateAccenptance", hoReceiveCode);
 	}
+	
 	//수납대기에서 수납완료로 변경
-
-	public List<HoReceiveSub> diagonesLList(String hospitalCode) {
-		// TODO Auto-generated method stub
+	public List<HoReceiveSub> diagonesLList(String hospitalCode) {		
 		return sqlSession.selectList("hoReceiveReservation.diagonesLList", hospitalCode);
 	}
 
-	public List<HoReceiveSub> acceptanceList(String hospitalCode) {
-		// TODO Auto-generated method stub
+	public List<HoReceiveSub> acceptanceList(String hospitalCode) {		
 		return sqlSession.selectList("hoReceiveReservation.acceptanceList", hospitalCode);
 	}
 	
