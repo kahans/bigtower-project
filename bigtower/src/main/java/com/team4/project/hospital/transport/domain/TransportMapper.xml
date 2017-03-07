@@ -6,7 +6,10 @@
 	<select id="selectListHoBloodTest" resultType="com.team4.project.hospital.test.domain.HoBloodTest">
 		SELECT *
 		FROM ho_blood_test
-		WHERE ho_blood_test.HO_GO_SENDSTATE = 0
+		WHERE 
+				ho_blood_test.HO_GO_SENDSTATE = 0
+			AND
+				ho_blood_test.HO_BLOOD_TEST_REGISTRATION_DATE is not null
 	</select>
 
 	<!-- 차트 조회 -->
@@ -18,9 +21,12 @@
 
 	<!-- 건강검진 조회 -->
 	<select id="selectListHoCheckup" resultType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckup">
-  		SELECT * 
-		FROM ho_checkup
-		WHERE ho_checkup.HO_GO_SENDSTATE = 0
+  		SELECT *                                                  
+		FROM ho_checkup                                           
+		WHERE 
+				ho_checkup.HO_GO_SENDSTATE = 0                      
+			AND 
+				ho_checkup.HO_CHECKUP_REGISTRATION_DATE is not null
 	</select>
 
 	<!-- 진단(질병) 조회 -->
@@ -34,17 +40,23 @@
 	<select id="selectListHoHospitalization" resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization">
   		SELECT * 
 		FROM ho_hospitalization
-		WHERE ho_hospitalization.HO_GO_SENDSTATE = 0
+		WHERE 
+				ho_hospitalization.HO_GO_SENDSTATE = 0
+			AND 
+				ho_hospitalization.HO_HOSPITALIZATION_END_DATE is not null
 	</select>
 	
 	<!-- 영상검사 조회 -->
 	<select id="selectListHoMediaTest" resultType="com.team4.project.hospital.test.domain.HoMediaTest">
   		SELECT * 
 		FROM ho_media_test
-		WHERE ho_media_test.HO_GO_SENDSTATE = 0
+		WHERE 
+				ho_media_test.HO_GO_SENDSTATE = 0
+			AND 
+				ho_media_test.HO_MEDIA_TEST_REGISTRATION_DATE is not null
 	</select>
 	
-	<!-- 영상검사 조회 -->
+	<!-- 수술결과 조회 -->
 	<select id="selectListHoOperation" resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperation">
   		SELECT * 
 		FROM ho_operation
@@ -65,8 +77,10 @@
 	<select id="selectListHoTreat" resultType="com.team4.project.hospital.treatChart.domain.HoTreat">
   		SELECT * 
 		FROM ho_treatment
-		WHERE ho_treatment.HO_GO_SENDSTATE = 0
-			AND ho_treatment.HO_TREATMENT_CONTENTS is not null
+		WHERE 
+				ho_treatment.HO_GO_SENDSTATE = 0
+			AND 
+				ho_treatment.HO_TREATMENT_CONTENTS is not null
 	</select>
 	
 	<!-- 예방접종 조회 -->
