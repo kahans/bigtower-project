@@ -25,4 +25,8 @@ public class HospitalDao {
 		return sql.insert("hospital.addPatient", hoPatient);
 	}
 	
+	//주민번호 중복여부 확인
+	public String checkCitizenId(Map<String, Object> map){
+		return sql.selectOne("hospital.checkCitizenId", map);
+	}
 }

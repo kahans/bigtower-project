@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>혈액 검사 결과 대기목록</h1>
+<h1>건강검진 결과대기 목록</h1>
 	<table border="">
 		<thead>
 			<tr>
@@ -19,20 +19,20 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="bloodList" items="${bloodList}">
+			<c:forEach var="checkupList" items="${checkupList}">
 				<tr>
 					<td>
-						<a href="<c:url value='/hospital/test/addBloodTest?hoTestRequestCode=${bloodList.hoTestRequestCode }'/>">
-						${bloodList.hoPatientName}</a></td>
-					<td>${bloodList.hoTestRequestCode }</td>
-					<td>${bloodList.hoTreatmentCode }</td>
-					<td>${bloodList.hoTestStateName }</td>
+						<a href="<c:url value='/hospital/test/addCheckup?hoTestRequestCode=${checkupList.hoTestRequestCode }'/>">
+						${checkupList.hoPatientName}</a></td>
+					<td>${checkupList.hoTestRequestCode }</td>
+					<td>${checkupList.hoTreatmentCode }</td>
+					<td>${checkupList.hoTestStateName }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<br>
 	<a href="<c:url value='/hospital/test'/>"><button>전체목록</button></a>
-	<a href="<c:url value='/hospital/test/ListBloodTest'/>"><button>혈액검사대기목록</button></a>
+	<a href="<c:url value='/hospital/test/listCheckup'/>"><button>검진 대기목록</button></a>
 </body>
 </html>

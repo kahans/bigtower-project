@@ -66,13 +66,17 @@ public class HoTestDao {
 		return sqlSession.insert("hoTest.addMedia", mediaView);
 	}
 	//검사대기상테에서 결과대기상태로 상태 코드를 업데이트
-	public int updateBloodState(HoTestRequestSub hoTestRequest) {
+	public int updateState(HoTestRequestSub hoTestRequest) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("hoTest.updateBloodState", hoTestRequest);
+		return sqlSession.update("hoTest.updateState", hoTestRequest);
 	}
 	//결과대기상태에서 결과등록 완료로 상태가 변경
 	public int updateBloodTestRequest(HoBloodTestSub bloodView) {
 		// TODO Auto-generated method stub
 		return sqlSession.update("hoTest.updateBloodTestRequest",bloodView);
+	}
+	public int updateMediaTestRequest(HoMediaTestSub mediaView) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("hoTest.updateMediaTestRequest",mediaView);
 	}
 }

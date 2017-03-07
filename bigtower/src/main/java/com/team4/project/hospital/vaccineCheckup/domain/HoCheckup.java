@@ -2,37 +2,22 @@ package com.team4.project.hospital.vaccineCheckup.domain;
 
 public class HoCheckup {
 
-	protected String hoCheckUpCode;
-	protected String hoTreatmentCode;
+	protected String hoCheckUpCode;			//건겅검진코드
+	protected String hoTreatmentCode;		//진료코드
 	protected String hoTestRequestCode;		//검사요청 코드
-	protected String hoCheckUpResultName;
-	protected String hoCheckUpResultPath;
-	protected String hoCheckUpDate;
-	protected String hoCheckUpRegistrationDate;
+	protected String hoCheckUpResultName;	//파일이름
+	protected String hoCheckUpResultPath;	//파일경로
+	protected String hoCheckUpDate;			//시작일
+	protected String hoCheckUpRegistrationDate;//등록일
 	protected int hoGoSendstate;
-	protected int hoTestStateCode;	//이거 뭐냐 왜만듬?
-	protected String hoTestCode;	//이것도 뭐냐?
-
 	
-	
-	public String getHoTestCode() {
-		return hoTestCode;
-	}
-	public void setHoTestCode(String hoTestCode) {
-		this.hoTestCode = hoTestCode;
-	}
 	public String getHoTestRequestCode() {
 		return hoTestRequestCode;
 	}
 	public void setHoTestRequestCode(String hoTestRequestCode) {
 		this.hoTestRequestCode = hoTestRequestCode;
 	}
-	public int getHoTestStateCode() {
-		return hoTestStateCode;
-	}
-	public void setHoTestStateCode(int hoTestStateCode) {
-		this.hoTestStateCode = hoTestStateCode;
-	}
+	
 	public String getHoCheckUpCode() {
 		return hoCheckUpCode;
 	}
@@ -80,8 +65,7 @@ public class HoCheckup {
 		return "HoCheckup [hoCheckUpCode=" + hoCheckUpCode + ", hoTreatmentCode=" + hoTreatmentCode
 				+ ", hoTestRequestCode=" + hoTestRequestCode + ", hoCheckUpResultName=" + hoCheckUpResultName
 				+ ", hoCheckUpResultPath=" + hoCheckUpResultPath + ", hoCheckUpDate=" + hoCheckUpDate
-				+ ", hoCheckUpRegistrationDate=" + hoCheckUpRegistrationDate + ", hoGoSendstate=" + hoGoSendstate
-				+ ", hoTestStateCode=" + hoTestStateCode + ", hoTestCode=" + hoTestCode + "]";
+				+ ", hoCheckUpRegistrationDate=" + hoCheckUpRegistrationDate + ", hoGoSendstate=" + hoGoSendstate + "]";
 	}
 	
 }

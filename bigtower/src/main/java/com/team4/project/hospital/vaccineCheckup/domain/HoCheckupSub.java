@@ -8,9 +8,16 @@ public class HoCheckupSub extends HoCheckup{
 	protected String hoTestName;
 	protected String hoTestCode;
 	protected MultipartFile uploadFile;
+	protected String hoHospitalCode;
 	
 	
 	
+	public String getHoHospitalCode() {
+		return hoHospitalCode;
+	}
+	public void setHoHospitalCode(String hoHospitalCode) {
+		this.hoHospitalCode = hoHospitalCode;
+	}
 	public String getHoPatientName() {
 		return hoPatientName;
 	}
@@ -44,11 +51,11 @@ public class HoCheckupSub extends HoCheckup{
 	@Override
 	public String toString() {
 		return "HoCheckupSub [hoPatientName=" + hoPatientName + ", hoTestStateName=" + hoTestStateName + ", hoTestName="
-				+ hoTestName + ", hoTestCode=" + hoTestCode + ", uploadFile=" + uploadFile + ", hoCheckUpCode="
-				+ hoCheckUpCode + ", hoTreatmentCode=" + hoTreatmentCode + ", hoCheckUpResultPath="
-				+ hoCheckUpResultPath + ", hoCheckUpResultName=" + hoCheckUpResultName + ", hoCheckUpDate="
-				+ hoCheckUpDate + ", hoCheckUpRegistrationDate=" + hoCheckUpRegistrationDate + ", hoTestStateCode="
-				+ hoTestStateCode + ", hoGoSendstate=" + hoGoSendstate + "]";
+				+ hoTestName + ", hoTestCode=" + hoTestCode + ", uploadFile=" + uploadFile + ", hoHospitalCode="
+				+ hoHospitalCode + ", hoCheckUpCode=" + hoCheckUpCode + ", hoTreatmentCode=" + hoTreatmentCode
+				+ ", hoTestRequestCode=" + hoTestRequestCode + ", hoCheckUpResultName=" + hoCheckUpResultName
+				+ ", hoCheckUpResultPath=" + hoCheckUpResultPath + ", hoCheckUpDate=" + hoCheckUpDate
+				+ ", hoCheckUpRegistrationDate=" + hoCheckUpRegistrationDate + ", hoGoSendstate=" + hoGoSendstate + "]";
 	}
 	
 	
