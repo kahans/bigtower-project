@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.team4.project.hospital.test.domain.HoTestRequestSub;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckup;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub;
 import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
@@ -22,8 +23,8 @@ public class HoVaccineCheckupService {
 	private HoVaccineCheckupDao hoVCD;
 
 	//건강검진 목록
-	public List<HoCheckup> checkupList(HoCheckup hoCheckup) {		
-		return hoVCD.checkupList(hoCheckup);
+	public List<HoTestRequestSub> checkupList(HoTestRequestSub hoTestRequestSub) {		
+		return hoVCD.checkupList(hoTestRequestSub);
 	}
 
 	//건강검진 상세보기

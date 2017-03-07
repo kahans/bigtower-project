@@ -3,11 +3,18 @@ package com.team4.project.hospital.test.domain;
 public class HoTestRequest {
 	protected String hoTestRequestCode;
 	protected String hoTreatmentCode;
+	protected String hoTestStateCode;
 	protected String hoTestCode;
 	protected String hoTestStartDate;
 	protected String hoTestEndDate;
 	
 	
+	public String getHoTestStateCode() {
+		return hoTestStateCode;
+	}
+	public void setHoTestStateCode(String hoTestStateCode) {
+		this.hoTestStateCode = hoTestStateCode;
+	}
 	public String getHoTestRequestCode() {
 		return hoTestRequestCode;
 	}

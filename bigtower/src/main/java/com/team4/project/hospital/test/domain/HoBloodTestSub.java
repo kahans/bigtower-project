@@ -4,7 +4,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class HoBloodTestSub extends HoBloodTest{
 	protected String hoPatientName;//환자명
-	protected String hoTestStateName;//검사상태
 	protected String hoTestName;//검사명
 	protected String hoTestCode;//검사종류 코드
 	protected MultipartFile uploadFile ;//파일
@@ -23,12 +22,6 @@ public class HoBloodTestSub extends HoBloodTest{
 	}
 	public void setHoPatientName(String hoPatientName) {
 		this.hoPatientName = hoPatientName;
-	}
-	public String getHoTestStateName() {
-		return hoTestStateName;
-	}
-	public void setHoTestStateName(String hoTestStateName) {
-		this.hoTestStateName = hoTestStateName;
 	}
 	public String getHoTestName() {
 		return hoTestName;
@@ -50,14 +43,14 @@ public class HoBloodTestSub extends HoBloodTest{
 	}
 	@Override
 	public String toString() {
-		return "HoBloodTestSub [hoPatientName=" + hoPatientName + ", hoTestStateName=" + hoTestStateName
-				+ ", hoTestName=" + hoTestName + ", hoTestCode=" + hoTestCode + ", uploadFile=" + uploadFile
-				+ ", hoHospitalCode=" + hoHospitalCode + ", hoBloodTestCode=" + hoBloodTestCode + ", hoTestRequestCode="
-				+ hoTestRequestCode + ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestStateCode=" + hoTestStateCode
-				+ ", hoBloodTestPlatelet=" + hoBloodTestPlatelet + ", hoBloodTestSugar=" + hoBloodTestSugar
-				+ ", hoBloodTestImagePath=" + hoBloodTestImagePath + ", hoBloodTestImageName=" + hoBloodTestImageName
-				+ ", hoBloodTestDate=" + hoBloodTestDate + ", hoBloodTestRegistationDate=" + hoBloodTestRegistrationDate
-				+ ", hoGoSendState=" + hoGoSendState + "]";
+		return "HoBloodTestSub [hoPatientName=" + hoPatientName + ", hoTestName=" + hoTestName + ", hoTestCode="
+				+ hoTestCode + ", uploadFile=" + uploadFile + ", hoHospitalCode=" + hoHospitalCode
+				+ ", hoBloodTestCode=" + hoBloodTestCode + ", hoTestRequestCode=" + hoTestRequestCode
+				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoBloodTestPlatelet=" + hoBloodTestPlatelet
+				+ ", hoBloodTestSugar=" + hoBloodTestSugar + ", hoBloodTestImagePath=" + hoBloodTestImagePath
+				+ ", hoBloodTestImageName=" + hoBloodTestImageName + ", hoBloodTestDate=" + hoBloodTestDate
+				+ ", hoBloodTestRegistrationDate=" + hoBloodTestRegistrationDate + ", hoGoSendState=" + hoGoSendState
+				+ "]";
 	}
 
 	

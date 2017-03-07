@@ -4,7 +4,6 @@ public class HoBloodTest {
 	protected String hoBloodTestCode;		//혈액검사 코드
 	protected String hoTestRequestCode;		//검사요청 코드
 	protected String hoTreatmentCode;		//진료코드
-	protected int hoTestStateCode;			//검사상태
 	protected int hoBloodTestPlatelet;		//혈소판
 	protected int hoBloodTestSugar;			//혈당
 	protected String hoBloodTestImagePath;	//이미지 경로
@@ -31,12 +30,6 @@ public class HoBloodTest {
 	}
 	public void setHoTreatmentCode(String hoTreatmentCode) {
 		this.hoTreatmentCode = hoTreatmentCode;
-	}
-	public int getHoTestStateCode() {
-		return hoTestStateCode;
-	}
-	public void setHoTestStateCode(int hoTestStateCode) {
-		this.hoTestStateCode = hoTestStateCode;
 	}
 	public int getHoBloodTestPlatelet() {
 		return hoBloodTestPlatelet;
@@ -83,11 +76,11 @@ public class HoBloodTest {
 	@Override
 	public String toString() {
 		return "HoBloodTest [hoBloodTestCode=" + hoBloodTestCode + ", hoTestRequestCode=" + hoTestRequestCode
-				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoTestStateCode=" + hoTestStateCode
-				+ ", hoBloodTestPlatelet=" + hoBloodTestPlatelet + ", hoBloodTestSugar=" + hoBloodTestSugar
-				+ ", hoBloodTestImagePath=" + hoBloodTestImagePath + ", hoBloodTestImageName=" + hoBloodTestImageName
-				+ ", hoBloodTestDate=" + hoBloodTestDate + ", hoBloodTestRegistationDate=" + hoBloodTestRegistrationDate
-				+ ", hoGoSendState=" + hoGoSendState + "]";
+				+ ", hoTreatmentCode=" + hoTreatmentCode + ", hoBloodTestPlatelet=" + hoBloodTestPlatelet
+				+ ", hoBloodTestSugar=" + hoBloodTestSugar + ", hoBloodTestImagePath=" + hoBloodTestImagePath
+				+ ", hoBloodTestImageName=" + hoBloodTestImageName + ", hoBloodTestDate=" + hoBloodTestDate
+				+ ", hoBloodTestRegistrationDate=" + hoBloodTestRegistrationDate + ", hoGoSendState=" + hoGoSendState
+				+ "]";
 	}
 	
 	

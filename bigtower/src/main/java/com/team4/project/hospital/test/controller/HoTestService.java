@@ -139,6 +139,17 @@ public class HoTestService {
 		// TODO Auto-generated method stub
 		return hoTD.addMedia(mediaView);
 	}
+	//검사대기상테에서 결과대기상태로 상태 코드를 업데이트
+	public int updateBloodState(HoTestRequestSub hoTestRequest) {
+		// TODO Auto-generated method stub
+		return hoTD.updateBloodState(hoTestRequest);
+	}
+	//결과대기상태에서 결과등록 완료로 상태가 변경
+	public int updateBloodTestRequest(HoBloodTestSub bloodView) {
+		// TODO Auto-generated method stub
+		
+		return hoTD.updateBloodTestRequest(bloodView);
+	}
 	
 	
 	

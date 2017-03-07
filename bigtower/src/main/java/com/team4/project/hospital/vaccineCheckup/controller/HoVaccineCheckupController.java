@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.team4.project.hospital.test.domain.HoTestRequestSub;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckup;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub;
 import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
@@ -24,9 +25,9 @@ public class HoVaccineCheckupController {
 	
 	//건강검진 리스트
 	@RequestMapping(value="/hospital/test/listCheckup", method=RequestMethod.GET)
-	public String checkupList(HoCheckup hoCheckup, Model model){
-		hoCheckup.setHoTestCode("3");
-		List<HoCheckup> checkupList = hoVCS.checkupList(hoCheckup);
+	public String checkupList(HoTestRequestSub hoTestRequestSub, Model model){
+		hoTestRequestSub.setHoTestCode("3");
+		List<HoTestRequestSub> checkupList = hoVCS.checkupList(hoTestRequestSub);
 		
 		model.addAttribute("checkupList", checkupList);
 		return "/hospital/views/tests/listCheckup";
