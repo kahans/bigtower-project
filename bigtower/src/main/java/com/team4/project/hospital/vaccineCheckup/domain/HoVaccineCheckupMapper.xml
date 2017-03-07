@@ -42,7 +42,6 @@
 			HO_CHECKUP_CODE,
 			HO_TEST_REQUEST_CODE,
 			HO_TREATMENT_CODE,
-			HO_TEST_STATE_CODE,			
 			HO_CHECKUP_DATE
 		)
 		select
@@ -52,7 +51,6 @@
 						max(cast(substring(HO_CHECKUP_CODE,9,5) as UNSIGNED ))+1)),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
-			#{hoTestStateCode},
 			now()
 		FROM ho_checkup		
 	</insert>
