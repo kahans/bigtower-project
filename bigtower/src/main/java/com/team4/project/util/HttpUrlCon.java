@@ -83,7 +83,7 @@ public class HttpUrlCon {
 
 		// POST타입으로 설정
 		conn.setRequestMethod("POST");
-
+		conn.setConnectTimeout(60); // 타임아웃 시간 설정 (default : 무한대기)
 		// 헤더 설정
 		conn.setRequestProperty("Connection", "Keep-Alive");
 		conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
@@ -96,10 +96,13 @@ public class HttpUrlCon {
 		while(i.hasNext()){
 			// 맵의 key값을 얻어온다.
 			String key = i.next();
+			System.out.println("key:"+key);
+			System.out.println("value:"+map.get(key));
 			// 맵의 객체가 File 타입으로 변환이 가능하면 파일이므로 ouputStream에 file을 쓴다
 			if(map.get(key) instanceof File){
+				System.out.println("File이다!");
 				File file = (File) map.get(key);
-				String fileName = (String) map.get(key);
+				String fileName = key;
 				InputStream fileInputStream = new FileInputStream(file);
 				
 				dos.writeBytes(doubleDash + boundary + rn);
@@ -127,6 +130,7 @@ public class HttpUrlCon {
 
 			// File이 아니면 문자열이므로 아래처럼 ouputStream에 쓴다
 			} else {
+				System.out.println("File이 아니다!");
 				// ex>
 				// --**asdjk90234**\r\n
 				// Content-Disposition: form-data; name=\"변수명1\"\r\n변수값1\r\n
@@ -135,9 +139,9 @@ public class HttpUrlCon {
 				// --**asdjk90234**\r\n
 				// Content-Disposition: form-data; name=\"변수명3\"\r\n변수값3\r\n
 				dos.writeBytes(doubleDash + boundary + rn);
-				dos.writeBytes("Content-Disposition: form-data; name=\""+ key	+ "\""+ rn);
+				dos.writeBytes("Content-Disposition: form-data; name=\""+ key + "\""+ rn);
 				dos.writeBytes(rn);
-				dos.write(map.get(key).toString().getBytes(reqEncoding)); //한글처리
+				dos.write(map.get(key).toString().getBytes("utf-8")); //한글처리
 				dos.writeBytes(rn);
 			}
 			dos.writeBytes(doubleDash+boundary+doubleDash+rn);

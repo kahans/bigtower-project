@@ -32,6 +32,14 @@ public class GovernmentController {
 	private GovernmentService goService;
 	private Gson gson = new Gson();
 	
+	//url test
+	@RequestMapping(value="/government/test2", method=RequestMethod.POST)
+	public String test2(String hospitalInfo, String test){
+		System.out.println("hospitalInfo:"+hospitalInfo);
+		System.out.println("test:"+test);
+		return "home";
+	}
+	
 	//Context param test
 	@RequestMapping(value="/government/test", method=RequestMethod.GET)
 	public String test1(){

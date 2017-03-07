@@ -153,8 +153,6 @@ public class TransportService {
 			}
 			map.put("hoCheckup", hoCheckup);
 		}
-		
-
 
 		// 영상검사결과 조회(파일)
 		List<HoMediaTest> hoMediaTest = transportDao.selectListHoMediaTest();
@@ -171,16 +169,26 @@ public class TransportService {
 			map.put("hoMediaTest", hoMediaTest);
 		}
 		
+		
+		
 		logger.debug("map:"+map);
 		String url = ContextParam.context.getInitParameter("httpUrl");
 		
-		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getHospitalInfo");
-		Map<String, String> map1 = new HashMap<String , String>();
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/getFile");
+		Map<String, Object> map1 = new HashMap<String , Object>();
+		//Map<String, String> map1 = new HashMap<String , String>();
 		String hospitalInfo = gson.toJson(map);
-		map1.put("test", "최유민");
-		map1.put("hospitalInfo", hospitalInfo);
+		map1.put("id", "2번!!");
+		map1.put("name","이거는 되것지..원래되는거여,,ㅋㅋ");
+		//map1.put("id", "3번!!");
+		//map1.put("name","이거는 안되것지 스벌,ㅠㅠ");
+		//map1.put("test", "최유민");
+		//map1.put("hospitalInfo", hospitalInfo);
+		//map1.put("file1", new File("d://a.png"));
+		//map1.put("file2", new File("d://b.png"));
 		try {
-			conn.HttpUrlPOST(map1);
+			conn.HttpUrlFilePOST(map1);
+			//conn.HttpUrlPOST(map1);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
