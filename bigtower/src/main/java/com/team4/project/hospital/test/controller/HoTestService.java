@@ -45,48 +45,45 @@ public class HoTestService {
 	}
 	
 	//파일 경로 하기 
-	public int updateMediaTest(HoMediaTestSub mediaView) {
+	public int updateMediaTest(HoMediaTestSub mediaView) throws IOException {
 		System.out.println("서비스try전 : "+mediaView.toString());
 		String path=mediaView.getHoMediaTestImagePath();
 		System.out.println("서비스경로 : "+path);
 		File file = null;
+		String fileName = "";
 		String extention = "";
-		MultipartFile multipartFile = mediaView.getUploadFile();
-		System.out.println(multipartFile);
-		try{
-		/*	path="D:\\testImage\\";
-			String path01=request.getServletContext().getRealPath("resources/file/image");//상대주소
-			System.out.println("경로 : "+path01);*/
-			//path="/home/hosting_users/myeong3695/tomcat/webapps/upload/";
-			UUID uuid = UUID.randomUUID();
-			String fileName = uuid.toString().replace("-", "");
-			int index = multipartFile.getOriginalFilename().lastIndexOf(".");
-			extention = multipartFile.getOriginalFilename().substring(index+1);
-			fileName=fileName+"."+extention;
-			//배포시
-			//file = new File(path+"/"+fileName);
-			file = new File(path+"\\"+fileName);
-			
-			multipartFile.transferTo(file);
-			
+		List<MultipartFile> multipartFile = mediaView.getUploadFile();
 		
+		//System.out.println("try들어가기 전 : "+multipartFile);
+		try{
+			for(int i=0; i<multipartFile.size()-1; i++){
+				System.out.println("list파일에 온다? : "+multipartFile.get(i));
+				
+				UUID uuid = UUID.randomUUID();
+				fileName = uuid.toString().replace("-", "5");
+				int index = multipartFile.get(i).getOriginalFilename().lastIndexOf(".");
+				extention = multipartFile.get(i).getOriginalFilename().substring(index+1);
+				fileName=fileName+"."+extention;
+				file = new File(path+"\\"+fileName);
+				System.out.println(file);
+				multipartFile.get(i).transferTo(file);
+				
+			}
+			//System.out.println("서비스try후 : "+mediaView.toString());
+			
+			System.out.println("파일 이름들 : "+fileName);
 			mediaView.setHoMediaTestImageName(fileName);
 			mediaView.setHoMediaTestImagePath(path);
-			System.out.println("서비스try후 : "+mediaView.toString());
-			
 			hoTD.updateMediaTest(mediaView);
+			//배포시
+			//file = new File(path+"/"+fileName);
+			
 			
 		}catch(IllegalStateException e){
 			System.out.println("IllegalStateException 예외발생");
 			file.delete();
 			e.printStackTrace();
-		}catch (IOException e) {
-			System.out.println("IOException 예외발생");
-			file.delete();
-			e.printStackTrace();
-		}		
-		System.out.println(mediaView.getHoMediaTestImageName());
-		System.out.println(mediaView.getHoMediaTestImagePath());
+		}
 		return 0;
 	}
 	

@@ -1,5 +1,7 @@
 package com.team4.project.hospital.test.domain;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class HoMediaTestSub extends HoMediaTest {
@@ -7,14 +9,9 @@ public class HoMediaTestSub extends HoMediaTest {
 	protected String hoTestStateName;//검사상태
 	protected String hoTestName;//검사명
 	protected String hoTestCode;//검사종류 코드
-	protected MultipartFile uploadFile ;//파일
+	protected List<MultipartFile> uploadFile ;//파일
 	protected String hoHospitalCode;
 	
-	
-
-
-	
-
 	public String getHoHospitalCode() {
 		return hoHospitalCode;
 	}
@@ -46,12 +43,15 @@ public class HoMediaTestSub extends HoMediaTest {
 
 
 
-	public MultipartFile getUploadFile() {
+
+
+
+	public List<MultipartFile> getUploadFile() {
 		return uploadFile;
 	}
 
 
-	public void setUploadFile(MultipartFile uploadFile) {
+	public void setUploadFile(List<MultipartFile> uploadFile) {
 		this.uploadFile = uploadFile;
 	}
 

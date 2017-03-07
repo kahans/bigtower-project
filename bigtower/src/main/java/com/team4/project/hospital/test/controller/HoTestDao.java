@@ -26,7 +26,7 @@ public class HoTestDao {
 		System.out.println(hoTestRequest);
 		return sqlSession.selectList("hoTest.listHoTest", hoTestRequest);
 	}
-	//영상글 뷰
+	//영상글 
 	public HoMediaTestSub mediaTestView(String hoTestRequestCode) {
 		System.out.println("DAO "+hoTestRequestCode);
 		return sqlSession.selectOne("hoTest.addMediaTestView", hoTestRequestCode);

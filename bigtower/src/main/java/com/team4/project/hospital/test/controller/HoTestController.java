@@ -1,5 +1,6 @@
 package com.team4.project.hospital.test.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -151,10 +152,9 @@ public class HoTestController {
 		hoTestRequest.setHoTestCode("2");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);		
 		hoTestRequest.setHoTestStateCode(1);
-		System.out.println("testCode 들어가남? :"+hoTestRequest.toString());
+		
 		List<HoTestRequestSub> mediaList = hoTS.mediaTestList(hoTestRequest);
 		//뷰에서 작동할<c:forEach> item에 세팅한다.
-		System.out.println(mediaList.toString());
 		model.addAttribute("mediaList", mediaList);
 		return "/hospital/views/tests/listMediaTest";
 	}
@@ -194,7 +194,12 @@ public class HoTestController {
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		System.out.println("path:"+path);
 		mediaView.setHoMediaTestImagePath(path);
-		hoTS.updateMediaTest(mediaView);
+		try {
+			hoTS.updateMediaTest(mediaView);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		return "redirect:/hospital/test/listMediaTest";
