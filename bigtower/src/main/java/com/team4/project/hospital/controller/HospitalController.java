@@ -86,6 +86,7 @@ public class HospitalController {
 		System.out.println("hoCitizenId : " +hoCitizenId);
 		int result = hoService.addPatient(hoPatient);
 		System.out.println("환자등록 성공 여부 : " + result);
+		
 		//환자등록 완료 분기문
 		if(result==1){
 			System.out.println("환자등록이 완료되었습니다.");

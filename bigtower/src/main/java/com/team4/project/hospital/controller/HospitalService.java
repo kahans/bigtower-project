@@ -28,7 +28,24 @@ public class HospitalService {
 	}
 	
 	//환자등록
-	public int addPatient(HoPatient hoPatient){		
-		return hoDao.addPatient(hoPatient);
+	public int addPatient(HoPatient hoPatient){	
+		//주민등록 중복여부 확인
+		Map<String, Object> map = new HashMap<String, Object>();
+		String hoCitzienId = hoPatient.getHoCitizenId();
+		String hoHospitalCode = hoPatient.getHoHospitalCode();
+		map.put("hoCitzienId", hoCitzienId);
+		map.put("hoHospitalCode", hoHospitalCode);
+		String checkCitizenId = hoDao.checkCitizenId(map);
+		int result = 0;
+		//중복여부에 따른 분기문
+		if(checkCitizenId!=null){
+			result = hoDao.addPatient(hoPatient);
+		}else{
+			System.out.println("=========주민번호 중복으로 인해 환자등록이 불가능합니다============");
+		}
+		
+		return result;
 	}
+	
+	
 }
