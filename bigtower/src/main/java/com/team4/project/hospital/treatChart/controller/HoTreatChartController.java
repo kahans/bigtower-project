@@ -83,7 +83,7 @@ public class HoTreatChartController {
 							HoVaccine hoVaccine,
 							RedirectAttributes redirectAttributes,
 							@RequestParam(value="diseaseSelect") List<String> diseaseList,
-							@RequestParam(value="hoTestCode") List<String> testList,
+							@RequestParam(value="hoTestCode",required=false) List<String> testList,
 							@RequestParam(value="medicineSelect") List<String> medicineList){
 		System.out.println("testList : "+testList);
 		System.out.println("hoTreat : "+hoTreat);

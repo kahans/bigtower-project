@@ -107,22 +107,23 @@ public class HoTreatChartService {
 		//각각 DAO로 분기
 		HoTreat hoTreat = (HoTreat) map.get("hoTreat");
 		String hoTreatmentCode = hoTreat.getHoTreatmentCode();
-		String hoTestCode = (String) map.get("hoTestCode");
 		String checkHospitalization = (String) map.get("checkHospitalization");
 		HoOperation hoOperation = (HoOperation) map.get("hoOperation");
 		HoPrescription hoPrescription = (HoPrescription) map.get("hoPrescription");
 		HoVaccine hoVaccine = (HoVaccine) map.get("hoVaccine");
+		List<String> testList = (List<String>) map.get("testList");
 		List<String> diseaseList = (List<String>) map.get("diseaseList");
 		List<String> medicineList = (List<String>) map.get("medicineList");
 		
 		// 검사코드가 0이 아니면(검사요청을 선택했으면)
-		if(!hoTestCode.equals("0")){
+		if(testList!=null){
 			Map<String, String> addTestReqeustMap = new HashMap<String, String>();
 			addTestReqeustMap.put("hoTreatmentCode", hoTreatmentCode);
-			addTestReqeustMap.put("hoTestCode", hoTestCode);
-			int result = testDao.addTestRequest(addTestReqeustMap);
-			if(result == 1){
-				System.out.println("검사요청 등록성공");
+			for(int i=0;i<testList.size();i++){
+				String hoTestCode = testList.get(i);
+				addTestReqeustMap.put("hoTestCode", hoTestCode);
+				int result = testDao.addTestRequest(addTestReqeustMap);
+				System.out.println(result+"번째 검사요청 등록성공");
 			}
 		}
 		// 입원요청이 있으면
