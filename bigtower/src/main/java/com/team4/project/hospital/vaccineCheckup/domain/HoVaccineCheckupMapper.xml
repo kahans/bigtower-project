@@ -4,8 +4,9 @@
  
 <mapper namespace="VC">
 	
-	<!-- 건강검진 목록 -->
-	<select id="checkupList" resultType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub" parameterType="String">
+	<!-- 건강검진 검사상태2가지 목록-->
+	<select id="checkupList" resultType="com.team4.project.hospital.test.domain.HoTestRequestSub" 
+			parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub">
 		select
 			ho_test_request.HO_TEST_REQUEST_CODE,
 			ho_treatment.HO_TREATMENT_CODE,
@@ -20,8 +21,7 @@
 			ON ho_test_state.HO_TEST_STATE_CODE = ho_test_request.HO_TEST_STATE_CODE
 		where ho_test_request.HO_TEST_CODE=#{hoTestCode}
 		AND ho_treatment.HO_HOSPITAL_CODE=#{hoHospitalCode}		
-		AND ho_test_request.HO_TEST_STATE_CODE='1' 
-			or ho_test_request.HO_TEST_STATE_CODE='2'
+		AND ho_test_request.HO_TEST_STATE_CODE=#{hoTestStateCode}
 	</select>
 	
 	<!-- 건강검진 뷰 -->
@@ -60,6 +60,35 @@
 			now()
 		FROM ho_checkup		
 	</insert>
+	<!-- 검사대기상테에서 결과대기상태로 상태 코드를 업데이트 하는 쿼리문 -->
+	<update id="updateState" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub">
+ 		update ho_test_request
+		INNER JOIN ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		INNER JOIN ho_hospital
+			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
+		set
+			HO_TEST_START_DATE=now(),
+			HO_TEST_STATE_CODE=2
+		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_TEST_CODE=#{hoTestCode}
+			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
+			
+ 	</update>
+ 	<!-- 혈액 결과대기상태에서 결과등록 완료로 상태가 변경 -->
+ 	<update id="updateCheckupTestRequest" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub" >
+ 		update ho_test_request
+ 		INNER JOIN ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		INNER JOIN ho_hospital
+			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
+		set
+			HO_TEST_STATE_CODE=3
+		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_TEST_CODE=#{hoTestCode}
+			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
+ 	</update>
+	<!-- 건강검진 테이블에 데이터열 수정 -->
 	<update id="updateCheckup" parameterType="com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub">
 		update ho_checkup
 		INNER JOIN ho_treatment
@@ -67,11 +96,11 @@
 		INNER JOIN ho_hospital
 			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		set 
-			HO_CHECKUP_RESULT_PATH=#{hoBloodTestImagePath},
-			HO_CHECKUP_RESULT_NAME=#{hoBloodTestImageName},
+			HO_CHECKUP_RESULT_PATH=#{hoCheckUpResultPath},
+			HO_CHECKUP_RESULT_NAME=#{hoCheckUpResultName},
 			HO_CHECKUP_REGISTRATION_DATE=now()			
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
-			AND HO_CHECKUP_CODE=#{hoBloodTestCode}
+			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
 	</update>
 	<!-- 예방접종 등록 -->
 	<insert id="addVaccine" parameterType="com.team4.project.hospital.vaccineCheckup.domain.HoVaccine">

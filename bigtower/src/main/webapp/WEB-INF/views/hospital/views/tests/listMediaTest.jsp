@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>영상촬영 대기자 목록</h1>
+	<h1>영상촬영 검사대기 목록</h1>
 	<table border="">
 		<thead>
 			<tr>
@@ -22,16 +22,17 @@
 			<c:forEach var="mediaList" items="${mediaList}">
 				<tr>
 					<td>
-						<a href="<c:url value='/hospital/test/addMediaTest?hoTestRequestCode=${mediaList.hoTestRequestCode }'/>">
+						<a href="<c:url value='/hospital/test/updateMediaState?hoTestRequestCode=${mediaList.hoTestRequestCode}'/>">
 						${mediaList.hoPatientName}</a></td>
-					<td>${mediaList.hoTestRequestCode }</td>
-					<td>${mediaList.hoTreatmentCode }</td>
-					<td>${mediaList.hoTestStateName }</td>
+					<td>${mediaList.hoTestRequestCode}</td>
+					<td>${mediaList.hoTreatmentCode}</td>
+					<td>${mediaList.hoTestStateName}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<br>
 	<a href="<c:url value='/hospital/test'/>"><button>전체목록</button></a>
+	<a href="<c:url value='/hospital/test/listMediaWait'/>"><button>결과대기목록</button></a>
 </body>
 </html>

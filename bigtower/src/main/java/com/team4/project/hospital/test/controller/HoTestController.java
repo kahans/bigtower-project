@@ -41,8 +41,8 @@ public class HoTestController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);
 		hoTestRequest.setHoTestRequestCode(hoTestRequestCode);
-		
-		hoTS.updateBloodState(hoTestRequest);
+		hoTestRequest.setHoTestCode("1");
+		hoTS.updateState(hoTestRequest);
 		return "/hospital/views/tests/ListBloodTest";
 	}
 	
@@ -54,7 +54,7 @@ public class HoTestController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoTestCode("1");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);		
-		hoTestRequest.setHoTestStateCode("2");
+		hoTestRequest.setHoTestStateCode(2);
 		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
 		
 		model.addAttribute("bloodList", bloodList);
@@ -68,7 +68,7 @@ public class HoTestController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoTestCode("1");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);
-		hoTestRequest.setHoTestStateCode("1"); 
+		hoTestRequest.setHoTestStateCode(1); 
 		System.out.println(hoTestRequest.toString());
 		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
 		
@@ -114,16 +114,45 @@ public class HoTestController {
 		
 		return "redirect:/hospital/test/ListBloodTest";
 	}
-	
+	//영상검사대기 상태 업데이트
+	@RequestMapping(value="/hospital/test/updateMediaState", method=RequestMethod.GET)
+	public String updateMediaState(HoTestRequestSub hoTestRequest,HttpSession session,
+			@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
+			){
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		hoTestRequest.setHoHospitalCode(hoHospitalCode);
+		hoTestRequest.setHoTestRequestCode(hoTestRequestCode);
+		hoTestRequest.setHoTestCode("2");
+		hoTS.updateState(hoTestRequest);
+		return "/hospital/views/tests/ListBloodTest";
+	}
+	//영상검사 결과대기목록들
+	@RequestMapping(value="/hospital/test/listMediaWait", method=RequestMethod.GET)
+	public String listMediaWait(Model model,HoTestRequestSub hoTestRequest,
+			HttpSession session
+	){
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		hoTestRequest.setHoTestCode("2");
+		hoTestRequest.setHoHospitalCode(hoHospitalCode);		
+		hoTestRequest.setHoTestStateCode(2);
+		List<HoTestRequestSub> mediaList = hoTS.mediaTestList(hoTestRequest);
+		
+		model.addAttribute("mediaList", mediaList);
+		return "/hospital/views/tests/listMediaWait";
+	}
 	//영상검사 목록
 	@RequestMapping(value="/hospital/test/listMediaTest", method=RequestMethod.GET)
-	public String mediaTestList(HoTestRequestSub hoTestRequest, Model model
-			){
+	public String mediaTestList(HoTestRequestSub hoTestRequest, Model model,
+			HttpSession session){
 		System.out.println("영상검사 대기자 리스트 확인");
 		//영상검사테이블에서 데이터를 불러와 list에 담는다.
 
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoTestCode("2");
-		List<HoTestRequestSub> mediaList = hoTS.mediaTest(hoTestRequest);
+		hoTestRequest.setHoHospitalCode(hoHospitalCode);		
+		hoTestRequest.setHoTestStateCode(1);
+		System.out.println("testCode 들어가남? :"+hoTestRequest.toString());
+		List<HoTestRequestSub> mediaList = hoTS.mediaTestList(hoTestRequest);
 		//뷰에서 작동할<c:forEach> item에 세팅한다.
 		System.out.println(mediaList.toString());
 		model.addAttribute("mediaList", mediaList);
@@ -132,13 +161,16 @@ public class HoTestController {
 	
 	//영상검사 등록 뷰 GET
 	@RequestMapping(value="/hospital/test/addMediaTest", method=RequestMethod.GET)
-	public String mediaTestView(Model model, 
+	public String mediaTestView(Model model, HttpSession session,
 								@RequestParam(value="hoTestRequestCode",required=false )String hoTestRequestCode
 			){
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		System.out.println("해당 영상검사 글 뷰 GET");
 		System.out.println(hoTestRequestCode);
 		HoMediaTestSub mediaView = hoTS.mediaTestView(hoTestRequestCode);
+		mediaView.setHoHospitalCode(hoHospitalCode);
 		//영상테이블에 들어갈 초기데이터 입력
+		hoTS.updateMediaTestRequest(mediaView);
 		hoTS.addMedia(mediaView);
 		
 		System.out.println(mediaView.toString());
@@ -153,7 +185,7 @@ public class HoTestController {
 			HttpSession session
 		){ 
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		mediaView.setHoHospitalCoed(hoHospitalCode);
+		mediaView.setHoHospitalCode(hoHospitalCode);
 		System.out.println("해당 영상검사 결과 등록 POST");
 		System.out.println("등록POST : "+mediaView.toString());
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소

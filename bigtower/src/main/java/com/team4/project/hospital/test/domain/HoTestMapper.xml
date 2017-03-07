@@ -24,19 +24,21 @@
 
  	</select>
  	<!-- 검사대기상테에서 결과대기상태로 상태 코드를 업데이트 하는 쿼리문 -->
- 	<update id="updateBloodState" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub">
+ 	<update id="updateState" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub">
  		update ho_test_request
 		INNER JOIN ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
 		INNER JOIN ho_hospital
 			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		set
-			HO_TEST_START_DATE=now() ,
+			HO_TEST_START_DATE=now(),
 			HO_TEST_STATE_CODE=2
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_TEST_CODE=#{hoTestCode}
 			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
+			
  	</update>
- 	<!-- 결과대기상태에서 결과등록 완료로 상태가 변경 -->
+ 	<!-- 혈액 결과대기상태에서 결과등록 완료로 상태가 변경 -->
  	<update id="updateBloodTestRequest" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub" >
  		update ho_test_request
  		INNER JOIN ho_treatment
@@ -46,6 +48,20 @@
 		set
 			HO_TEST_STATE_CODE=3
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_TEST_CODE=#{hoTestCode}
+			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
+ 	</update>
+ 	<!-- 영상 결과대기상태에서 결과등록 완료로 상태가 변경-->
+ 	<update id="updateMediaTestRequest" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub" >
+ 		update ho_test_request
+ 		INNER JOIN ho_treatment
+			ON ho_treatment.HO_TREATMENT_CODE = ho_test_request.HO_TREATMENT_CODE
+		INNER JOIN ho_hospital
+			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
+		set
+			HO_TEST_STATE_CODE=3
+		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
+			AND HO_TEST_CODE=#{hoTestCode}
 			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
  	</update>
  	<!-- 영상 결과 등록뷰에 보여줌  -->
@@ -71,7 +87,6 @@
  			HO_MEDIA_TEST_CODE,
 			HO_TEST_REQUEST_CODE,
 			HO_TREATMENT_CODE,
-			HO_TEST_STATE_CODE,
 			HO_MEDIA_TEST_DATE
 		)
 		select
@@ -80,7 +95,6 @@
 				max(cast(substring(HO_MEDIA_TEST_CODE,17,5) as UNSIGNED ))+1)),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
-			#{hoTestStateCode},
 			now()
 		FROM ho_media_test
  	</insert>
@@ -160,8 +174,8 @@
 		INNER JOIN ho_hospital
 			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		set 
-			HO_MEDIA_TEST_IMAGE_PATH=#{hoBloodTestImagePath},
-			HO_MEDIA_TEST_IMAGE_NAME=#{hoBloodTestImageName},
+			HO_MEDIA_TEST_IMAGE_PATH=#{hoMediaTestImagePath},
+			HO_MEDIA_TEST_IMAGE_NAME=#{hoMediaTestImageName},
 			HO_MEDIA_TEST_REGISTRATION_DATE=now()			
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
 			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}

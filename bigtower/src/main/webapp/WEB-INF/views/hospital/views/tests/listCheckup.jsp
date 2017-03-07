@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>건강검진 대기자 목록</h1>
+<h1>건강검진 대기 목록</h1>
 	<table border="">
 		<thead>
 			<tr>
@@ -22,7 +22,7 @@
 			<c:forEach var="checkupList" items="${checkupList}">
 				<tr>
 					<td>
-						<a href="<c:url value='/hospital/test/addCheckup?hoTestRequestCode=${checkupList.hoTestRequestCode }'/>">
+						<a href="<c:url value='/hospital/test/updateCheckupState?hoTestRequestCode=${checkupList.hoTestRequestCode }'/>">
 						${checkupList.hoPatientName}</a></td>
 					<td>${checkupList.hoTestRequestCode }</td>
 					<td>${checkupList.hoTreatmentCode }</td>
@@ -33,5 +33,6 @@
 	</table>
 	<br>
 	<a href="<c:url value='/hospital/test'/>"><button>전체목록</button></a>
+	<a href="<c:url value='/hospital/test/listCheckupWait'/>"><button>검진 결과대기목록</button></a>
 </body>
 </html>

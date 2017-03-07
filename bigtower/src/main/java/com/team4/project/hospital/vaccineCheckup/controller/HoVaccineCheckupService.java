@@ -75,10 +75,20 @@ public class HoVaccineCheckupService {
 	public int addVaccine(HoVaccine hoVaccine) {
 		return hoVCD.addVaccine(hoVaccine);		
 	}
-
+	//검강검진 등록
 	public int addCheck(HoCheckupSub checkView) {
 		// TODO Auto-generated method stub
 		return hoVCD.addCheckup(checkView);
+	}
+	//검강검진 검사대기 상태에서 결과대기상태로 업데이트
+	public int updateCheckupState(HoTestRequestSub hoTestRequest) {
+		// TODO Auto-generated method stub
+		return hoVCD.updateCheckupState(hoTestRequest);
+	}
+	//검강검진 결과대기상태가 결과등록상태로 업데이트
+	public int updateCheckupTestRequest(HoCheckupSub checkView) {
+		// TODO Auto-generated method stub
+		return hoVCD.updateCheckupTestRequest(checkView);
 	}
 	
 }

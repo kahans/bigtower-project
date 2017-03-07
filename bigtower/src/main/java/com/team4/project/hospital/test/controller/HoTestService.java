@@ -21,15 +21,15 @@ public class HoTestService {
 	@Autowired
 	private HoTestDao hoTD;
 	//검사요청 목록
-	public List<HoTestRequestSub> mediaTest(HoTestRequestSub hmt) {
+	public List<HoTestRequestSub> mediaTestList(HoTestRequestSub hmt) {
 		// TODO Auto-generated method stub
 		return hoTD.mediaList(hmt);
 	}
 	//혈액 검사 목록
-		public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
-			
-			return hoTD.bloodTestList(hoTestRequest);
-		}
+	public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
+		
+		return hoTD.bloodTestList(hoTestRequest);
+	}
 	
 	//영상글 뷰
 	public HoMediaTestSub mediaTestView(String hoTestRequestCode) {
@@ -140,15 +140,19 @@ public class HoTestService {
 		return hoTD.addMedia(mediaView);
 	}
 	//검사대기상테에서 결과대기상태로 상태 코드를 업데이트
-	public int updateBloodState(HoTestRequestSub hoTestRequest) {
+	public int updateState(HoTestRequestSub hoTestRequest) {
 		// TODO Auto-generated method stub
-		return hoTD.updateBloodState(hoTestRequest);
+		return hoTD.updateState(hoTestRequest);
 	}
 	//결과대기상태에서 결과등록 완료로 상태가 변경
 	public int updateBloodTestRequest(HoBloodTestSub bloodView) {
 		// TODO Auto-generated method stub
 		
 		return hoTD.updateBloodTestRequest(bloodView);
+	}
+	public int updateMediaTestRequest(HoMediaTestSub mediaView) {
+		// TODO Auto-generated method stub
+		return hoTD.updateMediaTestRequest(mediaView);
 	}
 	
 	
