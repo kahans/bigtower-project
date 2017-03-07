@@ -63,7 +63,6 @@
 		INNER JOIN ho_hospital
 			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		set 
-			HO_TEST_STATE_CODE='3',
 			HO_CHECKUP_RESULT_PATH=#{hoBloodTestImagePath},
 			HO_CHECKUP_RESULT_NAME=#{hoBloodTestImageName},
 			HO_CHECKUP_REGISTRATION_DATE=now()			

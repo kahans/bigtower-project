@@ -35,8 +35,13 @@ public class HoTestController {
 	}*/
 	//혈액검사 목록
 	@RequestMapping(value="/hospital/test/ListBloodTest",method=RequestMethod.GET)
-	public String BloodTestList(HoTestRequestSub hoTestRequest, Model model){
+	public String BloodTestList(HoTestRequestSub hoTestRequest, Model model,
+			HttpSession session
+	){
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoTestCode("1");
+		hoTestRequest.setHoHospitalCode(hoHospitalCode);
+		System.out.println(hoTestRequest.toString());
 		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
 		
 		model.addAttribute("bloodList", bloodList);
@@ -52,6 +57,7 @@ public class HoTestController {
 		
 		HoBloodTestSub bloodView= hoTS.bloodTestView(hoTestRequestCode);
 		hoTS.addBlood(bloodView);
+		
 		model.addAttribute("bloodView",bloodView);
 		return "/hospital/views/tests/addBloodTest";
 	}
@@ -66,8 +72,8 @@ public class HoTestController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		bloodView.setHoHospitalCode(hoHospitalCode);
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
-		//String path="D:\\testImage";//절대 주소
-		String path="C:\\sw\\testimage";//집에서 작성
+		String path="D:\\testImage";//절대 주소
+		//String path="C:\\sw\\testimage";//집에서 작성
 		// 배포시사용할경로
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		bloodView.setHoBloodTestImagePath(path);

@@ -46,7 +46,7 @@
 			HO_MEDIA_TEST_DATE
 		)
 		select
-			if(HO_MEDIA_TEST_CODE is null, videoInspection_1, 
+			if(not exists (select * from ho_media_test), 'videoInspection_1', 
 				CONCAT('videoInspection_',
 				max(cast(substring(HO_MEDIA_TEST_CODE,17,5) as UNSIGNED ))+1)),
 			#{hoTestRequestCode},
@@ -78,17 +78,14 @@
  			HO_BLOOD_TEST_CODE,
 			HO_TEST_REQUEST_CODE,
 			HO_TREATMENT_CODE,
-			HO_TEST_STATE_CODE,
 			HO_BLOOD_TEST_DATE		
 		)
 		select
-			if(not exists (select * from ho_blood_test), bloodInspection_1,
+			if(not exists (select * from ho_blood_test), 'bloodInspection_1',
 				CONCAT('bloodInspection_',
 				max(cast(substring(HO_BLOOD_TEST_CODE,17,5) as UNSIGNED ))+1)),
 			#{hoTestRequestCode},
 			#{hoTreatmentCode},
-			#{hoTestStateCode},
-			#{hoBloodTestPlate},
 			now()
 		FROM ho_blood_test
  	</insert>
@@ -117,14 +114,13 @@
 		INNER JOIN ho_hospital
 			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		set 
-			HO_TEST_STATE_CODE='3',
 			HO_BLOOD_TEST_PLATELET=#{hoBloodTestPlatelet},
 			HO_BLOOD_TEST_SUGAR=#{hoBloodTestSugar},
 			HO_BLOOD_TEST_IMAGE_PATH=#{hoBloodTestImagePath},
 			HO_BLOOD_TEST_IMAGE_NAME=#{hoBloodTestImageName},
 			HO_BLOOD_TEST_REGISTRATION_DATE=now()			
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
-			AND HO_BLOOD_TEST_CODE=#{hoBloodTestCode}
+			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
 	</update>
 	
 	<!-- 영상검사 테이블 해당 되는 열 수정 -->
@@ -135,11 +131,10 @@
 		INNER JOIN ho_hospital
 			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		set 
-			HO_TEST_STATE_CODE='3',
 			HO_MEDIA_TEST_IMAGE_PATH=#{hoBloodTestImagePath},
 			HO_MEDIA_TEST_IMAGE_NAME=#{hoBloodTestImageName},
 			HO_MEDIA_TEST_REGISTRATION_DATE=now()			
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
-			AND HO_MEDIA_TEST_CODE=#{hoBloodTestCode}
+			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
 	</update>
 </mapper>
