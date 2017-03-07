@@ -15,7 +15,8 @@
 	</context-param>
 	<context-param>
 		<param-name>httpUrl</param-name>
-		<param-value>http://localhost</param-value>
+		<param-value>http://192.168.123.147</param-value>
+		<!-- <param-value>http://localhost</param-value> -->
 		<!-- <param-value>http://loverman85.cafe24.com</param-value> -->
 	</context-param>
 	

@@ -16,6 +16,9 @@ public class TransportController {
 	
 	@RequestMapping(value="/hospital/getAll", method=RequestMethod.GET)
 	public void getAll(){
+		logger.debug("getAll controller 진입");
 		transportService.getAll();
+		logger.debug("getAll controller 끝");
+
 	}
 }

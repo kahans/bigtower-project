@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>영상검사 결과 등록</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 	<h1>영상검사 결과등록</h1>
@@ -29,13 +30,37 @@
 		<div>
 			<input type="hidden" name="hoTestStateCode" value="3" required="required">
 		</div>
+		<!-- 영상검사 결과 이미지를 여러개 입력할수 한다.-->
 		<div>
-			결과 이미지 등록 : 
-			<input type="file" name="uploadFile ">
-		</div>	
+			<div id="uploadFile">
+				<div>
+					결과 이미지 등록 : 
+					<input type="file" name="uploadFile">
+					<button type="button" id="addUploadFile">추가</button>
+				</div>
+			</div>
+			<div id="hiddenUploadFile" style="display:none;">
+				<div class="addUpload">
+					결과 이미지 등록 : 
+					<input type="file" name="uploadFile">
+					<button type="button" id="addUploadFile">추가</button>
+					<button type="button" id="removeUploadFile">삭제</button>
+				</div>			
+			</div>
+		</div>
 		<div>
 			<button>등록</button>
 		</div>
 	</form>
+	<script>
+		$(document).on('click','#addUploadFile',function(){
+			var addSelect = $('#hiddenUploadFile').html();
+			$(this).parents('#uploadFile').append(addSelect);	
+		});
+		
+		$(document).on('click','#removeUploadFile',function(){
+			$(this).parent('.addUpload').remove();		
+		});
+	</script>
 </body>
 </html>

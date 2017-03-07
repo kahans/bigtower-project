@@ -50,7 +50,6 @@ public class Http {
 	public Http addParam(Map<String, Object> param, String encoding) {
 		for (Map.Entry<String, Object> e : param.entrySet()) {
 			if (e.getValue() instanceof File) {
-				System.out.println("file!!");
 				addParam(e.getKey(), (File) e.getValue(), encoding);
 			} else {
 				addParam(e.getKey(), (String) e.getValue(), encoding);

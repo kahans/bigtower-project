@@ -24,8 +24,8 @@ import com.team4.project.hospital.vaccineCheckup.domain.HoCheckup;
 import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
 import com.team4.project.util.ContextParam;
 import com.team4.project.util.Http;
+import com.team4.project.util.HttpUrlCon;
 
-@Transactional
 @Service
 public class TransportService {
 	private static final Logger logger = LoggerFactory.getLogger(TransportService.class);
@@ -46,6 +46,7 @@ public class TransportService {
 	HoVaccine
 	*/
 	public void getAll(){
+		logger.debug("getAll Service 진입");
 		
 		// http로 보낼때 db에 들어갈내용은 json String으로 변환
 		// Map<String, Object>타입으로 각 조회결과를 담는데 조회결과가 없는것은 null로 담는다.
@@ -170,17 +171,21 @@ public class TransportService {
 			map.put("hoMediaTest", hoMediaTest);
 		}
 		
-
 		logger.debug("map:"+map);
 		String url = ContextParam.context.getInitParameter("httpUrl");
+		
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getHospitalInfo");
+		Map<String, String> map1 = new HashMap<String , String>();
 		String hospitalInfo = gson.toJson(map);
-		logger.debug("hospitalInfo json:"+hospitalInfo);
-		Http http = new Http(url+"/bigbang/government/getHospitalInfo");
+		map1.put("test", "최유민");
+		map1.put("hospitalInfo", hospitalInfo);
 		try {
-			http.addParam("hospitalInfo",hospitalInfo).addParam("test", "this is test").submit();
-		} catch (Exception e) {
+			conn.HttpUrlPOST(map1);
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
+		
+		logger.debug("getAll Service 끝");
 	}
 }
