@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization;
+import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalizationRequest;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperation;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub;
 
@@ -27,6 +28,11 @@ public class HoHospitalizationOperationService {
 	//수술 목록
 	public List<HoOperationSub> operationList(String hoHospitalCode){
 		return hoHOD.operationList(hoHospitalCode);
+	}
+	
+	//입퇴원 요청 목록
+	public List<HoHospitalizationRequest> hospitalizationRequestList(String hoHospitalCode){
+		return hoHOD.hospitalizationRequestList(hoHospitalCode);
 	}
 	
 	//수술 상세보기

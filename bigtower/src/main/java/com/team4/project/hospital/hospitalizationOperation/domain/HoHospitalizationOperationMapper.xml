@@ -19,6 +19,23 @@
  		FROM ho_hospitalization_request
  	</insert>
  	
+ 	<!-- 입퇴원 요청 목록 -->
+ 	<select id="hospitalizationRequestList" resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalizationRequest"
+ 									  parameterType="String">
+ 		SELECT
+ 			ho_hospitalization_request.HO_HOSPITALIZATION_REQUEST_CODE,
+ 			ho_hospitalization_request.HO_TREATMENT_CODE,
+ 			ho_hospitalization_request.HO_HOSPITALIZATION_REQUEST_DATE,
+ 			ho_patient.HO_PATIENT_NAME,
+ 			ho_treatment.HO_HOSPITAL_CODE
+ 		FROM ho_hospitalization_request
+ 		JOIN ho_treatment
+ 			ON ho_hospitalization_request.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
+ 		JOIN ho_patient
+ 			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE	
+ 		WHERE ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
+ 	</select>
+ 	
  	<!-- 수술 등록 -->
  	<insert id="addOperation" parameterType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperation">
  		INSERT INTO ho_operation(
