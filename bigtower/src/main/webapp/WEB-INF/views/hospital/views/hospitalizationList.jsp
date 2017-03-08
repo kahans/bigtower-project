@@ -37,5 +37,6 @@
 		</tbody>
 	</table>
 	<a href="<c:url value='/hospital/treatList'/>"><button>진료목록</button></a>
+	<a href="<c:url value='/hospital/hospitalizationRequestList'/>"><button>입퇴원 요청목록</button></a>
 </body>
 </html>

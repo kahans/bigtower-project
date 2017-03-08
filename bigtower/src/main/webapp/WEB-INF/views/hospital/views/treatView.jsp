@@ -63,8 +63,7 @@
 		
 			진료내용	
 		<div>			
-			<textarea rows="10" cols="50" name="hoTreatmentContents">
-			</textarea>
+			<textarea rows="10" cols="50" name="hoTreatmentContents"></textarea>
 		</div>
 		
 	
