@@ -164,7 +164,7 @@ public class HoTreatChartService {
 				System.out.println("예방접종 등록성공");
 			}
 		}
-		hoRRDao.receiveStateAcceptance(hoTreatmentCode);
+		hoRRDao.receiveStatePay(hoTreatmentCode);
 		return hoTCD.updateTreat(hoTreat);
 	}
 }

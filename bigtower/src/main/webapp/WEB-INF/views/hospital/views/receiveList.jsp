@@ -37,7 +37,7 @@
 		</tbody>
 	</table>
 	<a href="<c:url value="/hospital/treatList"/>">진료 현황</a>
-	<a href="<c:url value="/hospital/acceptanceList"/>">수납 현황</a>
+	<a href="<c:url value="/hospital/payList"/>">수납 현황</a>
 
 </body>
 </html>

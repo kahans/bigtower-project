@@ -60,9 +60,9 @@ public class HoReceiveReservationService {
 	}
 	
 	//접수를 수납대기로 전환
-	public int receiveStateAcceptance(String hoReceiveCode) {
+	public int receiveStatePay(String hoReceiveCode) {
 		// TODO Auto-generated method stub
-		return hoRRDao.receiveStateAcceptance(hoReceiveCode);
+		return hoRRDao.receiveStatePay(hoReceiveCode);
 		
 	}
 	//진료목록
@@ -71,8 +71,13 @@ public class HoReceiveReservationService {
 		return hoRRDao.diagonesLList(hospitalCode);
 	}
 	//수납목록
-	public List<HoReceiveSub> acceptanceList(String hospitalCode) {
+	public List<HoReceiveSub> payList(String hospitalCode) {
 		// TODO Auto-generated method stub
-		return hoRRDao.acceptanceList(hospitalCode);
+		return hoRRDao.payList(hospitalCode);
+	}
+	//수납대기->수납완료로 변경
+	public int payComplete(String hoReceiveCode) {
+		// TODO Auto-generated method stub
+		return hoRRDao.payComplete(hoReceiveCode);
 	}
 }

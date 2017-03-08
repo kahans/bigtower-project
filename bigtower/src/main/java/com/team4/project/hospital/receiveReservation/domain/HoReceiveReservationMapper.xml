@@ -96,7 +96,7 @@
 	</select>
 	
 	<!-- 수납대기자 목록  -->
-	<select id="acceptanceList" resultType="com.team4.project.hospital.receiveReservation.domain.HoReceiveSub" parameterType="String">
+	<select id="payList" resultType="com.team4.project.hospital.receiveReservation.domain.HoReceiveSub" parameterType="String">
 		SELECT
 			ho_receive.HO_RECEIVE_CODE,
 			ho_receive.HO_HOSPITAL_CODE,
@@ -142,7 +142,7 @@
 	</update>
 	
 	<!-- 수납대기에서 수납완료 상태로 변경 -->
-	<update id="receiveStateStorageCompleted" parameterType="String">
+	<update id="payComplete" parameterType="String">
 		update
 			ho_receive
 		set
