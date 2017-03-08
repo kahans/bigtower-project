@@ -34,8 +34,8 @@
  		SELECT
  			HO_CITIZEN_ID
  		FROM ho_patient
- 		WHERE ho_citizen_id = #{hoCitizenId} and 
- 			  ho_hospital_code= #{hoHospitalCode}
+ 		WHERE HO_CITIZEN_ID = #{hoCitzienId} and 
+ 			  HO_HOSPITAL_CODE= #{hoHospitalCode}
  	</select>
  	
  	<!-- 직원 로그인체크 -->

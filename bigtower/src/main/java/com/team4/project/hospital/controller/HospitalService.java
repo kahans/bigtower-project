@@ -35,13 +35,16 @@ public class HospitalService {
 		String hoHospitalCode = hoPatient.getHoHospitalCode();
 		map.put("hoCitzienId", hoCitzienId);
 		map.put("hoHospitalCode", hoHospitalCode);
+		System.out.println("병원 체크: "+hoHospitalCode);
 		String checkCitizenId = hoDao.checkCitizenId(map);
+		System.out.println("중복체크"+checkCitizenId);
 		int result = 0;
 		//중복여부에 따른 분기문
 		if(checkCitizenId!=null){
-			result = hoDao.addPatient(hoPatient);
-		}else{
 			System.out.println("=========주민번호 중복으로 인해 환자등록이 불가능합니다============");
+		}else{
+			result = hoDao.addPatient(hoPatient);
+			
 		}
 		
 		return result;
