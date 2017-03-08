@@ -12,5 +12,6 @@
 	<a href="<c:url value='/hospital/test/ListBloodTest'/>">혈액 검사</a>
 	<a href="<c:url value='/hospital/test/listMediaTest'/>">영상 검사</a>
 	<a href="<c:url value='/hospital/test/listCheckup'/>">건강 검사</a>
+	<a href="<c:url value='/hospital/treatList'/>">진료 목록</a>
 </body>
 </html>

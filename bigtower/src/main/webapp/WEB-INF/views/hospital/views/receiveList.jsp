@@ -36,8 +36,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="<c:url value="/hospital/treatList"/>">진료 현황</a>
-	<a href="<c:url value="/hospital/payList"/>">수납 현황</a>
+	<a href="<c:url value="/hospital/treatList"/>"><button>진료 목록</button></a>
+	<a href="<c:url value="/hospital/payList"/>"><button>수납 목록</button></a>
 
 </body>
 </html>

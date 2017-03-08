@@ -36,5 +36,6 @@
 	<a href="<c:url value='/hospital/test'/>"><button>검사</button></a>
 	<a href="<c:url value='/hospital/hospitalizationRequestList'/>"><button>입퇴원요청 목록</button></a>
 	<a href="<c:url value='/hospital/hospitalizationList'/>"><button>입원환자 목록</button></a>
+	<a href="<c:url value='/hospital/'/>"><button>메인화면</button></a>
 </body>
 </html>
