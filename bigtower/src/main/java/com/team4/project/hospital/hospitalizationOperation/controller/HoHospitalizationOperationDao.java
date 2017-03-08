@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalizationRequest;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperation;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub;
@@ -50,5 +51,10 @@ public class HoHospitalizationOperationDao {
 	//수술일지 수정
 	public int updateOperation(HoOperationSub hoOperationSub){
 		return sqlSession.update("hoHospitalizationOperation.updateOperation",hoOperationSub);
+	}
+	
+	//입원 환자 목록
+	public List<HoHospitalization> hospitalizationList(String hoHospitalCode){
+		return sqlSession.selectList("hoHospitalizationOperation.hospitalizationList", hoHospitalCode);
 	}
 }

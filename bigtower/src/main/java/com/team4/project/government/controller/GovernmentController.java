@@ -51,7 +51,7 @@ public class GovernmentController {
 	// httpPost로 medicineCode 받아오기 성공
 	@RequestMapping(value="/government/getData", method=RequestMethod.GET)
 	public String getData(){
-		String url = ContextParam.context.getInitParameter("httpUrl");
+		String url = ContextParam.context.getInitParameter("receiveUrl");
 		Http http = new Http(url+"/bigbang/government/getMedicineCode");
 		try {
 			String medicineCode = http.submit();

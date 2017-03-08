@@ -169,7 +169,7 @@ public class TransportService {
 		}
 		
 		logger.debug("map:"+map);
-		String url = ContextParam.context.getInitParameter("httpUrl");
+		String url = ContextParam.context.getInitParameter("sendUrl");
 		
 		HttpUrlCon conn = new HttpUrlCon(url+"/project/government/getHospitalInfo");
 		//Map<String, Object> map1 = new HashMap<String , Object>();

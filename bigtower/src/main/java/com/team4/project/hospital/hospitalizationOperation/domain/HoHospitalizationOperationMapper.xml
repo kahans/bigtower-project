@@ -37,6 +37,25 @@
  			<!-- AND NOT EXISTS(select HO_HOSPITALIZATION_REQUEST_CODE from ho_hospitalization) -->
  	</select>
  	
+ 	<!-- 입원 환자 목록 -->
+ 	<select id="hospitalizationList" resultType="com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization"
+ 									 parameterType="String">
+ 		SELECT
+ 			ho_hospitalization.HO_HOSPITALIZATION_CODE,
+ 			ho_hospitalization.HO_TREATMENT_CODE,
+ 			ho_patient.HO_PATIENT_NAME,
+ 			ho_hospitalization.HO_HOSPITALIZATION_REQUEST_CODE,
+ 			ho_hospitalization.HO_HOSPITALIZATION_START_DATE,
+ 			ho_treatment.HO_HOSPITAL_CODE
+ 		FROM ho_hospitalization
+ 		JOIN ho_treatment
+ 			ON ho_hospitalization.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
+ 		JOIN ho_patient
+ 			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
+ 		WHERE
+ 			ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
+ 	</select>
+ 	
  	<!-- 입원등록 -->
  	<insert id="addHospitalization" parameterType="Map">
  		INSERT INTO ho_hospitalization(
