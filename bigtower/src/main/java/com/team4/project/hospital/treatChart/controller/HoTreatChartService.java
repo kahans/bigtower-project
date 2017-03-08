@@ -97,9 +97,16 @@ public class HoTreatChartService {
 	
 	//접수완료 클릭시 진료 데이터 생성
 	public int addTreat(HoTreat hoTreat, String hoReceiveCode){
+		//진료 열을 생성한다.
+		hoTCD.addTreat(hoTreat);
 		int result = hoRRDao.receiveStateDiagnosis(hoReceiveCode);
 		System.out.println("접수완료에서 진료로 상태업데이트 결과?" + result);
-		return hoTCD.addTreat(hoTreat);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("hoTreatmentCode", hoTreat.getHoTreatmentCode());
+		System.out.println("이게 뭐라고 한다면 : "+map.get("hoTreatmentCode"));
+		
+		return 0;
 	}
 	
 	//진료 상세보기에서 진료업데이트
@@ -157,7 +164,7 @@ public class HoTreatChartService {
 				System.out.println("예방접종 등록성공");
 			}
 		}
-		hoRRDao.receiveStateAcceptance(hoTreatmentCode);
+		hoRRDao.receiveStatePay(hoTreatmentCode);
 		return hoTCD.updateTreat(hoTreat);
 	}
 }

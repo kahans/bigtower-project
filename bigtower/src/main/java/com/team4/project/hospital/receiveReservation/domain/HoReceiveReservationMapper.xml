@@ -96,7 +96,7 @@
 	</select>
 	
 	<!-- 수납대기자 목록  -->
-	<select id="acceptanceList" resultType="com.team4.project.hospital.receiveReservation.domain.HoReceiveSub" parameterType="String">
+	<select id="payList" resultType="com.team4.project.hospital.receiveReservation.domain.HoReceiveSub" parameterType="String">
 		SELECT
 			ho_receive.HO_RECEIVE_CODE,
 			ho_receive.HO_HOSPITAL_CODE,
@@ -122,23 +122,27 @@
 		update
 			ho_receive
 		set
-			ho_receive.HO_RECEIVE_STATE_CODE='2'
-		WHERE
+			ho_receive.HO_RECEIVE_STATE_CODE='2',
+			ho_receive.HO_TREATMENT_CODE = (
+				select CONCAT('treatment_',max(cast(substring(ho_treatment.HO_TREATMENT_CODE,11,5) as UNSIGNED ))) 
+			from ho_treatment)	
+		where 
 			ho_receive.HO_RECEIVE_CODE=#{hoReceiveCode}
 	</update>
 	
 	<!-- 진료상태에서 수납대기 상태로 변경 -->
-	<update id="receiveStateAcceptance">
+	<update id="receiveStateAcceptance" parameterType="String">
 		update
 			ho_receive
 		set
 			ho_receive.HO_RECEIVE_STATE_CODE='3'
 		WHERE
-			ho_receive.HO_RECEIVE_CODE=#{hoReceiveCode}
+			ho_receive.HO_TREATMENT_CODE=#{hoReceiveCode}	
+
 	</update>
 	
 	<!-- 수납대기에서 수납완료 상태로 변경 -->
-	<update id="receiveStateStorageCompleted" parameterType="String">
+	<update id="payComplete" parameterType="String">
 		update
 			ho_receive
 		set

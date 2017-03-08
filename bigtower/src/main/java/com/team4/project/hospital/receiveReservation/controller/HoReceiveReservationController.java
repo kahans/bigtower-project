@@ -117,39 +117,24 @@ public class HoReceiveReservationController {
 		return "/hospital/views/receiveList";
 
 	}
-	//접수 상태 진료업데이트 receiveDiagnosis
-	@RequestMapping(value="/hospital/receiveStateDiagnosis", method=RequestMethod.GET)
-	public String receiveStateDiagnosis(HoReceive hp,
-									@RequestParam(value="hoReceiveCode") String hoReceiveCode
-			){
-		System.out.println("컨트롤러 : "+hoReceiveCode);
-		
-		System.out.println("receive 이름이 온다 : "+hp);
-		hoRRService.receiveStateDiagnosis(hoReceiveCode); 
-		return "redirect:/hospital/receiveList";
-	}
 
-	//진료상태에서 수납대기 상태로 전환
-	@RequestMapping(value="/hospital/receiveStateAcceptance", method=RequestMethod.GET)
-	public String receiveStateAcceptance(HoReceiveSub hp,
-									@RequestParam(value="hoReceiveCode") String hoReceiveCode
-			){
-		System.out.println("컨트롤러 : "+hoReceiveCode);
-		
-		System.out.println("Diagnosis 이름이 온다 : "+hp);
-		hoRRService.receiveStateAcceptance(hoReceiveCode); 
-		return "redirect:/hospital/diagnosisList";
-	}
 	//수납대기 목록
-	@RequestMapping(value="/hospital/acceptanceList", method=RequestMethod.GET)
-	public String acceptanceList(HoReceiveSub hp, HttpSession session, Model model){
+	@RequestMapping(value="/hospital/payList", method=RequestMethod.GET)
+	public String payList(HoReceiveSub hp, HttpSession session, Model model){
 		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		
-		List<HoReceiveSub> acceptanceList = hoRRService.acceptanceList(hospitalCode);
+		List<HoReceiveSub> payList = hoRRService.payList(hospitalCode);
 		
-		model.addAttribute("acceptanceList", acceptanceList);
+		model.addAttribute("payList", payList);
 		
-		return "/hospital/views/acceptanceList";
+		return "/hospital/views/payList";
+	}
+	@RequestMapping(value="/hospital/payComplete")
+	public String payComplete(String hoReceiveCode){
+		System.out.println("수납완료를 위한 : "+hoReceiveCode);
+		hoRRService.payComplete(hoReceiveCode);
+		
+		return "redirect:/hospital/payList";
 	}
 }
 

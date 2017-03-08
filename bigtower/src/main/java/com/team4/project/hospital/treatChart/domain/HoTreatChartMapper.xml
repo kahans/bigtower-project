@@ -41,7 +41,8 @@
 			ho_doctor.HO_DOCTOR_NAME,
 			ho_treatment.HO_TREAT_SUBJECT_CODE,
 			ho_treat_subject.HO_TREAT_SUBJECT_NAME,
-			ho_treatment.HO_TREATMENT_WRITE_DATE
+			ho_treatment.HO_TREATMENT_WRITE_DATE,
+			ho_receive.HO_RECEIVE_CODE
 		FROM ho_treatment
 		JOIN ho_patient
 			ON ho_patient.HO_PATIENT_CODE = ho_treatment.HO_PATIENT_CODE
@@ -52,7 +53,7 @@
 		JOIN ho_doctor
 			ON ho_doctor.HO_DOCTOR_ID = ho_treatment.HO_DOCTOR_ID
 		join ho_receive
-			on ho_receive.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
+			ON ho_receive.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
 		WHERE ho_hospital.HO_HOSPITAL_CODE=#{hospitalCode}
 			and ho_receive.HO_RECEIVE_STATE_CODE='2'
 		GROUP by ho_treatment.HO_TREATMENT_CODE

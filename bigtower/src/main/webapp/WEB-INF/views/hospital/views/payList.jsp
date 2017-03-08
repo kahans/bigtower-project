@@ -20,14 +20,14 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach var="acceptanceList" items="${acceptanceList}">
+		<c:forEach var="payList" items="${payList}">
 			<tr>
 				
-					<td>${acceptanceList.hoPatientName }</td>
-					<td>${acceptanceList.hoTreatSubjectName }</td>
-					<td>${acceptanceList.hoReceivePurpose }</td>
-					<td>${acceptanceList.hoReceiveRegistrationDate }</td>
-					<td><a href="<c:url value='/hospital/receiveStateAcceptance?hoReceiveCode=${acceptanceList.hoReceiveCode}'/>">${acceptanceList.hoReceiveStateName }</a></td>
+					<td>${payList.hoPatientName }</td>
+					<td>${payList.hoTreatSubjectName }</td>
+					<td>${payList.hoReceivePurpose }</td>
+					<td>${payList.hoReceiveRegistrationDate }</td>
+					<td><a href="<c:url value='/hospital/payComplete?hoReceiveCode=${payList.hoReceiveCode}'/>">${payList.hoReceiveStateName }</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>
