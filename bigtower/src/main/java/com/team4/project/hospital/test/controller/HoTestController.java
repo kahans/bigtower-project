@@ -21,7 +21,8 @@ import com.team4.project.hospital.test.domain.HoTestRequestSub;
 public class HoTestController {
 	//공통적인 부분을 필드변수로 선언해준다.
 	//배포시 파일 경로
-	String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
+	//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
+	String path = "/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/image";
 	@Autowired
 	private HoTestService hoTS;
 	//검사종류(혈액, 영상, 건강검진)선택 뷰
