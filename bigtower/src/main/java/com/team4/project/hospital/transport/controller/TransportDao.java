@@ -26,52 +26,52 @@ public class TransportDao {
 	private SqlSessionTemplate sql;
 	
 	// 혈액검사 조회
-	public List<HoBloodTest> selectListHoBloodTest(){
-		return sql.selectList("hoTransport.selectListHoBloodTest");
+	public List<HoBloodTest> selectListHoBloodTest(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoBloodTest", hospitalCode);
 	}
 	
 	// 차트 조회
-	public List<HoChart> selectListHoChart(){
-		return sql.selectList("hoTransport.selectListHoChart");
+	public List<HoChart> selectListHoChart(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoChart",hospitalCode);
 	}
 	
 	// 건강검진 조회
-	public List<HoCheckup> selectListHoCheckup(){
-		return sql.selectList("hoTransport.selectListHoCheckup");
+	public List<HoCheckup> selectListHoCheckup(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoCheckup", hospitalCode);
 	}
 	
 	// 진단 조회
-	public List<HoDiagnosis> selectListHoDiagnosis(){
-		return sql.selectList("hoTransport.selectListHoDiagnosis");
+	public List<HoDiagnosis> selectListHoDiagnosis(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoDiagnosis",hospitalCode);
 	}
 	
 	// 입퇴원결과 조회
-	public List<HoHospitalization> selectListHoHospitalization(){
-		return sql.selectList("hoTransport.selectListHoHospitalization");
+	public List<HoHospitalization> selectListHoHospitalization(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoHospitalization",hospitalCode);
 	}
 	
 	// 영상검사결과 조회
-	public List<HoMediaTest> selectListHoMediaTest(){
-		return sql.selectList("hoTransport.selectListHoMediaTest");
+	public List<HoMediaTest> selectListHoMediaTest(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoMediaTest", hospitalCode);
 	}
 	
 	// 수술결과 조회
-	public List<HoOperation> selectListHoOperation(){
-		return sql.selectList("hoTransport.selectListHoOperation");
+	public List<HoOperation> selectListHoOperation(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoOperation",hospitalCode);
 	}
 	
 	// 처방결과 조회
-	public List<HoPrescription> selectListHoPrescription(){
-		return sql.selectList("hoTransport.selectListHoPrescription");
+	public List<HoPrescription> selectListHoPrescription(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoPrescription", hospitalCode);
 	}	
 	
 	// 진료 조회
-	public List<HoTreat> selectListHoTreat(){
-		return sql.selectList("hoTransport.selectListHoTreat");
+	public List<HoTreat> selectListHoTreat(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoTreat",hospitalCode);
 	}
 	
 	// 예방접종 조회
-	public List<HoVaccine> selectListHoVaccine(){
-		return sql.selectList("hoTransport.selectListHoVaccine");
+	public List<HoVaccine> selectListHoVaccine(String hospitalCode){
+		return sql.selectList("hoTransport.selectListHoVaccine", hospitalCode);
 	}
 }

@@ -32,22 +32,21 @@ public class TransportService {
 	@Autowired
 	private TransportDao transportDao;
 	private Gson gson = new Gson();
-	
 	/*
-	HoBloodTest
-	HoChart
-	HoCheckup
-	HoDiagnosis
-	HoHospitalization
-	HoMediaTest
-	HoOperation
-	HoPrescription
-	HoTreat
-	HoVaccine
+		HoBloodTest
+		HoChart
+		HoCheckup
+		HoDiagnosis
+		HoHospitalization
+		HoMediaTest
+		HoOperation
+		HoPrescription
+		HoTreat
+		HoVaccine
 	*/
-	public void getAll(){
+	public void getAll(String hospitalCode){
 		logger.debug("getAll Service 진입");
-		
+		hospitalCode = "hospital_1";
 		// http로 보낼때 db에 들어갈내용은 json String으로 변환
 		// Map<String, Object>타입으로 각 조회결과를 담는데 조회결과가 없는것은 null로 담는다.
 		// 파일은 파일이름 앞에 Blood, Checkup, Image붙여서 보내서 받은다음에 잘라서 해당폴더에 넣는다
@@ -55,7 +54,7 @@ public class TransportService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		// 차트 조회
-		List<HoChart> hoChart = transportDao.selectListHoChart();
+		List<HoChart> hoChart = transportDao.selectListHoChart(hospitalCode);
 		logger.debug("hoChart:"+hoChart);	//리스트가 비어있으면 map에 null을 넣어줌 아니면 list를 넣어줌
 		if(hoChart.isEmpty()){
 			logger.debug("hoChart.isEmpty!!!");
@@ -65,7 +64,7 @@ public class TransportService {
 		}
 		
 		// 진료 조회
-		List<HoTreat> hoTreat = transportDao.selectListHoTreat();
+		List<HoTreat> hoTreat = transportDao.selectListHoTreat(hospitalCode);
 		logger.debug("hoTreat:"+hoTreat);
 		if(hoTreat.isEmpty()){
 			logger.debug("hoTreat.isEmpty!!!");
@@ -75,7 +74,7 @@ public class TransportService {
 		}
 		
 		// 진단 조회
-		List<HoDiagnosis> hoDiagnosis = transportDao.selectListHoDiagnosis();
+		List<HoDiagnosis> hoDiagnosis = transportDao.selectListHoDiagnosis(hospitalCode);
 		logger.debug("hoDiagnosis:"+hoDiagnosis);
 		if(hoDiagnosis.isEmpty()){
 			logger.debug("hoDiagnosis.isEmpty!!!");
@@ -85,7 +84,7 @@ public class TransportService {
 		}
 		
 		// 처방결과 조회
-		List<HoPrescription> hoPrescription = transportDao.selectListHoPrescription();
+		List<HoPrescription> hoPrescription = transportDao.selectListHoPrescription(hospitalCode);
 		logger.debug("hoPrescription:"+hoPrescription);
 		if(hoPrescription.isEmpty()){
 			logger.debug("hoPrescription.isEmpty!!!");
@@ -95,7 +94,7 @@ public class TransportService {
 		}
 
 		// 입퇴원 조회
-		List<HoHospitalization> hoHospitalization = transportDao.selectListHoHospitalization();
+		List<HoHospitalization> hoHospitalization = transportDao.selectListHoHospitalization(hospitalCode);
 		logger.debug("hoHospitalization:"+hoHospitalization);
 		if(hoHospitalization.isEmpty()){
 			logger.debug("hoHospitalization.isEmpty!!!");
@@ -105,7 +104,7 @@ public class TransportService {
 		}
 		
 		// 수술결과 조회
-		List<HoOperation> hoOperation = transportDao.selectListHoOperation();
+		List<HoOperation> hoOperation = transportDao.selectListHoOperation(hospitalCode);
 		logger.debug("hoOperation:"+hoOperation);
 		if(hoOperation.isEmpty()){
 			logger.debug("hoOperation.isEmpty!!!");
@@ -115,7 +114,7 @@ public class TransportService {
 		}
 		
 		// 예방접종 조회
-		List<HoVaccine> hoVaccine = transportDao.selectListHoVaccine();
+		List<HoVaccine> hoVaccine = transportDao.selectListHoVaccine(hospitalCode);
 		logger.debug("hoVaccine:"+hoVaccine);
 		if(hoVaccine.isEmpty()){
 			logger.debug("hoVaccine.isEmpty!!!");
@@ -125,61 +124,63 @@ public class TransportService {
 		}
 		
 		// 혈액검사 결과 조회(파일)
-		List<HoBloodTest> hoBloodTest = transportDao.selectListHoBloodTest();
+		List<HoBloodTest> hoBloodTest = transportDao.selectListHoBloodTest(hospitalCode);
 		logger.debug("hoBloodTest:"+hoBloodTest);
 		if(hoBloodTest.isEmpty()){	
 			logger.debug("hoBloodTest.isEmpty!!!");
 			map.put("hoBloodTest", null);
 		}else{	// list가 empty가 아니면 파일도 보내줘야 하므로 파일을 가져와서 map에 담는다
-			for(int i = 0;i<hoBloodTest.size(); i++){
+			/*for(int i = 0;i<hoBloodTest.size(); i++){
 				String fileName = hoBloodTest.get(i).getHoBloodTestImageName();
 				String filePath = hoBloodTest.get(i).getHoBloodTestImagePath();
 				map.put("fileBlood/"+fileName, new File(filePath+"/"+fileName));
-			}
+			}*/
 			map.put("hoBloodTest", hoBloodTest);
 		}
 
 		// 건강검진 조회(파일)
-		List<HoCheckup> hoCheckup = transportDao.selectListHoCheckup();
+		List<HoCheckup> hoCheckup = transportDao.selectListHoCheckup(hospitalCode);
 		logger.debug("hoCheckup:"+hoCheckup);
 		if(hoCheckup.isEmpty()){
 			logger.debug("hoCheckup.isEmpty!!!");
 			map.put("hoCheckup", null);
 		}else{
-			for(int i = 0;i<hoCheckup.size(); i++){
+			/*for(int i = 0;i<hoCheckup.size(); i++){
 				String fileName = hoCheckup.get(i).getHoCheckUpResultName();
 				String filePath = hoCheckup.get(i).getHoCheckUpResultPath();
 				map.put("fileCheckup/"+fileName, new File(filePath+"/"+fileName));
-			}
+			}*/
 			map.put("hoCheckup", hoCheckup);
 		}
 
 		// 영상검사결과 조회(파일)
-		List<HoMediaTest> hoMediaTest = transportDao.selectListHoMediaTest();
+		List<HoMediaTest> hoMediaTest = transportDao.selectListHoMediaTest(hospitalCode);
 		logger.debug("hoMediaTest:"+hoMediaTest);
 		if(hoMediaTest.isEmpty()){
 			logger.debug("hoMediaTest.isEmpty!!!");
 			map.put("hoMediaTest", null);
 		}else{
-			for(int i = 0;i<hoMediaTest.size(); i++){
+			/*for(int i = 0;i<hoMediaTest.size(); i++){
 				String fileName = hoMediaTest.get(i).getHoMediaTestImageName();
 				String filePath = hoMediaTest.get(i).getHoMediaTestImagePath();
 				map.put("fileCheckup/"+fileName, new File(filePath+"/"+fileName));
-			}
+			}*/
 			map.put("hoMediaTest", hoMediaTest);
 		}
-		
-		
 		
 		logger.debug("map:"+map);
 		String url = ContextParam.context.getInitParameter("httpUrl");
 		
-		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/getFile");
-		Map<String, Object> map1 = new HashMap<String , Object>();
-		//Map<String, String> map1 = new HashMap<String , String>();
+		HttpUrlCon conn = new HttpUrlCon(url+"/project/government/getHospitalInfo");
+		//Map<String, Object> map1 = new HashMap<String , Object>();
+		Map<String, String> hospitalMap = new HashMap<String , String>();
+		//리스트들을 담은 map을 json string타입으로 parsing
 		String hospitalInfo = gson.toJson(map);
-		map1.put("id", "2번!!");
-		map1.put("name","이거는 되것지..원래되는거여,,ㅋㅋ");
+		logger.debug("hospitalInfo:"+hospitalInfo);
+		hospitalMap.put("hospitalCode", hospitalCode);
+		hospitalMap.put("hospitalInfo", hospitalInfo);
+		//map1.put("id", "2번!!");
+		//map1.put("name","이거는 되것지..원래되는거여,,ㅋㅋ");
 		//map1.put("id", "3번!!");
 		//map1.put("name","이거는 안되것지 스벌,ㅠㅠ");
 		//map1.put("test", "최유민");
@@ -187,8 +188,8 @@ public class TransportService {
 		//map1.put("file1", new File("d://a.png"));
 		//map1.put("file2", new File("d://b.png"));
 		try {
-			conn.HttpUrlFilePOST(map1);
-			//conn.HttpUrlPOST(map1);
+			//conn.HttpUrlFilePOST(map1);
+			conn.HttpUrlPOST(hospitalMap);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

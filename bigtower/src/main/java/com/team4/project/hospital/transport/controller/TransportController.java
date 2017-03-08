@@ -1,5 +1,7 @@
 package com.team4.project.hospital.transport.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +17,11 @@ public class TransportController {
 	
 	
 	@RequestMapping(value="/hospital/getAll", method=RequestMethod.GET)
-	public void getAll(){
+	public void getAll(HttpSession session){
 		logger.debug("getAll controller 진입");
-		transportService.getAll();
+		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		transportService.getAll(hospitalCode);
+		
 		logger.debug("getAll controller 끝");
 
 	}
