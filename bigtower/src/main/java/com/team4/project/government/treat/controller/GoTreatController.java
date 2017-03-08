@@ -1,6 +1,8 @@
 package com.team4.project.government.treat.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.team4.project.government.treat.domain.GoTreat;
+import com.team4.project.util.ContextParam;
+import com.team4.project.util.HttpUrlCon;
 
 @Controller
 public class GoTreatController {
@@ -26,14 +31,39 @@ public class GoTreatController {
 	private GoTreatService goTCService;
 
 	
-	// 한사람의 하나의 진료정보(test)
+	// 검색 폼
 	@RequestMapping(value="/government/searchTreat", method=RequestMethod.GET,
 					produces = "text/json; charset=UTF-8")
-	public String getListTreat(){
-		return "gov_serachForm";
+	public String searchForm(){
+		return "/hospital/views/government/gov_serachForm";
 	}
 	
-	
+	// 검색 결과
+	@RequestMapping(value="/government/getSearchResult", method=RequestMethod.POST,
+					produces = "text/json; charset=UTF-8")
+	public String getSearchResult(String citizenId, Model model){
+		logger.debug("citizenId:"+citizenId);
+		String url = ContextParam.context.getInitParameter("receiveUrl");
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListTreatByCitizenId");
+		// 원래 세션에서 받아와야함
+		String doctorId = "";
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("doctorId", doctorId);
+		map.put("citizenId", citizenId);
+		try {
+			String list = conn.HttpUrlPOST(map);
+			logger.debug("list:"+list);
+			List<GoTreat> treatList = gson.fromJson(list, new TypeToken<List<GoTreat>>(){}.getType());
+			logger.debug("list2:"+treatList);
+			model.addAttribute("treatList", treatList);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return "/hospital/views/government/gov_searchTreatResult";
+	}
 	
 	
 	
