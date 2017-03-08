@@ -22,7 +22,7 @@ public class HoTestController {
 	//공통적인 부분을 필드변수로 선언해준다.
 	//배포시 파일 경로
 	//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
-	String path = "/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/image";
+	
 	@Autowired
 	private HoTestService hoTS;
 	//검사종류(혈액, 영상, 건강검진)선택 뷰
@@ -108,7 +108,8 @@ public class HoTestController {
 		//String path="D:\\testImage";//절대 주소
 		//String path="C:\\sw\\testimage";//집에서 작성
 		// 배포시사용할경로
-		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
+		String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/blood";
+		//String path = "/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/blood";
 		bloodView.setHoBloodTestImagePath(path);
 		//혈액 검사 테이블 열을 업데이트를 한다
 		hoTS.updateBloodTest(bloodView);
@@ -183,7 +184,9 @@ public class HoTestController {
 	public String mediaTestView(HoMediaTestSub mediaView,
 			HttpServletRequest request,
 			HttpSession session
-		){ 
+		){
+		//String path = "/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/image";
+		String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/blood";
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		mediaView.setHoHospitalCode(hoHospitalCode);
 		System.out.println("해당 영상검사 결과 등록 POST");
