@@ -36,9 +36,4 @@ public class HoDiagnosisPrescriptionService {
 	public List<HoMedicine> selectMedicine(){
 		return hoDPD.selectMedicine();
 	}
-	
-	//처방전 등록
-	public int addPrescription(HoPrescription hoPrescription){
-		return hoDPD.addPrescription(hoPrescription);
-	}
 }

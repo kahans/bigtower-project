@@ -109,7 +109,7 @@
 			HO_TREATMENT_CODE,
 			HO_VACCINE_TYPE_CODE,
 			HO_VACCINE_DATE,
-			HO_GO_SENDSTATE)
+			HO_VACCINE_COUNT)
 		SELECT
 			if(not exists (select * from ho_vaccine) ,
  				'vaccine_1',

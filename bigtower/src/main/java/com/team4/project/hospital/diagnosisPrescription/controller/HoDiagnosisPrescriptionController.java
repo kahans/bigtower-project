@@ -30,20 +30,4 @@ public class HoDiagnosisPrescriptionController {
 		return "redirect:/hospital/treatList";
 	}
 	
-	@RequestMapping(value="/hospital/addPrescription", method=RequestMethod.GET)
-	public String addPrescription(String hoTreatmentCode, Model model){
-		List<HoMedicine> medicineList = hoDPS.selectMedicine();
-		System.out.println("addPrescription 메서드의 hoTreatmentCode : "+hoTreatmentCode);
-		model.addAttribute("hoTreatmentCode", hoTreatmentCode);
-		model.addAttribute("medicineList",medicineList);
-		return "/hospital/views/addPrescription";
-	}
-	
-	@RequestMapping(value="/hospital/addPrescription", method=RequestMethod.POST)
-	public String addPrescription(HoPrescription hoPrescription){
-		System.out.println("hoPrescription : "+hoPrescription);
-		int result = hoDPS.addPrescription(hoPrescription);
-		System.out.println("처방전 등록 결과는 ? "+result);
-		return "redirect:/hospital/treatList";
-	}
 }

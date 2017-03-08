@@ -9,13 +9,15 @@
  		INSERT INTO ho_hospitalization_request(
  			HO_HOSPITALIZATION_REQUEST_CODE,
  			HO_TREATMENT_CODE,
- 			HO_HOSPITALIZATION_REQUEST_DATE)
+ 			HO_HOSPITALIZATION_REQUEST_DATE,
+ 			HO_HOSPITALIZATION_STATE_CODE)
  		SELECT
  			if(not exists (select * from ho_hospitalization_request) ,'hospitalization_request_1',
  				CONCAT('hospitalization_request_',
  					max(cast(substring(HO_HOSPITALIZATION_REQUEST_CODE,25,5) as UNSIGNED ))+1)),
  			#{hoTreatmentCode},
- 			now()
+ 			now(),
+ 			1
  		FROM ho_hospitalization_request
  	</insert>
  	

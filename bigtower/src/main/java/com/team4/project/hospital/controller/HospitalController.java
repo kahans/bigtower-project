@@ -32,7 +32,7 @@ public class HospitalController {
 	//로그인페이지 보기
 	@RequestMapping(value="/hospital/login", method=RequestMethod.GET)
 	public String login(){
-		return "/hospital/views/login";
+		return "/hospital/views/login/login";
 	}
 	
 	//로그인 처리
@@ -69,7 +69,7 @@ public class HospitalController {
 	//환자등록 페이지
 	@RequestMapping(value="/hospital/addPatient", method=RequestMethod.GET)
 	public String addPatient(){
-		return "/hospital/views/addPatient";
+		return "/hospital/views/patient/addPatient";
 	}
 	
 	//환자등록 처리
@@ -95,7 +95,7 @@ public class HospitalController {
 			return "redirect:/hospital/addChart";
 		}else{
 			System.out.println("환자등록오류");
-			return "/hospital/views/addPatient";
+			return "/hospital/views/patient/addPatient";
 		}
 		
 	}

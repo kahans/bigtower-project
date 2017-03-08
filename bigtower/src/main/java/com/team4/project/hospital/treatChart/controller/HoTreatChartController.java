@@ -71,7 +71,7 @@ public class HoTreatChartController {
 		model.addAttribute("diseaseList", diseaseList);
 		model.addAttribute("operationList", operationList);
 		model.addAttribute("vaccineList", vaccineList);
-		return "/hospital/views/treatView";
+		return "/hospital/views/treatment/treatView";
 	}
 	
 	//진료 내용 업데이트
@@ -121,7 +121,7 @@ public class HoTreatChartController {
 		List<HoTreatSub> treatList  = hoTCS.treatList(hospitalCode);
 		System.out.println(treatList.toString());
 		model.addAttribute("treatList", treatList);
-		return "/hospital/views/treatmentList";
+		return "/hospital/views/treatment/treatmentList";
 	}
 	
 	//접수 목록에서 접수완료를 클릭시 진료 데이터 생성

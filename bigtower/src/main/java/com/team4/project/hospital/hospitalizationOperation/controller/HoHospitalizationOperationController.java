@@ -39,7 +39,7 @@ public class HoHospitalizationOperationController {
 		List<HoOperationSub> operationList = hoHOS.operationList(hoHospitalCode);
 		System.out.println("수술 목록 : "+operationList);
 		model.addAttribute("operationList",operationList);
-		return "/hospital/views/operationList";
+		return "/hospital/views/operation/operationList";
 	}
 	
 	//입퇴원 요청 목록
@@ -48,7 +48,7 @@ public class HoHospitalizationOperationController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		List<HoHospitalizationRequest> hospitalizationRequestList = hoHOS.hospitalizationRequestList(hoHospitalCode);
 		model.addAttribute("hospitalizationRequestList",hospitalizationRequestList);
-		return "/hospital/views/hospitalizationRequestList";
+		return "/hospital/views/hospitalization/hospitalizationRequestList";
 	}
 	
 	//입원 환자 목록 
@@ -57,7 +57,7 @@ public class HoHospitalizationOperationController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		List<HoHospitalization> hospitalizationList = hoHOS.hospitalizationList(hoHospitalCode);
 		model.addAttribute("hospitalizationList",hospitalizationList);
-		return "/hospital/views/hospitalizationList";
+		return "/hospital/views/hospitalization/hospitalizationList";
 	}
 	
 	//퇴원일 업데이트
@@ -92,7 +92,7 @@ public class HoHospitalizationOperationController {
 		hoOperation = hoHOS.operationView(hoOperationCode);
 		System.out.println("hoOperation : "+hoOperation);
 		model.addAttribute("hoOperation",hoOperation);
-		return "/hospital/views/operationView";
+		return "/hospital/views/operation/operationView";
 	}
 	
 	//수술일지 수정

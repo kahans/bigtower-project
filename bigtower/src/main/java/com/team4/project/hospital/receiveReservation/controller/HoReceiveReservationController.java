@@ -36,7 +36,7 @@ public class HoReceiveReservationController {
 		model.addAttribute("hoCitizenId",hoCitizenId);
 		model.addAttribute("treatSubjectList",treatSubjectList);
 		logger.debug("addPatient GET");
-		return "/hospital/views/receive";
+		return "/hospital/views/receive/receive";
 	}
 	
 	//접수실행
@@ -66,13 +66,14 @@ public class HoReceiveReservationController {
 		
 		return hopatient;
 	}
+	
 	//초진, 재진 뷰 보기
 	@RequestMapping(value="/hospital/searchPatient", method=RequestMethod.GET)
 	public String searchOnePatientTest(){
 		logger.debug("searchOnePatientTest GET 화면 불러오기");
-		
-		return "/hospital/views/searchPatient";
+		return "/hospital/views/patient/searchPatient";
 	}
+	
 	//초진, 재진 조회
 	@RequestMapping(value="/hospital/searchPatient", method=RequestMethod.POST)
 	public String searchOnePatientTest(HoPatient hp, HttpSession session, Model model, RedirectAttributes redirectAttributes,
@@ -84,37 +85,31 @@ public class HoReceiveReservationController {
 		//앞,뒤로 받은 주민번호를 하나의 문자열로 합치고, DTO에 set으로 세팅한다.
 		String citizenId = idfirst+"-"+idsecond;
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		
 		System.out.println("주민번호 : "+citizenId);
 		hp.setHoCitizenId(citizenId);
 		hp.setHoHospitalCode(hoHospitalCode);
 		
-		
 		//dto에 들어간 데이터를 확인
 		System.out.println(hp.toString());
-		
 		hp = hoRRService.searchPatientTest(hp);
 		System.out.println("mapper에서온 손님 : "+hp);
-		if(hp!=null){//널이 아니면 접수등록으로 이동한다.
+		if(hp!=null){ //널이 아니면 접수등록으로 이동한다.
 			String hoCitizenId = hp.getHoCitizenId();
 			redirectAttributes.addAttribute("hoCitizenId",hoCitizenId);
 			return "redirect:/hospital/receive";
-		}else{//초진을 경우 null로 되어 있는 경우 환자를 등록 뷰로 이동한다.
-			return "/hospital/views/addPatient";
+		}else{ //초진을 경우 null로 되어 있는 경우 환자를 등록 뷰로 이동한다.
+			return "/hospital/views/patient/addPatient";
 		}
-		
-		//return "/hospital/views/receive";
 	}
+	
 	//접수 목록
 	@RequestMapping(value = "/hospital/receiveList", method = RequestMethod.GET)
 	public String receiveList(HttpSession session, Model model, HoReceiveSub hoReceive) {
 		// 로그인 세션을 뭘로 가져와야 할까.
 		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
-
 		List<HoReceiveSub> receiveList = hoRRService.receiveList(hospitalCode);
-
 		model.addAttribute("receiveList", receiveList);
-		return "/hospital/views/receiveList";
+		return "/hospital/views/receive/receiveList";
 
 	}
 
@@ -122,18 +117,16 @@ public class HoReceiveReservationController {
 	@RequestMapping(value="/hospital/payList", method=RequestMethod.GET)
 	public String payList(HoReceiveSub hp, HttpSession session, Model model){
 		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		
 		List<HoReceiveSub> payList = hoRRService.payList(hospitalCode);
-		
 		model.addAttribute("payList", payList);
-		
-		return "/hospital/views/payList";
+		return "/hospital/views/receive/payList";
 	}
+	
+	//수납완료
 	@RequestMapping(value="/hospital/payComplete")
 	public String payComplete(String hoReceiveCode){
 		System.out.println("수납완료를 위한 : "+hoReceiveCode);
 		hoRRService.payComplete(hoReceiveCode);
-		
 		return "redirect:/hospital/payList";
 	}
 }
