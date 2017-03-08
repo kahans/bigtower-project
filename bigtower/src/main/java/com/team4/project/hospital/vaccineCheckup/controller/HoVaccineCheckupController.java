@@ -46,7 +46,7 @@ public class HoVaccineCheckupController {
 		hoTestRequest.setHoTestRequestCode(hoTestRequestCode);
 		hoTestRequest.setHoTestCode("3");
 		hoVCS.updateCheckupState(hoTestRequest);
-		return "/hospital/views/tests/listCheckup";
+		return "redirect/hospital/views/tests/listCheckupWait";
 	}
 	//결과 대기 상태목록을 출력
 	@RequestMapping(value="/hospital/test/listCheckupWait",method=RequestMethod.GET)
@@ -89,7 +89,7 @@ public class HoVaccineCheckupController {
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		addCheckup.setHoCheckUpResultPath(path);
 		hoVCS.updateCheck(addCheckup);
-		return "redirect:/hospital/test/listCheckup";
+		return "redirect:/hospital/test/listCheckupWait";
 	}
 	
 	//예방접종 등록

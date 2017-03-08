@@ -113,7 +113,7 @@ public class HoTestController {
 		//혈액 검사 테이블 열을 업데이트를 한다
 		hoTS.updateBloodTest(bloodView);
 		
-		return "redirect:/hospital/test/ListBloodTest";
+		return "redirect:/hospital/test/listBloodWait";
 	}
 	//영상검사대기 상태 업데이트
 	@RequestMapping(value="/hospital/test/updateMediaState", method=RequestMethod.GET)
@@ -125,7 +125,7 @@ public class HoTestController {
 		hoTestRequest.setHoTestRequestCode(hoTestRequestCode);
 		hoTestRequest.setHoTestCode("2");
 		hoTS.updateState(hoTestRequest);
-		return "/hospital/views/tests/ListBloodTest";
+		return "redirect:/hospital/views/tests/listMediaWait";
 	}
 	//영상검사 결과대기목록들
 	@RequestMapping(value="/hospital/test/listMediaWait", method=RequestMethod.GET)
@@ -199,6 +199,6 @@ public class HoTestController {
 		
 		
 		
-		return "redirect:/hospital/test/listMediaTest";
+		return "redirect:/hospital/test/listMediaWait";
 	}
 }
