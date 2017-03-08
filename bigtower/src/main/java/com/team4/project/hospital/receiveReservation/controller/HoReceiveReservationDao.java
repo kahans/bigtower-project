@@ -54,7 +54,7 @@ public class HoReceiveReservationDao {
 	
 	//진료상태에서 수납대기로 변경
 	public int receiveStateAcceptance(String hoReceiveCode) {	
-		return sqlSession.update("hoReceiveReservation.receiveStateAccenptance", hoReceiveCode);
+		return sqlSession.update("hoReceiveReservation.receiveStateAcceptance", hoReceiveCode);
 	}
 	
 	//수납대기에서 수납완료로 변경
