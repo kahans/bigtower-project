@@ -30,27 +30,25 @@ public class HoTestController {
 	public String TestsView(){
 		return "/hospital/views/tests/viewTest";
 	}
-/*	//검사요청 등록
-	@RequestMapping(value="/hospital/test/testRequest", method=RequestMethod.POST)
-	public String testRequest(HoTestRequestSub hoTestRequestSub){
-		System.out.println(hoTestRequestSub.getHoTestCode());
-		hoTS.addTestRequest(hoTestRequestSub);
-		return "";
-	}*/
-	//혈액검사 상태 업데이트
+
+	//혈액검사대기에서 결과대기 상태로 업데이트
 	@RequestMapping(value="/hospital/test/updateBloodState", method=RequestMethod.GET)
 	public String updateBloodState(HoTestRequestSub hoTestRequest,HttpSession session,
 			@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
 			){
+		//로그인한 정보중에 병원CODE를 세션을 불러온다.
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		//세션와 폼에서 온 데이터과 함께 같이 하는 TestCode를 고정을 시켜 검사요청테이블에 있는 검사상태칼럽을 
+		//검사대기 -> 결과대기 상태로 업데이트를 한다.
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);
 		hoTestRequest.setHoTestRequestCode(hoTestRequestCode);
 		hoTestRequest.setHoTestCode("1");
 		hoTS.updateState(hoTestRequest);
-		return "/hospital/views/tests/ListBloodTest";
+		
+		return "redirect:/hospital/views/tests/listBloodWait";
 	}
 	
-	//혈액검사 결과대기목록들
+	//혈액검사 결과대기 목록 출력
 	@RequestMapping(value="/hospital/test/listBloodWait", method=RequestMethod.GET)
 	public String listBloodWait(Model model,HoTestRequestSub hoTestRequest,
 			HttpSession session
@@ -64,7 +62,7 @@ public class HoTestController {
 		model.addAttribute("bloodList", bloodList);
 		return "/hospital/views/tests/listBloodWait";
 	}
-	//혈액검사 대기목록
+	//혈액 검사 대기 목록 출력
 	@RequestMapping(value="/hospital/test/ListBloodTest",method=RequestMethod.GET)
 	public String BloodTestList(HoTestRequestSub hoTestRequest, Model model,
 			HttpSession session
@@ -114,7 +112,6 @@ public class HoTestController {
 		bloodView.setHoBloodTestImagePath(path);
 		//혈액 검사 테이블 열을 업데이트를 한다
 		hoTS.updateBloodTest(bloodView);
-		//
 		
 		return "redirect:/hospital/test/ListBloodTest";
 	}
