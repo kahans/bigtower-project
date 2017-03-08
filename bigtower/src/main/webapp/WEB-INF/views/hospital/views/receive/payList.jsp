@@ -16,7 +16,7 @@
 			<th>진료과</th>
 			<th>방문목적</th>
 			<th>접수일</th>
-			<th>접수상태</th>
+			<th>수납처리</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,7 +27,7 @@
 					<td>${payList.hoTreatSubjectName }</td>
 					<td>${payList.hoReceivePurpose }</td>
 					<td>${payList.hoReceiveRegistrationDate }</td>
-					<td><a href="<c:url value='/hospital/payComplete?hoReceiveCode=${payList.hoReceiveCode}'/>">${payList.hoReceiveStateName }</a></td>
+					<td><a href="<c:url value='/hospital/payComplete?hoReceiveCode=${payList.hoReceiveCode}'/>"><button>수납완료</button></a></td>
 			</tr>
 			</c:forEach>
 		</tbody>
