@@ -41,6 +41,11 @@ public class HoHospitalizationOperationService {
 		return hoHOD.addHospitalization(map);
 	}
 	
+	//퇴원일 업데이트
+	public int updateHospitalization(String hoHospitalizationCode){
+		return hoHOD.updateHospitalization(hoHospitalizationCode);
+	}
+	
 	//수술 상세보기
 	public HoOperationSub operationView(String hoOperationCode){
 		HoOperationSub hoOperationSub = hoHOD.operationView(hoOperationCode);

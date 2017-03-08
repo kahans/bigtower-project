@@ -33,6 +33,11 @@ public class HoHospitalizationOperationDao {
 		return sqlSession.insert("hoHospitalizationOperation.addHospitalization",map);
 	}
 	
+	//퇴원일 업데이트
+	public int updateHospitalization(String hoHospitalizationCode){
+		return sqlSession.update("hoHospitalizationOperation.updateHospitalization", hoHospitalizationCode);
+	}
+	
 	//수술 등록
 	public int addOperation(HoOperation hoOperation){
 		return sqlSession.insert("hoHospitalizationOperation.addOperation",hoOperation);

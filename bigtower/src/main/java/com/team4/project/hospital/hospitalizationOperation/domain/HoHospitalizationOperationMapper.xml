@@ -56,6 +56,16 @@
  			ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
  	</select>
  	
+ 	<!-- 퇴원일 업데이트 -->
+ 	<update id="updateHospitalization" parameterType="String">
+ 		UPDATE
+ 			ho_hospitalization
+ 		SET
+ 			HO_HOSPITALIZATION_END_DATE = now()
+ 		WHERE
+ 			HO_HOSPITALIZATION_CODE = #{hoHospitalizationCode}
+ 	</update>
+ 	
  	<!-- 입원등록 -->
  	<insert id="addHospitalization" parameterType="Map">
  		INSERT INTO ho_hospitalization(

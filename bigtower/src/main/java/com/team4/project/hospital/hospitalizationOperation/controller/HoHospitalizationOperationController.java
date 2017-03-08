@@ -60,6 +60,14 @@ public class HoHospitalizationOperationController {
 		return "/hospital/views/hospitalizationList";
 	}
 	
+	//퇴원일 업데이트
+	@RequestMapping(value="/hospital/updateHospitalization")
+	public String updateHospitalization(String hoHospitalizationCode){
+		int result = hoHOS.updateHospitalization(hoHospitalizationCode);
+		System.out.println("퇴원일 갱신 결과는 ? "+result);
+		return "redirect:/hospital/hospitalizationList";
+	}
+	
 	//입원 등록
 	@RequestMapping(value="/hospital/addHospitalization")
 	public String addHospitalization(String hoTreatmentCode,
