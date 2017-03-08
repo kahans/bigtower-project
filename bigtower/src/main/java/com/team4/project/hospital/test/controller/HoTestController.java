@@ -194,12 +194,9 @@ public class HoTestController {
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		System.out.println("path:"+path);
 		mediaView.setHoMediaTestImagePath(path);
-		try {
-			hoTS.updateMediaTest(mediaView);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		hoTS.updateMediaTest(mediaView);
+		
 		
 		
 		return "redirect:/hospital/test/listMediaTest";

@@ -52,7 +52,6 @@
 			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
  	</update>
  	<!-- 영상 결과대기상태에서 결과등록 완료로 상태가 변경-->
- 	<!-- 다중파일이 들어가기 전까지 -->
  	<update id="updateMediaTestRequest" parameterType="com.team4.project.hospital.test.domain.HoTestRequestSub" >
  		update ho_test_request
  		INNER JOIN ho_treatment
@@ -60,7 +59,7 @@
 		INNER JOIN ho_hospital
 			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		set
-			HO_TEST_STATE_CODE=2
+			HO_TEST_STATE_CODE=3
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
 			AND HO_TEST_CODE=#{hoTestCode}
 			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
