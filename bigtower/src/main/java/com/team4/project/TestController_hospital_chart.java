@@ -16,14 +16,16 @@ public class TestController_hospital_chart {
 		logger.debug("chart");
 		return "/hospital/charts";
 	}
-
-	
-	
 	
 	@RequestMapping(value="/icon", method=RequestMethod.GET)
 	public String icon(){
 		logger.debug("chart");
 		return "/hospital/icons";
+	}
+	
+	@RequestMapping(value="testIndex")
+	public String textIndex(){
+		return "/hospital/bootstrap/testIndex";
 	}
 	
 }
