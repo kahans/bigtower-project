@@ -47,13 +47,14 @@ public class HoReceiveReservationDao {
 		return sqlSession.selectList("hoReceiveReservation.ReceiveList", hospitalCode);
 	}
 	
-	//접수 상태에서 진료로 업데이트
+	//접수 상태에서 진료로 업데이트 map로 변수 선언
 	public int receiveStateDiagnosis(String hoReceiveCode) {
 		return sqlSession.update("hoReceiveReservation.receiveStateDiagnosis", hoReceiveCode);
 	}
 	
 	//진료상태에서 수납대기로 변경
-	public int receiveStateAcceptance(String hoReceiveCode) {	
+	public int receiveStateAcceptance(String hoReceiveCode) {
+		System.out.println("진료상태에서 수납대기로 변경 : "+hoReceiveCode);
 		return sqlSession.update("hoReceiveReservation.receiveStateAcceptance", hoReceiveCode);
 	}
 	

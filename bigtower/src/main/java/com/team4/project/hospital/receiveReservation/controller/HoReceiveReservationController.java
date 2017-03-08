@@ -117,17 +117,7 @@ public class HoReceiveReservationController {
 		return "/hospital/views/receiveList";
 
 	}
-	//접수 상태 진료업데이트 receiveDiagnosis
-	@RequestMapping(value="/hospital/receiveStateDiagnosis", method=RequestMethod.GET)
-	public String receiveStateDiagnosis(HoReceive hp,
-									@RequestParam(value="hoReceiveCode") String hoReceiveCode
-			){
-		System.out.println("컨트롤러 : "+hoReceiveCode);
-		
-		System.out.println("receive 이름이 온다 : "+hp);
-		hoRRService.receiveStateDiagnosis(hoReceiveCode); 
-		return "redirect:/hospital/receiveList";
-	}
+
 
 	//진료상태에서 수납대기 상태로 전환
 	@RequestMapping(value="/hospital/receiveStateAcceptance", method=RequestMethod.GET)

@@ -58,11 +58,7 @@ public class HoReceiveReservationService {
 		// TODO Auto-generated method stub
 		return hoRRDao.receiveList(hospitalCode);
 	}
-	//접수상태 진료로 전환
-	public int receiveStateDiagnosis(String hoReceiveCode) {
-		// TODO Auto-generated method stub
-		return hoRRDao.receiveStateDiagnosis(hoReceiveCode);
-	}
+	
 	//접수를 수납대기로 전환
 	public int receiveStateAcceptance(String hoReceiveCode) {
 		// TODO Auto-generated method stub
