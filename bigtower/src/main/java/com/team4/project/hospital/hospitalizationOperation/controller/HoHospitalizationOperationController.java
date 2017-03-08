@@ -63,6 +63,7 @@ public class HoHospitalizationOperationController {
 	//퇴원일 업데이트
 	@RequestMapping(value="/hospital/updateHospitalization")
 	public String updateHospitalization(String hoHospitalizationCode){
+		System.out.println("hoHospitalizationCode : " + hoHospitalizationCode);
 		int result = hoHOS.updateHospitalization(hoHospitalizationCode);
 		System.out.println("퇴원일 갱신 결과는 ? "+result);
 		return "redirect:/hospital/hospitalizationList";

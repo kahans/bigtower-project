@@ -55,7 +55,7 @@
  		JOIN ho_patient
  			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
  		WHERE
- 			ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
+ 			ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} AND
  			ho_hospitalization.HO_HOSPITALIZATION_STATE_CODE = 2
  	</select>
  	
@@ -64,7 +64,8 @@
  		UPDATE
  			ho_hospitalization
  		SET
- 			HO_HOSPITALIZATION_END_DATE = now()
+ 			HO_HOSPITALIZATION_END_DATE = now(),
+ 			HO_HOSPITALIZATION_STATE_CODE = 3
  		WHERE
  			HO_HOSPITALIZATION_CODE = #{hoHospitalizationCode}
  	</update>
