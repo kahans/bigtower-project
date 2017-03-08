@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
+import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
 import com.team4.project.hospital.diagnosisPrescription.domain.HoDiagnosis;
 import com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization;
@@ -44,9 +45,10 @@ public class TransportService {
 		HoTreat
 		HoVaccine
 	*/
+	// 하나의 병원db에서 정부전송여부가 0이고 정보등록이 완료된것들만 가져와서 정부로 전송해준다.
 	public void getAll(String hospitalCode){
 		logger.debug("getAll Service 진입");
-		hospitalCode = "hospital_1";
+		
 		// http로 보낼때 db에 들어갈내용은 json String으로 변환
 		// Map<String, Object>타입으로 각 조회결과를 담는데 조회결과가 없는것은 null로 담는다.
 		// 파일은 파일이름 앞에 Blood, Checkup, Image붙여서 보내서 받은다음에 잘라서 해당폴더에 넣는다
@@ -54,7 +56,7 @@ public class TransportService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		// 차트 조회
-		List<HoChart> hoChart = transportDao.selectListHoChart(hospitalCode);
+		List<Map> hoChart = transportDao.selectListHoChart(hospitalCode);
 		logger.debug("hoChart:"+hoChart);	//리스트가 비어있으면 map에 null을 넣어줌 아니면 list를 넣어줌
 		if(hoChart.isEmpty()){
 			logger.debug("hoChart.isEmpty!!!");
@@ -64,7 +66,7 @@ public class TransportService {
 		}
 		
 		// 진료 조회
-		List<HoTreat> hoTreat = transportDao.selectListHoTreat(hospitalCode);
+		List<Map> hoTreat = transportDao.selectListHoTreat(hospitalCode);
 		logger.debug("hoTreat:"+hoTreat);
 		if(hoTreat.isEmpty()){
 			logger.debug("hoTreat.isEmpty!!!");
@@ -74,7 +76,7 @@ public class TransportService {
 		}
 		
 		// 진단 조회
-		List<HoDiagnosis> hoDiagnosis = transportDao.selectListHoDiagnosis(hospitalCode);
+		List<Map> hoDiagnosis = transportDao.selectListHoDiagnosis(hospitalCode);
 		logger.debug("hoDiagnosis:"+hoDiagnosis);
 		if(hoDiagnosis.isEmpty()){
 			logger.debug("hoDiagnosis.isEmpty!!!");
@@ -84,7 +86,7 @@ public class TransportService {
 		}
 		
 		// 처방결과 조회
-		List<HoPrescription> hoPrescription = transportDao.selectListHoPrescription(hospitalCode);
+		List<Map> hoPrescription = transportDao.selectListHoPrescription(hospitalCode);
 		logger.debug("hoPrescription:"+hoPrescription);
 		if(hoPrescription.isEmpty()){
 			logger.debug("hoPrescription.isEmpty!!!");
@@ -94,7 +96,7 @@ public class TransportService {
 		}
 
 		// 입퇴원 조회
-		List<HoHospitalization> hoHospitalization = transportDao.selectListHoHospitalization(hospitalCode);
+		List<Map> hoHospitalization = transportDao.selectListHoHospitalization(hospitalCode);
 		logger.debug("hoHospitalization:"+hoHospitalization);
 		if(hoHospitalization.isEmpty()){
 			logger.debug("hoHospitalization.isEmpty!!!");
@@ -104,7 +106,7 @@ public class TransportService {
 		}
 		
 		// 수술결과 조회
-		List<HoOperation> hoOperation = transportDao.selectListHoOperation(hospitalCode);
+		List<Map> hoOperation = transportDao.selectListHoOperation(hospitalCode);
 		logger.debug("hoOperation:"+hoOperation);
 		if(hoOperation.isEmpty()){
 			logger.debug("hoOperation.isEmpty!!!");
@@ -114,7 +116,7 @@ public class TransportService {
 		}
 		
 		// 예방접종 조회
-		List<HoVaccine> hoVaccine = transportDao.selectListHoVaccine(hospitalCode);
+		List<Map> hoVaccine = transportDao.selectListHoVaccine(hospitalCode);
 		logger.debug("hoVaccine:"+hoVaccine);
 		if(hoVaccine.isEmpty()){
 			logger.debug("hoVaccine.isEmpty!!!");
@@ -124,7 +126,7 @@ public class TransportService {
 		}
 		
 		// 혈액검사 결과 조회(파일)
-		List<HoBloodTest> hoBloodTest = transportDao.selectListHoBloodTest(hospitalCode);
+		List<Map> hoBloodTest = transportDao.selectListHoBloodTest(hospitalCode);
 		logger.debug("hoBloodTest:"+hoBloodTest);
 		if(hoBloodTest.isEmpty()){	
 			logger.debug("hoBloodTest.isEmpty!!!");
@@ -139,7 +141,7 @@ public class TransportService {
 		}
 
 		// 건강검진 조회(파일)
-		List<HoCheckup> hoCheckup = transportDao.selectListHoCheckup(hospitalCode);
+		List<Map> hoCheckup = transportDao.selectListHoCheckup(hospitalCode);
 		logger.debug("hoCheckup:"+hoCheckup);
 		if(hoCheckup.isEmpty()){
 			logger.debug("hoCheckup.isEmpty!!!");
@@ -154,7 +156,7 @@ public class TransportService {
 		}
 
 		// 영상검사결과 조회(파일)
-		List<HoMediaTest> hoMediaTest = transportDao.selectListHoMediaTest(hospitalCode);
+		List<Map> hoMediaTest = transportDao.selectListHoMediaTest(hospitalCode);
 		logger.debug("hoMediaTest:"+hoMediaTest);
 		if(hoMediaTest.isEmpty()){
 			logger.debug("hoMediaTest.isEmpty!!!");
@@ -180,7 +182,7 @@ public class TransportService {
 		hospitalMap.put("hospitalCode", hospitalCode);
 		hospitalMap.put("hospitalInfo", hospitalInfo);
 		//map1.put("id", "2번!!");
-		//map1.put("name","이거는 되것지..원래되는거여,,ㅋㅋ");
+		//map1.put("name","이거는 되것지..원s래되는거여,,ㅋㅋ");
 		//map1.put("id", "3번!!");
 		//map1.put("name","이거는 안되것지 스벌,ㅠㅠ");
 		//map1.put("test", "최유민");
