@@ -45,7 +45,7 @@ public class HoTestController {
 		hoTestRequest.setHoTestCode("1");
 		hoTS.updateState(hoTestRequest);
 		
-		return "redirect:/hospital/views/tests/listBloodWait";
+		return "redirect:/hospital/tests/listBloodWait";
 	}
 	
 	//혈액검사 결과대기 목록 출력
@@ -125,7 +125,7 @@ public class HoTestController {
 		hoTestRequest.setHoTestRequestCode(hoTestRequestCode);
 		hoTestRequest.setHoTestCode("2");
 		hoTS.updateState(hoTestRequest);
-		return "redirect:/hospital/views/tests/listMediaWait";
+		return "redirect:/hospital/tests/listMediaWait";
 	}
 	//영상검사 결과대기목록들
 	@RequestMapping(value="/hospital/test/listMediaWait", method=RequestMethod.GET)
