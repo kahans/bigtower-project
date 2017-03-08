@@ -27,11 +27,13 @@
 	<!-- 차트 조회 -->
 	<select id="selectListHoChart" parameterType="String" resultType="Map">
 		SELECT
-			ho_chart.HO_CHART_CODE as goChartCode,
-			ho_chart.HO_PATIENT_CODE as goCitizenId,
+			CONCAT(ho_chart.HO_HOSPITAL_CODE,'_',ho_patient.HO_CITIZEN_ID) as goChartCode,
+			ho_patient.HO_CITIZEN_ID as goCitizenId,
 			ho_chart.HO_HOSPITAL_CODE as goHospitalId,
 			date_format(ho_chart.HO_CHART_REGISTRATION_DATE,'%Y-%m-%d %T') as goChartRegistrationDate
 		FROM ho_chart
+		JOIN ho_patient
+			ON ho_patient.HO_PATIENT_CODE=ho_chart.HO_PATIENT_CODE
 		WHERE ho_chart.HO_GO_SENDSTATE = 0
 			AND
 				ho_chart.HO_HOSPITAL_CODE = #{hospitalCode}
