@@ -3,29 +3,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Medicio landing page template for Health niche</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
 	
-    <!-- css -->
-    <link href="templates/government/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="templates/government/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<title>Medicio landing page template for Health niche</title>
+	
+	 <!-- css -->
+	<link href="templates/government/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="templates/government/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="templates/government/plugins/cubeportfolio/css/cubeportfolio.min.css">
 	<link href="templates/government/css/nivo-lightbox.css" rel="stylesheet" />
 	<link href="templates/government/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
 	<link href="templates/government/css/owl.carousel.css" rel="stylesheet" media="screen" />
-    <link href="templates/government/css/owl.theme.css" rel="stylesheet" media="screen" />
+	<link href="templates/government/css/owl.theme.css" rel="stylesheet" media="screen" />
 	<link href="templates/government/css/animate.css" rel="stylesheet" />
-    <link href="templates/government/css/style.css" rel="stylesheet">
-
+	<link href="templates/government/css/style.css" rel="stylesheet">
+	
 	<!-- boxed bg -->
 	<link id="bodybg" href="templates/government/bodybg/bg1.css" rel="stylesheet" type="text/css" />
 	<!-- template skin -->
 	<link id="t-colors" href="templates/government/color/default.css" rel="stylesheet">
-    
+   
     <!-- =======================================================
         Theme Name: Medicio
         Theme URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
