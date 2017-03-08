@@ -32,15 +32,13 @@ public class GoTreatController {
 
 	
 	// 검색 폼
-	@RequestMapping(value="/government/searchTreat", method=RequestMethod.GET,
-					produces = "text/json; charset=UTF-8")
+	@RequestMapping(value="/government/searchTreat", method=RequestMethod.GET)
 	public String searchForm(){
 		return "/hospital/views/government/gov_serachForm";
 	}
 	
 	// 검색 결과
-	@RequestMapping(value="/government/getSearchResult", method=RequestMethod.POST,
-					produces = "text/json; charset=UTF-8")
+	@RequestMapping(value="/government/getSearchResult", method=RequestMethod.POST)
 	public String getSearchResult(String citizenId, Model model){
 		logger.debug("citizenId:"+citizenId);
 		String url = ContextParam.context.getInitParameter("receiveUrl");
@@ -51,7 +49,7 @@ public class GoTreatController {
 		map.put("doctorId", doctorId);
 		map.put("citizenId", citizenId);
 		try {
-			String list = conn.HttpUrlPOST(map);
+			String list = conn.HttpUrlPOST(map);	//여기서 전송 해서 String으로 받아
 			logger.debug("list:"+list);
 			List<GoTreat> treatList = gson.fromJson(list, new TypeToken<List<GoTreat>>(){}.getType());
 			logger.debug("list2:"+treatList);
@@ -60,8 +58,6 @@ public class GoTreatController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		return "/hospital/views/government/gov_searchTreatResult";
 	}
 	

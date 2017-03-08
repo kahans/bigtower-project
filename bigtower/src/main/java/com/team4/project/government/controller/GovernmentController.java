@@ -48,6 +48,30 @@ public class GovernmentController {
 		return "home";
 	}
 	
+	// 정부 db에서 주민번호 조회
+	@RequestMapping(value="/government/checkCitizenId", method=RequestMethod.GET)
+	public String citizenIdCheck(){
+		// doctorId는 세션에서 받아야함
+		String doctorId = "doctor_1";
+		// citizenId는 따로 받아야함
+		String citizenId = "900101-10100001";
+		String url = ContextParam.context.getInitParameter("receiveUrl");
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/checkCitizenId");
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("citizenId", citizenId);
+		map.put("doctorId", citizenId);
+		try {
+			// 리턴결과가 true이면 사용가능한 주민번호(정부db에 등록된 주민번호)
+			// 리턴결과가 false이면 사용불가능한 주민번호(정부db에 등록되지 않은 주민번호)
+			String checkResult = conn.HttpUrlPOST(map);
+			logger.debug("checkResult:"+checkResult);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
 	// httpPost로 medicineCode 받아오기 성공
 	@RequestMapping(value="/government/getData", method=RequestMethod.GET)
 	public String getData(){
@@ -72,132 +96,5 @@ public class GovernmentController {
 		logger.debug("index 메서드 호출");
 		return "/hospital/views/government/gov_index";
 	}
-	
-	
-	//약코드 가져오기 POST
-	@ResponseBody
-	@RequestMapping(value="/government/getMedicineCode", method=RequestMethod.POST,
-					produces = "text/json; charset=UTF-8")
-	public String getMdedicine(String id, String name){
-		logger.debug("getMdedicine POST 진입");
-		System.out.println("id:"+id);
-		System.out.println("name:"+name);
-		List<GoMedicine> list = goService.getMedicine();
-		Gson gson = new Gson();
-		String jsonStr = gson.toJson(list);
-		
-
-		//logger.debug("List<GoMedicine>:"+list);
-		return jsonStr;
-	}
-	
-	//약코드 가져오기 GET
-	@ResponseBody
-	@RequestMapping(value="/government/getMedicineCode", method=RequestMethod.GET,
-					produces = "text/json; charset=UTF-8")
-	public String getMdedicine(String id){
-		logger.debug("getMdedicine GET 진입");
-		System.out.println("id:"+id);
-		List<GoMedicine> list = goService.getMedicine();
-		Gson gson = new Gson();
-		String jsonStr = gson.toJson(list);
-		
-		return jsonStr;
-	}
-	
-	// 약코드가져오는 controller 호출하기
-	@RequestMapping(value = "/government/getMedicine", method = RequestMethod.GET)
-	public String getMedicine(){
-		System.out.println("getMedicine 진입");
-		
-		HttpUrlCon huc = new HttpUrlCon("http://localhost/project/government/getMedicineCode?id=dd");
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("id", "11");
-		map.put("name", "똥꾸");
-		try {
-			String result = huc.HttpUrlGET();
-			System.out.println("result:"+result);
-			Gson gson = new Gson();
-			
-			// json to list 방법1 
-			GoMedicine[] array = gson.fromJson(result, GoMedicine[].class);
-			List<GoMedicine> list = Arrays.asList(array);
-			for(int i=0; i<list.size();i++){
-				//GoMedicine goMedicine = gson.fromJson(list.get(i), GoMedicine.class);
-				System.out.println("코드:"+list.get(i).getGoMedicineCode()+
-						" 이름:"+list.get(i).getGoMedicineName());
-			}
-			
-			/*
-			// json to list 방법2
-			List<GoMedicine> list2 = gson.fromJson(result, new TypeToken<List<GoMedicine>>(){}.getType());
-			System.out.println("=======list 돌리기======");
-			for(int i=0; i<list2.size();i++){
-				//GoMedicine goMedicine = gson.fromJson(list.get(i), GoMedicine.class);
-				System.out.println("코드:"+list2.get(i).getGoMedicineCode()+
-						" 이름:"+list2.get(i).getGoMedicineName());
-			}
-			*/
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-/*		HttpURLConnection conn = null;
-		try {
-			URL url = new URL("http://localhost/project/government/getMedicineCode");
-			conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET"); // 요청 방식을 설정 (default : GET)
-
-			conn.setDoInput(true); // input을 사용하도록 설정 (default : true)
-			conn.setDoOutput(true); // output을 사용하도록 설정 (default : false)
-
-			conn.setConnectTimeout(60); // 타임아웃 시간 설정 (default : 무한대기)
-			conn.connect();
-			InputStream in = conn.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8")); // 캐릭터셋 설정
-			StringBuilder sb = new StringBuilder();
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				if (sb.length() > 0) {
-					sb.append("\n");
-				}
-				sb.append(line);
-			}
-			System.out.println("response:" + sb.toString());
-			
-
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
-		
-		return "";
-	}
-	
-	// 유민이꺼 혈액검사 검색조건 보내주기 테스트
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String test(){
-		
-	
-		
-		/*Gson gson = new Gson();
-		String jsonStr = gson.toJson();
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("imageTestSearch", jsonStr);
-		 */
-		HttpUrlCon huc = new HttpUrlCon("http://192.168.123.147/project/government/goImageTest");
-		try {
-			//String result = huc.HttpUrlPOST(map);
-			//System.out.println("result:"+result);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "";
-	}
-
 
 }

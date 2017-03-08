@@ -159,7 +159,7 @@ public class TransportService {
 		logger.debug("map:"+map);
 		String url = ContextParam.context.getInitParameter("sendUrl");
 		
-		HttpUrlCon conn = new HttpUrlCon(url+"/project/government/getHospitalInfo");
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getHospitalInfo");
 		//Map<String, Object> map1 = new HashMap<String , Object>();
 		Map<String, String> hospitalMap = new HashMap<String , String>();
 		//리스트들을 담은 map을 json string타입으로 parsing
@@ -177,7 +177,8 @@ public class TransportService {
 		//map1.put("file2", new File("d://b.png"));
 		try {
 			//conn.HttpUrlFilePOST(map1);
-			conn.HttpUrlPOST(hospitalMap);
+			String result = conn.HttpUrlPOST(hospitalMap);
+			logger.debug("result:"+result);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
