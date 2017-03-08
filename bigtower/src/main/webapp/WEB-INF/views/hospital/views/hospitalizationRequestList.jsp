@@ -28,7 +28,7 @@
 					<td>${hospitalizationRequestList.hoPatientName}</td>
 					<td>
 						<a href="<c:url value='/hospital/addHospitalization?hoTreatmentCode=${hospitalizationRequestList.hoTreatmentCode}&
-																			hoHospitalizationRequestCode = ${hospitalizationRequestList.hoHospitalizationRequestCode}'/>">
+																			hoHospitalizationRequestCode=${hospitalizationRequestList.hoHospitalizationRequestCode}'/>">
 						<button>입원확인</button>
 						</a>
 					</td>

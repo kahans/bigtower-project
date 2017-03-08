@@ -34,6 +34,7 @@
  		JOIN ho_patient
  			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE	
  		WHERE ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
+ 			<!-- AND NOT EXISTS(select HO_HOSPITALIZATION_REQUEST_CODE from ho_hospitalization) -->
  	</select>
  	
  	<!-- 입원등록 -->

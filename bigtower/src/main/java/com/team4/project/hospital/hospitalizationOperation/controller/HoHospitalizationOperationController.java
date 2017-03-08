@@ -50,6 +50,13 @@ public class HoHospitalizationOperationController {
 		return "/hospital/views/hospitalizationRequestList";
 	}
 	
+	//입원 환자 목록 
+	@RequestMapping(value="/hospital/hospitalizationList")
+	public String hospitalizationList(){
+		
+		return "";
+	}
+	
 	//입원 등록
 	@RequestMapping(value="/hospital/addHospitalization")
 	public String addHospitalization(String hoTreatmentCode,
