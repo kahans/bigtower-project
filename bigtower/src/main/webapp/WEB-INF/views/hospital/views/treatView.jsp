@@ -59,29 +59,17 @@
             		<button type="button" id="diseaseNameRemove">삭제</button>        
            		</div>
            	</div>
-		</div>
-		
+		</div>		
 			진료내용	
 		<div>			
 			<textarea rows="10" cols="50" name="hoTreatmentContents"></textarea>
 		</div>
-		
-	
-	
 	
 		<!-- 검사 요청 -->
 		<h3>검사 요청</h3>
 		<input type="checkbox" name="hoTestCode" value="1">혈액검사	
 		<input type="checkbox" name="hoTestCode" value="2">영상검사
 		<input type="checkbox" name="hoTestCode" value="3">건강검진
-		<%-- 
-		<select name="hoTestCode">
-			<option value="0">:::검사를 선택하시오:::</option>
-			<c:forEach items="${testList}" var="testList">
-				<option value="${testList.hoTestCode}">${testList.hoTestName}</option>
-			</c:forEach>
-		</select>
-		 --%>
 	
 		<!-- 입/퇴원 요청 -->
 		<h3>입/퇴원 요청</h3>
@@ -105,7 +93,6 @@
 				</c:forEach>
 			</select>
 		</div>
-		
 	
 		<!-- 처방 요청 -->
 		<h3>처방전 작성</h3>
@@ -138,7 +125,6 @@
             		<button type="button" id="medicineNameAdd">추가</button>
            		</div>
            	</div>
-	           	
 	           	
            	<div id="hiddenMedicine" style="display: none;">
            		<div class="addMedicine">	
@@ -193,7 +179,6 @@
 		$(document).on('click','#medicineNameRemove',function(){
 			$(this).parent('.addMedicine').remove();		
 		});
-		
 	</script>
 </body>
 </html>

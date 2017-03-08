@@ -48,25 +48,37 @@ public class HoHospitalizationOperationService {
 	
 	//수술 상세보기
 	public HoOperationSub operationView(String hoOperationCode){
-		HoOperationSub hoOperationSub = hoHOD.operationView(hoOperationCode);
-		String date = hoOperationSub.getHoOperationStartDate();
-		System.out.println("포맷팅 전 날짜 : "+date);
-		SimpleDateFormat orginalFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		try{
-			Date formatDate = formatter.parse(date);
-			System.out.println("포맷된 날짜 : "+formatDate);
-			
-		}catch(Exception e){
-			
-		}
-
-		return hoOperationSub;
+		return hoHOD.operationView(hoOperationCode);
 	}
 	
 	//수술일지 수정
 	public int updateOperation(HoOperationSub hoOperationSub){
-		return hoHOD.updateOperation(hoOperationSub);
+		//수술 시작일과 종료일을 비교하여 종료일이 더 이전날짜일 경우 수정이 안되도록 비교하는 로직 추가
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date hoOperationStartDate = hoOperationSub.getHoOperationStartDate();
+		Date hoOperationEndDate = hoOperationSub.getHoOperationEndDate();
+		System.out.println("hoOperationStartDate : "+hoOperationStartDate);
+		System.out.println("hoOperationEndDate : "+hoOperationEndDate);
+		
+		int result = 0;
+		/*try{
+			hoOperationStartDate = format.parse(hoOperationStartDate);
+			hoOperationEndDate = format.parse(hoOperationEndDate);
+			System.out.println("parsing한 수술시작일 : "+hoOperationStartDate);
+			System.out.println("parsing한 수술종료일 : "+hoOperationEndDate);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		*/
+		int compare = hoOperationStartDate.compareTo(hoOperationEndDate);
+		if(compare > 0) {
+			System.out.println("========수술 종료일이 시작일보다 이전 날짜로 설정되었습니다.============");
+		}else if(compare<0){
+			result = hoHOD.updateOperation(hoOperationSub);
+		}else {
+			result = hoHOD.updateOperation(hoOperationSub);
+		}
+		return result;
 	}
 	
 	//입원 환자 목록

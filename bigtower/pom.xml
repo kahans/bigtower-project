@@ -40,6 +40,14 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>	
 		
+		<!-- DateTimeFormat 애노테이션 사용  -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>1.6.2</version>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

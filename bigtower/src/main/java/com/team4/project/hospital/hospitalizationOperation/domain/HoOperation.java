@@ -10,8 +10,10 @@ private String hoOperationCode;
 private String hoTreatmentCode;
 private String hoOperationTypeCode;
 private String hoOperationDiary;
-private String hoOperationStartDate;
-private String hoOperationEndDate;
+@DateTimeFormat(pattern="yyyy-MM-dd")
+private Date hoOperationStartDate;
+@DateTimeFormat(pattern="yyyy-MM-dd")
+private Date hoOperationEndDate;
 
 private int hoGoSendstate;
 
@@ -39,16 +41,17 @@ public String getHoOperationDiary() {
 public void setHoOperationDiary(String hoOperationDiary) {
 	this.hoOperationDiary = hoOperationDiary;
 }
-public String getHoOperationStartDate() {
+
+public Date getHoOperationStartDate() {
 	return hoOperationStartDate;
 }
-public void setHoOperationStartDate(String hoOperationStartDate) {
+public void setHoOperationStartDate(Date hoOperationStartDate) {
 	this.hoOperationStartDate = hoOperationStartDate;
 }
-public String getHoOperationEndDate() {
+public Date getHoOperationEndDate() {
 	return hoOperationEndDate;
 }
-public void setHoOperationEndDate(String hoOperationEndDate) {
+public void setHoOperationEndDate(Date hoOperationEndDate) {
 	this.hoOperationEndDate = hoOperationEndDate;
 }
 public int getHoGoSendstate() {

@@ -21,11 +21,11 @@
 		</div>
 		<div>
 			수술시작일 : 
-			<input type="text" value="${hoOperation.hoOperationStartDate}">			
+			<input type="date" value="${hoOperation.hoOperationStartDate}" name="hoOperationStartDate" id="hoOperationStartDate">			
 		</div>
 		<div>
 			수술종료일 :
-			<input type="date" name="hoOperationEndDate" value="${hoOperation.hoOperationEndDate}">			
+			<input type="date" value="${hoOperation.hoOperationEndDate}" name="hoOperationEndDate">			
 		</div>
 			수술일지
 		<div>		
@@ -34,5 +34,9 @@
 		<input type="submit" value="수정 완료">	
 	</form>	
 	
+	<!-- <script>
+		var Today = new Date();
+		document.getElementById('hoOperationStartDate').valueAsDate = ${hoOperation.hoOperationStartDate};
+	</script> -->
 </body>
 </html>
