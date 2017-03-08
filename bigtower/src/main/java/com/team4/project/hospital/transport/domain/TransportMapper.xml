@@ -11,8 +11,8 @@
 			ho_blood_test.HO_BLOOD_TEST_SUGAR as goBloodTestBloodSugar,
 			ho_blood_test.HO_BLOOD_TEST_IMAGE_PATH as goBloodTestFilePath,
 			ho_blood_test.HO_BLOOD_TEST_IMAGE_NAME as goBloodTestFileName,
-			ho_blood_test.HO_BLOOD_TEST_DATE as goBloodTestDate,
-			ho_blood_test.HO_BLOOD_TEST_REGISTRATION_DATE as goBloodTestGoRegistrationDate
+			date_format(ho_blood_test.HO_BLOOD_TEST_DATE,'%Y-%m-%d %T') as goBloodTestDate,
+			date_format(ho_blood_test.HO_BLOOD_TEST_REGISTRATION_DATE,'%Y-%m-%d %T') as goBloodTestGoRegistrationDate
 		FROM ho_blood_test
 		JOIN ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE = ho_blood_test.HO_TREATMENT_CODE
@@ -30,7 +30,7 @@
 			ho_chart.HO_CHART_CODE as goChartCode,
 			ho_chart.HO_PATIENT_CODE as goCitizenId,
 			ho_chart.HO_HOSPITAL_CODE as goHospitalId,
-			ho_chart.HO_CHART_REGISTRATION_DATE as goChartRegistrationDate
+			date_format(ho_chart.HO_CHART_REGISTRATION_DATE,'%Y-%m-%d %T') as goChartRegistrationDate
 		FROM ho_chart
 		WHERE ho_chart.HO_GO_SENDSTATE = 0
 			AND
@@ -44,8 +44,8 @@
 			  ho_checkup.HO_TREATMENT_CODE as goTreatCode,
 			  ho_checkup.HO_CHECKUP_RESULT_NAME as goCheckupResultFileName,
 			  ho_checkup.HO_CHECKUP_RESULT_PATH as goCheckupResultFilePath,
-			  ho_checkup.HO_CHECKUP_DATE as goCheckupResultCheckupDate,
-			  ho_checkup.HO_CHECKUP_REGISTRATION_DATE as goCheckupResultRegistrationDate
+			  date_format(ho_checkup.HO_CHECKUP_DATE,'%Y-%m-%d %T') as goCheckupResultCheckupDate,
+			  date_format(ho_checkup.HO_CHECKUP_REGISTRATION_DATE,'%Y-%m-%d %T') as goCheckupResultRegistrationDate
 		FROM ho_checkup
 		JOIN ho_treatment
 			ON ho_checkup.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE                                           
@@ -63,7 +63,7 @@
   			ho_diagnosis.HO_DIAGNOSIS_CODE as goDiagnosisCode,
   			ho_diagnosis.HO_TREATMENT_CODE as goTreatCode,
   			ho_diagnosis.HO_DISEASE_CODE as goDiseaseCode,
-  			ho_diagnosis.HO_DIAGNOSIS_WRITE_DATE as goTreatmentWriteDate
+  			date_format(ho_diagnosis.HO_DIAGNOSIS_WRITE_DATE,'%Y-%m-%d %T') as goTreatmentWriteDate
 		FROM ho_diagnosis
 		JOIN ho_treatment
 			ON ho_diagnosis.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
@@ -77,8 +77,8 @@
   		SELECT
   			ho_hospitalization.HO_HOSPITALIZATION_CODE as goHospitalizationCode,
   			ho_hospitalization.HO_TREATMENT_CODE as goTreatCode,
-  			ho_hospitalization.HO_HOSPITALIZATION_START_DATE as goHospitalizationEnterDate,
-  			ho_hospitalization.HO_HOSPITALIZATION_END_DATE as goHospitalizationExitDate
+  			date_format(ho_hospitalization.HO_HOSPITALIZATION_START_DATE,'%Y-%m-%d %T') as goHospitalizationEnterDate,
+  			date_format(ho_hospitalization.HO_HOSPITALIZATION_END_DATE,'%Y-%m-%d %T') as goHospitalizationExitDate
 		FROM ho_hospitalization
 		JOIN ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE = ho_hospitalization.HO_TREATMENT_CODE
@@ -97,8 +97,8 @@
   			ho_media_test.HO_TREATMENT_CODE as goTreatCode,
   			ho_media_test.HO_MEDIA_TEST_IMAGE_PATH as goImageTestFilePath,
   			ho_media_test.HO_MEDIA_TEST_IMAGE_NAME as goImageTestFileName,
-  			ho_media_test.HO_MEDIA_TEST_DATE as goImageTestDate,
-  			ho_media_test.HO_MEDIA_TEST_REGISTRATION_DATE as goImageTestGoRegistrationDate
+  			date_format(ho_media_test.HO_MEDIA_TEST_DATE,'%Y-%m-%d %T') as goImageTestDate,
+  			date_format(ho_media_test.HO_MEDIA_TEST_REGISTRATION_DATE,'%Y-%m-%d %T') as goImageTestGoRegistrationDate
 		FROM ho_media_test
 		JOIN ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE= ho_media_test.HO_TREATMENT_CODE
@@ -116,7 +116,7 @@
   			ho_operation.HO_OPERATION_CODE as goSurgeryResultCode,
   			ho_operation.HO_TREATMENT_CODE as goTreatCode,
   			ho_operation.HO_OPERATION_TYPE_CODE as goSurgeryCode,
-  			ho_operation.HO_OPERATION_END_DATE as goSurgeryResultRegistrationDate
+  			date_format(ho_operation.HO_OPERATION_END_DATE,'%Y-%m-%d %T') as goSurgeryResultRegistrationDate
 		FROM ho_operation
 		JOIN ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE=ho_operation.HO_TREATMENT_CODE
@@ -143,7 +143,7 @@
   			<!-- 용법 -->
   			ho_prescription.HO_PRESCRIPTION_USAGE as goPrescriptionResultUsage,
   			<!-- 처방전 작성일 -->
-  			ho_prescription.HO_PRESCRIPTION_WRITE as goPrescriptionResultWriteDate
+  			date_format(ho_prescription.HO_PRESCRIPTION_WRITE,'%Y-%m-%d %T') as goPrescriptionResultWriteDate
 		FROM ho_prescription
 		JOIN ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE=ho_prescription.HO_TREATMENT_CODE
@@ -161,7 +161,7 @@
   			ho_treatment.HO_HOSPITAL_CODE as goHospitalId,
   			ho_treatment.HO_TREAT_SUBJECT_CODE as goTreatSubjectCode,
   			ho_treatment.HO_TREATMENT_CONTENTS as goTreatContents,
-  			ho_treatment.HO_TREATMENT_WRITE_DATE as goTreatRegistrationDate,
+  			date_format(ho_treatment.HO_TREATMENT_WRITE_DATE,'%Y-%m-%d %T') as goTreatRegistrationDate,
   			ho_patient.HO_CITIZEN_ID as goCitizenId
 		FROM ho_treatment
 		JOIN ho_patient
@@ -181,7 +181,7 @@
   			ho_vaccine.HO_TREATMENT_CODE as goTreatCode,
   			ho_vaccine.HO_VACCINE_TYPE_CODE as goVaccinationCode,
   			ho_vaccine.HO_VACCINE_COUNT as goVaccinationResultDegree,
-  			ho_vaccine.HO_VACCINE_DATE as goVaccinationResultRegistrationDate
+  			date_format(ho_vaccine.HO_VACCINE_DATE,'%Y-%m-%d %T') as goVaccinationResultRegistrationDate
 		FROM ho_vaccine
 		JOIN ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE=ho_vaccine.HO_TREATMENT_CODE

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import com.team4.project.government.treat.domain.GoTreat;
 
-@RestController
+@Controller
 public class GoTreatController {
 	private static final Logger logger = LoggerFactory.getLogger(GoTreatController.class);
 	private Gson gson = new Gson();
@@ -25,6 +25,31 @@ public class GoTreatController {
 	@Autowired
 	private GoTreatService goTCService;
 
+	
+	// 한사람의 하나의 진료정보(test)
+	@RequestMapping(value="/government/searchTreat", method=RequestMethod.GET,
+					produces = "text/json; charset=UTF-8")
+	public String getListTreat(){
+		return "gov_serachForm";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 한사람의 하나의 진료정보(test)
 	@RequestMapping(value="/government/getOneTreatByTreatCode", method=RequestMethod.GET,
 					produces = "text/json; charset=UTF-8")
