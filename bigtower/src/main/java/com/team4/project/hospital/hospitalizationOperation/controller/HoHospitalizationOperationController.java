@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalizationRequest;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperation;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub;
@@ -52,9 +53,11 @@ public class HoHospitalizationOperationController {
 	
 	//입원 환자 목록 
 	@RequestMapping(value="/hospital/hospitalizationList")
-	public String hospitalizationList(){
-		
-		return "";
+	public String hospitalizationList(HttpSession session, Model model){
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		List<HoHospitalization> hospitalizationList = hoHOS.hospitalizationList(hoHospitalCode);
+		model.addAttribute("hospitalizationList",hospitalizationList);
+		return "/hospital/views/hospitalizationList";
 	}
 	
 	//입원 등록

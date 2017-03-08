@@ -8,8 +8,16 @@ private String hoHospitalizationCode;
 private String hoHospitalizationRequestCode;
 private String hoHospitalizationStartDate;
 private String hoHospitalizationEndDate;
+private String hoPatientName;
 private String hoGoSendstate;
 
+
+public String getHoPatientName() {
+	return hoPatientName;
+}
+public void setHoPatientName(String hoPatientName) {
+	this.hoPatientName = hoPatientName;
+}
 public String getHoHospitalizationStartDate() {
 	return hoHospitalizationStartDate;
 }
@@ -58,7 +66,8 @@ public String toString() {
 	return "HoHospitalization [hoHospitalizationRequstCode=" + hoHospitalizationRequstCode + ", hoTreatmentCode="
 			+ hoTreatmentCode + ", hoHospitalizationCode=" + hoHospitalizationCode + ", hoHospitalizationRequestCode="
 			+ hoHospitalizationRequestCode + ", hoHospitalizationStartDate=" + hoHospitalizationStartDate
-			+ ", hoHospitalizationEndDate=" + hoHospitalizationEndDate + ", hoGoSendstate=" + hoGoSendstate + "]";
+			+ ", hoHospitalizationEndDate=" + hoHospitalizationEndDate + ", hoPatientName=" + hoPatientName
+			+ ", hoGoSendstate=" + hoGoSendstate + "]";
 }
 
 

@@ -63,4 +63,9 @@ public class HoHospitalizationOperationService {
 	public int updateOperation(HoOperationSub hoOperationSub){
 		return hoHOD.updateOperation(hoOperationSub);
 	}
+	
+	//입원 환자 목록
+	public List<HoHospitalization> hospitalizationList(String hoHospitalCode){
+		return hoHOD.hospitalizationList(hoHospitalCode);
+	}
 }
