@@ -46,10 +46,12 @@
 			ho_staff.ho_staff_name,
 			ho_staff.HO_HOSPITAL_CODE,
 			ho_hospital.HO_HOSPITAL_NAME,
-			ho_staff_level.STAFF_LEVEL_NAME
+			ho_staff_level.STAFF_LEVEL_NAME,
+			ho_doctor.HO_DOCTOR_ID
 		FROM ho_staff
 		join ho_hospital on ho_staff.HO_HOSPITAL_CODE = ho_hospital.HO_HOSPITAL_CODE
 		join ho_staff_level on ho_staff.STAFF_LEVEL_CODE = ho_staff_level.STAFF_LEVEL_CODE
+		join ho_doctor on ho_doctor.HO_HOSPITAL_CODE = ho_staff.HO_HOSPITAL_CODE
 		WHERE ho_staff_id = #{hoStaffId} AND ho_staff_pw=#{hoStaffPw}		
 	</select>
 </mapper>

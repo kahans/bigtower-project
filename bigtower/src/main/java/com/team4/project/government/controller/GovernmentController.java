@@ -51,7 +51,7 @@ public class GovernmentController {
 	// httpPost로 medicineCode 받아오기 성공
 	@RequestMapping(value="/government/getData", method=RequestMethod.GET)
 	public String getData(){
-		String url = ContextParam.context.getInitParameter("httpUrl");
+		String url = ContextParam.context.getInitParameter("receiveUrl");
 		Http http = new Http(url+"/bigbang/government/getMedicineCode");
 		try {
 			String medicineCode = http.submit();
@@ -70,51 +70,9 @@ public class GovernmentController {
 	@RequestMapping(value="/government/", method=RequestMethod.GET)
 	public String index(HttpSession session, Model model){
 		logger.debug("index 메서드 호출");
-		return "/government/index";
+		return "/hospital/views/government/gov_index";
 	}
 	
-	
-	//로그인 화면 보여주기
-	@RequestMapping(value="/government/login", method=RequestMethod.GET )
-	public String login(){
-		return "/government/login";
-	}
-	
-	//국민 로그인
-	@RequestMapping(value="/government/loginCitizen", method=RequestMethod.POST )
-	public String login(GoCitizen goCitizen, String birthDate, String serialNo, HttpSession session){
-		logger.debug("GoLoginCitizenSub_goLoginCitizen:"+goCitizen);
-		goCitizen.setGoCitizenId(birthDate+"-"+serialNo);
-		goCitizen = goService.loginCheck(goCitizen);
-		logger.debug("goCitizen:"+goCitizen);
-		//session.invalidate();
-		session.setAttribute("FLAG", "citizen");
-		session.setAttribute("GOCITIZENNO", goCitizen.getGoCitizenNo());
-		session.setAttribute("GOCITIZENID", goCitizen.getGoCitizenId());
-		session.setAttribute("GOCITIZENNAME", goCitizen.getGoCitizenName());
-		return "redirect:/government/";
-	}
-	
-	//병원 로그인
-	@RequestMapping(value="/government/loginHospital", method=RequestMethod.POST )
-	public String login(GoHospital goHospital, HttpSession session){
-		logger.debug("GoHospital_goLoginInfo:"+goHospital);
-		goHospital = goService.loginCheck(goHospital);
-		logger.debug("goHospital:"+goHospital);
-		//session.invalidate();
-		session.setAttribute("FLAG", "hospital");
-		session.setAttribute("GOHOSPITALID", goHospital.getGoHospitalId());
-		session.setAttribute("GOHOSPITALNAME", goHospital.getGoHospitalName());
-		return "redirect:/government/";
-	}
-	
-	//로그아웃
-	@RequestMapping(value="/government/logout", method=RequestMethod.GET)
-	public String logout(HttpSession session){
-		session.invalidate();
-		logger.debug("session invalidate!!");
-		return "redirect:/government/";
-	}
 	
 	//약코드 가져오기 POST
 	@ResponseBody

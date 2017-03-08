@@ -14,7 +14,11 @@
 		<param-value>테스트용</param-value>
 	</context-param>
 	<context-param>
-		<param-name>httpUrl</param-name>
+		<param-name>receiveUrl</param-name>
+		<param-value>http://loverman85.cafe24.com</param-value>
+	</context-param>
+	<context-param>
+		<param-name>sendUrl</param-name>
 		<param-value>http://192.168.123.147</param-value>
 		<!-- <param-value>http://localhost</param-value> -->
 		<!-- <param-value>http://loverman85.cafe24.com</param-value> -->

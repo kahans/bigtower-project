@@ -135,7 +135,7 @@ public class HoTreatChartController {
 		System.out.println("hoPatientCode : "+hoPatientCode);
 		System.out.println("hoTreatSubjectCode : "+hoTreatSubjectCode);
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		String hoDoctorId = (String) session.getAttribute("HOSTAFFID");
+		String hoDoctorId = (String) session.getAttribute("DOCTORID");
 		System.out.println("hoHospitalCode : "+hoHospitalCode);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("hoHospitalCode",hoHospitalCode);
