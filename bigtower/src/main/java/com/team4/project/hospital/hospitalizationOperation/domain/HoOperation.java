@@ -3,6 +3,7 @@ package com.team4.project.hospital.hospitalizationOperation.domain;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 public class HoOperation {
 
@@ -10,11 +11,9 @@ private String hoOperationCode;
 private String hoTreatmentCode;
 private String hoOperationTypeCode;
 private String hoOperationDiary;
-@DateTimeFormat(pattern="yyyy-MM-dd")
-private Date hoOperationStartDate;
-@DateTimeFormat(pattern="yyyy-MM-dd")
+private String hoOperationStartDate;
+@DateTimeFormat(iso= ISO.DATE)
 private Date hoOperationEndDate;
-
 private int hoGoSendstate;
 
 public String getHoOperationCode() {
@@ -41,11 +40,10 @@ public String getHoOperationDiary() {
 public void setHoOperationDiary(String hoOperationDiary) {
 	this.hoOperationDiary = hoOperationDiary;
 }
-
-public Date getHoOperationStartDate() {
+public String getHoOperationStartDate() {
 	return hoOperationStartDate;
 }
-public void setHoOperationStartDate(Date hoOperationStartDate) {
+public void setHoOperationStartDate(String hoOperationStartDate) {
 	this.hoOperationStartDate = hoOperationStartDate;
 }
 public Date getHoOperationEndDate() {

@@ -1,5 +1,6 @@
 package com.team4.project.hospital.hospitalizationOperation.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -55,21 +56,19 @@ public class HoHospitalizationOperationService {
 	public int updateOperation(HoOperationSub hoOperationSub){
 		//수술 시작일과 종료일을 비교하여 종료일이 더 이전날짜일 경우 수정이 안되도록 비교하는 로직 추가
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		Date hoOperationStartDate = hoOperationSub.getHoOperationStartDate();
+		String startDate = hoOperationSub.getHoOperationStartDate();
+		Date hoOperationStartDate = null;
+		try {
+			hoOperationStartDate = format.parse(startDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		Date hoOperationEndDate = hoOperationSub.getHoOperationEndDate();
 		System.out.println("hoOperationStartDate : "+hoOperationStartDate);
 		System.out.println("hoOperationEndDate : "+hoOperationEndDate);
 		
 		int result = 0;
-		/*try{
-			hoOperationStartDate = format.parse(hoOperationStartDate);
-			hoOperationEndDate = format.parse(hoOperationEndDate);
-			System.out.println("parsing한 수술시작일 : "+hoOperationStartDate);
-			System.out.println("parsing한 수술종료일 : "+hoOperationEndDate);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		*/
+		
 		int compare = hoOperationStartDate.compareTo(hoOperationEndDate);
 		if(compare > 0) {
 			System.out.println("========수술 종료일이 시작일보다 이전 날짜로 설정되었습니다.============");
