@@ -6,7 +6,15 @@ private String hoHospitalizationRequestCode;
 private String hoTreatmentCode;
 private String hoHospitalizationRequestDate;
 private String hoPatientName;
+private int hoHospitalizationStateCode;
 
+
+public int getHoHospitalizationStateCode() {
+	return hoHospitalizationStateCode;
+}
+public void setHoHospitalizationStateCode(int hoHospitalizationStateCode) {
+	this.hoHospitalizationStateCode = hoHospitalizationStateCode;
+}
 public String getHoPatientName() {
 	return hoPatientName;
 }
