@@ -31,36 +31,18 @@
 			<input type="hidden" name="hoTestStateCode" value="3" required="required">
 		</div>
 		<!-- 영상검사 결과 이미지를 여러개 입력할수 한다.-->
-		<div>
-			<div id="uploadFile">
-				<div>
-					결과 이미지 등록 : 
-					<input type="file" name="uploadFile">
-					<button type="button" id="addUploadFile">추가</button>
-				</div>
-			</div>
-			<div id="hiddenUploadFile" style="display:none;">
-				<div class="addUpload">
-					결과 이미지 등록 : 
-					<input type="file" name="uploadFile">
-					<button type="button" id="addUploadFile">추가</button>
-					<button type="button" id="removeUploadFile">삭제</button>
-				</div>			
+		
+		<div id="uploadFile">
+			<div>
+				결과 이미지 등록 : 
+				<input type="file" name="uploadFile">
+				<button type="button" id="addUploadFile">추가</button>
 			</div>
 		</div>
+			
 		<div>
 			<button>등록</button>
 		</div>
 	</form>
-	<script>
-		$(document).on('click','#addUploadFile',function(){
-			var addSelect = $('#hiddenUploadFile').html();
-			$(this).parents('#uploadFile').append(addSelect);	
-		});
-		
-		$(document).on('click','#removeUploadFile',function(){
-			$(this).parent('.addUpload').remove();		
-		});
-	</script>
 </body>
 </html>

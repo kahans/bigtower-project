@@ -9,7 +9,7 @@ public class HoMediaTestSub extends HoMediaTest {
 	protected String hoTestStateName;//검사상태
 	protected String hoTestName;//검사명
 	protected String hoTestCode;//검사종류 코드
-	protected List<MultipartFile> uploadFile ;//파일
+	protected MultipartFile uploadFile ;//파일
 	protected String hoHospitalCode;
 	
 	public String getHoHospitalCode() {
@@ -45,13 +45,12 @@ public class HoMediaTestSub extends HoMediaTest {
 
 
 
-
-	public List<MultipartFile> getUploadFile() {
+	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
 
 
-	public void setUploadFile(List<MultipartFile> uploadFile) {
+	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
 

@@ -2,6 +2,7 @@ package com.team4.project.hospital.test.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -45,30 +46,28 @@ public class HoTestService {
 	}
 	
 	//파일 경로 하기 
-	public int updateMediaTest(HoMediaTestSub mediaView) throws IOException {
+	public int updateMediaTest(HoMediaTestSub mediaView) {
 		System.out.println("서비스try전 : "+mediaView.toString());
 		String path=mediaView.getHoMediaTestImagePath();
 		System.out.println("서비스경로 : "+path);
 		File file = null;
 		String fileName = "";
 		String extention = "";
-		List<MultipartFile> multipartFile = mediaView.getUploadFile();
+		MultipartFile multipartFile = mediaView.getUploadFile();
 		
 		//System.out.println("try들어가기 전 : "+multipartFile);
 		try{
-			for(int i=0; i<multipartFile.size()-1; i++){
-				System.out.println("list파일에 온다? : "+multipartFile.get(i));
-				
-				UUID uuid = UUID.randomUUID();
-				fileName = uuid.toString().replace("-", "5");
-				int index = multipartFile.get(i).getOriginalFilename().lastIndexOf(".");
-				extention = multipartFile.get(i).getOriginalFilename().substring(index+1);
-				fileName=fileName+"."+extention;
-				file = new File(path+"\\"+fileName);
-				System.out.println(file);
-				multipartFile.get(i).transferTo(file);
-				
-			}
+		
+			
+			UUID uuid = UUID.randomUUID();
+			fileName = uuid.toString().replace("-", "5");
+			int index = multipartFile.getOriginalFilename().lastIndexOf(".");
+			extention = multipartFile.getOriginalFilename().substring(index+1);
+			fileName=fileName+"."+extention;
+			file = new File(path+"\\"+fileName);
+			System.out.println(file);
+			multipartFile.transferTo(file);
+			
 			//System.out.println("서비스try후 : "+mediaView.toString());
 			
 			System.out.println("파일 이름들 : "+fileName);
@@ -81,6 +80,10 @@ public class HoTestService {
 			
 		}catch(IllegalStateException e){
 			System.out.println("IllegalStateException 예외발생");
+			file.delete();
+			e.printStackTrace();
+		}catch(IOException e){
+			System.out.println("IOException 예외발생");
 			file.delete();
 			e.printStackTrace();
 		}

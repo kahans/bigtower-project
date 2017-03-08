@@ -47,8 +47,8 @@ public class HoVaccineCheckupService {
 				extention = multipartFile.getOriginalFilename().substring(index+1);
 				fileName=fileName+"."+extention;
 				//배포시
-				//file = new File(path+"/"+fileName);
-				file = new File(path+"\\"+fileName);
+				file = new File(path+"/"+fileName);
+				//file = new File(path+"\\"+fileName);
 				
 				multipartFile.transferTo(file);
 				

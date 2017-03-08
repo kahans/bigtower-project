@@ -19,7 +19,9 @@ import com.team4.project.hospital.test.domain.HoTestRequestSub;
 
 @Controller
 public class HoTestController {
-
+	//공통적인 부분을 필드변수로 선언해준다.
+	//배포시 파일 경로
+	String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 	@Autowired
 	private HoTestService hoTS;
 	//검사종류(혈액, 영상, 건강검진)선택 뷰
@@ -104,7 +106,7 @@ public class HoTestController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		bloodView.setHoHospitalCode(hoHospitalCode);
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
-		String path="D:\\testImage";//절대 주소
+		//String path="D:\\testImage";//절대 주소
 		//String path="C:\\sw\\testimage";//집에서 작성
 		// 배포시사용할경로
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
@@ -189,17 +191,14 @@ public class HoTestController {
 		System.out.println("해당 영상검사 결과 등록 POST");
 		System.out.println("등록POST : "+mediaView.toString());
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
-		String path="D:\\testImage";//절대 주소
+		//String path="D:\\testImage";//절대 주소
 		// 배포시사용할경로
-		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
+		
 		System.out.println("path:"+path);
 		mediaView.setHoMediaTestImagePath(path);
-		try {
-			hoTS.updateMediaTest(mediaView);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		hoTS.updateMediaTest(mediaView);
+		
 		
 		
 		return "redirect:/hospital/test/listMediaTest";
