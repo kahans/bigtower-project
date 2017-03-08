@@ -47,6 +47,7 @@ public class HoHospitalizationOperationService {
 	
 	//퇴원일 업데이트
 	public int updateHospitalization(String hoHospitalizationCode){
+		System.out.println("서비스의 hoHospitalizationCode : "+ hoHospitalizationCode);
 		return hoHOD.updateHospitalization(hoHospitalizationCode);
 	}
 	

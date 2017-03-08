@@ -40,6 +40,7 @@ public class HoHospitalizationOperationDao {
 	
 	//퇴원일 업데이트
 	public int updateHospitalization(String hoHospitalizationCode){
+		System.out.println("DAO의 hoHospitalizationCode : "+hoHospitalizationCode);
 		return sqlSession.update("hoHospitalizationOperation.updateHospitalization", hoHospitalizationCode);
 	}
 	
