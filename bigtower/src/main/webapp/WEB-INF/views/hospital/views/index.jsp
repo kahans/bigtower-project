@@ -23,6 +23,8 @@
 		<a href="<c:url value='/hospital/test'/>"><button>검사요청 목록</button></a>
 		<a href="<c:url value='/hospital/operationList'/>"><button>수술 목록</button></a>
 		
+		<a href="<c:url value='/government/'/>"><button>정부</button></a>
+		
 	</c:if>
 	
 </body>
