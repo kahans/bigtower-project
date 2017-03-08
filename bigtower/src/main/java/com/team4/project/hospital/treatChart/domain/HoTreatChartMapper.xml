@@ -51,7 +51,11 @@
 			ON ho_treat_subject.HO_TREAT_SUBJECT_CODE = ho_treatment.HO_TREAT_SUBJECT_CODE
 		JOIN ho_doctor
 			ON ho_doctor.HO_DOCTOR_ID = ho_treatment.HO_DOCTOR_ID
+		join ho_receive
+			on ho_receive.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		WHERE ho_hospital.HO_HOSPITAL_CODE=#{hospitalCode}
+			and ho_receive.HO_RECEIVE_STATE_CODE='2'
+		GROUP by ho_treatment.HO_TREATMENT_CODE
  	</select>
  	
  	<!-- 목록에서 한 개의 진료 상세보기 -->
