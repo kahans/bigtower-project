@@ -46,6 +46,7 @@ public class HospitalController {
 			session.setAttribute("HOSPITALNAME", staff.getHoHospitalName());
 			session.setAttribute("STAFFLEVELCODE", staff.getStaffLevelCode());
 			session.setAttribute("STAFFLEVELNAME", staff.getStaffLevelName());
+			session.setAttribute("DOCTORID", staff.getHoDoctorId());
 			session.setAttribute("HOSTAFFID", hoStaffId);
 			session.setAttribute("HOSTAFFNAME", staff.getHoStaffName());
 			logger.debug("session HOSPITALCODE:"+session.getAttribute("HOSPITALCODE"));
