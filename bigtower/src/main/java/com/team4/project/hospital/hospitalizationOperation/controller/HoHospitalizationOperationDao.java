@@ -33,8 +33,14 @@ public class HoHospitalizationOperationDao {
 		return sqlSession.insert("hoHospitalizationOperation.addHospitalization",map);
 	}
 	
+	//입원등록과 동시에 입퇴원 요청 테이블에 상태업데이트
+	public int updateHospitalizationRequest(String hoHospitalizationRequestCode){
+		return sqlSession.update("hoHospitalizationOperation.updateHospitalizationRequest",hoHospitalizationRequestCode);
+	}
+	
 	//퇴원일 업데이트
 	public int updateHospitalization(String hoHospitalizationCode){
+		System.out.println("DAO의 hoHospitalizationCode : "+hoHospitalizationCode);
 		return sqlSession.update("hoHospitalizationOperation.updateHospitalization", hoHospitalizationCode);
 	}
 	

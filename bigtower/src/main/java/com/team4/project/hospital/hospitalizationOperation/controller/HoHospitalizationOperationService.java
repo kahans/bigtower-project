@@ -39,11 +39,15 @@ public class HoHospitalizationOperationService {
 	
 	//입원 등록
 	public int addHospitalization(Map<String, Object> map){
+		String hoHospitalizationRequestCode = (String) map.get("hoHospitalizationRequestCode");
+		int result = hoHOD.updateHospitalizationRequest(hoHospitalizationRequestCode);
+		System.out.println("입퇴원 요청테이블 상태코드 업데이트 결과는 ? "+result);
 		return hoHOD.addHospitalization(map);
 	}
 	
 	//퇴원일 업데이트
 	public int updateHospitalization(String hoHospitalizationCode){
+		System.out.println("서비스의 hoHospitalizationCode : "+ hoHospitalizationCode);
 		return hoHOD.updateHospitalization(hoHospitalizationCode);
 	}
 	

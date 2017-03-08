@@ -26,6 +26,7 @@
  			ho_hospitalization_request.HO_HOSPITALIZATION_REQUEST_CODE,
  			ho_hospitalization_request.HO_TREATMENT_CODE,
  			ho_hospitalization_request.HO_HOSPITALIZATION_REQUEST_DATE,
+ 			ho_hospitalization_request.HO_HOSPITALIZATION_STATE_CODE,
  			ho_patient.HO_PATIENT_NAME,
  			ho_treatment.HO_HOSPITAL_CODE
  		FROM ho_hospitalization_request
@@ -33,7 +34,8 @@
  			ON ho_hospitalization_request.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
  		JOIN ho_patient
  			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE	
- 		WHERE ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
+ 		WHERE ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} AND
+ 			  ho_hospitalization_request.HO_HOSPITALIZATION_STATE_CODE = 1
  			<!-- AND NOT EXISTS(select HO_HOSPITALIZATION_REQUEST_CODE from ho_hospitalization) -->
  	</select>
  	
@@ -53,7 +55,8 @@
  		JOIN ho_patient
  			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
  		WHERE
- 			ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
+ 			ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} AND
+ 			ho_hospitalization.HO_HOSPITALIZATION_STATE_CODE = 2
  	</select>
  	
  	<!-- 퇴원일 업데이트 -->
@@ -61,7 +64,8 @@
  		UPDATE
  			ho_hospitalization
  		SET
- 			HO_HOSPITALIZATION_END_DATE = now()
+ 			HO_HOSPITALIZATION_END_DATE = now(),
+ 			HO_HOSPITALIZATION_STATE_CODE = 3
  		WHERE
  			HO_HOSPITALIZATION_CODE = #{hoHospitalizationCode}
  	</update>
@@ -72,6 +76,7 @@
  			HO_HOSPITALIZATION_CODE,
  			HO_TREATMENT_CODE,
  			HO_HOSPITALIZATION_REQUEST_CODE,
+ 			HO_HOSPITALIZATION_STATE_CODE,
  			HO_HOSPITALIZATION_START_DATE)
  		SELECT
  			if(not exists (select * from ho_hospitalization) ,'hospitalization_1',
@@ -79,9 +84,20 @@
  					max(cast(substring(HO_HOSPITALIZATION_CODE,17,5) as UNSIGNED ))+1)),
  			#{hoTreatmentCode},
  			#{hoHospitalizationRequestCode},
+ 			2,
  			now()
  		FROM ho_hospitalization
  	</insert>
+ 	
+ 	<!-- 입원등록과 동시에 입퇴원 요청 테이블에 상태업데이트 -->
+ 	<update id="updateHospitalizationRequest" parameterType="String">
+ 		UPDATE
+ 			ho_hospitalization_request
+ 		SET
+ 			HO_HOSPITALIZATION_STATE_CODE = 2
+ 		WHERE
+ 			HO_HOSPITALIZATION_REQUEST_CODE = #{hoHospitalizationRequestCode}
+ 	</update>
  	
  	<!-- 수술 등록 -->
  	<insert id="addOperation" parameterType="com.team4.project.hospital.hospitalizationOperation.domain.HoOperation">

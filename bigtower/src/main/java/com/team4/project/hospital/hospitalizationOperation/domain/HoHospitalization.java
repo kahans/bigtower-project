@@ -10,8 +10,15 @@ private String hoHospitalizationStartDate;
 private String hoHospitalizationEndDate;
 private String hoPatientName;
 private String hoGoSendstate;
+private int hoHospitalizationStateCode;
 
 
+public int getHoHospitalizationStateCode() {
+	return hoHospitalizationStateCode;
+}
+public void setHoHospitalizationStateCode(int hoHospitalizationStateCode) {
+	this.hoHospitalizationStateCode = hoHospitalizationStateCode;
+}
 public String getHoPatientName() {
 	return hoPatientName;
 }
