@@ -25,7 +25,7 @@ public class TestController_hospital_chart {
 	
 	@RequestMapping(value="testIndex")
 	public String textIndex(){
-		return "/hospital/bootstrap/testIndex";
+		return "/bootstrap/testIndex";
 	}
 	
 }
