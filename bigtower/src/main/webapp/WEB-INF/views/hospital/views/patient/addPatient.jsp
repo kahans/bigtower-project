@@ -24,7 +24,8 @@
 			<tr>
 				<td>주민번호 : </td>
 				<td>
-					<input type="text" name="hoCitizenId" placeholder="ex)910101-1234567">
+					<input type="text" name="hoCitizenId" placeholder="ex)910101-1234567" id="hoCitizenId">
+					<button type="button" id="checkBtn">중복확인</button>
 				</td>
 			</tr>
 			<tr>
@@ -98,6 +99,40 @@
 		        }
 		    }).open();
 		}
+		
+		$( document ).ready(function() {
+	    	function getContextPath() {
+	    		var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	    		return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+	    	};
+
+		    //ajax실행
+	    	$("#checkBtn").bind("click",function(){
+	    		if($('#hoCitizenId').val()==""){
+	    			alert('주민등록번호를 입력하세요');
+	    		}
+	    		console.log('getContextPath:'+getContextPath());
+	    		console.log('location.host:'+location.host);
+	    		console.log('location.href:'+location.href);
+	    		console.log('파라미터의 값 : '+$('#hoCitizenId').val());
+	    	    $.ajax({
+	    	        url : getContextPath()+"/government/checkCitizenId",
+	    	        type: "post",
+	    	        data : { "citizenId" : $("#hoCitizenId").val() },
+	    	        success : function(data){
+	    	            var checkResult = data;
+	    	            console.log('checkResult : '+checkResult);
+	    	        	if(checkResult === 'true'){
+	    	                alert("사용 가능한 주민번호입니다.");	    	                
+	    	            } else {
+	    	            	alert("등록되지 않은 주민번호입니다.");
+	    	            	 $("#hoCitizenId").val('');
+	    	            	return false;
+	    	            }
+	    	        }
+	    	    });
+	    	});
+	    });
 	</script>
 </body>
 </html>
