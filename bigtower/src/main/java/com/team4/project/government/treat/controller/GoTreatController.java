@@ -50,7 +50,7 @@ public class GoTreatController {
 			String list = conn.HttpUrlPOST(map);	//여기서 전송 해서 String으로 받아
 			logger.debug("list:"+list);
 			List<GoTreat> treatList = gson.fromJson(list, new TypeToken<List<GoTreat>>(){}.getType());
-			logger.debug("list2:"+treatList);
+			logger.debug("treatList:"+treatList);
 			model.addAttribute("treatList", treatList);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

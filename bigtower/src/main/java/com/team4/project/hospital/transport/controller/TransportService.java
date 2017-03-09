@@ -177,8 +177,14 @@ public class TransportService {
 		//map1.put("file2", new File("d://b.png"));
 		try {
 			//conn.HttpUrlFilePOST(map1);
-			String result = conn.HttpUrlPOST(hospitalMap);
+			String result = gson.fromJson(conn.HttpUrlPOST(hospitalMap),String.class);
 			logger.debug("result:"+result);
+			
+			//success가 리턴되면 정부전송여부값을 1로변경
+			if(result.equals("success")){
+				logger.debug("정부 db입력 성공");
+				
+			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
