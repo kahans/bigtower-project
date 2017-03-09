@@ -19,6 +19,7 @@ import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTreatSubject;
 import com.team4.project.hospital.receiveReservation.domain.HoReceive;
 import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
+import com.team4.project.util.GetReferenceData;
 
 
 @Controller
@@ -30,8 +31,10 @@ public class HoReceiveReservationController {
 	//접수폼 보여주기
 	@RequestMapping(value="/hospital/receive", method=RequestMethod.GET)
 	public String addOneReceive(Model model,
+			HttpSession session,
 			@RequestParam(value="hoCitizenId", required=false)String hoCitizenId){
-		List<HoTreatSubject> treatSubjectList = hoRRService.selectTreatSubject();
+		String doctorId = (String) session.getAttribute("DOCTORID");
+		List<HoTreatSubject> treatSubjectList = GetReferenceData.getTreatSubjectCode(doctorId);
 		System.out.println("treatSubjectList :" + treatSubjectList);
 		model.addAttribute("hoCitizenId",hoCitizenId);
 		model.addAttribute("treatSubjectList",treatSubjectList);

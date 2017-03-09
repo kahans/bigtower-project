@@ -61,10 +61,10 @@ public class HoTreatChartController {
 		//검사 이름 가져오기, 질병이름 가져오기
 		String doctorId = (String) session.getAttribute("DOCTORID");
 		List<HoTest> testList = hoTCS.selectTest();
-		List<HoDisease> diseaseList = hoTCS.selectDisease();
-		List<HoOperationType> operationList = hoTCS.selectOperation();
-		List<HoVaccineType> vaccineList = hoTCS.selectVaccine();
-		List<GoMedicine> medicineList = GetReferenceData.getMedicineCode(doctorId);
+		List<HoDisease> diseaseList = GetReferenceData.getDiseaseCode(doctorId);
+		List<HoOperationType> operationList = GetReferenceData.getSurgeryCode(doctorId);
+		List<HoVaccineType> vaccineList = GetReferenceData.getVaccinationCode(doctorId);
+		List<HoMedicine> medicineList = GetReferenceData.getMedicineCode(doctorId);
 		System.out.println("addPrescription 메서드의 hoTreatmentCode : "+hoTreatmentCode);
 		model.addAttribute("hoTreatmentCode", hoTreatmentCode);
 		model.addAttribute("medicineList",medicineList);

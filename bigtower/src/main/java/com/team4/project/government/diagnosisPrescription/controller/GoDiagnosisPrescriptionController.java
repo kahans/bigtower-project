@@ -18,6 +18,12 @@ public class GoDiagnosisPrescriptionController {
 	@Autowired
 	private GoDiagnosisPrescriptionService goDPService;
 	
+	//진료코드 진단 정보 조회폼
+	@RequestMapping(value="/government/getListDiagnosisByTreatCode", method=RequestMethod.GET)
+	public String searchDiagnosis(){
+		return "/hospital/views/government/gov_searchDiagnosis";
+	}
+	
 	// 1.진료코드로 진단결과 가져오기(test)
 	@RequestMapping(value="/government/getListDiagnosisByTreatCode", method=RequestMethod.GET,
 			produces = "text/json; charset=UTF-8")
