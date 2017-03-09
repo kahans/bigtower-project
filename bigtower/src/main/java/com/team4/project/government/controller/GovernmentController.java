@@ -49,12 +49,12 @@ public class GovernmentController {
 	}
 	
 	// 정부 db에서 주민번호 조회
-	@RequestMapping(value="/government/checkCitizenId", method=RequestMethod.GET)
-	public String citizenIdCheck(){
+	@RequestMapping(value="/government/checkCitizenId", method=RequestMethod.POST)
+	public @ResponseBody String citizenIdCheck(String citizenId, HttpSession session){
+		logger.debug("citizenId : " + citizenId);
+		String checkResult = "";
 		// doctorId는 세션에서 받아야함
-		String doctorId = "doctor_1";
-		// citizenId는 따로 받아야함
-		String citizenId = "900101-10100001";
+		String doctorId = (String) session.getAttribute("DOCTORID");
 		String url = ContextParam.context.getInitParameter("receiveUrl");
 		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/checkCitizenId");
 		Map<String, String> map = new HashMap<String,String>();
@@ -63,13 +63,13 @@ public class GovernmentController {
 		try {
 			// 리턴결과가 true이면 사용가능한 주민번호(정부db에 등록된 주민번호)
 			// 리턴결과가 false이면 사용불가능한 주민번호(정부db에 등록되지 않은 주민번호)
-			String checkResult = conn.HttpUrlPOST(map);
+			checkResult = conn.HttpUrlPOST(map);
 			logger.debug("checkResult:"+checkResult);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
+		System.out.println("try절 이후에 checkResult값 : "+checkResult);
+		return checkResult;
 	}
 	
 	// httpPost로 medicineCode 받아오기 성공
