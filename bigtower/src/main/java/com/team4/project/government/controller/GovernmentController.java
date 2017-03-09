@@ -59,7 +59,7 @@ public class GovernmentController {
 		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/checkCitizenId");
 		Map<String, String> map = new HashMap<String,String>();
 		map.put("citizenId", citizenId);
-		map.put("doctorId", citizenId);
+		map.put("doctorId", doctorId);
 		try {
 			// 리턴결과가 true이면 사용가능한 주민번호(정부db에 등록된 주민번호)
 			// 리턴결과가 false이면 사용불가능한 주민번호(정부db에 등록되지 않은 주민번호)
