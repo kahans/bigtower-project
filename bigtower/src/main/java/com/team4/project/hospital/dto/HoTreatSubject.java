@@ -2,13 +2,13 @@ package com.team4.project.hospital.dto;
 
 public class HoTreatSubject {
 
-	private int hoTreatSubjectCode;
+	private String hoTreatSubjectCode;
 	private String hoTreatSubjectName;
 	
-	public int getHoTreatSubjectCode() {
+	public String getHoTreatSubjectCode() {
 		return hoTreatSubjectCode;
 	}
-	public void setHoTreatSubjectCode(int hoTreatSubjectCode) {
+	public void setHoTreatSubjectCode(String hoTreatSubjectCode) {
 		this.hoTreatSubjectCode = hoTreatSubjectCode;
 	}
 	public String getHoTreatSubjectName() {

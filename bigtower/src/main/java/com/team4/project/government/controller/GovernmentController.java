@@ -17,11 +17,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.team4.project.HomeController;
 import com.team4.project.government.dto.GoCitizen;
 import com.team4.project.government.dto.GoHospital;
 import com.team4.project.government.dto.GoMedicine;
+import com.team4.project.hospital.dto.HoDisease;
+import com.team4.project.hospital.dto.HoMedicine;
+import com.team4.project.hospital.dto.HoOperationType;
+import com.team4.project.hospital.dto.HoTreatSubject;
+import com.team4.project.hospital.dto.HoVaccineType;
+import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
 import com.team4.project.util.ContextParam;
+import com.team4.project.util.GetReferenceData;
 import com.team4.project.util.Http;
 import com.team4.project.util.HttpUrlCon;
 
@@ -72,27 +80,21 @@ public class GovernmentController {
 		return checkResult;
 	}
 	
-	// httpPost로 medicineCode 받아오기 성공
+	// httpPost를이용해 정부에서 코드값들 가져오는 메서드 테스트
 	@RequestMapping(value="/government/getData", method=RequestMethod.GET)
-	public String getData(HttpSession session){
-		String url = ContextParam.context.getInitParameter("receiveUrl");
-		String doctorId = (String) session.getAttribute("DOCTORID");
-		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getMedicineCode");
-		try {
-			// doctorId를 맵에 담는다
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("doctorId", doctorId);
-			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
-			String medicineCode = conn.HttpUrlPOST(map);
-			System.out.println("medicineCode:"+medicineCode);
-			// 리스트타입의 json을 java List 타입으로 parsing 한다 
-			GoMedicine[] array = gson.fromJson(medicineCode, GoMedicine[].class);
-			List<GoMedicine> list = Arrays.asList(array);
-			System.out.println("list:"+list);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public String getData(){
+		String doctorId = "";
+		//List<HoMedicine> list1 = GetReferenceData.getMedicineCode(doctorId);
+		//System.out.println("list1"+list1);
+		//List<HoDisease> list2 = GetReferenceData.getDiseaseCode(doctorId);
+		//System.out.println("list2"+list2);
+		//List<HoOperationType> list3 = GetReferenceData.getSurgeryCode(doctorId);
+		//System.out.println("list3"+list3);
+		//List<HoTreatSubject> list4 = GetReferenceData.getTreatSubjectCode(doctorId);
+		//System.out.println("list4"+list4);
+		List<HoVaccineType> list5 = GetReferenceData.getVaccinationCode(doctorId);
+		System.out.println("list5"+list5);
+		
 		return "home";
 	}
 	

@@ -4,7 +4,7 @@ public class HoVaccineType {
 
 private String hoVaccineTypeCode;
 private String hoVaccineTypeName;
-private String hoVaccineTypeDegree;
+private Double hoVaccineTypeDegree;
 
 public String getHoVaccineTypeCode() {
 	return hoVaccineTypeCode;
@@ -18,10 +18,10 @@ public String getHoVaccineTypeName() {
 public void setHoVaccineTypeName(String hoVaccineTypeName) {
 	this.hoVaccineTypeName = hoVaccineTypeName;
 }
-public String getHoVaccineTypeDegree() {
+public Double getHoVaccineTypeDegree() {
 	return hoVaccineTypeDegree;
 }
-public void setHoVaccineTypeDegree(String hoVaccineTypeDegree) {
+public void setHoVaccineTypeDegree(Double hoVaccineTypeDegree) {
 	this.hoVaccineTypeDegree = hoVaccineTypeDegree;
 }
 @Override

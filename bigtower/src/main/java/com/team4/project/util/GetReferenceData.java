@@ -1,32 +1,151 @@
 package com.team4.project.util;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
-import com.team4.project.government.dto.GoMedicine;
+import com.google.gson.reflect.TypeToken;
+import com.team4.project.hospital.dto.HoDisease;
+import com.team4.project.hospital.dto.HoMedicine;
+import com.team4.project.hospital.dto.HoOperationType;
+import com.team4.project.hospital.dto.HoTreatSubject;
+import com.team4.project.hospital.dto.HoVaccineType;
 
 public class GetReferenceData {
+	
 	private static Gson gson = new Gson();
 	private static String url = ContextParam.context.getInitParameter("receiveUrl");
 	
-	
-	public static List<GoMedicine> getMedicineCode(String doctorId){
+	// 1정부에서 투약코드 가져오는 메서드
+	public static List<HoMedicine> getMedicineCode(String doctorId){
 		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getMedicineCode");
-		List<GoMedicine> list = null;
+		List<HoMedicine> list = new ArrayList<HoMedicine>();
 		try {
 			// doctorId를 맵에 담는다
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
 			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
-			String medicineCode = conn.HttpUrlPOST(map);
-			System.out.println("medicineCode:"+medicineCode);
+			String result = conn.HttpUrlPOST(map);
+			System.out.println("result:"+result);
 			// 리스트타입의 json을 java List 타입으로 parsing 한다 
-			GoMedicine[] array = gson.fromJson(medicineCode, GoMedicine[].class);
-			list = Arrays.asList(array);
-			System.out.println("list:"+list);
+			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
+			for(int i = 0; i<resultMap.size(); i++){
+				HoMedicine hm = new HoMedicine();
+				hm.setHoMedicineCode((String)resultMap.get(i).get("goMedicineCode"));
+				hm.setHoMedicineName((String)resultMap.get(i).get("goMedicineName"));
+				System.out.println("hm:"+hm);
+				list.add(hm);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+
+	// 2정부에서 질병코드 가져오는 메서드
+	public static List<HoDisease> getDiseaseCode(String doctorId){
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getDiseaseCode");
+		List<HoDisease> list = new ArrayList<HoDisease>();
+		try {
+			// doctorId를 맵에 담는다
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("doctorId", doctorId);
+			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
+			String result = conn.HttpUrlPOST(map);
+			System.out.println("result:"+result);
+			// 리스트타입의 json을 java List 타입으로 parsing 한다 
+			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
+			for(int i = 0; i<resultMap.size(); i++){
+				HoDisease hd = new HoDisease();
+				hd.setHoDiseaseCode((String)resultMap.get(i).get("goDiseaseCode"));
+				hd.setHoDiseaseKor((String)resultMap.get(i).get("goDiseaseKor"));
+				hd.setHoDiseaseEng((String)resultMap.get(i).get("goDiseaseEng"));
+				System.out.println("hd:"+hd);
+				list.add(hd);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	// 3정부에서 질병코드 가져오는 메서드
+	public static List<HoTreatSubject> getTreatSubjectCode(String doctorId){
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getTreatSubjectCode");
+		List<HoTreatSubject> list = new ArrayList<HoTreatSubject>();
+		try {
+			// doctorId를 맵에 담는다
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("doctorId", doctorId);
+			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
+			String result = conn.HttpUrlPOST(map);
+			System.out.println("result:"+result);
+			// 리스트타입의 json을 java List 타입으로 parsing 한다 
+			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
+			for(int i = 0; i<resultMap.size(); i++){
+				HoTreatSubject hts = new HoTreatSubject();
+				hts.setHoTreatSubjectCode((String)resultMap.get(i).get("goTreatSubjectCode"));
+				hts.setHoTreatSubjectName((String)resultMap.get(i).get("goTreatSubjectName"));
+				System.out.println("hts:"+hts);
+				list.add(hts);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	// 4정부에서 수술코드 가져오는 메서드
+	public static List<HoOperationType> getSurgeryCode(String doctorId){
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getSurgeryCode");
+		List<HoOperationType> list = new ArrayList<HoOperationType>();
+		try {
+			// doctorId를 맵에 담는다
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("doctorId", doctorId);
+			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
+			String result = conn.HttpUrlPOST(map);
+			System.out.println("result:"+result);
+			// 리스트타입의 json을 java List 타입으로 parsing 한다 
+			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
+			for(int i = 0; i<resultMap.size(); i++){
+				HoOperationType hot = new HoOperationType();
+				hot.setHoOperationTypeCode((String)resultMap.get(i).get("goSurgeryCode"));
+				hot.setHoOperationTypeName((String)resultMap.get(i).get("goSurgeryName"));
+				System.out.println("hot:"+hot);
+				list.add(hot);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+		
+	
+	// 5정부에서 예방접종코드 가져오는 메서드
+	public static List<HoVaccineType> getVaccinationCode(String doctorId){
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getVaccinationCode");
+		List<HoVaccineType> list = new ArrayList<HoVaccineType>();
+		try {
+			// doctorId를 맵에 담는다
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("doctorId", doctorId);
+			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
+			String result = conn.HttpUrlPOST(map);
+			System.out.println("result:"+result);
+			// 리스트타입의 json을 java List 타입으로 parsing 한다 
+			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
+			for(int i = 0; i<resultMap.size(); i++){
+				HoVaccineType hv = new HoVaccineType();
+				hv.setHoVaccineTypeCode((String)resultMap.get(i).get("goVaccinationCode"));
+				hv.setHoVaccineTypeDegree((Double)resultMap.get(i).get("goVaccinationDegree"));
+				hv.setHoVaccineTypeName((String)resultMap.get(i).get("goVaccinationName"));
+				System.out.println("hv:"+hv);
+				list.add(hv);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
