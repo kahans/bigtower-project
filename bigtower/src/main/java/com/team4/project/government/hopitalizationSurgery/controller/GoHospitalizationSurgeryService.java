@@ -21,11 +21,11 @@ public class GoHospitalizationSurgeryService {
 
 	
 	// 한진료의 수술결과
-	public GoSurgeryResult getOneSurgeryByTreatCode(String treatCode){
+	public GoSearchSurgerySub getOneSurgeryByTreatCode(String treatCode){
 		return goHSDao.selectOneSurgeryByTreatCode(treatCode);
 	}
 	
-	// 한진료의 수술결과
+	// 한진료의 입/퇴원결과
 	public GoHospitalization getOneHospitalizationByTreatCode(String treatCode){
 		return goHSDao.selectOneHospitalizationByTreatCode(treatCode);
 	}

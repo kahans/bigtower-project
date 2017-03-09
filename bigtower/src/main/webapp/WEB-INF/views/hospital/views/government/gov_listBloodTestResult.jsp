@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,23 +26,23 @@
 			<td>진료과목</td>
 		</tr>
 	
-			<c:forEach var="getBloodTest" items="${getBloodTest}">
-				<tr>
-					<td>${getBloodTest.goBloodTestCode}</td> 
-					<td>${getBloodTest.goTreatCode}</td>
-					<td>${getBloodTest.goBloodTestBloodSugar}</td>
-					<td>${getBloodTest.goBloodTestPlatelet}</td>
-					<td>${getBloodTest.goBloodTestFilePath}</td>
-					<td>${getBloodTest.goBloodTestFileName}</td>
-					<td>${getBloodTest.goBloodTestDate}</td>
-					<td>${getBloodTest.goBloodTestGoRegistrationDate}</td>
-					<td>${getBloodTest.goHospitalName}</td>
-					<td>${getBloodTest.goHospitalAddress}</td>
-					<td>${getBloodTest.goCitizenName}</td>
-					<td>${getBloodTest.goDoctorName}</td>
-					<td>${getBloodTest.goTreatSubjectName}</td>
-				</tr>
-			</c:forEach>
+		<c:forEach var="getBloodTest" items="${getBloodTest}">
+			<tr>
+				<td>${getBloodTest.goBloodTestCode}</td> 
+				<td>${getBloodTest.goTreatCode}</td>
+				<td>${getBloodTest.goBloodTestBloodSugar}</td>
+				<td>${getBloodTest.goBloodTestPlatelet}</td>
+				<td>${getBloodTest.goBloodTestFilePath}</td>
+				<td>${getBloodTest.goBloodTestFileName}</td>
+				<td>${getBloodTest.goBloodTestDate}</td>
+				<td>${getBloodTest.goBloodTestGoRegistrationDate}</td>
+				<td>${getBloodTest.goHospitalName}</td>
+				<td>${getBloodTest.goHospitalAddress}</td>
+				<td>${getBloodTest.goCitizenName}</td>
+				<td>${getBloodTest.goDoctorName}</td>
+				<td>${getBloodTest.goTreatSubjectName}</td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

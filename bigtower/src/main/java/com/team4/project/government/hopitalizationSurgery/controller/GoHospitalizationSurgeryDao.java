@@ -20,7 +20,7 @@ public class GoHospitalizationSurgeryDao {
 	private SqlSessionTemplate sql;
 	
 	// 한진료의 수술결과
-	public GoSurgeryResult selectOneSurgeryByTreatCode(String treatCode){
+	public GoSearchSurgerySub selectOneSurgeryByTreatCode(String treatCode){
 		return sql.selectOne("GoHospitalizationSurgery.getOneSurgeryByTreatCode", treatCode);
 	}
 	

@@ -14,7 +14,7 @@
 	<a href="<c:url value="/government/searchPrescription"/>"><button>처방</button></a>
 	<a href="<c:url value="/government/searchDiagnosis"/>"><button>진단</button></a>
 	<a href="<c:url value="/government/searchHospitalization"/>"><button>입퇴원</button></a>
-	<a href="<c:url value="/government/searchSurgery"/>"><button>수술</button></a>
+	<a href="<c:url value="/government/searchSurgeryForm"/>"><button>수술</button></a>
 	<a href="<c:url value="/government/searchTest"/>"><button>검사</button></a>
 
 </body>
