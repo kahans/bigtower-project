@@ -124,6 +124,12 @@ public class GoHospitalizationSurgeryController {
 		return hopitalizationList;
 	}
 	
+	//수술 조회하는 뷰
+	@RequestMapping(value="/government/searchSurgery", method=RequestMethod.GET)
+	public String searchSurgery(){
+		
+		return "/hospital/views/government/gov_searchSurgery";
+	}
 	
 	
 	

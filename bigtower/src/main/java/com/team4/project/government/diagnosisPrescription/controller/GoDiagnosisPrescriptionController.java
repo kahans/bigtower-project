@@ -55,7 +55,7 @@ public class GoDiagnosisPrescriptionController {
 		return prescriptionList;
 	}
 	//진단을 조회하는 뷰
-	@RequestMapping(value="/government/searchDiagnois", method=RequestMethod.GET)
+	@RequestMapping(value="/government/searchDiagnosis", method=RequestMethod.GET)
 	public String searchDiagnois(){
 		return "/hospital/views/government/gov_searchDiagnosis";
 	}

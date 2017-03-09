@@ -12,7 +12,7 @@
 
 	<a href="<c:url value="/government/searchBloodTest"/>"><button>혈액검사결과조회</button></a>
 	<a href="<c:url value='/government/searchMediaTest'/>"><button>영상검사결과조회</button></a> 
-	<%--<a href="<c:url value='/government/searchTreat'/>"><button>건강검진결과조회</button></a> --%>
+	<%--<a href="<c:url value='/government/searchCheckup'/>"><button>건강검진결과조회</button></a> --%>
 	<a href="<c:url value='/government/'/>"><button>정부화면</button></a>
 </body>
 </html>
