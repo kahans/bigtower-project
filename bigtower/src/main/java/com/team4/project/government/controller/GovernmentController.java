@@ -74,12 +74,18 @@ public class GovernmentController {
 	
 	// httpPost로 medicineCode 받아오기 성공
 	@RequestMapping(value="/government/getData", method=RequestMethod.GET)
-	public String getData(){
+	public String getData(HttpSession session){
 		String url = ContextParam.context.getInitParameter("receiveUrl");
-		Http http = new Http(url+"/bigbang/government/getMedicineCode");
+		String doctorId = (String) session.getAttribute("DOCTORID");
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getMedicineCode");
 		try {
-			String medicineCode = http.submit();
+			// doctorId를 맵에 담는다
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("doctorId", doctorId);
+			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
+			String medicineCode = conn.HttpUrlPOST(map);
 			System.out.println("medicineCode:"+medicineCode);
+			// 리스트타입의 json을 java List 타입으로 parsing 한다 
 			GoMedicine[] array = gson.fromJson(medicineCode, GoMedicine[].class);
 			List<GoMedicine> list = Arrays.asList(array);
 			System.out.println("list:"+list);
