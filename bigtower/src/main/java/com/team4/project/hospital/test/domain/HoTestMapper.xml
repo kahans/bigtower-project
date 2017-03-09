@@ -46,7 +46,8 @@
 		INNER JOIN ho_hospital
 			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		set
-			HO_TEST_STATE_CODE=3
+			HO_TEST_STATE_CODE=3,			
+			HO_TEST_END_DATE=now()
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
 			AND HO_TEST_CODE=#{hoTestCode}
 			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
@@ -59,7 +60,8 @@
 		INNER JOIN ho_hospital
 			ON ho_hospital.HO_HOSPITAL_CODE = ho_treatment.HO_HOSPITAL_CODE
 		set
-			HO_TEST_STATE_CODE=3
+			HO_TEST_STATE_CODE=3,
+			HO_TEST_END_DATE=now()
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
 			AND HO_TEST_CODE=#{hoTestCode}
 			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
@@ -165,9 +167,8 @@
 		where ho_hospital.HO_HOSPITAL_CODE=#{hoHospitalCode}
 			AND HO_TEST_REQUEST_CODE=#{hoTestRequestCode}
 	</update>
-	
 	<!-- 영상검사 테이블 해당 되는 열 수정 -->
-	<update id="updateMedia" parameterType="com.team4.project.hospital.test.domain.HoBloodTestSub">
+	<update id="updateMedia" parameterType="com.team4.project.hospital.test.domain.HoMediaTestSub">
 		update ho_media_test
 		INNER JOIN ho_treatment
 			ON ho_treatment.HO_TREATMENT_CODE = ho_media_test.HO_TREATMENT_CODE

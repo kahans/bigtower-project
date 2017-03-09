@@ -79,4 +79,12 @@ public class HoTestDao {
 		// TODO Auto-generated method stub
 		return sqlSession.update("hoTest.updateMediaTestRequest",mediaView);
 	}
+	public int updateTestRequest(HoMediaTestSub mediaView) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("hoTest.updateMediaTestRequest", mediaView);
+	}
+	public int updateTestRequest(HoBloodTestSub bloodView) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("hoTest.updateBloodTestRequest", bloodView);
+	}
 }

@@ -67,8 +67,8 @@ public class HoTestService {
 			//작업시
 			//file = new File(path+"\\"+fileName);
 			//배포시
-			file = new File(path+"/"+fileName);
-			System.out.println(file);
+			file = new File(path+fileName);
+			System.out.println("파일 전체경로"+file);
 			multipartFile.transferTo(file);
 			
 			//System.out.println("서비스try후 : "+mediaView.toString());
@@ -77,7 +77,6 @@ public class HoTestService {
 			mediaView.setHoMediaTestImageName(fileName);
 			mediaView.setHoMediaTestImagePath(path);
 			hoTD.updateMediaTest(mediaView);
-			//배포시
 			
 			
 			
@@ -111,7 +110,7 @@ public class HoTestService {
 				//작업시
 				//file = new File(path+"\\"+fileName);
 				//배포시
-				file = new File(path+"/"+fileName);
+				file = new File(path+fileName);
 				
 				multipartFile.transferTo(file);
 				
@@ -121,7 +120,6 @@ public class HoTestService {
 				System.out.println("서비스try후 : "+bloodView.toString());
 				
 				hoTD.updateBloodTest(bloodView);
-				
 			}catch(IllegalStateException e){
 				System.out.println("IllegalStateException 예외발생");
 				file.delete();
