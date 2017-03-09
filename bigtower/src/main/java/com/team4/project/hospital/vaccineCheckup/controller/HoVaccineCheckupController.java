@@ -86,8 +86,8 @@ public class HoVaccineCheckupController {
 		addCheckup.setHoHospitalCode(hoHospitalCode);
 		//String path="D:\\testImage";//상대주소
 		// 배포시사용할경로
-		String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/checkup";
-		//String path = "/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/checkup";
+		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/checkup";
+		String path = "/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/checkup";
 
 		addCheckup.setHoCheckUpResultPath(path);
 		hoVCS.updateCheck(addCheckup);

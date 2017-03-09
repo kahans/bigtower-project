@@ -8,14 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<h1>영상검사 결과조회</h1>
+	<!-- MediaTestResult를 출력 -->
 	<form action="<c:url value='/government/getOneImageTestResultByTreatCode'/>" method="post">
 		차트코드로 조회
 		<input type="text" name="treatCode"/>
 		<input type="submit" value="조회"/>
 	</form>
-	<br/><br/><br/>
-	
+	<br/>
+	<!-- listMediaTestResult를 출력 -->
 	<form action="<c:url value='/government/getListImageTestResultByCitizenId'/>" method="post">
 		주민번호로 조회
 		<input type="text" name="citizenId"/>
