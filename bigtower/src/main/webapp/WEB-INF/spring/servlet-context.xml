@@ -25,7 +25,7 @@
 	<!-- 부속 css, js, img 기타 등등 매핑 -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:resources mapping="/bigtower/templates/**" location="/WEB-INF/templates/" />
-	<mvc:resources mapping="/bigtower/hospital/**" location="/WEB-INF/views/hospital/bootstrap/" />
+	<mvc:resources mapping="/views/hospital/bootstrap/**" location="/WEB-INF/views/hospital/bootstrap/" />
 	<!-- 정부사이트에서 부속 매핑을 위한 경로 설정 -->
 	<!-- <mvc:resources mapping="/templates/government/assets/**" location="/WEB-INF/templates/government/assets/" />
 	<mvc:resources mapping="/templates/government/bodybg/**" location="/WEB-INF/templates/government/bodybg/" />
