@@ -20,9 +20,15 @@ public class GoTestController {
 	private static final Logger logger = LoggerFactory.getLogger(GoTestController.class);
 
 	@Autowired
-	private GoTestService goTestService;
+	private GoTestService goTestService; 
 	
-	
+	//검사 종류 조회
+	@RequestMapping(value="/government/searchTest", method=RequestMethod.GET)
+	public String searchTest(){
+		
+		
+		return "/hospital/views/government/gov_searchTest";
+	}
 	//혈액검사 조회하는 페이지로 이동
 	@RequestMapping(value="/government/searchBloodTest", method=RequestMethod.GET)
 	public String moveBloodTestSearchForm(){
@@ -71,10 +77,10 @@ public class GoTestController {
 
 	
 	//영상검사 조회하는 페이지로 이동
-		@RequestMapping(value="/government/searchMediaTest", method=RequestMethod.GET)
-		public String moveMediaTestSearchForm(){
-			return "/hospital/views/government/gov_searchMediaTestForm";
-		}
+	@RequestMapping(value="/government/searchMediaTest", method=RequestMethod.GET)
+	public String moveMediaTestSearchForm(){
+		return "/hospital/views/government/gov_searchMediaTestForm";
+	}
 
 	
 	

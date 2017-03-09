@@ -9,19 +9,36 @@
 </head>
 <body>
 <h1>gov_searchTreatResult.jsp</h1>
+<h4>진료내용조회 결과</h4>
 
 <c:forEach items="${treatList}" var="list">
-	${list.goTreatCode} /
-	${list.goHospitalId} /
-	${list.goCitizenId} /
-	${list.goDoctorId} /
-	${list.goTreatSubjectCode} /
-	${list.goChartCode} / 
-	${list.goChartSeq} /
-	${list.goTreatContents} /
-	${list.goTreatRegistrationDate} /
-	${list.goTreatGoRegistrationDate}
-	
+	<div>
+	진료코드	:	${list.goTreatCode} /
+	</div>
+	<div>
+	병원아이디	:	${list.goHospitalId} /
+	</div>
+	<div>
+	환자ID	:	${list.goCitizenId} /
+	</div>
+	<div>
+	의사ID	:	${list.goDoctorId} /
+	</div>
+	<div>
+	진료과목	:	${list.goTreatSubjectCode} /
+	</div>
+	<div>
+	차트코드	:	${list.goChartCode} / 
+	</div>
+	<div>
+	진료내용	:	${list.goTreatContents} /
+	</div>
+	<div>
+	진료등록일	:	${list.goTreatRegistrationDate} /
+	</div>
+	<div>
+	정부DB등록일	:	${list.goTreatGoRegistrationDate}
+	</div>
 </c:forEach>
 </body>
 </html>

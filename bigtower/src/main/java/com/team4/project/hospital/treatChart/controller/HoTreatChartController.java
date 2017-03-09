@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.team4.project.government.dto.GoMedicine;
 import com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription;
 import com.team4.project.hospital.dto.HoDisease;
 import com.team4.project.hospital.dto.HoMedicine;
@@ -26,6 +27,7 @@ import com.team4.project.hospital.treatChart.domain.HoChart;
 import com.team4.project.hospital.treatChart.domain.HoTreat;
 import com.team4.project.hospital.treatChart.domain.HoTreatSub;
 import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
+import com.team4.project.util.GetReferenceData;
 
 @Controller
 public class HoTreatChartController {
@@ -54,13 +56,15 @@ public class HoTreatChartController {
 	//진료 페이지
 	@RequestMapping(value="/hospital/treatView", method=RequestMethod.GET)
 	public String treatView(Model model,
+			HttpSession session,
 			@RequestParam(value="hoTreatmentCode")String hoTreatmentCode){
 		//검사 이름 가져오기, 질병이름 가져오기
+		String doctorId = (String) session.getAttribute("DOCTORID");
 		List<HoTest> testList = hoTCS.selectTest();
 		List<HoDisease> diseaseList = hoTCS.selectDisease();
 		List<HoOperationType> operationList = hoTCS.selectOperation();
 		List<HoVaccineType> vaccineList = hoTCS.selectVaccine();
-		List<HoMedicine> medicineList = hoTCS.selectMedicine();
+		List<GoMedicine> medicineList = GetReferenceData.getMedicineCode(doctorId);
 		System.out.println("addPrescription 메서드의 hoTreatmentCode : "+hoTreatmentCode);
 		model.addAttribute("hoTreatmentCode", hoTreatmentCode);
 		model.addAttribute("medicineList",medicineList);

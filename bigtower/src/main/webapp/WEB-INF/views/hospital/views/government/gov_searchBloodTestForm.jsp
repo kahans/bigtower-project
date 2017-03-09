@@ -8,14 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<h1>혈액검사 결과조회</h1>
+	<!-- BloodTestResult를 출력 -->
 	<form action="<c:url value='/government/getOneBloodTestResultByTreatCode'/>" method="post">
 		차트코드로 조회
 		<input type="text" name="treatCode"/>
 		<input type="submit" value="조회"/>
 	</form>
-	<br/><br/><br/>
-	
+	<br/>
+	<!-- listBloodTestResult를 출력 -->
 	<form action="<c:url value='/government/getListBloodTestResultByCitizenId'/>" method="post">
 		주민번호로 조회
 		<input type="text" name="citizenId"/>

@@ -119,7 +119,7 @@
             		<select name="medicineSelect">
             			<option value="0">약품명</option>
 		           		<c:forEach items="${medicineList}" var="medicineList">
-							<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineName}</option>
+							<option value="${medicineList.goMedicineCode}">${medicineList.goMedicineName}</option>
 						</c:forEach>                           			
             		</select>
             		<button type="button" id="medicineNameAdd">추가</button>
@@ -132,7 +132,7 @@
             			<!-- +버튼 눌렀을 때 추가되는 selectBox 마찬가지로 for문으로 list값 가져와야함 -->
             			<option value="0">약품명</option>
             			<c:forEach items="${medicineList}" var="medicineList">
-							<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineName}</option>
+							<option value="${medicineList.goMedicineCode}">${medicineList.goMedicineName}</option>
 						</c:forEach>                          			
             		</select>
             		<button type="button" id="medicineNameAdd">추가</button>
