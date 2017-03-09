@@ -183,7 +183,22 @@ public class TransportService {
 			//success가 리턴되면 정부전송여부값을 1로변경
 			if(result.equals("success")){
 				logger.debug("정부 db입력 성공");
-				
+				int resultInt = 0;
+				resultInt += transportDao.updateChartSendState();
+				resultInt += transportDao.updateTreatmentSendState();
+				resultInt += transportDao.updateDiagnosisSendState();
+				resultInt += transportDao.updatePrescriptionSendState();
+				resultInt += transportDao.updateHospitalizationSendState();
+				resultInt += transportDao.updateOperationSendState();
+				resultInt += transportDao.updateBloodTestSendState();
+				resultInt += transportDao.updateMediaTestSendState();
+				resultInt += transportDao.updateCheckupSendState();
+				resultInt += transportDao.updateVaccineSendState();
+				if(resultInt>0){
+					logger.debug("정부전송여부 수정성공!! ^0^*");
+				}else{
+					logger.debug("정부전송여부 수정 실패...ㅠ_ㅠ");
+				}
 			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
