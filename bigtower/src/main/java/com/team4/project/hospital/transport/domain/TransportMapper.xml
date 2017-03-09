@@ -191,5 +191,77 @@
 			AND
 				ho_treatment.HO_HOSPITAL_CODE=#{hospitalCode}
 	</select>
+
 	
+	<!-- 정부전송여부를 0에서 1로 수정 -->
+	<!-- 차트 전송여부 업데이트 -->
+	<update id="updateChartSendState">
+		UPDATE ho_chart
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>
+	
+	<!-- 진료 전송여부 업데이트 -->
+	<update id="updateTreatmentSendState">
+		UPDATE ho_treatment
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>
+
+	<!-- 진단 전송여부 업데이트 -->
+	<update id="updateDiagnosisSendState">
+		UPDATE ho_diagnosis
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>
+	
+	<!-- 처방 전송여부 업데이트 -->
+	<update id="updatePrescriptionSendState">
+		UPDATE ho_prescription
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>
+		
+	<!-- 입퇴원 전송여부 업데이트 -->
+	<update id="updateHospitalizationSendState">
+		UPDATE ho_hospitalization
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>
+			
+	<!-- 수술 전송여부 업데이트 -->
+	<update id="updateOperationSendState">
+		UPDATE ho_operation
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>
+
+	<!-- 혈액검사 전송여부 업데이트 -->
+	<update id="updateBloodTestSendState">
+		UPDATE ho_blood_test
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>	
+
+	<!-- 영상검사 전송여부 업데이트 -->
+	<update id="updateMediaTestSendState">
+		UPDATE ho_media_test
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>	
+
+	<!-- 건강검진 전송여부 업데이트 -->
+	<update id="updateCheckupSendState">
+		UPDATE ho_checkup
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>		
+
+	<!-- 예방접종 전송여부 업데이트 -->
+	<update id="updateVaccineSendState">
+		UPDATE ho_vaccine
+		SET HO_GO_SENDSTATE=1
+		WHERE HO_GO_SENDSTATE=0
+	</update>	
+				
 </mapper>
