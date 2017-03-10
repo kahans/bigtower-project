@@ -16,8 +16,15 @@
 		
 		$("#submitBtn").click(function(){
 			if($("#hoReceivePurpose").val()===""){
-				
+				alert("접수목적을 입력해주세요");
+				$("#hoReceivePurpose").focus();
+				return;
 			}
+			if($("#hoTreatSubjectCode option:selected").val()===""){
+				alert("진료과목을 선택해주세요");
+				return;
+			}
+			$("#receiveForm").submit();
 		});
 	});
 </script>
@@ -27,7 +34,7 @@
 	<h2>환자접수</h2>
 	주민번호
 	<input id="hoCitizenIdSearch" type="text" value="${hoCitizenId}" placeholder="주민번호" readonly="readonly">
-	<form action="<c:url value="/hospital/receive"/>" method="post">	
+	<form id="receiveForm" action="<c:url value="/hospital/receive"/>" method="post">	
 		<input id="hoCitizenId" type="hidden" name="hoCitizenId" value="${hoCitizenId}">	
 		<input id="hoPatientCode" type="hidden" name="hoPatientCode" value="${hoPatientCode}">
 		<div>
@@ -56,8 +63,8 @@
 		</div>
 		<div>
 			진료과목 :
-			<select name="hoTreatSubjectCode">
-				<option>:::선택하세요:::</option>
+			<select id="hoTreatSubjectCode" name="hoTreatSubjectCode">
+				<option value="">:::선택하세요:::</option>
 				<c:forEach items="${treatSubjectList}" var="treatSubjectList">
 					<option value="${treatSubjectList.hoTreatSubjectCode}">${treatSubjectList.hoTreatSubjectName}</option>
 				</c:forEach>
