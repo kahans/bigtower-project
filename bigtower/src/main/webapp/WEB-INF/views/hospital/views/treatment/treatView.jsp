@@ -7,11 +7,49 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+	$( document ).ready(function() {
+		
+		//질병 추가버튼 클릭시 이벤트
+		$(document).on('click','#diseaseNameAdd',function(){
+			var addSelect = $('#hiddenPrescription').html();
+			$(this).parents('#prescription').append(addSelect);	
+		});
+		
+		$(document).on('click','#diseaseNameRemove',function(){
+			$(this).parent('.addDisease').remove();		
+		});
+		
+		//약품 추가버튼 클릭시 이벤트
+		$(document).on('click','#medicineNameAdd',function(){
+			var addSelect = $('#hiddenMedicine').html();
+			$(this).parents('#medicine').append(addSelect);	
+		});
+		
+		$(document).on('click','#medicineNameRemove',function(){
+			$(this).parent('.addMedicine').remove();		
+		});
+		
+		// 제출버튼 클릭시(유효성검사)
+		$("#submitBtn").click(function(){
+			console.log($("#diseaseSelect option:selected").val());
+			if($("#diseaseSelect option:selected").val()==='0'){
+				alert("질병코드를 선택하세요!")
+				return;
+			}if($("#hoTreatmentContents").val()===""){
+				alert("진료내용을 입력하세요!");
+				return;
+			}
+			console.log("제출!!");
+			$("#treatForm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<!-- 진료 정보 보여주기 -->
 	<h3>진료 정보</h3>
-	<form action="<c:url value='/hospital/treatView'/>" method="post">
+	<form id="treatForm" action="<c:url value='/hospital/treatView'/>" method="post">
 		<input type="hidden" value="${hoTreat.hoTreatmentCode}" name="hoTreatmentCode">
 		<div>
 			의사명 :
@@ -35,7 +73,7 @@
 			질병 선택
 			<div id="prescription">
            		<div>
-            		<select name="diseaseSelect">
+            		<select id="diseaseSelect" name="diseaseSelect">
             			<option value="0">질병명</option>
 		           		<c:forEach items="${diseaseList}" var="diseaseList">
 							<option value="${diseaseList.hoDiseaseCode}">${diseaseList.hoDiseaseCode}(${diseaseList.hoDiseaseKor})</option>
@@ -62,7 +100,7 @@
 		</div>		
 			진료내용	
 		<div>			
-			<textarea rows="10" cols="50" name="hoTreatmentContents"></textarea>
+			<textarea id="hoTreatmentContents" rows="10" cols="50" name="hoTreatmentContents"></textarea>
 		</div>
 	
 		<!-- 검사 요청 -->
@@ -111,15 +149,15 @@
            		</div>
 				<div>
 					일일투약량 :
-					<input type="text" name="hoPrescriptionDailydose">
+					<input type="text" name="hoPrescriptionDailydose">mg/일
 				</div>
 				<div>
 					일일투약횟수 :
-					<input type="text" name="hoPrescriptionDailycount">
+					<input type="text" name="hoPrescriptionDailycount">회/일
 				</div>
 				<div>
 					총투약일수 :
-					<input type="text" name="hoPrescriptionTotalday">
+					<input type="text" name="hoPrescriptionTotalday">일
 				</div>
 				<div>
 					용법 :
@@ -140,15 +178,15 @@
             		<button type="button" id="medicineNameRemove">삭제</button>        
 					<div>
 						일일투약량 :
-						<input type="text" name="hoPrescriptionDailydose">
+						<input type="text" name="hoPrescriptionDailydose">mg/일
 					</div>
 					<div>
 						일일투약횟수 :
-						<input type="text" name="hoPrescriptionDailycount">
+						<input type="text" name="hoPrescriptionDailycount">회/일
 					</div>
 					<div>
 						총투약일수 :
-						<input type="text" name="hoPrescriptionTotalday">
+						<input type="text" name="hoPrescriptionTotalday">일
 					</div>
 					<div>
 						용법 :
@@ -173,29 +211,7 @@
 			예방접종일 : 
 			<input type="date" name="hoVaccineDate">
 		</div>
-		<input type="submit" value="진료 완료">
+		<input id="submitBtn" type="button" value="진료 완료">
 	</form>
-	
-	<script>
-		//질병 추가버튼 클릭시 이벤트
-		$(document).on('click','#diseaseNameAdd',function(){
-			var addSelect = $('#hiddenPrescription').html();
-			$(this).parents('#prescription').append(addSelect);	
-		});
-		
-		$(document).on('click','#diseaseNameRemove',function(){
-			$(this).parent('.addDisease').remove();		
-		});
-		
-		//약품 추가버튼 클릭시 이벤트
-		$(document).on('click','#medicineNameAdd',function(){
-			var addSelect = $('#hiddenMedicine').html();
-			$(this).parents('#medicine').append(addSelect);	
-		});
-		
-		$(document).on('click','#medicineNameRemove',function(){
-			$(this).parent('.addMedicine').remove();		
-		});
-	</script>
 </body>
 </html>
