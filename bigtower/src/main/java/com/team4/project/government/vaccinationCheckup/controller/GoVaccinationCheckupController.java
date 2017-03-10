@@ -35,7 +35,7 @@ public class GoVaccinationCheckupController {
 		logger.debug("객체 제대로 받았는지 확인 :"+goVaccinationResult); 
 		model.addAttribute("goVaccinationResult",goVaccinationResult);
 		
-		return "/hospital/views/government/gov_vaccineResult";
+		return "/hospital/views/government/vaccine/gov_vaccineResult";
 	}
 	
 	//citizenId를 입력받아 예방접종결과리스트를 가져옴
@@ -47,7 +47,7 @@ public class GoVaccinationCheckupController {
 		
 		List<GoVaccinationResult> goVaccinationResult = goVaccinationCheckupService.getListVaccinationResult(citizenId, doctorId);
 		model.addAttribute("goVaccinationResult",goVaccinationResult);
-		return "/hospital/views/government/gov_vaccineResult";
+		return "/hospital/views/government/vaccine/gov_vaccineResult";
 	}
 	
 	//doctorId를 입력받아 예방접종결과리스트를 가져오는 메소드
@@ -58,7 +58,7 @@ public class GoVaccinationCheckupController {
 		
 		List<GoVaccinationResult> goVaccinationResult = goVaccinationCheckupService.getListVaccinationResultByDoctorId(doctorId);
 		model.addAttribute("goVaccinationResult",goVaccinationResult);
-		return "/hospital/views/government/gov_vaccineResult";
+		return "/hospital/views/government/vaccine/gov_vaccineResult";
 	}
 	
 	//treatCode를 입력받아 하나의 건강검진결과를 가져옴
@@ -72,7 +72,7 @@ public class GoVaccinationCheckupController {
 		logger.debug("객체 제대로 받았는지 확인 :"+goCheckupResult); 
 		model.addAttribute("goVaccinationResult",goCheckupResult);
 		
-		return "/hospital/views/government/gov_vaccineResult";
+		return "/hospital/views/government/checkup/gov_checkupResult";
 	}
 	
 	//citizenId를 입력받아 건강검진결과리스트 가져옴
@@ -85,7 +85,7 @@ public class GoVaccinationCheckupController {
 		List<GoCheckup> goCheckupResult = goVaccinationCheckupService.getListCheckupResult(citizenId, doctorId);
 		logger.debug("객체 제대로 받았는지 확인 :"+goCheckupResult); 
 		model.addAttribute("goVaccinationResult",goCheckupResult);
-		return "/hospital/views/government/gov_vaccineResult";
+		return "/hospital/views/government/checkup/gov_listCheckupResult";
 	}
 	
 	//doctorId를 입력받아 건강검진결과리스트 가져옴
@@ -97,7 +97,7 @@ public class GoVaccinationCheckupController {
 		List<GoCheckup> goCheckupResult = goVaccinationCheckupService.getListCheckupResultByDoctorId(doctorId);
 		logger.debug("객체 제대로 받았는지 확인 :"+goCheckupResult); 
 		model.addAttribute("goVaccinationResult",goCheckupResult);
-		return "/hospital/views/government/gov_vaccineResult";
+		return "/hospital/views/government/checkup/gov_checkupResult";
 	}
 	
 }
