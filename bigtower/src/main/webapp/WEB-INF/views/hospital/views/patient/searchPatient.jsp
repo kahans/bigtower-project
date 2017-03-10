@@ -13,14 +13,13 @@
 	<form action="<c:url value='/hospital/searchPatient'/>" method="post">
 		<div>
 			주민번호 : 
-			<input type="text" id="idfirst" name="idfirst" value="900101">
+			<input type="text" id="idfirst" name="idfirst" value="900101" maxlength="6">
 			- 
-			<input type="text" id="idsecond" name="idsecond" value="1000001">
+			<input type="text" id="idsecond" name="idsecond" value="1000001" maxlength="7">
 		</div>
 		<br>
 		<div>
-			이름 : <input type="text" id="hoPatientName" name="hoPatientName"
-				value="도우너">
+			이름 : <input type="text" id="hoPatientName" name="hoPatientName" value="도우너">
 		</div>
 
 		<input type="submit" id="btn" name="btn">

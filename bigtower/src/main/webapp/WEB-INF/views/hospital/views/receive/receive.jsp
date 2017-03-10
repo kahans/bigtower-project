@@ -9,72 +9,44 @@
 <title>병원_환자접수</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>  
-    $( document ).ready(function() {
-    	function getContextPath() {
-    		var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-    		return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
-    	};
-
-	    //ajax실행
-    	$("#btn").bind("click",function(){
-    		if($('#hoCitizenIdSearch').val()==""){
-    			alert('값입력하세요');
-    			
-    		}
-    		console.log('getContextPath:'+getContextPath());
-    		console.log('location.host:'+location.host);
-    		console.log('location.href:'+location.href);
-    		console.log('파라미터의 값 : '+$('#hoCitizenIdSearch').val());
-    	    $.ajax({
-    	        url : getContextPath()+"/hospital/searchReceive",
-    	        type: "post",
-    	        data : { "hoCitizenId" : $("#hoCitizenIdSearch").val() },
-    	        success : function(data){
-    				//@ResponseBody 를 이용해서 이미 json객체로 넘어오기때문에 parse를 할필요가 없다.
-    	            //var data = JSON.parse(responseData); $("#goCitizenId").val(data.goCitizenId);
-    	            $("#hoCitizenId").val();
-    	            $("#hoPatientCode").val();
-    	            $("#hoHospitalCode").val();
-    	            $("#hoPatientName").val();
-    	            $("#hoPatientPhone").val();
-    	            $("#hoZipCode").val();
-    	            $("#hoPatientAddress").val();
-    	            $("#hoPatientDetailAddress").val();
-    	            if(!data){
-    	                alert("접수기록이 없는 회원입니다.");
-    	                return false;
-    	            }
-    	            $("#hoCitizenId").val(data.hoCitizenId);
-    	            $("#hoPatientCode").val(data.hoPatientCode);
-    	            $("#hoHospitalCode").val(data.hoHospitalCode);
-    	            $("#hoPatientName").val(data.hoPatientName);
-    	            $("#hoPatientPhone").val(data.hoPatientPhone);
-    	            $("#hoZipCode").val(data.hoZipCode);
-    	            $("#hoPatientAddress").val(data.hoPatientAddress);
-    	            $("#hoPatientDetailAddress").val(data.hoPatientDetailAddress);
-    	        }
-    	    });
-    	});
-    });
-</script>
 </head>
+<script>
+	$( document ).ready(function() {
+		$("#hoReceivePurpose").focus();
+	});
+</script>
 <body>
 
 	<h1>receive.jsp</h1>
 	<h2>환자접수</h2>
-	<input id="hoCitizenIdSearch" type="text" value="${hoCitizenId}" placeholder="주민번호">
-			<button id="btn">조회</button>
+	주민번호
+	<input id="hoCitizenIdSearch" type="text" value="${hoCitizenId}" placeholder="주민번호" readonly="readonly">
 	<form action="<c:url value="/hospital/receive"/>" method="post">	
-		<input id="hoCitizenId" type="hidden" name="hoCitizenId">	
-		<input id="hoPatientCode" type="hidden" name="hoPatientCode">
+		<input id="hoCitizenId" type="hidden" name="hoCitizenId" value="${hoCitizenId}">	
+		<input id="hoPatientCode" type="hidden" name="hoPatientCode" value="${hoPatientCode}">
 		<div>
 			병원코드 : 
-			<input id="hoHospitalCode" type="text" name="hoHospitalCode" value="${HOSPITALCODE}" placeholder="병원코드">ex)hospital_1 / hospital_2 ~ hospital_5
+			<input id="hoHospitalCode" type="text" name="hoHospitalCode" value="${HOSPITALCODE}" readonly="readonly">
+		</div>
+		<div>
+			환자명 : 
+			<input id="hoPatientName" type="text" name="hoPatientName" placeholder="이름" value="${hoPatientName}" readonly="readonly">
+		</div>
+		<div>
+			연락처 : 
+			<input id="hoPatientPhone" type="text" name="hoPatientPhone" placeholder="전화번호" value="${hoPatientPhone}" readonly="readonly">
+		</div>
+		<div>
+			주소 : 
+			<input type="text" value="${hoPatientAddress} ${hoPatientDetailAddress}" size="70" readonly="readonly">
+		</div>
+		<div>
+			우편번호 : 
+			<input type="text" value="${hoZipCode}" readonly="readonly">
 		</div>
 		<div>
 			접수목적 :
-			<input type="text" name="hoReceivePurpose" placeholder="ex)골절상">
+			<input id="hoReceivePurpose" type="text" name="hoReceivePurpose" value="감기몸살">ex)골절상
 		</div>
 		<div>
 			진료과목 :
@@ -85,17 +57,7 @@
 				</c:forEach>
 			</select>
 		</div>
-		<div>
-			환자명 : 
-			<input id="hoPatientName" type="text" name="hoPatientName" placeholder="이름">
-		</div>
-		<div>
-			연락처 : 
-			<input id="hoPatientPhone" type="text" name="hoPatientPhone" placeholder="전화번호">ex)010-1234-1234
-		</div>
-		<div>
-			<input type="submit" value="접수">
-		</div>
+		<input type="submit" value="접수">
 	</form>
 </body>
 </html>

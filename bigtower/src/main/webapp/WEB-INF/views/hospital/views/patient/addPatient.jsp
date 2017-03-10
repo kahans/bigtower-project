@@ -18,13 +18,13 @@
 			<tr>
 				<td>환자명 : </td>
 				<td>
-					<input type="text" name="hoPatientName" value="도우너">
+					<input type="text" name="hoPatientName" value="${hoPatientName}">
 				</td>
 			</tr>
 			<tr>
 				<td>주민번호 : </td>
 				<td>
-					<input type="text" id="hoCitizenId" name="hoCitizenId" placeholder="ex)910101-1234567" value="900101-1000001">
+					<input type="text" id="hoCitizenId" name="hoCitizenId" placeholder="ex)910101-1234567" value="${hoCitizenId}">
 					<button type="button" id="checkBtn">주민번호확인</button>
 				</td>
 			</tr>
@@ -129,7 +129,7 @@
     	            		$("#hoPatientPhone").focus();
 	    	            } else {
 	    	            	alert("등록되지 않은 주민번호입니다.");
-	    	            	$("#hoCitizenId").val('');
+	    	            	//$("#hoCitizenId").val('');
 	    	                $("#hoCitizenId").focus();
 	    	            	return false;
 	    	            }

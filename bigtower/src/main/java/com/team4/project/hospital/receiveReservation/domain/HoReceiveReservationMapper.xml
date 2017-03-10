@@ -61,9 +61,14 @@
  	<select id="selectPatientTest" resultType="com.team4.project.hospital.dto.HoPatient"
  								 parameterType="String">
  		SELECT 
- 			HO_HOSPITAL_CODE,
- 			HO_CITIZEN_ID,
- 			HO_PATIENT_NAME
+			ho_patient.HO_PATIENT_CODE,
+			ho_patient.HO_HOSPITAL_CODE,
+			ho_patient.HO_CITIZEN_ID,
+			ho_patient.HO_PATIENT_NAME,
+ 			ho_patient.HO_PATIENT_PHONE,
+ 			ho_patient.HO_ZIP_CODE,
+ 			ho_patient.HO_PATIENT_ADDRESS,
+ 			ho_patient.HO_PATIENT_DETAIL_ADDRESS
  		FROM
  		 ho_patient 
  		WHERE 
