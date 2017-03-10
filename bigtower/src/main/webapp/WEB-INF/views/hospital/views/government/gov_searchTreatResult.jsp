@@ -14,9 +14,9 @@
 
 <a href="<c:url value='/government/getListBloodTestResultByCitizenId?citizenId=${citizenId}'/>"><button type="button">혈액검사</button></a>
 <a href="<c:url value='/government/getListImageTestResultByCitizenId?citizenId=${citizenId}'/>"><button type="button">영상검사</button></a>
-<a href="<c:url value='/government/'/>"><button type="button">건강검진</button></a>
-<a href="<c:url value='/government/'/>"><button type="button">수술내역</button></a>
-<a href="<c:url value='/government/'/>"><button type="button">입원내역</button></a>
+<a href="<c:url value='/government/getListCheckupResultByCitizenId?citizenId=${citizenId}'/>"><button type="button">건강검진</button></a>
+<a href="<c:url value='/government/getListSurgeryByCitizenId?citizenId=${citizenId}'/>"><button type="button">수술내역</button></a>
+<a href="<c:url value='/government/getListHospitalizationByCitizenId?citizenId=${citizenId}'/>"><button type="button">입원내역</button></a>
 
 <c:forEach items="${getTreatList}" var="list">
 	<div>

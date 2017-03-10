@@ -11,11 +11,7 @@
 <body>
 <h1>gov_searchTreatResult.jsp</h1>
 <h4>진료내용조회 결과</h4>
-<button type="button">혈액검사</button>
-<button type="button">영상검사</button> 
-<button type="button">건강검진</button> 
-<button type="button">수술내역</button> 
-<button type="button">입원내역</button>  
+
 <c:forEach items="${getTreatList}" var="list">
 	<div>
 	진료코드	:	${list.goTreatCode} /
@@ -53,10 +49,12 @@
 	<div>
 	진료등록일	:	${list.goTreatRegistrationDate} /
 	</div>
-	<div style="display: none;">
-		<form id="citizenId" method="post">
-				주민번호 : ${list.goCitizenId}
-		</form>
+	<div>
+<a href="<c:url value='/government/getListBloodTestResultByCitizenId?citizenId=${list.goCitizenId}'/>"><button type="button">혈액검사</button></a>
+<a href="<c:url value='/government/getListImageTestResultByCitizenId?citizenId=${list.goCitizenId}'/>"><button type="button">영상검사</button></a>
+<a href="<c:url value='/government/getListCheckupResultByCitizenId?citizenId=${list.goCitizenId}'/>"><button type="button">건강검진</button></a>
+<a href="<c:url value='/government/getListSurgeryByCitizenId?citizenId=${list.goCitizenId}'/>"><button type="button">수술내역</button></a>
+<a href="<c:url value='/government/getListHospitalizationByCitizenId?citizenId=${list.goCitizenId}'/>"><button type="button">입원내역</button></a>  
 	 </div>
 </c:forEach>
 	

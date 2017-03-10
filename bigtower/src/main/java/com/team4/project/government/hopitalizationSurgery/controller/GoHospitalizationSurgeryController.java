@@ -56,7 +56,7 @@ public class GoHospitalizationSurgeryController {
 	}
 	
 	// 2.국민한명의 수술결과 리스트
-	@RequestMapping(value="/government/getListSurgeryByCitizenId", method=RequestMethod.POST,
+	@RequestMapping(value="/government/getListSurgeryByCitizenId", method=RequestMethod.GET,
 					produces = "text/json; charset=UTF-8")
 	public @ResponseBody String getListSurgeryByCitizenId(HttpSession session, String citizenId, Model model){
 		String doctorId = (String) session.getAttribute("DOCTORID");
@@ -90,7 +90,7 @@ public class GoHospitalizationSurgeryController {
 	}
 	
 	// 5.국민한명의 입퇴원결과 리스트
-	@RequestMapping(value="/government/getListHospitalizationByCitizenId", method=RequestMethod.POST,
+	@RequestMapping(value="/government/getListHospitalizationByCitizenId", method=RequestMethod.GET,
 					produces = "text/json; charset=UTF-8")
 	public @ResponseBody String getListHospitalizationByCitizenId(HttpSession session, String citizenId, Model model){
 		String doctorId = (String) session.getAttribute("DOCTORID");

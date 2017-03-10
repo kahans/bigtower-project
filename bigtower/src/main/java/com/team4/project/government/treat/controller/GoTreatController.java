@@ -59,7 +59,7 @@ public class GoTreatController {
 			
 			logger.debug("getTreatList "+getTreatList);
 			model.addAttribute("getTreatList",getTreatList);
-			return "/hospital/views/government/gov_searchTreatResult";
+			return "/hospital/views/government/gov_searchTreatResultByDoctorId";
 		}
 	
 	
