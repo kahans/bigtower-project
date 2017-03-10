@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
 import com.team4.project.government.diagnosisPrescription.domain.GoPrescription;
 import com.team4.project.government.hopitalizationSurgery.controller.GoHospitalizationSurgeryController;
 
-@RestController
+@Controller
 public class GoDiagnosisPrescriptionController {
 	private static final Logger logger = LoggerFactory.getLogger(GoHospitalizationSurgeryController.class);
 	private Gson gson = new Gson();
