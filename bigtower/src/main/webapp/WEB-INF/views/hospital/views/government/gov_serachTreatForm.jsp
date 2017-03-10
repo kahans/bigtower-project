@@ -17,7 +17,8 @@
 	<input type="submit" value="조회">
 </form>
 <br><br><br>
-<form action="getListTreatByDoctorId">
+
+<form action="<c:url value='/government/getListTreatByDoctorId'/>" method="post">
 	<input type="submit" value="내 환자 진료목록조회"/>
 </form>
 </body>
