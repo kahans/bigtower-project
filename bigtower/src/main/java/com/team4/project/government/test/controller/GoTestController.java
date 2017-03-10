@@ -80,10 +80,11 @@ public class GoTestController {
 
 	//treatCode를 사용하여 이미지테스트 결과 하나 받아옴
 	@RequestMapping(value="/government/getOneImageTestResultByTreatCode" , method=RequestMethod.POST, produces="text/json; charset=UTF-8")
-	public String getOneImageTestResult(String treatCode, Model model){
+	public String getOneImageTestResult(String treatCode, Model model, HttpSession session){
 		logger.debug("controller 에 매개변수로 받은 treatCode 확인 :"+treatCode);
+		String doctorId = (String) session.getAttribute("DOCTORID");
 		//treatCode를 사용하여 영상검사결과를 받아옴
-		GoImageTest getMediaTest = goTestService.getOneImageTestResult(treatCode);
+		GoImageTest getMediaTest = goTestService.getOneImageTestResult(treatCode, doctorId);
 		logger.debug("getMediaTest 확인 : "+getMediaTest);
 		//영상검사결과를 json타입으로 변형		
 		model.addAttribute("getMediaTest", getMediaTest);
@@ -92,15 +93,15 @@ public class GoTestController {
 	
 	//citizenId를 사용하여 영상검사결과리스트 조회
 	@RequestMapping(value="/government/getListImageTestResultByCitizenId" , method=RequestMethod.POST, produces="text/json; charset=UTF-8")
-	public String getListImageTestResult(String citizenId, Model model){
-		
+	public String getListImageTestResult(String citizenId, Model model, HttpSession session){
+		String doctorId = (String) session.getAttribute("DOCTORID");
 		logger.debug("controller 에 매개변수로 받은 treatCode 확인 :"+citizenId);
 		//citizenId를 사용하여 영상검사결과를 받아옴
-		List<GoImageTest> getMediaTest = goTestService.getListImageTestResult(citizenId);
+		List<GoImageTest> getMediaTest = goTestService.getListImageTestResult(citizenId, doctorId);
 		logger.debug("getMediaTest 확인 : "+getMediaTest);
 		//영상검사결과를 json타입으로 변형		
 		model.addAttribute("getMediaTest", getMediaTest);
-	return "/hospital/views/government/gov_listMediaTestResult";
+		return "/hospital/views/government/gov_listMediaTestResult";
 	}
 	
 	//doctorId로 영상검사결과리스트 조회
@@ -112,7 +113,7 @@ public class GoTestController {
 		logger.debug("getMediaTest 확인 : "+getMediaTest);
 		//영상검사결과를 json타입으로 변형		
 		model.addAttribute("getMediaTest", getMediaTest);		
-	return "/hospital/views/government/gov_listMediaTestResult";
+		return "/hospital/views/government/gov_listMediaTestResult";
 	}
 	
 	
