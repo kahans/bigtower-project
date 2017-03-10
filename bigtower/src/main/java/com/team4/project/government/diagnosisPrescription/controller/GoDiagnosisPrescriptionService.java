@@ -38,7 +38,7 @@ public class GoDiagnosisPrescriptionService {
 		logger.debug("매개변수 citizenId 확인 : "+citizenId); 
 		logger.debug("doctorId : "+doctorId);
 		String url = ContextParam.context.getInitParameter("receiveUrl");
-		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListBloodTestResultByCitizenId");
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListDiagnosisByCitizenId");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("doctorId", doctorId);
 		map.put("citizenId", citizenId);
@@ -66,7 +66,7 @@ public class GoDiagnosisPrescriptionService {
 		logger.debug("매개변수 citizenId 확인 : "+citizenId); 
 		logger.debug("doctorId : "+doctorId);
 		String url = ContextParam.context.getInitParameter("receiveUrl");
-		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListBloodTestResultByCitizenId");
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListPrescriptionByCitizenId");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("doctorId", doctorId);
 		map.put("citizenId", citizenId);
