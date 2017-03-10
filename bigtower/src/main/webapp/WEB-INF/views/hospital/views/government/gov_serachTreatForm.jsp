@@ -13,7 +13,7 @@
 <h5>주민번호로 조회</h5>
 <form action="<c:url value="/government/getListTreatByCitizenId"/>" method="post">
 
-	<input type="text" name="citizenId">
+	<input type="text" name="citizenId" value="900101-1000001">
 	<input type="submit" value="조회">
 </form>
 <br><br><br>
