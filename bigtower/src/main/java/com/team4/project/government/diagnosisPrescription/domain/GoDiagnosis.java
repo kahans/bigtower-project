@@ -6,17 +6,17 @@ import com.team4.project.government.dto.HangleInfo;
 
 public class GoDiagnosis extends HangleInfo{
 
-	private String goDiagnosisCode;
-	private String goTreatCode;
-	private String goDiseaseCode;
+	protected String goDiagnosisCode;
+	protected String goTreatCode;
+	protected String goDiseaseCode;
 
 	// 조인문 데이터
-	private String goDiseaseKor;
+	protected String goDiseaseKor;
 	/* 날짜 포멧을 하여 원하는 형식으로 표기 */
 	@DateTimeFormat(pattern = "YY-MM-DD")
-	private String goTreatmentWriteDate;
+	protected String goTreatmentWriteDate;
 	@DateTimeFormat(pattern = "YY-MM-DD")
-	private String goDiagnosisGoRegistrationDate;
+	protected String goDiagnosisGoRegistrationDate;
 	
 	public String getGoDiagnosisCode() {
 		return goDiagnosisCode;

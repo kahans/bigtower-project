@@ -36,6 +36,39 @@
 		WHERE go_diagnosis.GO_TREAT_CODE = #{treatCode}
 	</select>
 	
+	<!-- 주민번호로 진단리스트 -->
+	<select id="selectListDiagnosisByCitizenId" parameterType="String"
+	resultType="com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis">
+		SELECT
+			go_diagnosis.GO_DIAGNOSIS_CODE,
+			go_diagnosis.GO_TREAT_CODE,
+			go_diagnosis.GO_DISEASE_CODE,
+			go_diagnosis.GO_TREATMENT_WRITE_DATE,
+			go_diagnosis.GO_DIAGNOSIS_GO_REGISTRATION_DATE,
+			go_disease.GO_DISEASE_KOR,
+			go_hospital.GO_HOSPITAL_NAME,
+			go_hospital.GO_HOSPITAL_ADDRESS,
+			go_citizen.GO_CITIZEN_NAME,
+			go_doctor.GO_DOCTOR_NAME,
+			go_treat_subject.GO_TREAT_SUBJECT_NAME
+		FROM go_diagnosis
+
+		JOIN go_treat
+			ON go_diagnosis.GO_TREAT_CODE = go_treat.GO_TREAT_CODE
+		JOIN go_hospital
+			ON go_treat.GO_HOSPITAL_ID = go_hospital.GO_HOSPITAL_ID
+		JOIN go_doctor
+			ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID	
+		JOIN go_citizen
+			ON go_treat.GO_CITIZEN_id = go_citizen.GO_CITIZEN_id
+		JOIN go_treat_subject
+			ON go_doctor.GO_TREAT_SUBJECT_CODE = go_treat_subject.GO_TREAT_SUBJECT_CODE
+		JOIN go_disease
+			ON go_diagnosis.GO_DISEASE_CODE = go_disease.GO_DISEASE_CODE
+		WHERE go_citizen.GO_CITIZEN_ID=#{citizenId}
+		ORDER BY go_diagnosis.GO_TREATMENT_WRITE_DATE DESC
+	</select>
+	
 	<!-- 진료코드로 처방리스트 -->
 	<select id="selectListPrescriptionByTreatCode" parameterType="String"
 	resultType="com.team4.project.government.diagnosisPrescription.domain.GoPrescription">
@@ -72,6 +105,43 @@
 		
 		WHERE go_prescription.GO_TREAT_CODE = #{treatCode}
 	</select>
-	
+
+	<!-- 주민번호로 처방리스트 -->
+	<select id="selectListPrescriptionByCitizenId" parameterType="String"
+	resultType="com.team4.project.government.diagnosisPrescription.domain.GoPrescription">
+		SELECT
+			go_prescription.GO_PRESCRIPTION_RESULT_CODE,
+			go_prescription.GO_TREAT_CODE,
+			go_prescription.GO_MEDICINE_CODE,
+			go_prescription.GO_PRESCRIPTION_RESULT_INJECTION_NUMBER,
+			go_prescription.GO_PRESCRIPTION_RESULT_DOSAGE,
+			go_prescription.GO_PRESCRIPTION_RESULT_TOTAL_DATE,
+			go_prescription.GO_PRESCRIPTION_RESULT_USAGE,
+			go_prescription.GO_PRESCRIPTION_RESULT_WRITE_DATE,
+			go_prescription.GO_PRESCRIPTION_RESULT_GO_REGISTRATION_DATE,
+			go_medicine.GO_MEDICINE_NAME,
+			go_hospital.GO_HOSPITAL_NAME,
+			go_hospital.GO_HOSPITAL_ADDRESS,
+			go_citizen.GO_CITIZEN_NAME,
+			go_doctor.GO_DOCTOR_NAME,
+			go_treat_subject.GO_TREAT_SUBJECT_NAME
+		FROM go_prescription
+
+		JOIN go_treat
+			ON go_prescription.GO_TREAT_CODE = go_treat.GO_TREAT_CODE
+		JOIN go_hospital
+			ON go_treat.GO_HOSPITAL_ID = go_hospital.GO_HOSPITAL_ID
+		JOIN go_doctor
+			ON go_treat.GO_DOCTOR_ID = go_doctor.GO_DOCTOR_ID	
+		JOIN go_citizen
+			ON go_treat.GO_CITIZEN_id = go_citizen.GO_CITIZEN_id
+		JOIN go_treat_subject
+			ON go_doctor.GO_TREAT_SUBJECT_CODE = go_treat_subject.GO_TREAT_SUBJECT_CODE
+		JOIN go_medicine
+			ON go_medicine.GO_MEDICINE_CODE = go_prescription.GO_MEDICINE_CODE
+		
+		WHERE go_citizen.GO_CITIZEN_ID=#{citizenId}
+		ORDER BY go_prescription.GO_PRESCRIPTION_RESULT_WRITE_DATE DESC
+	</select>
 	
 </mapper>

@@ -20,9 +20,18 @@ public class GoDiagnosisPrescriptionDao {
 		return sql.selectList("goDiagnosisPrescription.selectListDiagnosisByTreatCode", treatCode);
 	}
 	
+	// 주민번호로 진단결과 가져오기
+	public List<GoDiagnosis> selectListDiagnosisByCitizenId(String citizenId){
+		return sql.selectList("goDiagnosisPrescription.selectListDiagnosisByCitizenId", citizenId);
+	}
+	
 	// 진료코드로 처방결과 가져오기
 	public List<GoPrescription> selectListPrescriptionByTreatCode(String treatCode){
 		return sql.selectList("goDiagnosisPrescription.selectListPrescriptionByTreatCode", treatCode);
 	}
 	
+	// 주민번호로 처방결과 가져오기
+	public List<GoPrescription> selectListPrescriptionByCitizenId(String citizenId){
+		return sql.selectList("goDiagnosisPrescription.selectListPrescriptionByCitizenId", citizenId);
+	}
 }

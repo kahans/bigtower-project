@@ -5,17 +5,26 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.team4.project.government.dto.HangleInfo;
 
 public class GoPrescription extends HangleInfo{
-	private String goPrescriptionResultCode;
-	private String goTreatCode;
-	private String goMedicineCode;
-	private String goPrescriptionResultInjectionNumber;
-	private String goPrescriptionResultDosage;
-	private String goPrescriptionResultUsage;
+	protected String goPrescriptionResultCode;
+	protected String goTreatCode;
+	protected String goMedicineCode;
+	protected String goPrescriptionResultInjectionNumber;
+	protected String goPrescriptionResultDosage;
+	protected String goPrescriptionResultUsage;
+	protected String goPrescriptionResultTotalDate;
 	/* 날짜 포멧을 하여 원하는 형식으로 표기 */
 	@DateTimeFormat(pattern = "YY-MM-DD")
 	private String goPrescriptionResultWriteDate;
 	@DateTimeFormat(pattern = "YY-MM-DD")
 	private String goPrescriptionResultGoRegistrationDate;
+	
+	
+	public String getGoPrescriptionResultTotalDate() {
+		return goPrescriptionResultTotalDate;
+	}
+	public void setGoPrescriptionResultTotalDate(String goPrescriptionResultTotalDate) {
+		this.goPrescriptionResultTotalDate = goPrescriptionResultTotalDate;
+	}
 	public String getGoPrescriptionResultCode() {
 		return goPrescriptionResultCode;
 	}
@@ -69,12 +78,10 @@ public class GoPrescription extends HangleInfo{
 		return "GoPrescription [goPrescriptionResultCode=" + goPrescriptionResultCode + ", goTreatCode=" + goTreatCode
 				+ ", goMedicineCode=" + goMedicineCode + ", goPrescriptionResultInjectionNumber="
 				+ goPrescriptionResultInjectionNumber + ", goPrescriptionResultDosage=" + goPrescriptionResultDosage
-				+ ", goPrescriptionResultUsage=" + goPrescriptionResultUsage + ", goPrescriptionResultWriteDate="
-				+ goPrescriptionResultWriteDate + ", goPrescriptionResultGoRegistrationDate="
-				+ goPrescriptionResultGoRegistrationDate + ", goHospitalName=" + goHospitalName + ", goHospitalAddress="
-				+ goHospitalAddress + ", goCitizenName=" + goCitizenName + ", goDoctorName=" + goDoctorName
-				+ ", goTreatSubjectName=" + goTreatSubjectName + "]";
+				+ ", goPrescriptionResultUsage=" + goPrescriptionResultUsage + ", goPrescriptionResultTotalDate="
+				+ goPrescriptionResultTotalDate + ", goPrescriptionResultWriteDate=" + goPrescriptionResultWriteDate
+				+ ", goPrescriptionResultGoRegistrationDate=" + goPrescriptionResultGoRegistrationDate + "]";
 	}
-	
+
 	
 }
