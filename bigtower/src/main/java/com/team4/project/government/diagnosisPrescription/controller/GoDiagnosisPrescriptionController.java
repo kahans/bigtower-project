@@ -63,7 +63,7 @@ public class GoDiagnosisPrescriptionController {
 	}
 	
 	// 3.주민번호로 진단결과 가져오기
-	@RequestMapping(value="/government/getListDiagnosisByCitizenId", method=RequestMethod.GET,
+	@RequestMapping(value="/government/getListDiagnosisByCitizenId",
 			produces = "text/json; charset=UTF-8")
 	public String getListDiagnosisByCitizenId(String citizenId,Model model, HttpSession session){
 		logger.debug("getListDiagnosisByCitizenId GET 진입");
@@ -72,7 +72,7 @@ public class GoDiagnosisPrescriptionController {
 		List<GoDiagnosis> listDiagnosis = goDPService.getListDiagnosisByCitizenId(citizenId, doctorId);
 		logger.debug("listDiagnosis :"+listDiagnosis);;
 		model.addAttribute("listDiagnosis", listDiagnosis);
-		return "/hospital/views/government/diagnosis/gov_diagnosis";
+		return "/hospital/views/government/diagnosis/gov_listDiagnosisResult";
 	}
 
 	// 4.주민번호로 처방결과 가져오기
@@ -85,7 +85,7 @@ public class GoDiagnosisPrescriptionController {
 		List<GoPrescription> listPrescription = goDPService.getListPrescriptionByCitizenId(citizenId, doctorId);
 		logger.debug("listPrescription :"+listPrescription);;
 		model.addAttribute("listPrescription", listPrescription);
-		return "/hospital/views/government/prescription/gov_prescription";
+		return "/hospital/views/government/prescription/gov_listPrescriptionResult";
 	}
 	
 }

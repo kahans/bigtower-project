@@ -32,7 +32,7 @@ public class GoTreatController {
 	// 검색 폼
 	@RequestMapping(value="/government/searchTreat", method=RequestMethod.GET)
 	public String searchForm(){
-		return "/hospital/views/government/gov_serachTreatForm";
+		return "/hospital/views/government/treat/gov_serachTreatForm";
 	}
 
 	// 한사람의 진료리스트
@@ -46,7 +46,7 @@ public class GoTreatController {
 			logger.debug("getTreatList"+getTreatList);
 			model.addAttribute("citizenId",citizenId);
 			model.addAttribute("getTreatList",getTreatList);
-			return "/hospital/views/government/gov_searchTreatResult";
+			return "/hospital/views/government/treat/gov_searchTreatResult";
 		}
 	
 	// 한명의 의사에게 진료받은 여러사람의 진료리스트
@@ -59,20 +59,8 @@ public class GoTreatController {
 			
 			logger.debug("getTreatList "+getTreatList);
 			model.addAttribute("getTreatList",getTreatList);
-			return "/hospital/views/government/gov_searchTreatResultByDoctorId";
+			return "/hospital/views/government/treat/gov_searchTreatResultByDoctorId";
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	
 	// 한사람의 하나의 진료정보
 	@RequestMapping(value="/government/getOneTreatByTreatCode", method=RequestMethod.POST,
@@ -83,7 +71,6 @@ public class GoTreatController {
 		logger.debug(goSearchTreatSub);
 		return goSearchTreatSub;
 	}
-
 	
 /*	
 	
