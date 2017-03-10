@@ -1,6 +1,5 @@
 package com.team4.project.hospital.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;

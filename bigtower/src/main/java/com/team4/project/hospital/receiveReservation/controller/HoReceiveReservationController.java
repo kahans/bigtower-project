@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTreatSubject;
-import com.team4.project.hospital.receiveReservation.domain.HoReceive;
 import com.team4.project.hospital.receiveReservation.domain.HoReceiveSub;
 import com.team4.project.util.GetReferenceData;
 
@@ -30,13 +29,19 @@ public class HoReceiveReservationController {
 	
 	//접수폼 보여주기
 	@RequestMapping(value="/hospital/receive", method=RequestMethod.GET)
-	public String addOneReceive(Model model,
-			HttpSession session,
-			@RequestParam(value="hoCitizenId", required=false)String hoCitizenId){
+	public String addOneReceive(Model model, HttpSession session,
+			String hoCitizenId, String hoPatientName, String hoPatientPhone,
+			String hoPatientAddress, String hoPatientDetailAddress, String hoZipCode, String hoPatientCode){
 		String doctorId = (String) session.getAttribute("DOCTORID");
 		List<HoTreatSubject> treatSubjectList = GetReferenceData.getTreatSubjectCode(doctorId);
 		System.out.println("treatSubjectList :" + treatSubjectList);
 		model.addAttribute("hoCitizenId",hoCitizenId);
+		model.addAttribute("hoPatientName",hoPatientName);
+		model.addAttribute("hoPatientPhone",hoPatientPhone);
+		model.addAttribute("hoPatientAddress",hoPatientAddress);
+		model.addAttribute("hoPatientDetailAddress",hoPatientDetailAddress);
+		model.addAttribute("hoZipCode",hoZipCode);
+		model.addAttribute("hoPatientCode",hoPatientCode);
 		model.addAttribute("treatSubjectList",treatSubjectList);
 		logger.debug("addPatient GET");
 		return "/hospital/views/receive/receive";
@@ -79,28 +84,36 @@ public class HoReceiveReservationController {
 	
 	//초진, 재진 조회
 	@RequestMapping(value="/hospital/searchPatient", method=RequestMethod.POST)
-	public String searchOnePatientTest(HoPatient hp, HttpSession session, Model model, RedirectAttributes redirectAttributes,
+	public String searchOnePatientTest(String hoPatientName, HttpSession session, Model model, RedirectAttributes redirectAttributes,
 										@RequestParam(value="idfirst", required=false) String idfirst,
-										@RequestParam(value="idsecond", required=false) String idsecond
-			){
+										@RequestParam(value="idsecond", required=false) String idsecond){
 		logger.debug("searchOnePatientTest POST 데이터 보내기");
 		//뷰에서 받은 주민번호를 controller에서 처리를 한다.
 		//앞,뒤로 받은 주민번호를 하나의 문자열로 합치고, DTO에 set으로 세팅한다.
 		String citizenId = idfirst+"-"+idsecond;
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		System.out.println("주민번호 : "+citizenId);
+		HoPatient hp = new HoPatient();
 		hp.setHoCitizenId(citizenId);
 		hp.setHoHospitalCode(hoHospitalCode);
+		hp.setHoPatientName(hoPatientName);
 		
 		//dto에 들어간 데이터를 확인
 		System.out.println(hp.toString());
 		hp = hoRRService.searchPatientTest(hp);
 		System.out.println("mapper에서온 손님 : "+hp);
 		if(hp!=null){ //널이 아니면 접수등록으로 이동한다.
-			String hoCitizenId = hp.getHoCitizenId();
-			redirectAttributes.addAttribute("hoCitizenId",hoCitizenId);
+			redirectAttributes.addAttribute("hoCitizenId",hp.getHoCitizenId());
+			redirectAttributes.addAttribute("hoPatientName",hp.getHoPatientName());
+			redirectAttributes.addAttribute("hoPatientPhone",hp.getHoPatientPhone());
+			redirectAttributes.addAttribute("hoPatientAddress",hp.getHoPatientAddress());
+			redirectAttributes.addAttribute("hoPatientDetailAddress",hp.getHoPatientDetailAddress());
+			redirectAttributes.addAttribute("hoZipCode",hp.getHoZipCode());
+			redirectAttributes.addAttribute("hoPatientCode",hp.getHoPatientCode());
 			return "redirect:/hospital/receive";
 		}else{ //초진을 경우 null로 되어 있는 경우 환자를 등록 뷰로 이동한다.
+			model.addAttribute("hoCitizenId", citizenId);
+			model.addAttribute("hoPatientName", hoPatientName);
 			return "/hospital/views/patient/addPatient";
 		}
 	}

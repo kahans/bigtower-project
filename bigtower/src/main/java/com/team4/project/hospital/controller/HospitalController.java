@@ -68,7 +68,9 @@ public class HospitalController {
 	
 	//환자등록 페이지
 	@RequestMapping(value="/hospital/addPatient", method=RequestMethod.GET)
-	public String addPatient(){
+	public String addPatient(String hoCitizenId, String hoPatientName, Model model){
+		model.addAttribute("hoCitizenId", hoCitizenId);
+		model.addAttribute("hoPatientName", hoPatientName);
 		return "/hospital/views/patient/addPatient";
 	}
 	
