@@ -32,32 +32,34 @@ public class GoTreatController {
 	// 검색 폼
 	@RequestMapping(value="/government/searchTreat", method=RequestMethod.GET)
 	public String searchForm(){
-		return "/hospital/views/government/gov_serachForm";
+		return "/hospital/views/government/gov_serachTreatForm";
 	}
-	
-	// 검색 결과
-	@RequestMapping(value="/government/getSearchResult", method=RequestMethod.POST)
-	public String getSearchResult(String citizenId, Model model){
-		logger.debug("citizenId:"+citizenId);
-		String url = ContextParam.context.getInitParameter("receiveUrl");
-		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListTreatByCitizenId");
-		// 원래 세션에서 받아와야함
-		String doctorId = "";
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("doctorId", doctorId);
-		map.put("citizenId", citizenId);
-		try {
-			String list = conn.HttpUrlPOST(map);	//여기서 전송 해서 String으로 받아
-			logger.debug("list:"+list);
-			List<GoTreat> treatList = gson.fromJson(list, new TypeToken<List<GoTreat>>(){}.getType());
-			logger.debug("treatList:"+treatList);
-			model.addAttribute("treatList", treatList);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+	// 한사람의 진료리스트
+		@RequestMapping(value="/government/getListTreatByCitizenId", method=RequestMethod.POST,
+						produces = "text/json; charset=UTF-8")
+		public String getListTreatByCitizenId(String citizenId, HttpSession session,Model model) {
+			String doctorId = (String) session.getAttribute("DOCTORID");
+			logger.debug("goCitizenI:"+ citizenId);
+			logger.debug("doctorId : "+doctorId);
+			List<GoTreat> getTreatList = goTCService.getListTreatByCitizenId(citizenId,doctorId);
+			logger.debug("getTreatList"+getTreatList);
+			model.addAttribute("getTreatList",getTreatList);
+			return "/hospital/views/government/gov_searchTreatResult";
 		}
-		return "/hospital/views/government/gov_searchTreatResult";
-	}
+	
+	// 한명의 의사에게 진료받은 여러사람의 진료리스트
+		@RequestMapping(value="/government/getListTreatByDoctorId", method=RequestMethod.POST,
+						produces = "text/json; charset=UTF-8")
+		public String getListTreatByDoctorId(HttpSession session, Model model) {
+			String doctorId = (String) session.getAttribute("DOCTORID");
+			logger.debug("doctorId:"+doctorId);
+			List<GoTreat> getTreatList = goTCService.getListTreatByDoctorId(doctorId);
+			
+			logger.debug("getTreatList "+getTreatList);
+			model.addAttribute("getTreatList",getTreatList);
+			return "/hospital/views/government/gov_searchTreatResult";
+		}
 	
 	
 	
@@ -69,21 +71,7 @@ public class GoTreatController {
 	
 	
 	
-	
-	
-	
-	
-	
-	// 한사람의 하나의 진료정보(test)
-	@RequestMapping(value="/government/getOneTreatByTreatCode", method=RequestMethod.GET,
-					produces = "text/json; charset=UTF-8")
-	public String getOneTreatByTreatCode(String treatCode, String test){
-		logger.debug("진료코드 : "+treatCode);
-		logger.debug(goTCService.getOneTreat(treatCode).toString());
-		String goSearchTreatSub  = gson.toJson(goTCService.getOneTreat(treatCode));
-		logger.debug(goSearchTreatSub);
-		return goSearchTreatSub;
-	}
+
 	
 	// 한사람의 하나의 진료정보
 	@RequestMapping(value="/government/getOneTreatByTreatCode", method=RequestMethod.POST,
@@ -94,66 +82,7 @@ public class GoTreatController {
 		logger.debug(goSearchTreatSub);
 		return goSearchTreatSub;
 	}
-	
-	// 한사람의 진료리스트(test)
-	@RequestMapping(value="/government/getListTreatByCitizenId", method=RequestMethod.GET,
-					produces = "text/json; charset=UTF-8")
-	public String getListTreatByCitizenId(String citizenId, String test) {
-		logger.debug("goCitizenI:"+ citizenId);
-		List<GoTreat> goTreatList = goTCService.getListTreatByCitizenId(citizenId);
-		String list = gson.toJson(goTreatList);
-		logger.debug("list : "+ list);
-		return list;
-	}
-	
-	// 한사람의 진료리스트
-	@RequestMapping(value="/government/getListTreatByCitizenId", method=RequestMethod.POST,
-					produces = "text/json; charset=UTF-8")
-	public String getListTreatByCitizenId(String citizenId) {
-		logger.debug("goCitizenI:"+ citizenId);
-		List<GoTreat> goTreatList = goTCService.getListTreatByCitizenId(citizenId);
-		String goTreatListJson = gson.toJson(goTreatList);
-		logger.debug("listJson : "+ goTreatListJson);
-		return goTreatListJson;
-	}
-	
 
-	// 한명의 의사에게 진료받은 여러사람의 진료리스트(test)
-	@RequestMapping(value="/government/getListTreatByDoctorId", method=RequestMethod.GET,
-					produces = "text/json; charset=UTF-8")
-	public String getListTreatByDoctorId(String doctorId, String test) {
-		logger.debug("doctorId:"+doctorId);
-		List<GoTreat> goTreatList = goTCService.getListTreatByDoctorId(doctorId);
-		String goTreatListJson = gson.toJson(goTreatList);
-		logger.debug("listJson : "+ goTreatListJson);
-		return goTreatListJson;
-	}
-	
-	// 한명의 의사에게 진료받은 여러사람의 진료리스트
-	@RequestMapping(value="/government/getListTreatByDoctorId", method=RequestMethod.POST,
-					produces = "text/json; charset=UTF-8")
-	public String getListTreatByDoctorId(String doctorId) {
-		logger.debug("doctorId:"+doctorId);
-		List<GoTreat> goTreatList = goTCService.getListTreatByDoctorId(doctorId);
-		String goTreatListJson = gson.toJson(goTreatList);
-		logger.debug("listJson : "+ goTreatListJson);
-		return goTreatListJson;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 /*	
 	

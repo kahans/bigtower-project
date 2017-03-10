@@ -11,7 +11,7 @@
 <h1>gov_searchTreatResult.jsp</h1>
 <h4>진료내용조회 결과</h4>
 
-<c:forEach items="${treatList}" var="list">
+<c:forEach items="${getTreatList}" var="list">
 	<div>
 	진료코드	:	${list.goTreatCode} /
 	</div>
@@ -40,5 +40,6 @@
 	정부DB등록일	:	${list.goTreatGoRegistrationDate}
 	</div>
 </c:forEach>
+<!-- 	 <a href="" <button type="button" ></button></a> --> 
 </body>
 </html>
