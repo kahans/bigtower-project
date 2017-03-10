@@ -35,7 +35,7 @@ public class GetReferenceData {
 				HoMedicine hm = new HoMedicine();
 				hm.setHoMedicineCode((String)resultMap.get(i).get("goMedicineCode"));
 				hm.setHoMedicineName((String)resultMap.get(i).get("goMedicineName"));
-				System.out.println("hm:"+hm);
+				//System.out.println("hm:"+hm);
 				list.add(hm);
 			}
 		} catch (Exception e) {
@@ -63,7 +63,7 @@ public class GetReferenceData {
 				hd.setHoDiseaseCode((String)resultMap.get(i).get("goDiseaseCode"));
 				hd.setHoDiseaseKor((String)resultMap.get(i).get("goDiseaseKor"));
 				hd.setHoDiseaseEng((String)resultMap.get(i).get("goDiseaseEng"));
-				System.out.println("hd:"+hd);
+				//System.out.println("hd:"+hd);
 				list.add(hd);
 			}
 		} catch (Exception e) {
@@ -89,7 +89,7 @@ public class GetReferenceData {
 				HoTreatSubject hts = new HoTreatSubject();
 				hts.setHoTreatSubjectCode((String)resultMap.get(i).get("goTreatSubjectCode"));
 				hts.setHoTreatSubjectName((String)resultMap.get(i).get("goTreatSubjectName"));
-				System.out.println("hts:"+hts);
+				//System.out.println("hts:"+hts);
 				list.add(hts);
 			}
 		} catch (Exception e) {
@@ -115,7 +115,7 @@ public class GetReferenceData {
 				HoOperationType hot = new HoOperationType();
 				hot.setHoOperationTypeCode((String)resultMap.get(i).get("goSurgeryCode"));
 				hot.setHoOperationTypeName((String)resultMap.get(i).get("goSurgeryName"));
-				System.out.println("hot:"+hot);
+				//System.out.println("hot:"+hot);
 				list.add(hot);
 			}
 		} catch (Exception e) {
@@ -143,7 +143,7 @@ public class GetReferenceData {
 				hv.setHoVaccineTypeCode((String)resultMap.get(i).get("goVaccinationCode"));
 				hv.setHoVaccineTypeDegree((Double)resultMap.get(i).get("goVaccinationDegree"));
 				hv.setHoVaccineTypeName((String)resultMap.get(i).get("goVaccinationName"));
-				System.out.println("hv:"+hv);
+				//System.out.println("hv:"+hv);
 				list.add(hv);
 			}
 		} catch (Exception e) {

@@ -16,6 +16,7 @@
 	<context-param>
 		<param-name>receiveUrl</param-name>
 		<param-value>http://loverman85.cafe24.com</param-value>
+		<!-- <param-value>http://localhost</param-value> -->
 	</context-param>
 	<context-param>
 		<param-name>sendUrl</param-name>

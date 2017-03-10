@@ -111,16 +111,22 @@ public class HoTreatChartService {
 	
 	//진료 상세보기에서 진료업데이트
 	public int updateTreat(Map<String, Object> map){
+		HoPrescription hoPrescription = new HoPrescription();
 		//각각 DAO로 분기
 		HoTreat hoTreat = (HoTreat) map.get("hoTreat");
 		String hoTreatmentCode = hoTreat.getHoTreatmentCode();
 		String checkHospitalization = (String) map.get("checkHospitalization");
 		HoOperation hoOperation = (HoOperation) map.get("hoOperation");
-		HoPrescription hoPrescription = (HoPrescription) map.get("hoPrescription");
 		HoVaccine hoVaccine = (HoVaccine) map.get("hoVaccine");
 		List<String> testList = (List<String>) map.get("testList");
 		List<String> diseaseList = (List<String>) map.get("diseaseList");
-		List<String> medicineList = (List<String>) map.get("medicineList");
+		// 처방들
+		List<String> hoPrescriptionDailydose = (List<String>) map.get("hoPrescriptionDailydose");
+		List<String> hoPrescriptionDailycount = (List<String>) map.get("hoPrescriptionDailycount");
+		List<String> hoPrescriptionTotalday = (List<String>) map.get("hoPrescriptionTotalday");
+		List<String> hoPrescriptionUsage = (List<String>) map.get("hoPrescriptionUsage");
+		List<String> hoMedicineCode = (List<String>) map.get("hoMedicineCode");
+		
 		
 		// 검사코드가 0이 아니면(검사요청을 선택했으면)
 		if(testList!=null){
@@ -147,10 +153,15 @@ public class HoTreatChartService {
 			}
 		}
 		// 처방결과등록이 있으면
-		if(!medicineList.get(0).equals("0")){
+		if(!hoMedicineCode.get(0).equals("0")){
 			int result = 0;
-			for(int i=0; i<medicineList.size()-1;i++){
-				hoPrescription.setHoMedicineCode(medicineList.get(i));
+			for(int i=0; i<hoMedicineCode.size()-1;i++){
+				hoPrescription.setHoPrescriptionDailydose(hoPrescriptionDailydose.get(i));
+				hoPrescription.setHoPrescriptionDailycount(hoPrescriptionDailycount.get(i));
+				hoPrescription.setHoPrescriptionTotalday(hoPrescriptionTotalday.get(i));
+				hoPrescription.setHoPrescriptionUsage(hoPrescriptionUsage.get(i));
+				hoPrescription.setHoMedicineCode(hoMedicineCode.get(i));
+				hoPrescription.setHoTreatmentCode(hoTreatmentCode);
 				result += diagnosisPrescriptionDao.addPrescription(hoPrescription);
 			}
 			if(result > 0 ){

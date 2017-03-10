@@ -38,7 +38,7 @@
             		<select name="diseaseSelect">
             			<option value="0">질병명</option>
 		           		<c:forEach items="${diseaseList}" var="diseaseList">
-							<option value="${diseaseList.hoDiseaseCode}">${diseaseList.hoDiseaseKor}</option>
+							<option value="${diseaseList.hoDiseaseCode}">${diseaseList.hoDiseaseCode}(${diseaseList.hoDiseaseKor})</option>
 						</c:forEach>                           			
             		</select>
             		<button type="button" id="diseaseNameAdd">추가</button>
@@ -52,7 +52,7 @@
             			<!-- +버튼 눌렀을 때 추가되는 selectBox 마찬가지로 for문으로 list값 가져와야함 -->
             			<option value="0">질병명</option>
             			<c:forEach items="${diseaseList}" var="diseaseList">
-							<option value="${diseaseList.hoDiseaseCode}">${diseaseList.hoDiseaseKor}</option>
+							<option value="${diseaseList.hoDiseaseCode}">${diseaseList.hoDiseaseCode}(${diseaseList.hoDiseaseKor})</option>
 						</c:forEach>                           			
             		</select>
             		<button type="button" id="diseaseNameAdd">추가</button>
@@ -89,54 +89,71 @@
 			<select name="hoOperationTypeCode">
 				<option value="0">:::수술을 선택하시오:::</option>
 				<c:forEach items="${operationList}" var="operationList">
-					<option value="${operationList.hoOperationTypeCode}">${operationList.hoOperationTypeName}</option>
+					<option value="${operationList.hoOperationTypeCode}">${operationList.hoOperationTypeCode}(${operationList.hoOperationTypeName})</option>
 				</c:forEach>
 			</select>
 		</div>
 	
 		<!-- 처방 요청 -->
 		<h3>처방전 작성</h3>
-		<div>
-			일일투약량 :
-			<input type="text" name="hoPrescriptionDailydose">
-		</div>
-		<div>
-			일일투약횟수 :
-			<input type="text" name="hoPrescriptionDailycount">
-		</div>
-		<div>
-			총투약일수 :
-			<input type="text" name="hoPrescriptionTotalday">
-		</div>
-		<div>
-			용법 :
-			<input type="text" name="hoPrescriptionUsage">
-		</div>
+
 		<div>
 			약품명 :
 			<div id="medicine">
            		<div>
-            		<select name="medicineSelect">
+            		<select name="hoMedicineCode">
             			<option value="0">약품명</option>
 		           		<c:forEach items="${medicineList}" var="medicineList">
-							<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineName}</option>
+							<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineCode}(${medicineList.hoMedicineName})</option>
 						</c:forEach>                           			
             		</select>
             		<button type="button" id="medicineNameAdd">추가</button>
            		</div>
+				<div>
+					일일투약량 :
+					<input type="text" name="hoPrescriptionDailydose">
+				</div>
+				<div>
+					일일투약횟수 :
+					<input type="text" name="hoPrescriptionDailycount">
+				</div>
+				<div>
+					총투약일수 :
+					<input type="text" name="hoPrescriptionTotalday">
+				</div>
+				<div>
+					용법 :
+					<input type="text" name="hoPrescriptionUsage">
+				</div>
            	</div>
 	           	
            	<div id="hiddenMedicine" style="display: none;">
-           		<div class="addMedicine">	
-            		<select name="medicineSelect">
+           		<div class="addMedicine">
+            		<select name="hoMedicineCode">
             			<!-- +버튼 눌렀을 때 추가되는 selectBox 마찬가지로 for문으로 list값 가져와야함 -->
             			<option value="0">약품명</option>
             			<c:forEach items="${medicineList}" var="medicineList">
-							<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineName}</option>
+							<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineCode}(${medicineList.hoMedicineName})</option>
 						</c:forEach>                          			
             		</select>
             		<button type="button" id="medicineNameAdd">추가</button>
             		<button type="button" id="medicineNameRemove">삭제</button>        
+					<div>
+						일일투약량 :
+						<input type="text" name="hoPrescriptionDailydose">
+					</div>
+					<div>
+						일일투약횟수 :
+						<input type="text" name="hoPrescriptionDailycount">
+					</div>
+					<div>
+						총투약일수 :
+						<input type="text" name="hoPrescriptionTotalday">
+					</div>
+					<div>
+						용법 :
+						<input type="text" name="hoPrescriptionUsage">
+					</div>
            		</div>
            	</div>
 		</div>
