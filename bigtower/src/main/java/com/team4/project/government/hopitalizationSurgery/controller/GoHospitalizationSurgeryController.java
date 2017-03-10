@@ -24,7 +24,6 @@ import com.team4.project.government.hopitalizationSurgery.domain.GoSearchSurgery
 import com.team4.project.government.treat.controller.GoTreatController;
 
 @Controller
-//@RestController
 public class GoHospitalizationSurgeryController {
 	private static final Logger logger = LoggerFactory.getLogger(GoHospitalizationSurgeryController.class);
 	private Gson gson = new Gson();
@@ -33,129 +32,73 @@ public class GoHospitalizationSurgeryController {
 	private GoHospitalizationSurgeryService goHSService;
 	
 	//수술 조회하는 뷰
-	
 	@RequestMapping(value="/government/searchSurgeryForm")
 	public String searchSurgery(){
 		
 		return "/hospital/views/government/gov_searchSurgeryForm";
 	}
-	//입원 조회
 	
+	//입원 조회
 	@RequestMapping(value="/government/searchHospitalization")
 	public String searchHospitalization(){
-		
 		return "/hospital/views/government/gov_searchHospitalizationForm";
 	}
 	
-	// 1.한진료의 수술결과(test)
-	@RequestMapping(value="/government/getOneSurgeryByTreatCode", method=RequestMethod.GET,
-			produces = "text/json; charset=UTF-8")
-		public String getOneSurgeryByTreatCode(String treatCode, String test){
-		logger.debug("1.getOneSurgeryByTreatCode GET 진입");
-		String surgery = gson.toJson(goHSService.getOneSurgeryByTreatCode(treatCode));
-		return surgery;
-	}
-
 	// 1.한진료의 수술결과
 	@RequestMapping(value="/government/getOneSurgeryByTreatCode", method=RequestMethod.POST,
 			produces = "text/json; charset=UTF-8")
-		public @ResponseBody String getOneSurgeryByTreatCode(String treatCode, Model model){
+		public @ResponseBody String getOneSurgeryByTreatCode(HttpSession session, String treatCode, Model model){
+		String doctorId = (String) session.getAttribute("DOCTORID");
 		logger.debug("1.getOneSurgeryByTreatCode POST 진입");
-		String surgery = gson.toJson(goHSService.getOneSurgeryByTreatCode(treatCode));
+		String surgery = gson.toJson(goHSService.getOneSurgeryByTreatCode(treatCode, doctorId));
 		model.addAttribute("getSurgery", surgery);
 		return "/hospital/views/government/gov_surgeryTestResult";
-	}
-	
-	// 2.국민한명의 수술결과 리스트(test)
-	@RequestMapping(value="/government/getListSurgeryByCitizenId", method=RequestMethod.GET,
-					produces = "text/json; charset=UTF-8")
-	public String getListSurgeryByCitizenId(String citizenId, String test){
-		logger.debug("2.getListSurgeryByCitizenId GET 진입");
-		String surgeryList = gson.toJson(goHSService.getListSurgeryByCitizenId(citizenId));
-		return surgeryList;
 	}
 	
 	// 2.국민한명의 수술결과 리스트
 	@RequestMapping(value="/government/getListSurgeryByCitizenId", method=RequestMethod.POST,
 					produces = "text/json; charset=UTF-8")
-	public @ResponseBody String getListSurgeryByCitizenId(String citizenId, Model model){
+	public @ResponseBody String getListSurgeryByCitizenId(HttpSession session, String citizenId, Model model){
+		String doctorId = (String) session.getAttribute("DOCTORID");
 		logger.debug("2.getListSurgeryByCitizenId POST 진입");
-		String surgeryList = gson.toJson(goHSService.getListSurgeryByCitizenId(citizenId));
+		String surgeryList = gson.toJson(goHSService.getListSurgeryByCitizenId(citizenId, doctorId));
 		model.addAttribute("surgeryList", surgeryList);
 		return "/hospital/views/government/gov_listSurgeryResult";
 	}
-	
 
-	// 3.의사한명의 수술결과 리스트(test)
-	@RequestMapping(value="/government/getListSurgeryByDoctorId", method=RequestMethod.GET,
-					produces = "text/json; charset=UTF-8")
-	public String getListSurgeryByDoctorId(String doctorId, String test){
-		logger.debug("3.getListSurgeryByDoctorId GET 진입");
-		String surgeryList = gson.toJson(goHSService.getListSurgeryByDoctorId(doctorId));
-		return surgeryList;
-	}
-	
 	// 3.의사한명의 수술결과 리스트
 	@RequestMapping(value="/government/getListSurgeryByDoctorId", method=RequestMethod.POST,
 					produces = "text/json; charset=UTF-8")
 	public @ResponseBody String getListSurgeryByDoctorId(String doctorId, Model model){
+		
 		logger.debug("3.getListSurgeryByDoctorId POST 진입");
 		String surgeryList = gson.toJson(goHSService.getListSurgeryByDoctorId(doctorId));
 		model.addAttribute("surgeryList", surgeryList);
 		return "/hospital/views/government/gov_listDoctorSurgeryResult";
 	}
 	
-	
-	// 4.한진료의 입퇴원결과(test)
-	@RequestMapping(value="/government/getOneHospitalizationByTreatCode", method=RequestMethod.GET,
-			produces = "text/json; charset=UTF-8")
-		public String getOneHospitalizationByTreatCode(String treatCode, String test){
-		logger.debug("4.getOneHospitalizationByTreatCode GET 진입");
-		String hopitalization = gson.toJson(goHSService.getOneHospitalizationByTreatCode(treatCode));
-		return hopitalization;
-	}
-	
 	// 4.한진료의 입퇴원결과
 	@RequestMapping(value="/government/getOneHospitalizationByTreatCode", method=RequestMethod.POST,
 			produces = "text/json; charset=UTF-8")
-		public @ResponseBody String getOneHospitalizationByTreatCode(String treatCode, Model model){
+		public @ResponseBody String getOneHospitalizationByTreatCode(HttpSession session, String treatCode, Model model){
+		String doctorId = (String) session.getAttribute("DOCTORID");
 		logger.debug("4.getOneHospitalizationByTreatCode POST 진입");
-		String hopitalization = gson.toJson(goHSService.getOneHospitalizationByTreatCode(treatCode));
+		String hopitalization = gson.toJson(goHSService.getOneHospitalizationByTreatCode(treatCode, doctorId));
 		model.addAttribute("hopitalization", hopitalization);
 		
 		return "/hospital/views/government/gov_hospitalizationResult";
-	}
-
-	
-	// 5.국민한명의 입퇴원결과 리스트(test)
-	@RequestMapping(value="/government/getListHospitalizationByCitizenId", method=RequestMethod.GET,
-					produces = "text/json; charset=UTF-8")
-	public String getListHospitalizationByCitizenId(String citizenId, String test){
-		logger.debug("5.getListHospitalizationByCitizenId GET 진입");
-		String hopitalizationList = gson.toJson(goHSService.getListHospitalizationByCitizenId(citizenId));
-		return hopitalizationList;
 	}
 	
 	// 5.국민한명의 입퇴원결과 리스트
 	@RequestMapping(value="/government/getListHospitalizationByCitizenId", method=RequestMethod.POST,
 					produces = "text/json; charset=UTF-8")
-	public @ResponseBody String getListHospitalizationByCitizenId(String citizenId, Model model){
+	public @ResponseBody String getListHospitalizationByCitizenId(HttpSession session, String citizenId, Model model){
+		String doctorId = (String) session.getAttribute("DOCTORID");
 		logger.debug("5.getListHospitalizationByCitizenId POST 진입");
-		String hopitalizationList = gson.toJson(goHSService.getListHospitalizationByCitizenId(citizenId));
+		String hopitalizationList = gson.toJson(goHSService.getListHospitalizationByCitizenId(citizenId, doctorId));
 		model.addAttribute("hopitalizationList", hopitalizationList);
 		return "/hospital/views/government/gov_listHospitalizationResult";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	/*
 	//수술 뷰검색

@@ -11,7 +11,7 @@
 	<h1>영상검사 결과조회</h1>
 	<!-- MediaTestResult를 출력 -->
 	<form action="<c:url value='/government/getOneImageTestResultByTreatCode'/>" method="post">
-		차트코드로 조회
+		진료코드로 조회
 		<input type="text" name="treatCode"/>
 		<input type="submit" value="조회"/>
 	</form>

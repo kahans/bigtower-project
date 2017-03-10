@@ -10,7 +10,7 @@
 <body>
 <h1>입원 조회</h1>
 	<form action="<c:url value='/government/getOneHospitalizationByTreatCode'/>" method="post">
-		차트코드로 조회
+		진료코드로 조회
 		<input type="text" name="treatCode"/>
 		<input type="submit" value="조회">
 	</form>
