@@ -16,6 +16,7 @@ import com.team4.project.hospital.test.domain.HoTestRequestSub;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckup;
 import com.team4.project.hospital.vaccineCheckup.domain.HoCheckupSub;
 import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
+import com.team4.project.util.ContextParam;
 
 @Controller
 public class HoVaccineCheckupController {
@@ -87,7 +88,7 @@ public class HoVaccineCheckupController {
 		//String path="D:\\testImage";//상대주소
 		// 배포시사용할경로
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/checkup";
-		String path = "/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/checkup";
+		String path = ContextParam.context.getInitParameter("checkupPath");
 
 		addCheckup.setHoCheckUpResultPath(path);
 		hoVCS.updateCheck(addCheckup);

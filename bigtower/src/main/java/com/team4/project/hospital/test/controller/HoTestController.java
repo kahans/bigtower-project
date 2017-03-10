@@ -1,6 +1,5 @@
 package com.team4.project.hospital.test.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.team4.project.hospital.test.domain.HoBloodTestSub;
 import com.team4.project.hospital.test.domain.HoMediaTestSub;
 import com.team4.project.hospital.test.domain.HoTestRequestSub;
+import com.team4.project.util.ContextParam;
 
 @Controller
 public class HoTestController {
@@ -51,8 +51,7 @@ public class HoTestController {
 	//혈액검사 결과대기 목록 출력
 	@RequestMapping(value="/hospital/test/listBloodWait", method=RequestMethod.GET)
 	public String listBloodWait(Model model,HoTestRequestSub hoTestRequest,
-			HttpSession session
-	){
+			HttpSession session){
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoTestCode("1");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);		
@@ -65,8 +64,7 @@ public class HoTestController {
 	//혈액 검사 대기 목록 출력
 	@RequestMapping(value="/hospital/test/ListBloodTest",method=RequestMethod.GET)
 	public String BloodTestList(HoTestRequestSub hoTestRequest, Model model,
-			HttpSession session
-	){
+			HttpSession session){
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoTestCode("1");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);
@@ -81,8 +79,7 @@ public class HoTestController {
 	//혈액검사등록 뷰 get
 	@RequestMapping(value="/hospital/test/addBloodTest", method=RequestMethod.GET)
 	public String bloodTestAdd(Model model, HttpSession session,
-				@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
-			){
+				@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode){
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		
 		HoBloodTestSub bloodView= hoTS.bloodTestView(hoTestRequestCode);
@@ -99,17 +96,16 @@ public class HoTestController {
 	@RequestMapping(value="/hospital/test/addBloodTest", method=RequestMethod.POST)
 	public String bloodTestAdd(HoBloodTestSub bloodView,
 			HttpServletRequest request,
-			HttpSession session
-	){
+			HttpSession session){
 		
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		bloodView.setHoHospitalCode(hoHospitalCode);
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
 		//String path="D:\\testImage";//절대 주소
 		//String path="C:\\sw\\testimage";//집에서 작성
+		String path = ContextParam.context.getInitParameter("bloodPath");
 		// 배포시사용할경로
-		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/blood";
-		String path ="/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/blood/";
+		//String path ="/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/blood/";
 		bloodView.setHoBloodTestImagePath(path);
 		//혈액 검사 테이블 열을 업데이트를 한다
 		hoTS.updateBloodTest(bloodView);
@@ -119,8 +115,7 @@ public class HoTestController {
 	//영상검사대기 상태 업데이트
 	@RequestMapping(value="/hospital/test/updateMediaState", method=RequestMethod.GET)
 	public String updateMediaState(HoTestRequestSub hoTestRequest,HttpSession session,
-			@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode
-			){
+			@RequestParam(value="hoTestRequestCode", required=false)String hoTestRequestCode){
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);
 		hoTestRequest.setHoTestRequestCode(hoTestRequestCode);
@@ -131,8 +126,7 @@ public class HoTestController {
 	//영상검사 결과대기목록들
 	@RequestMapping(value="/hospital/test/listMediaWait", method=RequestMethod.GET)
 	public String listMediaWait(Model model,HoTestRequestSub hoTestRequest,
-			HttpSession session
-	){
+			HttpSession session){
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		hoTestRequest.setHoTestCode("2");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);		
@@ -185,7 +179,7 @@ public class HoTestController {
 			HttpServletRequest request,
 			HttpSession session
 		){
-		String path = "/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/image/";
+		String path = ContextParam.context.getInitParameter("imagePath");
 		//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
 		//String path = "C:\\sw\\testimage\\";
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
@@ -195,14 +189,10 @@ public class HoTestController {
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
 		//String path="D:\\testImage";//절대 주소
 		// 배포시사용할경로
-		
 		System.out.println("path:"+path);
 		mediaView.setHoMediaTestImagePath(path);
 		
 		hoTS.updateMediaTest(mediaView);
-		
-		
-		
 		return "redirect:/hospital/test/listMediaWait";
 	}
 }

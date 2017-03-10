@@ -19,6 +19,7 @@ import com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription;
 import com.team4.project.hospital.dto.HoDisease;
 import com.team4.project.hospital.dto.HoMedicine;
 import com.team4.project.hospital.dto.HoOperationType;
+import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.dto.HoVaccineType;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperation;
@@ -37,7 +38,7 @@ public class HoTreatChartController {
 	
 	//차트 등록(뷰페이지 없음)
 	@RequestMapping(value="/hospital/addChart", method=RequestMethod.GET)
-	public String addChart(RedirectAttributes redidredctAttributes, 
+	public String addChart(RedirectAttributes redirectAttributes, 
 						   HttpSession session,HoChart hoChart,
 						   @RequestParam(value="hoCitizenId")String hoCitizenId
 						   ){
@@ -47,9 +48,16 @@ public class HoTreatChartController {
 		System.out.println("hoChart : "+hoChart );
 		hoTCS.addChart(hoChart);
 		System.out.println("===================차트가 생성되었습니다====================");
-		
+		HoPatient hp = hoTCS.selectOnePatient(hoCitizenId, hoHospitalCode);
 		//receive폼에 보낼 환자 주민번호
-		redidredctAttributes.addAttribute("hoCitizenId", hoCitizenId);
+		redirectAttributes.addAttribute("hoCitizenId", hoCitizenId);
+		redirectAttributes.addAttribute("hoCitizenId",hp.getHoCitizenId());
+		redirectAttributes.addAttribute("hoPatientName",hp.getHoPatientName());
+		redirectAttributes.addAttribute("hoPatientPhone",hp.getHoPatientPhone());
+		redirectAttributes.addAttribute("hoPatientAddress",hp.getHoPatientAddress());
+		redirectAttributes.addAttribute("hoPatientDetailAddress",hp.getHoPatientDetailAddress());
+		redirectAttributes.addAttribute("hoZipCode",hp.getHoZipCode());
+		redirectAttributes.addAttribute("hoPatientCode",hp.getHoPatientCode());
 		return "redirect:/hospital/receive";
 	}
 	

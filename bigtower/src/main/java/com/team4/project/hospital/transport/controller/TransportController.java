@@ -16,7 +16,7 @@ public class TransportController {
 	private static final Logger logger = LoggerFactory.getLogger(TransportController.class);
 	@Autowired
 	private TransportService transportService;
-/*	
+	
 	@Scheduled(cron = "0/10 * * * * *") // 10초 간격 실행
 	//@RequestMapping(value="/hospital/send1", method=RequestMethod.GET)
 	public void send1(){
@@ -60,5 +60,5 @@ public class TransportController {
 		String hospitalCode = "hospital_5";
 		transportService.getAll(hospitalCode);
 		logger.debug("send5 controller 끝");
-	}*/
+	}
 }

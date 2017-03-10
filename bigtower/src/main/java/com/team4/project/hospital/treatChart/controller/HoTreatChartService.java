@@ -13,6 +13,7 @@ import com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription;
 import com.team4.project.hospital.dto.HoDisease;
 import com.team4.project.hospital.dto.HoMedicine;
 import com.team4.project.hospital.dto.HoOperationType;
+import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoTest;
 import com.team4.project.hospital.dto.HoVaccineType;
 import com.team4.project.hospital.hospitalizationOperation.controller.HoHospitalizationOperationDao;
@@ -45,11 +46,16 @@ public class HoTreatChartService {
 	private HoVaccineCheckupDao vaccineCheckupDao;
 
 	@Autowired
-	private HoDiagnosisPrescriptionDao hoDPD;
-	
-	@Autowired
 	private HoReceiveReservationDao hoRRDao;
-		
+	
+	// 환자정보 조회
+	public HoPatient selectOnePatient(String hoCitizenId, String hoHospitalCode){
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("hoCitizenId", hoCitizenId);
+		map.put("hoHospitalCode", hoHospitalCode);
+		return hoRRDao.selectOnePatient(map);
+	}
+	
 	//차트생성
 	public int addChart(HoChart hoChart){
 		return hoTCD.addChart(hoChart);
@@ -64,30 +70,10 @@ public class HoTreatChartService {
 	public List<HoTreatSub> treatList(String hospitalCode) {
 		return hoTCD.treatLsit(hospitalCode);
 	}
-	
-	//수술 이름 가져오기
-	public List<HoOperationType> selectOperation() {
-		return hoTCD.selectOperation();
-	}
-	
-	//약 목록 가져오기
-	public List<HoMedicine> selectMedicine(){
-		return hoDPD.selectMedicine();
-	}
 		
 	//검사 이름 가져오기
 	public List<HoTest> selectTest() {
 		return hoTCD.selectTest();
-	}
-	
-	//질병 이름 가져오기
-	public List<HoDisease> selectDisease() {
-		return hoTCD.selectDisease();
-	}
-	
-	//백신타입 이름 가져오기
-	public List<HoVaccineType> selectVaccine() {
-		return hoTCD.selectVaccine();
 	}
 	
 	//환자코드에 맞는 차트코드 가져오기
