@@ -24,7 +24,7 @@ import com.team4.project.util.HttpUrlCon;
 
 @Controller
 public class GovernmentController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(GovernmentController.class);
 	@Autowired
 	private GovernmentService goService;
 	private Gson gson = new Gson();
@@ -47,8 +47,10 @@ public class GovernmentController {
 	
 	// 정부 db에서 주민번호 조회
 	@RequestMapping(value="/government/checkCitizenId", method=RequestMethod.POST)
-	public @ResponseBody String citizenIdCheck(String citizenId, HttpSession session){
+	public @ResponseBody String citizenIdCheck(String citizenId, String citizenName, HttpSession session){
 		logger.debug("citizenId : " + citizenId);
+		logger.debug("citizenName : " + citizenName);
+		
 		String checkResult = "";
 		// doctorId는 세션에서 받아야함
 		String doctorId = (String) session.getAttribute("DOCTORID");
@@ -56,16 +58,18 @@ public class GovernmentController {
 		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/checkCitizenId");
 		Map<String, String> map = new HashMap<String,String>();
 		map.put("citizenId", citizenId);
+		map.put("citizenName", citizenName);
 		map.put("doctorId", doctorId);
 		try {
-			// 리턴결과가 true이면 사용가능한 주민번호(정부db에 등록된 주민번호)
-			// 리턴결과가 false이면 사용불가능한 주민번호(정부db에 등록되지 않은 주민번호)
+			// 리턴결과가 allCorrect이면 사용가능한 주민번호(정부db에 등록된 주민번호)
+			// 리턴결과가 nameIncorrect이면 이름이틀림(정부db에 주민번호는 마지만 이름이틀리다)
+			// 리턴결과가 idIncorrect이면 이름이틀림(정부db에 주민번호가 틀리다)
 			checkResult = conn.HttpUrlPOST(map);
 			logger.debug("checkResult:"+checkResult);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("try절 이후에 checkResult값 : "+checkResult);
+		logger.debug("try절 이후에 checkResult값 : "+checkResult);
 		return checkResult;
 	}
 	

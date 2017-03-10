@@ -13,6 +13,12 @@
 <script>
 	$( document ).ready(function() {
 		$("#hoReceivePurpose").focus();
+		
+		$("#submitBtn").click(function(){
+			if($("#hoReceivePurpose").val()===""){
+				
+			}
+		});
 	});
 </script>
 <body>
@@ -57,7 +63,7 @@
 				</c:forEach>
 			</select>
 		</div>
-		<input type="submit" value="접수">
+		<input id="submitBtn" type="button" value="접수">
 	</form>
 </body>
 </html>
