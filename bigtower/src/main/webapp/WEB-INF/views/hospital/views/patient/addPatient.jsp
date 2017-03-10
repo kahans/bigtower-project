@@ -18,20 +18,20 @@
 			<tr>
 				<td>환자명 : </td>
 				<td>
-					<input type="text" name="hoPatientName" >
+					<input type="text" name="hoPatientName" value="도우너">
 				</td>
 			</tr>
 			<tr>
 				<td>주민번호 : </td>
 				<td>
-					<input type="text" name="hoCitizenId" placeholder="ex)910101-1234567" id="hoCitizenId">
-					<button type="button" id="checkBtn">중복확인</button>
+					<input type="text" id="hoCitizenId" name="hoCitizenId" placeholder="ex)910101-1234567" value="900101-1000001">
+					<button type="button" id="checkBtn">주민번호확인</button>
 				</td>
 			</tr>
 			<tr>
 				<td>연락처 : </td>
 				<td>
-					<input type="text" name="hoPatientPhone" placeholder="ex)010-2345-6789">
+					<input type="text" id="hoPatientPhone" name="hoPatientPhone" placeholder="ex)010-2345-6789" value="010-1234-5678">
 				</td>
 			</tr>
 			<tr>
@@ -110,6 +110,8 @@
 	    	$("#checkBtn").bind("click",function(){
 	    		if($('#hoCitizenId').val()==""){
 	    			alert('주민등록번호를 입력하세요');
+            		$("#hoCitizenId").focus();
+            		return false;
 	    		}
 	    		console.log('getContextPath:'+getContextPath());
 	    		console.log('location.host:'+location.host);
@@ -123,10 +125,12 @@
 	    	            var checkResult = data;
 	    	            console.log('checkResult : '+checkResult);
 	    	        	if(checkResult === 'true'){
-	    	                alert("사용 가능한 주민번호입니다.");	    	                
+	    	                alert("사용 가능한 주민번호입니다.");
+    	            		$("#hoPatientPhone").focus();
 	    	            } else {
 	    	            	alert("등록되지 않은 주민번호입니다.");
-	    	            	 $("#hoCitizenId").val('');
+	    	            	$("#hoCitizenId").val('');
+	    	                $("#hoCitizenId").focus();
 	    	            	return false;
 	    	            }
 	    	        }
