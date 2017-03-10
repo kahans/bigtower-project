@@ -83,28 +83,39 @@ public class HoTreatChartController {
 	public String treatView(HoTreat hoTreat,							
 							String checkHospitalization,
 							HoOperation hoOperation,
-							HoPrescription hoPrescription,
 							HoVaccine hoVaccine,
 							RedirectAttributes redirectAttributes,
+							@RequestParam(value="hoPrescriptionDailydose") List<String> hoPrescriptionDailydose,
+							@RequestParam(value="hoPrescriptionDailycount") List<String> hoPrescriptionDailycount,
+							@RequestParam(value="hoPrescriptionTotalday") List<String> hoPrescriptionTotalday,
+							@RequestParam(value="hoPrescriptionUsage") List<String> hoPrescriptionUsage,
+							@RequestParam(value="hoMedicineCode") List<String> hoMedicineCode,
 							@RequestParam(value="diseaseSelect") List<String> diseaseList,
-							@RequestParam(value="hoTestCode",required=false) List<String> testList,
-							@RequestParam(value="medicineSelect") List<String> medicineList){
+							@RequestParam(value="hoTestCode",required=false) List<String> testList){
 		System.out.println("testList : "+testList);
 		System.out.println("hoTreat : "+hoTreat);
 		System.out.println("hoOperation : "+hoOperation);
-		System.out.println("hoPrescription : "+hoPrescription);
+		System.out.println("hoPrescriptionDailydose : "+hoPrescriptionDailydose);
+		System.out.println("hoPrescriptionDailycount : "+hoPrescriptionDailycount);
+		System.out.println("hoPrescriptionTotalday : "+hoPrescriptionTotalday);
+		System.out.println("hoPrescriptionUsage : "+hoPrescriptionUsage);
+		System.out.println("hoMedicineCode : "+hoMedicineCode);
 		System.out.println("hoVaccine : "+hoVaccine);
 		System.out.println("checkHospitalization : "+checkHospitalization);
-		System.out.println("medicineList"+medicineList);
+		//System.out.println("medicineList"+medicineList);
 		System.out.println("diseaseList : "+diseaseList);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hoTreat", hoTreat);
 		map.put("testList", testList);
 		map.put("checkHospitalization", checkHospitalization);
 		map.put("hoOperation", hoOperation);
-		map.put("hoPrescription", hoPrescription);
+		map.put("hoPrescriptionDailydose", hoPrescriptionDailydose);
+		map.put("hoPrescriptionDailycount", hoPrescriptionDailycount);
+		map.put("hoPrescriptionTotalday", hoPrescriptionTotalday);
+		map.put("hoPrescriptionUsage", hoPrescriptionUsage);
+		map.put("hoMedicineCode", hoMedicineCode);
 		map.put("hoVaccine", hoVaccine);
-		map.put("medicineList", medicineList);
+		//map.put("medicineList", medicineList);
 		map.put("diseaseList", diseaseList);
 		int result = hoTCS.updateTreat(map);
 		System.out.println("updateTreat 결과는 ? "+result);

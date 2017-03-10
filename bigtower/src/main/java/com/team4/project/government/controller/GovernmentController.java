@@ -1,6 +1,5 @@
 package com.team4.project.government.controller;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,20 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.team4.project.HomeController;
-import com.team4.project.government.dto.GoCitizen;
-import com.team4.project.government.dto.GoHospital;
-import com.team4.project.government.dto.GoMedicine;
-import com.team4.project.hospital.dto.HoDisease;
-import com.team4.project.hospital.dto.HoMedicine;
-import com.team4.project.hospital.dto.HoOperationType;
-import com.team4.project.hospital.dto.HoTreatSubject;
 import com.team4.project.hospital.dto.HoVaccineType;
-import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
 import com.team4.project.util.ContextParam;
 import com.team4.project.util.GetReferenceData;
-import com.team4.project.util.Http;
 import com.team4.project.util.HttpUrlCon;
 
 @Controller
