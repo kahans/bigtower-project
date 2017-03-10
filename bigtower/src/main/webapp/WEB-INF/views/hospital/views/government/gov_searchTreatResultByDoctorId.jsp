@@ -11,13 +11,11 @@
 <body>
 <h1>gov_searchTreatResult.jsp</h1>
 <h4>진료내용조회 결과</h4>
-
-<a href="<c:url value='/government/getListBloodTestResultByCitizenId?citizenId=${citizenId}'/>"><button type="button">혈액검사</button></a>
-<a href="<c:url value='/government/getListImageTestResultByCitizenId?citizenId=${citizenId}'/>"><button type="button">영상검사</button></a>
-<a href="<c:url value='/government/'/>"><button type="button">건강검진</button></a>
-<a href="<c:url value='/government/'/>"><button type="button">수술내역</button></a>
-<a href="<c:url value='/government/'/>"><button type="button">입원내역</button></a>
-
+<button type="button">혈액검사</button>
+<button type="button">영상검사</button> 
+<button type="button">건강검진</button> 
+<button type="button">수술내역</button> 
+<button type="button">입원내역</button>  
 <c:forEach items="${getTreatList}" var="list">
 	<div>
 	진료코드	:	${list.goTreatCode} /

@@ -44,6 +44,7 @@ public class GoTreatController {
 			logger.debug("doctorId : "+doctorId);
 			List<GoTreat> getTreatList = goTCService.getListTreatByCitizenId(citizenId,doctorId);
 			logger.debug("getTreatList"+getTreatList);
+			model.addAttribute("citizenId",citizenId);
 			model.addAttribute("getTreatList",getTreatList);
 			return "/hospital/views/government/gov_searchTreatResult";
 		}
