@@ -52,7 +52,7 @@ public class GoHospitalizationSurgeryController {
 		logger.debug("1.getOneSurgeryByTreatCode POST 진입");
 		String surgery = gson.toJson(goHSService.getOneSurgeryByTreatCode(treatCode, doctorId));
 		model.addAttribute("getSurgery", surgery);
-		return "/hospital/views/government/gov_surgeryTestResult";
+		return "/hospital/views/government/surgery/gov_surgeryTestResult";
 	}
 	
 	// 2.국민한명의 수술결과 리스트
@@ -63,7 +63,7 @@ public class GoHospitalizationSurgeryController {
 		logger.debug("2.getListSurgeryByCitizenId POST 진입");
 		String surgeryList = gson.toJson(goHSService.getListSurgeryByCitizenId(citizenId, doctorId));
 		model.addAttribute("surgeryList", surgeryList);
-		return "/hospital/views/government/gov_listSurgeryResult";
+		return "/hospital/views/government/surgery/gov_listSurgeryResult";
 	}
 
 	// 3.의사한명의 수술결과 리스트
@@ -74,7 +74,7 @@ public class GoHospitalizationSurgeryController {
 		logger.debug("3.getListSurgeryByDoctorId POST 진입");
 		String surgeryList = gson.toJson(goHSService.getListSurgeryByDoctorId(doctorId));
 		model.addAttribute("surgeryList", surgeryList);
-		return "/hospital/views/government/gov_listDoctorSurgeryResult";
+		return "/hospital/views/government/surgery/gov_listDoctorSurgeryResult";
 	}
 	
 	// 4.한진료의 입퇴원결과
@@ -86,7 +86,7 @@ public class GoHospitalizationSurgeryController {
 		String hopitalization = gson.toJson(goHSService.getOneHospitalizationByTreatCode(treatCode, doctorId));
 		model.addAttribute("hopitalization", hopitalization);
 		
-		return "/hospital/views/government/gov_hospitalizationResult";
+		return "/hospital/views/government/hospitalization/gov_hospitalizationResult";
 	}
 	
 	// 5.국민한명의 입퇴원결과 리스트
@@ -97,7 +97,7 @@ public class GoHospitalizationSurgeryController {
 		logger.debug("5.getListHospitalizationByCitizenId POST 진입");
 		String hopitalizationList = gson.toJson(goHSService.getListHospitalizationByCitizenId(citizenId, doctorId));
 		model.addAttribute("hopitalizationList", hopitalizationList);
-		return "/hospital/views/government/gov_listHospitalizationResult";
+		return "/hospital/views/government/hospitalization/gov_listHospitalizationResult";
 	}
 	
 	/*

@@ -46,7 +46,7 @@ public class GoTestController {
 		GoBloodTest getOneBloodTest = goTestService.getOneBloodTestResult(treatCode, doctorId);
 		logger.debug("getBloodTest 확인 : "+getOneBloodTest);
 		model.addAttribute("getBloodTest", getOneBloodTest);
-		return "/hospital/views/government/gov_bloodTestResult";
+		return "/hospital/views/government/bloodTest/gov_bloodTestResult";
 	}
 
 	//citizenId 사용하여 혈액검사결과리스트 조회
@@ -58,7 +58,7 @@ public class GoTestController {
 		List<GoBloodTest> getListBloodTestResult = goTestService.getListBloodTestResult(citizenId, doctorId);
 		logger.debug("goBloodTest 확인 : "+getListBloodTestResult);
 		model.addAttribute("getBloodTest", getListBloodTestResult);
-		return "/hospital/views/government/gov_listBloodTestResult";
+		return "/hospital/views/government/bloodTest/gov_listBloodTestResult";
 	}
 	
 	//의사코드로 혈액검사결과리스트 조회
@@ -69,13 +69,13 @@ public class GoTestController {
 		List<GoBloodTest> getListBloodTestResult = goTestService.getListBloodTestResultByDoctorId(doctorId);
 		logger.debug("goBloodTest 확인 : "+getListBloodTestResult);
 		model.addAttribute("getBloodTest", getListBloodTestResult);
-		return "/hospital/views/government/gov_listBloodTestResult";
+		return "/hospital/views/government/bloodTest/gov_listBloodTestResult";
 	}
 	
 	//영상검사 조회하는 페이지로 이동
 	@RequestMapping(value="/government/searchMediaTest", method=RequestMethod.GET)
 	public String moveMediaTestSearchForm(){
-		return "/hospital/views/government/gov_searchMediaTestForm";
+		return "/hospital/views/government/mediaTest/gov_searchMediaTestForm";
 	}
 
 	//treatCode를 사용하여 이미지테스트 결과 하나 받아옴
@@ -88,7 +88,7 @@ public class GoTestController {
 		logger.debug("getMediaTest 확인 : "+getMediaTest);
 		//영상검사결과를 json타입으로 변형		
 		model.addAttribute("getMediaTest", getMediaTest);
-		return "/hospital/views/government/gov_mediaTestResult";
+		return "/hospital/views/government/mediaTest/gov_mediaTestResult";
 	}
 	
 	//citizenId를 사용하여 영상검사결과리스트 조회
@@ -101,9 +101,10 @@ public class GoTestController {
 		logger.debug("getMediaTest 확인 : "+getMediaTest);
 		//영상검사결과를 json타입으로 변형		
 		model.addAttribute("getMediaTest", getMediaTest);
-		return "/hospital/views/government/gov_listMediaTestResult";
+		return "/hospital/views/government/mediaTest/gov_listMediaTestResult";
 	}
 	
+	/*
 	//doctorId로 영상검사결과리스트 조회
 	@RequestMapping(value="/government/getListImageTestResultByDoctorId", method=RequestMethod.POST, produces="text/json; charset=UTF-8")
 	public String getListImageTestResultByDoctorId(String doctorId, Model model){
@@ -113,8 +114,8 @@ public class GoTestController {
 		logger.debug("getMediaTest 확인 : "+getMediaTest);
 		//영상검사결과를 json타입으로 변형		
 		model.addAttribute("getMediaTest", getMediaTest);		
-		return "/hospital/views/government/gov_listMediaTestResult";
+		return "/hospital/views/government/mediaTest/gov_listMediaTestResult";
 	}
-	
+	*/
 	
 }

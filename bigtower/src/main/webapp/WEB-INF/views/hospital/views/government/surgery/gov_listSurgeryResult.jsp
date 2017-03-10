@@ -9,7 +9,7 @@
 </head>
 <body>
 <h4>수술리스트</h4>
-	<table border="">
+	<table border="1">
 		<tr>
 			<td>수술결과코드</td>
 			<td>진료코드</td>

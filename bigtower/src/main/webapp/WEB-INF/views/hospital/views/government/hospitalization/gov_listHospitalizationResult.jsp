@@ -9,7 +9,7 @@
 </head>
 <body>
 <h4>입/퇴원 리스트</h4>
-	<table border="">
+	<table border="1">
 		<tr>
 			<td>입퇴원코드</td>
 			<td>진료코드</td>
