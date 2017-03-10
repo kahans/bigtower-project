@@ -19,10 +19,19 @@ public class GoDiagnosisPrescriptionService {
 		return goDPDao.selectListDiagnosisByTreatCode(treatCode);
 	}
 	
+	// 주민번호로 진단결과 가져오기
+	public List<GoDiagnosis> getListDiagnosisByCitizenId(String citizenId){
+		return goDPDao.selectListDiagnosisByCitizenId(citizenId);
+	}
+	
 	// 진료코드로 진단결과 가져오기
 	public List<GoPrescription> getListPrescriptionByTreatCode(String treatCode){
 		return goDPDao.selectListPrescriptionByTreatCode(treatCode);
 	}
 	
+	// 주민번호로 진단결과 가져오기
+	public List<GoPrescription> getListPrescriptionByCitizenId(String citizenId){
+		return goDPDao.selectListPrescriptionByCitizenId(citizenId);
+	}
 	
 }
