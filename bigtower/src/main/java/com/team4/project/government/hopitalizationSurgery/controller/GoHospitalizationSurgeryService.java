@@ -21,22 +21,22 @@ public class GoHospitalizationSurgeryService {
 
 	
 	// 한진료의 수술결과
-	public GoSearchSurgerySub getOneSurgeryByTreatCode(String treatCode){
+	public GoSearchSurgerySub getOneSurgeryByTreatCode(String treatCode, String doctorId){
 		return goHSDao.selectOneSurgeryByTreatCode(treatCode);
 	}
 	
 	// 한진료의 입/퇴원결과
-	public GoHospitalization getOneHospitalizationByTreatCode(String treatCode){
+	public GoHospitalization getOneHospitalizationByTreatCode(String treatCode, String doctorId){
 		return goHSDao.selectOneHospitalizationByTreatCode(treatCode);
 	}
 	
 	// 국민한명의 수술결과 리스트
-	public List<GoSurgeryResult> getListSurgeryByCitizenId(String citizenId){
+	public List<GoSurgeryResult> getListSurgeryByCitizenId(String citizenId, String doctorId){
 		return goHSDao.selectListSurgeryByCitizenId(citizenId);
 	}
 	
 	// 국민한명의 입퇴원결과 리스트
-	public List<GoHospitalization> getListHospitalizationByCitizenId(String citizenId){
+	public List<GoHospitalization> getListHospitalizationByCitizenId(String citizenId, String doctorId){
 		return goHSDao.selectListHospitalizationByCitizenId(citizenId);
 	}
 	

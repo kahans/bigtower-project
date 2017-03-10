@@ -27,13 +27,12 @@ public class GoTestService {
 	
 	
 	//treatCode로 혈액검사결과 하나 요청
-	public GoBloodTest getOneBloodTestResult(String treatCode){
+	public GoBloodTest getOneBloodTestResult(String treatCode, String doctorId){
 			GoBloodTest bloodTestResult = new GoBloodTest();
 			logger.debug("서비스 혈액검사결과 하나");
 			logger.debug("매개변수 treatCode 확인 : "+treatCode); 
 			String url = ContextParam.context.getInitParameter("receiveUrl");
 			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getOneBloodTestResultByTreatCode");
-			String doctorId = "";
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
 			map.put("treatCode", treatCode);
@@ -50,13 +49,13 @@ public class GoTestService {
 	}
 		
 	//citizenId로 혈액검사결과리스트 요청
-	public List<GoBloodTest> getListBloodTestResult(String citizenId){
+	public List<GoBloodTest> getListBloodTestResult(String citizenId, String doctorId){
 		logger.debug("서비스 혈액검사결과 리스트");
 		logger.debug("매개변수 citizenId 확인 : "+citizenId);
 		List<GoBloodTest> listBloodTestResult = new ArrayList<GoBloodTest>();
 		String url = ContextParam.context.getInitParameter("receiveUrl");
 		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListBloodTestResultByCitizenId");
-		String doctorId = "";
+		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("doctorId", doctorId);
 		map.put("citizenId", citizenId);
@@ -101,13 +100,12 @@ public class GoTestService {
 	
 		
 	//treatCode로 영상검사결과 하나 요청
-	public GoImageTest getOneImageTestResult(String treatCode){
+	public GoImageTest getOneImageTestResult(String treatCode, String doctorId){
 		GoImageTest goImageTest = new GoImageTest();
 		logger.debug("서비스 혈액검사결과 하나");
 		logger.debug("매개변수 treatCode 확인 : "+treatCode); 
 		String url = ContextParam.context.getInitParameter("receiveUrl");
 		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getOneImageTestResultByTreatCode");
-		String doctorId = "";
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("doctorId", doctorId);
 		map.put("treatCode", treatCode);
@@ -124,13 +122,12 @@ public class GoTestService {
 	}
 	
 	//citizenId로 영상검사결과 리스트 요청
-	public List<GoImageTest> getListImageTestResult(String citizenId){
+	public List<GoImageTest> getListImageTestResult(String citizenId, String doctorId){
 		List<GoImageTest> listImageTestResult = new ArrayList<GoImageTest>();
 		logger.debug("서비스 영상검사결과 리스트");
 		logger.debug("매개변수 citizenId 확인 : "+citizenId);
 		String url = ContextParam.context.getInitParameter("receiveUrl");
 		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListImageTestResultByCitizenId");
-		String doctorId = "";
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("doctorId", doctorId);
 		map.put("citizenId", citizenId);
