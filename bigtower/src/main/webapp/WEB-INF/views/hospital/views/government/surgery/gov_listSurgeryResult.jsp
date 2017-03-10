@@ -9,6 +9,7 @@
 </head>
 <body>
 <h4>수술리스트</h4>
+	<a href="<c:url value='/government/getListTreatByCitizenId?citizenId=${citizenId}'/>"><button type="button">진료목록</button></a>
 	<table border="1">
 		<tr>
 			<td>수술결과코드</td>

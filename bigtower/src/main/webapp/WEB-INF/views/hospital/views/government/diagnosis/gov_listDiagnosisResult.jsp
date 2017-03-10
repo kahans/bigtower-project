@@ -9,6 +9,7 @@
 </head>
 <body>
 <h4>진단리스트</h4>
+	<a href="<c:url value='/government/getListTreatByCitizenId?citizenId=${citizenId}'/>"><button type="button">진료목록</button></a>
 	<table border="1">
 		<tr>
 			<td>진단코드</td>
@@ -26,17 +27,17 @@
 		
 		<c:forEach var="listDiagnosis" items="${listDiagnosis}">
 			<tr>
-				<td>${surgeryList.goDiagnosisCode}</td>
-				<td>${surgeryList.goTreatCode}</td>
-				<td>${surgeryList.goDiseaseCode}</td>
-				<td>${surgeryList.goDiseaseKor}</td>
-				<td>${surgeryList.goTreatmentWriteDate}</td>
-				<td>${surgeryList.goDiagnosisGoRegistrationDate}</td>
-				<td>${surgeryList.goHospitalName}</td>
-				<td>${getSurgery.goHospitalAddress}</td>
-				<td>${surgeryList.goDoctorName}</td>
-				<td>${surgeryList.goCitizenName}</td>
-				<td>${surgeryList.goTreatSubjectName}</td>
+				<td>${listDiagnosis.goDiagnosisCode}</td>
+				<td>${listDiagnosis.goTreatCode}</td>
+				<td>${listDiagnosis.goDiseaseCode}</td>
+				<td>${listDiagnosis.goDiseaseKor}</td>
+				<td>${listDiagnosis.goTreatmentWriteDate}</td>
+				<td>${listDiagnosis.goDiagnosisGoRegistrationDate}</td>
+				<td>${listDiagnosis.goHospitalName}</td>
+				<td>${listDiagnosis.goHospitalAddress}</td>
+				<td>${listDiagnosis.goDoctorName}</td>
+				<td>${listDiagnosis.goCitizenName}</td>
+				<td>${listDiagnosis.goTreatSubjectName}</td>
 			</tr>
 		</c:forEach>
 	</table>

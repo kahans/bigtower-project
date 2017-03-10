@@ -9,6 +9,7 @@
 </head>
 <body>
 <h4>영상검사리스트</h4>
+<a href="<c:url value='/government/getListTreatByCitizenId?citizenId=${citizenId}'/>"><button type="button">진료목록</button></a>
 <table border="1">
 	<tr>
 		<td>영상검사</td>

@@ -35,6 +35,10 @@ public class GoTreatController {
 		return "/hospital/views/government/treat/gov_serachTreatForm";
 	}
 
+	//주민번호로 진료리스트 돌아오는 GET요청 만들어야함
+	
+	
+	
 	// 한사람의 진료리스트
 		@RequestMapping(value="/government/getListTreatByCitizenId", method=RequestMethod.POST,
 						produces = "text/json; charset=UTF-8")
