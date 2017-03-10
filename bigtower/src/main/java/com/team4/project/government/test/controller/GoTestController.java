@@ -50,7 +50,7 @@ public class GoTestController {
 	}
 
 	//citizenId 사용하여 혈액검사결과리스트 조회
-	@RequestMapping(value="/government/getListBloodTestResultByCitizenId" , method=RequestMethod.POST,  produces = "text/json; charset=UTF-8")
+	@RequestMapping(value="/government/getListBloodTestResultByCitizenId" , method=RequestMethod.GET,  produces = "text/json; charset=UTF-8")
 	public String getListBloodTestResult(HttpSession session, String citizenId, Model model){
 		logger.debug("controller 에 매개변수로 받은 citizenId 확인 :"+citizenId);
 		//citizenId를 사용하여 혈액검사결과 조회
@@ -92,7 +92,7 @@ public class GoTestController {
 	}
 	
 	//citizenId를 사용하여 영상검사결과리스트 조회
-	@RequestMapping(value="/government/getListImageTestResultByCitizenId" , method=RequestMethod.POST, produces="text/json; charset=UTF-8")
+	@RequestMapping(value="/government/getListImageTestResultByCitizenId" , method=RequestMethod.GET, produces="text/json; charset=UTF-8")
 	public String getListImageTestResult(String citizenId, Model model, HttpSession session){
 		String doctorId = (String) session.getAttribute("DOCTORID");
 		logger.debug("controller 에 매개변수로 받은 treatCode 확인 :"+citizenId);

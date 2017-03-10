@@ -39,7 +39,7 @@ public class GoVaccinationCheckupController {
 	}
 	
 	//citizenId를 입력받아 예방접종결과리스트를 가져옴
-	@RequestMapping(value="/government/getListVaccinationResultByCitizenId" , method=RequestMethod.POST , produces="text/json; charset=UTF-8")
+	@RequestMapping(value="/government/getListVaccinationResultByCitizenId" , method=RequestMethod.GET , produces="text/json; charset=UTF-8")
 	public String getListVaccinationResult(Model model, HttpSession session, String citizenId){
 		String doctorId = (String) session.getAttribute("DOCTORID");
 		logger.debug("citizenId를 입력받아 예방접종결과리스트를 가져옴");
@@ -76,7 +76,7 @@ public class GoVaccinationCheckupController {
 	}
 	
 	//citizenId를 입력받아 건강검진결과리스트 가져옴
-	@RequestMapping(value="/government/getListCheckupResultByCitizenId", method=RequestMethod.POST, produces="text/json; charset=UTF-8")
+	@RequestMapping(value="/government/getListCheckupResultByCitizenId", method=RequestMethod.GET, produces="text/json; charset=UTF-8")
 	public String getListCheckupResult(Model model, HttpSession session, String citizenId){
 		String doctorId = (String) session.getAttribute("DOCTORID");
 		logger.debug("treatCode를 입력받아 건강검진결과리스트를 가져옴");
