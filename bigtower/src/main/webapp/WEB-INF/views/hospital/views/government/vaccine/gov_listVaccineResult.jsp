@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
 
-<h4>혈액검사리스트</h4>
+<h4>예방접종 리스트</h4>
 	<table border="1">
 		<tr>
 			<td>혈액검사</td>
