@@ -23,7 +23,7 @@
 			<td>진료과목</td>
 		</tr>
 		
-		<c:forEach var="hopitalizationList" items="${hopitalizationList}">
+		<c:forEach var="hospitalizationList" items="${hospitalizationList}">
 			<tr>
 				<td>${hospitalizationList.goHospitalizationCode}</td>
 				<td>${hospitalizationList.goTreatCode}</td>

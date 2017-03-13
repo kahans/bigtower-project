@@ -27,12 +27,12 @@
 	
 		<c:forEach var="goCheckupResult" items="${goCheckupResult}">
 			<tr>
-				<td>${goCheckupResult.goCheckUpResultCode}</td> 
+				<td>${goCheckupResult.goCheckupResultCode}</td> 
 				<td>${goCheckupResult.goTreatCode}</td>
-				<td>${goCheckupResult.goCheckUpResultFilePath}</td>
-				<td>${goCheckupResult.goCheckUpResultFileName}</td>
-				<td>${goCheckupResult.goCheckUpResultRegistrationDate}</td>
-				<td>${goCheckupResult.goCheckUpResultGoRegistrationDate}</td>
+				<td>${goCheckupResult.goCheckupResultFilePath}</td>
+				<td>${goCheckupResult.goCheckupResultFileName}</td>
+				<td>${goCheckupResult.goCheckupResultRegistrationDate}</td>
+				<td>${goCheckupResult.goCheckupResultGoRegistrationDate}</td>
 				<td>${goCheckupResult.goHospitalName}</td>
 				<td>${goCheckupResult.goHospitalAddress}</td>
 				<td>${goCheckupResult.goCitizenName}</td>

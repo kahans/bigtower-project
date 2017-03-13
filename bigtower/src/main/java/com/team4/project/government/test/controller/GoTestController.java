@@ -58,6 +58,7 @@ public class GoTestController {
 		List<GoBloodTest> getListBloodTestResult = goTestService.getListBloodTestResult(citizenId, doctorId);
 		logger.debug("goBloodTest 확인 : "+getListBloodTestResult);
 		model.addAttribute("getBloodTest", getListBloodTestResult);
+		model.addAttribute("citizenId", citizenId);
 		return "/hospital/views/government/bloodTest/gov_listBloodTestResult";
 	}
 	
@@ -101,6 +102,7 @@ public class GoTestController {
 		logger.debug("getMediaTest 확인 : "+getMediaTest);
 		//영상검사결과를 json타입으로 변형		
 		model.addAttribute("getMediaTest", getMediaTest);
+		model.addAttribute("citizenId", citizenId);
 		return "/hospital/views/government/mediaTest/gov_listMediaTestResult";
 	}
 	
