@@ -63,7 +63,7 @@ public class HospitalController {
 	@RequestMapping(value="/hospital/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session){
 		session.invalidate();
-		return "/hospital/views/index";
+		return "redirect:/hospital/login";
 	}
 	
 	//환자등록 페이지
