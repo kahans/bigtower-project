@@ -128,11 +128,9 @@
  			ho_treatment.HO_HOSPITAL_CODE,
  			ho_operation.HO_TREATMENT_CODE,
  			ho_patient.HO_PATIENT_NAME,
- 			ho_operation_type.HO_OPERATION_TYPE_NAME,
+ 			HO_OPERATION_TYPE_CODE,
  			ho_operation.HO_OPERATION_START_DATE
  		FROM ho_operation
- 		JOIN ho_operation_type
- 			ON ho_operation.HO_OPERATION_TYPE_CODE = ho_operation_type.HO_OPERATION_TYPE_CODE
  		JOIN ho_treatment
  			ON ho_operation.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
  		JOIN ho_patient
@@ -147,13 +145,11 @@
  			ho_operation.HO_OPERATION_CODE,
  			ho_operation.HO_TREATMENT_CODE,
  			ho_patient.HO_PATIENT_NAME,
- 			ho_operation_type.HO_OPERATION_TYPE_NAME,
+ 			HO_OPERATION_TYPE_CODE,
  			ho_operation.HO_OPERATION_START_DATE,
  			ho_operation.HO_OPERATION_END_DATE,
  			ho_operation.HO_OPERATION_DIARY
  		FROM ho_operation
- 		JOIN ho_operation_type
- 			ON ho_operation.HO_OPERATION_TYPE_CODE = ho_operation_type.HO_OPERATION_TYPE_CODE
  		JOIN ho_treatment
  			ON ho_operation.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
  		JOIN ho_patient

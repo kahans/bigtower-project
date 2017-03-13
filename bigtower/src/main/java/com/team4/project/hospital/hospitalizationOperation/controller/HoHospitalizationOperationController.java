@@ -36,7 +36,8 @@ public class HoHospitalizationOperationController {
 	@RequestMapping(value="/hospital/operationList")
 	public String operationList(Model model, HttpSession session){
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		List<HoOperationSub> operationList = hoHOS.operationList(hoHospitalCode);
+		String doctorId = (String) session.getAttribute("DOCTORID");
+		List<HoOperationSub> operationList = hoHOS.operationList(hoHospitalCode, doctorId);
 		System.out.println("수술 목록 : "+operationList);
 		model.addAttribute("operationList",operationList);
 		return "/hospital/views/operation/operationList";
@@ -87,9 +88,11 @@ public class HoHospitalizationOperationController {
 	@RequestMapping(value="/hospital/operationView", method=RequestMethod.GET)
 	public String operationView(String hoOperationCode,
 								HoOperation hoOperation,
+								HttpSession session,
 								Model model){
+		String doctorId = (String) session.getAttribute("DOCTORID");
 		System.out.println("수술 상세보기 hoOperationCode : "+hoOperationCode );
-		hoOperation = hoHOS.operationView(hoOperationCode);
+		hoOperation = hoHOS.operationView(hoOperationCode, doctorId);
 		System.out.println("hoOperation : "+hoOperation);
 		model.addAttribute("hoOperation",hoOperation);
 		return "/hospital/views/operation/operationView";

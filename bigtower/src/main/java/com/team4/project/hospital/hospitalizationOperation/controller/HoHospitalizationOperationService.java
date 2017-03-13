@@ -6,19 +6,27 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.google.gson.Gson;
+import com.team4.project.government.test.controller.GoTestService;
+import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalizationRequest;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperation;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoOperationSub;
+import com.team4.project.util.GetReferenceData;
 
 @Transactional
 @Service
 public class HoHospitalizationOperationService {
-
+	Gson gson = new Gson();
+	private static final Logger logger = LoggerFactory.getLogger(GoTestService.class);
+	
 	@Autowired
 	private HoHospitalizationOperationDao hoHOD;
 	
@@ -28,8 +36,20 @@ public class HoHospitalizationOperationService {
 	}
 	
 	//수술 목록
-	public List<HoOperationSub> operationList(String hoHospitalCode){
-		return hoHOD.operationList(hoHospitalCode);
+	public List<HoOperationSub> operationList(String hoHospitalCode, String doctorId){
+		List<HoOperationType> operationTypeList = GetReferenceData.getSurgeryCode(doctorId);
+		List<HoOperationSub> operationList = hoHOD.operationList(hoHospitalCode);
+		//정부에서 수술코드 가져와 해당하는 이름을 찾아서 수술목록에 셋팅
+		for(int i =0;i<operationList.size();i++){
+			String hoOperationTypeCode = operationList.get(i).getHoOperationTypeCode();
+			logger.info(i+"번째 hoOperationTypeCode : "+hoOperationTypeCode);
+			for(int j=0;j<operationTypeList.size();j++){
+				if(operationTypeList.get(j).getHoOperationTypeCode().equals(hoOperationTypeCode)){
+					operationList.get(i).setHoOperationTypeName(operationTypeList.get(j).getHoOperationTypeName());
+				}
+			}
+		}
+		return operationList;
 	}
 	
 	//입퇴원 요청 목록
@@ -52,8 +72,16 @@ public class HoHospitalizationOperationService {
 	}
 	
 	//수술 상세보기
-	public HoOperationSub operationView(String hoOperationCode){
-		return hoHOD.operationView(hoOperationCode);
+	public HoOperationSub operationView(String hoOperationCode, String doctorId){
+		List<HoOperationType> operationTypeList = GetReferenceData.getSurgeryCode(doctorId);
+		HoOperationSub hoOperationSub = hoHOD.operationView(hoOperationCode);
+		String hoOperationTypeCode = hoOperationSub.getHoOperationTypeCode();
+		for(int i=0;i<operationTypeList.size();i++){
+			if(operationTypeList.get(i).getHoOperationTypeCode().equals(hoOperationTypeCode)){
+				hoOperationSub.setHoOperationTypeName(operationTypeList.get(i).getHoOperationTypeName());
+			}
+		}
+		return hoOperationSub;
 	}
 	
 	//수술일지 수정
