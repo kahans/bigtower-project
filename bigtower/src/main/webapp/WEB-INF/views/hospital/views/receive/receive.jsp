@@ -91,14 +91,15 @@
 								<div class="tab-pane" id="formcontrols">
 									<fieldset>
 									
+									<form action="<c:url value='/hospital/receive'/>" method="post" id="receiveForm" class="form-horizontal">
+										<input id="hoPatientCode" type="hidden" name="hoPatientCode" value="${hoPatientCode}">
 										<div class="control-group">											
 											<label class="control-label" for="username">주민번호</label>
 											<div class="controls">
-												<input id="hoCitizenIdSearch" type="text" value="${hoCitizenId}" placeholder="주민번호" readonly="readonly">
+												<input id="hoCitizenIdSearch" class="span4" type="text" value="${hoCitizenId}" placeholder="주민번호" readonly="readonly">
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
-									<form action="<c:url value='/hospital/receive'/>" method="post" id="receiveForm" class="form-horizontal">
 										<div class="control-group">											
 											<label class="control-label" for="username">병원코드</label>
 											<div class="controls">
@@ -111,7 +112,6 @@
 											<label class="control-label" for="lastname">환자명</label>
 											<div class="controls">
 												<input type="text" class="span4" name="hoPatientName" id="hoPatientName" value="${hoPatientName}" readonly="readonly">
-												<button class="btn" type="button" id="checkBtn">주민번호,이름 확인</button>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -127,7 +127,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="password2">우편번호</label>
 											<div class="controls">
-												<input type="text" class="span4" name="hoZipCode" id="hoZipCode" value="${hoZipCode}">
+												<input type="text" class="span4" name="hoZipCode" id="hoZipCode" value="${hoZipCode}" readonly="readonly">
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
