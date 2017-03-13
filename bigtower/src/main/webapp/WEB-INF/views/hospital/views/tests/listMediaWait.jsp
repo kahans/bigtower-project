@@ -1,32 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
+<style>
+<!--
 
-	<h1>영상촬영 결과대기 목록</h1>
-	<table border="">
-		<thead>
-			<tr>
-				<td>환자명</td>
-				<td>검사요청코드</td>
-				<td>진료코드</td>
-				<td>상태</td>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="mediaList" items="${mediaList}">
-				<tr>
-					<td>
-						<a href="<c:url value='/hospital/test/addMediaTest?hoTestRequestCode=${mediaList.hoTestRequestCode}'/>">
-						${mediaList.hoPatientName}</a></td>
-					<td>${mediaList.hoTestRequestCode}</td>
-					<td>${mediaList.hoTreatmentCode}</td>
-					<td>${mediaList.hoTestStateName}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+.center {    
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+.widget {
+    position: relative;
+    clear: both;
+    width: auto;
+    margin-bottom: 2em;
+    overflow: hidden;
+    margin: 50px;
+}
+-->
+</style>
+<div class="widget widget-nopad">
+	<div class="widget-header">
+		<i class="icon-list-alt"></i>
+		<h1>영상촬영 결과대기 목록</h1>
+	</div>	
+	<div class="widget-content">
+		<div class="widget big-stats-container">
+			<table border="" class="center">
+				<thead>
+					<tr>
+						<td>환자명</td>
+						<td>검사요청코드</td>
+						<td>진료코드</td>
+						<td>상태</td>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="mediaList" items="${mediaList}">
+						<tr>
+							<td>
+								<a href="<c:url value='/hospital/test/addMediaTest?hoTestRequestCode=${mediaList.hoTestRequestCode}'/>">
+								${mediaList.hoPatientName}</a></td>
+							<td>${mediaList.hoTestRequestCode}</td>
+							<td>${mediaList.hoTreatmentCode}</td>
+							<td>${mediaList.hoTestStateName}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 	<br>
-	<a href="<c:url value='/hospital/test'/>"><button>전체목록</button></a>
-	<a href="<c:url value='/hospital/test/listMediaTest'/>"><button>영상검사대기목록</button></a>
+	<%-- <a href="<c:url value='/hospital/test'/>"><button>전체목록</button></a>
+	<a href="<c:url value='/hospital/test/listMediaTest'/>"><button>영상검사대기목록</button></a> --%>
 <%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>
 	
