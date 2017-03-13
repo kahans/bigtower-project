@@ -57,6 +57,7 @@ public class GoHospitalizationSurgeryController {
 		logger.debug("2.getListSurgeryByCitizenId POST 진입");
 		List<GoSurgeryResult> surgeryList = goHSService.getListSurgeryByCitizenId(citizenId, doctorId);
 		model.addAttribute("surgeryList", surgeryList);
+		model.addAttribute("citizenId", citizenId);
 		return "/hospital/views/government/surgery/gov_listSurgeryResult";
 	}
 	
@@ -93,6 +94,7 @@ public class GoHospitalizationSurgeryController {
 		logger.debug("5.getListHospitalizationByCitizenId POST 진입");
 		List<GoHospitalization> hopitalizationList = goHSService.getListHospitalizationByCitizenId(citizenId, doctorId);
 		model.addAttribute("hopitalizationList", hopitalizationList);
+		model.addAttribute("citizenId", citizenId);
 		return "/hospital/views/government/hospitalization/gov_listHospitalizationResult";
 	}
 	

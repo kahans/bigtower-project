@@ -47,6 +47,7 @@ public class GoVaccinationCheckupController {
 		
 		List<GoVaccinationResult> goVaccinationResult = goVaccinationCheckupService.getListVaccinationResult(citizenId, doctorId);
 		model.addAttribute("goVaccinationResult",goVaccinationResult);
+		model.addAttribute("citizenId", citizenId);
 		return "/hospital/views/government/vaccine/gov_vaccineResult";
 	}
 	
@@ -85,6 +86,7 @@ public class GoVaccinationCheckupController {
 		List<GoCheckup> goCheckupResult = goVaccinationCheckupService.getListCheckupResult(citizenId, doctorId);
 		logger.debug("객체 제대로 받았는지 확인 :"+goCheckupResult); 
 		model.addAttribute("goVaccinationResult",goCheckupResult);
+		model.addAttribute("citizenId", citizenId);
 		return "/hospital/views/government/checkup/gov_listCheckupResult";
 	}
 	
