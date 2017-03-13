@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
+<%@ include file="/WEB-INF/views/hospital/views/government/gov_searchButton.jsp" %>
 
 	<h4>혈액검사 결과 조회</h4>
 	<div>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
+<%@ include file="/WEB-INF/views/hospital/views/government/gov_searchButton.jsp" %>
 
 <h3>건강검진리스트</h3>
 	<a href="<c:url value='/government/getListTreatByCitizenId?citizenId=${citizenId}'/>"><button type="button">진료목록</button></a>

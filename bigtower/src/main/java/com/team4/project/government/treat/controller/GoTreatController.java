@@ -46,7 +46,7 @@ public class GoTreatController {
 	
 	
 	// 한사람의 진료리스트
-	@RequestMapping(value="/government/getListTreatByCitizenId", method=RequestMethod.GET,
+	@RequestMapping(value="/government/getListTreatByCitizenId", method=RequestMethod.POST,
 					produces = "text/json; charset=UTF-8")
 	public String getListTreatByCitizenId(String citizenId, HttpSession session,Model model) {
 		String doctorId = (String) session.getAttribute("DOCTORID");
