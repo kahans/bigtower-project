@@ -17,7 +17,7 @@ public class TransportController {
 	@Autowired
 	private TransportService transportService;
 	
-	@Scheduled(cron = "0/40 * * * * *") // 10초 간격 실행
+	@Scheduled(cron = "0/10 * * * * *") // 10초 간격 실행
 	@RequestMapping(value="/hospital/send1", method=RequestMethod.GET)
 	public void send1(){
 		logger.debug("send1 controller 진입");
@@ -26,7 +26,7 @@ public class TransportController {
 		logger.debug("send1 controller 끝");
 	}
 	
-	@Scheduled(cron = "10/40 * * * * *") // 10초 간격 실행
+	@Scheduled(cron = "2/10 * * * * *") // 10초 간격 실행
 	//@RequestMapping(value="/hospital/send2", method=RequestMethod.GET)
 	public void send2(){
 		logger.debug("send2 controller 진입");
@@ -35,7 +35,7 @@ public class TransportController {
 		logger.debug("send2 controller 끝");
 	}
 	
-	@Scheduled(cron = "20/40 * * * * *") // 10초 간격 실행
+	@Scheduled(cron = "4/10 * * * * *") // 10초 간격 실행
 	//@RequestMapping(value="/hospital/send3", method=RequestMethod.GET)
 	public void send3(){
 		logger.debug("send3 controller 진입");
@@ -44,7 +44,7 @@ public class TransportController {
 		logger.debug("send3 controller 끝");
 	}
 	
-	@Scheduled(cron = "30/40 * * * * *") // 10초 간격 실행
+	@Scheduled(cron = "6/10 * * * * *") // 10초 간격 실행
 	//@RequestMapping(value="/hospital/send4", method=RequestMethod.GET)
 	public void send4(){
 		logger.debug("send4 controller 진입");
@@ -53,7 +53,7 @@ public class TransportController {
 		logger.debug("send4 controller 끝");
 	}
 	
-	@Scheduled(cron = "40/40 * * * * *") // 10초 간격 실행
+	@Scheduled(cron = "8/10 * * * * *") // 10초 간격 실행
 	//@RequestMapping(value="/hospital/send5", method=RequestMethod.GET)
 	public void send5(){
 		logger.debug("send5 controller 진입");

@@ -31,7 +31,7 @@
 				<td>${surgeryList.goSurgeryCode}</td>
 				<td>${surgeryList.goSurgeryName}</td>
 				<td>${surgeryList.goHospitalName}</td>
-				<td>${getSurgery.goHospitalAddress}</td>
+				<td>${surgeryList.goHospitalAddress}</td>
 				<td>${surgeryList.goDoctorName}</td>
 				<td>${surgeryList.goCitizenName}</td>
 				<td>${surgeryList.goSurgeryResultRegistrationDate}</td>

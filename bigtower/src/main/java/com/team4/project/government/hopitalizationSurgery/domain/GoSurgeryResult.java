@@ -16,6 +16,18 @@ public class GoSurgeryResult extends HangleInfo{
 	protected String goSurgeryResultGoRegistrationDate;
 	
 	
+	public String getGoSurgeryName() {
+		return goSurgeryName;
+	}
+	public void setGoSurgeryName(String goSurgeryName) {
+		this.goSurgeryName = goSurgeryName;
+	}
+	public String getGoSurgeryResultRegistrationDate() {
+		return goSurgeryResultRegistrationDate;
+	}
+	public void setGoSurgeryResultRegistrationDate(String goSurgeryResultRegistrationDate) {
+		this.goSurgeryResultRegistrationDate = goSurgeryResultRegistrationDate;
+	}
 	public String getGoSurgeryResultCode() {
 		return goSurgeryResultCode;
 	}
@@ -40,11 +52,13 @@ public class GoSurgeryResult extends HangleInfo{
 	public void setGoSurgeryResultGoRegistrationDate(String goSurgeryResultGoRegistrationDate) {
 		this.goSurgeryResultGoRegistrationDate = goSurgeryResultGoRegistrationDate;
 	}
+	
 	@Override
 	public String toString() {
-		return "GoSurgery [goSurgeryResultCode=" + goSurgeryResultCode + ", goTreatCode=" + goTreatCode
-				+ ", goSurgeryCode=" + goSurgeryCode + ", goSurgeryResultGoRegistrationDate="
-				+ goSurgeryResultGoRegistrationDate + "]";
+		return "GoSurgeryResult [goSurgeryResultCode=" + goSurgeryResultCode + ", goTreatCode=" + goTreatCode
+				+ ", goSurgeryCode=" + goSurgeryCode + ", goSurgeryName=" + goSurgeryName
+				+ ", goSurgeryResultRegistrationDate=" + goSurgeryResultRegistrationDate
+				+ ", goSurgeryResultGoRegistrationDate=" + goSurgeryResultGoRegistrationDate + "]";
 	}
 	
 }
