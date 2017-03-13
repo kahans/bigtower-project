@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.team4.project.util.ContextParam;
 import com.team4.project.util.HttpUrlCon;
 
@@ -177,28 +178,77 @@ public class TransportService {
 		//map1.put("file2", new File("d://b.png"));
 		try {
 			//conn.HttpUrlFilePOST(map1);
-			String result = gson.fromJson(conn.HttpUrlPOST(hospitalMap),String.class);
+			String result = conn.HttpUrlPOST(hospitalMap);
 			logger.debug("result:"+result);
-			
+			Map<String, String> returnMap = 
+					gson.fromJson(result, new TypeToken<Map<String, Object>>(){}.getType()); 
 			//success가 리턴되면 정부전송여부값을 1로변경
-			if(result.equals("success")){
-				logger.debug("정부 db입력 성공");
-				int resultInt = 0;
-				resultInt += transportDao.updateChartSendState();
-				resultInt += transportDao.updateTreatmentSendState();
-				resultInt += transportDao.updateDiagnosisSendState();
-				resultInt += transportDao.updatePrescriptionSendState();
-				resultInt += transportDao.updateHospitalizationSendState();
-				resultInt += transportDao.updateOperationSendState();
-				resultInt += transportDao.updateBloodTestSendState();
-				resultInt += transportDao.updateMediaTestSendState();
-				resultInt += transportDao.updateCheckupSendState();
-				resultInt += transportDao.updateVaccineSendState();
-				if(resultInt>0){
-					logger.debug("정부전송여부 수정성공!! ^0^*");
-				}else{
-					logger.debug("정부전송여부 수정 실패...ㅠ_ㅠ");
+			if(returnMap.get("result").equals("success")){
+				
+				if(returnMap.containsKey("hoChart")){
+					if(returnMap.get("hoChart").equals("success")){
+						transportDao.updateChartSendState();
+					}
 				}
+				if(returnMap.containsKey("hoTreat")){
+					if(returnMap.get("hoTreat").equals("success")){
+						transportDao.updateTreatmentSendState();
+					}
+				}
+				
+				if(returnMap.containsKey("hoDiagnosis")){
+					if(returnMap.get("hoDiagnosis").equals("success")){
+						transportDao.updateDiagnosisSendState();
+					}
+				}
+				
+				if(returnMap.containsKey("hoPrescription")){
+					if(returnMap.get("hoPrescription").equals("success")){
+						transportDao.updatePrescriptionSendState();
+					}
+				}
+				if(returnMap.containsKey("hoHospitalization")){
+					if(returnMap.get("hoHospitalization").equals("success")){
+						transportDao.updateHospitalizationSendState();
+					}
+				}
+				
+				if(returnMap.containsKey("hoOperation")){
+					if(returnMap.get("hoOperation").equals("success")){
+						transportDao.updateOperationSendState();
+					}
+				}
+				
+				if(returnMap.containsKey("hoVaccine")){
+					if(returnMap.get("hoVaccine").equals("success")){
+						transportDao.updateVaccineSendState();
+					}
+				}
+
+				if(returnMap.containsKey("hoBloodTest")){
+					if(returnMap.get("hoBloodTest").equals("success")){
+						transportDao.updateBloodTestSendState();
+					}
+				}
+
+				if(returnMap.containsKey("hoCheckup")){
+					if(returnMap.get("hoCheckup").equals("success")){
+						transportDao.updateCheckupSendState();
+					}
+				}
+
+				if(returnMap.containsKey("hoMediaTest")){
+					if(returnMap.get("hoMediaTest").equals("success")){
+						transportDao.updateMediaTestSendState();
+					}
+				}
+				
+				logger.debug("정부전송여부 수정성공!! ^0^*");
+
+				
+			} else {
+				logger.debug("정부전송여부 실패...ㅠ_ㅠ");
+
 			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

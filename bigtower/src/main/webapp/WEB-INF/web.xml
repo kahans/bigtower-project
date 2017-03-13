@@ -24,8 +24,8 @@
 	<!-- 병원에서 정부로 전송할 경로 -->
 	<context-param>
 		<param-name>sendUrl</param-name>
-		<!-- <param-value>http://localhost</param-value> -->
-		<param-value>http://loverman85.cafe24.com</param-value>
+		<param-value>http://localhost</param-value>
+		<!-- <param-value>http://loverman85.cafe24.com</param-value> -->
 	</context-param>
 	
 	<!-- 혈액검사 파일저장 경로 -->
