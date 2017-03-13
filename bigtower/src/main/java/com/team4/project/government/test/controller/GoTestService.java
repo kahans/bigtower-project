@@ -22,10 +22,6 @@ public class GoTestService {
 	Gson gson = new Gson();
 	private static final Logger logger = LoggerFactory.getLogger(GoTestService.class);
 
-	@Autowired
-	private GoTestDao goTestDao;
-	
-	
 	//treatCode로 혈액검사결과 하나 요청
 	public GoBloodTest getOneBloodTestResult(String treatCode, String doctorId){
 			GoBloodTest bloodTestResult = new GoBloodTest();

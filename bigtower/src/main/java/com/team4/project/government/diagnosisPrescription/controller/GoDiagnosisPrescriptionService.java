@@ -23,12 +23,10 @@ import com.team4.project.util.HttpUrlCon;
 public class GoDiagnosisPrescriptionService {
 	private static final Logger logger = LoggerFactory.getLogger(GoDiagnosisPrescriptionService.class);
 	Gson gson = new Gson();
-	@Autowired
-	private GoDiagnosisPrescriptionDao goDPDao;
 
 	// 진료코드로 진단결과 가져오기
 	public List<GoDiagnosis> getListDiagnosisByTreatCode(String treatCode){
-		return goDPDao.selectListDiagnosisByTreatCode(treatCode);
+		return null;
 	}
 	
 	// 주민번호로 진단결과 가져오기
@@ -56,7 +54,7 @@ public class GoDiagnosisPrescriptionService {
 	
 	// 진료코드로 처방결과 가져오기
 	public List<GoPrescription> getListPrescriptionByTreatCode(String treatCode){
-		return goDPDao.selectListPrescriptionByTreatCode(treatCode);
+		return null;
 	}
 	
 	// 주민번호로 처방결과 가져오기

@@ -23,9 +23,7 @@ import com.team4.project.util.HttpUrlCon;
 public class GoVaccinationCheckupService {
 	Gson gson = new Gson();
 	private static final Logger logger = LoggerFactory.getLogger(GoVaccinationCheckupService.class);
-	
-	@Autowired
-	private GoVaccinationCheckupDao goVaccinationCheckupDao;
+
 	
 	//treatCode 받아 하나의 예방접종결과 조회
 	public GoVaccinationResult getOneVaccinationResult(String treatCode, String doctorId){	

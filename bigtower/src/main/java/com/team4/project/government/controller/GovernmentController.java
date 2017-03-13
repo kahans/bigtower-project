@@ -25,8 +25,7 @@ import com.team4.project.util.HttpUrlCon;
 @Controller
 public class GovernmentController {
 	private static final Logger logger = LoggerFactory.getLogger(GovernmentController.class);
-	@Autowired
-	private GovernmentService goService;
+	
 	private Gson gson = new Gson();
 	
 	//url test

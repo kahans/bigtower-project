@@ -22,13 +22,10 @@ import com.team4.project.util.HttpUrlCon;
 public class GoTreatService {
 	private static final Logger logger = LoggerFactory.getLogger(GoTreatService.class);
 	Gson gson = new Gson();
-	@Autowired
-	private GoTreatDao goTCDao;
-	
 	
 	// 한사람의 하나의 진료정보
 	public GoTreat getOneTreat(String treatCode){
-		return goTCDao.selectOneTreat(treatCode);
+		return null;
 	}
 		
 	// 한사람의 진료리스트
@@ -52,7 +49,6 @@ public class GoTreatService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		return treatList;
 	}
@@ -79,27 +75,7 @@ public class GoTreatService {
 			e.printStackTrace();
 		}
 		
-		
 		return treatList;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	//동일한 진료코드의 질병코드 리스트 가져오기
-	public List<GoDiagnosis> goDiagnosisList(String goTreatCode){	
-		return goTCDao.goDiagnosisList(goTreatCode);
-	}
-	
-	//로그인된 국민의 진료본 과목 목록 출력하기
-	public List<GoGetTreatSub> goSelectOneTreatSubject(int goCitizenNo){
-		return goTCDao.goSelectOneTreatSubject(goCitizenNo);
-	}*/
+
 }
