@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
-	<h1>메인화면</h1>
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -139,50 +136,114 @@
 	    })
     });
 </script>
-	<h1>환자 등록</h1>
-	<h3>환자 등록시 자동으로 차트가 생성됩니다</h3>
-	<form id="addPatientForm" action="<c:url value='/hospital/addPatient'/>" method="post">
-		<table>
-			<tr>
-				<td>주민번호 : </td>
-				<td>
-					<input type="text" id="hoCitizenId" name="hoCitizenId" placeholder="ex)910101-1234567" value="${hoCitizenId}">
-				</td>
-			</tr>
-			<tr>
-				<td>환자명 : </td>
-				<td>
-					<input type="text" id="hoCitizenName" name="hoPatientName" value="${hoPatientName}">
-					<button type="button" id="checkBtn">주민번호,이름 확인</button>
-				</td>
-			</tr>
-			<tr>
-				<td>연락처 : </td>
-				<td>
-					<input type="text" id="hoPatientPhone" name="hoPatientPhone" placeholder="ex)010-2345-6789" value="010-1234-5678">
-				</td>
-			</tr>
-			<tr>
-				<td>우편번호 : </td>
-				<td>
-					<input id="hoZipCode" type="text" name="hoZipCode" placeholder="우편번호">
-					<input type="button" onClick="sample6_execDaumPostcode()" value="우편번호 찾기">
-				</td>
-			</tr>
-			<tr>
-				<td>주소 : </td>
-				<td>
-					<input id="hoPatientAddress" type="text" name="hoPatientAddress" placeholder="주소">
-				</td>
-			</tr>
-			<tr>
-				<td>상세주소 : </td>
-				<td>
-					<input id="hoPatientDetailAddress" type="text" name="hoPatientDetailAddress" placeholder="상세주소">
-				</td>
-			</tr>
-		</table>
-		<input id="submitBtn" type="button" value="등록하기">
-	</form>
+	
+<div class="main">
+	
+<div class="main-inner">
+
+    <div class="container">
+
+      <div class="row">
+      	
+      	<div class="span12">      		
+      		
+      		<div class="widget ">
+      			
+      			<div class="widget-header">
+      				<i class="icon-user"></i>
+      				<h3>등록 화면</h3>
+  				</div> <!-- /widget-header -->
+					
+					<div class="widget-content">
+						<div class="tabbable">
+						<ul class="nav nav-tabs">
+						  
+						  <li><a href="#formcontrols" data-toggle="tab">환자 등록</a></li>
+						</ul>
+						
+							<div class="tab-content">
+								<div class="tab-pane" id="formcontrols">
+								<form action="<c:url value='/hospital/addPatient'/>" method="post" id="edit-profile" class="form-horizontal">
+									<fieldset>
+										
+										<div class="control-group">											
+											<label class="control-label" for="username">주민번호</label>
+											<div class="controls">
+												<input type="text" name="hoCitizenId" class="span4" id="hoCitizenId" value="${hoCitizenId}">
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<div class="control-group">											
+											<label class="control-label" for="lastname">환자명</label>
+											<div class="controls">
+												<input type="text" class="span4" name="hoPatientName" id="hoCitizenName" value="${hoPatientName}" >
+												<button class="btn" type="button" id="checkBtn">주민번호,이름 확인</button>
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<div class="control-group">											
+											<label class="control-label" for="email">연락처</label>
+											<div class="controls">
+												<input type="text" class="span4" name="hoPatientPhone" id="email" value="010-1234-5678">
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<div class="control-group">											
+											<label class="control-label" for="password2">우편번호</label>
+											<div class="controls">
+												<input type="text" class="span4" name="hoZipCode" id="hoZipCode">
+												<input type="button" class="btn" onClick="sample6_execDaumPostcode()" value="우편번호 찾기">
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<div class="control-group">											
+											<label class="control-label" for="password1">주소</label>
+											<div class="controls">
+												<input type="text" class="span4" name="hoPatientAddress" id="hoPatientAddress" >
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										<div class="control-group">											
+											<label class="control-label" for="password1">상세주소</label>
+											<div class="controls">
+												<input type="text" class="span4" id="hoPatientDetailAddress" name="hoPatientDetailAddress">
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<div class="form-actions">
+											<button type="submit" class="btn btn-primary">등록하기</button> 
+											<button class="btn">취소</button>
+										</div> <!-- /form-actions -->
+									</fieldset>
+								</form>
+								</div>
+								
+							</div>
+						  
+						</div>
+				
+					</div> <!-- /widget-content -->
+						
+				</div> <!-- /widget -->
+	      		
+		    </div> <!-- /span8 -->
+	      	
+	      	
+	      	
+	      	
+	      </div> <!-- /row -->
+	
+	    </div> <!-- /container -->
+	    
+	</div> <!-- /main-inner -->
+    
+</div> <!-- /main -->
+	
+	
 
 <%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>

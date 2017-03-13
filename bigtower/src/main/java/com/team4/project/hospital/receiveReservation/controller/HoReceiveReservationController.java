@@ -85,23 +85,21 @@ public class HoReceiveReservationController {
 	//초진, 재진 조회
 	@RequestMapping(value="/hospital/searchPatient", method=RequestMethod.POST)
 	public String searchOnePatientTest(String hoPatientName, HttpSession session, Model model, RedirectAttributes redirectAttributes,
-										@RequestParam(value="idfirst", required=false) String idfirst,
-										@RequestParam(value="idsecond", required=false) String idsecond){
+										@RequestParam(value="hocitizenId") String hocitizenId){
 		logger.debug("searchOnePatientTest POST 데이터 보내기");
 		//뷰에서 받은 주민번호를 controller에서 처리를 한다.
 		//앞,뒤로 받은 주민번호를 하나의 문자열로 합치고, DTO에 set으로 세팅한다.
-		String citizenId = idfirst+"-"+idsecond;
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		System.out.println("주민번호 : "+citizenId);
+		System.out.println("주민번호 : "+hocitizenId);
 		HoPatient hp = new HoPatient();
-		hp.setHoCitizenId(citizenId);
+		hp.setHoCitizenId(hocitizenId);
 		hp.setHoHospitalCode(hoHospitalCode);
 		hp.setHoPatientName(hoPatientName);
 		
 		//dto에 들어간 데이터를 확인
 		System.out.println(hp.toString());
 		hp = hoRRService.searchPatientTest(hp);
-		System.out.println("mapper에서온 손님 : "+hp);
+		System.out.println("receiveController에서의 환자정보 : "+hp);
 		if(hp!=null){ //널이 아니면 접수등록으로 이동한다.
 			redirectAttributes.addAttribute("hoCitizenId",hp.getHoCitizenId());
 			redirectAttributes.addAttribute("hoPatientName",hp.getHoPatientName());
@@ -112,7 +110,7 @@ public class HoReceiveReservationController {
 			redirectAttributes.addAttribute("hoPatientCode",hp.getHoPatientCode());
 			return "redirect:/hospital/receive";
 		}else{ //초진을 경우 null로 되어 있는 경우 환자를 등록 뷰로 이동한다.
-			model.addAttribute("hoCitizenId", citizenId);
+			model.addAttribute("hoCitizenId", hocitizenId);
 			model.addAttribute("hoPatientName", hoPatientName);
 			return "/hospital/views/patient/addPatient";
 		}
