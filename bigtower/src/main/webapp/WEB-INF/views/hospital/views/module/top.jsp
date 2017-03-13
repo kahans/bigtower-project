@@ -115,8 +115,8 @@
 		<!-- 메뉴9 -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-search"></i><span>환자 기록 조회</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="<c:url value='/government/searchTreat'/>">환자 조회</a></li>
-            <li><a href="<c:url value='/government/searchTreat'/>">내 환자 목록</a></li>
+            <li><a href="<c:url value='/government/searchTreatbyCitizenId'/>">환자 조회</a></li>
+            <li><a href="<c:url value='/government/getListTreatByDoctorId'/>">내 환자 목록</a></li>
           </ul>
         </li>
 		<!-- /메뉴 9 -->
