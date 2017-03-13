@@ -44,7 +44,7 @@ public class GoDiagnosisPrescriptionService {
 		String result = conn.HttpUrlPOST(map);
 		logger.debug("result 확인 : "+result);
 		listDiagnosis = gson.fromJson(result, new TypeToken<List<GoDiagnosis>>(){}.getType() );
-		logger.debug("리스트로 잘 바뀌었는지 확인 :"+listDiagnosis.get(0));
+		
 		}catch(Exception e) {
 			logger.debug("예외발생");
 			e.printStackTrace();
@@ -72,7 +72,7 @@ public class GoDiagnosisPrescriptionService {
 		String result = conn.HttpUrlPOST(map);
 		logger.debug("result 확인 : "+result);
 		listPrescription = gson.fromJson(result, new TypeToken<List<GoPrescription>>(){}.getType() );
-		logger.debug("리스트로 잘 바뀌었는지 확인 :"+listPrescription.get(0));
+	
 		}catch(Exception e) {
 			logger.debug("예외발생");
 			e.printStackTrace();

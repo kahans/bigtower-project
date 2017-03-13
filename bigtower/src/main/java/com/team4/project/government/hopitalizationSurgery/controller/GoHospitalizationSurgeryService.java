@@ -42,7 +42,7 @@ public class GoHospitalizationSurgeryService {
 	public List<GoSurgeryResult> getListSurgeryByCitizenId(String citizenId, String doctorId){
 		List<GoSurgeryResult> listSurgeryResult = new ArrayList<GoSurgeryResult>();
 		String url = ContextParam.context.getInitParameter("receiveUrl");
-		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListSurgeryResultByCitizenId");
+		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListSurgeryByCitizenId");
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("doctorId", doctorId);
@@ -52,7 +52,6 @@ public class GoHospitalizationSurgeryService {
 			String result = conn.HttpUrlPOST(map);
 			logger.debug("result 확인 : "+result);
 			listSurgeryResult = gson.fromJson(result, new TypeToken<List<GoSurgeryResult>>(){}.getType() );
-			logger.debug("리스트로 잘 바뀌었는지 확인 :"+listSurgeryResult.get(0));
 		} catch (Exception e) {
 			logger.debug("예외발생");
 			e.printStackTrace();
@@ -74,7 +73,6 @@ public class GoHospitalizationSurgeryService {
 			String result = conn.HttpUrlPOST(map);
 			logger.debug("result 확인 : "+result);
 			listSurgeryResult = gson.fromJson(result, new TypeToken<List<GoHospitalization>>(){}.getType() );
-			logger.debug("리스트로 잘 바뀌었는지 확인 :"+listSurgeryResult.get(0));
 		} catch (Exception e) {
 			logger.debug("예외발생");
 			e.printStackTrace();

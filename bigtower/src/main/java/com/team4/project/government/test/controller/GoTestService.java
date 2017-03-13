@@ -60,7 +60,6 @@ public class GoTestService {
 			String result = conn.HttpUrlPOST(map);
 			logger.debug("result 확인 : "+result);
 			listBloodTestResult = gson.fromJson(result, new TypeToken<List<GoBloodTest>>(){}.getType() );
-			logger.debug("리스트로 잘 바뀌었는지 확인 :"+listBloodTestResult.get(0));
 		} catch (Exception e) {
 			logger.debug("예외발생");
 			e.printStackTrace();
@@ -83,7 +82,6 @@ public class GoTestService {
 			String result = conn.HttpUrlPOST(map);
 			logger.debug("result 확인 : "+result);
 			listBloodTestResult = gson.fromJson(result, new TypeToken<List<GoBloodTest>>(){}.getType() );
-			logger.debug("리스트로 잘 바뀌었는지 확인 :"+listBloodTestResult.get(0));
 		} catch (Exception e) {
 			logger.debug("예외발생");
 			e.printStackTrace();

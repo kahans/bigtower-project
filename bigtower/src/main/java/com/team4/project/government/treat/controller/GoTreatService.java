@@ -44,7 +44,6 @@ public class GoTreatService {
 			logger.debug("list : "+list);
 			treatList = gson.fromJson(list, new TypeToken<List<GoTreat>>(){}.getType());
 			logger.debug("treatList : "+treatList);
-			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,7 +62,6 @@ public class GoTreatService {
 		HttpUrlCon conn = new HttpUrlCon(url+"/bigbang//government/getListTreatByDoctorId");
 		Map<String, String> map = new HashMap<String, String>(); 
 		map.put("doctorId", doctorId);
-		
 		try {
 			String list = conn.HttpUrlPOST(map);	//여기서 전송 해서 String으로 받아
 			logger.debug("list : "+list);

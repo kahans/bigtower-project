@@ -63,7 +63,7 @@ public class GoVaccinationCheckupService {
 			String result = conn.HttpUrlPOST(map);
 			logger.debug("result 확인 : "+result);
 			listVaccineResult = gson.fromJson(result, new TypeToken<List<GoVaccinationResult>>(){}.getType() );
-			logger.debug("리스트로 잘 바뀌었는지 확인 :"+listVaccineResult.get(0));
+			
 		} catch (Exception e) {
 			logger.debug("예외발생");
 			e.printStackTrace();
@@ -85,7 +85,7 @@ public class GoVaccinationCheckupService {
 			String result = conn.HttpUrlPOST(map);
 			logger.debug("result 확인 : "+result);
 			listVaccineResult = gson.fromJson(result, new TypeToken<List<GoVaccinationResult>>(){}.getType() );
-			logger.debug("리스트로 잘 바뀌었는지 확인 :"+listVaccineResult.get(0));
+			
 		} catch (Exception e) {
 			logger.debug("예외발생");
 			e.printStackTrace();
