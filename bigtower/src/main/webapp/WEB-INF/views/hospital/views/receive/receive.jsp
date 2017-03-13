@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- <%@ include file="./hospital/views/index.jsp" %> --%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>병원_환자접수</title>
+<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
@@ -28,7 +22,6 @@
 		});
 	});
 </script>
-<body>
 
 	<h1>receive.jsp</h1>
 	<h2>환자접수</h2>
@@ -72,5 +65,4 @@
 		</div>
 		<input id="submitBtn" type="button" value="접수">
 	</form>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>

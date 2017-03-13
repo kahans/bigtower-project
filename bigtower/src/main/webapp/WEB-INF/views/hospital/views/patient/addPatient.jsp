@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
+	<h1>메인화면</h1>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -142,8 +139,6 @@
 	    })
     });
 </script>
-</head>
-<body>
 	<h1>환자 등록</h1>
 	<h3>환자 등록시 자동으로 차트가 생성됩니다</h3>
 	<form id="addPatientForm" action="<c:url value='/hospital/addPatient'/>" method="post">
@@ -190,5 +185,4 @@
 		<input id="submitBtn" type="button" value="등록하기">
 	</form>
 
-</body>
-</html>
+<%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>

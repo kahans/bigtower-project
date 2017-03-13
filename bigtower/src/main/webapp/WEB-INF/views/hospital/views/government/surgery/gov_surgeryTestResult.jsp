@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
+
 	<h4>수술 결과 조회</h4>
 	<div>
 		수술결과코드	:	${getSurgery.goSurgeryResultCode}
@@ -38,5 +33,5 @@
 	<div>
 		정부등록일	:	${getSurgery.goSurgeryResultGoRegistrationDate}
 	</div>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>
+	

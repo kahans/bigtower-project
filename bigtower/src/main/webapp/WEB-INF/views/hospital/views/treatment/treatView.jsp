@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 	$( document ).ready(function() {
@@ -45,8 +41,6 @@
 		});
 	});
 </script>
-</head>
-<body>
 	<!-- 진료 정보 보여주기 -->
 	<h3>진료 정보</h3>
 	<form id="treatForm" action="<c:url value='/hospital/treatView'/>" method="post">
@@ -213,5 +207,4 @@
 		</div>
 		<input id="submitBtn" type="button" value="진료 완료">
 	</form>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>

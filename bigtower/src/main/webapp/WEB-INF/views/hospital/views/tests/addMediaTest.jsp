@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>영상검사 결과 등록</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
-<body>
+<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
+
 	<h1>영상검사 결과등록</h1>
 	<!-- enctype="multipart/form-data"  -->
 	<form action="<c:url value='/hospital/test/addMediaTest'/>" method="post" enctype="multipart/form-data">
@@ -44,5 +37,4 @@
 			<button>등록</button>
 		</div>
 	</form>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>

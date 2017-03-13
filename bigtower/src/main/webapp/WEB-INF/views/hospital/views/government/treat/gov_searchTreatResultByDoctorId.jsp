@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
+<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <h1>gov_searchTreatResult.jsp</h1>
 <h4>진료내용조회 결과</h4>
 
@@ -57,6 +50,4 @@
 <a href="<c:url value='/government/getListHospitalizationByCitizenId?citizenId=${list.goCitizenId}'/>"><button type="button">입원내역</button></a>  
 	 </div>
 </c:forEach>
-	
-</body>
-</html>
+<%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>

@@ -1,33 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>���װ˻� �����ȸ</h1>
-	<!-- BloodTestResult�� ��� -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
+
+	<h1>혈액검사 결과조회</h1>
+	<!-- BloodTestResult를 출력 -->
 	<form action="<c:url value='/government/getOneBloodTestResultByTreatCode'/>" method="post">
-		�����ڵ�� ��ȸ
+		진료코드로 조회
 		<input type="text" name="treatCode"/>
-		<input type="submit" value="��ȸ"/>
+		<input type="submit" value="조회"/>
 	</form>
 	<br/>
 	
-	<!-- listBloodTestResult�� ��� -->
+	<!-- listBloodTestResult를 출력 -->
 	<form action="<c:url value='/government/getListBloodTestResultByCitizenId'/>" method="post">
-		�ֹι�ȣ�� ��ȸ
+		주민번호로 조회
 		<input type="text" name="citizenId"/>
-		<input type="submit" value="��ȸ"/>
+		<input type="submit" value="조회"/>
 	</form>
 	
 	<form action="<c:url value='/government/getListBloodTestResultByDoctorId'/>" method="post">
-		�ǻ��ڵ�� ��ȸ(���� ���ǿ��� �޾Ƽ� ��ûó���ϵ��� �����ҿ���)
+		의사코드로 조회(추후 세션에서 받아서 요청처리하도록 변경할예정)
 		<input type="text" name="doctorId"/>
-		<input type="submit" value="��ȸ"/>
+		<input type="submit" value="조회"/>
 	</form>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>

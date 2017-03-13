@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
+
 	<h1>영상촬영 검사대기 목록</h1>
 	<table border="">
 		<thead>
@@ -34,5 +28,5 @@
 	<br>
 	<a href="<c:url value='/hospital/test'/>"><button>전체목록</button></a>
 	<a href="<c:url value='/hospital/test/listMediaWait'/>"><button>결과대기목록</button></a>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>
+	
