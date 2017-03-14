@@ -200,7 +200,7 @@ public class GovernmentService {
 		// 1.진료정보 가져오기
 		try {
 			List<GoTreat> treatList = new ArrayList<GoTreat>();
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang//government/getListTreatByDoctorId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListTreatByDoctorId");
 			Map<String, String> map = new HashMap<String, String>(); 
 			map.put("doctorId", doctorId);
 			String returnTreat = conn.HttpUrlPOST(map);	//여기서 전송 해서 String으로 받아
@@ -216,7 +216,7 @@ public class GovernmentService {
 		// 2.진단정보 가져오기
 		try{
 			List<GoDiagnosis> diagnosisList = new ArrayList<GoDiagnosis>();
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListDiagnosisByCitizenId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListDiagnosisByDoctorId");
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
 			String returnDiagnosis = conn.HttpUrlPOST(map);
@@ -231,7 +231,7 @@ public class GovernmentService {
 		// 3.처방정보 가져오기
 		try{
 			List<GoPrescription> prescriptionList = new ArrayList<GoPrescription>();
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListPrescriptionByCitizenId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListPrescriptionByDoctorId");
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
 			String returnPrescription = conn.HttpUrlPOST(map);
@@ -246,7 +246,7 @@ public class GovernmentService {
 		// 4.입퇴원정보 가져오기
 		try {
 			List<GoHospitalization> hospitalizationList = new ArrayList<GoHospitalization>();
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListHospitalizationByCitizenId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListHospitalizationByDoctorId");
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
 			String returnHospitalization = conn.HttpUrlPOST(map);
@@ -263,7 +263,7 @@ public class GovernmentService {
 			List<GoSurgeryResult> surgeryList = new ArrayList<GoSurgeryResult>();
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListVaccinationResultByCitizenId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListVaccinationResultByDoctorId");
 			String returnSurgery = conn.HttpUrlPOST(map);
 			logger.debug("returnSurgery 확인 : "+returnSurgery);
 			surgeryList = gson.fromJson(returnSurgery, new TypeToken<List<GoSurgeryResult>>(){}.getType() );
@@ -276,7 +276,7 @@ public class GovernmentService {
 		// 6.혈액검사 가져오기
 		try {
 			List<GoBloodTest> bloodTestList = new ArrayList<GoBloodTest>();
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListBloodTestResultByCitizenId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListBloodTestResultByDoctorId");
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
 			String returnBloodTest = conn.HttpUrlPOST(map);
@@ -292,7 +292,7 @@ public class GovernmentService {
 		// 7.영상검사 가져오기
 		try {
 			List<GoImageTest> imageTestList = new ArrayList<GoImageTest>();
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListImageTestResultByCitizenId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListImageTestResultByDoctorId");
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
 			String returnImageTest = conn.HttpUrlPOST(map);
@@ -308,7 +308,7 @@ public class GovernmentService {
 		// 8.건강검진 가져오기
 		try {
 			List<GoCheckup> checkupList = new ArrayList<GoCheckup>();
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListCheckupResultByCitizenId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListCheckupResultByDoctorId");
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
 			String returnCheckup = conn.HttpUrlPOST(map);
@@ -324,7 +324,7 @@ public class GovernmentService {
 		// 9.예방접종 가져오기
 		try {
 			List<GoVaccinationResult> vaccinationList = new ArrayList<GoVaccinationResult>();
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListVaccinationResultByCitizenId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListVaccinationResultByDoctorId");
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
 			String returnVaccination = conn.HttpUrlPOST(map);

@@ -8,7 +8,7 @@
 			<td>진료코드</td>
 			<td>질병코드</td>
 			<td>질병명</td>
-			<td>수술일</td>
+			<td>진단등록일</td>
 			<td>정부DB등록일</td>
 			<td>병원명</td>
 			<td>병원주소</td>
@@ -23,7 +23,7 @@
 				<td>${listDiagnosis.goTreatCode}</td>
 				<td>${listDiagnosis.goDiseaseCode}</td>
 				<td>${listDiagnosis.goDiseaseKor}</td>
-				<td>${listDiagnosis.goTreatmentWriteDate}</td>
+				<td>${listDiagnosis.goDiagnosisWriteDate}</td>
 				<td>${listDiagnosis.goDiagnosisGoRegistrationDate}</td>
 				<td>${listDiagnosis.goHospitalName}</td>
 				<td>${listDiagnosis.goHospitalAddress}</td>

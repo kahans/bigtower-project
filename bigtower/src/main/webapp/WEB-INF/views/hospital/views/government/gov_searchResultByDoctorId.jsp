@@ -35,9 +35,6 @@
 						  	<a href="#prescription" data-toggle="tab">처방</a>
 					  	  </li>
 					  	  <li>
-						  	<a href="#hospitalization" data-toggle="tab">입퇴원</a>
-					  	  </li>
-					  	  <li>
 						  	<a href="#surgery" data-toggle="tab">수술</a>
 					  	  </li>
 					  	  <li>
@@ -99,7 +96,7 @@
 								<!-- /처방부분 -->
 								
 								
-								<!-- 4.입퇴원부분 -->
+<%-- 								<!-- 4.입퇴원부분 -->
 								<div class="tab-pane" id="hospitalization">
 									<form id="edit-profile2" class="form-vertical">
 										<fieldset>
@@ -110,7 +107,7 @@
 										</fieldset>
 									</form>
 								</div>
-								<!-- /입퇴원부분 -->
+								<!-- /입퇴원부분 --> --%>
 								
 								
 								<!-- 5.수술부분 -->

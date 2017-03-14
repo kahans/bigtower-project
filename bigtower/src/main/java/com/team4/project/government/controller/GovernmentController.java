@@ -57,7 +57,7 @@ public class GovernmentController {
 	}
 	
 	// 의사아이디로 여러환자진료정보 리스트 조회
-	@RequestMapping(value="/government/searchResultByDoctorId", method=RequestMethod.POST)
+	@RequestMapping(value="/government/searchResultByDoctorId", method=RequestMethod.GET)
 	public String searchResultByDoctorId( HttpSession session, Model model){
 		logger.debug("searchResultByCitizenId 진입");
 		String doctorId = (String) session.getAttribute("DOCTORID");
@@ -72,7 +72,7 @@ public class GovernmentController {
 		model.addAttribute("checkupList", map.get("checkupList"));
 		model.addAttribute("vaccinationList", map.get("vaccinationList"));
 			
-		return "/hospital/views/government/gov_searchResultByCitizenId";
+		return "/hospital/views/government/gov_searchResultByDoctorId";
 	}
 	
 	// 정부 db에서 주민번호 조회
