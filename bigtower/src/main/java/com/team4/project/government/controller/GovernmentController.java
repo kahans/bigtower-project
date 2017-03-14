@@ -29,7 +29,8 @@ public class GovernmentController {
 	private Gson gson = new Gson();
 	
 	@RequestMapping(value="/government/searchResultByCitizenId", method=RequestMethod.POST)
-	public String citizenIdCheck(String citizenId, HttpSession session){
+	public String searchResultByCitizenId(String citizenId, HttpSession session){
+		logger.debug("searchResultByCitizenId 진입");
 		return "/hospital/views/government/gov_searchResultByCitizenId";
 	}
 	
