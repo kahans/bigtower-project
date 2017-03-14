@@ -1,4 +1,4 @@
-package com.team4.project.government.test.domain;
+package com.team4.project.government.dto;
 
 import com.team4.project.government.dto.HangleInfo;
 

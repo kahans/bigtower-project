@@ -54,19 +54,25 @@
 		<!-- 메뉴 1 -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-list"></i><span>접수</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="<c:url value='/hospital/searchPatient'/>">접수등록</a></li>
+            <c:if test="${STAFFLEVELCODE==3}">
+	            <li><a href="<c:url value='/hospital/searchPatient'/>">접수등록</a></li>
+            </c:if>
             <li><a href="<c:url value='/hospital/receiveList'/>">접수목록</a></li>
           </ul>
         </li>
 		<!-- /메뉴 1 -->
-		
-		<!-- 메뉴 2 -->
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-pencil"></i><span>진료</span> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="<c:url value='/hospital/treatList'/>">진료목록</a></li>
-          </ul>
-        </li>
-		<!-- /메뉴 2 -->
+
+		<!-- 진료는 의사만 -->		
+   	    <c:if test="${STAFFLEVELCODE==1}">
+			<!-- 메뉴 2 -->
+	        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-pencil"></i><span>진료</span> <b class="caret"></b></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="<c:url value='/hospital/treatList'/>">진료목록</a></li>
+	          </ul>
+	        </li>
+			<!-- /메뉴 2 -->
+        </c:if>
+        
 		
 		<!-- 메뉴3 -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-tint"></i><span>혈액검사</span> <b class="caret"></b></a>
@@ -75,6 +81,7 @@
             <li><a href="<c:url value='/hospital/test/listBloodWait'/>">결과 등록</a></li>
           </ul>
         </li>
+        
 		<!-- /메뉴 3 -->
 				
 		<!-- 메뉴4 -->
@@ -94,7 +101,7 @@
           </ul>
         </li>
 		<!-- /메뉴 5 -->
-								
+        
 		<!-- 메뉴6 -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-calendar"></i><span>입 퇴원</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -103,7 +110,7 @@
           </ul>
         </li>
 		<!-- /메뉴 6 -->
-										
+		
 		<!-- 메뉴7 -->
         <li><a href="<c:url value='/hospital/operationList'/>"><i class="icon-cut"></i><span>수술</span> </a> </li>
 		<!-- /메뉴 7 -->
@@ -111,15 +118,17 @@
 		<!-- 메뉴8 -->
         <li><a href="<c:url value='/hospital/payList'/>"><i class="icon-money"></i><span>수납</span> </a> </li>
 		<!-- /메뉴 8 -->
-										
-		<!-- 메뉴9 -->
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-search"></i><span>환자 기록 조회</span> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="<c:url value='/government/searchTreatbyCitizenId'/>">환자 조회</a></li>
-            <li><a href="<c:url value='/government/searchResultByDoctorId'/>">내 환자 목록</a></li>
-          </ul>
-        </li>
-		<!-- /메뉴 9 -->
+		
+ 	    <c:if test="${STAFFLEVELCODE==1}">
+			<!-- 메뉴9 -->
+	        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-search"></i><span>환자 기록 조회</span> <b class="caret"></b></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="<c:url value='/government/searchTreatbyCitizenId'/>">환자 조회</a></li>
+	            <li><a href="<c:url value='/government/searchResultByDoctorId'/>">내 환자 목록</a></li>
+	          </ul>
+	        </li>
+			<!-- /메뉴 9 -->
+		</c:if>
 			
       </ul>
     </div>

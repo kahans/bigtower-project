@@ -1,4 +1,4 @@
-package com.team4.project.government.treat.domain;
+package com.team4.project.government.dto;
 
 import java.sql.Date;
 

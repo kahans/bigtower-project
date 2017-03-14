@@ -5,22 +5,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.team4.project.government.diagnosisPrescription.domain.GoDiagnosis;
-import com.team4.project.government.diagnosisPrescription.domain.GoPrescription;
-import com.team4.project.government.hopitalizationSurgery.domain.GoHospitalization;
-import com.team4.project.government.hopitalizationSurgery.domain.GoSurgeryResult;
-import com.team4.project.government.test.domain.GoBloodTest;
-import com.team4.project.government.test.domain.GoImageTest;
-import com.team4.project.government.treat.domain.GoTreat;
-import com.team4.project.government.vaccinationCheckup.domain.GoCheckup;
-import com.team4.project.government.vaccinationCheckup.domain.GoVaccinationResult;
+import com.team4.project.government.dto.GoBloodTest;
+import com.team4.project.government.dto.GoCheckup;
+import com.team4.project.government.dto.GoDiagnosis;
+import com.team4.project.government.dto.GoHospitalization;
+import com.team4.project.government.dto.GoImageTest;
+import com.team4.project.government.dto.GoPrescription;
+import com.team4.project.government.dto.GoSurgeryResult;
+import com.team4.project.government.dto.GoTreat;
+import com.team4.project.government.dto.GoVaccinationResult;
 import com.team4.project.util.ContextParam;
 import com.team4.project.util.HttpUrlCon;
 

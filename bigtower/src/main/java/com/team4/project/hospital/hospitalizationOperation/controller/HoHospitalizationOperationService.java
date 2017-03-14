@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
-import com.team4.project.government.test.controller.GoTestService;
 import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalization;
 import com.team4.project.hospital.hospitalizationOperation.domain.HoHospitalizationRequest;
@@ -25,7 +24,7 @@ import com.team4.project.util.GetReferenceData;
 @Service
 public class HoHospitalizationOperationService {
 	Gson gson = new Gson();
-	private static final Logger logger = LoggerFactory.getLogger(GoTestService.class);
+	private static final Logger logger = LoggerFactory.getLogger(HoHospitalizationOperationService.class);
 	
 	@Autowired
 	private HoHospitalizationOperationDao hoHOD;

@@ -1,4 +1,4 @@
-package com.team4.project.government.hopitalizationSurgery.domain;
+package com.team4.project.government.dto;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
