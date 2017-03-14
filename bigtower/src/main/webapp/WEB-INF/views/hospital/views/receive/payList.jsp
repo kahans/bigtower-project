@@ -1,15 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
-	<div align="center" class="container">
-		  <div class="widget">
+<style>
+
+.widget {
+	
+	position: relative;
+		
+	clear: both;
+		
+	width: auto;
+		
+	margin-bottom: 2em;
+		
+	overflow: auto;
+		
+	margin: 100px 200px 200px 200px;
+}
+@media (max-width: 1000px) {
+.widget {
+	
+	position: relative;		
+	clear: both;		
+	width: auto;		
+	margin-bottom: 2em;		
+	overflow: auto;		
+	margin: auto auto 100px auto;
+
+}
+
+</style>
+	<div class="widget widget-table action-table"> 
 	           <div class="widget-header">
 	               <i class="icon-money"></i>
 	               <h3>계산대기자 목록</h3>
 	           </div>
 	           <!-- /widget-header -->
 	           <div class="widget-content">
-             		 <table class="table table-hover">
+             		 <table class="table table-striped table-bordered">
 						<thead>
 							<tr>
 							<th>환자명</th>
@@ -22,7 +50,6 @@
 						<tbody>
 						<c:forEach var="payList" items="${payList}">
 							<tr>
-								
 									<td>${payList.hoPatientName }</td>
 									<td>${payList.hoTreatSubjectName }</td>
 									<td>${payList.hoReceivePurpose }</td>
@@ -35,6 +62,6 @@
 	           </div>
 	           <!-- /widget-content -->
 	       </div>
-	       <!-- /widget -->
-	</div>
+	       <!-- /widget widget-table action-table -->
+
 <%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>
