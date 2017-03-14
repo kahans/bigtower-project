@@ -9,7 +9,7 @@
 	clear: both;		
 	width: auto;		
 	margin-bottom: 2em;		
-	overflow: hidden;		
+	overflow: auto;		
 	margin: 50px 300px 300px 300px;
 }
 @media (max-width: 1000px) {
