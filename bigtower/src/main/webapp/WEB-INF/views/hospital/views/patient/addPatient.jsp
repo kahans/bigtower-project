@@ -162,7 +162,7 @@
 						</ul>
 						
 							<div class="tab-content">
-								<div class="tab-pane" id="formcontrols">
+								<div class="tab-pane active" id="formcontrols">
 								<form action="<c:url value='/hospital/addPatient'/>" method="post" id="edit-profile" class="form-horizontal">
 									<fieldset>
 										

@@ -15,7 +15,7 @@
 		
 	overflow: hidden;
 		
-	margin: 100px 200px 200px 200px;
+	margin: 50px 300px 300px 300px;
 }
 -->
 </style>
