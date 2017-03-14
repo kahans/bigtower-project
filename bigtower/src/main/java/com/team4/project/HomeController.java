@@ -75,7 +75,7 @@ public class HomeController {
 	public String ho(Model model) {
 	
 		
-		return "hospital/hospital-index";
+		return "/hospital/templates/hospital-index";
 	}
 	/*아이콘 페이지*/
 	@RequestMapping(value = "/icons", method = RequestMethod.GET)
@@ -87,6 +87,6 @@ public class HomeController {
 	@RequestMapping(value = "/hologin", method = RequestMethod.GET)
 	public String hologin(Model model) {
 				
-		return "hospital/login";
+		return "views/hospital/templates/login";
 	}
 }

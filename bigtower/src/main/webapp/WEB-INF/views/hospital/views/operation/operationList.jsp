@@ -43,10 +43,10 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>환자명</th>
-							<th>수술명</th>
-							<th>수술예정일</th>
-							<th>수술일지등록</th>
+							<th><h4>환자명</h4></th>
+							<th><h4>수술명</h4></th>
+							<th><h4>수술예정일</h4></th>
+							<th><h4>수술일지등록</h4></th>
 						</tr>
 					</thead>
 					<tbody>

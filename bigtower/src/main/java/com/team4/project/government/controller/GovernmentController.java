@@ -29,6 +29,14 @@ public class GovernmentController {
 	private GovernmentService goService;
 	private Gson gson = new Gson();
 	
+	
+	// 주민번호로 환자 검색 폼
+	@RequestMapping(value="/government/searchTreatbyCitizenId", method=RequestMethod.GET)
+	public String searchFormbyCitizenId(){
+		return "/hospital/views/government/gov_serachTreatFormbyCitizenId";
+	}
+	
+	// 주민번호로 환자진료정보 리스트 조회
 	@RequestMapping(value="/government/searchResultByCitizenId", method=RequestMethod.POST)
 	public String searchResultByCitizenId(String citizenId, HttpSession session, Model model){
 		logger.debug("searchResultByCitizenId 진입");
@@ -48,6 +56,24 @@ public class GovernmentController {
 		return "/hospital/views/government/gov_searchResultByCitizenId";
 	}
 	
+	// 의사아이디로 여러환자진료정보 리스트 조회
+	@RequestMapping(value="/government/searchResultByDoctorId", method=RequestMethod.GET)
+	public String searchResultByDoctorId( HttpSession session, Model model){
+		logger.debug("searchResultByCitizenId 진입");
+		String doctorId = (String) session.getAttribute("DOCTORID");
+		Map<String, Object> map = goService.searchResultByDoctorId(doctorId);
+		model.addAttribute("treatList", map.get("treatList"));
+		model.addAttribute("diagnosisList", map.get("diagnosisList"));
+		model.addAttribute("prescriptionList", map.get("prescriptionList"));
+		model.addAttribute("hospitalizationList", map.get("hospitalizationList"));
+		model.addAttribute("surgeryList", map.get("surgeryList"));
+		model.addAttribute("bloodTestList", map.get("bloodTestList"));
+		model.addAttribute("imageTestList", map.get("imageTestList"));
+		model.addAttribute("checkupList", map.get("checkupList"));
+		model.addAttribute("vaccinationList", map.get("vaccinationList"));
+			
+		return "/hospital/views/government/gov_searchResultByDoctorId";
+	}
 	
 	// 정부 db에서 주민번호 조회
 	@RequestMapping(value="/government/checkCitizenId", method=RequestMethod.POST)

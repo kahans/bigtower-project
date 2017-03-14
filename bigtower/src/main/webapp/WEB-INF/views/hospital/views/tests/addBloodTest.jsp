@@ -67,9 +67,6 @@
 					<button>등록</button>
 				</div>
 			</form> --%>
-			
-			
-			
 			<div class="main">			
 				<div class="main-inner">				
 				    <div class="container">				
@@ -83,10 +80,10 @@
 									
 									<div class="widget-content">
 										<div class="tabbable">
-										<ul class="nav nav-tabs">
-										  
-										  <li><a href="#formcontrols" data-toggle="tab">결과등록</a></li>
-										</ul>
+											<ul class="nav nav-tabs">
+											  
+											  <li><a href="#formcontrols" data-toggle="tab">결과등록</a></li>
+											</ul>
 										
 											<div class="tab-content">
 												<div class="tab-pane" id="formcontrols">
@@ -117,6 +114,18 @@
 																	<input type="text" name="hoPatientName" required="required" value="${bloodView.hoPatientName}">
 																</div> <!-- /controls -->				
 															</div> <!-- /control-group -->
+															<div class="control-group">											
+																<label class="control-label" for="lastname">혈소판</label>
+																<div class="controls">
+																	<input type="text" name="hoBloodTestPlatelet" required="required">*정상수치 5000~10000
+																</div> <!-- /controls -->				
+															</div> <!-- /control-group -->
+															<div class="control-group">											
+																<label class="control-label" for="lastname">혈당</label>
+																<div class="controls">
+																	<input type="text" name="hoBloodTestSugar" required="required">*정상수치 10~30
+																</div> <!-- /controls -->				
+															</div> <!-- /control-group -->
 															<div class="control-group">
 																<label class="control-label" for="lastname">파일등록</label>
 																<div id="uploadFile">
@@ -131,9 +140,9 @@
 															</div> <!-- /form-actions -->
 														</form>
 											  		</fieldset>											
-												</div>
-											</div>
-										</div>
+												</div><!-- /tab-pane -->
+											</div><!-- /tab-content -->
+										</div><!-- /tabbable -->
 									</div> <!-- /widget-content -->	
 								</div> <!-- /widget -->
 					    	</div> <!-- /span8 -->
@@ -141,8 +150,8 @@
 					</div> <!-- /container --> 
 				</div> <!-- /main-inner -->
 			</div> <!-- /main -->	
-		</div>
-	</div>
-</div>
+		</div><!-- widget big-stats-container -->
+	</div><!-- /widget-content -->
+</div><!-- /widget widget-nopad -->
 <%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>
 	

@@ -135,7 +135,9 @@
  			ON ho_operation.HO_TREATMENT_CODE = ho_treatment.HO_TREATMENT_CODE
  		JOIN ho_patient
  			ON ho_treatment.HO_PATIENT_CODE = ho_patient.HO_PATIENT_CODE
- 		WHERE ho_treatment.HO_HOSPITAL_CODE=#{hoHospitalCode}
+ 		where 
+ 		 ho_treatment.HO_HOSPITAL_CODE=#{hoHospitalCode} and ho_operation.HO_OPERATION_END_DATE is null
+ 		
  	</select>
  	
  	<!-- 수술 상세보기 -->

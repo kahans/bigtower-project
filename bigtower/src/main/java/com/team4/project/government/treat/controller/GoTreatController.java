@@ -1,8 +1,6 @@
 package com.team4.project.government.treat.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.team4.project.government.treat.domain.GoTreat;
-import com.team4.project.util.ContextParam;
-import com.team4.project.util.HttpUrlCon;
 
 @Controller
 public class GoTreatController {
@@ -27,13 +22,6 @@ public class GoTreatController {
 	
 	@Autowired
 	private GoTreatService goTCService;
-
-	
-	// 주민번호로 환자 검색 폼
-	@RequestMapping(value="/government/searchTreatbyCitizenId", method=RequestMethod.GET)
-	public String searchFormbyCitizenId(){
-		return "/hospital/views/government/treat/gov_serachTreatFormbyCitizenId";
-	}
 
 	// 의사아이디로 환자 검색 폼
 	@RequestMapping(value="/government/searchTreatbyDoctorId", method=RequestMethod.GET)

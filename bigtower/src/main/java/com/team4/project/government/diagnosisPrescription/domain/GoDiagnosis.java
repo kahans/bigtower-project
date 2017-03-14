@@ -14,10 +14,9 @@ public class GoDiagnosis extends HangleInfo{
 	protected String goDiseaseKor;
 	/* 날짜 포멧을 하여 원하는 형식으로 표기 */
 	@DateTimeFormat(pattern = "YY-MM-DD")
-	protected String goTreatmentWriteDate;
+	protected String goDiagnosisWriteDate;
 	@DateTimeFormat(pattern = "YY-MM-DD")
 	protected String goDiagnosisGoRegistrationDate;
-	
 	public String getGoDiagnosisCode() {
 		return goDiagnosisCode;
 	}
@@ -42,11 +41,11 @@ public class GoDiagnosis extends HangleInfo{
 	public void setGoDiseaseKor(String goDiseaseKor) {
 		this.goDiseaseKor = goDiseaseKor;
 	}
-	public String getGoTreatmentWriteDate() {
-		return goTreatmentWriteDate;
+	public String getGoDiagnosisWriteDate() {
+		return goDiagnosisWriteDate;
 	}
-	public void setGoTreatmentWriteDate(String goTreatmentWriteDate) {
-		this.goTreatmentWriteDate = goTreatmentWriteDate;
+	public void setGoDiagnosisWriteDate(String goDiagnosisWriteDate) {
+		this.goDiagnosisWriteDate = goDiagnosisWriteDate;
 	}
 	public String getGoDiagnosisGoRegistrationDate() {
 		return goDiagnosisGoRegistrationDate;
@@ -57,10 +56,10 @@ public class GoDiagnosis extends HangleInfo{
 	@Override
 	public String toString() {
 		return "GoDiagnosis [goDiagnosisCode=" + goDiagnosisCode + ", goTreatCode=" + goTreatCode + ", goDiseaseCode="
-				+ goDiseaseCode + ", goDiseaseKor=" + goDiseaseKor + ", goTreatmentWriteDate=" + goTreatmentWriteDate
+				+ goDiseaseCode + ", goDiseaseKor=" + goDiseaseKor + ", goDiagnosisWriteDate=" + goDiagnosisWriteDate
 				+ ", goDiagnosisGoRegistrationDate=" + goDiagnosisGoRegistrationDate + ", goHospitalName="
 				+ goHospitalName + ", goHospitalAddress=" + goHospitalAddress + ", goCitizenName=" + goCitizenName
 				+ ", goDoctorName=" + goDoctorName + ", goTreatSubjectName=" + goTreatSubjectName + "]";
 	}
-
+	
 }
