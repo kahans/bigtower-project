@@ -54,9 +54,7 @@
 		<!-- 메뉴 1 -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-list"></i><span>접수</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <c:if test="${STAFFLEVELCODE==3}">
-	            <li><a href="<c:url value='/hospital/searchPatient'/>">접수등록</a></li>
-            </c:if>
+            <li><a href="<c:url value='/hospital/searchPatient'/>">접수등록</a></li>
             <li><a href="<c:url value='/hospital/receiveList'/>">접수목록</a></li>
           </ul>
         </li>
