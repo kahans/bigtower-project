@@ -3,21 +3,14 @@
 <%@ include file="/WEB-INF/views/hospital/views/module/top.jsp" %>
 <style>
 <!--
-
-.center {    
-    left: 0;
-    top: 50%;
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-}
 .widget {
-    position: relative;
-    clear: both;
-    width: auto;
-    margin-bottom: 2em;
-    overflow: hidden;
-    margin: 50px;
+	
+	position: relative;		
+	clear: both;		
+	width: auto;		
+	margin-bottom: 2em;		
+	overflow: hidden;		
+	margin: 50px 300px 300px 300px;
 }
 -->
 </style>
