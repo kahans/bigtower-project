@@ -58,7 +58,7 @@
 													hoPatientCode=${ReceiveList.hoPatientCode}&
 													hoReceiveCode=${ReceiveList.hoReceiveCode}&
 													hoTreatSubjectCode=${ReceiveList.hoTreatSubjectCode}'/>">
-							${ReceiveList.hoReceiveStateName }</a>
+							<button>${ReceiveList.hoReceiveStateName }</button></a>
 						</td>
 					</tr>
 				  </c:forEach>

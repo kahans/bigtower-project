@@ -131,84 +131,9 @@ align : right;
          
         <div class="span6">
         	
-         
          <div class="widget">
-          	<div class="widget-header"> <i class="icon-bookmark"></i>
-              <h3>처방전 작성</h3>
-            </div>
-            <div class="widget-content">
-          		<div class="control-group">											
-					<div class="controls">
-						<div id="medicine">
-			           		<div>
-			           			약품명 : 
-			            		<select name="hoMedicineCode">
-			            			<option value="0">약을 선택하시오</option>
-					           		<c:forEach items="${medicineList}" var="medicineList">
-										<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineCode}(${medicineList.hoMedicineName})</option>
-									</c:forEach>                           			
-			            		</select>
-			            		<button type="button" id="medicineNameAdd">추가</button>
-			           		</div>
-							<div>
-								일일투약량 :
-								<input type="text" name="hoPrescriptionDailydose">mg/일
-							</div>
-							<div>
-								일일투약횟수 :
-								<input type="text" name="hoPrescriptionDailycount">회/일
-							</div>
-							<div>
-								총투약일수 :
-								<input type="text" name="hoPrescriptionTotalday">일
-							</div>
-							<div>
-								용법 :
-								<input type="text" name="hoPrescriptionUsage">
-							</div>
-			           	</div> <!-- /medicine -->
-			           	
-			           	<div id="hiddenMedicine" style="display: none;">
-			           		<div class="addMedicine">
-			           			약품명 :
-			            		<select name="hoMedicineCode">
-			            			<!-- +버튼 눌렀을 때 추가되는 selectBox 마찬가지로 for문으로 list값 가져와야함 -->
-			            			<option value="0">약품명</option>
-			            			<c:forEach items="${medicineList}" var="medicineList">
-										<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineCode}(${medicineList.hoMedicineName})</option>
-									</c:forEach>                          			
-			            		</select>
-			            		<button type="button" id="medicineNameAdd">추가</button>
-			            		<button type="button" id="medicineNameRemove">삭제</button>        
-								<div>
-									일일투약량 :
-									<input type="text" name="hoPrescriptionDailydose">mg/일
-								</div>
-								<div>
-									일일투약횟수 :
-									<input type="text" name="hoPrescriptionDailycount">회/일
-								</div>
-								<div>
-									총투약일수 :
-									<input type="text" name="hoPrescriptionTotalday">일
-								</div>
-								<div>
-									용법 :
-									<input type="text" name="hoPrescriptionUsage">
-								</div>
-			           		</div>
-           				</div><!-- /hiddenMedicine -->
-					</div> <!-- /controls -->				
-				</div> <!-- /control-group -->
-           
-            </div>
-          </div>
-          <!-- /widget -->
-        
-       
-          <div class="widget">
           
-          	<div class="widget-header"> <i class="icon-bookmark"></i>
+          	<div class="widget-header"> <i class="icon-bullhorn"></i>
               <h3>요청</h3>
             </div>
             <div class="widget-content">
@@ -232,7 +157,7 @@ align : right;
 	                       </div>
 	                     </div>
 	                   </div>
-	                   
+	                 </div>
 	                 <!-- 입퇴원요청 -->  
 	                 <div class="accordion" id="accordion2">
 	                   <div class="accordion-group">
@@ -312,7 +237,83 @@ align : right;
             </div>
           </div>
           <!-- /widget -->
-         </div>
+          
+         <div class="widget">
+          	<div class="widget-header"> <i class="icon-beaker"></i>
+              <h3>처방전 작성</h3>
+            </div>
+            <div class="widget-content">
+          		<div class="control-group">											
+					<div class="controls">
+						<div id="medicine">
+			           		<div>
+			           			약품명 : 
+			            		<select name="hoMedicineCode">
+			            			<option value="0">약을 선택하시오</option>
+					           		<c:forEach items="${medicineList}" var="medicineList">
+										<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineCode}(${medicineList.hoMedicineName})</option>
+									</c:forEach>                           			
+			            		</select>
+			            		<button type="button" id="medicineNameAdd">추가</button>
+			           		</div>
+							<div>
+								일일투약량 :
+								<input type="text" name="hoPrescriptionDailydose">mg/일
+							</div>
+							<div>
+								일일투약횟수 :
+								<input type="text" name="hoPrescriptionDailycount">회/일
+							</div>
+							<div>
+								총투약일수 :
+								<input type="text" name="hoPrescriptionTotalday">일
+							</div>
+							<div>
+								용법 :
+								<input type="text" name="hoPrescriptionUsage">
+							</div>
+			           	</div> <!-- /medicine -->
+			           	
+			           	<div id="hiddenMedicine" style="display: none;">
+			           		<div class="addMedicine">
+			           			약품명 :
+			            		<select name="hoMedicineCode">
+			            			<!-- +버튼 눌렀을 때 추가되는 selectBox 마찬가지로 for문으로 list값 가져와야함 -->
+			            			<option value="0">약품명</option>
+			            			<c:forEach items="${medicineList}" var="medicineList">
+										<option value="${medicineList.hoMedicineCode}">${medicineList.hoMedicineCode}(${medicineList.hoMedicineName})</option>
+									</c:forEach>                          			
+			            		</select>
+			            		<button type="button" id="medicineNameAdd">추가</button>
+			            		<button type="button" id="medicineNameRemove">삭제</button>        
+								<div>
+									일일투약량 :
+									<input type="text" name="hoPrescriptionDailydose">mg/일
+								</div>
+								<div>
+									일일투약횟수 :
+									<input type="text" name="hoPrescriptionDailycount">회/일
+								</div>
+								<div>
+									총투약일수 :
+									<input type="text" name="hoPrescriptionTotalday">일
+								</div>
+								<div>
+									용법 :
+									<input type="text" name="hoPrescriptionUsage">
+								</div>
+			           		</div>
+           				</div><!-- /hiddenMedicine -->
+					</div> <!-- /controls -->				
+				</div> <!-- /control-group -->
+           
+            </div>
+          </div>
+          <!-- /widget -->
+        
+       
+          
+         
         </div>
         <!-- /span6 --> 
       </div>
