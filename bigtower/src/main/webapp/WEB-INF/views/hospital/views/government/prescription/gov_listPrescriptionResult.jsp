@@ -28,8 +28,8 @@
 				<td>${listPrescription.goMedicineCode}</td>
 				<td>${listPrescription.goPrescriptionResultInjectionNumber}</td>
 				<td>${listPrescription.goPrescriptionResultDosage}</td>
-				<td>${listPrescription.goPrescriptionResultUsage}</td>
 				<td>${listPrescription.goPrescriptionResultTotalDate}</td>
+				<td>${listPrescription.goPrescriptionResultUsage}</td>
 				<td>${listPrescription.goPrescriptionResultWriteDate}</td>
 				<td>${listPrescription.goPrescriptionResultGoRegistrationDate}</td>
 				<td>${listPrescription.goHospitalName}</td>

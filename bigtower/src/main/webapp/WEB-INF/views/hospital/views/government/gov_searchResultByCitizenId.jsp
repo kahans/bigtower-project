@@ -21,7 +21,7 @@
 					
 					<div class="widget-content">
 						
-						
+						<div>${treatList[0].goCitizenName} 님 조회결과</div>
 						
 						<div class="tabbable">
 						<ul class="nav nav-tabs">
@@ -65,7 +65,7 @@
 									<fieldset>
 										<!-- 내용 -->
 										진료
-										<%@ include file="/WEB-INF/views/hospital/views/government/treat/gov_searchTreatResult.jsp" %>
+										<%@ include file="/WEB-INF/views/hospital/views/government/treat/gov_listTreatResult.jsp" %>
 										<!-- /내용 -->
 									</fieldset>
 								</form>
