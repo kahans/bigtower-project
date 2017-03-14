@@ -93,7 +93,7 @@ public class GoVaccinationCheckupService {
 		return listVaccineResult;
 	}
 	
-	//treatCode 받아 하나의 예방접종결과 조회
+	//treatCode 받아 하나의 건강검진결과 조회
 	public GoCheckup getOneCheckupResult(String treatCode, String doctorId){
 		GoCheckup goCheckup = new GoCheckup();
 		logger.debug("서비스 , 진료코드를 받아 하나의 예방접종결과 조회");
@@ -115,7 +115,7 @@ public class GoVaccinationCheckupService {
 		return goCheckup;
 	}
 
-	//citizenId 받아 예방접종결과리스트 조회
+	//citizenId 받아 건강검진결과리스트 조회
 	public List<GoCheckup> getListCheckupResult(String citizenId, String doctorId){
 		List<GoCheckup> listCheckupResult = new ArrayList<GoCheckup>();
 		logger.debug("서비스 , 진료코드를 받아예방접종결과리스트 조회");
@@ -137,7 +137,7 @@ public class GoVaccinationCheckupService {
 		return listCheckupResult;
 	}
 	
-	//doctorId 받아 예방접종결과리스트 조회
+	//doctorId 받아 건강검진결과리스트 조회
 	public List<GoCheckup> getListCheckupResultByDoctorId(String doctorId){
 		List<GoCheckup> listCheckupResult = new ArrayList<GoCheckup>();
 		logger.debug("서비스 , 진료코드를 받아예방접종결과리스트 조회");

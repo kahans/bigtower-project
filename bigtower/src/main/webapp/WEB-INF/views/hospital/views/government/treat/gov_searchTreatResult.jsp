@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/hospital/views/government/gov_searchButton.jsp" %>
 
-	<h1>gov_searchTreatResult.jsp</h1>
-	<h4>진료내용조회 결과</h4>
+<h4>진료리스트</h4>
 
 	<table border="1">
 		<tr>
@@ -21,7 +19,7 @@
 			<td>진료등록일</td>
 		</tr>
 		
-		<c:forEach var="list" items="${getTreatList}">
+		<c:forEach var="list" items="${treatList}">
 			<tr>
 				<td>${list.goTreatCode}</td>
 				<td>${list.goHospitalId}</td>
@@ -38,4 +36,3 @@
 			</tr>
 		</c:forEach>
 	</table>
-<%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>

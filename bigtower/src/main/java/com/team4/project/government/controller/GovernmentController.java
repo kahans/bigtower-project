@@ -25,24 +25,29 @@ import com.team4.project.util.HttpUrlCon;
 @Controller
 public class GovernmentController {
 	private static final Logger logger = LoggerFactory.getLogger(GovernmentController.class);
-	
+	@Autowired
+	private GovernmentService goService;
 	private Gson gson = new Gson();
 	
-	//url test
-	@RequestMapping(value="/government/test2", method=RequestMethod.POST)
-	public String test2(String hospitalInfo, String test){
-		System.out.println("hospitalInfo:"+hospitalInfo);
-		System.out.println("test:"+test);
-		return "home";
+	@RequestMapping(value="/government/searchResultByCitizenId", method=RequestMethod.POST)
+	public String searchResultByCitizenId(String citizenId, HttpSession session, Model model){
+		logger.debug("searchResultByCitizenId 진입");
+		logger.debug("citizenId:"+citizenId);
+		String doctorId = (String) session.getAttribute("DOCTORID");
+		Map<String, Object> map = goService.searchResultByCitizenId(citizenId, doctorId);
+		model.addAttribute("treatList", map.get("treatList"));
+		model.addAttribute("diagnosisList", map.get("diagnosisList"));
+		model.addAttribute("prescriptionList", map.get("prescriptionList"));
+		model.addAttribute("hospitalizationList", map.get("hospitalizationList"));
+		model.addAttribute("surgeryList", map.get("surgeryList"));
+		model.addAttribute("bloodTestList", map.get("bloodTestList"));
+		model.addAttribute("imageTestList", map.get("imageTestList"));
+		model.addAttribute("checkupList", map.get("checkupList"));
+		model.addAttribute("vaccinationList", map.get("vaccinationList"));
+			
+		return "/hospital/views/government/gov_searchResultByCitizenId";
 	}
 	
-	//Context param test
-	@RequestMapping(value="/government/test", method=RequestMethod.GET)
-	public String test1(){
-		String test = ContextParam.context.getInitParameter("test");
-		System.out.println("test:"+test);
-		return "home";
-	}
 	
 	// 정부 db에서 주민번호 조회
 	@RequestMapping(value="/government/checkCitizenId", method=RequestMethod.POST)

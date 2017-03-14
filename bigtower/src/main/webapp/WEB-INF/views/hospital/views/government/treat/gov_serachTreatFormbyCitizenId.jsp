@@ -15,7 +15,7 @@
 						<div class="widget-content">
 							<div class="widget big-stats-container">
 								<div class="widget-content">
-									<form action="<c:url value="/government/getListTreatByCitizenId"/>"	method="post">
+									<form action="<c:url value="/government/searchResultByCitizenId"/>"	method="post">
 										<fieldset>
 											<div class="control-group">											
 												<br>
