@@ -15,7 +15,19 @@
 		
 	overflow: hidden;
 		
-	margin: 50px 300px 300px 300px;
+	margin: 100px 200px 200px 200px;
+}
+
+@media (max-width: 1000px) {
+.widget {
+	
+	position: relative;		
+	clear: both;		
+	width: auto;		
+	margin-bottom: 2em;		
+	overflow: auto;		
+	margin: auto auto 100px auto;
+
 }
 -->
 </style>
