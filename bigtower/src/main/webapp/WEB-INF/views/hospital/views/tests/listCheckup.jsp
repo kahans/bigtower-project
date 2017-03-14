@@ -9,8 +9,19 @@
 	clear: both;		
 	width: auto;		
 	margin-bottom: 2em;		
-	overflow: hidden;		
+	overflow: auto;		
 	margin: 50px 300px 300px 300px;
+}
+@media (max-width: 1000px) {
+.widget {
+	
+	position: relative;		
+	clear: both;		
+	width: auto;		
+	margin-bottom: 2em;		
+	overflow: auto;		
+	margin: auto auto 100px auto;
+
 }
 -->
 </style>
@@ -24,10 +35,10 @@
 			<table border="" class="center">
 				<thead>
 					<tr>
-						<td>환자명</td>
-						<td>검사요청코드</td>
-						<td>진료코드</td>
-						<td>상태</td>
+						<th>환자명</th>
+						<th>검사요청코드</th>
+						<th>진료코드</th>
+						<th>상태</th>
 						<th class="td-actions"></th>
 					</tr>
 				</thead>

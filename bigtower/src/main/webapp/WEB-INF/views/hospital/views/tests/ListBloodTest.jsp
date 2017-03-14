@@ -23,6 +23,7 @@
 	margin: auto auto 100px auto;
 
 }
+
 -->
 </style>
 <div class="widget widget-table action-table">
@@ -45,9 +46,9 @@
 				<c:forEach var="bloodList" items="${bloodList}">
 					<tr>
 						<td>${bloodList.hoPatientName}</td>
-						<td>${bloodList.hoTestRequestCode }</td>
-						<td>${bloodList.hoTreatmentCode }</td>
-						<td>${bloodList.hoTestStateName }</td>
+						<td>${bloodList.hoTestRequestCode}</td>
+						<td>${bloodList.hoTreatmentCode}</td>
+						<td>${bloodList.hoTestStateName}</td>
 						<td>
 							<a href="<c:url value='/hospital/test/updateBloodState?hoTestRequestCode=${bloodList.hoTestRequestCode}'/>">
 								<button>결과등록신청</button>
