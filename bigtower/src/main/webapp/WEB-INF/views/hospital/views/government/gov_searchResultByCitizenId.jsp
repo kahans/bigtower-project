@@ -65,7 +65,7 @@
 									<fieldset>
 										<!-- 내용 -->
 										진료
-										
+										<%@ include file="/WEB-INF/views/hospital/views/government/treat/gov_searchTreatResult.jsp" %>
 										<!-- /내용 -->
 									</fieldset>
 								</form>
@@ -78,7 +78,7 @@
 										<fieldset>
 											<!-- 내용 -->
 											진단
-                                            
+                                   			<%@ include file="/WEB-INF/views/hospital/views/government/diagnosis/gov_listDiagnosisResult.jsp" %>
 											<!-- /내용 -->
 										</fieldset>
 									</form>
@@ -91,7 +91,7 @@
 										<fieldset>
 											<!-- 내용 -->
 											처방
-                                            
+                                   			<%@ include file="/WEB-INF/views/hospital/views/government/prescription/gov_listPrescriptionResult.jsp" %>
 											<!-- /내용 -->
 										</fieldset>
 									</form>
@@ -105,7 +105,7 @@
 										<fieldset>
 											<!-- 내용 -->
 											입퇴원
-                                            
+                                   			<%@ include file="/WEB-INF/views/hospital/views/government/hospitalization/gov_listHospitalizationResult.jsp" %>
 											<!-- /내용 -->
 										</fieldset>
 									</form>
@@ -119,7 +119,7 @@
 										<fieldset>
 											<!-- 내용 -->
 											수술
-                                            
+                                   			<%@ include file="/WEB-INF/views/hospital/views/government/surgery/gov_listSurgeryResult.jsp" %>
 											<!-- /내용 -->
 										</fieldset>
 									</form>
@@ -133,7 +133,7 @@
 										<fieldset>
 											<!-- 내용 -->
 											혈액검사
-                                            
+                                   			<%@ include file="/WEB-INF/views/hospital/views/government/bloodTest/gov_listBloodTestResult.jsp" %>
 											<!-- /내용 -->
 										</fieldset>
 									</form>
@@ -147,7 +147,7 @@
 										<fieldset>
 											<!-- 내용 -->
 											영상검사
-                                            
+                                   			<%@ include file="/WEB-INF/views/hospital/views/government/mediaTest/gov_listMediaTestResult.jsp" %>
 											<!-- /내용 -->
 										</fieldset>
 									</form>
@@ -161,7 +161,7 @@
 										<fieldset>
 											<!-- 내용 -->
 											건강검진
-                                            
+                                   			<%@ include file="/WEB-INF/views/hospital/views/government/checkup/gov_listCheckupResult.jsp" %>
 											<!-- /내용 -->
 										</fieldset>
 									</form>
@@ -175,7 +175,7 @@
 										<fieldset>
 											<!-- 내용 -->
                                            	 예방접종
-                                            
+                                   			<%@ include file="/WEB-INF/views/hospital/views/government/vaccine/gov_listVaccineResult.jsp" %>
 											<!-- /내용 -->
 										</fieldset>
 									</form>

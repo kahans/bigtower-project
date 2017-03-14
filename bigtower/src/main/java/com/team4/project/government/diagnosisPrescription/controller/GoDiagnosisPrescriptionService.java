@@ -32,7 +32,6 @@ public class GoDiagnosisPrescriptionService {
 	// 주민번호로 진단결과 가져오기
 	public List<GoDiagnosis> getListDiagnosisByCitizenId(String citizenId, String doctorId){
 		List<GoDiagnosis> listDiagnosis = new ArrayList<GoDiagnosis>();
-		logger.debug("서비스 혈액검사결과 하나");
 		logger.debug("매개변수 citizenId 확인 : "+citizenId); 
 		logger.debug("doctorId : "+doctorId);
 		String url = ContextParam.context.getInitParameter("receiveUrl");

@@ -25,12 +25,26 @@ import com.team4.project.util.HttpUrlCon;
 @Controller
 public class GovernmentController {
 	private static final Logger logger = LoggerFactory.getLogger(GovernmentController.class);
-	
+	@Autowired
+	private GovernmentService goService;
 	private Gson gson = new Gson();
 	
 	@RequestMapping(value="/government/searchResultByCitizenId", method=RequestMethod.POST)
-	public String searchResultByCitizenId(String citizenId, HttpSession session){
+	public String searchResultByCitizenId(String citizenId, HttpSession session, Model model){
 		logger.debug("searchResultByCitizenId 진입");
+		logger.debug("citizenId:"+citizenId);
+		String doctorId = (String) session.getAttribute("DOCTORID");
+		Map<String, Object> map = goService.searchResultByCitizenId(citizenId, doctorId);
+		model.addAttribute("treatList", map.get("treatList"));
+		model.addAttribute("diagnosisList", map.get("diagnosisList"));
+		model.addAttribute("prescriptionList", map.get("prescriptionList"));
+		model.addAttribute("hospitalizationList", map.get("hospitalizationList"));
+		model.addAttribute("surgeryList", map.get("surgeryList"));
+		model.addAttribute("bloodTestList", map.get("bloodTestList"));
+		model.addAttribute("imageTestList", map.get("imageTestList"));
+		model.addAttribute("checkupList", map.get("checkupList"));
+		model.addAttribute("vaccinationList", map.get("vaccinationList"));
+			
 		return "/hospital/views/government/gov_searchResultByCitizenId";
 	}
 	
