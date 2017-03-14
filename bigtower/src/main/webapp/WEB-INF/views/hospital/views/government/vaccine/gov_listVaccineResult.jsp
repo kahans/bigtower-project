@@ -29,7 +29,7 @@
 						<td>${vaccinList.goHospitalName}</td>
 						<td>${vaccinList.goVaccinationName}</td>
 						<td>${vaccinList.goVaccinationResultDegree}</td>
-						<td>${vaccinList.goCheckupResultRegistrationDate}</td>
+						<td>${vaccinList.goVaccinationResultRegistrationDate}</td>
 					</tr>
 				</c:forEach>
             
