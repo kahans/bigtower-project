@@ -56,7 +56,7 @@ public class GoTreatController {
 		logger.debug("getTreatList"+getTreatList);
 		model.addAttribute("citizenId",citizenId);
 		model.addAttribute("getTreatList",getTreatList);
-		return "/hospital/views/government/treat/gov_searchTreatResult";
+		return "/hospital/views/government/gov_searchResultByCitizenId";
 	}
 
 	// 한명의 의사에게 진료받은 여러사람의 진료리스트
@@ -69,7 +69,7 @@ public class GoTreatController {
 		
 		logger.debug("getTreatList "+getTreatList);
 		model.addAttribute("getTreatList",getTreatList);
-		return "/hospital/views/government/treat/gov_searchTreatResultByDoctorId";
+		return "/hospital/views/government/gov_searchResultByDoctorId";
 	}
 	
 	// 한사람의 하나의 진료정보

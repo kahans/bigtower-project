@@ -28,21 +28,12 @@ public class GovernmentController {
 	
 	private Gson gson = new Gson();
 	
-	//url test
-	@RequestMapping(value="/government/test2", method=RequestMethod.POST)
-	public String test2(String hospitalInfo, String test){
-		System.out.println("hospitalInfo:"+hospitalInfo);
-		System.out.println("test:"+test);
-		return "home";
+	@RequestMapping(value="/government/searchResultByCitizenId", method=RequestMethod.POST)
+	public String searchResultByCitizenId(String citizenId, HttpSession session){
+		logger.debug("searchResultByCitizenId 진입");
+		return "/hospital/views/government/gov_searchResultByCitizenId";
 	}
 	
-	//Context param test
-	@RequestMapping(value="/government/test", method=RequestMethod.GET)
-	public String test1(){
-		String test = ContextParam.context.getInitParameter("test");
-		System.out.println("test:"+test);
-		return "home";
-	}
 	
 	// 정부 db에서 주민번호 조회
 	@RequestMapping(value="/government/checkCitizenId", method=RequestMethod.POST)
