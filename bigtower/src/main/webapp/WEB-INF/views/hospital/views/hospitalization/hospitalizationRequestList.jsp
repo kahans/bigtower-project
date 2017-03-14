@@ -39,9 +39,9 @@
                  <table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-						<th>환자명</th>
-							<th>입원요청일</th>
-							<th>입원등록</th>				
+						<th><h4>환자명</h4></th>
+							<th><h4>입원요청일</h4></th>
+							<th><h4>입원등록</h4></th>				
 						</tr>
 					</thead>
 					<tbody>
