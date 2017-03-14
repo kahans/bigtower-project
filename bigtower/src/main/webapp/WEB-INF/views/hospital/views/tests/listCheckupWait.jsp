@@ -25,7 +25,7 @@
 }
 -->
 </style>
-<div class="widget widget-nopad">
+<div class="widget widget-table action-table">
 	<div class="widget-header">
 		<i class="icon-list-alt"></i>
 		<h3>건강검진 결과대기 목록</h3>
