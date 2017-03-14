@@ -262,7 +262,7 @@ public class GovernmentService {
 			List<GoSurgeryResult> surgeryList = new ArrayList<GoSurgeryResult>();
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("doctorId", doctorId);
-			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListVaccinationResultByDoctorId");
+			HttpUrlCon conn = new HttpUrlCon(url+"/bigbang/government/getListSurgeryByDoctorId");
 			String returnSurgery = conn.HttpUrlPOST(map);
 			logger.debug("returnSurgery 확인 : "+returnSurgery);
 			surgeryList = gson.fromJson(returnSurgery, new TypeToken<List<GoSurgeryResult>>(){}.getType() );

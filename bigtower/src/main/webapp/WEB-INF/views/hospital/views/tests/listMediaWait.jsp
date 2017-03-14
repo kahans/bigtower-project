@@ -12,6 +12,9 @@
 	overflow: auto;		
 	margin: 50px 300px 300px 300px;
 }
+th{
+	font-size: 15px;
+}
 @media (max-width: 1000px) {
 .widget {
 	

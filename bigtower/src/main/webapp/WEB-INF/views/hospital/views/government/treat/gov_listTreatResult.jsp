@@ -1,38 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<h4>진료리스트</h4>
-
-	<table border="1">
-		<tr>
-			<td>진료코드</td>
-			<td>병원아이디</td>
-			<td>병원명</td>
-			<td>환자ID</td>
-			<td>환자명</td>
-			<td>의사ID</td>
-			<td>의사명</td>
-			<td>진료과목코드</td>
-			<td>진료과목명</td>
-			<td>차트코드</td>
-			<td>진료내용</td>
-			<td>진료등록일</td>
-		</tr>
-		
-		<c:forEach var="list" items="${treatList}">
-			<tr>
-				<td>${list.goTreatCode}</td>
-				<td>${list.goHospitalId}</td>
-				<td>${list.goHospitalName}</td>
-				<td>${list.goCitizenId}</td>
-				<td>${list.goCitizenName}</td>
-				<td>${list.goDoctorId}</td>
-				<td>${list.goDoctorName}</td>
-				<td>${list.goTreatSubjectCode}</td>
-				<td>${list.goTreatSubjectName}</td>
-				<td>${list.goChartCode}</td>
-				<td>${list.goTreatContents}</td>
-				<td>${list.goTreatRegistrationDate}</td>
-			</tr>
-		</c:forEach>
-	</table>
+<div class="widget widget-table action-table">
+	<div class="widget-header">
+		<i class="icon-list-alt"></i>
+	</div>
+	<div class="widget-content">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>병원명</th>
+					<th>의사명</th>
+					<th>진료과목명</th>
+					<th>환자명</th>
+					<th>진료내용</th>
+					<th>진료등록일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="list" items="${treatList}">
+					<tr>
+						<td>${list.goHospitalName}</td>
+						<td>${list.goDoctorName}</td>
+						<td>${list.goTreatSubjectName}</td>
+						<td>${list.goCitizenName}</td>
+						<td>${list.goTreatContents}</td>
+						<td>${list.goTreatRegistrationDate}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div><!-- /widget-content -->
+</div><!-- /widget widget-table action-table -->
