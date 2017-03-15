@@ -75,7 +75,19 @@ public class HoTestController {
 		model.addAttribute("bloodList", bloodList);
 		return "/hospital/views/tests/ListBloodTest";
 	}
-	
+	//혈액 결과완료 목록 출력
+	@RequestMapping(value="/hospital/test/ListBloodTestComplete", method=RequestMethod.GET)
+	public String BloodTestListComplete(HoTestRequestSub hoTestRequest, Model model,
+			HttpSession session){
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		hoTestRequest.setHoTestCode("1");
+		hoTestRequest.setHoHospitalCode(hoHospitalCode);
+		hoTestRequest.setHoTestStateCode(3); 
+		System.out.println(hoTestRequest.toString());
+		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
+		model.addAttribute("bloodList", bloodList);
+		return "/hospital/views/tests/ListBloodTestComplete";
+	}
 	//혈액검사등록 뷰 get
 	@RequestMapping(value="/hospital/test/addBloodTest", method=RequestMethod.GET)
 	public String bloodTestAdd(Model model, HttpSession session,
@@ -109,9 +121,9 @@ public class HoTestController {
 		//String path ="/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/blood/";
 		bloodView.setHoBloodTestImagePath(path);
 		//혈액 검사 테이블 열을 업데이트를 한다
-		hoTS.updateBloodTestRequest(bloodView);
+	
 		hoTS.updateBloodTest(bloodView);
-		
+		hoTS.updateBloodTestRequest(bloodView);
 		return "redirect:/hospital/test/listBloodWait";
 	}
 	//영상검사대기 상태 업데이트
@@ -138,6 +150,19 @@ public class HoTestController {
 		model.addAttribute("mediaList", mediaList);
 		return "/hospital/views/tests/listMediaWait";
 	}
+	//영상검사 결과완료목록들
+		@RequestMapping(value="/hospital/test/listMediaComplete", method=RequestMethod.GET)
+		public String listMediaComplete(Model model,HoTestRequestSub hoTestRequest,
+				HttpSession session){
+			String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+			hoTestRequest.setHoTestCode("2");
+			hoTestRequest.setHoHospitalCode(hoHospitalCode);		
+			hoTestRequest.setHoTestStateCode(3);
+			List<HoTestRequestSub> mediaList = hoTS.mediaTestList(hoTestRequest);
+			
+			model.addAttribute("mediaList", mediaList);
+			return "/hospital/views/tests/listMediaComplete";
+		}
 	//영상검사 목록
 	@RequestMapping(value="/hospital/test/listMediaTest", method=RequestMethod.GET)
 	public String mediaTestList(HoTestRequestSub hoTestRequest, Model model,
@@ -194,8 +219,9 @@ public class HoTestController {
 		// 배포시사용할경로
 		System.out.println("path:"+path);
 		mediaView.setHoMediaTestImagePath(path);
-		hoTS.updateMediaTestRequest(mediaView);
+		
 		hoTS.updateMediaTest(mediaView);
+		hoTS.updateMediaTestRequest(mediaView);
 		return "redirect:/hospital/test/listMediaWait";
 	}
 }

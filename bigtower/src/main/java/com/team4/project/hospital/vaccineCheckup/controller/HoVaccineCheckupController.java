@@ -63,6 +63,21 @@ public class HoVaccineCheckupController {
 		model.addAttribute("checkupList", checkupList);
 		return "/hospital/views/tests/listCheckupWait";
 	}
+	//결과 완료 상태목록을 출력
+		@RequestMapping(value="/hospital/test/listCheckupComplete",method=RequestMethod.GET)
+		public String listCheckupComplete(Model model, HoTestRequestSub hoTestRequestSub,
+				HttpSession session){
+			String hoHospitalCode = (String)session.getAttribute("HOSPITALCODE");
+			hoTestRequestSub.setHoTestCode("3");
+			hoTestRequestSub.setHoHospitalCode(hoHospitalCode);
+			hoTestRequestSub.setHoTestStateCode(3);
+			
+			List<HoTestRequestSub> checkupList=hoVCS.checkupList(hoTestRequestSub);
+			
+			model.addAttribute("checkupList", checkupList);
+			return "/hospital/views/tests/listCheckupComplete";
+		}
+	
 	//건강검진 등록 뷰 get
 	@RequestMapping(value="/hospital/test/addCheckup", method=RequestMethod.GET)
 	public String checkupAdd(Model model, HttpSession session,
