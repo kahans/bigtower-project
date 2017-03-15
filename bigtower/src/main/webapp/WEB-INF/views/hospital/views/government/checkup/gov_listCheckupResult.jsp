@@ -27,8 +27,9 @@
 						<td>${goCheckupResult.goTreatSubjectName}</td>
 						<td>${goCheckupResult.goHospitalName}</td>
 						<td>
-							<a onclick="javascript:window.open('/bigtower/government/fileView?filePath=${goCheckupResult.goCheckupResultFilePath}&fileName=${goCheckupResult.goCheckupResultFileName}','','height=0,width=0');" style='cursor:hand'>click</a>
-							<a href="#" data-toggle="tooltip" title="${goCheckupResult.goCheckupResultFilePath}${goCheckupResult.goCheckupResultFileName}"><button><i class="icon-folder-open"></i></button></a>
+							<a onclick="javascript:window.open('/bigtower/government/fileView?filePath=${goCheckupResult.goCheckupResultFilePath}&fileName=${goCheckupResult.goCheckupResultFileName}','','height=0,width=0');" style='cursor:hand'>
+								<button><i class="icon-folder-open"></i></button>
+							</a>
 						</td>
 						<td>${goCheckupResult.goCheckupResultRegistrationDate}</td>
 					</tr>
