@@ -53,7 +53,7 @@ th{
 						<td>${checkupList.hoTestStateName}</td>
 						<td>
 							<a href="<c:url value='/hospital/test/updateCheckupState?hoTestRequestCode=${checkupList.hoTestRequestCode }'/>">
-								<button>결과등록신청</button>
+								<button>검사완료</button>
 							</a>
 						</td>
 					</tr>
