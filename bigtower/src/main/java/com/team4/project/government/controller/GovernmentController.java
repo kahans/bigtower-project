@@ -127,5 +127,27 @@ public class GovernmentController {
 		logger.debug("index 메서드 호출");
 		return "/hospital/views/government/gov_index";
 	}
+	
+	//이미지파일 새창으로 열기
+	@RequestMapping(value="/government/fileView", method=RequestMethod.GET)
+	public String fileView(String fileName, String filePath, Model model){
+		logger.debug("filePath:"+filePath);
+		logger.debug("filePath.lastIndexOf(/):"+filePath.lastIndexOf("/")+1);
+		String kind = filePath.substring(filePath.lastIndexOf("/")+1);
+		logger.debug("kind:"+kind);
+		String path = "";
+		if(kind.equals("blood")){
+			path = ContextParam.context.getInitParameter("bloodPath");
+		}
+		if(kind.equals("image")){
+			path = ContextParam.context.getInitParameter("imagePath");
+		}
+		if(kind.equals("checkup")){
+			path = ContextParam.context.getInitParameter("checkupPath");
+		}
+		String ulr = path+fileName;;
+		model.addAttribute("imageName", ulr);
+		return "/hospital/views/government/gov_fileView";
+	}
 
 }

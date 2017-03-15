@@ -30,7 +30,10 @@
 						<td>${getBloodTest.goHospitalName}</td>
 						<td>${getBloodTest.goBloodTestBloodSugar}</td>
 						<td>${getBloodTest.goBloodTestPlatelet}</td>
-						<td><a href="#" data-toggle="tooltip" title="${getBloodTest.goBloodTestFilePath} ${getBloodTest.goBloodTestFileName}"><button><i class="icon-folder-open"></i></button></a></td>
+						<td>
+							<a onclick="javascript:window.open('/bigtower/government/fileView?filePath=${getBloodTest.goBloodTestFilePath}&fileName=${getBloodTest.goBloodTestFileName}','','height=0,width=0');" style='cursor:hand'>click</a>
+							<a href="#" target="_blank" data-toggle="tooltip" title="${getBloodTest.goBloodTestFilePath} ${getBloodTest.goBloodTestFileName}"><button><i class="icon-folder-open"></i></button></a>
+						</td>
 						<td>${getBloodTest.goBloodTestDate}</td>
 					</tr>
 				</c:forEach>

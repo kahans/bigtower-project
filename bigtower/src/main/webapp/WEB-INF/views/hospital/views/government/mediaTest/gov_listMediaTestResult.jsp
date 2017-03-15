@@ -26,7 +26,10 @@
 						<td>${getMediaTest.goDoctorName}</td>
 						<td>${getMediaTest.goTreatSubjectName}</td>
 						<td>${getMediaTest.goHospitalName}</td>
-						<td><a href="#" data-toggle="tooltip" title="${getMediaTest.goImageTestFilePath} ${getMediaTest.goImageTestFileName}"><button><i class="icon-folder-open"></i></button></a></td>
+						<td>
+							<a onclick="javascript:window.open('/bigtower/government/fileView?filePaht=${getMediaTest.goImageTestFilePath}&filePath=${getMediaTest.goImageTestFileName}','','height=0,width=0');" style='cursor:hand'>click</a>
+							<a href="#" data-toggle="tooltip" title="${getMediaTest.goImageTestFilePath} ${getMediaTest.goImageTestFileName}"><button><i class="icon-folder-open"></i></button></a>
+						</td>
 						<td>${getMediaTest.goImageTestDate}</td>
 					</tr>
 				</c:forEach>            
