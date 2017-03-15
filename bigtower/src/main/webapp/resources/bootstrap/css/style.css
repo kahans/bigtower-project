@@ -1152,7 +1152,7 @@ color: #333;
 [1. Max Width: 767px]
 */
 
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
     	
 	#main {
 		padding: 0 10px;

@@ -9,12 +9,12 @@
 		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
-					<th>병원명</th>
-					<th>의사명</th>
-					<th>진료과목명</th>
-					<th>환자명</th>
-					<th>질병명</th>
-					<th>진단등록일</th>
+					<th><h4>병원명</h4></th>
+					<th><h4>의사명</h4></th>
+					<th><h4>진료과목명</h4></th>
+					<th><h4>환자명</h4></th>
+					<th><h4>질병명</h4></th>
+					<th><h4>진단등록일</h4></th>
 				</tr>
 			</thead>
 			<tbody>
