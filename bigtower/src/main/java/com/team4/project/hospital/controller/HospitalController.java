@@ -104,4 +104,9 @@ public class HospitalController {
 		}
 		
 	}
+	
+	@RequestMapping(value="/hospital/viewGovernmentInfo", method=RequestMethod.GET)
+	public String viewGovernmentInfo(){	
+		return "/hospital/views/viewGovernmentInfo";
+	}
 }

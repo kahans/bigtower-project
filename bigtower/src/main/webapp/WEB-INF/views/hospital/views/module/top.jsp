@@ -127,6 +127,16 @@
 	        </li>
 			<!-- /메뉴 9 -->
 		</c:if>
+		
+		<c:if test="${STAFFLEVELCODE==1}">
+			<!-- 메뉴10 -->
+	        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-save"></i><span>정부OPEN API</span> <b class="caret"></b></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="<c:url value='/hospital/viewGovernmentInfo'/>">정부OPEN API </a></li>
+	          </ul>
+	        </li>
+			<!-- /메뉴 10 -->
+		</c:if>
 			
       </ul>
     </div>
