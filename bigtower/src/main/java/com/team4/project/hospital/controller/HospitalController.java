@@ -29,7 +29,31 @@ public class HospitalController {
 	//인덱스 화면 보기
 	@RequestMapping(value="/hospital/", method=RequestMethod.GET)
 	public String index(Model model, HttpSession session){
+		String disease = null;
+		String medicine = null;
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		String doctorId = (String) session.getAttribute("DOCTORID");
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("doctorId", doctorId);
+		String url = ContextParam.context.getInitParameter("receiveUrl");
+		HttpUrlCon firstHttpUrlcon = new HttpUrlCon(url+"/bigbang/government/getDiseaseCode");
+		try{
+			disease = firstHttpUrlcon.HttpUrlPOST(map);
+		}catch(Exception e){
+			logger.debug("예외발생");
+			e.printStackTrace();
+		}
 		
+		HttpUrlCon secondHttpUrlcon = new HttpUrlCon(url+"/bigbang/government/getMedicineCode");
+		try {
+			medicine = secondHttpUrlcon.HttpUrlPOST(map);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Map<String,Object> resultMap = hoService.statistics(hoHospitalCode,disease,medicine);
+		model.addAttribute("resultMap",resultMap);
 		return "/hospital/views/index";
 	}
 	
@@ -114,34 +138,5 @@ public class HospitalController {
 		return "/hospital/views/viewGovernmentInfo";
 	}
 	
-	//통계자료
-	@RequestMapping(value="/hospital/statistics", method=RequestMethod.GET)
-	public String statistics(HttpSession session, Model model){
-		String disease = null;
-		String medicine = null;
-		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		String doctorId = (String) session.getAttribute("DOCTORID");
-		Map<String,String> map = new HashMap<String, String>();
-		map.put("doctorId", doctorId);
-		String url = ContextParam.context.getInitParameter("receiveUrl");
-		HttpUrlCon firstHttpUrlcon = new HttpUrlCon(url+"/bigbang/government/getDiseaseCode");
-		try{
-			disease = firstHttpUrlcon.HttpUrlPOST(map);
-		}catch(Exception e){
-			logger.debug("예외발생");
-			e.printStackTrace();
-		}
-		
-		HttpUrlCon secondHttpUrlcon = new HttpUrlCon(url+"/bigbang/government/getMedicineCode");
-		try {
-			medicine = secondHttpUrlcon.HttpUrlPOST(map);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Map<String,Object> resultMap = hoService.statistics(hoHospitalCode,disease,medicine);
-		model.addAttribute("resultMap",resultMap);
-		return "/hospital/view/index";
-	}
+	
 }

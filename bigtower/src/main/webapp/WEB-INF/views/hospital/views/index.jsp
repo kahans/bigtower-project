@@ -26,7 +26,7 @@
 				<div class="span6">
 					<h3>팀 프로젝트</h3>
 					여긴 어디오
-					
+					일일 방문자 수 : ${resultMap.dayVisitPeople}
 					
 					
 					
