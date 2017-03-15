@@ -85,7 +85,7 @@ public class HoTestController {
 		HoBloodTestSub bloodView= hoTS.bloodTestView(hoTestRequestCode);
 		//결과대기상태에서 결과등록 완료로 상태가 변경
 		bloodView.setHoHospitalCode(hoHospitalCode);
-		hoTS.updateBloodTestRequest(bloodView);
+		
 		//혈액검사 테이블에 insert 하기
 		hoTS.addBlood(bloodView);
 		model.addAttribute("bloodView",bloodView);
@@ -100,6 +100,7 @@ public class HoTestController {
 		
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		bloodView.setHoHospitalCode(hoHospitalCode);
+		
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
 		//String path="D:\\testImage";//절대 주소
 		//String path="C:\\sw\\testimage";//집에서 작성
@@ -108,6 +109,7 @@ public class HoTestController {
 		//String path ="/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/blood/";
 		bloodView.setHoBloodTestImagePath(path);
 		//혈액 검사 테이블 열을 업데이트를 한다
+		hoTS.updateBloodTestRequest(bloodView);
 		hoTS.updateBloodTest(bloodView);
 		
 		return "redirect:/hospital/test/listBloodWait";
@@ -165,7 +167,7 @@ public class HoTestController {
 		HoMediaTestSub mediaView = hoTS.mediaTestView(hoTestRequestCode);
 		mediaView.setHoHospitalCode(hoHospitalCode);
 		//영상테이블에 들어갈 초기데이터 입력
-		hoTS.updateMediaTestRequest(mediaView);
+		
 		hoTS.addMedia(mediaView);
 		
 		System.out.println(mediaView.toString());
@@ -184,6 +186,7 @@ public class HoTestController {
 		//String path = "C:\\sw\\testimage\\";
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		mediaView.setHoHospitalCode(hoHospitalCode);
+		
 		System.out.println("해당 영상검사 결과 등록 POST");
 		System.out.println("등록POST : "+mediaView.toString());
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
@@ -191,7 +194,7 @@ public class HoTestController {
 		// 배포시사용할경로
 		System.out.println("path:"+path);
 		mediaView.setHoMediaTestImagePath(path);
-		
+		hoTS.updateMediaTestRequest(mediaView);
 		hoTS.updateMediaTest(mediaView);
 		return "redirect:/hospital/test/listMediaWait";
 	}

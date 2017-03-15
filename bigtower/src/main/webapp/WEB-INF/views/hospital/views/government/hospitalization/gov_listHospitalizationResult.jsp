@@ -8,29 +8,24 @@
 		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
-					<td>입퇴원코드</td>
-					<td>진료코드</td>
-					<td>입원일자</td>
-					<td>퇴원일자</td>
-					<td>병원명</td>
-					<td>병원주소</td>
-					<td>의사명</td>
-					<td>환자명</td>
-					<td>진료과목</td>
+					<th>병원명</th>
+					<th>의사명</th>
+					<th>진료과목</th>
+					<th>환자명</th>
+					<th>입원일자</th>
+					<th>퇴원일자</th>
 				</tr>
 				</thead>
 					<tbody>	
 				<c:forEach var="hospitalizationList" items="${hospitalizationList}">
 					<tr>
-						<td>${hospitalizationList.goHospitalizationCode}</td>
-						<td>${hospitalizationList.goTreatCode}</td>
+						<td>${hospitalizationList.goHospitalName}</td>
+						<td>${hospitalizationList.goDoctorName}</td>
+						<td>${hospitalizationList.goTreatSubjectName}</td>
+						<td>${hospitalizationList.goCitizenName}</td>
 						<td>${hospitalizationList.goHospitalizationEnterDate}</td>
 						<td>${hospitalizationList.goHospitalizationExitDate}</td>
-						<td>${hospitalizationList.goHospitalName}</td>
-						<td>${hospitalizationList.goHospitalAddress}</td>
-						<td>${hospitalizationList.goDoctorName}</td>
-						<td>${hospitalizationList.goCitizenName}</td>
-						<td>${hospitalizationList.goTreatSubjectName}</td>
+						
 					</tr>
 				</c:forEach>
 			</tbody>

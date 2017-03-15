@@ -71,7 +71,7 @@ public class HoVaccineCheckupController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		HoCheckupSub checkView = hoVCS.checkView(hoTestRequestCode);
 		checkView.setHoHospitalCode(hoHospitalCode);
-		hoVCS.updateCheckupTestRequest(checkView);
+		
 		
 		hoVCS.addCheck(checkView);
 		model.addAttribute("checkView", checkView);
@@ -91,6 +91,7 @@ public class HoVaccineCheckupController {
 		String path = ContextParam.context.getInitParameter("checkupPath");
 
 		addCheckup.setHoCheckUpResultPath(path);
+		hoVCS.updateCheckupTestRequest(addCheckup);
 		hoVCS.updateCheck(addCheckup);
 		return "redirect:/hospital/test/listCheckupWait";
 	}

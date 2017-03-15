@@ -33,7 +33,7 @@
 </style>
 	<div class="widget widget-table action-table">
         <div class="widget-header"> <i class="icon-th-list"></i>
-          <h3>접수 대기자 목록</h3>
+          <h3>접수 목록</h3>
         </div>
         <!-- /widget-header -->
         <div class="widget-content">

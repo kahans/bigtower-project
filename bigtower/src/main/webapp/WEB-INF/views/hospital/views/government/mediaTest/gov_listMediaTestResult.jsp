@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 	
 	<div class="widget widget-table action-table">
         <div class="widget-header"> <i class="icon-th-list"></i>
@@ -29,14 +29,14 @@
 						<td><a href="#" data-toggle="tooltip" title="${getMediaTest.goImageTestFilePath} ${getMediaTest.goImageTestFileName}"><button><i class="icon-folder-open"></i></button></a></td>
 						<td>${getMediaTest.goImageTestDate}</td>
 					</tr>
-				</c:forEach>
-            
+				</c:forEach>            
             </tbody>
           </table>
         </div>
         <!-- /widget-content --> 
       </div>
       <!-- /widget --> 
+      
       
 <script>
 	$(document).ready(function(){
