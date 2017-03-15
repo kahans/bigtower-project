@@ -137,13 +137,13 @@ public class GovernmentController {
 		logger.debug("kind:"+kind);
 		String path = "";
 		if(kind.equals("blood")){
-			path = ContextParam.context.getInitParameter("bloodPath");
+			path = ContextParam.context.getInitParameter("getBloodPath");
 		}
 		if(kind.equals("image")){
-			path = ContextParam.context.getInitParameter("imagePath");
+			path = ContextParam.context.getInitParameter("getImagePath");
 		}
 		if(kind.equals("checkup")){
-			path = ContextParam.context.getInitParameter("checkupPath");
+			path = ContextParam.context.getInitParameter("getCheckupPath");
 		}
 		String ulr = path+fileName;;
 		model.addAttribute("imageName", ulr);

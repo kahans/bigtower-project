@@ -67,7 +67,7 @@ public class HoTestService {
 			//작업시
 			//file = new File(path+"\\"+fileName);
 			//배포시
-			file = new File(path+fileName);
+			file = new File(path+"/"+fileName);
 			System.out.println("파일 전체경로"+file);
 			multipartFile.transferTo(file);
 			
@@ -110,7 +110,7 @@ public class HoTestService {
 				//작업시
 				//file = new File(path+"\\"+fileName);
 				//배포시
-				file = new File(path+fileName);
+				file = new File(path+"/"+fileName);
 				
 				multipartFile.transferTo(file);
 				

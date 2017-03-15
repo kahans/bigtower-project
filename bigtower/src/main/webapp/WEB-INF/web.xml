@@ -72,19 +72,19 @@
 	<!-- 저장된파일 불러오는 경로 -->
 		<!-- 혈액검사 저장된 파일 불러올 경로 -->
 		<context-param>
-			<param-name>bloodPath</param-name>
+			<param-name>getBloodPath</param-name>
 			<param-value>http://bluesang7.cafe24.com/fileRepository/resources/file/blood/</param-value>
 		</context-param>
 		
 		<!-- 영상검사 저장된 파일 불러올 경로 -->
 		<context-param>
-			<param-name>imagePath</param-name>
+			<param-name>getImagePath</param-name>
 			<param-value>http://bluesang7.cafe24.com/fileRepository/resources/file/image/</param-value>
 		</context-param>
 		
 		<!-- 건강검진 저장된 파일 불러올 경로 -->
 		<context-param>
-			<param-name>checkupPath</param-name>
+			<param-name>getCheckupPath</param-name>
 			<param-value>http://bluesang7.cafe24.com/fileRepository/resources/file/checkup/</param-value>
 		</context-param>	
 		
