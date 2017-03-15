@@ -9,15 +9,15 @@
 		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
-					<th>병원명</th>
-					<th>의사명</th>
-					<th>진료과목명</th>
-					<th>환자이름</th>
-					<th>1일투약횟수</th>
-					<th>1회투여량</th>
-					<th>총투약일수</th>
-					<th>용법</th>
-					<th>처방작성일자</th>			
+					<th><h4>병원명</h4></th>
+					<th><h4>의사명</h4></th>
+					<th><h4>진료과목명</h4></th>
+					<th><h4>환자이름</h4></th>
+					<th><h4>1일투약횟수</h4></th>
+					<th><h4>1회투여량</h4></th>
+					<th><h4>총투약일수</h4></th>
+					<th><h4>용법</h4></th>
+					<th><h4>처방작성일자</h4></th>			
 				</tr>
 			</thead>
 			<tbody>

@@ -41,11 +41,11 @@
              		 <table class="table table-striped table-bordered">
 						<thead>
 							<tr>
-							<th>환자명</th>
-							<th>진료과</th>
-							<th>방문목적</th>
-							<th>접수일</th>
-							<th>수납처리</th>
+							<th><h4>환자명</h4></th>
+							<th><h4>진료과</h4></th>
+							<th><h4>방문목적</h4></th>
+							<th><h4>접수일</h4></th>
+							<th><h4>수납처리</h4></th>
 							</tr>
 						</thead>
 						<tbody>

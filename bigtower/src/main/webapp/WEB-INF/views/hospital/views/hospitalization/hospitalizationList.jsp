@@ -42,9 +42,9 @@
 					<table class="table table-striped table-bordered">
 						<thead>
 							<tr>
-								<th>환자명</th>
-								<th>입원일</th>
-								<th>퇴원처리</th>
+								<th><h4>환자명</h4></th>
+								<th><h4>입원일</h4></th>
+								<th><h4>퇴원처리</h4></th>
 							</tr>
 						</thead>
 						<tbody>

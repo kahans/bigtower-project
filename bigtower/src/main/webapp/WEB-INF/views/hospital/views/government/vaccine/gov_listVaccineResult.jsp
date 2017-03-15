@@ -11,13 +11,13 @@
           <table class="table table-striped table-bordered">
             <thead>
               <tr>
-              	<th>환자명</th>
-				<th>의사명</th>
-				<th>진료과목</th>
-				<th>병원명</th>
-				<th>접종명</th>
-				<th>접종차수</th>
-				<th>접종일</th>
+              	<th><h4>환자명</h4></th>
+				<th><h4>의사명</h4></th>
+				<th><h4>진료과목</h4></th>
+				<th><h4>병원명</h4></th>
+				<th><h4>접종명</h4></th>
+				<th><h4>접종차수</h4></th>
+				<th><h4>접종일</h4></th>
               </tr>
             </thead>
             <tbody>

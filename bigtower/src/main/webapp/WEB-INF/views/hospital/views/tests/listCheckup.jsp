@@ -38,15 +38,15 @@ th{
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th>환자명</th>
-						<th>검사요청코드</th>
-						<th>진료코드</th>
-						<th>상태</th>
+						<th><h4>환자명</h4></th>
+						<th><h4>검사요청코드</h4></th>
+						<th><h4>진료코드</h4></th>
+						<th><h4>상태</h4></th>
 						<th class="td-actions"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="checkupList" items="${checkupList}">						<tr>
+					<c:forEach var="checkupList" items="${checkupList}">
 						<tr>
 							<td>${checkupList.hoPatientName}</td>
 							<td>${checkupList.hoTestRequestCode}</td>
