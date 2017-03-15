@@ -54,4 +54,152 @@
 		join ho_doctor on ho_doctor.HO_HOSPITAL_CODE = ho_staff.HO_HOSPITAL_CODE
 		WHERE ho_staff_id = #{hoStaffId} AND ho_staff_pw=#{hoStaffPw}		
 	</select>
+	
+	<!-- 하루 방문객수 확인  -->
+	<select id="dayVisitCitizenCount" parameterType="Map" resultType="int">
+		select 
+			count(ho_treatment.HO_TREATMENT_CODE) 
+		from ho_treatment 
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} day) 
+		and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 	
+	</select>
+	
+	<!-- 한달 방문객수 확인 -->
+	<select id="monthVisitCitizenCount" parameterType="Map" resultType="int">
+		select 
+			count(ho_treatment.HO_TREATMENT_CODE) 
+		from ho_treatment 
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} month) 
+		and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 	
+	</select>
+	
+	<!-- 일년 방문객수 확인 -->
+	<select id="yearVisitCitizenCount" parameterType="Map" resultType="int">
+		select 
+			count(ho_treatment.HO_TREATMENT_CODE) 
+		from ho_treatment 
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} year) 
+		and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 	
+	</select>
+	
+	
+	<!-- 하루 진료과별 방문진료자 수 -->
+	<select id="dayVisitTreatSubjectCitizenCount" parameterType="Map" 
+	resultType="com.team4.project.hospital.dto.HoStatistics">
+		select 
+			ho_treat_subject.HO_TREAT_SUBJECT_NAME as hoTreatSubjectName,
+			count(ho_treatment.HO_TREAT_SUBJECT_CODE) as hoTreatsubjectCount 
+		from ho_treatment 
+		join ho_treat_subject on ho_treatment.HO_TREAT_SUBJECT_CODE = ho_treat_subject.HO_TREAT_SUBJECT_CODE
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} day) 
+			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
+		group by ho_treatment.HO_TREAT_SUBJECT_CODE 
+	</select>
+	
+	<!-- 한달 진료과별 방문진료자 수 -->
+	<select id="monthVisitTreatSubjectCitizenCount" parameterType="Map" 
+	resultType="com.team4.project.hospital.dto.HoStatistics">
+		select 
+			ho_treat_subject.HO_TREAT_SUBJECT_NAME as hoTreatSubjectName,
+			count(ho_treatment.HO_TREAT_SUBJECT_CODE) as hoTreatsubjectCount 
+		from ho_treatment 
+		join ho_treat_subject on ho_treatment.HO_TREAT_SUBJECT_CODE = ho_treat_subject.HO_TREAT_SUBJECT_CODE
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} month) 
+			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
+		group by ho_treatment.HO_TREAT_SUBJECT_CODE 
+	</select>
+	
+	<!-- 일년 진료과별 방문진료자 수 -->
+	<select id="yearVisitTreatSubjectCitizenCount" parameterType="Map" 
+	resultType="com.team4.project.hospital.dto.HoStatistics">
+		select 
+			ho_treat_subject.HO_TREAT_SUBJECT_NAME as hoTreatSubjectName,
+			count(ho_treatment.HO_TREAT_SUBJECT_CODE) as hoTreatsubjectCount 
+		from ho_treatment 
+		join ho_treat_subject on ho_treatment.HO_TREAT_SUBJECT_CODE = ho_treat_subject.HO_TREAT_SUBJECT_CODE
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} year) 
+			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
+		group by ho_treatment.HO_TREAT_SUBJECT_CODE 
+	</select>
+	
+	<!-- 일주일 진단된 병명 순위 -->
+	<select id="weekDiseaseCodeRanking" parameterType="Map" 
+	resultType="com.team4.project.hospital.dto.HoStatistics">
+		select 
+			ho_diagnosis.HO_DISEASE_CODE as hoDiseaseCode,
+			count(ho_diagnosis.HO_DISEASE_CODE) as hoDiseaseCount  
+		from ho_diagnosis 
+		join ho_treatment on ho_treatment.HO_TREATMENT_CODE = ho_diagnosis.HO_TREATMENT_CODE 
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} week) 
+			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
+		group by ho_diagnosis.HO_DISEASE_CODE 
+		limit 10
+	</select>
+	
+	<!-- 한달 진단된 병명 순위 -->
+	<select id="monthDiseaseCodeRanking" parameterType="Map" 
+	resultType="com.team4.project.hospital.dto.HoStatistics">
+		select 
+			ho_diagnosis.HO_DISEASE_CODE as hoDiseaseCode,
+			count(ho_diagnosis.HO_DISEASE_CODE) as hoDiseaseCount 
+		from ho_diagnosis 
+		join ho_treatment on ho_treatment.HO_TREATMENT_CODE = ho_diagnosis.HO_TREATMENT_CODE 
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} month) 
+			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
+		group by ho_diagnosis.HO_DISEASE_CODE 
+		limit 10
+	</select>
+	
+	<!-- 일년 진단된 병명 순위 -->
+	<select id="yearDiseaseCodeRanking" parameterType="Map" 
+	resultType="com.team4.project.hospital.dto.HoStatistics">
+		select 
+			ho_diagnosis.HO_DISEASE_CODE as hoDiseaseCode,
+			count(ho_diagnosis.HO_DISEASE_CODE) as hoDiseaseCount 
+		from ho_diagnosis 
+		join ho_treatment on ho_treatment.HO_TREATMENT_CODE = ho_diagnosis.HO_TREATMENT_CODE 
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} year) 
+			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
+		group by ho_diagnosis.HO_DISEASE_CODE 
+		limit 10
+	</select>
+	
+	<!-- 일주일 처방 의약품명 순위 -->
+	<select id="weekMedicineCodeRanking" parameterType="Map" resultType="com.team4.project.hospital.dto.HoStatistics">
+		select 
+			ho_prescription.HO_MEDICINE_CODE as hoMedicineCode,
+			count(ho_prescription.HO_MEDICINE_CODE) as hoMedicineCount 
+		from ho_prescription 
+		join ho_treatment on ho_treatment.HO_TREATMENT_CODE = ho_prescription.HO_TREATMENT_CODE
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} week) 
+			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
+		group by ho_prescription.HO_MEDICINE_CODE
+		limit 10
+	</select>
+	
+	<!-- 일자별 처방 의약품명 순위 -->
+	<select id="monthMedicineCodeRanking" parameterType="Map" resultType="com.team4.project.hospital.dto.HoStatistics">
+		select 
+			ho_prescription.HO_MEDICINE_CODE as hoMedicineCode,
+			count(ho_prescription.HO_MEDICINE_CODE) as hoMedicineCount 
+		from ho_prescription 
+		join ho_treatment on ho_treatment.HO_TREATMENT_CODE = ho_prescription.HO_TREATMENT_CODE
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} month) 
+			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
+		group by ho_prescription.HO_MEDICINE_CODE
+		limit 10
+	</select>
+	
+	<!-- 일자별 처방 의약품명 순위 -->
+	<select id="yearMedicineCodeRanking" parameterType="Map" resultType="com.team4.project.hospital.dto.HoStatistics">
+		select 
+			ho_prescription.HO_MEDICINE_CODE as hoMedicineCode,
+			count(ho_prescription.HO_MEDICINE_CODE) as hoMedicineCount 
+		from ho_prescription 
+		join ho_treatment on ho_treatment.HO_TREATMENT_CODE = ho_prescription.HO_TREATMENT_CODE
+		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} year) 
+			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
+		group by ho_prescription.HO_MEDICINE_CODE
+		limit 10
+	</select>
 </mapper>

@@ -1,7 +1,9 @@
 package com.team4.project.hospital.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,11 +16,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team4.project.hospital.dto.HoLoginCheckStaffSub;
 import com.team4.project.hospital.dto.HoPatient;
+import com.team4.project.util.ContextParam;
+import com.team4.project.util.HttpUrlCon;
 
 @Controller
 public class HospitalController {
 	private static final Logger logger = LoggerFactory.getLogger(HospitalController.class);
-
+	
 	@Autowired
 	private HospitalService hoService;
 	
@@ -104,9 +108,39 @@ public class HospitalController {
 		}
 		
 	}
-	
+	//정부OPEN API 확인
 	@RequestMapping(value="/hospital/viewGovernmentInfo", method=RequestMethod.GET)
 	public String viewGovernmentInfo(){	
 		return "/hospital/views/viewGovernmentInfo";
+	}
+	
+	//통계자료
+	@RequestMapping(value="/hospital/statistics", method=RequestMethod.GET)
+	public String statistics(HttpSession session){
+		String disease = null;
+		String medicine = null;
+		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
+		String doctorId = (String) session.getAttribute("DOCTORID");
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("doctorId", doctorId);
+		String url = ContextParam.context.getInitParameter("receiveUrl");
+		HttpUrlCon firstHttpUrlcon = new HttpUrlCon(url+"/bigbang/government/getDiseaseCode");
+		try{
+			disease = firstHttpUrlcon.HttpUrlPOST(map);
+		}catch(Exception e){
+			logger.debug("예외발생");
+			e.printStackTrace();
+		}
+		
+		HttpUrlCon secondHttpUrlcon = new HttpUrlCon(url+"/bigbang/government/getMedicineCode");
+		try {
+			medicine = secondHttpUrlcon.HttpUrlPOST(map);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		hoService.statistics(hoHospitalCode,disease,medicine);
+		return "";
 	}
 }
