@@ -116,7 +116,7 @@ public class HospitalController {
 	
 	//통계자료
 	@RequestMapping(value="/hospital/statistics", method=RequestMethod.GET)
-	public String statistics(HttpSession session){
+	public String statistics(HttpSession session, Model model){
 		String disease = null;
 		String medicine = null;
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
@@ -140,7 +140,8 @@ public class HospitalController {
 			e.printStackTrace();
 		}
 		
-		hoService.statistics(hoHospitalCode,disease,medicine);
-		return "";
+		Map<String,Object> resultMap = hoService.statistics(hoHospitalCode,disease,medicine);
+		model.addAttribute("resultMap",resultMap);
+		return "/hospital/view/index";
 	}
 }

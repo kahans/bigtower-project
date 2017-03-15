@@ -25,12 +25,21 @@
 			<div class="row">
 				<div class="span6">
 					<h3>팀 프로젝트</h3>
+					여긴 어디오
+					
+					
+					
+					
 				</div><!-- /span6 -->
 				<div class="span6">
 					<img src="<c:url value='/resources/bootstrap/img/img-1.png'/>" class="img"/>
+					1번영역확인
 				</div><!-- /span6 -->
+				2번영역확인
 			</div><!-- /row -->
+			3번영역확인
 		</div><!-- /container -->
+		4번영역확인
 	</div><!-- /main-inner -->
 </div><!-- /mainSub -->
 
