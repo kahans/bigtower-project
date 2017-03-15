@@ -75,7 +75,7 @@ public class HospitalService {
 		int yearVisitPeople = hoDao.yearVisitCitizenCount(map);
 		logger.debug("일년간 방문객수 : "+yearVisitPeople);
 		
-		//일주일간 진료과별 방문진료자 수
+		//하루 진료과별 방문진료자 수
 		List<HoStatistics> dayTreatVisit = hoDao.dayVisitTreatSubjectCitizenCount(map);
 		for(int i=0; i<dayTreatVisit.size(); i++){
 			logger.debug("일주일간 진료과별 방문진료자 수 : "+dayTreatVisit.toString());
