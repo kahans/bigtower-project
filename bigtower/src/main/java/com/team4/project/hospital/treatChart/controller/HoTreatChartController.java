@@ -175,7 +175,7 @@ public class HoTreatChartController {
 		System.out.println("hoTreat 셋팅후 : "+hoTreat);
 		int result = hoTCS.addTreat(hoTreat, hoReceiveCode);
 		System.out.println("addTreat 결과는 ?"+ result);
-		return "redirect:/hospital/treatList";
+		return "redirect:/hospital/receiveList";
 	}
 	
 }

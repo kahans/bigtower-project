@@ -47,7 +47,7 @@ public class HoVaccineCheckupController {
 		hoTestRequest.setHoTestRequestCode(hoTestRequestCode);
 		hoTestRequest.setHoTestCode("3");
 		hoVCS.updateCheckupState(hoTestRequest);
-		return "redirect:/hospital/test/listCheckupWait";
+		return "redirect:/hospital/test/listCheckup";
 	}
 	//결과 대기 상태목록을 출력
 	@RequestMapping(value="/hospital/test/listCheckupWait",method=RequestMethod.GET)

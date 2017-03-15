@@ -29,6 +29,7 @@
 
 }
 </style>
+<c:if test="${!empty hospitalizationRequestList }">
 	<div class="widget widget-table action-table">
               <div class="widget-header">
                   <i class="icon-large icon-signin"></i>
@@ -63,5 +64,16 @@
               <!-- /widget-content -->
           </div>
           <!-- /widget widget-table action-table -->
-
+</c:if>
+<c:if test="${empty hospitalizationList }">
+	<div class="widget widget-table action-table">
+		<div class="widget-header">
+			<i class="icon-list-alt"></i>
+			<h3>입퇴원 요청 목록</h3>
+		</div>	
+		<div class="widget-content" align="center">
+			<h3>목록이 없습니다.</h3>
+		</div>
+	</div>
+</c:if>
 <%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>
