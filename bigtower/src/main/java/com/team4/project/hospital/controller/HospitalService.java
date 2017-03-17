@@ -1,5 +1,6 @@
 package com.team4.project.hospital.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,10 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.team4.project.government.dto.GoDisease;
 import com.team4.project.hospital.dto.HoLoginCheckStaffSub;
 import com.team4.project.hospital.dto.HoPatient;
 import com.team4.project.hospital.dto.HoStatistics;
+import com.team4.project.util.ContextParam;
+import com.team4.project.util.HttpUrlCon;
 
 @Transactional
 @Service
@@ -60,6 +62,7 @@ public class HospitalService {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
 		map.put("hoHospitalCode", hoHospitalCode);
 		
 		map.put("number", 1);
@@ -97,7 +100,7 @@ public class HospitalService {
 		List<Map> diseaseInfo = gson.fromJson(disease, new TypeToken<List<Map>>(){}.getType());
 		logger.debug("diseaseInfo 확인 : "+diseaseInfo);
 		//일주일간 질병등록
-		logger.debug("111 여기 들어오냐");
+		//logger.debug("111 여기 들어오냐");
 		List<HoStatistics> weekDisease = hoDao.weekDiseaseCodeRanking(map);
 		
 		logger.debug("1. weekDisease 확인 : "+weekDisease.toString());
@@ -179,6 +182,71 @@ public class HospitalService {
 			}
 		}
 		
+		// 정부에서 최근 몇일간 의 데이터 가져오기
+		String url = ContextParam.context.getInitParameter("receiveUrl");
+		HttpUrlCon secondHttpUrlcon = new HttpUrlCon(url+"/bigbang/government/getListDiagnosisByTopcount");
+		String diagnosisStr = "";
+		Map<String, String> inputMap = new HashMap<String, String>();
+		
+		List<Object> countryDiagnosisList = new ArrayList<Object>();
+		try {
+			inputMap.put("period", "7");
+			diagnosisStr = secondHttpUrlcon.HttpUrlPOST(inputMap);
+			logger.debug("diagnosisStr:"+diagnosisStr);
+			List<Object> diagnosisWeekList = gson.fromJson(diagnosisStr, new TypeToken<List<Object>>(){}.getType());
+			logger.debug("diagnosisWeekList:"+diagnosisWeekList);
+			countryDiagnosisList.add(diagnosisWeekList);
+			
+			inputMap.put("period", "30");
+			diagnosisStr = secondHttpUrlcon.HttpUrlPOST(inputMap);
+			logger.debug("diagnosisStr:"+diagnosisStr);
+			List<Object> diagnosisMonthList = gson.fromJson(diagnosisStr, new TypeToken<List<Object>>(){}.getType());
+			logger.debug("diagnosisMonthList:"+diagnosisMonthList);
+			countryDiagnosisList.add(diagnosisMonthList);
+			
+			inputMap.put("period", "365");
+			diagnosisStr = secondHttpUrlcon.HttpUrlPOST(inputMap);
+			logger.debug("diagnosisStr:"+diagnosisStr);
+			List<Object> diagnosisYearList = gson.fromJson(diagnosisStr, new TypeToken<List<Object>>(){}.getType());
+			logger.debug("diagnosisYearList:"+diagnosisYearList);
+			countryDiagnosisList.add(diagnosisYearList);
+			logger.debug("countryDiagnosisList:"+countryDiagnosisList);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String prescriptionStr = "";
+		List<Object> countryPrescriptionList = new ArrayList<Object>();
+		try {
+			inputMap.put("period", "7");
+			prescriptionStr = secondHttpUrlcon.HttpUrlPOST(inputMap);
+			logger.debug("prescriptionStr:"+prescriptionStr);
+			List<Object> prescriptionWeekList = gson.fromJson(prescriptionStr, new TypeToken<List<Object>>(){}.getType());
+			logger.debug("prescriptionWeekList:"+prescriptionWeekList);
+			countryPrescriptionList.add(prescriptionWeekList);
+
+			inputMap.put("period", "30");
+			prescriptionStr = secondHttpUrlcon.HttpUrlPOST(inputMap);
+			logger.debug("prescriptionStr:"+prescriptionStr);
+			List<Object> prescriptionMonthList = gson.fromJson(prescriptionStr, new TypeToken<List<Object>>(){}.getType());
+			logger.debug("prescriptionMonthList:"+prescriptionMonthList);
+			countryPrescriptionList.add(prescriptionMonthList);
+			
+			inputMap.put("period", "365");
+			prescriptionStr = secondHttpUrlcon.HttpUrlPOST(inputMap);
+			logger.debug("prescriptionStr:"+prescriptionStr);
+			List<Object> prescriptionYearList = gson.fromJson(prescriptionStr, new TypeToken<List<Object>>(){}.getType());
+			logger.debug("prescriptionYearList:"+prescriptionYearList);
+			countryPrescriptionList.add(prescriptionYearList);
+			logger.debug("countryPrescriptionList:"+countryPrescriptionList);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		resultMap.put("dayVisitPeople", dayVisitPeople);
 		resultMap.put("monthVisitPeople", monthVisitPeople);
 		resultMap.put("yearVisitPeople", yearVisitPeople);
@@ -192,6 +260,9 @@ public class HospitalService {
 		resultMap.put("monthMedicine", monthMedicine);
 		resultMap.put("yearMedicine", yearMedicine);
 		
+		resultMap.put("countryDiagnosisList", countryDiagnosisList);
+		resultMap.put("countryPrescriptionList", countryPrescriptionList);
+
 		return resultMap;
 	}
 	
