@@ -213,5 +213,14 @@
 	</div> <!-- /main-inner -->
     
 </div> <!-- /main -->
+<script type="text/javascript">
 
+$(document).ready(function(){
+	var link = document.location.href;
+	var tab = link.split('/').pop();
+	$('a[href$='+tab+']').trigger("click");
+});
+}
+
+</script>
 <%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>
