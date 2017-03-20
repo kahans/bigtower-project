@@ -241,7 +241,7 @@ public class GovernmentService {
 			logger.debug("예외발생");
 			e.printStackTrace();
 		}
-		
+		/*
 		// 4.입퇴원정보 가져오기
 		try {
 			List<GoHospitalization> hospitalizationList = new ArrayList<GoHospitalization>();
@@ -256,7 +256,7 @@ public class GovernmentService {
 			logger.debug("예외발생");
 			e.printStackTrace();
 		}
-		
+		*/
 		// 5.수술정보 가져오기
 		try {
 			List<GoSurgeryResult> surgeryList = new ArrayList<GoSurgeryResult>();

@@ -56,6 +56,7 @@ public class GovernmentController {
 		return "/hospital/views/government/gov_searchResultByCitizenId";
 	}
 	
+	
 	// 의사아이디로 여러환자진료정보 리스트 조회
 	@RequestMapping(value="/government/searchResultByDoctorId", method=RequestMethod.GET)
 	public String searchResultByDoctorId( HttpSession session, Model model){
@@ -65,7 +66,7 @@ public class GovernmentController {
 		model.addAttribute("treatList", map.get("treatList"));
 		model.addAttribute("diagnosisList", map.get("diagnosisList"));
 		model.addAttribute("prescriptionList", map.get("prescriptionList"));
-		model.addAttribute("hospitalizationList", map.get("hospitalizationList"));
+		//model.addAttribute("hospitalizationList", map.get("hospitalizationList"));
 		model.addAttribute("surgeryList", map.get("surgeryList"));
 		model.addAttribute("bloodTestList", map.get("bloodTestList"));
 		model.addAttribute("imageTestList", map.get("imageTestList"));

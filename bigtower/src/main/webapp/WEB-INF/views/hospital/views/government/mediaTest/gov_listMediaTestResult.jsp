@@ -27,7 +27,7 @@
 						<td>${getMediaTest.goTreatSubjectName}</td>
 						<td>${getMediaTest.goHospitalName}</td>
 						<td>
-							<a onclick="javascript:window.open('/bigtower/government/fileView?filePath=${getMediaTest.goImageTestFilePath}&fileName=${getMediaTest.goImageTestFileName}','','height=0,width=0');" style='cursor:hand'>
+							<a onclick="javascript:window.open('/bigtower/government/fileView?filePath=${getMediaTest.goImageTestFilePath}&fileName=${getMediaTest.goImageTestFileName}','','height=500,width=600,left=500,top=300'); return false" style='cursor:hand'>
 								<button><i class="icon-folder-open"></i></button>
 							</a>
 						</td>

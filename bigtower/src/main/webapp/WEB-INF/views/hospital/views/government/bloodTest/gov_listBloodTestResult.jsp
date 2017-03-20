@@ -31,7 +31,7 @@
 						<td>${getBloodTest.goBloodTestBloodSugar}</td>
 						<td>${getBloodTest.goBloodTestPlatelet}</td>
 						<td>
-							<a onclick="javascript:window.open('/bigtower/government/fileView?filePath=${getBloodTest.goBloodTestFilePath}&fileName=${getBloodTest.goBloodTestFileName}','','height=0,width=0');" style='cursor:hand'>
+							<a onclick="javascript:window.open('/bigtower/government/fileView?filePath=${getBloodTest.goBloodTestFilePath}&fileName=${getBloodTest.goBloodTestFileName}','','height=500,width=600,left=500,top=300'); return false" style='cursor:hand'>
 								<button><i class="icon-folder-open"></i></button>
 							</a>
 						</td>
