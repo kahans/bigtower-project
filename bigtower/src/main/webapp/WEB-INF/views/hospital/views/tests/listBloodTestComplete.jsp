@@ -79,4 +79,3 @@ th{
 	<%-- <a href="<c:url value='/hospital/test'/>"><button>전체목록</button></a>
 	<a href="<c:url value='/hospital/test/ListBloodTest'/>"><button>혈액검사대기목록</button></a> --%>
 <%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>
-	

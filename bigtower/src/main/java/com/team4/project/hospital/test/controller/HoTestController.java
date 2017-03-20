@@ -62,7 +62,7 @@ public class HoTestController {
 		return "/hospital/views/tests/listBloodWait";
 	}
 	//혈액 검사 대기 목록 출력
-	@RequestMapping(value="/hospital/test/ListBloodTest",method=RequestMethod.GET)
+	@RequestMapping(value="/hospital/test/listBloodTest",method=RequestMethod.GET)
 	public String BloodTestList(HoTestRequestSub hoTestRequest, Model model,
 			HttpSession session){
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
@@ -73,10 +73,10 @@ public class HoTestController {
 		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
 		
 		model.addAttribute("bloodList", bloodList);
-		return "/hospital/views/tests/ListBloodTest";
+		return "/hospital/views/tests/listBloodTest";
 	}
 	//혈액 결과완료 목록 출력
-	@RequestMapping(value="/hospital/test/ListBloodTestComplete", method=RequestMethod.GET)
+	@RequestMapping(value="/hospital/test/listBloodTestComplete", method=RequestMethod.GET)
 	public String BloodTestListComplete(HoTestRequestSub hoTestRequest, Model model,
 			HttpSession session){
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
@@ -86,7 +86,7 @@ public class HoTestController {
 		System.out.println(hoTestRequest.toString());
 		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
 		model.addAttribute("bloodList", bloodList);
-		return "/hospital/views/tests/ListBloodTestComplete";
+		return "/hospital/views/tests/listBloodTestComplete";
 	}
 	//혈액검사등록 뷰 get
 	@RequestMapping(value="/hospital/test/addBloodTest", method=RequestMethod.GET)

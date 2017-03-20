@@ -75,9 +75,9 @@
 		<!-- 메뉴3 -->
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-tint"></i><span>혈액검사</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="<c:url value='/hospital/test/ListBloodTest'/>">검사 실시</a></li>
+            <li><a href="<c:url value='/hospital/test/listBloodTest'/>">검사 실시</a></li>
             <li><a href="<c:url value='/hospital/test/listBloodWait'/>">결과 등록</a></li>
-            <li><a href="<c:url value='/hospital/test/ListBloodTestComplete'/>">검사 완료</a></li>
+            <li><a href="<c:url value='/hospital/test/listBloodTestComplete'/>">검사 완료</a></li>
           </ul>
         </li>
         
@@ -88,7 +88,7 @@
           <ul class="dropdown-menu">
             <li><a href="<c:url value='/hospital/test/listMediaTest'/>">검사 실시</a></li>
             <li><a href="<c:url value='/hospital/test/listMediaWait'/>">결과 등록</a></li>
-            <li><a href="<c:url value='/hospital/test/ListMediaComplete'/>">검사 완료</a></li>
+            <li><a href="<c:url value='/hospital/test/listMediaComplete'/>">검사 완료</a></li>
           </ul>
         </li>
 		<!-- /메뉴 4 -->

@@ -68,7 +68,7 @@ th{
 	<div class="widget widget-table action-table">
 		<div class="widget-header">
 			<i class="icon-list-alt"></i>
-			<h3>영상촬영 검사대기 목록</h3>
+			<h3>영상촬영 결과대기 목록</h3>
 		</div>	
 		<div class="widget-content" align="center">
 			<h3>목록이 없습니다.</h3>
