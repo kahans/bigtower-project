@@ -65,22 +65,70 @@
 			          
 			          <div class="widget widget-nopad">
 			            <div class="widget-header"> <i class="icon-list-alt"></i>
-			              <h3> 진료 통계</h3>
+			              <h3>진료 통계</h3>
 			            </div>
 			            <!-- /widget-header -->
 			            <div class="widget-content">
 			              <div class="widget big-stats-container">
 			                <div class="widget-content">
 			                  <div id="big_stats" class="cf">
-			                  	<c:forEach var="dayTreatVisit" items="${resultMap.dayTreatVisit}" >
-									<div class="stat"> 
-				                    	<i>${dayTreatVisit.hoTreatSubjectName}</i> 
-				                    	<span class="value">${dayTreatVisit.hoTreatsubjectCount}</span> 
+			                  		
+			                    	<div class="stat"> 
+				                    	<i>day</i> 
+				                    	<c:if test="${empty resultMap.dayTreatVisit}">
+					                  		<i>금일 진료가 없습니다.</i>
+									    </c:if>
+				                    	<c:if test="${resultMap.dayTreatVisit ne null}">
+					                  		
+											<div class="stat"> 
+												<c:forEach var="dayTreatVisit" items="${resultMap.dayTreatVisit}" varStatus ="status">
+						                    		<span>${status.index+1}위 : ${dayTreatVisit.hoTreatSubjectName}  (${dayTreatVisit.hoTreatsubjectCount})</span><br> 
+						                    	</c:forEach>
+						                    </div>
+											
+										</c:if>
 				                    </div>
-								</c:forEach>
+			                    	<!-- .stat -->
+			                    	
+			                    	<div class="stat"> 
+				                    	<i>Month</i> 
+				                    	<c:if test="${empty resultMap.monthTreatVisit}">
+					                  		<i>금월 진료가 없습니다.</i>
+									    </c:if>
+				                    	<c:if test="${resultMap.monthTreatVisit ne null}">
+					                  		
+											<div class="stat"> 
+												<c:forEach var="monthTreatVisit" items="${resultMap.monthTreatVisit}" varStatus ="status">
+						                    		<span>${status.index+1}위 : ${monthTreatVisit.hoTreatSubjectName}  (${monthTreatVisit.hoTreatsubjectCount})</span><br> 
+						                    	</c:forEach>
+						                    </div>
+											
+										</c:if>
+				                    </div>
+			                    	<!-- .stat -->
+			                  		  
+								    <div class="stat"> 
+				                    	<i>year</i> 
+				                    	<c:if test="${empty resultMap.yearTreatVisit}">
+					                  		<i>금년 진료가 없습니다.</i>
+									    </c:if>
+				                    	<c:if test="${resultMap.yearTreatVisit ne null}">
+					                  		
+											<div class="stat"> 
+												<c:forEach var="yearTreatVisit" items="${resultMap.yearTreatVisit}" varStatus ="status">
+						                    		<span>${status.index+1}위 : ${yearTreatVisit.hoTreatSubjectName}  (${yearTreatVisit.hoTreatsubjectCount})</span><br> 
+						                    	</c:forEach>
+						                    </div>
+											
+										</c:if>
+				                    </div>
+			                    	<!-- .stat -->
+								   
+								
 			                    <!-- .stat -->
 			                  </div>
-			                  <!-- /big_stats --> 
+			                  <!-- /big_stats -->
+			                  
 			                </div>
 			                <!-- /widget-content --> 
 			                
@@ -97,28 +145,62 @@
 			            <div class="widget-content">
 			              <div class="widget big-stats-container">
 			                <div class="widget-content">
+			                  
 			                  <div id="big_stats" class="cf">
-			                    <div class="stat"> 
-			                    	<i>일일 방문자</i> 
-			                    	<span class="value">${resultMap.dayVisitPeople}</span> 
-			                    </div>
+			                    	<div class="stat"> 
+				                    	<i>week</i> 
+				                    	<c:if test="${empty resultMap.weekDisease}">
+					                  		<i>금주 진료가 없습니다.</i>
+									    </c:if>
+				                    	<c:if test="${resultMap.weekDisease ne null}">
+					                  		
+											<div class="stat"> 
+												<c:forEach var="weekDisease" items="${resultMap.weekDisease}" varStatus ="status">
+						                    		<span>${status.index+1}위 : ${weekDisease.hoDiseaseName}  (${weekDisease.hoDiseaseCount})</span><br> 
+						                    	</c:forEach>
+						                    </div>
+											
+										</c:if>
+				                    </div>
+			                    	<!-- .stat -->
+			                    	
+			                    	<div class="stat"> 
+				                    	<i>Month</i> 
+				                    	<c:if test="${empty resultMap.monthDisease}">
+					                  		<i>금월 진료가 없습니다.</i>
+									    </c:if>
+				                    	<c:if test="${resultMap.monthDisease ne null}">
+					                  		
+											<div class="stat"> 
+												<c:forEach var="monthDisease" items="${resultMap.monthDisease}" varStatus ="status">
+						                    		<span>${status.index+1}위 : ${monthDisease.hoDiseaseName}  (${monthDisease.hoDiseaseCount})</span><br> 
+						                    	</c:forEach>
+						                    </div>
+											
+										</c:if>
+				                    </div>
+			                    	<!-- .stat -->
+			                  		  
+								    <div class="stat"> 
+				                    	<i>year</i> 
+				                    	<c:if test="${empty resultMap.yearDisease}">
+					                  		<i>금년 진료가 없습니다.</i>
+									    </c:if>
+				                    	<c:if test="${resultMap.yearDisease ne null}">
+					                  		
+											<div class="stat"> 
+												<c:forEach var="yearDisease" items="${resultMap.yearDisease}" varStatus ="status">
+						                    		<span>${status.index+1}위 : ${yearDisease.hoDiseaseName}  (${yearDisease.hoDiseaseCount})</span><br> 
+						                    	</c:forEach>
+						                    </div>
+											
+										</c:if>
+				                    </div>
+			                    	<!-- .stat -->
 			                    <!-- .stat -->
-			                    
-			                    <div class="stat"> 
-			                    	<i>월간 방문자</i> 
-			                    	<span class="value">${resultMap.monthVisitPeople}</span>
-			                    </div>
-			                    <!-- .stat -->
-			                    
-			                    <div class="stat">
-			                    	<i>연간 방문자</i>
-			                    	<span class="value">${resultMap.yearVisitPeople}</span>
-			                    </div>
-			                    <!-- .stat -->
-			                    
-			                   
 			                  </div>
-			                  <!-- /big_stats --> 
+			                  <!-- /big_stats -->
+			                  
 			                </div>
 			                <!-- /widget-content --> 
 			                
@@ -136,27 +218,59 @@
 			              <div class="widget big-stats-container">
 			                <div class="widget-content">
 			                  <div id="big_stats" class="cf">
-			                    <div class="stat"> 
-			                    	<i>일일 방문자</i> 
-			                    	<span class="value">${resultMap.dayVisitPeople}</span> 
-			                    </div>
+			                    	<div class="stat"> 
+				                    	<i>week</i> 
+				                    	<c:if test="${empty resultMap.weekMedicine}">
+					                  		<i>금주 진료가 없습니다.</i>
+									    </c:if>
+				                    	<c:if test="${resultMap.weekMedicine ne null}">
+					                  		
+											<div class="stat"> 
+												<c:forEach var="weekMedicine" items="${resultMap.weekMedicine}" varStatus ="status">
+						                    		<span>${status.index+1}위 : ${weekMedicine.hoMedicineName}  (${weekMedicine.hoMedicineCount})</span><br> 
+						                    	</c:forEach>
+						                    </div>
+											
+										</c:if>
+				                    </div>
+			                    	<!-- .stat -->
+			                    	
+			                    	<div class="stat"> 
+				                    	<i>Month</i> 
+				                    	<c:if test="${empty resultMap.monthMedicine}">
+					                  		<i>금월 진료가 없습니다.</i>
+									    </c:if>
+				                    	<c:if test="${resultMap.monthMedicine ne null}">
+					                  		
+											<div class="stat"> 
+												<c:forEach var="monthMedicine" items="${resultMap.monthMedicine}" varStatus ="status">
+						                    		<span>${status.index+1}위 : ${monthMedicine.hoMedicineName}  (${monthMedicine.hoMedicineCount})</span><br> 
+						                    	</c:forEach>
+						                    </div>
+											
+										</c:if>
+				                    </div>
+			                    	<!-- .stat -->
+			                  		  
+								    <div class="stat"> 
+				                    	<i>year</i> 
+				                    	<c:if test="${empty resultMap.yearMedicine}">
+					                  		<i>금년 진료가 없습니다.</i>
+									    </c:if>
+				                    	<c:if test="${resultMap.yearMedicine ne null}">
+				                  		
+											<div class="stat"> 
+												<c:forEach var="yearMedicine" items="${resultMap.yearMedicine}" varStatus ="status">
+						                    		<span>${status.index+1}위 : ${yearMedicine.hoMedicineName}  (${yearMedicine.hoMedicineCount})</span><br> 
+						                    	</c:forEach>
+						                    </div>
+											
+										</c:if>
+				                    </div>
+			                    	<!-- .stat -->
 			                    <!-- .stat -->
-			                    
-			                    <div class="stat"> 
-			                    	<i>월간 방문자</i> 
-			                    	<span class="value">${resultMap.monthVisitPeople}</span>
-			                    </div>
-			                    <!-- .stat -->
-			                    
-			                    <div class="stat">
-			                    	<i>연간 방문자</i>
-			                    	<span class="value">${resultMap.yearVisitPeople}</span>
-			                    </div>
-			                    <!-- .stat -->
-			                    
-			                   
 			                  </div>
-			                  <!-- /big_stats --> 
+			                  <!-- /big_stats -->
 			                </div>
 			                <!-- /widget-content --> 
 			                
@@ -165,66 +279,12 @@
 			          </div>
 			          <!-- /widget -->
 			          
-			          
-					<%-- 
-					<h3>팀 프로젝트</h3>
-					여긴 어디오
-					일일 방문자 수 : 
-					한달 방문자 수 : 
-					일년 방문자 수 : 
-					일일 진료정보 :
-					
-					한달간 진료정보 :
-					<c:forEach var="dayTreatVisit" items="${resultMap.monthTreatVisit}" >
-						진료과목 : ${dayTreatVisit.hoTreatSubjectName}
-						진료과목 방문 수 : ${dayTreatVisit.hoTreatsubjectCount}
-					</c:forEach>
-					일년간 진료정보 :
-					<c:forEach var="dayTreatVisit" items="${resultMap.yearTreatVisit}" >
-						진료과목 : ${dayTreatVisit.hoTreatSubjectName}
-						진료과목 방문 수 : ${dayTreatVisit.hoTreatsubjectCount}
-					</c:forEach>
-					주간 질병정보 :
-					<c:forEach var="weekDisease" items="${resultMap.weekDisease}">
-						질병이름  : ${weekDisease.hoDiseaseName}
-						질병 처방수 : ${weekDisease.hoDiseaseCount}
-					</c:forEach>
-					월간 질병정보 : 
-					<c:forEach var="monthDisease" items="${resultMap.monthDisease}">
-						질병이름  : ${weekDisease.hoDiseaseName}
-						질병 처방수 : ${weekDisease.hoDiseaseCount}
-					</c:forEach>
-					연간 질병정보 : 
-					<c:forEach var="yearDisease" items="${resultMap.yearDisease}">
-						질병이름  : ${yearDisease.hoDiseaseName}
-						질병 처방수 : ${yearDisease.hoDiseaseCount}
-					</c:forEach>
-					주간약정보
-					<c:forEach var="weekMedicine" items="${resultMap.weekMedicine}">
-						약 이름 : ${weekMedicine.hoMedicineName}
-						약 처방 수 : ${weekMedicine.hoMedicineCount}
-					</c:forEach>
-					월간약정보
-					<c:forEach var="monthMedicine" items="${resultMap.monthMedicine}">
-						약 이름 : ${monthMedicine.hoMedicineName}
-						약 처방 수 : ${monthMedicine.hoMedicineCount}
-					</c:forEach>
-					연간약정보
-					<c:forEach var="yearMedicine" items="${resultMap.yearMedicine}">
-						약 이름 : ${yearMedicine.hoMedicineName}
-						약 처방 수 : ${yearMedicine.hoMedicineCount}
-					</c:forEach> 
-					--%>
 				</div><!-- /span6 -->
 				<div class="span6">
 					<img src="<c:url value='/resources/bootstrap/img/img-1.png'/>" class="img"/>
-					1번영역확인
 				</div><!-- /span6 -->
-				2번영역확인
 			</div><!-- /row -->
-			3번영역확인
 		</div><!-- /container -->
-		4번영역확인
 	</div><!-- /main-inner -->
 </div><!-- /mainSub -->
 

@@ -80,8 +80,9 @@ public class HospitalService {
 		
 		//하루 진료과별 방문진료자 수
 		List<HoStatistics> dayTreatVisit = hoDao.dayVisitTreatSubjectCitizenCount(map);
+		logger.debug("일일간 진료과별 방문진료자 수 : "+dayTreatVisit.toString());
 		for(int i=0; i<dayTreatVisit.size(); i++){
-			logger.debug("일주일간 진료과별 방문진료자 수 : "+dayTreatVisit.toString());
+			logger.debug("일일간 진료과별 방문진료자 수 : "+dayTreatVisit.toString());
 		}
 		
 		//한달간 진료과별 방문진료자 수
