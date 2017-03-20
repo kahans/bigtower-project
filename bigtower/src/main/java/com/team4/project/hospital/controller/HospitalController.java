@@ -135,7 +135,7 @@ public class HospitalController {
 	//정부OPEN API 확인
 	@RequestMapping(value="/hospital/viewGovernmentInfo", method=RequestMethod.GET)
 	public String viewGovernmentInfo(){	
-		return "/hospital/views/viewGovernmentInfo";
+		return "/hospital/views/government/openAPI/viewGovernmentInfo";
 	}
 	
 	
