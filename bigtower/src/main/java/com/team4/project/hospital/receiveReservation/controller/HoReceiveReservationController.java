@@ -60,7 +60,7 @@ public class HoReceiveReservationController {
 		hoReceiveSub.setHoStaffId(hoStaffId);
 		System.out.println("hoReceiveSub : "+ hoReceiveSub.toString());
 		hoRRService.addReceive(hoReceiveSub);
-		return "redirect:/hospital/searchPatient";
+		return "redirect:/hospital/receiveList";
 	}
 	
 	//ajax 한명의 환자정보 조회
