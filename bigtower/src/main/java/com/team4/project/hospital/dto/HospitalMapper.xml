@@ -94,7 +94,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} day) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_treatment.HO_TREAT_SUBJECT_CODE 
-		order by hoMedicineCount desc 
+		order by hoTreatsubjectCount desc 
 		limit 3
 	</select>
 	
@@ -109,7 +109,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} month) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_treatment.HO_TREAT_SUBJECT_CODE 
-		order by hoMedicineCount desc 
+		order by hoTreatsubjectCount desc 
 		limit 3
 	</select>
 	
@@ -124,7 +124,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} year) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_treatment.HO_TREAT_SUBJECT_CODE 
-		order by hoMedicineCount desc 
+		order by hoTreatsubjectCount desc 
 		limit 3
 	</select>
 	
@@ -139,7 +139,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} week) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_diagnosis.HO_DISEASE_CODE 
-		order by hoMedicineCount desc 
+		order by hoDiseaseCount desc 
 		limit 3
 	</select>
 	
@@ -154,7 +154,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} month) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_diagnosis.HO_DISEASE_CODE 
-		order by hoMedicineCount desc 
+		order by hoDiseaseCount desc 
 		limit 3
 	</select>
 	
@@ -169,7 +169,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} year) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_diagnosis.HO_DISEASE_CODE 
-		order by hoMedicineCount desc 
+		order by hoDiseaseCount desc 
 		limit 3
 	</select>
 	
