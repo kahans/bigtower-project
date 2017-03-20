@@ -23,7 +23,7 @@ public class HomeController {
 	/*첫 메인화면*/
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String firstIndex(){
-		return "index";
+		return "/hospital/views/login/login";
 	}
 	/*정부 메인페이지*/ 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
