@@ -24,16 +24,156 @@
 		<div class="container">
 			<div class="row">
 				<div class="span6">
+					<div class="widget widget-nopad">
+			            <div class="widget-header"> <i class="icon-list-alt"></i>
+			              <h3> 방문자 통계</h3>
+			            </div>
+			            <!-- /widget-header -->
+			            <div class="widget-content">
+			              <div class="widget big-stats-container">
+			                <div class="widget-content">
+			                  <div id="big_stats" class="cf">
+			                    <div class="stat"> 
+			                    	<i>일일 방문자</i> 
+			                    	
+			                    	<span class="value">${resultMap.dayVisitPeople}</span> 
+			                    </div>
+			                    <!-- .stat -->
+			                    
+			                    <div class="stat"> 
+			                    	<i>월간 방문자</i> 
+			                    	<span class="value">${resultMap.monthVisitPeople}</span>
+			                    </div>
+			                    <!-- .stat -->
+			                    
+			                    <div class="stat">
+			                    	<i>연간 방문자</i>
+			                    	<span class="value">${resultMap.yearVisitPeople}</span>
+			                    </div>
+			                    <!-- .stat -->
+			                    
+			                   
+			                  </div>
+			                  <!-- /big_stats --> 
+			                </div>
+			                <!-- /widget-content --> 
+			                
+			              </div>
+			            </div>
+			          </div>
+			          <!-- /widget -->
+			          
+			          <div class="widget widget-nopad">
+			            <div class="widget-header"> <i class="icon-list-alt"></i>
+			              <h3> 진료 통계</h3>
+			            </div>
+			            <!-- /widget-header -->
+			            <div class="widget-content">
+			              <div class="widget big-stats-container">
+			                <div class="widget-content">
+			                  <div id="big_stats" class="cf">
+			                  	<c:forEach var="dayTreatVisit" items="${resultMap.dayTreatVisit}" >
+									<div class="stat"> 
+				                    	<i>${dayTreatVisit.hoTreatSubjectName}</i> 
+				                    	<span class="value">${dayTreatVisit.hoTreatsubjectCount}</span> 
+				                    </div>
+								</c:forEach>
+			                    <!-- .stat -->
+			                  </div>
+			                  <!-- /big_stats --> 
+			                </div>
+			                <!-- /widget-content --> 
+			                
+			              </div>
+			            </div>
+			          </div>
+			          <!-- /widget -->
+			          
+			          <div class="widget widget-nopad">
+			            <div class="widget-header"> <i class="icon-list-alt"></i>
+			              <h3> 질병 통계</h3>
+			            </div>
+			            <!-- /widget-header -->
+			            <div class="widget-content">
+			              <div class="widget big-stats-container">
+			                <div class="widget-content">
+			                  <div id="big_stats" class="cf">
+			                    <div class="stat"> 
+			                    	<i>일일 방문자</i> 
+			                    	<span class="value">${resultMap.dayVisitPeople}</span> 
+			                    </div>
+			                    <!-- .stat -->
+			                    
+			                    <div class="stat"> 
+			                    	<i>월간 방문자</i> 
+			                    	<span class="value">${resultMap.monthVisitPeople}</span>
+			                    </div>
+			                    <!-- .stat -->
+			                    
+			                    <div class="stat">
+			                    	<i>연간 방문자</i>
+			                    	<span class="value">${resultMap.yearVisitPeople}</span>
+			                    </div>
+			                    <!-- .stat -->
+			                    
+			                   
+			                  </div>
+			                  <!-- /big_stats --> 
+			                </div>
+			                <!-- /widget-content --> 
+			                
+			              </div>
+			            </div>
+			          </div>
+			          <!-- /widget -->
+			          
+			          <div class="widget widget-nopad">
+			            <div class="widget-header"> <i class="icon-list-alt"></i>
+			              <h3> 약품 통계</h3>
+			            </div>
+			            <!-- /widget-header -->
+			            <div class="widget-content">
+			              <div class="widget big-stats-container">
+			                <div class="widget-content">
+			                  <div id="big_stats" class="cf">
+			                    <div class="stat"> 
+			                    	<i>일일 방문자</i> 
+			                    	<span class="value">${resultMap.dayVisitPeople}</span> 
+			                    </div>
+			                    <!-- .stat -->
+			                    
+			                    <div class="stat"> 
+			                    	<i>월간 방문자</i> 
+			                    	<span class="value">${resultMap.monthVisitPeople}</span>
+			                    </div>
+			                    <!-- .stat -->
+			                    
+			                    <div class="stat">
+			                    	<i>연간 방문자</i>
+			                    	<span class="value">${resultMap.yearVisitPeople}</span>
+			                    </div>
+			                    <!-- .stat -->
+			                    
+			                   
+			                  </div>
+			                  <!-- /big_stats --> 
+			                </div>
+			                <!-- /widget-content --> 
+			                
+			              </div>
+			            </div>
+			          </div>
+			          <!-- /widget -->
+			          
+			          
+					<%-- 
 					<h3>팀 프로젝트</h3>
 					여긴 어디오
-					일일 방문자 수 : ${resultMap.dayVisitPeople}
-					한달 방문자 수 : ${resultMap.monthVisitPeople}
-					일년 방문자 수 : ${resultMap.yearVisitPeople}
+					일일 방문자 수 : 
+					한달 방문자 수 : 
+					일년 방문자 수 : 
 					일일 진료정보 :
-					<c:forEach var="dayTreatVisit" items="${resultMap.dayTreatVisit}" >
-						진료과목 : ${dayTreatVisit.hoTreatSubjectName}
-						진료과목 방문 수 : ${dayTreatVisit.hoTreatsubjectCount}
-					</c:forEach>
+					
 					한달간 진료정보 :
 					<c:forEach var="dayTreatVisit" items="${resultMap.monthTreatVisit}" >
 						진료과목 : ${dayTreatVisit.hoTreatSubjectName}
@@ -73,7 +213,8 @@
 					<c:forEach var="yearMedicine" items="${resultMap.yearMedicine}">
 						약 이름 : ${yearMedicine.hoMedicineName}
 						약 처방 수 : ${yearMedicine.hoMedicineCount}
-					</c:forEach>
+					</c:forEach> 
+					--%>
 				</div><!-- /span6 -->
 				<div class="span6">
 					<img src="<c:url value='/resources/bootstrap/img/img-1.png'/>" class="img"/>
