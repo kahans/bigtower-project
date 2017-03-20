@@ -98,7 +98,7 @@
           <ul class="dropdown-menu">
             <li><a href="<c:url value='/hospital/test/listCheckup'/>">검진 실시</a></li>
             <li><a href="<c:url value='/hospital/test/listCheckupWait'/>">결과 등록</a></li>
-            <li><a href="<c:url value='/hospital/test/ListCheckupComplete'/>">검사 완료</a></li>
+            <li><a href="<c:url value='/hospital/test/listCheckupComplete'/>">검사 완료</a></li>
           </ul>
         </li>
 		<!-- /메뉴 5 -->

@@ -220,7 +220,7 @@ $(document).ready(function(){
 	var tab = link.split('/').pop();
 	$('a[href$='+tab+']').trigger("click");
 });
-}
+
 
 </script>
 <%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp" %>
