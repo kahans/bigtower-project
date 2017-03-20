@@ -94,6 +94,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} day) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_treatment.HO_TREAT_SUBJECT_CODE 
+		limit 3
 	</select>
 	
 	<!-- 한달 진료과별 방문진료자 수 -->
@@ -107,6 +108,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} month) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_treatment.HO_TREAT_SUBJECT_CODE 
+		limit 3
 	</select>
 	
 	<!-- 일년 진료과별 방문진료자 수 -->
@@ -120,6 +122,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} year) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_treatment.HO_TREAT_SUBJECT_CODE 
+		limit 3
 	</select>
 	
 	<!-- 일주일 진단된 병명 순위 -->
@@ -133,7 +136,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} week) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_diagnosis.HO_DISEASE_CODE 
-		limit 10
+		limit 3
 	</select>
 	
 	<!-- 한달 진단된 병명 순위 -->
@@ -147,7 +150,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} month) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_diagnosis.HO_DISEASE_CODE 
-		limit 10
+		limit 3
 	</select>
 	
 	<!-- 일년 진단된 병명 순위 -->
@@ -161,7 +164,7 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} year) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode} 
 		group by ho_diagnosis.HO_DISEASE_CODE 
-		limit 10
+		limit 3
 	</select>
 	
 	<!-- 일주일 처방 의약품명 순위 -->
@@ -174,10 +177,10 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} week) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
 		group by ho_prescription.HO_MEDICINE_CODE
-		limit 10
+		limit 3
 	</select>
 	
-	<!-- 일자별 처방 의약품명 순위 -->
+	<!-- 한달 처방 의약품명 순위 -->
 	<select id="monthMedicineCodeRanking" parameterType="Map" resultType="com.team4.project.hospital.dto.HoStatistics">
 		select 
 			ho_prescription.HO_MEDICINE_CODE as hoMedicineCode,
@@ -187,10 +190,10 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} month) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
 		group by ho_prescription.HO_MEDICINE_CODE
-		limit 10
+		limit 3
 	</select>
 	
-	<!-- 일자별 처방 의약품명 순위 -->
+	<!-- 일년 처방 의약품명 순위 -->
 	<select id="yearMedicineCodeRanking" parameterType="Map" resultType="com.team4.project.hospital.dto.HoStatistics">
 		select 
 			ho_prescription.HO_MEDICINE_CODE as hoMedicineCode,
@@ -200,6 +203,6 @@
 		where ho_treatment.HO_TREATMENT_WRITE_DATE > date_add(now(), interval -#{number} year) 
 			and ho_treatment.HO_HOSPITAL_CODE = #{hoHospitalCode}
 		group by ho_prescription.HO_MEDICINE_CODE
-		limit 10
+		limit 3
 	</select>
 </mapper>
