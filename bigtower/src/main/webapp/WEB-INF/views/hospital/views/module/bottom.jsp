@@ -20,11 +20,11 @@
                         <h4>
                             	이명철</h4>
                         <ul>
-                            <li><a href="javascript:;">level:</a></li>
-                            <li><a href="javascript:;">role:</a></li>
-                            <li><a href="javascript:;">blog:</a></li>
-                            <li><a href="javascript:;"><i class="icon-github"></i> git:</a></li>
-                            <li><a href="javascript:;"><i class="icon-globe"></i> portfolio:</a></li>
+                            <li><a href="javascript:;">level: 팀원</a></li>
+                            <li><a href="javascript:;">role: 병원(접수,검사,수술,입원)구현</a></li>
+                            <li><a href="http://blog.naver.com/myeong3695" target="_blank">blog: http://blog.naver.com/myeong3695</a></li>
+                            <li><a href="https://github.com/kahans"><i class="icon-github"></i> git: https://github.com/kahans</a></li>
+                            <li><a href="http://myeong3695.cafe24.com/"><i class="icon-globe"></i> portfolio: http://myeong3695.cafe24.com/</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
