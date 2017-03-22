@@ -8,11 +8,11 @@
                         <h4>
                          	   홍인용</h4>
                         <ul>
-                            <li><a href="javascript:;">level:</a></li>
-                            <li><a href="javascript:;">role:</a></li>
-                            <li><a href="javascript:;">blog:</a></li>
-                            <li><a href="javascript:;"><i class="icon-github"></i> git:</a></li>
-                            <li><a href="javascript:;"><i class="icon-globe"></i> portfolio:</a></li>
+                            <li><a href="javascript:;">level: 팀장</a></li>
+                            <li><a href="javascript:;">role: 프로젝트 전체관리(오류해결, ), 정부RESTful(진료,진단,처방)구현</a></li>
+                            <li><a href="http://blog.naver.com/loverman85" target="_blank">blog: http://blog.naver.com/loverman85</a></li>
+                            <li><a href="https://github.com/loverman85" target="_blank"><i class="icon-github"></i> git: https://github.com/loverman85</a></li>
+                            <li><a href="http://loverman85.cafe24.com/" target="_blank"><i class="icon-globe"></i> portfolio: http://loverman85.cafe24.com/</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
