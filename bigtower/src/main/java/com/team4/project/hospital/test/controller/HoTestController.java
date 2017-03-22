@@ -45,7 +45,7 @@ public class HoTestController {
 		hoTestRequest.setHoTestCode("1");
 		hoTS.updateState(hoTestRequest);
 		
-		return "redirect:/hospital/test/ListBloodTest";
+		return "redirect:/hospital/test/listBloodTest";
 	}
 	
 	//혈액검사 결과대기 목록 출력
