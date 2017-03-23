@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,7 @@ import com.team4.project.hospital.test.domain.HoTestRequestSub;
 @Transactional
 @Service
 public class HoTestService {
+	private static final Logger logger = LoggerFactory.getLogger(HoTestService.class);
 
 	@Autowired
 	private HoTestDao hoTD;
@@ -35,7 +38,7 @@ public class HoTestService {
 	//영상글 뷰
 	public HoMediaTestSub mediaTestView(String hoTestRequestCode) {
 		// TODO Auto-generated method stub
-		System.out.println("서비스 "+hoTestRequestCode);
+		logger.debug("서비스 "+hoTestRequestCode);
 		return hoTD.mediaTestView(hoTestRequestCode);
 	}	
 	//혈액 검사 글 보기
@@ -47,15 +50,15 @@ public class HoTestService {
 	
 	//파일 경로 하기 
 	public int updateMediaTest(HoMediaTestSub mediaView) {
-		System.out.println("서비스try전 : "+mediaView.toString());
+		logger.debug("서비스try전 : "+mediaView.toString());
 		String path=mediaView.getHoMediaTestImagePath();
-		System.out.println("서비스경로 : "+path);
+		logger.debug("서비스경로 : "+path);
 		File file = null;
 		String fileName = "";
 		String extention = "";
 		MultipartFile multipartFile = mediaView.getUploadFile();
 		
-		//System.out.println("try들어가기 전 : "+multipartFile);
+		//logger.debug("try들어가기 전 : "+multipartFile);
 		try{
 		
 			
@@ -68,12 +71,12 @@ public class HoTestService {
 			//file = new File(path+"\\"+fileName);
 			//배포시
 			file = new File(path+"/"+fileName);
-			System.out.println("파일 전체경로"+file);
+			logger.debug("파일 전체경로"+file);
 			multipartFile.transferTo(file);
 			
-			//System.out.println("서비스try후 : "+mediaView.toString());
+			//logger.debug("서비스try후 : "+mediaView.toString());
 			
-			System.out.println("파일 이름들 : "+fileName);
+			logger.debug("파일 이름들 : "+fileName);
 			mediaView.setHoMediaTestImageName(fileName);
 			mediaView.setHoMediaTestImagePath(path);
 			hoTD.updateMediaTest(mediaView);
@@ -81,11 +84,11 @@ public class HoTestService {
 			
 			
 		}catch(IllegalStateException e){
-			System.out.println("IllegalStateException 예외발생");
+			logger.debug("IllegalStateException 예외발생");
 			file.delete();
 			e.printStackTrace();
 		}catch(IOException e){
-			System.out.println("IOException 예외발생");
+			logger.debug("IOException 예외발생");
 			file.delete();
 			e.printStackTrace();
 		}
@@ -117,15 +120,15 @@ public class HoTestService {
 			
 				bloodView.setHoBloodTestImageName(fileName);
 				bloodView.setHoBloodTestImagePath(path);
-				System.out.println("서비스try후 : "+bloodView.toString());
+				logger.debug("서비스try후 : "+bloodView.toString());
 				
 				hoTD.updateBloodTest(bloodView);
 			}catch(IllegalStateException e){
-				System.out.println("IllegalStateException 예외발생");
+				logger.debug("IllegalStateException 예외발생");
 				file.delete();
 				e.printStackTrace();
 			}catch (IOException e) {
-				System.out.println("IOException 예외발생");
+				logger.debug("IOException 예외발생");
 				file.delete();
 				e.printStackTrace();
 			}		

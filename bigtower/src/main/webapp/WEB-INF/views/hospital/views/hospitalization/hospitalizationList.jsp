@@ -8,7 +8,7 @@
 	width: auto;
 	margin-bottom: 2em;
 	overflow: auto;
-	margin: 100px 300px 200px 300px;
+	margin: 50px 300px 300px 300px;
 }
 
 @media ( max-width : 1000px) {
@@ -22,7 +22,7 @@
 	}
 }
 </style>
-<c:if test="${!empty hospitalizationList }">
+<c:if test="${!empty hospitalizationList}">
 	<div class="main">
 
 		<div class="main-inner">
@@ -82,7 +82,7 @@
 	</div>
 	<!-- /main -->
 </c:if>
-<c:if test="${empty hospitalizationList }">
+<c:if test="${empty hospitalizationList}">
 	<div class="main">
 
 		<div class="main-inner">

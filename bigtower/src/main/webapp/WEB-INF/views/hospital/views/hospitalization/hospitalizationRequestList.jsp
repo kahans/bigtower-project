@@ -1,4 +1,4 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/hospital/views/module/top.jsp"%>
 <style>
@@ -8,7 +8,7 @@
 	width: auto;
 	margin-bottom: 2em;
 	overflow: auto;
-	margin: 100px 300px 200px 300px;
+	margin: 50px 300px 300px 300px;
 }
 
 @media ( max-width : 1000px) {
@@ -22,15 +22,11 @@
 	}
 }
 </style>
-<c:if test="${!empty hospitalizationRequestList }">
+<c:if test="${!empty hospitalizationRequestList}">
 	<div class="main">
-
 		<div class="main-inner">
-
 			<div class="container">
-
 				<div class="row">
-
 					<div class="span12">
 						<div class="widget widget-table action-table">
 							<div class="widget-header">
@@ -81,7 +77,7 @@
 	</div>
 	<!-- /main -->
 </c:if>
-<c:if test="${empty hospitalizationList }">
+<c:if test="${empty hospitalizationRequestList}">
 	<div class="main">
 
 		<div class="main-inner">

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.team4.project.hospital.dto.HoDisease;
@@ -12,9 +15,11 @@ import com.team4.project.hospital.dto.HoMedicine;
 import com.team4.project.hospital.dto.HoOperationType;
 import com.team4.project.hospital.dto.HoTreatSubject;
 import com.team4.project.hospital.dto.HoVaccineType;
+import com.team4.project.hospital.treatChart.controller.HoTreatChartController;
 
 public class GetReferenceData {
-	
+	private static final Logger logger = LoggerFactory.getLogger(GetReferenceData.class);
+
 	private static Gson gson = new Gson();
 	private static String url = ContextParam.context.getInitParameter("receiveUrl");
 	
@@ -28,14 +33,14 @@ public class GetReferenceData {
 			map.put("doctorId", doctorId);
 			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
 			String result = conn.HttpUrlPOST(map);
-			System.out.println("result:"+result);
+			logger.debug("result:"+result);
 			// 리스트타입의 json을 java List 타입으로 parsing 한다 
 			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
 			for(int i = 0; i<resultMap.size(); i++){
 				HoMedicine hm = new HoMedicine();
 				hm.setHoMedicineCode((String)resultMap.get(i).get("goMedicineCode"));
 				hm.setHoMedicineName((String)resultMap.get(i).get("goMedicineName"));
-				//System.out.println("hm:"+hm);
+				//logger.debug("hm:"+hm);
 				list.add(hm);
 			}
 		} catch (Exception e) {
@@ -55,7 +60,7 @@ public class GetReferenceData {
 			map.put("doctorId", doctorId);
 			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
 			String result = conn.HttpUrlPOST(map);
-			System.out.println("result:"+result);
+			logger.debug("result:"+result);
 			// 리스트타입의 json을 java List 타입으로 parsing 한다 
 			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
 			for(int i = 0; i<resultMap.size(); i++){
@@ -63,7 +68,7 @@ public class GetReferenceData {
 				hd.setHoDiseaseCode((String)resultMap.get(i).get("goDiseaseCode"));
 				hd.setHoDiseaseKor((String)resultMap.get(i).get("goDiseaseKor"));
 				hd.setHoDiseaseEng((String)resultMap.get(i).get("goDiseaseEng"));
-				//System.out.println("hd:"+hd);
+				//logger.debug("hd:"+hd);
 				list.add(hd);
 			}
 		} catch (Exception e) {
@@ -82,14 +87,14 @@ public class GetReferenceData {
 			map.put("doctorId", doctorId);
 			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
 			String result = conn.HttpUrlPOST(map);
-			System.out.println("result:"+result);
+			logger.debug("result:"+result);
 			// 리스트타입의 json을 java List 타입으로 parsing 한다 
 			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
 			for(int i = 0; i<resultMap.size(); i++){
 				HoTreatSubject hts = new HoTreatSubject();
 				hts.setHoTreatSubjectCode((String)resultMap.get(i).get("goTreatSubjectCode"));
 				hts.setHoTreatSubjectName((String)resultMap.get(i).get("goTreatSubjectName"));
-				//System.out.println("hts:"+hts);
+				//logger.debug("hts:"+hts);
 				list.add(hts);
 			}
 		} catch (Exception e) {
@@ -108,14 +113,14 @@ public class GetReferenceData {
 			map.put("doctorId", doctorId);
 			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
 			String result = conn.HttpUrlPOST(map);
-			System.out.println("result:"+result);
+			logger.debug("result:"+result);
 			// 리스트타입의 json을 java List 타입으로 parsing 한다 
 			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
 			for(int i = 0; i<resultMap.size(); i++){
 				HoOperationType hot = new HoOperationType();
 				hot.setHoOperationTypeCode((String)resultMap.get(i).get("goSurgeryCode"));
 				hot.setHoOperationTypeName((String)resultMap.get(i).get("goSurgeryName"));
-				//System.out.println("hot:"+hot);
+				//logger.debug("hot:"+hot);
 				list.add(hot);
 			}
 		} catch (Exception e) {
@@ -135,7 +140,7 @@ public class GetReferenceData {
 			map.put("doctorId", doctorId);
 			// 맵을 위 url로 전송하고 약 리스트를 리턴받는다
 			String result = conn.HttpUrlPOST(map);
-			System.out.println("result:"+result);
+			logger.debug("result:"+result);
 			// 리스트타입의 json을 java List 타입으로 parsing 한다 
 			List<Map> resultMap = gson.fromJson(result, new TypeToken<List<Map>>(){}.getType());
 			for(int i = 0; i<resultMap.size(); i++){
@@ -143,7 +148,7 @@ public class GetReferenceData {
 				hv.setHoVaccineTypeCode((String)resultMap.get(i).get("goVaccinationCode"));
 				hv.setHoVaccineTypeDegree((Double)resultMap.get(i).get("goVaccinationDegree"));
 				hv.setHoVaccineTypeName((String)resultMap.get(i).get("goVaccinationName"));
-				//System.out.println("hv:"+hv);
+				//logger.debug("hv:"+hv);
 				list.add(hv);
 			}
 		} catch (Exception e) {

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,7 @@ import com.team4.project.hospital.test.domain.HoTestRequestSub;
 
 @Repository
 public class HoTestDao {
+	private static final Logger logger = LoggerFactory.getLogger(HoTestDao.class);
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -23,12 +26,12 @@ public class HoTestDao {
 	}
 	//혈액검사 목록
 	public List<HoTestRequestSub> bloodTestList(HoTestRequestSub hoTestRequest) {
-		System.out.println(hoTestRequest);
+		logger.debug(hoTestRequest.toString());
 		return sqlSession.selectList("hoTest.listHoTest", hoTestRequest);
 	}
 	//영상글 
 	public HoMediaTestSub mediaTestView(String hoTestRequestCode) {
-		System.out.println("DAO "+hoTestRequestCode);
+		logger.debug("DAO "+hoTestRequestCode);
 		return sqlSession.selectOne("hoTest.addMediaTestView", hoTestRequestCode);
 	}
 	//혈액글 
@@ -52,7 +55,7 @@ public class HoTestDao {
 	//검사요청 등록
 	public int addTestRequest(Map<String , String > map) {
 		// TODO Auto-generated method stub
-		System.out.println("검사요청등록DAO");
+		logger.debug("검사요청등록DAO");
 		return sqlSession.insert("hoTest.addTestRequest", map);
 	}
 	//혈액검사 등록

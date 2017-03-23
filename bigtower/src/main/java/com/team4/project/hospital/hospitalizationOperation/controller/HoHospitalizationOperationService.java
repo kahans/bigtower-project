@@ -60,13 +60,13 @@ public class HoHospitalizationOperationService {
 	public int addHospitalization(Map<String, Object> map){
 		String hoHospitalizationRequestCode = (String) map.get("hoHospitalizationRequestCode");
 		int result = hoHOD.updateHospitalizationRequest(hoHospitalizationRequestCode);
-		System.out.println("입퇴원 요청테이블 상태코드 업데이트 결과는 ? "+result);
+		logger.debug("입퇴원 요청테이블 상태코드 업데이트 결과는 ? "+result);
 		return hoHOD.addHospitalization(map);
 	}
 	
 	//퇴원일 업데이트
 	public int updateHospitalization(String hoHospitalizationCode){
-		System.out.println("서비스의 hoHospitalizationCode : "+ hoHospitalizationCode);
+		logger.debug("서비스의 hoHospitalizationCode : "+ hoHospitalizationCode);
 		return hoHOD.updateHospitalization(hoHospitalizationCode);
 	}
 	
@@ -95,14 +95,14 @@ public class HoHospitalizationOperationService {
 			e.printStackTrace();
 		}
 		Date hoOperationEndDate = hoOperationSub.getHoOperationEndDate();
-		System.out.println("hoOperationStartDate : "+hoOperationStartDate);
-		System.out.println("hoOperationEndDate : "+hoOperationEndDate);
+		logger.debug("hoOperationStartDate : "+hoOperationStartDate);
+		logger.debug("hoOperationEndDate : "+hoOperationEndDate);
 		
 		int result = 0;
 		
 		int compare = hoOperationStartDate.compareTo(hoOperationEndDate);
 		if(compare > 0) {
-			System.out.println("========수술 종료일이 시작일보다 이전 날짜로 설정되었습니다.============");
+			logger.debug("========수술 종료일이 시작일보다 이전 날짜로 설정되었습니다.============");
 		}else if(compare<0){
 			result = hoHOD.updateOperation(hoOperationSub);
 		}else {

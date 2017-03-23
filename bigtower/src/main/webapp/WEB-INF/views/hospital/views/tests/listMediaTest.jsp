@@ -71,7 +71,9 @@ th{
 			<h3>영상촬영 검사대기 목록</h3>
 		</div>	
 		<div class="widget-content" align="center">
+			<br/>
 			<h3>목록이 없습니다.</h3>
+			<br/>
 		</div>
 	</div>
 </c:if>

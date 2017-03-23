@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +31,7 @@ import com.team4.project.hospital.vaccineCheckup.domain.HoVaccine;
 @Transactional
 @Service
 public class HoTreatChartService {
+	private static final Logger logger = LoggerFactory.getLogger(HoTreatChartService.class);
 
 	@Autowired
 	private HoTreatChartDao hoTCD;
@@ -86,11 +89,11 @@ public class HoTreatChartService {
 		//진료 열을 생성한다.
 		hoTCD.addTreat(hoTreat);
 		int result = hoRRDao.receiveStateDiagnosis(hoReceiveCode);
-		System.out.println("접수완료에서 진료로 상태업데이트 결과?" + result);
+		logger.debug("접수완료에서 진료로 상태업데이트 결과?" + result);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hoTreatmentCode", hoTreat.getHoTreatmentCode());
-		System.out.println("이게 뭐라고 한다면 : "+map.get("hoTreatmentCode"));
+		logger.debug("이게 뭐라고 한다면 : "+map.get("hoTreatmentCode"));
 		
 		return 0;
 	}
@@ -122,20 +125,20 @@ public class HoTreatChartService {
 				String hoTestCode = testList.get(i);
 				addTestReqeustMap.put("hoTestCode", hoTestCode);
 				int result = testDao.addTestRequest(addTestReqeustMap);
-				System.out.println(result+"번째 검사요청 등록성공");
+				logger.debug(result+"번째 검사요청 등록성공");
 			}
 		}
 		// 입원요청이 있으면
 		if(!checkHospitalization.equals("0")){
 			int result = hospitalizationOperationDao.addRequest(hoTreatmentCode);
 			if(result == 1){
-				System.out.println("입원요청 등록성공");
+				logger.debug("입원요청 등록성공");
 			}		}
 		// 수술요청이 있으면
 		if(!hoOperation.getHoOperationTypeCode().equals("0")){
 			int result = hospitalizationOperationDao.addOperation(hoOperation);
 			if(result == 1){
-				System.out.println("수술요청 등록성공");
+				logger.debug("수술요청 등록성공");
 			}
 		}
 		// 처방결과등록이 있으면
@@ -151,14 +154,14 @@ public class HoTreatChartService {
 				result += diagnosisPrescriptionDao.addPrescription(hoPrescription);
 			}
 			if(result > 0 ){
-				System.out.println("처방결과 "+ result +"회 등록성공");
+				logger.debug("처방결과 "+ result +"회 등록성공");
 			}
 		}
 		// 예방접종 등록이 있으면
 		if(!hoVaccine.getHoVaccineTypeCode().equals("0")){
 			int result = vaccineCheckupDao.addVaccine(hoVaccine);
 			if(result == 1){
-				System.out.println("예방접종 등록성공");
+				logger.debug("예방접종 등록성공");
 			}
 		}
 		hoRRDao.receiveStatePay(hoTreatmentCode);

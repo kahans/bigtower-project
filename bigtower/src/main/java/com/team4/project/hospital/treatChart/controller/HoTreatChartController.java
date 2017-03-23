@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team4.project.government.dto.GoMedicine;
+import com.team4.project.hospital.controller.HospitalController;
 import com.team4.project.hospital.diagnosisPrescription.domain.HoPrescription;
 import com.team4.project.hospital.dto.HoDisease;
 import com.team4.project.hospital.dto.HoMedicine;
@@ -32,6 +35,7 @@ import com.team4.project.util.GetReferenceData;
 
 @Controller
 public class HoTreatChartController {
+	private static final Logger logger = LoggerFactory.getLogger(HoTreatChartController.class);
 
 	@Autowired
 	private HoTreatChartService hoTCS;
@@ -42,12 +46,12 @@ public class HoTreatChartController {
 						   HttpSession session,HoChart hoChart,
 						   @RequestParam(value="hoCitizenId")String hoCitizenId
 						   ){
-		System.out.println("===================차트등록====================");
+		logger.debug("===================차트등록====================");
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE"); //세션에서 병원코드 겟팅
 		hoChart.setHoHospitalCode(hoHospitalCode);
-		System.out.println("hoChart : "+hoChart );
+		logger.debug("hoChart : "+hoChart );
 		hoTCS.addChart(hoChart);
-		System.out.println("===================차트가 생성되었습니다====================");
+		logger.debug("===================차트가 생성되었습니다====================");
 		HoPatient hp = hoTCS.selectOnePatient(hoCitizenId, hoHospitalCode);
 		//receive폼에 보낼 환자 주민번호
 		redirectAttributes.addAttribute("hoCitizenId", hoCitizenId);
@@ -73,11 +77,11 @@ public class HoTreatChartController {
 		List<HoOperationType> operationList = GetReferenceData.getSurgeryCode(doctorId);
 		List<HoVaccineType> vaccineList = GetReferenceData.getVaccinationCode(doctorId);
 		List<HoMedicine> medicineList = GetReferenceData.getMedicineCode(doctorId);
-		System.out.println("addPrescription 메서드의 hoTreatmentCode : "+hoTreatmentCode);
+		logger.debug("addPrescription 메서드의 hoTreatmentCode : "+hoTreatmentCode);
 		model.addAttribute("hoTreatmentCode", hoTreatmentCode);
 		model.addAttribute("medicineList",medicineList);
 		HoTreat hoTreat = hoTCS.treatView(hoTreatmentCode);
-		System.out.println("hoTreat의 진료코드 : " + hoTreat.getHoTreatmentCode());
+		logger.debug("hoTreat의 진료코드 : " + hoTreat.getHoTreatmentCode());
 		model.addAttribute("hoTreat",hoTreat);
 		model.addAttribute("testList", testList);
 		model.addAttribute("diseaseList", diseaseList);
@@ -100,18 +104,18 @@ public class HoTreatChartController {
 							@RequestParam(value="hoMedicineCode") List<String> hoMedicineCode,
 							@RequestParam(value="diseaseSelect") List<String> diseaseList,
 							@RequestParam(value="hoTestCode",required=false) List<String> testList){
-		System.out.println("testList : "+testList);
-		System.out.println("hoTreat : "+hoTreat);
-		System.out.println("hoOperation : "+hoOperation);
-		System.out.println("hoPrescriptionDailydose : "+hoPrescriptionDailydose);
-		System.out.println("hoPrescriptionDailycount : "+hoPrescriptionDailycount);
-		System.out.println("hoPrescriptionTotalday : "+hoPrescriptionTotalday);
-		System.out.println("hoPrescriptionUsage : "+hoPrescriptionUsage);
-		System.out.println("hoMedicineCode : "+hoMedicineCode);
-		System.out.println("hoVaccine : "+hoVaccine);
-		System.out.println("checkHospitalization : "+checkHospitalization);
-		//System.out.println("medicineList"+medicineList);
-		System.out.println("diseaseList : "+diseaseList);
+		logger.debug("testList : "+testList);
+		logger.debug("hoTreat : "+hoTreat);
+		logger.debug("hoOperation : "+hoOperation);
+		logger.debug("hoPrescriptionDailydose : "+hoPrescriptionDailydose);
+		logger.debug("hoPrescriptionDailycount : "+hoPrescriptionDailycount);
+		logger.debug("hoPrescriptionTotalday : "+hoPrescriptionTotalday);
+		logger.debug("hoPrescriptionUsage : "+hoPrescriptionUsage);
+		logger.debug("hoMedicineCode : "+hoMedicineCode);
+		logger.debug("hoVaccine : "+hoVaccine);
+		logger.debug("checkHospitalization : "+checkHospitalization);
+		//logger.debug("medicineList"+medicineList);
+		logger.debug("diseaseList : "+diseaseList);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hoTreat", hoTreat);
 		map.put("testList", testList);
@@ -126,7 +130,7 @@ public class HoTreatChartController {
 		//map.put("medicineList", medicineList);
 		map.put("diseaseList", diseaseList);
 		int result = hoTCS.updateTreat(map);
-		System.out.println("updateTreat 결과는 ? "+result);
+		logger.debug("updateTreat 결과는 ? "+result);
 		
 		redirectAttributes.addAttribute("hoTreatmentCode",hoTreat.getHoTreatmentCode());
 		redirectAttributes.addAttribute("diseaseList",diseaseList);
@@ -142,7 +146,7 @@ public class HoTreatChartController {
 		
 		String hospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		List<HoTreatSub> treatList  = hoTCS.treatList(hospitalCode);
-		System.out.println(treatList.toString());
+		logger.debug(treatList.toString());
 		model.addAttribute("treatList", treatList);
 		return "/hospital/views/treatment/treatmentList";
 	}
@@ -154,27 +158,27 @@ public class HoTreatChartController {
 						   String hoReceiveCode,
 						   HoTreat hoTreat,
 						   HttpSession session){
-		System.out.println("hoReceiveCode : "+hoReceiveCode);
-		System.out.println("hoPatientCode : "+hoPatientCode);
-		System.out.println("hoTreatSubjectCode : "+hoTreatSubjectCode);
+		logger.debug("hoReceiveCode : "+hoReceiveCode);
+		logger.debug("hoPatientCode : "+hoPatientCode);
+		logger.debug("hoTreatSubjectCode : "+hoTreatSubjectCode);
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		String hoDoctorId = (String) session.getAttribute("DOCTORID");
-		System.out.println("hoHospitalCode : "+hoHospitalCode);
+		logger.debug("hoHospitalCode : "+hoHospitalCode);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("hoHospitalCode",hoHospitalCode);
 		map.put("hoPatientCode",hoPatientCode);
 		String hoChartCode = hoTCS.selectChartCode(map);
-		System.out.println("hoChartCode : "+hoChartCode);		
+		logger.debug("hoChartCode : "+hoChartCode);		
 		
-		System.out.println("hoTreat 셋팅하기전 : "+hoTreat);
+		logger.debug("hoTreat 셋팅하기전 : "+hoTreat);
 		hoTreat.setHoDoctorId(hoDoctorId);
 		hoTreat.setHoPatientCode(hoPatientCode);
 		hoTreat.setHoChartCode(hoChartCode);
 		hoTreat.setHoHospitalCode(hoHospitalCode);
 		hoTreat.setHoTreatSubjectCode(hoTreatSubjectCode);
-		System.out.println("hoTreat 셋팅후 : "+hoTreat);
+		logger.debug("hoTreat 셋팅후 : "+hoTreat);
 		int result = hoTCS.addTreat(hoTreat, hoReceiveCode);
-		System.out.println("addTreat 결과는 ?"+ result);
+		logger.debug("addTreat 결과는 ?"+ result);
 		return "redirect:/hospital/receiveList";
 	}
 	

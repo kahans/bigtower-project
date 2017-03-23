@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +18,12 @@ import com.team4.project.hospital.test.domain.HoBloodTestSub;
 import com.team4.project.hospital.test.domain.HoMediaTestSub;
 import com.team4.project.hospital.test.domain.HoTestRequestSub;
 import com.team4.project.util.ContextParam;
+import com.team4.project.util.GetReferenceData;
 
 @Controller
 public class HoTestController {
+	private static final Logger logger = LoggerFactory.getLogger(HoTestController.class);
+
 	//공통적인 부분을 필드변수로 선언해준다.
 	//배포시 파일 경로
 	//String path = "/home/hosting_users/bluesang7/tomcat/webapps/bigtower/resources/file/image";
@@ -69,7 +74,7 @@ public class HoTestController {
 		hoTestRequest.setHoTestCode("1");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);
 		hoTestRequest.setHoTestStateCode(1); 
-		System.out.println(hoTestRequest.toString());
+		logger.debug(hoTestRequest.toString());
 		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
 		
 		model.addAttribute("bloodList", bloodList);
@@ -83,7 +88,7 @@ public class HoTestController {
 		hoTestRequest.setHoTestCode("1");
 		hoTestRequest.setHoHospitalCode(hoHospitalCode);
 		hoTestRequest.setHoTestStateCode(3); 
-		System.out.println(hoTestRequest.toString());
+		logger.debug(hoTestRequest.toString());
 		List<HoTestRequestSub> bloodList = hoTS.bloodTestList(hoTestRequest);
 		model.addAttribute("bloodList", bloodList);
 		return "/hospital/views/tests/listBloodTestComplete";
@@ -167,7 +172,7 @@ public class HoTestController {
 	@RequestMapping(value="/hospital/test/listMediaTest", method=RequestMethod.GET)
 	public String mediaTestList(HoTestRequestSub hoTestRequest, Model model,
 			HttpSession session){
-		System.out.println("영상검사 대기자 리스트 확인");
+		logger.debug("영상검사 대기자 리스트 확인");
 		//영상검사테이블에서 데이터를 불러와 list에 담는다.
 
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
@@ -187,15 +192,15 @@ public class HoTestController {
 								@RequestParam(value="hoTestRequestCode",required=false )String hoTestRequestCode
 			){
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
-		System.out.println("해당 영상검사 글 뷰 GET");
-		System.out.println(hoTestRequestCode);
+		logger.debug("해당 영상검사 글 뷰 GET");
+		logger.debug(hoTestRequestCode);
 		HoMediaTestSub mediaView = hoTS.mediaTestView(hoTestRequestCode);
 		mediaView.setHoHospitalCode(hoHospitalCode);
 		//영상테이블에 들어갈 초기데이터 입력
 		
 		hoTS.addMedia(mediaView);
 		
-		System.out.println(mediaView.toString());
+		logger.debug(mediaView.toString());
 		model.addAttribute("mediaView", mediaView);
 		return "/hospital/views/tests/addMediaTest";
 	}
@@ -212,12 +217,12 @@ public class HoTestController {
 		String hoHospitalCode = (String) session.getAttribute("HOSPITALCODE");
 		mediaView.setHoHospitalCode(hoHospitalCode);
 		
-		System.out.println("해당 영상검사 결과 등록 POST");
-		System.out.println("등록POST : "+mediaView.toString());
+		logger.debug("해당 영상검사 결과 등록 POST");
+		logger.debug("등록POST : "+mediaView.toString());
 		//request.getServletContext().getRealPath("D:\\testImage") 상대주소
 		//String path="D:\\testImage";//절대 주소
 		// 배포시사용할경로
-		System.out.println("path:"+path);
+		logger.debug("path:"+path);
 		mediaView.setHoMediaTestImagePath(path);
 		
 		hoTS.updateMediaTest(mediaView);
