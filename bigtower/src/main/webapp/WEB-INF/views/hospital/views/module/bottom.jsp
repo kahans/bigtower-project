@@ -42,8 +42,9 @@
                             	최유민(Choi Yu-Min)</h4>
                         <ul>
                             <li>level: 팀원</li>
-                            <li>role: null<br/>
+                            <li>role: 병원(정부통신기능)구현<br/>
                             		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            		정부RESTful(검사,입원,수술,예방접종,건강검진)구현
                        		</li>
                 		    <li><i class="icon-phone"> phone: 010-8872-7178</i></li>
                             <li><i class="icon-envelope-alt"> email: ryun215@naver.com</i></li>
