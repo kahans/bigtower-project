@@ -2,17 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/hospital/views/module/top.jsp"%>
 <div class="main">
-
 	<div class="main-inner">
-
 		<div class="container">
-
 			<div class="row">
-
 				<div class="span12">
-
 					<div class="widget ">
-
 						<div class="widget-header">
 							<i class="icon-user"></i>
 							<h3>환자 조회</h3>
@@ -62,33 +56,23 @@
 													<button class="btn">취소</button>
 												</div>
 												<!-- /form-actions -->
-												<br>
 											</fieldset>
 										</form>
 									</div>
-
 								</div>
-
 							</div>
-
 						</div>
 						<!-- /widget-content -->
-
 					</div>
 					<!-- /widget -->
-
 				</div>
 				<!-- /span12 -->
-
 			</div>
 			<!-- /row -->
-
 		</div>
 		<!-- /container -->
-
 	</div>
 	<!-- /main-inner -->
-
 </div>
 <!-- /main -->
 <%@ include file="/WEB-INF/views/hospital/views/module/bottom.jsp"%>

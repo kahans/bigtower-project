@@ -1,20 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/hospital/views/module/top.jsp"%>
-<style>
-<!--
-@media ( max-width : 1000px) {
-	.widget {
-		position: relative;
-		clear: both;
-		width: auto;
-		margin-bottom: 2em;
-		overflow: auto;
-		margin: auto auto 100px auto;
-	}
-}
--->
-</style>
 <div class="main">
 
 	<div class="main-inner">
@@ -50,7 +36,6 @@
 											action="<c:url value="/government/searchResultByCitizenId"/>"
 											class="form-horizontal" method="post">
 											<fieldset>
-
 												<div class="control-group">
 													<label class="control-label" for="firstname">주민번호</label>
 													<div class="controls">
