@@ -42,30 +42,31 @@
                             	최유민(Choi Yu-Min)</h4>
                         <ul>
                             <li>level: 팀원</li>
-                            <li>role: 병원(접수,검사,수술,입원)구현<br/>
+                            <li>role: null<br/>
                             		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        		</li>
-                		    <li><i class="icon-phone"> phone: 010-8582-5963</i></li>
-                            <li><i class="icon-envelope-alt"> email: loverman85@hanmail.net</i></li>
-                            <li><i class="icon-globe"></i> blog:<a href="http://blog.naver.com/myeong3695" target="_blank"> http://blog.naver.com/myeong3695</a></li>
-                            <li><i class="icon-github"></i> git:<a href="https://github.com/kahans" target="_blank"> https://github.com/kahans</a></li>
-                            <li><i class="icon-globe"></i> portfolio:<a href="http://myeong3695.cafe24.com/" target="_blank"> http://myeong3695.cafe24.com/</a></li>
+                		    <li><i class="icon-phone"> phone: 010-8872-7178</i></li>
+                            <li><i class="icon-envelope-alt"> email: ryun215@naver.com</i></li>
+                            <li><i class="icon-globe"></i> blog:<a href="http://blog.naver.com/ryun215" target="_blank"> http://blog.naver.com/ryun215</a></li>
+                            <li><i class="icon-github"></i> git:<a href="https://github.com/ryun215" target="_blank"> https://github.com/ryun215</a></li>
+                            <li><i class="icon-globe"></i> portfolio:<a href="http://ryun215.cafe24.com/" target="_blank"> http://ryun215.cafe24.com/</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
                     <div class="span3">
                         <h4>
-                            	정상일(Chung Sang-Il)</h4>
+                            	정상일(Jeong Sang-Il)</h4>
                         <ul>
                             <li>level: 팀원</li>
-                            <li>role: 병원(접수,검사,수술,입원)구현<br/>
+                            <li>role: 병원(진료,수술,입원, 정부통신기능)구현
+                            		  <br/>
                             		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        		</li>
-                		    <li><i class="icon-phone"> phone: 010-8582-5963</i></li>
-                            <li><i class="icon-envelope-alt"> email: loverman85@hanmail.net</i></li>
-                            <li><i class="icon-globe"></i> blog:<a href="http://blog.naver.com/myeong3695" target="_blank"> http://blog.naver.com/myeong3695</a></li>
-                            <li><i class="icon-github"></i> git:<a href="https://github.com/kahans" target="_blank"> https://github.com/kahans</a></li>
-                            <li><i class="icon-globe"></i> portfolio:<a href="http://myeong3695.cafe24.com/" target="_blank"> http://myeong3695.cafe24.com/</a></li>
+                		    <li><i class="icon-phone"> phone: 010-2734-9983</i></li>
+                            <li><i class="icon-envelope-alt"> email: gentlesangil@nate.com</i></li>
+                            <li><i class="icon-globe"></i> blog:<a href="http://blog.naver.com/bluesangil7" target="_blank"> http://blog.naver.com/bluesangil7</a></li>
+                            <li><i class="icon-github"></i> git:<a href="https://github.com/bluesang" target="_blank"> https://github.com/bluesang</a></li>
+                            <li><i class="icon-globe"></i> portfolio:<a href="http://bluesang7.cafe24.com/" target="_blank"> http://bluesang7.cafe24.com/</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
