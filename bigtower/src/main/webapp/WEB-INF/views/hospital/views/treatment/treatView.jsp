@@ -35,7 +35,18 @@
 			}if($("#hoTreatmentContents").val()===""){
 				alert("진료내용을 입력하세요!");
 				return;
+			}if($("#hoOperationTypeCode").val()!="0"){
+				if($("#hoOperationStartDate").val()===""){
+					alert("수술예정일을 선택하세요");
+					return;
+				}
+			}if($("#hoVaccineTypeCode").val()!="0"){
+				if($("#hoVaccineDate").val()===""){
+					alert("예방접종일을 선택하세요");
+					return;
+				}
 			}
+			
 			console.log("제출!!");
 			$("#treatForm").submit();
 		});
@@ -187,11 +198,13 @@ align : right;
 	                       <div class="accordion-inner">
 					   			<div>
 						   			수술날짜 :
-						   			<input type="date" name="hoOperationStartDate">
+						   		
+
+						   			<input type="date" name="hoOperationStartDate" id="hoOperationStartDate">
 					   			</div>
 					   			<div>
 						   			수술명 :
-									<select name="hoOperationTypeCode">
+									<select name="hoOperationTypeCode" id="#hoOperationTypeCode">
 										<option value="0">:::수술을 선택하시오:::</option>
 										<c:forEach items="${operationList}" var="operationList">
 											<option value="${operationList.hoOperationTypeCode}">${operationList.hoOperationTypeCode}(${operationList.hoOperationTypeName})</option>
@@ -215,7 +228,7 @@ align : right;
 	                       <div class="accordion-inner">
 					   			<div>
 									예방접종 종류 : 
-									<select name="hoVaccineTypeCode">
+									<select name="hoVaccineTypeCode" id="#hoVaccineTypeCode">
 										<option value="0">:::예방 접종 종류를 선택하시오:::</option>
 										<c:forEach items="${vaccineList}" var="vaccineList">
 												<option value="${vaccineList.hoVaccineTypeCode}">${vaccineList.hoVaccineTypeName}</option>
@@ -224,7 +237,7 @@ align : right;
 								</div>
 								<div>
 									예방접종일 : 
-									<input type="date" name="hoVaccineDate">
+									<input type="date" name="hoVaccineDate" id="hoVaccineDate">
 								</div>
 								
 	                       </div> <!-- accordion-inner -->
