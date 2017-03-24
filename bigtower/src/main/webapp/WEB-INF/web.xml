@@ -17,7 +17,8 @@
 	<!-- 병원에서 정부에 있는 데이터 가져올경로 -->
 	<context-param>
 		<param-name>receiveUrl</param-name>
-		<param-value>http://loverman85.cafe24.com</param-value>
+		<!-- <param-value>http://loverman85.cafe24.com</param-value> -->
+		<param-value>http://myeong3695.cafe24.com</param-value>
 		<!-- <param-value>http://localhost</param-value> -->
 	</context-param>
 	
@@ -25,7 +26,8 @@
 	<context-param>
 		<param-name>sendUrl</param-name>
 		<!-- <param-value>http://localhost</param-value> -->
-		<param-value>http://loverman85.cafe24.com</param-value>
+		<!-- <param-value>http://loverman85.cafe24.com</param-value> -->
+		<param-value>http://myeong3695.cafe24.com</param-value>
 	</context-param>
 	
 	<!-- 파일 저장할 경로 -->
@@ -36,10 +38,10 @@
 			<!-- 
 			<param-value>/home/hosting_users/loverman85/tomcat/webapps/bigtower/resources/file/blood/</param-value>
 			 -->
-			<!-- 
-			<param-value>/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/blood/</param-value>
-			 -->
-			<param-value>/home/hosting_users/bluesang7/tomcat/webapps/fileRepository/resources/file/blood</param-value>
+			
+			<param-value>/home/hosting_users/myeong3695/tomcat/webapps/fileRepository/resources/file/blood</param-value>
+			
+			<!-- <param-value>/home/hosting_users/bluesang7/tomcat/webapps/fileRepository/resources/file/blood</param-value> -->
 		</context-param>
 		
 		<!-- 영상검사 파일저장 경로 -->
@@ -49,10 +51,10 @@
 			<!-- 
 			<param-value>/home/hosting_users/loverman85/tomcat/webapps/bigtower/resources/file/image/</param-value>
 			 -->
+			
+			<param-value>/home/hosting_users/myeong3695/tomcat/webapps/fileRepository/resources/file/image</param-value>
 			<!-- 
-			<param-value>/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/image/</param-value>
-			 -->
-			<param-value>/home/hosting_users/bluesang7/tomcat/webapps/fileRepository/resources/file/image</param-value>
+			<param-value>/home/hosting_users/bluesang7/tomcat/webapps/fileRepository/resources/file/image</param-value> -->
 		</context-param>
 		
 		<!-- 건강검진 파일저장 경로 -->
@@ -62,10 +64,10 @@
 			<!-- 
 			<param-value>/home/hosting_users/loverman85/tomcat/webapps/bigtower/resources/file/checkup/</param-value>
 			 -->
-			<!-- 
-			<param-value>/home/hosting_users/myeong3695/tomcat/webapps/bigtower/resources/file/checkup/</param-value>
-			 -->
-			<param-value>/home/hosting_users/bluesang7/tomcat/webapps/fileRepository/resources/file/checkup</param-value>
+			
+			<param-value>/home/hosting_users/myeong3695/tomcat/webapps/fileRepository/resources/file/checkup</param-value>
+			
+			<!-- <param-value>/home/hosting_users/bluesang7/tomcat/webapps/fileRepository/resources/file/checkup</param-value> -->
 		</context-param>
 	<!-- /파일 저장할 경로 -->
 			
@@ -73,19 +75,22 @@
 		<!-- 혈액검사 저장된 파일 불러올 경로 -->
 		<context-param>
 			<param-name>getBloodPath</param-name>
-			<param-value>http://bluesang7.cafe24.com/fileRepository/resources/file/blood/</param-value>
+			<!-- <param-value>http://bluesang7.cafe24.com/fileRepository/resources/file/blood/</param-value> -->
+			<param-value>http://myeong3695.cafe24.com/fileRepository/resources/file/blood/</param-value>
 		</context-param>
 		
 		<!-- 영상검사 저장된 파일 불러올 경로 -->
 		<context-param>
 			<param-name>getImagePath</param-name>
-			<param-value>http://bluesang7.cafe24.com/fileRepository/resources/file/image/</param-value>
+			<!-- <param-value>http://bluesang7.cafe24.com/fileRepository/resources/file/image/</param-value> -->
+			<param-value>http://myeong3695.cafe24.com/fileRepository/resources/file/image/</param-value>
 		</context-param>
 		
 		<!-- 건강검진 저장된 파일 불러올 경로 -->
 		<context-param>
 			<param-name>getCheckupPath</param-name>
-			<param-value>http://bluesang7.cafe24.com/fileRepository/resources/file/checkup/</param-value>
+			<!-- <param-value>http://bluesang7.cafe24.com/fileRepository/resources/file/checkup/</param-value> -->
+			<param-value>http://myeong3695.cafe24.com/fileRepository/resources/file/checkup/</param-value>
 		</context-param>	
 		
 	<!-- /저장된파일 불러오는 경로 -->
