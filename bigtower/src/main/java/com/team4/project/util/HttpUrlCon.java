@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -164,39 +165,57 @@ public class HttpUrlCon {
 	}
 
 	// POST 방식으로 연결하기
-	public String HttpUrlPOST(Map<String, String> map, String reqEncoding, String resEncoding) throws Exception {
-		URL url = new URL(this.url);
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod("POST"); // 요청 방식을 설정 (default : GET)
-		conn.setDoInput(true); // input을 사용하도록 설정 (default : true)
-		conn.setDoOutput(true); // output을 사용하도록 설정 (default : false)
-		conn.setConnectTimeout(60); // 타임아웃 시간 설정 (default : 무한대기)
-		conn.connect();
-		// OutputStream에 전달할 data 쓰기
-		OutputStream os = conn.getOutputStream();
+	public String HttpUrlPOST(Map<String, String> map, String reqEncoding, String resEncoding) {
+		OutputStream os = null;
+		BufferedWriter writer = null;
+		InputStream in = null;
+		StringBuilder sb = null;
+		try{
+			URL url = new URL(this.url);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST"); // 요청 방식을 설정 (default : GET)
+			conn.setDoInput(true); // input을 사용하도록 설정 (default : true)
+			conn.setDoOutput(true); // output을 사용하도록 설정 (default : false)
+			conn.setConnectTimeout(60); // 타임아웃 시간 설정 (default : 무한대기)
+			conn.connect();
 
-		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, reqEncoding)); // 캐릭터셋
-																								// 설정
-		for (String key : map.keySet()) {
-			writer.write(key + "=" + map.get(key) + "&"); // 요청 파라미터를 입력
-		}
-		// 스트림의 버퍼를 비워준다.
-		writer.flush();
-		writer.close();
+			// OutputStream에 전달할 data 쓰기
+			os = conn.getOutputStream();
 
-		// 스트림을 닫아준다.
-		os.close();
-		// 응답결과 받아오기
-		InputStream in = conn.getInputStream();
-		BufferedReader br = new BufferedReader(new InputStreamReader(in, resEncoding)); // 캐릭터셋
-																						// 설정
-		StringBuilder sb = new StringBuilder();
-		String line = null;
-		while ((line = br.readLine()) != null) {
-			if (sb.length() > 0) {
-				sb.append("\n");
+			writer = new BufferedWriter(new OutputStreamWriter(os, reqEncoding)); // 캐릭터셋
+																									// 설정
+			for (String key : map.keySet()) {
+				writer.write(key + "=" + map.get(key) + "&"); // 요청 파라미터를 입력
 			}
-			sb.append(line);
+			// 스트림의 버퍼를 비워준다.
+			writer.flush();
+			//writer.close();
+
+			// 스트림을 닫아준다.
+			//os.close();
+			// 응답결과 받아오기
+			in = conn.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(in, resEncoding)); // 캐릭터셋
+																							// 설정
+			sb = new StringBuilder();
+			String line = null;
+			while ((line = br.readLine()) != null) {
+				if (sb.length() > 0) {
+					sb.append("\n");
+				}
+				sb.append(line);
+			}
+			
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			try {
+				writer.close();
+				os.close();
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return sb.toString();
 	}
