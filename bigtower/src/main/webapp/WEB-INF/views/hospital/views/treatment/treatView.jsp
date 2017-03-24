@@ -35,12 +35,12 @@
 			}if($("#hoTreatmentContents").val()===""){
 				alert("진료내용을 입력하세요!");
 				return;
-			}if($("#hoOperationTypeCode").val()!="0"){
+			}if($("#hoOperationTypeCode").val()!=="0"){
 				if($("#hoOperationStartDate").val()===""){
 					alert("수술예정일을 선택하세요");
 					return;
 				}
-			}if($("#hoVaccineTypeCode").val()!="0"){
+			}if($("#hoVaccineTypeCode").val()!=="0"){
 				if($("#hoVaccineDate").val()===""){
 					alert("예방접종일을 선택하세요");
 					return;
